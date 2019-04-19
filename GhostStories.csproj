@@ -234,6 +234,7 @@
   <ItemGroup>
     <Compile Include="Assets\Script\BluePlayer.cs" />
     <Compile Include="Assets\Script\BouddhisteTemple.cs" />
+    <Compile Include="Assets\Script\Deplacement.cs" />
     <Compile Include="Assets\Script\Graveyard.cs" />
     <Compile Include="Assets\Script\GreenPlayer.cs" />
     <Compile Include="Assets\Script\HouseOfTea.cs" />
@@ -242,6 +243,7 @@
     <Compile Include="Assets\Script\PriestCircle.cs" />
     <Compile Include="Assets\Script\RedPlayer.cs" />
     <Compile Include="Assets\Script\StallOfHerbalist.cs" />
+    <Compile Include="Assets\Script\StockOfToken.cs" />
     <Compile Include="Assets\Script\TaoisteAutel.cs" />
     <Compile Include="Assets\Script\WindCelestialFlag.cs" />
     <Compile Include="Assets\Script\YellowPlayer.cs" />
