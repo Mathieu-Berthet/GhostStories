@@ -50,7 +50,7 @@ public class GreenPlayer : MonoBehaviour
         }
         else if(powerForceDeLaMontagne)
         {
-            //Lancer avec 1 dé supplémentaire
+            //Lancer avec 1 dé supplémentaire et pas de dés noir
         }
     }
 }

@@ -1270,6 +1270,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hauntedTile: 0
+  tokenStock: {fileID: 0}
+  choosenToken: 
 --- !u!23 &416534315
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2635,8 +2637,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 159805812f7ca1f4184f64fa58d3dac4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
-  test: {fileID: 0}
 --- !u!195 &921742459
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2679,6 +2679,16 @@ MonoBehaviour:
   nbYinYangBlueToken: 0
   powerSecondSouffle: 0
   powerSouffleCeleste: 0
+  houseOfTea: {fileID: 416534313}
+  graveyard: {fileID: 1241658704}
+  bouddhisteTemple: {fileID: 1907267166}
+  priestCircle: {fileID: 1910284758}
+  taoisteAutel: {fileID: 1581580247}
+  herbalistStall: {fileID: 1444573566}
+  witchHut: {fileID: 233401638}
+  windCelestialFlag: {fileID: 1335580315}
+  nightTower: {fileID: 1585650252}
+  tileName: 
 --- !u!114 &921742461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3621,7 +3631,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!195 &1221269285
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -3654,8 +3664,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 159805812f7ca1f4184f64fa58d3dac4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
-  test: {fileID: 0}
 --- !u!54 &1221269287
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3785,7 +3793,7 @@ GameObject:
   - component: {fileID: 1241658706}
   - component: {fileID: 1241658705}
   m_Layer: 0
-  m_Name: "Cimeti\xE8re"
+  m_Name: Cimetiere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5574,7 +5582,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!195 &1742816405
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -5607,8 +5615,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 159805812f7ca1f4184f64fa58d3dac4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
-  test: {fileID: 0}
 --- !u!54 &1742816407
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5833,7 +5839,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!195 &1775335298
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -5866,8 +5872,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 159805812f7ca1f4184f64fa58d3dac4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
-  test: {fileID: 0}
 --- !u!54 &1775335300
 Rigidbody:
   m_ObjectHideFlags: 0
