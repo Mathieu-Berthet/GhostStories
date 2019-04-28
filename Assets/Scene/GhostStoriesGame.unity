@@ -5433,6 +5433,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1682815801}
   - component: {fileID: 1682815800}
+  - component: {fileID: 1682815802}
   m_Layer: 0
   m_Name: TokenStock
   m_TagString: Untagged
@@ -5474,6 +5475,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1682815802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1682815799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56edd115e326d674a89bd65aa7233112, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poolLeaders:
+  - poolName: 0
+    prefabs:
+    - {fileID: 1122805178711050, guid: 3bd4ec1547e184e41a35d7d401218418, type: 2}
+    poolSize: 5
 --- !u!1 &1715530345
 GameObject:
   m_ObjectHideFlags: 0
@@ -6628,6 +6645,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hauntedTile: 0
   typeJeton: 0
+  tokenStock: {fileID: 0}
+  choseenToken: 
+  token: {fileID: 0}
 --- !u!23 &1910284760
 MeshRenderer:
   m_ObjectHideFlags: 0

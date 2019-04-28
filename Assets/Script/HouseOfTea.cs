@@ -56,7 +56,7 @@ public class HouseOfTea : MonoBehaviour {
             case "Yellow":
                 if(tokenStock.nbYellowToken == 0)
                 {
-                    //Indiquer qu'il y en a plus
+                    //Indiquer qu'il y en a plus en reserve
                 }
                 else
                 {
@@ -66,7 +66,7 @@ public class HouseOfTea : MonoBehaviour {
             case "black":
                 if(tokenStock.nbBlackToken == 0)
                 {
-                    //Indiquer qu'il y en a plus
+                    //Indiquer qu'il y en a plus en reserve
                 }
                 else
                 {

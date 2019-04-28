@@ -17,9 +17,34 @@ public class GreenPlayer : MonoBehaviour
 
     public int nbYinYangGreenToken; // Jeton yin yang. Max possible 1, et uniquement de sa couleur
 
+    public int nbBouddha; // Pour les bouddha du temple bouddhiste
+
+
     public bool powerForceDeLaMontagne;
     public bool powerFavoriDesDieux;
 
+
+    //Les tuiles
+    [SerializeField]
+    private GameObject houseOfTea;
+    [SerializeField]
+    private GameObject graveyard;
+    [SerializeField]
+    private GameObject bouddhisteTemple;
+    [SerializeField]
+    private GameObject priestCircle;
+    [SerializeField]
+    private GameObject taoisteAutel;
+    [SerializeField]
+    private GameObject herbalistStall;
+    [SerializeField]
+    private GameObject witchHut;
+    [SerializeField]
+    private GameObject windCelestialFlag;
+    [SerializeField]
+    private GameObject nightTower;
+
+    public string tileName;
 
     // Use this for initialization
     void Start ()
@@ -40,6 +65,57 @@ public class GreenPlayer : MonoBehaviour
 		
 	}
 
+
+    public void UsePowerTile()
+    {
+        RaycastHit hitt;
+        if (Physics.Raycast(transform.position, Vector3.down, out hitt, 1.0f))
+        {
+            tileName = hitt.transform.gameObject.name;
+        }
+
+        switch (tileName)
+        {
+            case "MaisonThe":
+                Debug.Log("Maison du Thé");
+                //houseOfTea.GetComponent<HouseOfTea>().GainTokenAndQI(gameObject);
+                break;
+            case "HutteSorciere":
+                Debug.Log("Hutte de la sorcière");
+                //witchHut.GetComponent<HutOfWitch>().KillGhost();
+                break;
+            case "EchoppeHerboriste":
+                Debug.Log("Echoppe de l'herboriste");
+                //herbalistStall.GetComponent<StallOfHerbalist>().getToken();
+                break;
+            case "AutelTaoiste":
+                Debug.Log("Autel Taoiste");
+                //taoisteAutel.GetComponent<TaoisteAutel>().UnhauntTile();
+                break;
+            case "Cimetiere":
+                Debug.Log("Le cimetière");
+                //graveyard.GetComponent<Graveyard>().Resurrect();
+                break;
+            case "PavillonVentCeleste":
+                Debug.Log("Le pavillon du vent celeste");
+                //windCelestialFlag.GetComponent<WindCelestialFlag>().MovePlayerAndGhost();
+                break;
+            case "TourVeilleurNuit":
+                Debug.Log("Tour du veilleur de nuit");
+                //nightTower.GetComponent<NightTower>().RetreatGhost();
+                break;
+            case "CerclePierre":
+                Debug.Log("Le cercle de prière");
+                //priestCircle.GetComponent<PriestCircle>().reduceGhostLife();
+                break;
+            case "TempleBouddhiste":
+                Debug.Log("Temple Bouddhiste");
+                //bouddhisteTemple.GetComponent<BouddhisteTemple>().getBouddha();
+                break;
+            default:
+                break;
+        }
+    }
 
     public void LaunchDice()
     {

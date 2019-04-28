@@ -240,6 +240,8 @@
     <Compile Include="Assets\Script\HouseOfTea.cs" />
     <Compile Include="Assets\Script\HutOfWitch.cs" />
     <Compile Include="Assets\Script\NightTower.cs" />
+    <Compile Include="Assets\Script\PoolChild.cs" />
+    <Compile Include="Assets\Script\PoolManager.cs" />
     <Compile Include="Assets\Script\PriestCircle.cs" />
     <Compile Include="Assets\Script\RedPlayer.cs" />
     <Compile Include="Assets\Script\StallOfHerbalist.cs" />

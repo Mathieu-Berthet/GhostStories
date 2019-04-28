@@ -17,6 +17,8 @@ public class BluePlayer : MonoBehaviour
 
     public int nbYinYangBlueToken; // Jeton yin yang. Max possible 1, et uniquement de sa couleur
 
+    public int nbBouddha; // Pour les bouddha du temple bouddhiste
+
     public bool powerSecondSouffle;
     public bool powerSouffleCeleste;
 
