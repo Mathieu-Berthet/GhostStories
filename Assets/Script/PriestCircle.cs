@@ -15,13 +15,19 @@ public class PriestCircle : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
-        tokenStock = GetComponent<StockOfToken>();
+        tokenStock = GameObject.Find("TokenStock").GetComponent<StockOfToken>();
+        //TEST
+        choseenToken = "Red";
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		
-	}
+	void Update ()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            reduceGhostLife();
+        }
+    }
 
     public void reduceGhostLife()
     {
@@ -35,16 +41,16 @@ public class PriestCircle : MonoBehaviour {
                 }
                 else
                 {
-                    tokenStock.nbRedToken -= 1;
+                    //tokenStock.nbRedToken -= 1;
                     if (token != null)
                     {
-
+                        Debug.Log("Pas par la pour l'instant");
                         token = GetComponent<StockOfToken>().transform.GetChild(0).GetChild(0).gameObject;
                         token.transform.SetParent(gameObject.transform);
                     }
                     else
                     {
-                        token = GetComponent<PoolManager>().GetPoolByName(PoolName.redToken).GetItem(transform, new Vector3(0,0,0), Quaternion.identity, true, false, 0);
+                        token = GameObject.Find("TokenStock").GetComponent<PoolManager>().GetPoolByName(PoolName.redToken).GetItem(transform, new Vector3(0, 1, 0), Quaternion.identity, true, false, 0);
                         token.transform.SetParent(gameObject.transform);
                     }
                 }
@@ -57,9 +63,19 @@ public class PriestCircle : MonoBehaviour {
                 }
                 else
                 {
-                    tokenStock.nbBlueToken -= 1;
-                    token = GetComponent<PoolManager>().GetPoolByName(PoolName.redToken).GetItem(transform, new Vector3(0, 0, 0), Quaternion.identity, true, false, 1);
-
+                    //tokenStock.nbBlueToken -= 1;
+                    if (token != null)
+                    {
+                        token.GetComponent<PoolChild>().ReturnToPool();
+                        token = null;
+                        token = GameObject.Find("TokenStock").GetComponent<PoolManager>().GetPoolByName(PoolName.blueToken).GetItem(transform, new Vector3(0, 1, 0), Quaternion.identity, true, false, 0);
+                        token.transform.SetParent(gameObject.transform);
+                    }
+                    else
+                    {
+                        token = GameObject.Find("TokenStock").GetComponent<PoolManager>().GetPoolByName(PoolName.blueToken).GetItem(transform, new Vector3(0, 0, 0), Quaternion.identity, true, false, 0);
+                        token.transform.SetParent(gameObject.transform);
+                    }
                 }
                 break;
             case "Green":
@@ -71,7 +87,7 @@ public class PriestCircle : MonoBehaviour {
                 else
                 {
                     tokenStock.nbGreenToken -= 1;
-                    token = GetComponent<PoolManager>().GetPoolByName(PoolName.redToken).GetItem(transform, new Vector3(0, 0, 0), Quaternion.identity, true, false, 2);
+                    token = GetComponent<PoolManager>().GetPoolByName(PoolName.redToken).GetItem(transform, new Vector3(0, 0, 0), Quaternion.identity, true, false, 0);
 
                 }
                 break;
@@ -84,7 +100,7 @@ public class PriestCircle : MonoBehaviour {
                 else
                 {
                     tokenStock.nbYellowToken -= 1;
-                    token = GetComponent<PoolManager>().GetPoolByName(PoolName.redToken).GetItem(transform, new Vector3(0, 0, 0), Quaternion.identity, true, false, 3);
+                    token = GetComponent<PoolManager>().GetPoolByName(PoolName.redToken).GetItem(transform, new Vector3(0, 0, 0), Quaternion.identity, true, false, 0);
 
                 }
                 break;
@@ -97,7 +113,7 @@ public class PriestCircle : MonoBehaviour {
                 else
                 {
                     tokenStock.nbBlackToken -= 1;
-                    token = GetComponent<PoolManager>().GetPoolByName(PoolName.redToken).GetItem(transform, new Vector3(0, 0, 0), Quaternion.identity, true, false, 4);
+                    token = GetComponent<PoolManager>().GetPoolByName(PoolName.redToken).GetItem(transform, new Vector3(0, 0, 0), Quaternion.identity, true, false, 0);
 
                 }
                 break;

@@ -2533,7 +2533,6 @@ GameObject:
   - component: {fileID: 921742454}
   - component: {fileID: 921742453}
   - component: {fileID: 921742457}
-  - component: {fileID: 921742458}
   - component: {fileID: 921742459}
   - component: {fileID: 921742460}
   - component: {fileID: 921742461}
@@ -2626,17 +2625,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &921742458
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 921742452}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 159805812f7ca1f4184f64fa58d3dac4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!195 &921742459
 NavMeshAgent:
   m_ObjectHideFlags: 0

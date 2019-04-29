@@ -17,6 +17,6 @@ public class PoolChild : MonoBehaviour {
 
     public void ReturnToPool()
     {
-        //transform.SetParent(); // A Remplir ^^
+        transform.SetParent(pool.PoolParent); // A Remplir ^^
     }
 }

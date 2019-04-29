@@ -140,7 +140,6 @@ public class PoolLeader
     {
         int prefabIndex = Random.Range(0, prefabs.Count);
         GameObject item = GameObject.Instantiate(prefabs[prefabIndex], poolParent.GetChild(_subpoolIndex));
-        Debug.Log(subPools);
         item.AddComponent<PoolChild>().pool = SubPools[_subpoolIndex];
         item.SetActive(false);
         SubPools[_subpoolIndex].ItemPool.Add(item);
