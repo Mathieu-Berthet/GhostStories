@@ -2677,6 +2677,7 @@ MonoBehaviour:
   nbBlackToken: 0
   nbPowerToken: 0
   nbYinYangBlueToken: 0
+  nbBouddha: 0
   powerSecondSouffle: 0
   powerSouffleCeleste: 0
   houseOfTea: {fileID: 416534313}
@@ -3765,8 +3766,19 @@ MonoBehaviour:
   nbBlackToken: 0
   nbPowerToken: 0
   nbYinYangRedToken: 0
+  nbBouddha: 0
   powerDanseDesVentsJumaux: 0
   powerDanseDesCimes: 0
+  houseOfTea: {fileID: 0}
+  graveyard: {fileID: 0}
+  bouddhisteTemple: {fileID: 0}
+  priestCircle: {fileID: 0}
+  taoisteAutel: {fileID: 0}
+  herbalistStall: {fileID: 0}
+  witchHut: {fileID: 0}
+  windCelestialFlag: {fileID: 0}
+  nightTower: {fileID: 0}
+  tileName: 
 --- !u!114 &1221269293
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5490,7 +5502,23 @@ MonoBehaviour:
   - poolName: 0
     prefabs:
     - {fileID: 1122805178711050, guid: 3bd4ec1547e184e41a35d7d401218418, type: 2}
-    poolSize: 5
+    poolSize: 4
+  - poolName: 1
+    prefabs:
+    - {fileID: 1266171176353386, guid: 61d8a725671b24a41904bc24d0449c08, type: 2}
+    poolSize: 4
+  - poolName: 3
+    prefabs:
+    - {fileID: 1992087457208642, guid: 487e0eb9aa807f849a8b15f917aa0bf5, type: 2}
+    poolSize: 4
+  - poolName: 2
+    prefabs:
+    - {fileID: 1402867844447544, guid: 27b0b367e6fd1684da0957e0f659d65d, type: 2}
+    poolSize: 4
+  - poolName: 4
+    prefabs:
+    - {fileID: 1155641371995186, guid: 489690c73249b894a9a1a592076361cb, type: 2}
+    poolSize: 4
 --- !u!1 &1715530345
 GameObject:
   m_ObjectHideFlags: 0
@@ -5733,9 +5761,20 @@ MonoBehaviour:
   nbBlackToken: 0
   nbPowerToken: 0
   nbYinYangYellowToken: 0
+  nbBouddha: 0
   powerPocheSansFond: 0
   powerMantraAffaiblissement: 0
   nbMantraToken: 0
+  houseOfTea: {fileID: 0}
+  graveyard: {fileID: 0}
+  bouddhisteTemple: {fileID: 0}
+  priestCircle: {fileID: 0}
+  taoisteAutel: {fileID: 0}
+  herbalistStall: {fileID: 0}
+  witchHut: {fileID: 0}
+  windCelestialFlag: {fileID: 0}
+  nightTower: {fileID: 0}
+  tileName: 
 --- !u!114 &1742816413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5990,8 +6029,19 @@ MonoBehaviour:
   nbBlackToken: 0
   nbPowerToken: 0
   nbYinYangGreenToken: 0
+  nbBouddha: 0
   powerForceDeLaMontagne: 0
   powerFavoriDesDieux: 0
+  houseOfTea: {fileID: 0}
+  graveyard: {fileID: 0}
+  bouddhisteTemple: {fileID: 0}
+  priestCircle: {fileID: 0}
+  taoisteAutel: {fileID: 0}
+  herbalistStall: {fileID: 0}
+  witchHut: {fileID: 0}
+  windCelestialFlag: {fileID: 0}
+  nightTower: {fileID: 0}
+  tileName: 
 --- !u!114 &1775335306
 MonoBehaviour:
   m_ObjectHideFlags: 0

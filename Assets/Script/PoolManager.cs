@@ -64,6 +64,47 @@ public class PoolLeader
         }
     }
 
+    List<Pool> SubPools
+    {
+        get
+        {
+            if (subPools == null)
+                subPools = new List<Pool>();
+            return subPools;
+        }
+    }
+
+    public GameObject GetItem(Transform _newParent, Vector3 _newPosition, Quaternion _newRotation, bool activeObjectOnRetrieval = false, bool spawnInWorldspace = false, int subpoolNumber = 0)
+    {
+        GameObject returnGameObject;
+        if (poolParent == null)
+        {
+            Debug.LogWarning("Pool parent is null (wtf?)");
+            return null;
+        }
+
+        if (poolParent.GetChild(subpoolNumber).childCount == 0)
+            returnGameObject = CreateRandomPoolItem(subpoolNumber);
+        else
+            returnGameObject = poolParent.GetChild(subpoolNumber).GetChild(0).gameObject;
+
+        returnGameObject.transform.SetParent(_newParent);
+        if (spawnInWorldspace)
+        {
+            returnGameObject.transform.position = _newPosition;
+            returnGameObject.transform.rotation = _newRotation;
+        }
+        else
+        {
+            returnGameObject.transform.localPosition = _newPosition;
+            returnGameObject.transform.localRotation = _newRotation;
+        }
+
+        if (activeObjectOnRetrieval) returnGameObject.SetActive(true);
+        return returnGameObject;
+
+    }
+
 
     public void InitializePool()
     {
@@ -87,7 +128,7 @@ public class PoolLeader
                 poolContainer.transform.parent = poolParent;
             }
 
-            subPools.Add(new Pool(poolParent.GetChild(i)));
+            SubPools.Add(new Pool(poolParent.GetChild(i)));
             for (int j = 0; j < poolSize; j++)
             {
                 CreateRandomPoolItem(i);
@@ -99,9 +140,10 @@ public class PoolLeader
     {
         int prefabIndex = Random.Range(0, prefabs.Count);
         GameObject item = GameObject.Instantiate(prefabs[prefabIndex], poolParent.GetChild(_subpoolIndex));
-        item.AddComponent<PoolChild>().pool = subPools[_subpoolIndex];
+        Debug.Log(subPools);
+        item.AddComponent<PoolChild>().pool = SubPools[_subpoolIndex];
         item.SetActive(false);
-        subPools[_subpoolIndex].ItemPool.Add(item);
+        SubPools[_subpoolIndex].ItemPool.Add(item);
         return item;
     }
 }
