@@ -17,6 +17,7 @@ public class PoolChild : MonoBehaviour {
 
     public void ReturnToPool()
     {
-        transform.SetParent(pool.PoolParent); // A Remplir ^^
+        gameObject.SetActive(false); //Solution temporaire, a modifier plus tard
+        transform.SetParent(pool.PoolParent.transform); // A Remplir ^^
     }
 }

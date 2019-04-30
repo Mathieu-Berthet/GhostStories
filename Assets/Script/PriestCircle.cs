@@ -41,16 +41,32 @@ public class PriestCircle : MonoBehaviour {
                 }
                 else
                 {
-                    //tokenStock.nbRedToken -= 1;
+                    tokenStock.nbRedToken -= 1;
                     if (token != null)
                     {
-                        Debug.Log("Pas par la pour l'instant");
-                        token = GetComponent<StockOfToken>().transform.GetChild(0).GetChild(0).gameObject;
+                        switch (token.name)
+                        {
+                            case "BlueToken":
+                                tokenStock.nbBlueToken += 1;
+                                break;
+                            case "YellowToken":
+                                tokenStock.nbYellowToken += 1;
+                                break;
+                            case "GreenToken":
+                                tokenStock.nbGreenToken += 1;
+                                break;
+                            case "BlackToken":
+                                tokenStock.nbBlackToken += 1;
+                                break;
+                            default:
+                                break;
+                        }
+                        token = tokenStock.GetComponent<PoolManager>().GetPoolByName(PoolName.redToken).GetItem(transform, new Vector3(0, 1, 0), Quaternion.identity, true, false, 0);
                         token.transform.SetParent(gameObject.transform);
                     }
                     else
                     {
-                        token = GameObject.Find("TokenStock").GetComponent<PoolManager>().GetPoolByName(PoolName.redToken).GetItem(transform, new Vector3(0, 1, 0), Quaternion.identity, true, false, 0);
+                        token = tokenStock.GetComponent<PoolManager>().GetPoolByName(PoolName.redToken).GetItem(transform, new Vector3(0, 1, 0), Quaternion.identity, true, false, 0);
                         token.transform.SetParent(gameObject.transform);
                     }
                 }
@@ -63,17 +79,34 @@ public class PriestCircle : MonoBehaviour {
                 }
                 else
                 {
-                    //tokenStock.nbBlueToken -= 1;
+                    tokenStock.nbBlueToken -= 1;
                     if (token != null)
                     {
+                        switch(token.name)
+                        {
+                            case "RedToken":
+                                tokenStock.nbRedToken += 1;
+                                break;
+                            case "YellowToken":
+                                tokenStock.nbYellowToken += 1;
+                                break;
+                            case "GreenToken":
+                                tokenStock.nbGreenToken += 1;
+                                break;
+                            case "BlackToken":
+                                tokenStock.nbBlackToken += 1;
+                                break;
+                            default:
+                                break;
+                        }
                         token.GetComponent<PoolChild>().ReturnToPool();
                         token = null;
-                        token = GameObject.Find("TokenStock").GetComponent<PoolManager>().GetPoolByName(PoolName.blueToken).GetItem(transform, new Vector3(0, 1, 0), Quaternion.identity, true, false, 0);
+                        token = tokenStock.GetComponent<PoolManager>().GetPoolByName(PoolName.blueToken).GetItem(transform, new Vector3(0, 1, 0), Quaternion.identity, true, false, 0);
                         token.transform.SetParent(gameObject.transform);
                     }
                     else
                     {
-                        token = GameObject.Find("TokenStock").GetComponent<PoolManager>().GetPoolByName(PoolName.blueToken).GetItem(transform, new Vector3(0, 0, 0), Quaternion.identity, true, false, 0);
+                        token = tokenStock.GetComponent<PoolManager>().GetPoolByName(PoolName.blueToken).GetItem(transform, new Vector3(0, 1, 0), Quaternion.identity, true, false, 0);
                         token.transform.SetParent(gameObject.transform);
                     }
                 }
@@ -87,8 +120,35 @@ public class PriestCircle : MonoBehaviour {
                 else
                 {
                     tokenStock.nbGreenToken -= 1;
-                    token = GetComponent<PoolManager>().GetPoolByName(PoolName.redToken).GetItem(transform, new Vector3(0, 0, 0), Quaternion.identity, true, false, 0);
-
+                    if (token != null)
+                    {
+                        switch (token.name)
+                        {
+                            case "RedToken":
+                                tokenStock.nbRedToken += 1;
+                                break;
+                            case "YellowToken":
+                                tokenStock.nbYellowToken += 1;
+                                break;
+                            case "BlueToken":
+                                tokenStock.nbBlueToken += 1;
+                                break;
+                            case "BlackToken":
+                                tokenStock.nbBlackToken += 1;
+                                break;
+                            default:
+                                break;
+                        }
+                        token.GetComponent<PoolChild>().ReturnToPool();
+                        token = null;
+                        token = tokenStock.GetComponent<PoolManager>().GetPoolByName(PoolName.greenToken).GetItem(transform, new Vector3(0, 1, 0), Quaternion.identity, true, false, 0);
+                        token.transform.SetParent(gameObject.transform);
+                    }
+                    else
+                    {
+                        token = tokenStock.GetComponent<PoolManager>().GetPoolByName(PoolName.greenToken).GetItem(transform, new Vector3(0, 1, 0), Quaternion.identity, true, false, 0);
+                        token.transform.SetParent(gameObject.transform);
+                    }
                 }
                 break;
             case "Yellow":
@@ -100,11 +160,38 @@ public class PriestCircle : MonoBehaviour {
                 else
                 {
                     tokenStock.nbYellowToken -= 1;
-                    token = GetComponent<PoolManager>().GetPoolByName(PoolName.redToken).GetItem(transform, new Vector3(0, 0, 0), Quaternion.identity, true, false, 0);
-
+                    if (token != null)
+                    {
+                        switch (token.name)
+                        {
+                            case "RedToken":
+                                tokenStock.nbRedToken += 1;
+                                break;
+                            case "GreenToken":
+                                tokenStock.nbGreenToken += 1;
+                                break;
+                            case "BlueToken":
+                                tokenStock.nbBlueToken += 1;
+                                break;
+                            case "BlackToken":
+                                tokenStock.nbBlackToken += 1;
+                                break;
+                            default:
+                                break;
+                        }
+                        token.GetComponent<PoolChild>().ReturnToPool();
+                        token = null;
+                        token = tokenStock.GetComponent<PoolManager>().GetPoolByName(PoolName.yellowToken).GetItem(transform, new Vector3(0, 1, 0), Quaternion.identity, true, false, 0);
+                        token.transform.SetParent(gameObject.transform);
+                    }
+                    else
+                    {
+                        token = tokenStock.GetComponent<PoolManager>().GetPoolByName(PoolName.yellowToken).GetItem(transform, new Vector3(0, 1, 0), Quaternion.identity, true, false, 0);
+                        token.transform.SetParent(gameObject.transform);
+                    }
                 }
                 break;
-            case "black":
+            case "Black":
                 if (tokenStock.nbBlackToken == 0)
                 {
                     Debug.Log("Il n'y a plus de jeton noir en stock, veuillez choisir une autre couleur");
@@ -113,8 +200,35 @@ public class PriestCircle : MonoBehaviour {
                 else
                 {
                     tokenStock.nbBlackToken -= 1;
-                    token = GetComponent<PoolManager>().GetPoolByName(PoolName.redToken).GetItem(transform, new Vector3(0, 0, 0), Quaternion.identity, true, false, 0);
-
+                    if (token != null)
+                    {
+                        switch (token.name)
+                        {
+                            case "RedToken":
+                                tokenStock.nbRedToken += 1;
+                                break;
+                            case "GreenToken":
+                                tokenStock.nbGreenToken += 1;
+                                break;
+                            case "BlueToken":
+                                tokenStock.nbBlueToken += 1;
+                                break;
+                            case "YellowToken":
+                                tokenStock.nbYellowToken += 1;
+                                break;
+                            default:
+                                break;
+                        }
+                        token.GetComponent<PoolChild>().ReturnToPool();
+                        token = null;
+                        token = tokenStock.GetComponent<PoolManager>().GetPoolByName(PoolName.blackToken).GetItem(transform, new Vector3(0, 1, 0), Quaternion.identity, true, false, 0);
+                        token.transform.SetParent(gameObject.transform);
+                    }
+                    else
+                    {
+                        token = tokenStock.GetComponent<PoolManager>().GetPoolByName(PoolName.blackToken).GetItem(transform, new Vector3(0, 1, 0), Quaternion.identity, true, false, 0);
+                        token.transform.SetParent(gameObject.transform);
+                    }
                 }
                 break;
             default:
