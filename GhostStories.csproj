@@ -234,7 +234,9 @@
   <ItemGroup>
     <Compile Include="Assets\Script\BluePlayer.cs" />
     <Compile Include="Assets\Script\BouddhisteTemple.cs" />
+    <Compile Include="Assets\Script\CubeScript.cs" />
     <Compile Include="Assets\Script\Deplacement.cs" />
+    <Compile Include="Assets\Script\FaceScript.cs" />
     <Compile Include="Assets\Script\Graveyard.cs" />
     <Compile Include="Assets\Script\GreenPlayer.cs" />
     <Compile Include="Assets\Script\HouseOfTea.cs" />
