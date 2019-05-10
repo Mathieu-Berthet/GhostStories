@@ -61,12 +61,12 @@ public class PriestCircle : MonoBehaviour {
                             default:
                                 break;
                         }
-                        token = tokenStock.GetComponent<PoolManager>().GetPoolByName(PoolName.redToken).GetItem(transform, new Vector3(0, 1, 0), Quaternion.identity, true, false, 0);
+                        token = tokenStock.GetComponent<PoolManager>().GetPoolByName(PoolName.redToken).GetItem(transform, new Vector3(-0.32f, 0.75f, 0.32f), Quaternion.identity, true, false, 0);
                         token.transform.SetParent(gameObject.transform);
                     }
                     else
                     {
-                        token = tokenStock.GetComponent<PoolManager>().GetPoolByName(PoolName.redToken).GetItem(transform, new Vector3(0, 1, 0), Quaternion.identity, true, false, 0);
+                        token = tokenStock.GetComponent<PoolManager>().GetPoolByName(PoolName.redToken).GetItem(transform, new Vector3(-0.32f, 0.75f, 0.32f), Quaternion.identity, true, false, 0);
                         token.transform.SetParent(gameObject.transform);
                     }
                 }
