@@ -101,12 +101,12 @@ public class PriestCircle : MonoBehaviour {
                         }
                         token.GetComponent<PoolChild>().ReturnToPool();
                         token = null;
-                        token = tokenStock.GetComponent<PoolManager>().GetPoolByName(PoolName.blueToken).GetItem(transform, new Vector3(0, 1, 0), Quaternion.identity, true, false, 0);
+                        token = tokenStock.GetComponent<PoolManager>().GetPoolByName(PoolName.blueToken).GetItem(transform, new Vector3(-0.32f, 0.75f, 0.32f), Quaternion.identity, true, false, 0);
                         token.transform.SetParent(gameObject.transform);
                     }
                     else
                     {
-                        token = tokenStock.GetComponent<PoolManager>().GetPoolByName(PoolName.blueToken).GetItem(transform, new Vector3(0, 1, 0), Quaternion.identity, true, false, 0);
+                        token = tokenStock.GetComponent<PoolManager>().GetPoolByName(PoolName.blueToken).GetItem(transform, new Vector3(-0.32f, 0.75f, 0.32f), Quaternion.identity, true, false, 0);
                         token.transform.SetParent(gameObject.transform);
                     }
                 }
@@ -141,12 +141,12 @@ public class PriestCircle : MonoBehaviour {
                         }
                         token.GetComponent<PoolChild>().ReturnToPool();
                         token = null;
-                        token = tokenStock.GetComponent<PoolManager>().GetPoolByName(PoolName.greenToken).GetItem(transform, new Vector3(0, 1, 0), Quaternion.identity, true, false, 0);
+                        token = tokenStock.GetComponent<PoolManager>().GetPoolByName(PoolName.greenToken).GetItem(transform, new Vector3(-0.32f, 0.75f, 0.32f), Quaternion.identity, true, false, 0);
                         token.transform.SetParent(gameObject.transform);
                     }
                     else
                     {
-                        token = tokenStock.GetComponent<PoolManager>().GetPoolByName(PoolName.greenToken).GetItem(transform, new Vector3(0, 1, 0), Quaternion.identity, true, false, 0);
+                        token = tokenStock.GetComponent<PoolManager>().GetPoolByName(PoolName.greenToken).GetItem(transform, new Vector3(-0.32f, 0.75f, 0.32f), Quaternion.identity, true, false, 0);
                         token.transform.SetParent(gameObject.transform);
                     }
                 }
@@ -181,12 +181,12 @@ public class PriestCircle : MonoBehaviour {
                         }
                         token.GetComponent<PoolChild>().ReturnToPool();
                         token = null;
-                        token = tokenStock.GetComponent<PoolManager>().GetPoolByName(PoolName.yellowToken).GetItem(transform, new Vector3(0, 1, 0), Quaternion.identity, true, false, 0);
+                        token = tokenStock.GetComponent<PoolManager>().GetPoolByName(PoolName.yellowToken).GetItem(transform, new Vector3(-0.32f, 0.75f, 0.32f), Quaternion.identity, true, false, 0);
                         token.transform.SetParent(gameObject.transform);
                     }
                     else
                     {
-                        token = tokenStock.GetComponent<PoolManager>().GetPoolByName(PoolName.yellowToken).GetItem(transform, new Vector3(0, 1, 0), Quaternion.identity, true, false, 0);
+                        token = tokenStock.GetComponent<PoolManager>().GetPoolByName(PoolName.yellowToken).GetItem(transform, new Vector3(-0.32f, 0.75f, 0.32f), Quaternion.identity, true, false, 0);
                         token.transform.SetParent(gameObject.transform);
                     }
                 }
@@ -221,12 +221,12 @@ public class PriestCircle : MonoBehaviour {
                         }
                         token.GetComponent<PoolChild>().ReturnToPool();
                         token = null;
-                        token = tokenStock.GetComponent<PoolManager>().GetPoolByName(PoolName.blackToken).GetItem(transform, new Vector3(0, 1, 0), Quaternion.identity, true, false, 0);
+                        token = tokenStock.GetComponent<PoolManager>().GetPoolByName(PoolName.blackToken).GetItem(transform, new Vector3(-0.32f, 0.75f, 0.32f), Quaternion.identity, true, false, 0);
                         token.transform.SetParent(gameObject.transform);
                     }
                     else
                     {
-                        token = tokenStock.GetComponent<PoolManager>().GetPoolByName(PoolName.blackToken).GetItem(transform, new Vector3(0, 1, 0), Quaternion.identity, true, false, 0);
+                        token = tokenStock.GetComponent<PoolManager>().GetPoolByName(PoolName.blackToken).GetItem(transform, new Vector3(-0.32f, 0.75f, 0.32f), Quaternion.identity, true, false, 0);
                         token.transform.SetParent(gameObject.transform);
                     }
                 }
