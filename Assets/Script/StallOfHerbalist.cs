@@ -17,6 +17,9 @@ public class StallOfHerbalist : MonoBehaviour
     void Start ()
     {
         //cube = GameObject.Find("Dice(Clone)").GetComponent<CubeScript>();
+        resultDiceOne = " ";
+        resultDiceTwo = " ";
+        resultDiceThree = " ";
     }
 	
 	// Update is called once per frame
@@ -43,14 +46,20 @@ public class StallOfHerbalist : MonoBehaviour
             {
                 cube.rb.AddForce(hit.point * cube.force);
             }
+            
+            //To be continue
+            if(resultDiceOne == " ")
+            {
+                resultDiceOne = cube.face;
+            }
+            /*if (resultDiceTwo == string.Empty)
+            {
+                resultDiceTwo = cube.face;
+            }
+            if (resultDiceThree == string.Empty)
+            {
+                resultDiceThree = cube.face;
+            }*/
         }
-
-        /*Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-
-        if (Physics.Raycast(ray, out hit))
-        {
-            cube.rb.AddForce(hit.point * cube.force);
-        }*/
     }
 }
