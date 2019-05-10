@@ -5,11 +5,11 @@ using UnityEngine;
 public class CubeScript : MonoBehaviour {
 
     public string face;
-    public int force = 200;
-    Rigidbody rb;
+    public int force = 275;
+    public Rigidbody rb;
 
 	// Use this for initialization
-	void Start ()
+	void Awake ()
     {
         rb = GetComponent<Rigidbody>();
 	}
@@ -21,7 +21,7 @@ public class CubeScript : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        if(Input.GetButtonDown("Fire1") && rb.velocity.magnitude == 0)
+        /*if(Input.GetButtonDown("Fire2") && rb.velocity.magnitude == 0)
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
@@ -30,6 +30,6 @@ public class CubeScript : MonoBehaviour {
             {
                 rb.AddForce(hit.point * force);
             }
-        }
+        }*/
     }
 }

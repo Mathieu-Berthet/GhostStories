@@ -8,7 +8,7 @@ public class FaceScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        cube = GameObject.Find("Dice").GetComponent<CubeScript>();
+        cube = gameObject.transform.parent.GetComponent<CubeScript>();
 	}
 	
 	// Update is called once per frame
