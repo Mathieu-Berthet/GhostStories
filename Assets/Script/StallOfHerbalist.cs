@@ -7,16 +7,19 @@ public class StallOfHerbalist : MonoBehaviour
 
     public bool hauntedTile = false;
 
-    public GameObject dice;
+    [SerializeField]
+    private GameObject dice;
+
+    //TODO : Faire remplir ces variables
     public string resultDiceOne;
     public string resultDiceTwo;
     public string resultDiceThree;
 
-    public CubeScript cube;
+    [SerializeField]
+    private CubeScript cube;
     // Use this for initialization
     void Start ()
     {
-        //cube = GameObject.Find("Dice(Clone)").GetComponent<CubeScript>();
         resultDiceOne = " ";
         resultDiceTwo = " ";
         resultDiceThree = " ";
@@ -33,6 +36,7 @@ public class StallOfHerbalist : MonoBehaviour
 
     public void getToken()
     {
+        //Remplacer 3 ici par le nombre de dés. (Qui sera dans un autre script)
         for(int i = 0; i < 3; i++)
         {
             GameObject go = Instantiate(dice, new Vector3(i, 2, 0), Quaternion.identity);

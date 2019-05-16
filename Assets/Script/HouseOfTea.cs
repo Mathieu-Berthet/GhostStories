@@ -5,7 +5,8 @@ using UnityEngine;
 public class HouseOfTea : MonoBehaviour {
 
     public bool hauntedTile = false;
-    public StockOfToken tokenStock;
+    [SerializeField]
+    private StockOfToken tokenStock;
     public string choosenToken;
 
     // Use this for initialization
@@ -21,12 +22,15 @@ public class HouseOfTea : MonoBehaviour {
 
     public void GainTokenAndQI(GameObject player)
     {
-        switch(choosenToken)
+        //Remplir choseenToken avant le switch
+        //Demander la couleur ici ? (Demandez uniquement pour les jetons encore en stock ?)
+        switch (choosenToken)
         {
             case "Red":
                 if (tokenStock.nbRedToken == 0)
                 {
                     //Indiquer qu'il y en a plus en reserve
+                    //Redemander de choisir une autre couleur
                 }
                 else
                 {
@@ -37,6 +41,7 @@ public class HouseOfTea : MonoBehaviour {
                 if(tokenStock.nbBlueToken == 0)
                 {
                     //Indiquer qu'il y en a plus en reserve
+                    //Redemander de choisir une autre couleur
                 }
                 else
                 {
@@ -47,6 +52,7 @@ public class HouseOfTea : MonoBehaviour {
                 if(tokenStock.nbGreenToken == 0)
                 {
                     //Indiquer qu'il y en a plus en reserve
+                    //Redemander de choisir une autre couleur
                 }
                 else
                 {
@@ -57,6 +63,7 @@ public class HouseOfTea : MonoBehaviour {
                 if(tokenStock.nbYellowToken == 0)
                 {
                     //Indiquer qu'il y en a plus en reserve
+                    //Redemander de choisir une autre couleur
                 }
                 else
                 {
@@ -67,6 +74,7 @@ public class HouseOfTea : MonoBehaviour {
                 if(tokenStock.nbBlackToken == 0)
                 {
                     //Indiquer qu'il y en a plus en reserve
+                    //Redemander de choisir une autre couleur
                 }
                 else
                 {
@@ -80,19 +88,19 @@ public class HouseOfTea : MonoBehaviour {
         //Recuperer le joueur sur la case et lui donner un qi
         if(player.name == "BluePlayer")
         {
-            player.GetComponent<BluePlayer>().qi += 1;
+            player.GetComponent<BluePlayer>().Qi += 1;
         }
         else if(player.name == "GreenPlayer")
         {
-            player.GetComponent<GreenPlayer>().qi += 1;
+            player.GetComponent<GreenPlayer>().Qi += 1;
         }
         else if(player.name == "YellowPlayer")
         {
-            player.GetComponent<YellowPlayer>().qi += 1;
+            player.GetComponent<YellowPlayer>().Qi += 1;
         }
         else if(player.name == "RedPlayer")
         {
-            player.GetComponent<RedPlayer>().qi += 1;
+            player.GetComponent<RedPlayer>().Qi += 1;
         }
 
         //Pioche d'une carte fantome

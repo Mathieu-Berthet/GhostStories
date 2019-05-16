@@ -4,20 +4,26 @@ using UnityEngine;
 
 public class BluePlayer : MonoBehaviour
 {
-
-    public int qi = 0; // PV du joueur
-
-    public int nbBlueToken;
-    public int nbRedToken;
-    public int nbGreenToken;
-    public int nbYellowToken;
-    public int nbBlackToken;
-
-    public int nbPowerToken; // Pour une partie ou il n'y a pas 4 joueur
-
-    public int nbYinYangBlueToken; // Jeton yin yang. Max possible 1, et uniquement de sa couleur
-
-    public int nbBouddha; // Pour les bouddha du temple bouddhiste
+    #region variableJeton
+    [SerializeField]
+    private int qi = 0; // PV du joueur
+    [SerializeField]
+    private int nbBlueToken;
+    [SerializeField]
+    private int nbRedToken;
+    [SerializeField]
+    private int nbGreenToken;
+    [SerializeField]
+    private int nbYellowToken;
+    [SerializeField]
+    private int nbBlackToken;
+    [SerializeField]
+    private int nbPowerToken; // Pour une partie ou il n'y a pas 4 joueur
+    [SerializeField]
+    private int nbYinYangBlueToken; // Jeton yin yang. Max possible 1, et uniquement de sa couleur
+    [SerializeField]
+    private int nbBouddha; // Pour les bouddha du temple bouddhiste
+    #endregion
 
     public bool powerSecondSouffle;
     public bool powerSouffleCeleste;
@@ -48,17 +54,139 @@ public class BluePlayer : MonoBehaviour
 
     public string tileName;
 
-	// Use this for initialization
-	void Start ()
+    #region accesseurs
+    public int Qi
     {
-        qi = 4; // Mode facile, seulement 3 pour les autres modes. Mais pour l'instant, test avec 4.
-        nbBlueToken = 1;
-        nbRedToken = 0;
-        nbYellowToken = 0;
-        nbGreenToken = 0;
-        nbBlackToken = 1; //Mode facile, 0 pour les autres modes. Mais pour l'instant, test avec 1
-        nbPowerToken = 1; //Si pas 4 joueur. 0 Sinon
-        nbYinYangBlueToken = 1; //Max possible.
+        get
+        {
+            return qi;
+        }
+
+        set
+        {
+            qi = value;
+        }
+    }
+
+    public int NbBlueToken
+    {
+        get
+        {
+            return nbBlueToken;
+        }
+
+        set
+        {
+            nbBlueToken = value;
+        }
+    }
+
+    public int NbRedToken
+    {
+        get
+        {
+            return nbRedToken;
+        }
+
+        set
+        {
+            nbRedToken = value;
+        }
+    }
+
+    public int NbGreenToken
+    {
+        get
+        {
+            return nbGreenToken;
+        }
+
+        set
+        {
+            nbGreenToken = value;
+        }
+    }
+
+    public int NbYellowToken
+    {
+        get
+        {
+            return nbYellowToken;
+        }
+
+        set
+        {
+            nbYellowToken = value;
+        }
+    }
+
+    public int NbBlackToken
+    {
+        get
+        {
+            return nbBlackToken;
+        }
+
+        set
+        {
+            nbBlackToken = value;
+        }
+    }
+
+    public int NbPowerToken
+    {
+        get
+        {
+            return nbPowerToken;
+        }
+
+        set
+        {
+            nbPowerToken = value;
+        }
+    }
+
+    public int NbYinYangBlueToken
+    {
+        get
+        {
+            return nbYinYangBlueToken;
+        }
+
+        set
+        {
+            nbYinYangBlueToken = value;
+        }
+    }
+
+    public int NbBouddha
+    {
+        get
+        {
+            return nbBouddha;
+        }
+
+        set
+        {
+            nbBouddha = value;
+        }
+    }
+    #endregion
+
+
+
+
+    // Use this for initialization
+    void Start ()
+    {
+        Qi = 4; // Mode facile, seulement 3 pour les autres modes. Mais pour l'instant, test avec 4.
+        NbBlueToken = 1;
+        NbRedToken = 0;
+        NbYellowToken = 0;
+        NbGreenToken = 0;
+        NbBlackToken = 1; //Mode facile, 0 pour les autres modes. Mais pour l'instant, test avec 1
+        NbPowerToken = 1; //Si pas 4 joueur. 0 Sinon
+        NbYinYangBlueToken = 1; //Max possible.
 
     }
 	

@@ -20,19 +20,19 @@ public class HutOfWitch : MonoBehaviour {
     {
         if (player.name == "BluePlayer")
         {
-            player.GetComponent<BluePlayer>().qi -= 1;
+            player.GetComponent<BluePlayer>().Qi -= 1;
         }
         else if (player.name == "GreenPlayer")
         {
-            player.GetComponent<GreenPlayer>().qi -= 1;
+            player.GetComponent<GreenPlayer>().Qi -= 1;
         }
         else if (player.name == "YellowPlayer")
         {
-            player.GetComponent<YellowPlayer>().qi -= 1;
+            player.GetComponent<YellowPlayer>().Qi -= 1;
         }
         else if (player.name == "RedPlayer")
         {
-            player.GetComponent<RedPlayer>().qi -= 1;
+            player.GetComponent<RedPlayer>().Qi -= 1;
         }
 
         //Kill a ghost

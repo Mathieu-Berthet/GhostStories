@@ -5,12 +5,12 @@ using UnityEngine;
 public class PriestCircle : MonoBehaviour {
 
     public bool hauntedTile = false;
-    [SerializeField]
-    private int typeJeton; // A voir si on fait un script général pour les jetons, afin d'avoir un type précis ici. Ou bien gameobject et on va chercher la couleur.
 
-    public StockOfToken tokenStock;
+    [SerializeField]
+    private StockOfToken tokenStock;
     public string choseenToken;
-    public GameObject token; // A modifier. 2 Variables. Une pour le jeton A INSTANCIER, l'autre pour le jeton a RENVOYER DANS LA POULE
+    [SerializeField]
+    private GameObject token;
 
     // Use this for initialization
     void Start ()
@@ -23,6 +23,7 @@ public class PriestCircle : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
+        //To change. It was for test, and it is okay. 
         if (Input.GetKeyDown(KeyCode.Space))
         {
             reduceGhostLife();
@@ -31,6 +32,8 @@ public class PriestCircle : MonoBehaviour {
 
     public void reduceGhostLife()
     {
+        //Remplir choseenToken avant le switch
+        //Demander la couleur ici ? (Demandez uniquement pour les jetons encore en stock ?)
         switch(choseenToken)
         {
             case "Red":
@@ -38,6 +41,7 @@ public class PriestCircle : MonoBehaviour {
                 {
                     Debug.Log("Il n'y a plus de jeton rouge en stock, veuillez choisir une autre couleur");
                     //Indiquer qu'il y en a plus en reserve
+                    //Redemander de choisir une autre couleur
                 }
                 else
                 {
@@ -61,6 +65,8 @@ public class PriestCircle : MonoBehaviour {
                             default:
                                 break;
                         }
+                        token.GetComponent<PoolChild>().ReturnToPool();
+                        token = null;
                         token = tokenStock.GetComponent<PoolManager>().GetPoolByName(PoolName.redToken).GetItem(transform, new Vector3(-0.32f, 0.75f, 0.32f), Quaternion.identity, true, false, 0);
                         token.transform.SetParent(gameObject.transform);
                     }
@@ -76,6 +82,7 @@ public class PriestCircle : MonoBehaviour {
                 {
                     Debug.Log("Il n'y a plus de jeton bleu en stock, veuillez choisir une autre couleur");
                     //Indiquer qu'il y en a plus en reserve
+                    //Redemander de choisir une autre couleur
                 }
                 else
                 {
@@ -116,6 +123,7 @@ public class PriestCircle : MonoBehaviour {
                 {
                     Debug.Log("Il n'y a plus de jeton vert en stock, veuillez choisir une autre couleur");
                     //Indiquer qu'il y en a plus en reserve
+                    //Redemander de choisir une autre couleur
                 }
                 else
                 {
@@ -156,6 +164,7 @@ public class PriestCircle : MonoBehaviour {
                 {
                     Debug.Log("Il n'y a plus de jeton jaune en stock, veuillez choisir une autre couleur");
                     //Indiquer qu'il y en a plus en reserve
+                    //Redemander de choisir une autre couleur
                 }
                 else
                 {
@@ -196,6 +205,7 @@ public class PriestCircle : MonoBehaviour {
                 {
                     Debug.Log("Il n'y a plus de jeton noir en stock, veuillez choisir une autre couleur");
                     //Indiquer qu'il y en a plus en reserve
+                    //Redemander de choisir une autre couleur
                 }
                 else
                 {
