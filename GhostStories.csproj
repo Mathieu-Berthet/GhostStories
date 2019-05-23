@@ -237,6 +237,8 @@
     <Compile Include="Assets\Script\CubeScript.cs" />
     <Compile Include="Assets\Script\Deplacement.cs" />
     <Compile Include="Assets\Script\FaceScript.cs" />
+    <Compile Include="Assets\Script\Ghost.cs" />
+    <Compile Include="Assets\Script\GhostPower.cs" />
     <Compile Include="Assets\Script\Graveyard.cs" />
     <Compile Include="Assets\Script\GreenPlayer.cs" />
     <Compile Include="Assets\Script\HouseOfTea.cs" />
