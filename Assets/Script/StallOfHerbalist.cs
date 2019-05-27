@@ -10,10 +10,6 @@ public class StallOfHerbalist : MonoBehaviour
     [SerializeField]
     private GameObject dice;
 
-    private GameObject diceOne;
-    private GameObject diceTwo;
-    private GameObject diceThree;
-
     //TODO : Faire remplir ces variables
     public string resultDiceOne;
     public string resultDiceTwo;
@@ -24,9 +20,9 @@ public class StallOfHerbalist : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
-        //resultDiceOne = " ";
-        /*resultDiceTwo = " ";
-        resultDiceThree = " ";*/
+        resultDiceOne = " ";
+        resultDiceTwo = " ";
+        resultDiceThree = " ";
     }
 	
 	// Update is called once per frame
@@ -36,19 +32,7 @@ public class StallOfHerbalist : MonoBehaviour
         {
             getToken();
         }
-        if (diceOne != null && diceOne.GetComponent<CubeScript>().rb.velocity.magnitude == 0)
-        {
-            resultDiceOne = diceOne.GetComponent<CubeScript>().face;
-        }
-        if (diceTwo != null && diceTwo.GetComponent<CubeScript>().rb.velocity.magnitude == 0)
-        {
-            resultDiceTwo = diceTwo.GetComponent<CubeScript>().face;
-        }
-        if (diceThree != null && diceThree.GetComponent<CubeScript>().rb.velocity.magnitude == 0)
-        {
-            resultDiceThree = diceThree.GetComponent<CubeScript>().face;
-        }
-    }
+	}
 
     public void getToken()
     {
@@ -58,18 +42,6 @@ public class StallOfHerbalist : MonoBehaviour
             GameObject go = Instantiate(dice, new Vector3(i, 2, 0), Quaternion.identity);
             go.AddComponent<CubeScript>();
             cube = go.GetComponent<CubeScript>();
-            if(i == 0)
-            {
-                diceOne = go;
-            }
-            else if(i == 1)
-            {
-                diceTwo = go;
-            }
-            else if(i == 2)
-            {
-                diceThree = go;
-            }
 
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
@@ -80,10 +52,17 @@ public class StallOfHerbalist : MonoBehaviour
             }
             
             //To be continue
-            /*if(resultDiceOne == string.Empty)
+            if(resultDiceOne == " ")
             {
                 resultDiceOne = cube.face;
-                //Debug.Log(resultDiceOne);
+            }
+            /*if (resultDiceTwo == string.Empty)
+            {
+                resultDiceTwo = cube.face;
+            }
+            if (resultDiceThree == string.Empty)
+            {
+                resultDiceThree = cube.face;
             }*/
         }
     }
