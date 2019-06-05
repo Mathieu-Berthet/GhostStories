@@ -1308,6 +1308,7 @@ MonoBehaviour:
   hauntedTile: 0
   tokenStock: {fileID: 0}
   choosenToken: 
+  token: {fileID: 0}
 --- !u!23 &416534315
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3864,6 +3865,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hauntedTile: 0
   playerToResurrect: []
+  blackDice: {fileID: 1847871859114552, guid: ff1789b7f180ad5458e0b8bdb4db6a34, type: 2}
+  cube: {fileID: 0}
 --- !u!23 &1241658706
 MeshRenderer:
   m_ObjectHideFlags: 0

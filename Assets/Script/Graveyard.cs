@@ -8,6 +8,11 @@ public class Graveyard : MonoBehaviour {
     [SerializeField]
     private GameObject[] playerToResurrect;
 
+    [SerializeField]
+    private GameObject blackDice;
+
+    [SerializeField]
+    private CubeScript cube;
     // Use this for initialization
     void Start ()
     {
@@ -15,12 +20,29 @@ public class Graveyard : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		
+	void Update ()
+    {
+		if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            LaunchBlackDice();
+        }
 	}
 
     public void Resurrect()
     {
 
+    }
+
+    public void LaunchBlackDice()
+    {
+        blackDice = Instantiate(blackDice, new Vector3(0, 2, 0), Quaternion.identity);
+        cube = blackDice.GetComponent<CubeScript>();
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit))
+        {
+            cube.rb.AddForce(hit.point * cube.force);
+        }
     }
 }

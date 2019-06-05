@@ -28,6 +28,11 @@ public class PriestCircle : MonoBehaviour {
         {
             reduceGhostLife();
         }
+        if(Input.GetMouseButtonDown(1))
+        {
+            hauntedTile = true;
+            haunted();
+        }
     }
 
     public void reduceGhostLife()
@@ -243,6 +248,15 @@ public class PriestCircle : MonoBehaviour {
                 break;
             default:
                 break;
+        }
+    }
+
+    //Good to haunt a tile. See later if we keep like this or if we change haunted system
+    public void haunted()
+    {
+        if(hauntedTile)
+        {
+            gameObject.GetComponent<MeshRenderer>().material.color = new Color(0.25f, 0.25f, 0.25f, 1);
         }
     }
 }

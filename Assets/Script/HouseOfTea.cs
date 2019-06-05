@@ -24,6 +24,7 @@ public class HouseOfTea : MonoBehaviour {
     {
         //Remplir choseenToken avant le switch
         //Demander la couleur ici ? (Demandez uniquement pour les jetons encore en stock ?)
+        //Interface pour les jetons. (Bien plus simple)
         switch (choosenToken)
         {
             case "Red":
