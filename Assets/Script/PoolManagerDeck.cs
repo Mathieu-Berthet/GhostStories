@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 [System.Serializable]
-public class Pool
+public class PoolDeck
 {
     Transform poolParent;
     List<GameObject> itemPool;
 
-    public Pool(Transform _poolParent)
+    public PoolDeck(Transform _poolParent)
     {
         poolParent = _poolParent;
     }
@@ -39,9 +38,9 @@ public class Pool
 }
 
 [System.Serializable]
-public class PoolLeader
+public class PoolLeaderDeck
 {
-    public PoolName poolName;
+    public PoolNameDeck poolNameDeck;
     Transform poolParent;
     [SerializeField]
     List<GameObject> prefabs;
@@ -50,6 +49,9 @@ public class PoolLeader
     [SerializeField]
     int poolSize;
     List<Pool> subPools;
+
+    [SerializeField]
+    private int[] prefabsAlreadyDraw;
 
     public Transform PoolParent
     {
@@ -120,7 +122,7 @@ public class PoolLeader
             return;
         }
 
-        for (int i = 0; i < prefabs.Count; i++)
+        for (int i = 0; i < 1; i++)
         {
             if (poolParent.childCount <= i)
             {
@@ -131,36 +133,54 @@ public class PoolLeader
             SubPools.Add(new Pool(poolParent.GetChild(i)));
             for (int j = 0; j < poolSize; j++)
             {
-                CreateRandomPoolItem(i);
+                CreateRandomPoolItem(j);
             }
         }
     }
 
     GameObject CreateRandomPoolItem(int _subpoolIndex)
     {
-        int prefabIndex = Random.Range(0, prefabs.Count);
-        GameObject item = GameObject.Instantiate(prefabs[prefabIndex], poolParent.GetChild(_subpoolIndex));
-        item.AddComponent<PoolChild>().pool = SubPools[_subpoolIndex];
+        int prefabIndex;
+        if (prefabsAlreadyDraw.Length == 0)
+        {
+            prefabsAlreadyDraw = new int[6] { 1000, 1000, 1000, 1000, 1000, 1000 };
+            prefabIndex = Random.Range(0, prefabs.Count);
+        }
+        else
+        {
+            prefabIndex = Random.Range(0, prefabs.Count);
+            for (int a = 0; a < prefabsAlreadyDraw.Length; a++)
+            {
+                if (prefabsAlreadyDraw[a] == prefabIndex)
+                {
+                    prefabIndex = Random.Range(0, prefabs.Count);
+                    a = -1;
+                }
+            }
+        }
+        prefabsAlreadyDraw[_subpoolIndex] = prefabIndex;
+        GameObject item = GameObject.Instantiate(prefabs[prefabIndex], poolParent.GetChild(0));
+        item.AddComponent<PoolChild>().pool = SubPools[0];
         item.SetActive(false);
-        SubPools[_subpoolIndex].ItemPool.Add(item);
+        SubPools[0].ItemPool.Add(item);
         return item;
     }
 }
 
-public enum PoolName { redToken, blueToken, yellowToken, greenToken, blackToken, powerToken }
+public enum PoolNameDeck { ghost, boss }
 
-public class PoolManager : MonoBehaviour {
 
+public class PoolManagerDeck : MonoBehaviour {
 
     [SerializeField]
-    List<PoolLeader> poolLeaders;
+    List<PoolLeaderDeck> poolLeaders;
 
-    public PoolLeader GetPoolByName(PoolName _poolName, int _poolIndex = 0)
+    public PoolLeaderDeck GetPoolByName(PoolNameDeck _poolNameDeck, int _poolIndex = 0)
     {
         int iteration = 0;
-        foreach(PoolLeader leader in poolLeaders)
+        foreach (PoolLeaderDeck leader in poolLeaders)
         {
-            if(leader.poolName == _poolName)
+            if (leader.poolNameDeck == _poolNameDeck)
             {
                 if (iteration == _poolIndex)
                     return leader;
@@ -171,8 +191,8 @@ public class PoolManager : MonoBehaviour {
         return null;
     }
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start()
     {
         if (poolLeaders == null || poolLeaders.Count == 0)
         {
@@ -180,9 +200,9 @@ public class PoolManager : MonoBehaviour {
             return;
         }
 
-        foreach (PoolLeader leader in poolLeaders)
+        foreach (PoolLeaderDeck leader in poolLeaders)
         {
-            GameObject poolParent = new GameObject(leader.poolName.ToString());
+            GameObject poolParent = new GameObject(leader.poolNameDeck.ToString());
             poolParent.transform.SetParent(transform);
             leader.PoolParent = poolParent.transform;
             leader.InitializePool();

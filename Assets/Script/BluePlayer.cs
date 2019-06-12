@@ -196,6 +196,13 @@ public class BluePlayer : MonoBehaviour
         
     }
 
+
+    public void DrawAGhost()
+    {
+
+    }
+
+
     public void SecondSouffle()
     {
         if(useTilePower)

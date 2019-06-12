@@ -15,7 +15,7 @@ public class Ghost : MonoBehaviour {
     {
         power = GetComponent<GhostPower>();
         life = 4;
-        couleur = "red";
+        //couleur = "red";
 	}
 	
 	// Update is called once per frame
