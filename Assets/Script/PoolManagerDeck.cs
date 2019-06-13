@@ -143,7 +143,7 @@ public class PoolLeaderDeck
         int prefabIndex;
         if (prefabsAlreadyDraw.Length == 0)
         {
-            prefabsAlreadyDraw = new int[6] { 1000, 1000, 1000, 1000, 1000, 1000 };
+            prefabsAlreadyDraw = new int[10] { 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000 };
             prefabIndex = Random.Range(0, prefabs.Count);
         }
         else
