@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BluePlayer : MonoBehaviour
 {
@@ -53,6 +54,12 @@ public class BluePlayer : MonoBehaviour
     private GameObject nightTower;
 
     public string tileName;
+
+    [SerializeField]
+    private PoolManagerDeck deck;
+    [SerializeField]
+    private GameObject card;
+    public Image drawedCard;
 
     #region accesseurs
     public int Qi
@@ -188,20 +195,39 @@ public class BluePlayer : MonoBehaviour
         NbPowerToken = 1; //Si pas 4 joueur. 0 Sinon
         NbYinYangBlueToken = 1; //Max possible.
 
+        deck = GameObject.Find("Deck").GetComponent<PoolManagerDeck>();
+
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
-        
+        if (Input.GetButtonDown("Fire1"))
+        {
+            DrawAGhost();
+        }
+        if(Input.GetButtonDown("Fire2"))
+        {
+            SelectGhostPosition();
+        }
     }
 
 
     public void DrawAGhost()
     {
-
+        card = deck.GetPoolByName(PoolNameDeck.ghost).GetItem(transform, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity, true, false, 0);
+        card.transform.SetParent(gameObject.transform);
+        drawedCard.material = card.transform.GetChild(0).GetComponent<MeshRenderer>().material;
     }
 
+    public void SelectGhostPosition()
+    {
+        //Must change the selected case. With a real selection.
+        card.transform.SetParent(GameObject.Find("PlateauJoueurRouge").transform.GetChild(0).transform);
+        card.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+        card.transform.localEulerAngles = new Vector3(90.0f, 0.0f, 180.0f);
+        card.transform.localScale = new Vector3(10.0f, 10.0f, 1);
+    }
 
     public void SecondSouffle()
     {
