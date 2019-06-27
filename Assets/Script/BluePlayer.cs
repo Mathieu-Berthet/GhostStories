@@ -216,8 +216,8 @@ public class BluePlayer : MonoBehaviour
     public void DrawAGhost()
     {
         card = deck.GetPoolByName(PoolNameDeck.ghost).GetItem(transform, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity, true, false, 0);
-        card.transform.SetParent(gameObject.transform);
-        drawedCard.material = card.transform.GetChild(0).GetComponent<MeshRenderer>().material;
+        card.transform.position = new Vector3(0.0f, 2.4f, -2.0f);
+        card.transform.eulerAngles = new Vector3(40.0f, 0.0f, 0.0f);
     }
 
     public void SelectGhostPosition()
