@@ -46,6 +46,12 @@ public class BoardPosition : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		//Gestion de la possibilité de cliquer ou non sur les boutons.
+        //Gestion de la possibilité de cliquer ou non sur les boutons.
+        redFirstPlace.interactable = false;
 	}
+
+    public void checkPosition()
+    {
+
+    }
 }

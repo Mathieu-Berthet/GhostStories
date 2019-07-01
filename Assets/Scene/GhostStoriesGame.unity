@@ -160,7 +160,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -180,7 +180,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: 'First Place
+
+'
 --- !u!222 &1564604
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -398,7 +400,7 @@ GameObject:
   - component: {fileID: 81464519}
   - component: {fileID: 81464518}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: BlueThree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -420,7 +422,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 218, y: 101}
+  m_AnchoredPosition: {x: 215, y: 100}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &81464518
@@ -476,7 +478,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -509,7 +511,7 @@ GameObject:
   - component: {fileID: 89183948}
   - component: {fileID: 89183947}
   m_Layer: 5
-  m_Name: Button (6)
+  m_Name: GreenOne
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -531,7 +533,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -215, y: -38}
+  m_AnchoredPosition: {x: -215, y: -40}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &89183947
@@ -587,7 +589,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 1, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -790,7 +792,7 @@ GameObject:
   - component: {fileID: 138495531}
   - component: {fileID: 138495530}
   m_Layer: 5
-  m_Name: Button (7)
+  m_Name: GreenTwo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -812,7 +814,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -41}
+  m_AnchoredPosition: {x: 0, y: -40}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &138495530
@@ -868,7 +870,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 1, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -956,7 +958,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: 'Second Place
+
+'
 --- !u!222 &164362071
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1404,7 +1408,7 @@ GameObject:
   - component: {fileID: 243868418}
   - component: {fileID: 243868417}
   m_Layer: 5
-  m_Name: Button (10)
+  m_Name: YellowTwo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1426,7 +1430,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -99}
+  m_AnchoredPosition: {x: 0, y: -100}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &243868417
@@ -1482,7 +1486,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1826,7 +1830,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: 'First Place
+
+'
 --- !u!222 &333328672
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1950,22 +1956,43 @@ MonoBehaviour:
     prefabs:
     - {fileID: 1201911347965300, guid: 024318c4de7e2b14a96eb319a1d515e3, type: 2}
     - {fileID: 1497694408561660, guid: 92e95f3e0455a8042a854694be5ec59a, type: 2}
+    - {fileID: 1139502892076848, guid: 9ba5200701350614086535ee1c57f1d3, type: 2}
+    - {fileID: 1782659919061612, guid: a558e9a3c92e2444e800f7ca0dc9e0a4, type: 2}
+    - {fileID: 1385536331714228, guid: 8518c56123f874a49a4fc64beb9cc814, type: 2}
     - {fileID: 1149730184913376, guid: 417ced13fe88d7f4eb7262db373003d6, type: 2}
+    - {fileID: 1534569646550270, guid: 371ed87a651209c4193a12cd5dd65028, type: 2}
     - {fileID: 1228016336689156, guid: b5158d5431bc60345878d2e65b3f4d61, type: 2}
     - {fileID: 1390502473995232, guid: cc51c6fcf5d53224a8cccb4d08b33cb7, type: 2}
+    - {fileID: 1431531691594488, guid: 1298adbbadc128f4c933d119230fa4ca, type: 2}
+    - {fileID: 1364371353267884, guid: b8e3a6ccb8300674a800aac0403cf81a, type: 2}
+    - {fileID: 1077308863481930, guid: aba4375fa9ca24043b0f215b22b4224d, type: 2}
+    - {fileID: 1550985164702058, guid: f1738fd8590b54b42801ad1c7269f4dc, type: 2}
     - {fileID: 1857984853229522, guid: 6dcb53cf4311ca24f970f2cce3e6530f, type: 2}
+    - {fileID: 1979826879388086, guid: 15cda3d67f0dd8b419e70c58d95c5a93, type: 2}
+    - {fileID: 1288917101601760, guid: 254cb556b8447474387560d98f59b48d, type: 2}
+    - {fileID: 1261771583022418, guid: 9347309a7681aa44fb8623f2d9199568, type: 2}
+    - {fileID: 1667193595788310, guid: a90368f06ed6a094fb90a4736f576903, type: 2}
+    - {fileID: 1854030891985254, guid: 37927a811b811a34cac65c5a57831a16, type: 2}
     - {fileID: 1855173721409894, guid: 449b0f680fa8d4746a25a11bb1648f72, type: 2}
+    - {fileID: 1353656908599346, guid: b0439f28483594343afa676965e7fdbc, type: 2}
     - {fileID: 1193717519171310, guid: dd0f0678d9972e34d9577d29fde533ab, type: 2}
     - {fileID: 1599814224791312, guid: cda63483b5667f34bae6519a008eaf54, type: 2}
+    - {fileID: 1658935528483206, guid: 8e0fea9258c8c3441941ae0e3f649876, type: 2}
+    - {fileID: 1433505469770120, guid: 5bb8f203e58e79f429f265fdb27f2212, type: 2}
     - {fileID: 1584987329675730, guid: 7043ad0877c8abe429757a48b074235d, type: 2}
     - {fileID: 1011898800542388, guid: 04696fd4061e0e740b0c8a6004e78819, type: 2}
     - {fileID: 1533309327127310, guid: 0ea4fde0a9f4a1d4fac746111adf39c7, type: 2}
     - {fileID: 1505295487506792, guid: a0e3fda41106e5042bf2dc081dad06bf, type: 2}
     - {fileID: 1157231994570078, guid: 6459fae4d144fff4188970b2c2dc3d99, type: 2}
     - {fileID: 1902079391139822, guid: 63879d0ac0c4a174e9b92c560d2e9c46, type: 2}
+    - {fileID: 1917045397511600, guid: bbff34102e0a65646902745a9b168173, type: 2}
+    - {fileID: 1815471714128672, guid: d1a01c72d4cbd164a997e7666cf064ab, type: 2}
     - {fileID: 1897206773145416, guid: 9680cb4266bb9e74ea5b816f4a975413, type: 2}
+    - {fileID: 1700594059556114, guid: 37b56ee358388874b89a030c628915a0, type: 2}
+    - {fileID: 1850704084677212, guid: 622df3253063bae4c857d28b7959c6fb, type: 2}
     - {fileID: 1313688965900588, guid: ee927e5a750e94a4bbe3a121535f65c2, type: 2}
     - {fileID: 1665274116160046, guid: 8e1e12030e9b84b4babf78c6ed0bbd82, type: 2}
+    - {fileID: 1707367538609360, guid: 47c1038f5bcd77f40832792b6b52ea94, type: 2}
     - {fileID: 1052326755945378, guid: 1085ee9110800074cbfe38a1f9e0d41d, type: 2}
     - {fileID: 1811599131239084, guid: d2629fd26cdaf9e42b93d448814be3d9, type: 2}
     - {fileID: 1726775168442902, guid: 0c24c053b48554844bc72ea106d981ab, type: 2}
@@ -1974,26 +2001,28 @@ MonoBehaviour:
     - {fileID: 1778605330805426, guid: 76a2157dae940234cb8c59ded48178df, type: 2}
     - {fileID: 1972272146352278, guid: b07aab8454641394a88aee7a840e763d, type: 2}
     - {fileID: 1320342213378128, guid: 49552a2811aca2e49b0dd4b2624aa9a7, type: 2}
+    - {fileID: 1292574799697816, guid: ce7c21b5dab229b45bd3502ad608844d, type: 2}
     - {fileID: 1960508545257662, guid: ce9f72f2dee35b44f873db3e4ba86f70, type: 2}
     - {fileID: 1130780397889924, guid: a7f20e375c915d641adc7056032ab951, type: 2}
     - {fileID: 1950311263237564, guid: bc74ce4007ccbca4dbcaaf3716b6b82a, type: 2}
+    - {fileID: 1191365463446466, guid: eb77dbe990bab674199b8bd5181842d4, type: 2}
     - {fileID: 1418225101559728, guid: 66bab0ee9edfaae418328757afc4695a, type: 2}
     - {fileID: 1435308152516974, guid: f25b90f963d86624a913639e9784d108, type: 2}
     - {fileID: 1238464956004764, guid: ff81daedd46f5ad449f8788475268eea, type: 2}
-    poolSize: 32
+    poolSize: 55
     prefabsAlreadyDraw: 
   - poolNameDeck: 1
     prefabs:
-    - {fileID: 1094452077304878, guid: 440ca68ff3add4e42b064ec7ced38d50, type: 2}
-    - {fileID: 1788256729233812, guid: 386bebdc71b97bd44abebfd3a00e24b1, type: 2}
-    - {fileID: 1544178192354822, guid: 09ff0a4cba083ca47af361335da06300, type: 2}
-    - {fileID: 1627320593696744, guid: f1fb721d5b388574c885f06ad888e0d4, type: 2}
-    - {fileID: 1161618890099896, guid: 73b7fd7cebbfdc543afb5818ce4bf95b, type: 2}
-    - {fileID: 1073843166197988, guid: 39b783015bfde2345a2066044677918d, type: 2}
-    - {fileID: 1424645533070442, guid: 57905c68981843a4eae30ceb64f0deb0, type: 2}
-    - {fileID: 1501166808515096, guid: 1702f650013a1f44a94028251829936c, type: 2}
-    - {fileID: 1802517126061246, guid: 6926a36f3caeee549b5c90019e119f77, type: 2}
-    - {fileID: 1678246958595002, guid: a6fc7bc21a76e1c43882699885c05f24, type: 2}
+    - {fileID: 1973915145344144, guid: 2360049bfc1c56d47a1556d7e0468d04, type: 2}
+    - {fileID: 1401859710855522, guid: 386bebdc71b97bd44abebfd3a00e24b1, type: 2}
+    - {fileID: 1410512014794486, guid: 09ff0a4cba083ca47af361335da06300, type: 2}
+    - {fileID: 1998387266584464, guid: f1fb721d5b388574c885f06ad888e0d4, type: 2}
+    - {fileID: 1448001005286312, guid: 73b7fd7cebbfdc543afb5818ce4bf95b, type: 2}
+    - {fileID: 1206584987421660, guid: 39b783015bfde2345a2066044677918d, type: 2}
+    - {fileID: 1087658521048894, guid: 57905c68981843a4eae30ceb64f0deb0, type: 2}
+    - {fileID: 1404866457068334, guid: 1702f650013a1f44a94028251829936c, type: 2}
+    - {fileID: 1470666691759346, guid: 6926a36f3caeee549b5c90019e119f77, type: 2}
+    - {fileID: 1522639707113472, guid: a6fc7bc21a76e1c43882699885c05f24, type: 2}
     poolSize: 10
     prefabsAlreadyDraw: 
 --- !u!4 &402901962
@@ -2461,7 +2490,7 @@ GameObject:
   - component: {fileID: 598802601}
   - component: {fileID: 598802600}
   m_Layer: 5
-  m_Name: Button (8)
+  m_Name: GreenThree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2483,7 +2512,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 215, y: -35}
+  m_AnchoredPosition: {x: 215, y: -40}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &598802600
@@ -2539,7 +2568,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 1, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -3141,7 +3170,7 @@ GameObject:
   - component: {fileID: 753594423}
   - component: {fileID: 753594422}
   m_Layer: 5
-  m_Name: Button (3)
+  m_Name: RedOne
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3163,7 +3192,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -216, y: 37}
+  m_AnchoredPosition: {x: -215, y: 40}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &753594422
@@ -3219,7 +3248,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -3287,7 +3316,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -3307,7 +3336,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: 'Second Place
+
+'
 --- !u!222 &753916032
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3467,7 +3498,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: 'First Place
+
+'
 --- !u!222 &785336201
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3720,7 +3753,7 @@ GameObject:
   - component: {fileID: 852453447}
   - component: {fileID: 852453446}
   m_Layer: 5
-  m_Name: Button (9)
+  m_Name: YellowOne
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3742,7 +3775,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -212, y: -100}
+  m_AnchoredPosition: {x: -215, y: -100}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &852453446
@@ -3798,7 +3831,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -4210,7 +4243,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -4230,7 +4263,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: Third Place
 --- !u!222 &945683537
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4592,7 +4625,7 @@ GameObject:
   - component: {fileID: 1037057375}
   - component: {fileID: 1037057374}
   m_Layer: 5
-  m_Name: Button (4)
+  m_Name: RedTwo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4614,7 +4647,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 37}
+  m_AnchoredPosition: {x: 0, y: 40}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1037057374
@@ -4670,7 +4703,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -4738,7 +4771,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -4758,7 +4791,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: Second Place
 --- !u!222 &1043677904
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4832,7 +4865,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: 'Second Place
+
+'
 --- !u!222 &1099275031
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5483,6 +5518,7 @@ GameObject:
   - component: {fileID: 1334380934}
   - component: {fileID: 1334380933}
   - component: {fileID: 1334380932}
+  - component: {fileID: 1334380936}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -5566,6 +5602,41 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1334380936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1334380931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f705d1394be2474baba8ff59ea0bef4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redFirstPlace: {fileID: 753594422}
+  redSecondPlace: {fileID: 1037057374}
+  redThirdPlace: {fileID: 1779620736}
+  blueFirstPlace: {fileID: 1551261269}
+  blueSecondPlace: {fileID: 1476392582}
+  blueThirdPlace: {fileID: 81464518}
+  greenFirstPlace: {fileID: 89183947}
+  greenSecondPlace: {fileID: 138495530}
+  greenThirdPlace: {fileID: 598802600}
+  yellowFirstPlace: {fileID: 852453446}
+  yellowSecondPlace: {fileID: 243868417}
+  yellowThirdPlace: {fileID: 1345205211}
+  redPositionOne: {fileID: 0}
+  redPositionTwo: {fileID: 0}
+  redPositionThree: {fileID: 0}
+  bluePositionOne: {fileID: 0}
+  bluePositionTwo: {fileID: 0}
+  bluePositionThree: {fileID: 0}
+  greenPositionOne: {fileID: 0}
+  greenPositionTwo: {fileID: 0}
+  greenPositionThree: {fileID: 0}
+  yellowPositionOne: {fileID: 0}
+  yellowPositionTwo: {fileID: 0}
+  yellowPositionThree: {fileID: 0}
 --- !u!1 &1335580315
 GameObject:
   m_ObjectHideFlags: 0
@@ -5771,7 +5842,7 @@ GameObject:
   - component: {fileID: 1345205212}
   - component: {fileID: 1345205211}
   m_Layer: 5
-  m_Name: Button (11)
+  m_Name: YellowThree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5793,7 +5864,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 217, y: -96}
+  m_AnchoredPosition: {x: 215, y: -100}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1345205211
@@ -5849,7 +5920,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -5917,7 +5988,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -5937,7 +6008,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: 'First Place
+
+'
 --- !u!222 &1348409453
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6011,7 +6084,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: 'Third Place
+
+'
 --- !u!222 &1372164222
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6536,7 +6611,7 @@ GameObject:
   - component: {fileID: 1476392583}
   - component: {fileID: 1476392582}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: BlueTwo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6558,7 +6633,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 102}
+  m_AnchoredPosition: {x: 0, y: 100}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1476392582
@@ -6614,7 +6689,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -6855,7 +6930,7 @@ GameObject:
   - component: {fileID: 1551261270}
   - component: {fileID: 1551261269}
   m_Layer: 5
-  m_Name: Button
+  m_Name: BlueOne
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6877,7 +6952,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -216, y: 103}
+  m_AnchoredPosition: {x: -215, y: 100}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1551261269
@@ -6933,7 +7008,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -7849,7 +7924,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: 'Third Place
+
+'
 --- !u!222 &1692944417
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8298,7 +8375,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -8318,7 +8395,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: Third Place
 --- !u!222 &1759551567
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8604,7 +8681,7 @@ GameObject:
   - component: {fileID: 1779620737}
   - component: {fileID: 1779620736}
   m_Layer: 5
-  m_Name: Button (5)
+  m_Name: RedThree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8626,7 +8703,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 217, y: 35}
+  m_AnchoredPosition: {x: 215, y: 40}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1779620736
@@ -8682,7 +8759,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
