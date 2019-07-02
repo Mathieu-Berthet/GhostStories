@@ -55,12 +55,15 @@ public class BluePlayer : MonoBehaviour
 
     public string tileName;
 
+
+
     [SerializeField]
     private PoolManagerDeck deck;
     [SerializeField]
     private GameObject card;
     public Image drawedCard;
-
+    public BoardPosition board;
+    public GameObject panel;
     #region accesseurs
     public int Qi
     {
@@ -196,20 +199,31 @@ public class BluePlayer : MonoBehaviour
         NbYinYangBlueToken = 1; //Max possible.
 
         deck = GameObject.Find("Deck").GetComponent<PoolManagerDeck>();
-
+        board = GameObject.Find("Canvas").GetComponent<BoardPosition>();
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire2"))
         {
             DrawAGhost();
         }
-        if(Input.GetButtonDown("Fire2"))
-        {
-            SelectGhostPosition();
-        }
+        board.redFirstPlace.onClick.AddListener(delegate { SelectGhostPosition(board.redPositionOne); });
+        board.redSecondPlace.onClick.AddListener(delegate { SelectGhostPosition(board.redPositionTwo); });
+        board.redThirdPlace.onClick.AddListener(delegate { SelectGhostPosition(board.redPositionThree); });
+
+        board.blueFirstPlace.onClick.AddListener(delegate { SelectGhostPosition(board.bluePositionOne); });
+        board.blueSecondPlace.onClick.AddListener(delegate { SelectGhostPosition(board.bluePositionTwo); });
+        board.blueThirdPlace.onClick.AddListener(delegate { SelectGhostPosition(board.bluePositionThree); });
+
+        board.greenFirstPlace.onClick.AddListener(delegate { SelectGhostPosition(board.greenPositionOne); });
+        board.greenSecondPlace.onClick.AddListener(delegate { SelectGhostPosition(board.greenPositionTwo); });
+        board.greenThirdPlace.onClick.AddListener(delegate { SelectGhostPosition(board.greenPositionThree); });
+
+        board.yellowFirstPlace.onClick.AddListener(delegate { SelectGhostPosition(board.yellowPositionOne); });
+        board.yellowSecondPlace.onClick.AddListener(delegate { SelectGhostPosition(board.yellowPositionTwo); });
+        board.yellowThirdPlace.onClick.AddListener(delegate { SelectGhostPosition(board.yellowPositionThree); });
     }
 
 
@@ -221,13 +235,19 @@ public class BluePlayer : MonoBehaviour
         card.transform.eulerAngles = new Vector3(40.0f, 0.0f, 0.0f);
     }
 
-    public void SelectGhostPosition()
+    public void SelectGhostPosition(GameObject position)
     {
         //Must change the selected case. With a real selection.
-        card.transform.SetParent(GameObject.Find("PlateauJoueurRouge").transform.GetChild(0).transform);
+        if(card.GetComponent<Ghost>().couleur != position.GetComponent<boardColor>().color)
+        {
+            Debug.Log("You can't choose this place. It is not the same color as the card");
+            return;
+        }
+        card.transform.SetParent(position.transform);
         card.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
         card.transform.localEulerAngles = new Vector3(90.0f, 0.0f, 180.0f);
         card.transform.localScale = new Vector3(10.0f, 10.0f, 1);
+        //panel.SetActive(false);
     }
 
     public void SecondSouffle()

@@ -47,11 +47,32 @@ public class BoardPosition : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         //Gestion de la possibilité de cliquer ou non sur les boutons.
-        redFirstPlace.interactable = false;
+        checkPosition(redPositionOne, redFirstPlace);
+        checkPosition(redPositionTwo, redSecondPlace);
+        checkPosition(redPositionThree, redThirdPlace);
+
+        checkPosition(bluePositionOne, blueFirstPlace);
+        checkPosition(bluePositionTwo, blueSecondPlace);
+        checkPosition(bluePositionThree, blueThirdPlace);
+
+        checkPosition(greenPositionOne, greenFirstPlace);
+        checkPosition(greenPositionTwo, greenSecondPlace);
+        checkPosition(greenPositionThree, greenThirdPlace);
+
+        checkPosition(yellowPositionOne, yellowFirstPlace);
+        checkPosition(yellowPositionTwo, yellowSecondPlace);
+        checkPosition(yellowPositionThree, yellowThirdPlace);
 	}
 
-    public void checkPosition()
+    public void checkPosition(GameObject pos, Button button)
     {
-
+        if(pos.transform.childCount == 0)
+        {
+            button.interactable = true;
+        }
+        else
+        {
+            button.interactable = false;
+        }
     }
 }
