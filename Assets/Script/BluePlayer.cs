@@ -64,6 +64,10 @@ public class BluePlayer : MonoBehaviour
     public Image drawedCard;
     public BoardPosition board;
     public GameObject panel;
+
+    public Text textInfo;
+    public string colorPlayer = "blue";
+
     #region accesseurs
     public int Qi
     {
@@ -209,6 +213,11 @@ public class BluePlayer : MonoBehaviour
         {
             DrawAGhost();
         }
+        
+    }
+
+    void FixedUpdate()
+    {
         board.redFirstPlace.onClick.AddListener(delegate { SelectGhostPosition(board.redPositionOne); });
         board.redSecondPlace.onClick.AddListener(delegate { SelectGhostPosition(board.redPositionTwo); });
         board.redThirdPlace.onClick.AddListener(delegate { SelectGhostPosition(board.redPositionThree); });
@@ -226,9 +235,9 @@ public class BluePlayer : MonoBehaviour
         board.yellowThirdPlace.onClick.AddListener(delegate { SelectGhostPosition(board.yellowPositionThree); });
     }
 
-
     public void DrawAGhost()
     {
+        panel.SetActive(true);
         card = deck.GetPoolByName(PoolNameDeck.ghost).GetItem(transform, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity, true, false, 0);
         card.transform.parent = null;
         card.transform.position = new Vector3(0.0f, 2.4f, -2.0f);
@@ -238,16 +247,21 @@ public class BluePlayer : MonoBehaviour
     public void SelectGhostPosition(GameObject position)
     {
         //Must change the selected case. With a real selection.
-        if(card.GetComponent<Ghost>().couleur != position.GetComponent<boardColor>().color)
+        if (card.GetComponent<Ghost>().couleur == "black" && position.transform.parent.GetComponent<boardColor>().color != colorPlayer)  
         {
-            Debug.Log("You can't choose this place. It is not the same color as the card");
+            textInfo.text = "Black ghost must be played on your board";
+            return;
+        }
+        else if (card.GetComponent<Ghost>().couleur != "black" && card.GetComponent<Ghost>().couleur != position.transform.parent.GetComponent<boardColor>().color)
+        {
+            textInfo.text = "You can't choose this place. It is not the same color as the card";
             return;
         }
         card.transform.SetParent(position.transform);
         card.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
         card.transform.localEulerAngles = new Vector3(90.0f, 0.0f, 180.0f);
         card.transform.localScale = new Vector3(10.0f, 10.0f, 1);
-        //panel.SetActive(false);
+        panel.SetActive(false);
     }
 
     public void SecondSouffle()
