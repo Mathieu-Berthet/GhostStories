@@ -227,7 +227,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   couleur: black
-  life: 0
+  life: 3
   power: {fileID: 0}
 --- !u!114 &114299318067174288
 MonoBehaviour:

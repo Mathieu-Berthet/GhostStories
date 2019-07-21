@@ -238,5 +238,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   couleur: green
-  life: 0
+  life: 3
   power: {fileID: 0}
