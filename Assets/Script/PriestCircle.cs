@@ -24,11 +24,11 @@ public class PriestCircle : MonoBehaviour {
 	void Update ()
     {
         //To change. It was for test, and it is okay. 
-        /*if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             reduceGhostLife();
         }
-        if(Input.GetMouseButtonDown(1))
+        /*if(Input.GetMouseButtonDown(1))
         {
             hauntedTile = true;
             haunted();

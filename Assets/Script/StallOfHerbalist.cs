@@ -32,11 +32,11 @@ public class StallOfHerbalist : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-		/*if(Input.GetButtonDown("Fire1"))
+		if(Input.GetKeyDown(KeyCode.D))
         {
             getToken();
         }
-        if (diceOne != null && diceOne.GetComponent<CubeScript>().rb.velocity.magnitude == 0)
+        /*if (diceOne != null && diceOne.GetComponent<CubeScript>().rb.velocity.magnitude == 0)
         {
             resultDiceOne = diceOne.GetComponent<CubeScript>().face;
         }

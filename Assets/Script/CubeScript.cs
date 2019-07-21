@@ -21,7 +21,7 @@ public class CubeScript : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        /*if(Input.GetButtonDown("Fire2") && rb.velocity.magnitude == 0)
+        /*if(Input.GetKeyDown(KeyCode.D) && rb.velocity.magnitude == 0)
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
