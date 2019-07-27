@@ -5,4 +5,6 @@ using UnityEngine;
 public class boardColor : MonoBehaviour
 {
     public string color;
+
+    public int nbCardOnBoard;
 }

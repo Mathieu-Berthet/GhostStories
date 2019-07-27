@@ -65,6 +65,18 @@ public class BluePlayer : MonoBehaviour
     public BoardPosition board;
     public GameObject panel;
 
+    [SerializeField]
+    private bool hasDraw;
+
+    [SerializeField]
+    private boardColor blueBoard;
+    [SerializeField]
+    private boardColor redBoard;
+    [SerializeField]
+    private boardColor greenBoard;
+    [SerializeField]
+    private boardColor yellowBoard;
+
     public Text textInfo;
     public string colorPlayer = "blue";
 
@@ -202,15 +214,23 @@ public class BluePlayer : MonoBehaviour
         NbPowerToken = 1; //Si pas 4 joueur. 0 Sinon
         NbYinYangBlueToken = 1; //Max possible.
 
+        hasDraw = false;
+
         deck = GameObject.Find("Deck").GetComponent<PoolManagerDeck>();
         board = GameObject.Find("Canvas").GetComponent<BoardPosition>();
+
+        redBoard = GameObject.Find("PlateauJoueurRouge").GetComponent<boardColor>();
+        blueBoard = GameObject.Find("PlateauJoueurBleu").GetComponent<boardColor>();
+        greenBoard = GameObject.Find("PlateauJoueurVert").GetComponent<boardColor>();
+        yellowBoard = GameObject.Find("PlateauJoueurJaune").GetComponent<boardColor>();
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
-        if (Input.GetButtonDown("Fire2"))
+        if (Input.GetButtonDown("Fire2") && !hasDraw)
         {
+            hasDraw = true;
             DrawAGhost();
         }
 
@@ -223,7 +243,7 @@ public class BluePlayer : MonoBehaviour
 
     void FixedUpdate()
     {
-        board.redFirstPlace.onClick.AddListener(delegate { SelectGhostPosition(board.redPositionOne); });
+       /* board.redFirstPlace.onClick.AddListener(delegate { SelectGhostPosition(board.redPositionOne); });
         board.redSecondPlace.onClick.AddListener(delegate { SelectGhostPosition(board.redPositionTwo); });
         board.redThirdPlace.onClick.AddListener(delegate { SelectGhostPosition(board.redPositionThree); });
 
@@ -237,7 +257,7 @@ public class BluePlayer : MonoBehaviour
 
         board.yellowFirstPlace.onClick.AddListener(delegate { SelectGhostPosition(board.yellowPositionOne); });
         board.yellowSecondPlace.onClick.AddListener(delegate { SelectGhostPosition(board.yellowPositionTwo); });
-        board.yellowThirdPlace.onClick.AddListener(delegate { SelectGhostPosition(board.yellowPositionThree); });
+        board.yellowThirdPlace.onClick.AddListener(delegate { SelectGhostPosition(board.yellowPositionThree); });*/
     }
 
     public void DrawAGhost()
@@ -255,25 +275,52 @@ public class BluePlayer : MonoBehaviour
 
     public void SelectGhostPosition(GameObject position)
     {
+        Debug.Log("Position : " + position);
+        Debug.Log("Parent : " + position.transform.parent);
+        Debug.Log("Couleur : " + position.transform.parent.GetComponent<boardColor>().color);
         //Must change the selected case. With a real selection.
-        if (card.GetComponent<Ghost>().couleur == "black" && position.transform.parent.GetComponent<boardColor>().color != colorPlayer)  
+        if (card.GetComponent<Ghost>().couleur == "black" && position.transform.parent.GetComponent<boardColor>().color != colorPlayer && blueBoard.nbCardOnBoard < 3)
         {
             textInfo.text = "Black ghost must be played on your board";
             return;
         }
         else if (card.GetComponent<Ghost>().couleur != "black" && card.GetComponent<Ghost>().couleur != position.transform.parent.GetComponent<boardColor>().color)
         {
-            textInfo.text = "You can't choose this place. It is not the same color as the card";
-            return;
+            if ((card.GetComponent<Ghost>().couleur == "red" && redBoard.nbCardOnBoard < 3) ||
+                (card.GetComponent<Ghost>().couleur == "blue" && blueBoard.nbCardOnBoard < 3) ||
+                (card.GetComponent<Ghost>().couleur == "yellow" && yellowBoard.nbCardOnBoard < 3) ||
+                (card.GetComponent<Ghost>().couleur == "green" && greenBoard.nbCardOnBoard < 3))
+            {
+                textInfo.text = "You can't choose this place. It is not the same color as the card";
+                return;
+            }
         }
         card.transform.SetParent(position.transform);
         card.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
         card.transform.localEulerAngles = new Vector3(90.0f, 0.0f, 180.0f);
         card.transform.localScale = new Vector3(15.0f, 10.0f, 1);
+
+        if (position.transform.parent.GetComponent<boardColor>().color == "blue")
+        {
+            blueBoard.nbCardOnBoard++;
+        }
+        else if (position.transform.parent.GetComponent<boardColor>().color == "green")
+        {
+            greenBoard.nbCardOnBoard++;
+        }
+        else if (position.transform.parent.GetComponent<boardColor>().color == "red")
+        {
+            redBoard.nbCardOnBoard++;
+        }
+        else if (position.transform.parent.GetComponent<boardColor>().color == "yellow")
+        {
+            yellowBoard.nbCardOnBoard++;
+        }
         panel.SetActive(false);
         textInfo.gameObject.SetActive(false);
         drawedCard.gameObject.SetActive(false);
         gameObject.GetComponent<Deplacement>().enabled = true;
+        hasDraw = false;
     }
 
     public void SecondSouffle()

@@ -463,7 +463,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 81464519}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 921742460}
+        m_MethodName: SelectGhostPosition
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 646876189}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &81464519
@@ -574,7 +585,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 89183948}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 921742460}
+        m_MethodName: SelectGhostPosition
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 937504354}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &89183948
@@ -855,7 +877,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 138495531}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 921742460}
+        m_MethodName: SelectGhostPosition
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1623060065}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &138495531
@@ -1539,7 +1572,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 243868418}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 921742460}
+        m_MethodName: SelectGhostPosition
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1036858072}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &243868418
@@ -2621,7 +2665,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 598802601}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 921742460}
+        m_MethodName: SelectGhostPosition
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 570049726}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &598802601
@@ -3301,7 +3356,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 753594423}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 921742460}
+        m_MethodName: SelectGhostPosition
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 9783639}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &753594423
@@ -3884,7 +3950,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 852453447}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 921742460}
+        m_MethodName: SelectGhostPosition
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 326308552}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &852453447
@@ -4082,6 +4159,11 @@ MonoBehaviour:
   drawedCard: {fileID: 236058383}
   board: {fileID: 0}
   panel: {fileID: 243812752}
+  hasDraw: 0
+  blueBoard: {fileID: 0}
+  redBoard: {fileID: 0}
+  greenBoard: {fileID: 0}
+  yellowBoard: {fileID: 0}
   textInfo: {fileID: 1662648799}
   colorPlayer: blue
 --- !u!114 &921742461
@@ -4760,7 +4842,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1037057375}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 921742460}
+        m_MethodName: SelectGhostPosition
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1715530345}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1037057375
@@ -5592,6 +5685,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: green
+  nbCardOnBoard: 0
 --- !u!1 &1334380931
 GameObject:
   m_ObjectHideFlags: 0
@@ -5930,6 +6024,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: yellow
+  nbCardOnBoard: 0
 --- !u!1 &1345205209
 GameObject:
   m_ObjectHideFlags: 0
@@ -6005,7 +6100,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1345205212}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 921742460}
+        m_MethodName: SelectGhostPosition
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 953267858}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1345205212
@@ -6343,6 +6449,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: red
+  nbCardOnBoard: 0
 --- !u!1 &1437413504
 GameObject:
   m_ObjectHideFlags: 0
@@ -6452,6 +6559,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: blue
+  nbCardOnBoard: 0
 --- !u!1 &1444573566
 GameObject:
   m_ObjectHideFlags: 0
@@ -6800,7 +6908,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1476392583}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 921742460}
+        m_MethodName: SelectGhostPosition
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 995317037}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1476392583
@@ -7119,7 +7238,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1551261270}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 921742460}
+        m_MethodName: SelectGhostPosition
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1448923215}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1551261270
@@ -8944,7 +9074,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1779620737}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 921742460}
+        m_MethodName: SelectGhostPosition
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 772431112}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1779620737
