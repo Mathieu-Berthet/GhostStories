@@ -245,13 +245,12 @@ public class BluePlayer : MonoBehaviour
         gameObject.GetComponent<Deplacement>().enabled = false;
         panel.SetActive(true);
         textInfo.gameObject.SetActive(true);
+        drawedCard.gameObject.SetActive(true);
         card = deck.GetPoolByName(PoolNameDeck.ghost).GetItem(transform, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity, true, false, 0);
         card.transform.parent = null;
-        card.transform.position = new Vector3(0.0f, 2.4f, -2.0f);
-        card.transform.eulerAngles = new Vector3(40.0f, 0.0f, 0.0f);
-        //Debug.Log(drawedCard.sprite);
-        //drawedCard.sprite.texture. = card.GetComponent<Material>().mainTexture;
-        //Debug.Log(drawedCard.sprite);
+        /*card.transform.position = new Vector3(0.0f, 2.4f, -1.28f);
+        card.transform.eulerAngles = new Vector3(40.0f, 0.0f, 0.0f);*/
+        drawedCard.sprite = card.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
     }
 
     public void SelectGhostPosition(GameObject position)
@@ -270,9 +269,10 @@ public class BluePlayer : MonoBehaviour
         card.transform.SetParent(position.transform);
         card.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
         card.transform.localEulerAngles = new Vector3(90.0f, 0.0f, 180.0f);
-        card.transform.localScale = new Vector3(10.0f, 10.0f, 1);
+        card.transform.localScale = new Vector3(15.0f, 10.0f, 1);
         panel.SetActive(false);
         textInfo.gameObject.SetActive(false);
+        drawedCard.gameObject.SetActive(false);
         gameObject.GetComponent<Deplacement>().enabled = true;
     }
 
