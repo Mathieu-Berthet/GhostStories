@@ -80,6 +80,8 @@ public class BluePlayer : MonoBehaviour
     public Text textInfo;
     public string colorPlayer = "blue";
 
+    public GameManager gm;
+
     #region accesseurs
     public int Qi
     {
@@ -205,6 +207,7 @@ public class BluePlayer : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         Qi = 4; // Mode facile, seulement 3 pour les autres modes. Mais pour l'instant, test avec 4.
         NbBlueToken = 1;
         NbRedToken = 0;
@@ -239,6 +242,11 @@ public class BluePlayer : MonoBehaviour
             Debug.Log("Sortie");
             Application.Quit();
         }
+
+        if(Input.GetKeyDown(KeyCode.N))
+        {
+            gm.nextTurn();
+        }
     }
 
     void FixedUpdate()
@@ -268,6 +276,7 @@ public class BluePlayer : MonoBehaviour
         drawedCard.gameObject.SetActive(true);
         card = deck.GetPoolByName(PoolNameDeck.ghost).GetItem(transform, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity, true, false, 0);
         card.transform.parent = null;
+        card.SetActive(false);
         /*card.transform.position = new Vector3(0.0f, 2.4f, -1.28f);
         card.transform.eulerAngles = new Vector3(40.0f, 0.0f, 0.0f);*/
         drawedCard.sprite = card.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
@@ -275,9 +284,6 @@ public class BluePlayer : MonoBehaviour
 
     public void SelectGhostPosition(GameObject position)
     {
-        Debug.Log("Position : " + position);
-        Debug.Log("Parent : " + position.transform.parent);
-        Debug.Log("Couleur : " + position.transform.parent.GetComponent<boardColor>().color);
         //Must change the selected case. With a real selection.
         if (card.GetComponent<Ghost>().couleur == "black" && position.transform.parent.GetComponent<boardColor>().color != colorPlayer && blueBoard.nbCardOnBoard < 3)
         {
@@ -299,7 +305,7 @@ public class BluePlayer : MonoBehaviour
         card.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
         card.transform.localEulerAngles = new Vector3(90.0f, 0.0f, 180.0f);
         card.transform.localScale = new Vector3(15.0f, 10.0f, 1);
-
+        card.SetActive(true);
         if (position.transform.parent.GetComponent<boardColor>().color == "blue")
         {
             blueBoard.nbCardOnBoard++;
