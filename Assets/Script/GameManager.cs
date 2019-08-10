@@ -110,8 +110,8 @@ public class GameManager : MonoBehaviour {
             actualTime += Time.deltaTime;
             mainCamera.transform.position = Vector3.Lerp(positionCamera4, positionCamera1, actualTime);
             //mainCamera.transform.position = positionCamera2;
-            //mainCamera.transform.eulerAngles = Vector3.Lerp(rotationCamera4, rotationCamera1, actualTime);
-            mainCamera.transform.eulerAngles = rotationCamera1;
+            mainCamera.transform.eulerAngles = Vector3.Lerp(rotationCamera4, rotationCamera1, actualTime);
+            //mainCamera.transform.eulerAngles = rotationCamera1;
 
             if (actualTime > 1.1f)
             {

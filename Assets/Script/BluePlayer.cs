@@ -247,6 +247,11 @@ public class BluePlayer : MonoBehaviour
         {
             gm.nextTurn();
         }
+
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            StartCoroutine(herbalistStall.GetComponent<StallOfHerbalist>().getToken(gameObject));
+        }
     }
 
     void FixedUpdate()
