@@ -4860,6 +4860,7 @@ MonoBehaviour:
   textNbTokenGreen: {fileID: 603758991}
   textNbTokenYellow: {fileID: 631369074}
   textNbTokenBlack: {fileID: 1469052364}
+  update: 0
 --- !u!114 &921742461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6696,7 +6697,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1284516892
 RectTransform:
   m_ObjectHideFlags: 0
