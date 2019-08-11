@@ -332,6 +332,7 @@ public class StallOfHerbalist : MonoBehaviour
             player.GetComponent<BluePlayer>().NbRedToken += nbRedFace;
             player.GetComponent<BluePlayer>().NbGreenToken += nbGreenFace;
             player.GetComponent<BluePlayer>().NbYellowToken += nbYellowFace;
+            player.GetComponent<BluePlayer>().update = true;
         }
         /*else if (player.name == "GreenPlayer")
         {

@@ -82,6 +82,13 @@ public class BluePlayer : MonoBehaviour
 
     public GameManager gm;
 
+    public Text textNbTokenBlue;
+    public Text textNbTokenRed;
+    public Text textNbTokenGreen;
+    public Text textNbTokenYellow;
+    public Text textNbTokenBlack;
+    public bool update;
+
     #region accesseurs
     public int Qi
     {
@@ -201,9 +208,6 @@ public class BluePlayer : MonoBehaviour
     }
     #endregion
 
-
-
-
     // Use this for initialization
     void Start ()
     {
@@ -226,6 +230,8 @@ public class BluePlayer : MonoBehaviour
         blueBoard = GameObject.Find("PlateauJoueurBleu").GetComponent<boardColor>();
         greenBoard = GameObject.Find("PlateauJoueurVert").GetComponent<boardColor>();
         yellowBoard = GameObject.Find("PlateauJoueurJaune").GetComponent<boardColor>();
+
+        updateUI();
     }
 	
 	// Update is called once per frame
@@ -251,6 +257,11 @@ public class BluePlayer : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.D))
         {
             StartCoroutine(herbalistStall.GetComponent<StallOfHerbalist>().getToken(gameObject));
+        }
+
+        if(update)
+        {
+            updateUI();
         }
     }
 
@@ -405,5 +416,15 @@ public class BluePlayer : MonoBehaviour
     public void LaunchDice()
     {
         //A voir plus tard
+    }
+
+    private void updateUI()
+    {
+        textNbTokenBlue.text = "x " + NbBlueToken;
+        textNbTokenRed.text = "x " + NbRedToken;
+        textNbTokenGreen.text = "x " + NbGreenToken;
+        textNbTokenYellow.text = "x " + NbYellowToken;
+        textNbTokenBlack.text = "x " + NbBlackToken;
+        update = false;
     }
 }
