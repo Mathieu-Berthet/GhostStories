@@ -7,18 +7,19 @@ public class StallOfHerbalist : MonoBehaviour
 {
 
     public bool hauntedTile = false;
+    public int nbDiceHerbalist = 2;
 
     [SerializeField]
     private GameObject dice;
 
     private GameObject diceOne;
     private GameObject diceTwo;
-    private GameObject diceThree;
+    //private GameObject diceThree;
 
     //TODO : Faire remplir ces variables
     public string resultDiceOne;
     public string resultDiceTwo;
-    public string resultDiceThree;
+    //public string resultDiceThree;
 
     public int nbRedFace;
     public int nbBlueFace;
@@ -36,9 +37,6 @@ public class StallOfHerbalist : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
-        //resultDiceOne = " ";
-        /*resultDiceTwo = " ";
-        resultDiceThree = " ";*/
         nbRedFace = 0;
         nbBlueFace = 0;
         nbBlackFace = 0;
@@ -51,120 +49,20 @@ public class StallOfHerbalist : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        /*if (diceOne != null && diceOne.GetComponent<CubeScript>().rb.velocity.magnitude == 0)
-        {
-            resultDiceOne = diceOne.GetComponent<CubeScript>().face;
-            switch(resultDiceOne)
-            {
-                case "RedFace":
-                    nbRedFace++;
-                    Destroy(diceOne);
-                    break;
-                case "BlueFace":
-                    nbBlueFace++;
-                    Destroy(diceOne);
-                    break;
-                case "YellowFace":
-                    nbYellowFace++;
-                    Destroy(diceOne);
-                    break;
-                case "GreenFace":
-                    nbGreenFace++;
-                    Destroy(diceOne);
-                    break;
-                case "WhiteFace":
-                    nbWhiteFace++;
-                    Destroy(diceOne);
-                    break;
-                case "BlackFace":
-                    nbBlackFace++;
-                    Destroy(diceOne);
-                    break;
-                default:
-                    break;
-            }
-        }*/
-        /*if (diceTwo != null && diceTwo.GetComponent<CubeScript>().rb.velocity.magnitude == 0)
-        {
-            resultDiceTwo = diceTwo.GetComponent<CubeScript>().face;
-            switch (resultDiceTwo)
-            {
-                case "RedFace":
-                    nbRedFace++;
-                    Destroy(diceTwo);
-                    break;
-                case "BlueFace":
-                    nbBlueFace++;
-                    Destroy(diceTwo);
-                    break;
-                case "YellowFace":
-                    nbYellowFace++;
-                    Destroy(diceTwo);
-                    break;
-                case "GreenFace":
-                    nbGreenFace++;
-                    Destroy(diceTwo);
-                    break;
-                case "WhiteFace":
-                    nbWhiteFace++;
-                    Destroy(diceTwo);
-                    break;
-                case "BlackFace":
-                    nbBlackFace++;
-                    Destroy(diceTwo);
-                    break;
-                default:
-                    break;
-            }
-        }
-        if (diceThree != null && diceThree.GetComponent<CubeScript>().rb.velocity.magnitude == 0)
-        {
-            resultDiceThree = diceThree.GetComponent<CubeScript>().face;
-            switch (resultDiceThree)
-            {
-                case "RedFace":
-                    nbRedFace++;
-                    Destroy(diceThree);
-                    break;
-                case "BlueFace":
-                    nbBlueFace++;
-                    Destroy(diceThree);
-                    break;
-                case "YellowFace":
-                    nbYellowFace++;
-                    Destroy(diceThree);
-                    break;
-                case "GreenFace":
-                    nbGreenFace++;
-                    Destroy(diceThree);
-                    break;
-                case "WhiteFace":
-                    nbWhiteFace++;
-                    Destroy(diceThree);
-                    break;
-                case "BlackFace":
-                    nbBlackFace++;
-                    Destroy(diceThree);
-                    break;
-                default:
-                    break;
-            }
-        }*/
+        
     }
 
     public IEnumerator getToken(GameObject player)
     {
-        //Si on passe player en parametre, on rempli directement le stock de jeton du joueur par la suite
-        // A gérer le cas si on a une face blanche qui sort
-        // A Transformer en coroutines. (Plus simple ? )
+        player.GetComponent<BluePlayer>().canLaunchDice = false;
         nbRedFace = 0;
         nbBlueFace = 0;
         nbBlackFace = 0;
         nbWhiteFace = 0;
         nbGreenFace = 0;
         nbYellowFace = 0;
-        //Remplacer 3 ici par le nombre de dés. (Qui sera dans un autre script)
-        for (int i = 0; i < 3; i++)
+        
+        for (int i = 0; i < nbDiceHerbalist; i++)
         {
             GameObject go = Instantiate(dice, new Vector3(i, 2, 0), Quaternion.identity);
             go.AddComponent<CubeScript>();
@@ -176,10 +74,6 @@ public class StallOfHerbalist : MonoBehaviour
             else if(i == 1)
             {
                 diceTwo = go;
-            }
-            else if(i == 2)
-            {
-                diceThree = go;
             }
 
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -254,44 +148,13 @@ public class StallOfHerbalist : MonoBehaviour
                 break;
         }
 
-        resultDiceThree = diceThree.GetComponent<CubeScript>().face;
-        switch (resultDiceThree)
-        {
-            case "RedFace":
-                nbRedFace++;
-                Destroy(diceThree);
-                break;
-            case "BlueFace":
-                nbBlueFace++;
-                Destroy(diceThree);
-                break;
-            case "YellowFace":
-                nbYellowFace++;
-                Destroy(diceThree);
-                break;
-            case "GreenFace":
-                nbGreenFace++;
-                Destroy(diceThree);
-                break;
-            case "WhiteFace":
-                nbWhiteFace++;
-                Destroy(diceThree);
-                break;
-            case "BlackFace":
-                nbBlackFace++;
-                Destroy(diceThree);
-                break;
-            default:
-                break;
-        }
-
         yield return new WaitForSeconds(2.0f);
-        panelButtonChoice.SetActive(true);
         while (nbWhiteFace > 0)
         {
+            panelButtonChoice.SetActive(true);
             while (!choose)
             {
-                yield return new WaitForSeconds(5.0f);
+                yield return new WaitForSeconds(2.0f);
             }
             if(choose)
             {
@@ -316,6 +179,7 @@ public class StallOfHerbalist : MonoBehaviour
                         break;
                 }
                 choose = false;
+                panelButtonChoice.SetActive(false);
             }
             nbWhiteFace--;
         }
@@ -333,6 +197,7 @@ public class StallOfHerbalist : MonoBehaviour
             player.GetComponent<BluePlayer>().NbGreenToken += nbGreenFace;
             player.GetComponent<BluePlayer>().NbYellowToken += nbYellowFace;
             player.GetComponent<BluePlayer>().update = true;
+            player.GetComponent<BluePlayer>().canLaunchDice = true;
         }
         /*else if (player.name == "GreenPlayer")
         {

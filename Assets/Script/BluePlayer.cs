@@ -54,8 +54,9 @@ public class BluePlayer : MonoBehaviour
     private GameObject nightTower;
 
     public string tileName;
-
-
+    public string ghostName;
+    public string ghostName2;
+    public bool canLaunchDice;
 
     [SerializeField]
     private PoolManagerDeck deck;
@@ -64,6 +65,8 @@ public class BluePlayer : MonoBehaviour
     public Image drawedCard;
     public BoardPosition board;
     public GameObject panel;
+
+    //public BoxCollider boxCollider;
 
     [SerializeField]
     private bool hasDraw;
@@ -230,7 +233,7 @@ public class BluePlayer : MonoBehaviour
         blueBoard = GameObject.Find("PlateauJoueurBleu").GetComponent<boardColor>();
         greenBoard = GameObject.Find("PlateauJoueurVert").GetComponent<boardColor>();
         yellowBoard = GameObject.Find("PlateauJoueurJaune").GetComponent<boardColor>();
-
+        canLaunchDice = true;
         updateUI();
     }
 	
@@ -254,7 +257,7 @@ public class BluePlayer : MonoBehaviour
             gm.nextTurn();
         }
 
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKeyDown(KeyCode.D) && canLaunchDice)
         {
             StartCoroutine(herbalistStall.GetComponent<StallOfHerbalist>().getToken(gameObject));
         }
@@ -263,25 +266,12 @@ public class BluePlayer : MonoBehaviour
         {
             updateUI();
         }
+        checkGhost();
     }
 
     void FixedUpdate()
     {
-       /* board.redFirstPlace.onClick.AddListener(delegate { SelectGhostPosition(board.redPositionOne); });
-        board.redSecondPlace.onClick.AddListener(delegate { SelectGhostPosition(board.redPositionTwo); });
-        board.redThirdPlace.onClick.AddListener(delegate { SelectGhostPosition(board.redPositionThree); });
 
-        board.blueFirstPlace.onClick.AddListener(delegate { SelectGhostPosition(board.bluePositionOne); });
-        board.blueSecondPlace.onClick.AddListener(delegate { SelectGhostPosition(board.bluePositionTwo); });
-        board.blueThirdPlace.onClick.AddListener(delegate { SelectGhostPosition(board.bluePositionThree); });
-
-        board.greenFirstPlace.onClick.AddListener(delegate { SelectGhostPosition(board.greenPositionOne); });
-        board.greenSecondPlace.onClick.AddListener(delegate { SelectGhostPosition(board.greenPositionTwo); });
-        board.greenThirdPlace.onClick.AddListener(delegate { SelectGhostPosition(board.greenPositionThree); });
-
-        board.yellowFirstPlace.onClick.AddListener(delegate { SelectGhostPosition(board.yellowPositionOne); });
-        board.yellowSecondPlace.onClick.AddListener(delegate { SelectGhostPosition(board.yellowPositionTwo); });
-        board.yellowThirdPlace.onClick.AddListener(delegate { SelectGhostPosition(board.yellowPositionThree); });*/
     }
 
     public void DrawAGhost()
@@ -293,14 +283,11 @@ public class BluePlayer : MonoBehaviour
         card = deck.GetPoolByName(PoolNameDeck.ghost).GetItem(transform, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity, true, false, 0);
         card.transform.parent = null;
         card.SetActive(false);
-        /*card.transform.position = new Vector3(0.0f, 2.4f, -1.28f);
-        card.transform.eulerAngles = new Vector3(40.0f, 0.0f, 0.0f);*/
         drawedCard.sprite = card.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
     }
 
     public void SelectGhostPosition(GameObject position)
     {
-        //Must change the selected case. With a real selection.
         if (card.GetComponent<Ghost>().couleur == "black" && position.transform.parent.GetComponent<boardColor>().color != colorPlayer && blueBoard.nbCardOnBoard < 3)
         {
             textInfo.text = "Black ghost must be played on your board";
@@ -322,6 +309,7 @@ public class BluePlayer : MonoBehaviour
         card.transform.localEulerAngles = new Vector3(90.0f, 0.0f, 180.0f);
         card.transform.localScale = new Vector3(15.0f, 10.0f, 1);
         card.SetActive(true);
+        card.transform.parent.GetComponent<BoxCollider>().enabled = true;
         if (position.transform.parent.GetComponent<boardColor>().color == "blue")
         {
             blueBoard.nbCardOnBoard++;
@@ -416,6 +404,115 @@ public class BluePlayer : MonoBehaviour
     public void LaunchDice()
     {
         //A voir plus tard
+    }
+
+    public void checkGhost()
+    {
+        RaycastHit hitXdirection;
+        RaycastHit hitZdirection;
+        if(Physics.Raycast(transform.position, Vector3.right, out hitXdirection, 1.5f) && Physics.Raycast(transform.position, Vector3.back, out hitZdirection, 1.5f))
+        {
+            if (hitXdirection.collider.transform.childCount > 0 && hitZdirection.collider.transform.childCount > 0)
+            {
+                //tileName = hitt.transform.gameObject.name;
+                Debug.DrawRay(transform.position, Vector3.right, Color.blue);
+                Debug.DrawRay(transform.position, Vector3.forward, Color.red);
+                Debug.DrawRay(transform.position, Vector3.left, Color.blue);
+                Debug.DrawRay(transform.position, Vector3.back, Color.red);
+                ghostName = hitXdirection.collider.transform.GetChild(0).name;
+                ghostName2 = hitZdirection.collider.transform.GetChild(0).name;
+            }
+        }
+        else if(Physics.Raycast(transform.position, Vector3.back, out hitZdirection, 1.5f) && Physics.Raycast(transform.position, Vector3.left, out hitXdirection, 1.5f))
+        {
+            if (hitXdirection.collider.transform.childCount > 0 && hitZdirection.collider.transform.childCount > 0)
+            {
+                //tileName = hitt.transform.gameObject.name;
+                Debug.DrawRay(transform.position, Vector3.right, Color.blue);
+                Debug.DrawRay(transform.position, Vector3.forward, Color.red);
+                Debug.DrawRay(transform.position, Vector3.left, Color.blue);
+                Debug.DrawRay(transform.position, Vector3.back, Color.red);
+                ghostName = hitXdirection.collider.transform.GetChild(0).name;
+                ghostName2 = hitZdirection.collider.transform.GetChild(0).name;
+            }
+        }
+        else if (Physics.Raycast(transform.position, Vector3.left, out hitXdirection, 1.5f) && Physics.Raycast(transform.position, Vector3.forward, out hitZdirection, 1.5f))
+        {
+            if (hitXdirection.collider.transform.childCount > 0 && hitZdirection.collider.transform.childCount > 0)
+            {
+                //tileName = hitt.transform.gameObject.name;
+                Debug.DrawRay(transform.position, Vector3.right, Color.blue);
+                Debug.DrawRay(transform.position, Vector3.forward, Color.red);
+                Debug.DrawRay(transform.position, Vector3.left, Color.blue);
+                Debug.DrawRay(transform.position, Vector3.back, Color.red);
+                ghostName = hitXdirection.collider.transform.GetChild(0).name;
+                ghostName2 = hitZdirection.collider.transform.GetChild(0).name;
+            }
+        }
+        else if (Physics.Raycast(transform.position, Vector3.forward, out hitZdirection, 1.5f) && Physics.Raycast(transform.position, Vector3.right, out hitXdirection, 1.5f))
+        {
+            if (hitXdirection.collider.transform.childCount > 0 && hitZdirection.collider.transform.childCount > 0)
+            {
+                //tileName = hitt.transform.gameObject.name;
+                Debug.DrawRay(transform.position, Vector3.right, Color.blue);
+                Debug.DrawRay(transform.position, Vector3.forward, Color.red);
+                Debug.DrawRay(transform.position, Vector3.left, Color.blue);
+                Debug.DrawRay(transform.position, Vector3.back, Color.red);
+                ghostName = hitXdirection.collider.transform.GetChild(0).name;
+                ghostName2 = hitZdirection.collider.transform.GetChild(0).name;
+            }
+        }
+        else if (Physics.Raycast(transform.position, Vector3.right, out hitXdirection, 1.5f))
+        {
+            if (hitXdirection.collider.transform.childCount > 0)
+            {
+                //tileName = hitt.transform.gameObject.name;
+                Debug.DrawRay(transform.position, Vector3.right, Color.blue);
+                Debug.DrawRay(transform.position, Vector3.forward, Color.red);
+                Debug.DrawRay(transform.position, Vector3.left, Color.blue);
+                Debug.DrawRay(transform.position, Vector3.back, Color.red);
+                ghostName = hitXdirection.collider.transform.GetChild(0).name;
+            }
+        }
+        else if(Physics.Raycast(transform.position, Vector3.back, out hitZdirection, 1.5f))
+        {
+            if (hitZdirection.collider.transform.childCount > 0)
+            {
+                //tileName = hitt.transform.gameObject.name;
+                Debug.DrawRay(transform.position, Vector3.right, Color.blue);
+                Debug.DrawRay(transform.position, Vector3.forward, Color.red);
+                Debug.DrawRay(transform.position, Vector3.left, Color.blue);
+                Debug.DrawRay(transform.position, Vector3.back, Color.red);
+                ghostName = hitZdirection.collider.transform.GetChild(0).name;
+            }
+        }
+        else if (Physics.Raycast(transform.position, Vector3.left, out hitXdirection, 1.5f))
+        {
+            if (hitXdirection.collider.transform.childCount > 0)
+            {
+                Debug.DrawRay(transform.position, Vector3.right, Color.blue);
+                Debug.DrawRay(transform.position, Vector3.forward, Color.red);
+                Debug.DrawRay(transform.position, Vector3.left, Color.blue);
+                Debug.DrawRay(transform.position, Vector3.back, Color.red);
+                ghostName = hitXdirection.collider.transform.GetChild(0).name;
+            }
+        }
+        else if (Physics.Raycast(transform.position, Vector3.forward, out hitZdirection, 1.5f))
+        {
+            if (hitZdirection.collider.transform.childCount > 0)
+            {
+                Debug.DrawRay(transform.position, Vector3.right, Color.blue);
+                Debug.DrawRay(transform.position, Vector3.forward, Color.red);
+                Debug.DrawRay(transform.position, Vector3.left, Color.blue);
+                Debug.DrawRay(transform.position, Vector3.back, Color.red);
+                ghostName = hitZdirection.collider.transform.GetChild(0).name;
+            }
+        }
+        else
+        {
+            ghostName = "";
+            ghostName2 = "";
+        }
     }
 
     private void updateUI()
