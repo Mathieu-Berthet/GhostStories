@@ -39,9 +39,11 @@ public class BoardPosition : MonoBehaviour {
     public GameObject yellowPositionTwo;
     public GameObject yellowPositionThree;
 
+    public bool usingTile;
 	// Use this for initialization
-	void Start () {
-		
+	void Start ()
+    {
+        usingTile = false;
 	}
 	
 	// Update is called once per frame
@@ -66,7 +68,7 @@ public class BoardPosition : MonoBehaviour {
 
     public void checkPosition(GameObject pos, Button button)
     {
-        if(pos.transform.childCount == 0)
+        if(pos.transform.childCount == 0 || usingTile)
         {
             button.interactable = true;
         }

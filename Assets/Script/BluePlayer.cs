@@ -294,7 +294,11 @@ public class BluePlayer : MonoBehaviour
             StartCoroutine(LaunchDice());
         }
 
-        if(update)
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            StartCoroutine(witchHut.GetComponent<HutOfWitch>().KillGhost(gameObject));
+        }
+        if (update)
         {
             updateUI();
         }
