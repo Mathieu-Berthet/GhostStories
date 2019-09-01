@@ -14,7 +14,7 @@ public class Ghost : MonoBehaviour {
 	void Start ()
     {
         power = GetComponent<GhostPower>();
-        life = 4;
+        //life = 4;
 	}
 	
 	// Update is called once per frame

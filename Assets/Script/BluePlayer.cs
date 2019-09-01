@@ -32,6 +32,31 @@ public class BluePlayer : MonoBehaviour
     private bool useTilePower;
     private bool fight;
 
+    [SerializeField]
+    private GameObject dice;
+
+    private GameObject diceOne;
+    private GameObject diceTwo;
+    private GameObject diceThree;
+
+    //TODO : Faire remplir ces variables
+    public string resultDiceOne;
+    public string resultDiceTwo;
+    public string resultDiceThree;
+
+    public int nbRedFace;
+    public int nbBlueFace;
+    public int nbYellowFace;
+    public int nbGreenFace;
+    public int nbWhiteFace;
+    public int nbBlackFace;
+
+    public bool choose;
+    public string choosenToken = "";
+    public GameObject panelButtonChoice;
+
+    [SerializeField]
+    private CubeScript cube;
 
     //Les tuiles
     [SerializeField]
@@ -56,6 +81,9 @@ public class BluePlayer : MonoBehaviour
     public string tileName;
     public string ghostName;
     public string ghostName2;
+
+    public GameObject ghost;
+    public GameObject ghost2;
     public bool canLaunchDice;
 
     [SerializeField]
@@ -65,6 +93,9 @@ public class BluePlayer : MonoBehaviour
     public Image drawedCard;
     public BoardPosition board;
     public GameObject panel;
+
+    [SerializeField]
+    private GameObject defausse;
 
     //public BoxCollider boxCollider;
 
@@ -259,7 +290,8 @@ public class BluePlayer : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.D) && canLaunchDice)
         {
-            StartCoroutine(herbalistStall.GetComponent<StallOfHerbalist>().getToken(gameObject));
+            //StartCoroutine(herbalistStall.GetComponent<StallOfHerbalist>().getToken(gameObject));
+            StartCoroutine(LaunchDice());
         }
 
         if(update)
@@ -401,9 +433,200 @@ public class BluePlayer : MonoBehaviour
         }
     }
 
-    public void LaunchDice()
+    public IEnumerator LaunchDice()
     {
-        //A voir plus tard
+        canLaunchDice = false;
+        nbRedFace = 0;
+        nbBlueFace = 0;
+        nbBlackFace = 0;
+        nbWhiteFace = 0;
+        nbGreenFace = 0;
+        nbYellowFace = 0;
+
+        for (int i = 0; i < 3; i++)
+        {
+            GameObject go = Instantiate(dice, new Vector3(i, 2, 0), Quaternion.identity);
+            go.AddComponent<CubeScript>();
+            cube = go.GetComponent<CubeScript>();
+            if (i == 0)
+            {
+                diceOne = go;
+            }
+            else if (i == 1)
+            {
+                diceTwo = go;
+            }
+            else if (i == 2)
+            {
+                diceThree = go;
+            }
+
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit))
+            {
+                cube.rb.AddForce(hit.point * cube.force);
+            }
+        }
+        yield return new WaitForSeconds(5.0f);
+
+        resultDiceOne = diceOne.GetComponent<CubeScript>().face;
+        switch (resultDiceOne)
+        {
+            case "RedFace":
+                nbRedFace++;
+                Destroy(diceOne);
+                break;
+            case "BlueFace":
+                nbBlueFace++;
+                Destroy(diceOne);
+                break;
+            case "YellowFace":
+                nbYellowFace++;
+                Destroy(diceOne);
+                break;
+            case "GreenFace":
+                nbGreenFace++;
+                Destroy(diceOne);
+                break;
+            case "WhiteFace":
+                nbWhiteFace++;
+                Destroy(diceOne);
+                break;
+            case "BlackFace":
+                nbBlackFace++;
+                Destroy(diceOne);
+                break;
+            default:
+                break;
+        }
+
+        resultDiceTwo = diceTwo.GetComponent<CubeScript>().face;
+        switch (resultDiceTwo)
+        {
+            case "RedFace":
+                nbRedFace++;
+                Destroy(diceTwo);
+                break;
+            case "BlueFace":
+                nbBlueFace++;
+                Destroy(diceTwo);
+                break;
+            case "YellowFace":
+                nbYellowFace++;
+                Destroy(diceTwo);
+                break;
+            case "GreenFace":
+                nbGreenFace++;
+                Destroy(diceTwo);
+                break;
+            case "WhiteFace":
+                nbWhiteFace++;
+                Destroy(diceTwo);
+                break;
+            case "BlackFace":
+                nbBlackFace++;
+                Destroy(diceTwo);
+                break;
+            default:
+                break;
+        }
+        resultDiceThree = diceThree.GetComponent<CubeScript>().face;
+        switch (resultDiceThree)
+        {
+            case "RedFace":
+                nbRedFace++;
+                Destroy(diceTwo);
+                break;
+            case "BlueFace":
+                nbBlueFace++;
+                Destroy(diceTwo);
+                break;
+            case "YellowFace":
+                nbYellowFace++;
+                Destroy(diceTwo);
+                break;
+            case "GreenFace":
+                nbGreenFace++;
+                Destroy(diceTwo);
+                break;
+            case "WhiteFace":
+                nbWhiteFace++;
+                Destroy(diceTwo);
+                break;
+            case "BlackFace":
+                nbBlackFace++;
+                Destroy(diceTwo);
+                break;
+            default:
+                break;
+        }
+
+
+        yield return new WaitForSeconds(2.0f);
+        while (nbWhiteFace > 0)
+        {
+            panelButtonChoice.SetActive(true);
+            gameObject.GetComponent<Deplacement>().enabled = false;
+            while (!choose)
+            {
+                yield return new WaitForSeconds(2.0f);
+            }
+            if (choose)
+            {
+                switch (choosenToken)
+                {
+                    case "Red":
+                        nbRedFace++;
+                        break;
+                    case "Blue":
+                        nbBlueFace++;
+                        break;
+                    case "Yellow":
+                        nbYellowFace++;
+                        break;
+                    case "Green":
+                        nbGreenFace++;
+                        break;
+                    case "Black":
+                        nbBlackFace++;
+                        break;
+                    default:
+                        break;
+                }
+                choose = false;
+                panelButtonChoice.SetActive(false);
+            }
+            nbWhiteFace--;
+        }
+
+        yield return new WaitForSeconds(2.0f);
+        panelButtonChoice.SetActive(false);
+
+        //Partie combat
+        if((ghost.GetComponent<Ghost>().couleur == "red" && nbRedFace >= ghost.GetComponent<Ghost>().life) || (ghost.GetComponent<Ghost>().couleur == "blue" && nbBlueFace >= ghost.GetComponent<Ghost>().life) 
+            || (ghost.GetComponent<Ghost>().couleur == "green" && nbGreenFace >= ghost.GetComponent<Ghost>().life) || (ghost.GetComponent<Ghost>().couleur == "yellow" && nbYellowFace >= ghost.GetComponent<Ghost>().life)
+            || (ghost.GetComponent<Ghost>().couleur == "black" && nbBlackFace >= ghost.GetComponent<Ghost>().life))
+        {
+            //On ajouteras des particules à la mort du fantome (style explosion)
+            ghost.transform.parent = defausse.transform;
+            ghost.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+        }
+
+        else if((ghost.GetComponent<Ghost>().couleur == "red" && nbRedFace < ghost.GetComponent<Ghost>().life) || (ghost.GetComponent<Ghost>().couleur == "blue" && nbBlueFace < ghost.GetComponent<Ghost>().life)
+            || (ghost.GetComponent<Ghost>().couleur == "green" && nbGreenFace < ghost.GetComponent<Ghost>().life) || (ghost.GetComponent<Ghost>().couleur == "yellow" && nbYellowFace < ghost.GetComponent<Ghost>().life)
+            || (ghost.GetComponent<Ghost>().couleur == "black" && nbBlackFace < ghost.GetComponent<Ghost>().life))
+        {
+            //D'abord, check si on a un autre joueur (ou plusieurs) sur la meme case que nous.
+            // Check résultat Dés + jetons pour tuer le fantome
+        }
+        else
+        {
+            //On a pas assez pour le tuer, alors il ne se passe rien
+        }
+        canLaunchDice = true;
+        gameObject.GetComponent<Deplacement>().enabled = true;
     }
 
     public void checkGhost()
@@ -421,6 +644,8 @@ public class BluePlayer : MonoBehaviour
                 Debug.DrawRay(transform.position, Vector3.back, Color.red);
                 ghostName = hitXdirection.collider.transform.GetChild(0).name;
                 ghostName2 = hitZdirection.collider.transform.GetChild(0).name;
+                ghost = hitXdirection.collider.transform.GetChild(0).gameObject;
+                ghost2 = hitZdirection.collider.transform.GetChild(0).gameObject;
             }
         }
         else if(Physics.Raycast(transform.position, Vector3.back, out hitZdirection, 1.5f) && Physics.Raycast(transform.position, Vector3.left, out hitXdirection, 1.5f))
@@ -434,6 +659,8 @@ public class BluePlayer : MonoBehaviour
                 Debug.DrawRay(transform.position, Vector3.back, Color.red);
                 ghostName = hitXdirection.collider.transform.GetChild(0).name;
                 ghostName2 = hitZdirection.collider.transform.GetChild(0).name;
+                ghost = hitXdirection.collider.transform.GetChild(0).gameObject;
+                ghost2 = hitZdirection.collider.transform.GetChild(0).gameObject;
             }
         }
         else if (Physics.Raycast(transform.position, Vector3.left, out hitXdirection, 1.5f) && Physics.Raycast(transform.position, Vector3.forward, out hitZdirection, 1.5f))
@@ -447,6 +674,8 @@ public class BluePlayer : MonoBehaviour
                 Debug.DrawRay(transform.position, Vector3.back, Color.red);
                 ghostName = hitXdirection.collider.transform.GetChild(0).name;
                 ghostName2 = hitZdirection.collider.transform.GetChild(0).name;
+                ghost = hitXdirection.collider.transform.GetChild(0).gameObject;
+                ghost2 = hitZdirection.collider.transform.GetChild(0).gameObject;
             }
         }
         else if (Physics.Raycast(transform.position, Vector3.forward, out hitZdirection, 1.5f) && Physics.Raycast(transform.position, Vector3.right, out hitXdirection, 1.5f))
@@ -460,6 +689,8 @@ public class BluePlayer : MonoBehaviour
                 Debug.DrawRay(transform.position, Vector3.back, Color.red);
                 ghostName = hitXdirection.collider.transform.GetChild(0).name;
                 ghostName2 = hitZdirection.collider.transform.GetChild(0).name;
+                ghost = hitXdirection.collider.transform.GetChild(0).gameObject;
+                ghost2 = hitZdirection.collider.transform.GetChild(0).gameObject;
             }
         }
         else if (Physics.Raycast(transform.position, Vector3.right, out hitXdirection, 1.5f))
@@ -472,6 +703,7 @@ public class BluePlayer : MonoBehaviour
                 Debug.DrawRay(transform.position, Vector3.left, Color.blue);
                 Debug.DrawRay(transform.position, Vector3.back, Color.red);
                 ghostName = hitXdirection.collider.transform.GetChild(0).name;
+                ghost = hitXdirection.collider.transform.GetChild(0).gameObject;
             }
         }
         else if(Physics.Raycast(transform.position, Vector3.back, out hitZdirection, 1.5f))
@@ -484,6 +716,7 @@ public class BluePlayer : MonoBehaviour
                 Debug.DrawRay(transform.position, Vector3.left, Color.blue);
                 Debug.DrawRay(transform.position, Vector3.back, Color.red);
                 ghostName = hitZdirection.collider.transform.GetChild(0).name;
+                ghost = hitZdirection.collider.transform.GetChild(0).gameObject;
             }
         }
         else if (Physics.Raycast(transform.position, Vector3.left, out hitXdirection, 1.5f))
@@ -495,6 +728,7 @@ public class BluePlayer : MonoBehaviour
                 Debug.DrawRay(transform.position, Vector3.left, Color.blue);
                 Debug.DrawRay(transform.position, Vector3.back, Color.red);
                 ghostName = hitXdirection.collider.transform.GetChild(0).name;
+                ghost = hitXdirection.collider.transform.GetChild(0).gameObject;
             }
         }
         else if (Physics.Raycast(transform.position, Vector3.forward, out hitZdirection, 1.5f))
@@ -506,12 +740,15 @@ public class BluePlayer : MonoBehaviour
                 Debug.DrawRay(transform.position, Vector3.left, Color.blue);
                 Debug.DrawRay(transform.position, Vector3.back, Color.red);
                 ghostName = hitZdirection.collider.transform.GetChild(0).name;
+                ghost = hitZdirection.collider.transform.GetChild(0).gameObject;
             }
         }
         else
         {
             ghostName = "";
             ghostName2 = "";
+            ghost = null;
+            ghost2 = null;
         }
     }
 
@@ -523,5 +760,11 @@ public class BluePlayer : MonoBehaviour
         textNbTokenYellow.text = "x " + NbYellowToken;
         textNbTokenBlack.text = "x " + NbBlackToken;
         update = false;
+    }
+
+    public void MustChooseToken(Button buttonClick)
+    {
+        choosenToken = buttonClick.transform.GetChild(0).GetComponent<Text>().text;
+        choose = true;
     }
 }
