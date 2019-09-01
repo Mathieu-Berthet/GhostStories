@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PriestCircle : MonoBehaviour {
 
@@ -9,8 +10,11 @@ public class PriestCircle : MonoBehaviour {
     [SerializeField]
     private StockOfToken tokenStock;
     public string choseenToken;
+    public bool choose;
     [SerializeField]
     private GameObject token;
+
+    public GameObject panelButtonChoice;
 
     // Use this for initialization
     void Start ()
@@ -18,6 +22,7 @@ public class PriestCircle : MonoBehaviour {
         tokenStock = GameObject.Find("TokenStock").GetComponent<StockOfToken>();
         //TEST
         choseenToken = "Red";
+        choose = false;
 	}
 	
 	// Update is called once per frame
@@ -26,7 +31,7 @@ public class PriestCircle : MonoBehaviour {
         //To change. It was for test, and it is okay. 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            reduceGhostLife();
+            StartCoroutine(reduceGhostLife());
         }
         /*if(Input.GetMouseButtonDown(1))
         {
@@ -35,10 +40,19 @@ public class PriestCircle : MonoBehaviour {
         }*/
     }
 
-    public void reduceGhostLife()
+    public IEnumerator reduceGhostLife()
     {
-        //Remplir choseenToken avant le switch
-        //Demander la couleur ici ? (Demandez uniquement pour les jetons encore en stock ?)
+        panelButtonChoice.SetActive(true);
+        while(!choose)
+        {
+            yield return new WaitForSeconds(1.0f);
+        }
+        if(choose)
+        {
+            Debug.Log("Couocu");
+            panelButtonChoice.SetActive(false);
+            choose = false;
+        }
         switch(choseenToken)
         {
             case "Red":
@@ -258,5 +272,12 @@ public class PriestCircle : MonoBehaviour {
         {
             gameObject.GetComponent<MeshRenderer>().material.color = new Color(0.25f, 0.25f, 0.25f, 1);
         }
+    }
+
+
+    public void MustChooseToken(Button buttonClick)
+    {
+        choseenToken = buttonClick.transform.GetChild(0).GetComponent<Text>().text;
+        choose = true;
     }
 }

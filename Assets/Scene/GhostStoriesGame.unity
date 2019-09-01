@@ -1296,6 +1296,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hauntedTile: 0
+  ghostToKill: {fileID: 0}
+  defausse: {fileID: 0}
 --- !u!23 &233401640
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2600,6 +2602,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1910284759}
+        m_MethodName: MustChooseToken
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 422297584}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &422297585
@@ -2808,6 +2821,17 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 921742460}
+        m_MethodName: MustChooseToken
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 464656045}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1910284759}
         m_MethodName: MustChooseToken
         m_Mode: 2
         m_Arguments:
@@ -6742,6 +6766,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1910284759}
+        m_MethodName: MustChooseToken
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1260704639}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1260704640
@@ -9396,6 +9431,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1910284759}
+        m_MethodName: MustChooseToken
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1616178658}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1616178659
@@ -11640,7 +11686,9 @@ MonoBehaviour:
   hauntedTile: 0
   tokenStock: {fileID: 0}
   choseenToken: 
+  choose: 0
   token: {fileID: 0}
+  panelButtonChoice: {fileID: 1284516891}
 --- !u!23 &1910284760
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -12039,6 +12087,17 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 921742460}
+        m_MethodName: MustChooseToken
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 2034669599}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1910284759}
         m_MethodName: MustChooseToken
         m_Mode: 2
         m_Arguments:
