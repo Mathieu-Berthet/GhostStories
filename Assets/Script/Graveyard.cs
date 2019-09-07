@@ -10,21 +10,22 @@ public class Graveyard : MonoBehaviour {
 
     [SerializeField]
     private GameObject blackDice;
+    public bool canLaunchBlackDice;
 
     [SerializeField]
     private CubeScript cube;
     // Use this for initialization
     void Start ()
     {
-
+        canLaunchBlackDice = true;
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-		if(Input.GetKeyDown(KeyCode.B))
+		if(Input.GetKeyDown(KeyCode.B) && canLaunchBlackDice)
         {
-            LaunchBlackDice();
+            StartCoroutine(LaunchBlackDice());
         }
 	}
 
@@ -33,8 +34,9 @@ public class Graveyard : MonoBehaviour {
 
     }
 
-    public void LaunchBlackDice()
+    public IEnumerator LaunchBlackDice()
     {
+        canLaunchBlackDice = false;
         blackDice = Instantiate(blackDice, new Vector3(0, 2, 0), Quaternion.identity);
         cube = blackDice.GetComponent<CubeScript>();
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -44,5 +46,8 @@ public class Graveyard : MonoBehaviour {
         {
             cube.rb.AddForce(hit.point * cube.force);
         }
+
+        yield return new WaitForSeconds(2.0f);
+        canLaunchBlackDice = true;
     }
 }
