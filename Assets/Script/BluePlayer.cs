@@ -312,6 +312,19 @@ public class BluePlayer : MonoBehaviour
 
     public void DrawAGhost()
     {
+        if (blueBoard.nbCardOnBoard == 3)
+        {
+            textInfo.gameObject.SetActive(true);
+            textInfo.text = "You have too ghosts on your field, so you lose one life";
+            Qi -= 1;
+            return;
+        }
+        if (blueBoard.nbCardOnBoard == 3 && redBoard.nbCardOnBoard == 3 && greenBoard.nbCardOnBoard == 3 && yellowBoard.nbCardOnBoard == 3)
+        {
+            textInfo.gameObject.SetActive(true);
+            textInfo.text = "You can't draw another Ghost, there is too ghosts on the field";
+            return;
+        }
         gameObject.GetComponent<Deplacement>().enabled = false;
         panel.SetActive(true);
         textInfo.gameObject.SetActive(true);
@@ -541,27 +554,27 @@ public class BluePlayer : MonoBehaviour
         {
             case "RedFace":
                 nbRedFace++;
-                Destroy(diceTwo);
+                Destroy(diceThree);
                 break;
             case "BlueFace":
                 nbBlueFace++;
-                Destroy(diceTwo);
+                Destroy(diceThree);
                 break;
             case "YellowFace":
                 nbYellowFace++;
-                Destroy(diceTwo);
+                Destroy(diceThree);
                 break;
             case "GreenFace":
                 nbGreenFace++;
-                Destroy(diceTwo);
+                Destroy(diceThree);
                 break;
             case "WhiteFace":
                 nbWhiteFace++;
-                Destroy(diceTwo);
+                Destroy(diceThree);
                 break;
             case "BlackFace":
                 nbBlackFace++;
-                Destroy(diceTwo);
+                Destroy(diceThree);
                 break;
             default:
                 break;
