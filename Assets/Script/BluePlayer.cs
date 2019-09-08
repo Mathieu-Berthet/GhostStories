@@ -123,6 +123,9 @@ public class BluePlayer : MonoBehaviour
     public Text textNbTokenBlack;
     public bool update;
 
+    public GameObject explosion;
+    public GameObject explosion2;
+
     #region accesseurs
     public int Qi
     {
@@ -298,6 +301,12 @@ public class BluePlayer : MonoBehaviour
         {
             StartCoroutine(witchHut.GetComponent<HutOfWitch>().KillGhost(gameObject));
         }
+
+        /*if(Input.GetKeyDown(KeyCode.E))
+        {
+            explosion.transform.GetChild(2).GetComponent<ParticleSystem>().Play();
+        }*/
+
         if (update)
         {
             updateUI();
@@ -627,8 +636,10 @@ public class BluePlayer : MonoBehaviour
             || (ghost.GetComponent<Ghost>().couleur == "black" && nbBlackFace >= ghost.GetComponent<Ghost>().life))
         {
             //On ajouteras des particules à la mort du fantome (style explosion)
+            explosion.transform.GetChild(2).GetComponent<ParticleSystem>().Play();
             ghost.transform.parent = defausse.transform;
             ghost.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+            ghost = null;
         }
 
         else if((ghost.GetComponent<Ghost>().couleur == "red" && nbRedFace < ghost.GetComponent<Ghost>().life) || (ghost.GetComponent<Ghost>().couleur == "blue" && nbBlueFace < ghost.GetComponent<Ghost>().life)
@@ -652,112 +663,124 @@ public class BluePlayer : MonoBehaviour
         RaycastHit hitZdirection;
         if(Physics.Raycast(transform.position, Vector3.right, out hitXdirection, 1.5f) && Physics.Raycast(transform.position, Vector3.back, out hitZdirection, 1.5f))
         {
-            if (hitXdirection.collider.transform.childCount > 0 && hitZdirection.collider.transform.childCount > 0)
+            if (hitXdirection.collider.transform.childCount > 1 && hitZdirection.collider.transform.childCount > 1)
             {
                 //tileName = hitt.transform.gameObject.name;
                 Debug.DrawRay(transform.position, Vector3.right, Color.blue);
                 Debug.DrawRay(transform.position, Vector3.forward, Color.red);
                 Debug.DrawRay(transform.position, Vector3.left, Color.blue);
                 Debug.DrawRay(transform.position, Vector3.back, Color.red);
-                ghostName = hitXdirection.collider.transform.GetChild(0).name;
-                ghostName2 = hitZdirection.collider.transform.GetChild(0).name;
-                ghost = hitXdirection.collider.transform.GetChild(0).gameObject;
-                ghost2 = hitZdirection.collider.transform.GetChild(0).gameObject;
+                /*ghostName = hitXdirection.collider.transform.GetChild(0).name;
+                ghostName2 = hitZdirection.collider.transform.GetChild(0).name;*/
+                explosion = hitXdirection.collider.transform.GetChild(0).gameObject;
+                explosion2 = hitZdirection.collider.transform.GetChild(0).gameObject;
+                ghost = hitXdirection.collider.transform.GetChild(1).gameObject;
+                ghost2 = hitZdirection.collider.transform.GetChild(1).gameObject;
             }
         }
         else if(Physics.Raycast(transform.position, Vector3.back, out hitZdirection, 1.5f) && Physics.Raycast(transform.position, Vector3.left, out hitXdirection, 1.5f))
         {
-            if (hitXdirection.collider.transform.childCount > 0 && hitZdirection.collider.transform.childCount > 0)
+            if (hitXdirection.collider.transform.childCount > 1 && hitZdirection.collider.transform.childCount > 1)
             {
                 //tileName = hitt.transform.gameObject.name;
                 Debug.DrawRay(transform.position, Vector3.right, Color.blue);
                 Debug.DrawRay(transform.position, Vector3.forward, Color.red);
                 Debug.DrawRay(transform.position, Vector3.left, Color.blue);
                 Debug.DrawRay(transform.position, Vector3.back, Color.red);
-                ghostName = hitXdirection.collider.transform.GetChild(0).name;
-                ghostName2 = hitZdirection.collider.transform.GetChild(0).name;
-                ghost = hitXdirection.collider.transform.GetChild(0).gameObject;
-                ghost2 = hitZdirection.collider.transform.GetChild(0).gameObject;
+                /*ghostName = hitXdirection.collider.transform.GetChild(0).name;
+                ghostName2 = hitZdirection.collider.transform.GetChild(0).name;*/
+                explosion = hitXdirection.collider.transform.GetChild(0).gameObject;
+                explosion2 = hitZdirection.collider.transform.GetChild(0).gameObject;
+                ghost = hitXdirection.collider.transform.GetChild(1).gameObject;
+                ghost2 = hitZdirection.collider.transform.GetChild(1).gameObject;
             }
         }
         else if (Physics.Raycast(transform.position, Vector3.left, out hitXdirection, 1.5f) && Physics.Raycast(transform.position, Vector3.forward, out hitZdirection, 1.5f))
         {
-            if (hitXdirection.collider.transform.childCount > 0 && hitZdirection.collider.transform.childCount > 0)
+            if (hitXdirection.collider.transform.childCount > 1 && hitZdirection.collider.transform.childCount > 1)
             {
                 //tileName = hitt.transform.gameObject.name;
                 Debug.DrawRay(transform.position, Vector3.right, Color.blue);
                 Debug.DrawRay(transform.position, Vector3.forward, Color.red);
                 Debug.DrawRay(transform.position, Vector3.left, Color.blue);
                 Debug.DrawRay(transform.position, Vector3.back, Color.red);
-                ghostName = hitXdirection.collider.transform.GetChild(0).name;
-                ghostName2 = hitZdirection.collider.transform.GetChild(0).name;
-                ghost = hitXdirection.collider.transform.GetChild(0).gameObject;
-                ghost2 = hitZdirection.collider.transform.GetChild(0).gameObject;
+                /*ghostName = hitXdirection.collider.transform.GetChild(0).name;
+                ghostName2 = hitZdirection.collider.transform.GetChild(0).name;*/
+                explosion = hitXdirection.collider.transform.GetChild(0).gameObject;
+                explosion2 = hitZdirection.collider.transform.GetChild(0).gameObject;
+                ghost = hitXdirection.collider.transform.GetChild(1).gameObject;
+                ghost2 = hitZdirection.collider.transform.GetChild(1).gameObject;
             }
         }
         else if (Physics.Raycast(transform.position, Vector3.forward, out hitZdirection, 1.5f) && Physics.Raycast(transform.position, Vector3.right, out hitXdirection, 1.5f))
         {
-            if (hitXdirection.collider.transform.childCount > 0 && hitZdirection.collider.transform.childCount > 0)
+            if (hitXdirection.collider.transform.childCount > 1 && hitZdirection.collider.transform.childCount > 1)
             {
                 //tileName = hitt.transform.gameObject.name;
                 Debug.DrawRay(transform.position, Vector3.right, Color.blue);
                 Debug.DrawRay(transform.position, Vector3.forward, Color.red);
                 Debug.DrawRay(transform.position, Vector3.left, Color.blue);
                 Debug.DrawRay(transform.position, Vector3.back, Color.red);
-                ghostName = hitXdirection.collider.transform.GetChild(0).name;
-                ghostName2 = hitZdirection.collider.transform.GetChild(0).name;
-                ghost = hitXdirection.collider.transform.GetChild(0).gameObject;
-                ghost2 = hitZdirection.collider.transform.GetChild(0).gameObject;
+                /*ghostName = hitXdirection.collider.transform.GetChild(0).name;
+                ghostName2 = hitZdirection.collider.transform.GetChild(0).name;*/
+                explosion = hitXdirection.collider.transform.GetChild(0).gameObject;
+                explosion2 = hitZdirection.collider.transform.GetChild(0).gameObject;
+                ghost = hitXdirection.collider.transform.GetChild(1).gameObject;
+                ghost2 = hitZdirection.collider.transform.GetChild(1).gameObject;
             }
         }
         else if (Physics.Raycast(transform.position, Vector3.right, out hitXdirection, 1.5f))
         {
-            if (hitXdirection.collider.transform.childCount > 0)
+            if (hitXdirection.collider.transform.childCount > 1)
             {
                 //tileName = hitt.transform.gameObject.name;
                 Debug.DrawRay(transform.position, Vector3.right, Color.blue);
                 Debug.DrawRay(transform.position, Vector3.forward, Color.red);
                 Debug.DrawRay(transform.position, Vector3.left, Color.blue);
                 Debug.DrawRay(transform.position, Vector3.back, Color.red);
-                ghostName = hitXdirection.collider.transform.GetChild(0).name;
-                ghost = hitXdirection.collider.transform.GetChild(0).gameObject;
+                //ghostName = hitXdirection.collider.transform.GetChild(0).name;
+                explosion = hitXdirection.collider.transform.GetChild(0).gameObject;
+                ghost = hitXdirection.collider.transform.GetChild(1).gameObject;
             }
         }
         else if(Physics.Raycast(transform.position, Vector3.back, out hitZdirection, 1.5f))
         {
-            if (hitZdirection.collider.transform.childCount > 0)
+            if (hitZdirection.collider.transform.childCount > 1)
             {
                 //tileName = hitt.transform.gameObject.name;
                 Debug.DrawRay(transform.position, Vector3.right, Color.blue);
                 Debug.DrawRay(transform.position, Vector3.forward, Color.red);
                 Debug.DrawRay(transform.position, Vector3.left, Color.blue);
                 Debug.DrawRay(transform.position, Vector3.back, Color.red);
-                ghostName = hitZdirection.collider.transform.GetChild(0).name;
-                ghost = hitZdirection.collider.transform.GetChild(0).gameObject;
+                //ghostName = hitZdirection.collider.transform.GetChild(0).name;
+                explosion = hitZdirection.collider.transform.GetChild(0).gameObject;
+                ghost = hitZdirection.collider.transform.GetChild(1).gameObject;
             }
         }
         else if (Physics.Raycast(transform.position, Vector3.left, out hitXdirection, 1.5f))
         {
-            if (hitXdirection.collider.transform.childCount > 0)
+            if (hitXdirection.collider.transform.childCount > 1)
             {
                 Debug.DrawRay(transform.position, Vector3.right, Color.blue);
                 Debug.DrawRay(transform.position, Vector3.forward, Color.red);
                 Debug.DrawRay(transform.position, Vector3.left, Color.blue);
                 Debug.DrawRay(transform.position, Vector3.back, Color.red);
-                ghostName = hitXdirection.collider.transform.GetChild(0).name;
-                ghost = hitXdirection.collider.transform.GetChild(0).gameObject;
+                //ghostName = hitXdirection.collider.transform.GetChild(0).name;
+                explosion = hitXdirection.collider.transform.GetChild(0).gameObject;
+                ghost = hitXdirection.collider.transform.GetChild(1).gameObject;
             }
         }
         else if (Physics.Raycast(transform.position, Vector3.forward, out hitZdirection, 1.5f))
         {
-            if (hitZdirection.collider.transform.childCount > 0)
+            if (hitZdirection.collider.transform.childCount > 1)
             {
                 Debug.DrawRay(transform.position, Vector3.right, Color.blue);
                 Debug.DrawRay(transform.position, Vector3.forward, Color.red);
                 Debug.DrawRay(transform.position, Vector3.left, Color.blue);
                 Debug.DrawRay(transform.position, Vector3.back, Color.red);
-                ghostName = hitZdirection.collider.transform.GetChild(0).name;
-                ghost = hitZdirection.collider.transform.GetChild(0).gameObject;
+                //ghostName = hitZdirection.collider.transform.GetChild(0).name;
+                explosion = hitZdirection.collider.transform.GetChild(0).gameObject;
+                ghost = hitZdirection.collider.transform.GetChild(1).gameObject;
             }
         }
         else
@@ -766,6 +789,8 @@ public class BluePlayer : MonoBehaviour
             ghostName2 = "";
             ghost = null;
             ghost2 = null;
+            explosion = null;
+            explosion2 = null;
         }
     }
 

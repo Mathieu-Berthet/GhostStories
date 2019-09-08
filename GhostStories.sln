@@ -3,6 +3,10 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GhostStories", "GhostStories.csproj", "{D4DFBF4B-2E82-59A3-A7AD-EC106C3E45D4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GhostStories.Plugins", "GhostStories.Plugins.csproj", "{DA7B0165-5D1D-D76F-BE10-8BA6B90ACA8D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GhostStories.Editor.Plugins", "GhostStories.Editor.Plugins.csproj", "{1E5A5EE7-5056-8A97-4A8D-D59E7152130D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +17,14 @@ Global
 		{D4DFBF4B-2E82-59A3-A7AD-EC106C3E45D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D4DFBF4B-2E82-59A3-A7AD-EC106C3E45D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D4DFBF4B-2E82-59A3-A7AD-EC106C3E45D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA7B0165-5D1D-D76F-BE10-8BA6B90ACA8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA7B0165-5D1D-D76F-BE10-8BA6B90ACA8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA7B0165-5D1D-D76F-BE10-8BA6B90ACA8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA7B0165-5D1D-D76F-BE10-8BA6B90ACA8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E5A5EE7-5056-8A97-4A8D-D59E7152130D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E5A5EE7-5056-8A97-4A8D-D59E7152130D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E5A5EE7-5056-8A97-4A8D-D59E7152130D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E5A5EE7-5056-8A97-4A8D-D59E7152130D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -68,7 +68,7 @@ public class BoardPosition : MonoBehaviour {
 
     public void checkPosition(GameObject pos, Button button)
     {
-        if(pos.transform.childCount == 0 || usingTile)
+        if(pos.transform.childCount == 1 || usingTile)
         {
             button.interactable = true;
         }
