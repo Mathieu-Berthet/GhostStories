@@ -6692,6 +6692,7 @@ MonoBehaviour:
   hauntedTile: 0
   playerToResurrect: []
   blackDice: {fileID: 1847871859114552, guid: ff1789b7f180ad5458e0b8bdb4db6a34, type: 2}
+  canLaunchBlackDice: 0
   cube: {fileID: 0}
 --- !u!23 &1241658706
 MeshRenderer:
@@ -7370,6 +7371,7 @@ MonoBehaviour:
   yellowPositionOne: {fileID: 326308552}
   yellowPositionTwo: {fileID: 1036858072}
   yellowPositionThree: {fileID: 953267858}
+  usingTile: 0
 --- !u!1 &1335580315
 GameObject:
   m_ObjectHideFlags: 0
