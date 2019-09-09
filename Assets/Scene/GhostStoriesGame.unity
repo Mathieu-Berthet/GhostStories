@@ -6869,6 +6869,8 @@ MonoBehaviour:
   textNbTokenBlack: {fileID: 1469052364}
   update: 0
   explosion: {fileID: 0}
+  explosion2: {fileID: 0}
+  panelJeton: {fileID: 1134883028}
 --- !u!114 &921742461
 MonoBehaviour:
   m_ObjectHideFlags: 0
