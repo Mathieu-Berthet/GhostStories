@@ -9,6 +9,7 @@ public class RulesScript : MonoBehaviour {
     public GameObject panelTiles;
     public GameObject panelToken;
     public Button buttonNext;
+    public Button buttonPrecedent;
 
 	// Use this for initialization
 	void Start () {
@@ -16,13 +17,51 @@ public class RulesScript : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () 
+	void Update ()
     {
-		if(Input.GetKeyDown(KeyCode.RightArrow))
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            if (panelTiles.activeSelf)
+            {
+                panelRules.SetActive(true);
+                panelTiles.SetActive(false);
+                buttonNext.gameObject.SetActive(true);
+                buttonPrecedent.gameObject.SetActive(false);
+            }
+            else
+            {
+                panelRules.SetActive(!panelRules.activeSelf);
+                buttonNext.gameObject.SetActive(!buttonNext.gameObject.activeSelf);
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            if (panelRules.activeSelf)
+            {
+                panelTiles.SetActive(true);
+                panelRules.SetActive(false);
+                buttonNext.gameObject.SetActive(true);
+                buttonPrecedent.gameObject.SetActive(true);
+            }
+            else
+            {
+                panelTiles.SetActive(!panelTiles.activeSelf);
+                buttonNext.gameObject.SetActive(!buttonNext.gameObject.activeSelf);
+                buttonPrecedent.gameObject.SetActive(!buttonPrecedent.gameObject.activeSelf);
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             Next();
         }
-	}
+
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            Precedent();
+        }
+    }
 
     public void Next()
     {
@@ -30,12 +69,24 @@ public class RulesScript : MonoBehaviour {
         {
             panelRules.SetActive(false);
             panelTiles.SetActive(true);
+            buttonPrecedent.gameObject.SetActive(true);
         }
         else if(panelTiles.activeSelf)
         {
             panelTiles.SetActive(false);
             buttonNext.gameObject.SetActive(false);
+            buttonPrecedent.gameObject.SetActive(false);
             panelToken.SetActive(true);
+        }
+    }
+
+    public void Precedent()
+    {
+        if (panelTiles.activeSelf)
+        {
+            panelRules.SetActive(true);
+            panelTiles.SetActive(false);
+            buttonPrecedent.gameObject.SetActive(false);
         }
     }
 }

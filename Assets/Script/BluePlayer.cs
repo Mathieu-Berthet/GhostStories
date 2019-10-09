@@ -121,6 +121,9 @@ public class BluePlayer : MonoBehaviour
     public Text textNbTokenGreen;
     public Text textNbTokenYellow;
     public Text textNbTokenBlack;
+    public Text textNbTokenPower;
+    public Text textNbTokenYinYangBlue;
+    public Text textNbQI;
     public bool update;
 
     public GameObject explosion;
@@ -810,6 +813,10 @@ public class BluePlayer : MonoBehaviour
         textNbTokenGreen.text = "x " + NbGreenToken;
         textNbTokenYellow.text = "x " + NbYellowToken;
         textNbTokenBlack.text = "x " + NbBlackToken;
+        textNbQI.text = "QI : x " + Qi;
+        textNbTokenYinYangBlue.text = "x " + NbYinYangBlueToken;
+        textNbTokenPower.text = "x " + NbPowerToken;
+        //textNbTokenPower.text = "x " + NbBlackToken; // Jeton mantra, juste pour le joueur jaune
         update = false;
     }
 
