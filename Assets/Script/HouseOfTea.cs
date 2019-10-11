@@ -106,4 +106,13 @@ public class HouseOfTea : MonoBehaviour {
 
         //Pioche d'une carte fantome
     }
+
+
+    public void haunted()
+    {
+        if (hauntedTile)
+        {
+            gameObject.GetComponent<MeshRenderer>().material.color = new Color(0.25f, 0.25f, 0.25f, 1);
+        }
+    }
 }

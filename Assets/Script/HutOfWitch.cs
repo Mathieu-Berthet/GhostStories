@@ -27,10 +27,27 @@ public class HutOfWitch : MonoBehaviour {
     public IEnumerator KillGhost(GameObject player)
     {
         choose = false;
+
+        yield return new WaitForSeconds(0.5f);
+
+        panelGhost.SetActive(true);
+        while (!choose)
+        {
+            yield return new WaitForSeconds(1.0f);
+        }
+        if (choose)
+        {
+            Debug.Log("Couocu");
+            panelGhost.SetActive(false);
+            choose = false;
+        }
+
         if (player.name == "BluePlayer")
         {
             player.GetComponent<BluePlayer>().Qi -= 1;
             player.GetComponent<BluePlayer>().board.usingTile = true;
+            player.GetComponent<BluePlayer>().update = true;
+            player.GetComponent<Deplacement>().enabled = true;
         }
         else if (player.name == "GreenPlayer")
         {
@@ -48,18 +65,6 @@ public class HutOfWitch : MonoBehaviour {
             //player.GetComponent<RedPlayer>().board.usingTile = true;
         }
 
-        panelGhost.SetActive(true);
-        while (!choose)
-        {
-            yield return new WaitForSeconds(1.0f);
-        }
-        if (choose)
-        {
-            Debug.Log("Couocu");
-            panelGhost.SetActive(false);
-            choose = false;
-        }
-
         ghostToKill.transform.parent = defausse.transform;
         ghostToKill.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
         ghostToKill = null;
@@ -72,42 +77,51 @@ public class HutOfWitch : MonoBehaviour {
         switch(chooseenGhost)
         {
             case "BlueOne":
-                ghostToKill = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().bluePositionOne.transform.GetChild(0).gameObject;
+                ghostToKill = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().bluePositionOne.transform.GetChild(1).gameObject;
                 break;
             case "BlueTwo":
-                ghostToKill = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().bluePositionTwo.transform.GetChild(0).gameObject;
+                ghostToKill = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().bluePositionTwo.transform.GetChild(1).gameObject;
                 break;
             case "BlueThree":
-                ghostToKill = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().bluePositionThree.transform.GetChild(0).gameObject;
+                ghostToKill = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().bluePositionThree.transform.GetChild(1).gameObject;
                 break;
             case "RedOne":
-                ghostToKill = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().redPositionOne.transform.GetChild(0).gameObject;
+                ghostToKill = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().redPositionOne.transform.GetChild(1).gameObject;
                 break;
             case "RedTwo":
-                ghostToKill = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().redPositionTwo.transform.GetChild(0).gameObject;
+                ghostToKill = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().redPositionTwo.transform.GetChild(1).gameObject;
                 break;
             case "RedThree":
-                ghostToKill = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().redPositionThree.transform.GetChild(0).gameObject;
+                ghostToKill = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().redPositionThree.transform.GetChild(1).gameObject;
                 break;
             case "GreenOne":
-                ghostToKill = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().greenPositionOne.transform.GetChild(0).gameObject;
+                ghostToKill = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().greenPositionOne.transform.GetChild(1).gameObject;
                 break;
             case "GreenTwo":
-                ghostToKill = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().greenPositionTwo.transform.GetChild(0).gameObject;
+                ghostToKill = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().greenPositionTwo.transform.GetChild(1).gameObject;
                 break;
             case "GreenThree":
-                ghostToKill = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().greenPositionThree.transform.GetChild(0).gameObject;
+                ghostToKill = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().greenPositionThree.transform.GetChild(1).gameObject;
                 break;
             case "YellowOne":
-                ghostToKill = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().yellowPositionOne.transform.GetChild(0).gameObject;
+                ghostToKill = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().yellowPositionOne.transform.GetChild(1).gameObject;
                 break;
             case "YellowTwo":
-                ghostToKill = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().yellowPositionTwo.transform.GetChild(0).gameObject;
+                ghostToKill = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().yellowPositionTwo.transform.GetChild(1).gameObject;
                 break;
             case "YellowThree":
-                ghostToKill = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().yellowPositionThree.transform.GetChild(0).gameObject;
+                ghostToKill = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().yellowPositionThree.transform.GetChild(1).gameObject;
                 break;
         }
         choose = true;
+    }
+
+
+    public void haunted()
+    {
+        if (hauntedTile)
+        {
+            gameObject.GetComponent<MeshRenderer>().material.color = new Color(0.25f, 0.25f, 0.25f, 1);
+        }
     }
 }

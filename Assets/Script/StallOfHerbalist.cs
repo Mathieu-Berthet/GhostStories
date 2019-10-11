@@ -198,6 +198,7 @@ public class StallOfHerbalist : MonoBehaviour
             player.GetComponent<BluePlayer>().NbYellowToken += nbYellowFace;
             player.GetComponent<BluePlayer>().update = true;
             player.GetComponent<BluePlayer>().canLaunchDice = true;
+            player.GetComponent<Deplacement>().enabled = true;
         }
         /*else if (player.name == "GreenPlayer")
         {
@@ -217,5 +218,13 @@ public class StallOfHerbalist : MonoBehaviour
     {
         choosenToken = buttonClick.transform.GetChild(0).GetComponent<Text>().text;
         choose = true;
+    }
+
+    public void haunted()
+    {
+        if (hauntedTile)
+        {
+            gameObject.GetComponent<MeshRenderer>().material.color = new Color(0.25f, 0.25f, 0.25f, 1);
+        }
     }
 }

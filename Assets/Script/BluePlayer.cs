@@ -29,7 +29,7 @@ public class BluePlayer : MonoBehaviour
     public bool powerSecondSouffle;
     public bool powerSouffleCeleste;
 
-    private bool useTilePower;
+    public bool useTilePower;
     private bool fight;
 
     [SerializeField]
@@ -59,24 +59,15 @@ public class BluePlayer : MonoBehaviour
     private CubeScript cube;
 
     //Les tuiles
-    [SerializeField]
-    private GameObject houseOfTea;
-    [SerializeField]
-    private GameObject graveyard;
-    [SerializeField]
-    private GameObject bouddhisteTemple;
-    [SerializeField]
-    private GameObject priestCircle;
-    [SerializeField]
-    private GameObject taoisteAutel;
-    [SerializeField]
-    private GameObject herbalistStall;
-    [SerializeField]
-    private GameObject witchHut;
-    [SerializeField]
-    private GameObject windCelestialFlag;
-    [SerializeField]
-    private GameObject nightTower;
+    public GameObject houseOfTea;
+    public GameObject graveyard;
+    public GameObject bouddhisteTemple;
+    public GameObject priestCircle;
+    public GameObject taoisteAutel;
+    public GameObject herbalistStall;
+    public GameObject witchHut;
+    public GameObject windCelestialFlag;
+    public GameObject nightTower;
 
     public string tileName;
     public string ghostName;
@@ -85,6 +76,7 @@ public class BluePlayer : MonoBehaviour
     public GameObject ghost;
     public GameObject ghost2;
     public bool canLaunchDice;
+    public bool canLaunchBlackDice;
 
     [SerializeField]
     private PoolManagerDeck deck;
@@ -273,6 +265,7 @@ public class BluePlayer : MonoBehaviour
         greenBoard = GameObject.Find("PlateauJoueurVert").GetComponent<boardColor>();
         yellowBoard = GameObject.Find("PlateauJoueurJaune").GetComponent<boardColor>();
         canLaunchDice = true;
+        canLaunchBlackDice = true;
         updateUI();
     }
 	
@@ -291,7 +284,13 @@ public class BluePlayer : MonoBehaviour
             Application.Quit();
         }
 
-        if(Input.GetKeyDown(KeyCode.N))
+        RaycastHit hitt;
+        if (Physics.Raycast(transform.position, Vector3.down, out hitt, 1.0f))
+        {
+            tileName = hitt.transform.gameObject.name;
+        }
+
+        if (Input.GetKeyDown(KeyCode.N))
         {
             gm.nextTurn();
         }
@@ -301,14 +300,9 @@ public class BluePlayer : MonoBehaviour
             StartCoroutine(LaunchDice());
         }
 
-        if (Input.GetKeyDown(KeyCode.K))
+        if(Input.GetKeyDown(KeyCode.E) && canLaunchDice && canLaunchBlackDice)
         {
-            StartCoroutine(witchHut.GetComponent<HutOfWitch>().KillGhost(gameObject));
-        }
-
-        if(Input.GetKeyDown(KeyCode.E) && canLaunchDice)
-        {
-            StartCoroutine(herbalistStall.GetComponent<StallOfHerbalist>().getToken(gameObject));
+            UsePowerTile();
         }
 
         if (update)
@@ -320,6 +314,7 @@ public class BluePlayer : MonoBehaviour
         {
             panelJeton.SetActive(!panelJeton.activeSelf);
         }
+
         checkGhost();
     }
 
@@ -330,17 +325,18 @@ public class BluePlayer : MonoBehaviour
 
     public void DrawAGhost()
     {
-        if (blueBoard.nbCardOnBoard == 3)
-        {
-            textInfo.gameObject.SetActive(true);
-            textInfo.text = "You have too ghosts on your field, so you lose one life";
-            Qi -= 1;
-            return;
-        }
         if (blueBoard.nbCardOnBoard == 3 && redBoard.nbCardOnBoard == 3 && greenBoard.nbCardOnBoard == 3 && yellowBoard.nbCardOnBoard == 3)
         {
             textInfo.gameObject.SetActive(true);
             textInfo.text = "You can't draw another Ghost, there is too ghosts on the field";
+            return;
+        }
+        else if (blueBoard.nbCardOnBoard == 3 && !useTilePower)
+        {
+            textInfo.gameObject.SetActive(true);
+            textInfo.text = "You have too ghosts on your field, so you lose one life";
+            Qi -= 1;
+            update = true;
             return;
         }
         gameObject.GetComponent<Deplacement>().enabled = false;
@@ -397,6 +393,8 @@ public class BluePlayer : MonoBehaviour
         textInfo.gameObject.SetActive(false);
         drawedCard.gameObject.SetActive(false);
         gameObject.GetComponent<Deplacement>().enabled = true;
+        canLaunchBlackDice = true;
+        useTilePower = false;
         hasDraw = false;
     }
 
@@ -419,12 +417,7 @@ public class BluePlayer : MonoBehaviour
 
     public void UsePowerTile()
     {
-        RaycastHit hitt;
-        if (Physics.Raycast(transform.position, Vector3.down, out hitt, 1.0f))
-        {
-            tileName = hitt.transform.gameObject.name;
-        }
-
+        useTilePower = true;
         switch(tileName)
         {
             case "MaisonThe":
@@ -433,11 +426,16 @@ public class BluePlayer : MonoBehaviour
                 break;
             case "HutteSorciere":
                 Debug.Log("Hutte de la sorcière");
-                //witchHut.GetComponent<HutOfWitch>().KillGhost();
+                canLaunchDice = false;
+                gameObject.GetComponent<Deplacement>().enabled = false;
+                StartCoroutine(witchHut.GetComponent<HutOfWitch>().KillGhost(gameObject));
+                canLaunchDice = true;
                 break;
             case "EchoppeHerboriste":
                 Debug.Log("Echoppe de l'herboriste");
-                //herbalistStall.GetComponent<StallOfHerbalist>().getToken();
+                canLaunchDice = false;
+                gameObject.GetComponent<Deplacement>().enabled = false;
+                StartCoroutine(herbalistStall.GetComponent<StallOfHerbalist>().getToken(gameObject));
                 break;
             case "AutelTaoiste":
                 Debug.Log("Autel Taoiste");
@@ -445,7 +443,8 @@ public class BluePlayer : MonoBehaviour
                 break;
             case "Cimetiere":
                 Debug.Log("Le cimetière");
-                //graveyard.GetComponent<Graveyard>().Resurrect();
+                canLaunchBlackDice = false;
+                graveyard.GetComponent<Graveyard>().Resurrect(gameObject);
                 break;
             case "PavillonVentCeleste":
                 Debug.Log("Le pavillon du vent celeste");
@@ -457,7 +456,11 @@ public class BluePlayer : MonoBehaviour
                 break;
             case "CerclePierre":
                 Debug.Log("Le cercle de prière");
-                //priestCircle.GetComponent<PriestCircle>().reduceGhostLife();
+                gameObject.GetComponent<Deplacement>().enabled = false;
+                canLaunchDice = false;
+                StartCoroutine(priestCircle.GetComponent<PriestCircle>().reduceGhostLife());
+                gameObject.GetComponent<Deplacement>().enabled = true;
+                canLaunchDice = true;
                 break;
             case "TempleBouddhiste":
                 Debug.Log("Temple Bouddhiste");
@@ -659,6 +662,71 @@ public class BluePlayer : MonoBehaviour
             {
                 //D'abord, check si on a un autre joueur (ou plusieurs) sur la meme case que nous.
                 // Check résultat Dés + jetons pour tuer le fantome
+                if (ghost.GetComponent<Ghost>().couleur == "red")
+                {
+                    int resultRed = ghost.GetComponent<Ghost>().life - nbRedFace;
+                    if(nbRedToken >= resultRed)
+                    {
+                        nbRedToken -= resultRed;
+                        explosion.transform.GetChild(2).GetComponent<ParticleSystem>().Play();
+                        ghost.transform.parent = defausse.transform;
+                        ghost.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+                        ghost = null;
+                        update = true;
+                    }
+                }
+                else if (ghost.GetComponent<Ghost>().couleur == "blue")
+                {
+                    int resultBlue = ghost.GetComponent<Ghost>().life - nbBlueFace;
+                    if (nbBlueToken >= resultBlue)
+                    {
+                        nbBlueToken -= resultBlue;
+                        explosion.transform.GetChild(2).GetComponent<ParticleSystem>().Play();
+                        ghost.transform.parent = defausse.transform;
+                        ghost.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+                        ghost = null;
+                        update = true;
+                    }
+                }
+                else if (ghost.GetComponent<Ghost>().couleur == "green")
+                {
+                    int resultGreen = ghost.GetComponent<Ghost>().life - nbGreenFace;
+                    if (nbGreenToken >= resultGreen)
+                    {
+                        nbGreenToken -= resultGreen;
+                        explosion.transform.GetChild(2).GetComponent<ParticleSystem>().Play();
+                        ghost.transform.parent = defausse.transform;
+                        ghost.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+                        ghost = null;
+                        update = true;
+                    }
+                }
+                else if (ghost.GetComponent<Ghost>().couleur == "yellow")
+                {
+                    int resultYellow = ghost.GetComponent<Ghost>().life - nbYellowFace;
+                    if (nbYellowToken >= resultYellow)
+                    {
+                        nbYellowToken -= resultYellow;
+                        explosion.transform.GetChild(2).GetComponent<ParticleSystem>().Play();
+                        ghost.transform.parent = defausse.transform;
+                        ghost.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+                        ghost = null;
+                        update = true;
+                    }
+                }
+                else if (ghost.GetComponent<Ghost>().couleur == "black")
+                {
+                    int resultBlack = ghost.GetComponent<Ghost>().life - nbBlackFace;
+                    if (nbBlackToken >= resultBlack)
+                    {
+                        nbBlackToken -= resultBlack;
+                        explosion.transform.GetChild(2).GetComponent<ParticleSystem>().Play();
+                        ghost.transform.parent = defausse.transform;
+                        ghost.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+                        ghost = null;
+                        update = true;
+                    }
+                }
             }
             else
             {

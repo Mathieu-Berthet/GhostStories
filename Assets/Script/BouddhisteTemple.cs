@@ -49,4 +49,13 @@ public class BouddhisteTemple : MonoBehaviour {
         //Kill le fantome qui apparait sur la meme case que le bouddha
         //Remettre le bouddha a sa place et augmenter le nombre de bouddha de la tuile.
     }
+
+
+    public void haunted()
+    {
+        if (hauntedTile)
+        {
+            gameObject.GetComponent<MeshRenderer>().material.color = new Color(0.25f, 0.25f, 0.25f, 1);
+        }
+    }
 }

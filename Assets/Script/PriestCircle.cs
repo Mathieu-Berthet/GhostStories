@@ -20,24 +20,14 @@ public class PriestCircle : MonoBehaviour {
     void Start ()
     {
         tokenStock = GameObject.Find("TokenStock").GetComponent<StockOfToken>();
-        //TEST
-        choseenToken = "Red";
+
         choose = false;
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-        //To change. It was for test, and it is okay. 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            StartCoroutine(reduceGhostLife());
-        }
-        /*if(Input.GetMouseButtonDown(1))
-        {
-            hauntedTile = true;
-            haunted();
-        }*/
+
     }
 
     public IEnumerator reduceGhostLife()
