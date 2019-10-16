@@ -227,4 +227,12 @@ public class StallOfHerbalist : MonoBehaviour
             gameObject.GetComponent<MeshRenderer>().material.color = new Color(0.25f, 0.25f, 0.25f, 1);
         }
     }
+
+    public void Unhaunted()
+    {
+        if (!hauntedTile)
+        {
+            gameObject.GetComponent<MeshRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 1);
+        }
+    }
 }

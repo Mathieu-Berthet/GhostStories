@@ -264,6 +264,13 @@ public class PriestCircle : MonoBehaviour {
         }
     }
 
+    public void Unhaunted()
+    {
+        if (!hauntedTile)
+        {
+            gameObject.GetComponent<MeshRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 1);
+        }
+    }
 
     public void MustChooseToken(Button buttonClick)
     {

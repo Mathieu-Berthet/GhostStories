@@ -105,7 +105,9 @@ public class Graveyard : MonoBehaviour {
             case "DrawGhostFace":
                 if (player.name == "BluePlayer")
                 {
+                    player.GetComponent<BluePlayer>().state = BluePlayer.STATE_GAME.STATE_DRAW;
                     player.GetComponent<BluePlayer>().DrawAGhost();
+                    player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
                 }
                 else if (player.name == "RedPlayer")
                 {
@@ -208,6 +210,14 @@ public class Graveyard : MonoBehaviour {
         if (hauntedTile)
         {
             gameObject.GetComponent<MeshRenderer>().material.color = new Color(0.25f, 0.25f, 0.25f, 1);
+        }
+    }
+
+    public void Unhaunted()
+    {
+        if (!hauntedTile)
+        {
+            gameObject.GetComponent<MeshRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 1);
         }
     }
 }

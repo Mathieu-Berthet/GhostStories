@@ -242,6 +242,14 @@ public class BluePlayer : MonoBehaviour
     }
     #endregion
 
+    public enum STATE_GAME
+    {
+        STATE_DRAW = 0,
+        STATE_PLAYER = 1
+    }
+
+    public STATE_GAME state;
+    public Text textInfoPhase;
     // Use this for initialization
     void Start ()
     {
@@ -256,7 +264,7 @@ public class BluePlayer : MonoBehaviour
         NbYinYangBlueToken = 1; //Max possible.
 
         hasDraw = false;
-
+        state = STATE_GAME.STATE_DRAW;
         deck = GameObject.Find("Deck").GetComponent<PoolManagerDeck>();
         board = GameObject.Find("Canvas").GetComponent<BoardPosition>();
 
@@ -266,6 +274,7 @@ public class BluePlayer : MonoBehaviour
         yellowBoard = GameObject.Find("PlateauJoueurJaune").GetComponent<boardColor>();
         canLaunchDice = true;
         canLaunchBlackDice = true;
+        useTilePower = false;
         updateUI();
     }
 	
@@ -274,7 +283,6 @@ public class BluePlayer : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire2") && !hasDraw)
         {
-            hasDraw = true;
             DrawAGhost();
         }
 
@@ -315,6 +323,15 @@ public class BluePlayer : MonoBehaviour
             panelJeton.SetActive(!panelJeton.activeSelf);
         }
 
+        if(state == STATE_GAME.STATE_DRAW)
+        {
+            textInfoPhase.text = " Phase de pioche, \n il vous faut piochez une carte (Clic droit souris)";
+        }
+        else if (state == STATE_GAME.STATE_PLAYER)
+        {
+            textInfoPhase.text = " Phase de jeu, vous pouvez vous déplacer (Clic gauche souris), \n attaquer un fantome se trouvant devant vous (Touche D), \n ou bien utilisez le pouvoir de la tuile sur laquelle vous vous trouvez (Touche E)";
+        }
+
         checkGhost();
     }
 
@@ -325,77 +342,88 @@ public class BluePlayer : MonoBehaviour
 
     public void DrawAGhost()
     {
-        if (blueBoard.nbCardOnBoard == 3 && redBoard.nbCardOnBoard == 3 && greenBoard.nbCardOnBoard == 3 && yellowBoard.nbCardOnBoard == 3)
+        if (state == STATE_GAME.STATE_DRAW)
         {
+            hasDraw = true;
+            gameObject.GetComponent<Deplacement>().enabled = false;
+            textInfo.text = " ";
+            if (blueBoard.nbCardOnBoard == 3 && redBoard.nbCardOnBoard == 3 && greenBoard.nbCardOnBoard == 3 && yellowBoard.nbCardOnBoard == 3)
+            {
+                textInfo.gameObject.SetActive(true);
+                textInfo.text = "You can't draw another Ghost, there is too ghosts on the field";
+                hasDraw = false;
+                return;
+            }
+            else if (blueBoard.nbCardOnBoard == 3 && !useTilePower)
+            {
+                textInfo.gameObject.SetActive(true);
+                textInfo.text = "You have too ghosts on your field, so you lose one life";
+                Qi -= 1;
+                update = true;
+                hasDraw = false;
+                return;
+            }
+            panel.SetActive(true);
             textInfo.gameObject.SetActive(true);
-            textInfo.text = "You can't draw another Ghost, there is too ghosts on the field";
-            return;
+            drawedCard.gameObject.SetActive(true);
+            card = deck.GetPoolByName(PoolNameDeck.ghost).GetItem(transform, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity, true, false, 0);
+            card.transform.parent = null;
+            card.SetActive(false);
+            drawedCard.sprite = card.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
         }
-        else if (blueBoard.nbCardOnBoard == 3 && !useTilePower)
-        {
-            textInfo.gameObject.SetActive(true);
-            textInfo.text = "You have too ghosts on your field, so you lose one life";
-            Qi -= 1;
-            update = true;
-            return;
-        }
-        gameObject.GetComponent<Deplacement>().enabled = false;
-        panel.SetActive(true);
-        textInfo.gameObject.SetActive(true);
-        drawedCard.gameObject.SetActive(true);
-        card = deck.GetPoolByName(PoolNameDeck.ghost).GetItem(transform, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity, true, false, 0);
-        card.transform.parent = null;
-        card.SetActive(false);
-        drawedCard.sprite = card.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
     }
 
     public void SelectGhostPosition(GameObject position)
     {
-        if (card.GetComponent<Ghost>().couleur == "black" && position.transform.parent.GetComponent<boardColor>().color != colorPlayer && blueBoard.nbCardOnBoard < 3)
+        if (state == STATE_GAME.STATE_DRAW)
         {
-            textInfo.text = "Black ghost must be played on your board";
-            return;
-        }
-        else if (card.GetComponent<Ghost>().couleur != "black" && card.GetComponent<Ghost>().couleur != position.transform.parent.GetComponent<boardColor>().color)
-        {
-            if ((card.GetComponent<Ghost>().couleur == "red" && redBoard.nbCardOnBoard < 3) ||
-                (card.GetComponent<Ghost>().couleur == "blue" && blueBoard.nbCardOnBoard < 3) ||
-                (card.GetComponent<Ghost>().couleur == "yellow" && yellowBoard.nbCardOnBoard < 3) ||
-                (card.GetComponent<Ghost>().couleur == "green" && greenBoard.nbCardOnBoard < 3))
+            if (card.GetComponent<Ghost>().couleur == "black" && position.transform.parent.GetComponent<boardColor>().color != colorPlayer && blueBoard.nbCardOnBoard < 3)
             {
-                textInfo.text = "You can't choose this place. It is not the same color as the card";
+                textInfo.text = "Black ghost must be played on your board";
                 return;
             }
+            else if (card.GetComponent<Ghost>().couleur != "black" && card.GetComponent<Ghost>().couleur != position.transform.parent.GetComponent<boardColor>().color)
+            {
+                if ((card.GetComponent<Ghost>().couleur == "red" && redBoard.nbCardOnBoard < 3) ||
+                    (card.GetComponent<Ghost>().couleur == "blue" && blueBoard.nbCardOnBoard < 3) ||
+                    (card.GetComponent<Ghost>().couleur == "yellow" && yellowBoard.nbCardOnBoard < 3) ||
+                    (card.GetComponent<Ghost>().couleur == "green" && greenBoard.nbCardOnBoard < 3))
+                {
+                    textInfo.text = "You can't choose this place. It is not the same color as the card";
+                    return;
+                }
+            }
+            card.transform.SetParent(position.transform);
+            card.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+            card.transform.localEulerAngles = new Vector3(90.0f, 0.0f, 180.0f);
+            card.transform.localScale = new Vector3(15.0f, 10.0f, 1);
+            card.SetActive(true);
+            card.transform.parent.GetComponent<BoxCollider>().enabled = true;
+            if (position.transform.parent.GetComponent<boardColor>().color == "blue")
+            {
+                blueBoard.nbCardOnBoard++;
+            }
+            else if (position.transform.parent.GetComponent<boardColor>().color == "green")
+            {
+                greenBoard.nbCardOnBoard++;
+            }
+            else if (position.transform.parent.GetComponent<boardColor>().color == "red")
+            {
+                redBoard.nbCardOnBoard++;
+            }
+            else if (position.transform.parent.GetComponent<boardColor>().color == "yellow")
+            {
+                yellowBoard.nbCardOnBoard++;
+            }
+            panel.SetActive(false);
+            textInfo.gameObject.SetActive(false);
+            drawedCard.gameObject.SetActive(false);
+            gameObject.GetComponent<Deplacement>().enabled = true;
+            canLaunchBlackDice = true;
+            useTilePower = false;
+            hasDraw = false;
+            state = STATE_GAME.STATE_PLAYER;
         }
-        card.transform.SetParent(position.transform);
-        card.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
-        card.transform.localEulerAngles = new Vector3(90.0f, 0.0f, 180.0f);
-        card.transform.localScale = new Vector3(15.0f, 10.0f, 1);
-        card.SetActive(true);
-        card.transform.parent.GetComponent<BoxCollider>().enabled = true;
-        if (position.transform.parent.GetComponent<boardColor>().color == "blue")
-        {
-            blueBoard.nbCardOnBoard++;
-        }
-        else if (position.transform.parent.GetComponent<boardColor>().color == "green")
-        {
-            greenBoard.nbCardOnBoard++;
-        }
-        else if (position.transform.parent.GetComponent<boardColor>().color == "red")
-        {
-            redBoard.nbCardOnBoard++;
-        }
-        else if (position.transform.parent.GetComponent<boardColor>().color == "yellow")
-        {
-            yellowBoard.nbCardOnBoard++;
-        }
-        panel.SetActive(false);
-        textInfo.gameObject.SetActive(false);
-        drawedCard.gameObject.SetActive(false);
-        gameObject.GetComponent<Deplacement>().enabled = true;
-        canLaunchBlackDice = true;
-        useTilePower = false;
-        hasDraw = false;
     }
 
     public void SecondSouffle()
@@ -417,324 +445,331 @@ public class BluePlayer : MonoBehaviour
 
     public void UsePowerTile()
     {
-        useTilePower = true;
-        switch(tileName)
+        if (state == STATE_GAME.STATE_PLAYER)
         {
-            case "MaisonThe":
-                Debug.Log("Maison du Thé");
-                //houseOfTea.GetComponent<HouseOfTea>().GainTokenAndQI(gameObject);
-                break;
-            case "HutteSorciere":
-                Debug.Log("Hutte de la sorcière");
-                canLaunchDice = false;
-                gameObject.GetComponent<Deplacement>().enabled = false;
-                StartCoroutine(witchHut.GetComponent<HutOfWitch>().KillGhost(gameObject));
-                canLaunchDice = true;
-                break;
-            case "EchoppeHerboriste":
-                Debug.Log("Echoppe de l'herboriste");
-                canLaunchDice = false;
-                gameObject.GetComponent<Deplacement>().enabled = false;
-                StartCoroutine(herbalistStall.GetComponent<StallOfHerbalist>().getToken(gameObject));
-                break;
-            case "AutelTaoiste":
-                Debug.Log("Autel Taoiste");
-                //taoisteAutel.GetComponent<TaoisteAutel>().UnhauntTile();
-                break;
-            case "Cimetiere":
-                Debug.Log("Le cimetière");
-                canLaunchBlackDice = false;
-                graveyard.GetComponent<Graveyard>().Resurrect(gameObject);
-                break;
-            case "PavillonVentCeleste":
-                Debug.Log("Le pavillon du vent celeste");
-                //windCelestialFlag.GetComponent<WindCelestialFlag>().MovePlayerAndGhost();
-                break;
-            case "TourVeilleurNuit":
-                Debug.Log("Tour du veilleur de nuit");
-                //nightTower.GetComponent<NightTower>().RetreatGhost();
-                break;
-            case "CerclePierre":
-                Debug.Log("Le cercle de prière");
-                gameObject.GetComponent<Deplacement>().enabled = false;
-                canLaunchDice = false;
-                StartCoroutine(priestCircle.GetComponent<PriestCircle>().reduceGhostLife());
-                gameObject.GetComponent<Deplacement>().enabled = true;
-                canLaunchDice = true;
-                break;
-            case "TempleBouddhiste":
-                Debug.Log("Temple Bouddhiste");
-                //bouddhisteTemple.GetComponent<BouddhisteTemple>().getBouddha();
-                break;
-            default:
-                break;
+            useTilePower = true;
+            switch (tileName)
+            {
+                case "MaisonThe":
+                    Debug.Log("Maison du Thé");
+                    //houseOfTea.GetComponent<HouseOfTea>().GainTokenAndQI(gameObject);
+                    break;
+                case "HutteSorciere":
+                    Debug.Log("Hutte de la sorcière");
+                    canLaunchDice = false;
+                    gameObject.GetComponent<Deplacement>().enabled = false;
+                    StartCoroutine(witchHut.GetComponent<HutOfWitch>().KillGhost(gameObject));
+                    break;
+                case "EchoppeHerboriste":
+                    Debug.Log("Echoppe de l'herboriste");
+                    canLaunchDice = false;
+                    gameObject.GetComponent<Deplacement>().enabled = false;
+                    StartCoroutine(herbalistStall.GetComponent<StallOfHerbalist>().getToken(gameObject));
+                    break;
+                case "AutelTaoiste":
+                    Debug.Log("Autel Taoiste");
+                    taoisteAutel.GetComponent<TaoisteAutel>().UnhauntTile(gameObject);
+                    break;
+                case "Cimetiere":
+                    Debug.Log("Le cimetière");
+                    canLaunchBlackDice = false;
+                    graveyard.GetComponent<Graveyard>().Resurrect(gameObject);
+                    break;
+                case "PavillonVentCeleste":
+                    Debug.Log("Le pavillon du vent celeste");
+                    //windCelestialFlag.GetComponent<WindCelestialFlag>().MovePlayerAndGhost();
+                    break;
+                case "TourVeilleurNuit":
+                    Debug.Log("Tour du veilleur de nuit");
+                    //nightTower.GetComponent<NightTower>().RetreatGhost();
+                    break;
+                case "CerclePierre":
+                    Debug.Log("Le cercle de prière");
+                    gameObject.GetComponent<Deplacement>().enabled = false;
+                    canLaunchDice = false;
+                    StartCoroutine(priestCircle.GetComponent<PriestCircle>().reduceGhostLife());
+                    gameObject.GetComponent<Deplacement>().enabled = true;
+                    canLaunchDice = true;
+                    break;
+                case "TempleBouddhiste":
+                    Debug.Log("Temple Bouddhiste");
+                    //bouddhisteTemple.GetComponent<BouddhisteTemple>().getBouddha();
+                    break;
+                default:
+                    break;
+            }
+            state = STATE_GAME.STATE_DRAW;
         }
     }
 
     public IEnumerator LaunchDice()
     {
-        canLaunchDice = false;
-        nbRedFace = 0;
-        nbBlueFace = 0;
-        nbBlackFace = 0;
-        nbWhiteFace = 0;
-        nbGreenFace = 0;
-        nbYellowFace = 0;
-
-        for (int i = 0; i < 3; i++)
+        if (state == STATE_GAME.STATE_PLAYER)
         {
-            GameObject go = Instantiate(dice, new Vector3(i, 2, 0), Quaternion.identity);
-            go.AddComponent<CubeScript>();
-            cube = go.GetComponent<CubeScript>();
-            if (i == 0)
-            {
-                diceOne = go;
-            }
-            else if (i == 1)
-            {
-                diceTwo = go;
-            }
-            else if (i == 2)
-            {
-                diceThree = go;
-            }
+            canLaunchDice = false;
+            nbRedFace = 0;
+            nbBlueFace = 0;
+            nbBlackFace = 0;
+            nbWhiteFace = 0;
+            nbGreenFace = 0;
+            nbYellowFace = 0;
 
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-
-            if (Physics.Raycast(ray, out hit))
+            for (int i = 0; i < 3; i++)
             {
-                cube.rb.AddForce(hit.point * cube.force);
-            }
-        }
-        yield return new WaitForSeconds(5.0f);
-
-        resultDiceOne = diceOne.GetComponent<CubeScript>().face;
-        switch (resultDiceOne)
-        {
-            case "RedFace":
-                nbRedFace++;
-                Destroy(diceOne);
-                break;
-            case "BlueFace":
-                nbBlueFace++;
-                Destroy(diceOne);
-                break;
-            case "YellowFace":
-                nbYellowFace++;
-                Destroy(diceOne);
-                break;
-            case "GreenFace":
-                nbGreenFace++;
-                Destroy(diceOne);
-                break;
-            case "WhiteFace":
-                nbWhiteFace++;
-                Destroy(diceOne);
-                break;
-            case "BlackFace":
-                nbBlackFace++;
-                Destroy(diceOne);
-                break;
-            default:
-                break;
-        }
-
-        resultDiceTwo = diceTwo.GetComponent<CubeScript>().face;
-        switch (resultDiceTwo)
-        {
-            case "RedFace":
-                nbRedFace++;
-                Destroy(diceTwo);
-                break;
-            case "BlueFace":
-                nbBlueFace++;
-                Destroy(diceTwo);
-                break;
-            case "YellowFace":
-                nbYellowFace++;
-                Destroy(diceTwo);
-                break;
-            case "GreenFace":
-                nbGreenFace++;
-                Destroy(diceTwo);
-                break;
-            case "WhiteFace":
-                nbWhiteFace++;
-                Destroy(diceTwo);
-                break;
-            case "BlackFace":
-                nbBlackFace++;
-                Destroy(diceTwo);
-                break;
-            default:
-                break;
-        }
-        resultDiceThree = diceThree.GetComponent<CubeScript>().face;
-        switch (resultDiceThree)
-        {
-            case "RedFace":
-                nbRedFace++;
-                Destroy(diceThree);
-                break;
-            case "BlueFace":
-                nbBlueFace++;
-                Destroy(diceThree);
-                break;
-            case "YellowFace":
-                nbYellowFace++;
-                Destroy(diceThree);
-                break;
-            case "GreenFace":
-                nbGreenFace++;
-                Destroy(diceThree);
-                break;
-            case "WhiteFace":
-                nbWhiteFace++;
-                Destroy(diceThree);
-                break;
-            case "BlackFace":
-                nbBlackFace++;
-                Destroy(diceThree);
-                break;
-            default:
-                break;
-        }
-
-
-        yield return new WaitForSeconds(2.0f);
-        while (nbWhiteFace > 0)
-        {
-            panelButtonChoice.SetActive(true);
-            gameObject.GetComponent<Deplacement>().enabled = false;
-            while (!choose)
-            {
-                yield return new WaitForSeconds(2.0f);
-            }
-            if (choose)
-            {
-                switch (choosenToken)
+                GameObject go = Instantiate(dice, new Vector3(i, 2, 0), Quaternion.identity);
+                go.AddComponent<CubeScript>();
+                cube = go.GetComponent<CubeScript>();
+                if (i == 0)
                 {
-                    case "Red":
-                        nbRedFace++;
-                        break;
-                    case "Blue":
-                        nbBlueFace++;
-                        break;
-                    case "Yellow":
-                        nbYellowFace++;
-                        break;
-                    case "Green":
-                        nbGreenFace++;
-                        break;
-                    case "Black":
-                        nbBlackFace++;
-                        break;
-                    default:
-                        break;
+                    diceOne = go;
                 }
-                choose = false;
-                panelButtonChoice.SetActive(false);
-            }
-            nbWhiteFace--;
-        }
-
-        yield return new WaitForSeconds(2.0f);
-        panelButtonChoice.SetActive(false);
-
-        //Partie combat
-        if (ghost != null || ghost2 != null)
-        {
-            if ((ghost.GetComponent<Ghost>().couleur == "red" && nbRedFace >= ghost.GetComponent<Ghost>().life) || (ghost.GetComponent<Ghost>().couleur == "blue" && nbBlueFace >= ghost.GetComponent<Ghost>().life)
-                || (ghost.GetComponent<Ghost>().couleur == "green" && nbGreenFace >= ghost.GetComponent<Ghost>().life) || (ghost.GetComponent<Ghost>().couleur == "yellow" && nbYellowFace >= ghost.GetComponent<Ghost>().life)
-                || (ghost.GetComponent<Ghost>().couleur == "black" && nbBlackFace >= ghost.GetComponent<Ghost>().life))
-            {
-                //On ajouteras des particules à la mort du fantome (style explosion)
-                explosion.transform.GetChild(2).GetComponent<ParticleSystem>().Play();
-                ghost.transform.parent = defausse.transform;
-                ghost.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
-                ghost = null;
-            }
-
-            else if ((ghost.GetComponent<Ghost>().couleur == "red" && nbRedFace < ghost.GetComponent<Ghost>().life) || (ghost.GetComponent<Ghost>().couleur == "blue" && nbBlueFace < ghost.GetComponent<Ghost>().life)
-                || (ghost.GetComponent<Ghost>().couleur == "green" && nbGreenFace < ghost.GetComponent<Ghost>().life) || (ghost.GetComponent<Ghost>().couleur == "yellow" && nbYellowFace < ghost.GetComponent<Ghost>().life)
-                || (ghost.GetComponent<Ghost>().couleur == "black" && nbBlackFace < ghost.GetComponent<Ghost>().life))
-            {
-                //D'abord, check si on a un autre joueur (ou plusieurs) sur la meme case que nous.
-                // Check résultat Dés + jetons pour tuer le fantome
-                if (ghost.GetComponent<Ghost>().couleur == "red")
+                else if (i == 1)
                 {
-                    int resultRed = ghost.GetComponent<Ghost>().life - nbRedFace;
-                    if(nbRedToken >= resultRed)
+                    diceTwo = go;
+                }
+                else if (i == 2)
+                {
+                    diceThree = go;
+                }
+
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
+
+                if (Physics.Raycast(ray, out hit))
+                {
+                    cube.rb.AddForce(hit.point * cube.force);
+                }
+            }
+            yield return new WaitForSeconds(5.0f);
+
+            resultDiceOne = diceOne.GetComponent<CubeScript>().face;
+            switch (resultDiceOne)
+            {
+                case "RedFace":
+                    nbRedFace++;
+                    Destroy(diceOne);
+                    break;
+                case "BlueFace":
+                    nbBlueFace++;
+                    Destroy(diceOne);
+                    break;
+                case "YellowFace":
+                    nbYellowFace++;
+                    Destroy(diceOne);
+                    break;
+                case "GreenFace":
+                    nbGreenFace++;
+                    Destroy(diceOne);
+                    break;
+                case "WhiteFace":
+                    nbWhiteFace++;
+                    Destroy(diceOne);
+                    break;
+                case "BlackFace":
+                    nbBlackFace++;
+                    Destroy(diceOne);
+                    break;
+                default:
+                    break;
+            }
+
+            resultDiceTwo = diceTwo.GetComponent<CubeScript>().face;
+            switch (resultDiceTwo)
+            {
+                case "RedFace":
+                    nbRedFace++;
+                    Destroy(diceTwo);
+                    break;
+                case "BlueFace":
+                    nbBlueFace++;
+                    Destroy(diceTwo);
+                    break;
+                case "YellowFace":
+                    nbYellowFace++;
+                    Destroy(diceTwo);
+                    break;
+                case "GreenFace":
+                    nbGreenFace++;
+                    Destroy(diceTwo);
+                    break;
+                case "WhiteFace":
+                    nbWhiteFace++;
+                    Destroy(diceTwo);
+                    break;
+                case "BlackFace":
+                    nbBlackFace++;
+                    Destroy(diceTwo);
+                    break;
+                default:
+                    break;
+            }
+            resultDiceThree = diceThree.GetComponent<CubeScript>().face;
+            switch (resultDiceThree)
+            {
+                case "RedFace":
+                    nbRedFace++;
+                    Destroy(diceThree);
+                    break;
+                case "BlueFace":
+                    nbBlueFace++;
+                    Destroy(diceThree);
+                    break;
+                case "YellowFace":
+                    nbYellowFace++;
+                    Destroy(diceThree);
+                    break;
+                case "GreenFace":
+                    nbGreenFace++;
+                    Destroy(diceThree);
+                    break;
+                case "WhiteFace":
+                    nbWhiteFace++;
+                    Destroy(diceThree);
+                    break;
+                case "BlackFace":
+                    nbBlackFace++;
+                    Destroy(diceThree);
+                    break;
+                default:
+                    break;
+            }
+
+
+            yield return new WaitForSeconds(2.0f);
+            while (nbWhiteFace > 0)
+            {
+                panelButtonChoice.SetActive(true);
+                gameObject.GetComponent<Deplacement>().enabled = false;
+                while (!choose)
+                {
+                    yield return new WaitForSeconds(2.0f);
+                }
+                if (choose)
+                {
+                    switch (choosenToken)
                     {
-                        nbRedToken -= resultRed;
-                        explosion.transform.GetChild(2).GetComponent<ParticleSystem>().Play();
-                        ghost.transform.parent = defausse.transform;
-                        ghost.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
-                        ghost = null;
-                        update = true;
+                        case "Red":
+                            nbRedFace++;
+                            break;
+                        case "Blue":
+                            nbBlueFace++;
+                            break;
+                        case "Yellow":
+                            nbYellowFace++;
+                            break;
+                        case "Green":
+                            nbGreenFace++;
+                            break;
+                        case "Black":
+                            nbBlackFace++;
+                            break;
+                        default:
+                            break;
+                    }
+                    choose = false;
+                    panelButtonChoice.SetActive(false);
+                }
+                nbWhiteFace--;
+            }
+
+            yield return new WaitForSeconds(2.0f);
+            panelButtonChoice.SetActive(false);
+
+            //Partie combat
+            if (ghost != null || ghost2 != null)
+            {
+                if ((ghost.GetComponent<Ghost>().couleur == "red" && nbRedFace >= ghost.GetComponent<Ghost>().life) || (ghost.GetComponent<Ghost>().couleur == "blue" && nbBlueFace >= ghost.GetComponent<Ghost>().life)
+                    || (ghost.GetComponent<Ghost>().couleur == "green" && nbGreenFace >= ghost.GetComponent<Ghost>().life) || (ghost.GetComponent<Ghost>().couleur == "yellow" && nbYellowFace >= ghost.GetComponent<Ghost>().life)
+                    || (ghost.GetComponent<Ghost>().couleur == "black" && nbBlackFace >= ghost.GetComponent<Ghost>().life))
+                {
+                    //On ajouteras des particules à la mort du fantome (style explosion)
+                    explosion.transform.GetChild(2).GetComponent<ParticleSystem>().Play();
+                    ghost.transform.parent = defausse.transform;
+                    ghost.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+                    ghost = null;
+                }
+
+                else if ((ghost.GetComponent<Ghost>().couleur == "red" && nbRedFace < ghost.GetComponent<Ghost>().life) || (ghost.GetComponent<Ghost>().couleur == "blue" && nbBlueFace < ghost.GetComponent<Ghost>().life)
+                    || (ghost.GetComponent<Ghost>().couleur == "green" && nbGreenFace < ghost.GetComponent<Ghost>().life) || (ghost.GetComponent<Ghost>().couleur == "yellow" && nbYellowFace < ghost.GetComponent<Ghost>().life)
+                    || (ghost.GetComponent<Ghost>().couleur == "black" && nbBlackFace < ghost.GetComponent<Ghost>().life))
+                {
+                    //D'abord, check si on a un autre joueur (ou plusieurs) sur la meme case que nous.
+                    // Check résultat Dés + jetons pour tuer le fantome
+                    if (ghost.GetComponent<Ghost>().couleur == "red")
+                    {
+                        int resultRed = ghost.GetComponent<Ghost>().life - nbRedFace;
+                        if (nbRedToken >= resultRed)
+                        {
+                            nbRedToken -= resultRed;
+                            explosion.transform.GetChild(2).GetComponent<ParticleSystem>().Play();
+                            ghost.transform.parent = defausse.transform;
+                            ghost.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+                            ghost = null;
+                            update = true;
+                        }
+                    }
+                    else if (ghost.GetComponent<Ghost>().couleur == "blue")
+                    {
+                        int resultBlue = ghost.GetComponent<Ghost>().life - nbBlueFace;
+                        if (nbBlueToken >= resultBlue)
+                        {
+                            nbBlueToken -= resultBlue;
+                            explosion.transform.GetChild(2).GetComponent<ParticleSystem>().Play();
+                            ghost.transform.parent = defausse.transform;
+                            ghost.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+                            ghost = null;
+                            update = true;
+                        }
+                    }
+                    else if (ghost.GetComponent<Ghost>().couleur == "green")
+                    {
+                        int resultGreen = ghost.GetComponent<Ghost>().life - nbGreenFace;
+                        if (nbGreenToken >= resultGreen)
+                        {
+                            nbGreenToken -= resultGreen;
+                            explosion.transform.GetChild(2).GetComponent<ParticleSystem>().Play();
+                            ghost.transform.parent = defausse.transform;
+                            ghost.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+                            ghost = null;
+                            update = true;
+                        }
+                    }
+                    else if (ghost.GetComponent<Ghost>().couleur == "yellow")
+                    {
+                        int resultYellow = ghost.GetComponent<Ghost>().life - nbYellowFace;
+                        if (nbYellowToken >= resultYellow)
+                        {
+                            nbYellowToken -= resultYellow;
+                            explosion.transform.GetChild(2).GetComponent<ParticleSystem>().Play();
+                            ghost.transform.parent = defausse.transform;
+                            ghost.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+                            ghost = null;
+                            update = true;
+                        }
+                    }
+                    else if (ghost.GetComponent<Ghost>().couleur == "black")
+                    {
+                        int resultBlack = ghost.GetComponent<Ghost>().life - nbBlackFace;
+                        if (nbBlackToken >= resultBlack)
+                        {
+                            nbBlackToken -= resultBlack;
+                            explosion.transform.GetChild(2).GetComponent<ParticleSystem>().Play();
+                            ghost.transform.parent = defausse.transform;
+                            ghost.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+                            ghost = null;
+                            update = true;
+                        }
                     }
                 }
-                else if (ghost.GetComponent<Ghost>().couleur == "blue")
+                else
                 {
-                    int resultBlue = ghost.GetComponent<Ghost>().life - nbBlueFace;
-                    if (nbBlueToken >= resultBlue)
-                    {
-                        nbBlueToken -= resultBlue;
-                        explosion.transform.GetChild(2).GetComponent<ParticleSystem>().Play();
-                        ghost.transform.parent = defausse.transform;
-                        ghost.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
-                        ghost = null;
-                        update = true;
-                    }
-                }
-                else if (ghost.GetComponent<Ghost>().couleur == "green")
-                {
-                    int resultGreen = ghost.GetComponent<Ghost>().life - nbGreenFace;
-                    if (nbGreenToken >= resultGreen)
-                    {
-                        nbGreenToken -= resultGreen;
-                        explosion.transform.GetChild(2).GetComponent<ParticleSystem>().Play();
-                        ghost.transform.parent = defausse.transform;
-                        ghost.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
-                        ghost = null;
-                        update = true;
-                    }
-                }
-                else if (ghost.GetComponent<Ghost>().couleur == "yellow")
-                {
-                    int resultYellow = ghost.GetComponent<Ghost>().life - nbYellowFace;
-                    if (nbYellowToken >= resultYellow)
-                    {
-                        nbYellowToken -= resultYellow;
-                        explosion.transform.GetChild(2).GetComponent<ParticleSystem>().Play();
-                        ghost.transform.parent = defausse.transform;
-                        ghost.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
-                        ghost = null;
-                        update = true;
-                    }
-                }
-                else if (ghost.GetComponent<Ghost>().couleur == "black")
-                {
-                    int resultBlack = ghost.GetComponent<Ghost>().life - nbBlackFace;
-                    if (nbBlackToken >= resultBlack)
-                    {
-                        nbBlackToken -= resultBlack;
-                        explosion.transform.GetChild(2).GetComponent<ParticleSystem>().Play();
-                        ghost.transform.parent = defausse.transform;
-                        ghost.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
-                        ghost = null;
-                        update = true;
-                    }
+                    //On a pas assez pour le tuer, alors il ne se passe rien
                 }
             }
-            else
-            {
-                //On a pas assez pour le tuer, alors il ne se passe rien
-            }
+            canLaunchDice = true;
+            gameObject.GetComponent<Deplacement>().enabled = true;
+            state = STATE_GAME.STATE_DRAW;
         }
-        canLaunchDice = true;
-        gameObject.GetComponent<Deplacement>().enabled = true;
     }
 
     public void checkGhost()

@@ -47,6 +47,7 @@ public class HutOfWitch : MonoBehaviour {
             player.GetComponent<BluePlayer>().Qi -= 1;
             player.GetComponent<BluePlayer>().board.usingTile = true;
             player.GetComponent<BluePlayer>().update = true;
+            player.GetComponent<BluePlayer>().canLaunchDice = true;
             player.GetComponent<Deplacement>().enabled = true;
         }
         else if (player.name == "GreenPlayer")
@@ -122,6 +123,14 @@ public class HutOfWitch : MonoBehaviour {
         if (hauntedTile)
         {
             gameObject.GetComponent<MeshRenderer>().material.color = new Color(0.25f, 0.25f, 0.25f, 1);
+        }
+    }
+
+    public void Unhaunted()
+    {
+        if (!hauntedTile)
+        {
+            gameObject.GetComponent<MeshRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 1);
         }
     }
 }
