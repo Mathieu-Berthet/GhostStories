@@ -30,7 +30,7 @@ public class PriestCircle : MonoBehaviour {
 
     }
 
-    public IEnumerator reduceGhostLife()
+    public IEnumerator reduceGhostLife(GameObject player)
     {
         panelButtonChoice.SetActive(true);
         while(!choose)
@@ -252,6 +252,29 @@ public class PriestCircle : MonoBehaviour {
                 break;
             default:
                 break;
+        }
+
+        if (player.name == "BluePlayer")
+        {
+            player.GetComponent<BluePlayer>().canLaunchDice = true;
+            player.GetComponent<BluePlayer>().useTilePower = false;
+            player.GetComponent<Deplacement>().enabled = true;
+            player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
+        }
+        else if (player.name == "GreenPlayer")
+        {
+            player.GetComponent<GreenPlayer>().Qi -= 1;
+            //player.GetComponent<GreenPlayer>().board.usingTile = true;
+        }
+        else if (player.name == "YellowPlayer")
+        {
+            player.GetComponent<YellowPlayer>().Qi -= 1;
+            //player.GetComponent<YellowPlayer>().board.usingTile = true;
+        }
+        else if (player.name == "RedPlayer")
+        {
+            player.GetComponent<RedPlayer>().Qi -= 1;
+            //player.GetComponent<RedPlayer>().board.usingTile = true;
         }
     }
 

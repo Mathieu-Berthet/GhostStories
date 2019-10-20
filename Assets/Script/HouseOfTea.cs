@@ -1,31 +1,43 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HouseOfTea : MonoBehaviour {
 
     public bool hauntedTile = false;
     [SerializeField]
     private StockOfToken tokenStock;
-    public string choosenToken;
+    public string choseenToken;
+    public bool choose;
+    public GameObject panelButtonChoice;
 
     // Use this for initialization
     void Start ()
     {
-        tokenStock = GetComponent<StockOfToken>();
-	}
+        tokenStock = GameObject.Find("TokenStock").GetComponent<StockOfToken>();
+        choose = false;
+    }
 	
 	// Update is called once per frame
 	void Update () {
 		
 	}
 
-    public void GainTokenAndQI(GameObject player)
+    public IEnumerator GainTokenAndQI(GameObject player)
     {
-        //Remplir choseenToken avant le switch
-        //Demander la couleur ici ? (Demandez uniquement pour les jetons encore en stock ?)
-        //Interface pour les jetons. (Bien plus simple)
-        switch (choosenToken)
+        panelButtonChoice.SetActive(true);
+        while (!choose)
+        {
+            yield return new WaitForSeconds(1.0f);
+        }
+        if (choose)
+        {
+            Debug.Log("Couocu");
+            panelButtonChoice.SetActive(false);
+            choose = false;
+        }
+        switch (choseenToken)
         {
             case "Red":
                 if (tokenStock.nbRedToken == 0)
@@ -36,6 +48,17 @@ public class HouseOfTea : MonoBehaviour {
                 else
                 {
                     tokenStock.nbRedToken -= 1;
+                    if (player.name == "BluePlayer")
+                    {
+                        player.GetComponent<BluePlayer>().Qi += 1;
+                        player.GetComponent<BluePlayer>().NbRedToken += 1;
+                        player.GetComponent<BluePlayer>().DrawAGhost();
+                        player.GetComponent<BluePlayer>().update = true;
+                        player.GetComponent<BluePlayer>().canLaunchDice = true;
+                        player.GetComponent<BluePlayer>().useTilePower = false;
+                        player.GetComponent<Deplacement>().enabled = true;
+                        player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
+                    }
                 }
                 break;
             case "Blue":
@@ -47,6 +70,17 @@ public class HouseOfTea : MonoBehaviour {
                 else
                 {
                     tokenStock.nbBlueToken -= 1;
+                    if (player.name == "BluePlayer")
+                    {
+                        player.GetComponent<BluePlayer>().Qi += 1;
+                        player.GetComponent<BluePlayer>().NbBlueToken += 1;
+                        player.GetComponent<BluePlayer>().DrawAGhost();
+                        player.GetComponent<BluePlayer>().update = true;
+                        player.GetComponent<BluePlayer>().canLaunchDice = true;
+                        player.GetComponent<BluePlayer>().useTilePower = false;
+                        player.GetComponent<Deplacement>().enabled = true;
+                        player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
+                    }
                 }
                 break;
             case "Green":
@@ -58,6 +92,17 @@ public class HouseOfTea : MonoBehaviour {
                 else
                 {
                     tokenStock.nbGreenToken -= 1;
+                    if (player.name == "BluePlayer")
+                    {
+                        player.GetComponent<BluePlayer>().Qi += 1;
+                        player.GetComponent<BluePlayer>().NbGreenToken += 1;
+                        player.GetComponent<BluePlayer>().DrawAGhost();
+                        player.GetComponent<BluePlayer>().update = true;
+                        player.GetComponent<BluePlayer>().canLaunchDice = true;
+                        player.GetComponent<BluePlayer>().useTilePower = false;
+                        player.GetComponent<Deplacement>().enabled = true;
+                        player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
+                    }
                 }
                 break;
             case "Yellow":
@@ -69,6 +114,17 @@ public class HouseOfTea : MonoBehaviour {
                 else
                 {
                     tokenStock.nbYellowToken -= 1;
+                    if (player.name == "BluePlayer")
+                    {
+                        player.GetComponent<BluePlayer>().Qi += 1;
+                        player.GetComponent<BluePlayer>().NbYellowToken += 1;
+                        player.GetComponent<BluePlayer>().DrawAGhost();
+                        player.GetComponent<BluePlayer>().update = true;
+                        player.GetComponent<BluePlayer>().canLaunchDice = true;
+                        player.GetComponent<BluePlayer>().useTilePower = false;
+                        player.GetComponent<Deplacement>().enabled = true;
+                        player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
+                    }
                 }
                 break;
             case "black":
@@ -80,31 +136,22 @@ public class HouseOfTea : MonoBehaviour {
                 else
                 {
                     tokenStock.nbBlackToken -= 1;
+                    if (player.name == "BluePlayer")
+                    {
+                        player.GetComponent<BluePlayer>().Qi += 1;
+                        player.GetComponent<BluePlayer>().NbBlackToken += 1;
+                        player.GetComponent<BluePlayer>().DrawAGhost();
+                        player.GetComponent<BluePlayer>().update = true;
+                        player.GetComponent<BluePlayer>().canLaunchDice = true;
+                        player.GetComponent<BluePlayer>().useTilePower = false;
+                        player.GetComponent<Deplacement>().enabled = true;
+                        player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
+                    }
                 }
                 break;
             default:
                 break;
         }
-
-        //Recuperer le joueur sur la case et lui donner un qi
-        if(player.name == "BluePlayer")
-        {
-            player.GetComponent<BluePlayer>().Qi += 1;
-        }
-        else if(player.name == "GreenPlayer")
-        {
-            player.GetComponent<GreenPlayer>().Qi += 1;
-        }
-        else if(player.name == "YellowPlayer")
-        {
-            player.GetComponent<YellowPlayer>().Qi += 1;
-        }
-        else if(player.name == "RedPlayer")
-        {
-            player.GetComponent<RedPlayer>().Qi += 1;
-        }
-
-        //Pioche d'une carte fantome
     }
 
 
@@ -122,5 +169,11 @@ public class HouseOfTea : MonoBehaviour {
         {
             gameObject.GetComponent<MeshRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 1);
         }
+    }
+
+    public void MustChooseToken(Button buttonClick)
+    {
+        choseenToken = buttonClick.transform.GetChild(0).GetComponent<Text>().text;
+        choose = true;
     }
 }

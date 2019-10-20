@@ -1,25 +1,45 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TaoisteAutel : MonoBehaviour {
 
     public bool hauntedTile = false;
-
+    public string tileToUnhaunted;
+    public bool choose;
+    public GameObject panelTile;
     // Use this for initialization
-    void Start () {
-		
-	}
+    void Start ()
+    {
+        tileToUnhaunted = "";
+    }
 	
 	// Update is called once per frame
 	void Update () {
 		
 	}
 
-    public void UnhauntTile(GameObject player)
+    public IEnumerator UnhauntTile(GameObject player)
     {
         if (player.name == "BluePlayer")
         {
+            choose = false;
+
+            yield return new WaitForSeconds(0.5f);
+
+            panelTile.SetActive(true);
+            while (!choose)
+            {
+                yield return new WaitForSeconds(1.0f);
+            }
+            if (choose)
+            {
+                Debug.Log("Couocu145");
+                panelTile.SetActive(false);
+                choose = false;
+            }
+            player.GetComponent<BluePlayer>().tileName = tileToUnhaunted;
             switch (player.GetComponent<BluePlayer>().tileName)
             {
                 case "MaisonThe":
@@ -40,7 +60,6 @@ public class TaoisteAutel : MonoBehaviour {
                     Unhaunted();
                     break;
                 case "Cimetiere":
-                    
                     player.GetComponent<BluePlayer>().taoisteAutel.GetComponent<TaoisteAutel>().hauntedTile = false;
                     player.GetComponent<BluePlayer>().taoisteAutel.GetComponent<TaoisteAutel>().Unhaunted();
                     break;
@@ -63,8 +82,17 @@ public class TaoisteAutel : MonoBehaviour {
                 default:
                     break;
             }
-            //player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
+            player.GetComponent<BluePlayer>().canLaunchDice = true;
+            player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
+            player.GetComponent<BluePlayer>().useTilePower = false;
+            player.GetComponent<Deplacement>().enabled = true;
         }
+    }
+
+    public void getTileName(Button buttonClick)
+    {
+        tileToUnhaunted = buttonClick.transform.GetChild(0).GetComponent<Text>().text;
+        choose = true;
     }
 
     public void haunted()

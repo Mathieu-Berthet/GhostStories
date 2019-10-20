@@ -81,7 +81,7 @@ public class BluePlayer : MonoBehaviour
     [SerializeField]
     private PoolManagerDeck deck;
     [SerializeField]
-    private GameObject card;
+    public GameObject card;
     public Image drawedCard;
     public BoardPosition board;
     public GameObject panel;
@@ -250,6 +250,8 @@ public class BluePlayer : MonoBehaviour
 
     public STATE_GAME state;
     public Text textInfoPhase;
+    public Text textMort;
+    public Text textInfoTuile;
     // Use this for initialization
     void Start ()
     {
@@ -325,11 +327,18 @@ public class BluePlayer : MonoBehaviour
 
         if(state == STATE_GAME.STATE_DRAW)
         {
-            textInfoPhase.text = " Phase de pioche, \n il vous faut piochez une carte (Clic droit souris)";
+            textInfoPhase.text = " Phase de pioche : \n\n - Il vous faut piochez une carte fantôme (Clic droit souris)";
         }
         else if (state == STATE_GAME.STATE_PLAYER)
         {
-            textInfoPhase.text = " Phase de jeu, vous pouvez vous déplacer (Clic gauche souris), \n attaquer un fantome se trouvant devant vous (Touche D), \n ou bien utilisez le pouvoir de la tuile sur laquelle vous vous trouvez (Touche E)";
+            textInfoPhase.text = " Phase de jeu, vous pouvez : \n\n - Vous déplacer (Clic gauche souris), \n - Attaquer un fantome se trouvant devant vous (Touche D), \n - Utilisez le pouvoir de la tuile sur laquelle vous vous trouvez (Touche E)";
+        }
+
+        if(Qi <= 0)
+        {
+            Qi = 0;
+            textMort.text = "Vous êtes mort";
+            updateUI();
         }
 
         checkGhost();
@@ -342,7 +351,7 @@ public class BluePlayer : MonoBehaviour
 
     public void DrawAGhost()
     {
-        if (state == STATE_GAME.STATE_DRAW)
+        if (state == STATE_GAME.STATE_DRAW || useTilePower)
         {
             hasDraw = true;
             gameObject.GetComponent<Deplacement>().enabled = false;
@@ -352,6 +361,7 @@ public class BluePlayer : MonoBehaviour
                 textInfo.gameObject.SetActive(true);
                 textInfo.text = "You can't draw another Ghost, there is too ghosts on the field";
                 hasDraw = false;
+                state = STATE_GAME.STATE_PLAYER;
                 return;
             }
             else if (blueBoard.nbCardOnBoard == 3 && !useTilePower)
@@ -361,6 +371,7 @@ public class BluePlayer : MonoBehaviour
                 Qi -= 1;
                 update = true;
                 hasDraw = false;
+                state = STATE_GAME.STATE_PLAYER;
                 return;
             }
             panel.SetActive(true);
@@ -377,43 +388,48 @@ public class BluePlayer : MonoBehaviour
     {
         if (state == STATE_GAME.STATE_DRAW)
         {
-            if (card.GetComponent<Ghost>().couleur == "black" && position.transform.parent.GetComponent<boardColor>().color != colorPlayer && blueBoard.nbCardOnBoard < 3)
+            if (!useTilePower)
             {
-                textInfo.text = "Black ghost must be played on your board";
-                return;
-            }
-            else if (card.GetComponent<Ghost>().couleur != "black" && card.GetComponent<Ghost>().couleur != position.transform.parent.GetComponent<boardColor>().color)
-            {
-                if ((card.GetComponent<Ghost>().couleur == "red" && redBoard.nbCardOnBoard < 3) ||
-                    (card.GetComponent<Ghost>().couleur == "blue" && blueBoard.nbCardOnBoard < 3) ||
-                    (card.GetComponent<Ghost>().couleur == "yellow" && yellowBoard.nbCardOnBoard < 3) ||
-                    (card.GetComponent<Ghost>().couleur == "green" && greenBoard.nbCardOnBoard < 3))
+                if (card.GetComponent<Ghost>().couleur == "black" && position.transform.parent.GetComponent<boardColor>().color != colorPlayer && blueBoard.nbCardOnBoard < 3)
                 {
-                    textInfo.text = "You can't choose this place. It is not the same color as the card";
+                    textInfo.text = "Black ghost must be played on your board";
                     return;
                 }
-            }
-            card.transform.SetParent(position.transform);
-            card.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
-            card.transform.localEulerAngles = new Vector3(90.0f, 0.0f, 180.0f);
-            card.transform.localScale = new Vector3(15.0f, 10.0f, 1);
-            card.SetActive(true);
-            card.transform.parent.GetComponent<BoxCollider>().enabled = true;
-            if (position.transform.parent.GetComponent<boardColor>().color == "blue")
-            {
-                blueBoard.nbCardOnBoard++;
-            }
-            else if (position.transform.parent.GetComponent<boardColor>().color == "green")
-            {
-                greenBoard.nbCardOnBoard++;
-            }
-            else if (position.transform.parent.GetComponent<boardColor>().color == "red")
-            {
-                redBoard.nbCardOnBoard++;
-            }
-            else if (position.transform.parent.GetComponent<boardColor>().color == "yellow")
-            {
-                yellowBoard.nbCardOnBoard++;
+                else if (card.GetComponent<Ghost>().couleur != "black" && card.GetComponent<Ghost>().couleur != position.transform.parent.GetComponent<boardColor>().color)
+                {
+                    if ((card.GetComponent<Ghost>().couleur == "red" && redBoard.nbCardOnBoard < 3) ||
+                        (card.GetComponent<Ghost>().couleur == "blue" && blueBoard.nbCardOnBoard < 3) ||
+                        (card.GetComponent<Ghost>().couleur == "yellow" && yellowBoard.nbCardOnBoard < 3) ||
+                        (card.GetComponent<Ghost>().couleur == "green" && greenBoard.nbCardOnBoard < 3))
+                    {
+                        textInfo.text = "You can't choose this place. It is not the same color as the card";
+                        return;
+                    }
+                }
+                card.transform.SetParent(position.transform);
+                card.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+                card.transform.localEulerAngles = new Vector3(90.0f, 0.0f, 180.0f);
+                card.transform.localScale = new Vector3(15.0f, 10.0f, 1);
+                card.SetActive(true);
+                card.transform.parent.GetComponent<BoxCollider>().enabled = true;
+                card = null;
+
+                if (position.transform.parent.GetComponent<boardColor>().color == "blue")
+                {
+                    blueBoard.nbCardOnBoard++;
+                }
+                else if (position.transform.parent.GetComponent<boardColor>().color == "green")
+                {
+                    greenBoard.nbCardOnBoard++;
+                }
+                else if (position.transform.parent.GetComponent<boardColor>().color == "red")
+                {
+                    redBoard.nbCardOnBoard++;
+                }
+                else if (position.transform.parent.GetComponent<boardColor>().color == "yellow")
+                {
+                    yellowBoard.nbCardOnBoard++;
+                }
             }
             panel.SetActive(false);
             textInfo.gameObject.SetActive(false);
@@ -452,47 +468,66 @@ public class BluePlayer : MonoBehaviour
             {
                 case "MaisonThe":
                     Debug.Log("Maison du Thé");
-                    //houseOfTea.GetComponent<HouseOfTea>().GainTokenAndQI(gameObject);
+                    textInfoTuile.text = "Maison du Thé";
+                    canLaunchDice = false;
+                    canLaunchBlackDice = false;
+                    gameObject.GetComponent<Deplacement>().enabled = false;
+                    StartCoroutine(houseOfTea.GetComponent<HouseOfTea>().GainTokenAndQI(gameObject));
                     break;
                 case "HutteSorciere":
                     Debug.Log("Hutte de la sorcière");
+                    textInfoTuile.text = "Hutte de la sorcière";
                     canLaunchDice = false;
+                    canLaunchBlackDice = false;
                     gameObject.GetComponent<Deplacement>().enabled = false;
+                    //gameObject.GetComponent<BluePlayer>().enabled = false;
                     StartCoroutine(witchHut.GetComponent<HutOfWitch>().KillGhost(gameObject));
                     break;
                 case "EchoppeHerboriste":
                     Debug.Log("Echoppe de l'herboriste");
+                    textInfoTuile.text = "Echoppe de l'herboriste";
                     canLaunchDice = false;
+                    canLaunchBlackDice = false;
                     gameObject.GetComponent<Deplacement>().enabled = false;
                     StartCoroutine(herbalistStall.GetComponent<StallOfHerbalist>().getToken(gameObject));
                     break;
                 case "AutelTaoiste":
                     Debug.Log("Autel Taoiste");
-                    taoisteAutel.GetComponent<TaoisteAutel>().UnhauntTile(gameObject);
+                    textInfoTuile.text = "Autel Taoiste";
+                    canLaunchDice = false;
+                    canLaunchBlackDice = false;
+                    gameObject.GetComponent<Deplacement>().enabled = false;
+                    StartCoroutine(taoisteAutel.GetComponent<TaoisteAutel>().UnhauntTile(gameObject));
                     break;
                 case "Cimetiere":
                     Debug.Log("Le cimetière");
+                    textInfoTuile.text = "Le cimetière";
+                    canLaunchDice = false;
                     canLaunchBlackDice = false;
+                    gameObject.GetComponent<Deplacement>().enabled = false;
                     graveyard.GetComponent<Graveyard>().Resurrect(gameObject);
                     break;
                 case "PavillonVentCeleste":
                     Debug.Log("Le pavillon du vent celeste");
+                    textInfoTuile.text = "Cette tuile n'as pas encore d'effet";
                     //windCelestialFlag.GetComponent<WindCelestialFlag>().MovePlayerAndGhost();
                     break;
                 case "TourVeilleurNuit":
                     Debug.Log("Tour du veilleur de nuit");
+                    textInfoTuile.text = "Cette tuile n'as pas encore d'effet";
                     //nightTower.GetComponent<NightTower>().RetreatGhost();
                     break;
                 case "CerclePierre":
                     Debug.Log("Le cercle de prière");
+                    textInfoTuile.text = "Le cercle de prière";
                     gameObject.GetComponent<Deplacement>().enabled = false;
                     canLaunchDice = false;
-                    StartCoroutine(priestCircle.GetComponent<PriestCircle>().reduceGhostLife());
-                    gameObject.GetComponent<Deplacement>().enabled = true;
-                    canLaunchDice = true;
+                    canLaunchBlackDice = false;
+                    StartCoroutine(priestCircle.GetComponent<PriestCircle>().reduceGhostLife(gameObject));
                     break;
                 case "TempleBouddhiste":
                     Debug.Log("Temple Bouddhiste");
+                    textInfoTuile.text = "Cette tuile n'as pas encore d'effet";
                     //bouddhisteTemple.GetComponent<BouddhisteTemple>().getBouddha();
                     break;
                 default:
