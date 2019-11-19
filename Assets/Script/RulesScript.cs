@@ -8,8 +8,14 @@ public class RulesScript : MonoBehaviour {
     public GameObject panelRules;
     public GameObject panelTiles;
     public GameObject panelToken;
+    public Text infoPhase;
+    public Text infoMort;
+    public Text infoTuile;
     public Button buttonNext;
     public Button buttonPrecedent;
+    public Button buttonTile;
+    public Button buttonRules;
+    public Button buttonFermer;
 
 	// Use this for initialization
 	void Start () {
@@ -19,39 +25,6 @@ public class RulesScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        if(Input.GetKeyDown(KeyCode.R))
-        {
-            if (panelTiles.activeSelf)
-            {
-                panelRules.SetActive(true);
-                panelTiles.SetActive(false);
-                buttonNext.gameObject.SetActive(true);
-                buttonPrecedent.gameObject.SetActive(false);
-            }
-            else
-            {
-                panelRules.SetActive(!panelRules.activeSelf);
-                buttonNext.gameObject.SetActive(!buttonNext.gameObject.activeSelf);
-            }
-        }
-
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            if (panelRules.activeSelf)
-            {
-                panelTiles.SetActive(true);
-                panelRules.SetActive(false);
-                buttonNext.gameObject.SetActive(true);
-                buttonPrecedent.gameObject.SetActive(true);
-            }
-            else
-            {
-                panelTiles.SetActive(!panelTiles.activeSelf);
-                buttonNext.gameObject.SetActive(!buttonNext.gameObject.activeSelf);
-                buttonPrecedent.gameObject.SetActive(!buttonPrecedent.gameObject.activeSelf);
-            }
-        }
-
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             Next();
@@ -77,6 +50,12 @@ public class RulesScript : MonoBehaviour {
             buttonNext.gameObject.SetActive(false);
             buttonPrecedent.gameObject.SetActive(false);
             panelToken.SetActive(true);
+            infoMort.gameObject.SetActive(true);
+            infoPhase.gameObject.SetActive(true);
+            infoTuile.gameObject.SetActive(true);
+            buttonRules.gameObject.SetActive(true);
+            buttonTile.gameObject.SetActive(true);
+            buttonFermer.gameObject.SetActive(false);
         }
     }
 
@@ -88,5 +67,49 @@ public class RulesScript : MonoBehaviour {
             panelTiles.SetActive(false);
             buttonPrecedent.gameObject.SetActive(false);
         }
+    }
+
+
+    public void TileEffect()
+    {
+        buttonTile.gameObject.SetActive(false);
+        buttonRules.gameObject.SetActive(false);
+        buttonFermer.gameObject.SetActive(true);
+        panelTiles.SetActive(true);
+        buttonPrecedent.gameObject.SetActive(true);
+        buttonNext.gameObject.SetActive(true);
+        panelToken.SetActive(false);
+        infoMort.gameObject.SetActive(false);
+        infoPhase.gameObject.SetActive(false);
+        infoTuile.gameObject.SetActive(false);
+    }
+
+    public void Rules()
+    {
+        buttonTile.gameObject.SetActive(false);
+        buttonRules.gameObject.SetActive(false);
+        buttonFermer.gameObject.SetActive(true);
+        panelRules.SetActive(true);
+        buttonPrecedent.gameObject.SetActive(false);
+        buttonNext.gameObject.SetActive(true);
+        panelToken.SetActive(false);
+        infoMort.gameObject.SetActive(false);
+        infoPhase.gameObject.SetActive(false);
+        infoTuile.gameObject.SetActive(false);
+    }
+
+    public void Fermer()
+    {
+        panelTiles.SetActive(false);
+        panelRules.SetActive(false);
+        buttonPrecedent.gameObject.SetActive(false);
+        buttonNext.gameObject.SetActive(false);
+        buttonTile.gameObject.SetActive(true);
+        buttonRules.gameObject.SetActive(true);
+        buttonFermer.gameObject.SetActive(false);
+        panelToken.SetActive(true);
+        infoMort.gameObject.SetActive(true);
+        infoPhase.gameObject.SetActive(true);
+        infoTuile.gameObject.SetActive(true);
     }
 }

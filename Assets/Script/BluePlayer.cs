@@ -84,7 +84,10 @@ public class BluePlayer : MonoBehaviour
     public GameObject card;
     public Image drawedCard;
     public BoardPosition board;
-    public GameObject panel;
+    public GameObject panelBluePlace;
+    public GameObject panelRedPlace;
+    public GameObject panelGreenPlace;
+    public GameObject panelYellowPlace;
 
     [SerializeField]
     private GameObject defausse;
@@ -374,7 +377,10 @@ public class BluePlayer : MonoBehaviour
                 state = STATE_GAME.STATE_PLAYER;
                 return;
             }
-            panel.SetActive(true);
+            panelBluePlace.SetActive(true);
+            panelRedPlace.SetActive(true);
+            panelGreenPlace.SetActive(true);
+            panelYellowPlace.SetActive(true);
             textInfo.gameObject.SetActive(true);
             drawedCard.gameObject.SetActive(true);
             card = deck.GetPoolByName(PoolNameDeck.ghost).GetItem(transform, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity, true, false, 0);
@@ -431,7 +437,10 @@ public class BluePlayer : MonoBehaviour
                     yellowBoard.nbCardOnBoard++;
                 }
             }
-            panel.SetActive(false);
+            panelBluePlace.SetActive(false);
+            panelRedPlace.SetActive(false);
+            panelGreenPlace.SetActive(false);
+            panelYellowPlace.SetActive(false);
             textInfo.gameObject.SetActive(false);
             drawedCard.gameObject.SetActive(false);
             gameObject.GetComponent<Deplacement>().enabled = true;
