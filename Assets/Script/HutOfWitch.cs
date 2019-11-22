@@ -11,7 +11,10 @@ public class HutOfWitch : MonoBehaviour {
     public GameObject defausse;
     public string chooseenGhost;
     public bool choose;
-    public GameObject panelGhost;
+    public GameObject panelBluePlace;
+    public GameObject panelRedPlace;
+    public GameObject panelGreenPlace;
+    public GameObject panelYellowPlace;
     public BoardPosition board;
     // Use this for initialization
     void Start ()
@@ -31,7 +34,10 @@ public class HutOfWitch : MonoBehaviour {
         board.usingTile = true;
         yield return new WaitForSeconds(0.5f);
 
-        panelGhost.SetActive(true);
+        panelBluePlace.SetActive(true);
+        panelRedPlace.SetActive(true);
+        panelGreenPlace.SetActive(true);
+        panelYellowPlace.SetActive(true);
         while (!choose)
         {
             yield return new WaitForSeconds(1.0f);
@@ -39,7 +45,10 @@ public class HutOfWitch : MonoBehaviour {
         if (choose)
         {
             Debug.Log("Couocu");
-            panelGhost.SetActive(false);
+            panelBluePlace.SetActive(false);
+            panelRedPlace.SetActive(false);
+            panelGreenPlace.SetActive(false);
+            panelYellowPlace.SetActive(false);
             choose = false;
         }
 
@@ -47,6 +56,24 @@ public class HutOfWitch : MonoBehaviour {
         {
             //player.GetComponent<BluePlayer>().enabled = true;
             //player.GetComponent<BluePlayer>().card = ghostToKill;
+            switch (ghostToKill.GetComponent<Ghost>().couleur)
+            {
+                case "red":
+                    player.GetComponent<BluePlayer>().redBoard.nbCardOnBoard--;
+                break;
+                case "yellow":
+                    player.GetComponent<BluePlayer>().yellowBoard.nbCardOnBoard--;
+                    break;
+                case "blue":
+                    player.GetComponent<BluePlayer>().blueBoard.nbCardOnBoard--;
+                    break;
+                case "green":
+                    player.GetComponent<BluePlayer>().greenBoard.nbCardOnBoard--;
+                    break;
+                default:
+                    break;
+            }
+
             player.GetComponent<BluePlayer>().Qi -= 1;
             player.GetComponent<BluePlayer>().update = true;
             player.GetComponent<BluePlayer>().canLaunchDice = true;
@@ -58,16 +85,67 @@ public class HutOfWitch : MonoBehaviour {
         {
             player.GetComponent<GreenPlayer>().Qi -= 1;
             //player.GetComponent<GreenPlayer>().board.usingTile = true;
+            /*switch (ghostToKill.GetComponent<Ghost>().couleur)
+            {
+                case "red":
+                    player.GetComponent<BluePlayer>().redBoard.nbCardOnBoard--;
+                    break;
+                case "yellow":
+                    player.GetComponent<BluePlayer>().yellowBoard.nbCardOnBoard--;
+                    break;
+                case "blue":
+                    player.GetComponent<BluePlayer>().blueBoard.nbCardOnBoard--;
+                    break;
+                case "green":
+                    player.GetComponent<BluePlayer>().greenBoard.nbCardOnBoard--;
+                    break;
+                default:
+                    break;
+            }*/
         }
         else if (player.name == "YellowPlayer")
         {
             player.GetComponent<YellowPlayer>().Qi -= 1;
             //player.GetComponent<YellowPlayer>().board.usingTile = true;
+            /*switch (ghostToKill.GetComponent<Ghost>().couleur)
+            {
+                case "red":
+                    player.GetComponent<BluePlayer>().redBoard.nbCardOnBoard--;
+                    break;
+                case "yellow":
+                    player.GetComponent<BluePlayer>().yellowBoard.nbCardOnBoard--;
+                    break;
+                case "blue":
+                    player.GetComponent<BluePlayer>().blueBoard.nbCardOnBoard--;
+                    break;
+                case "green":
+                    player.GetComponent<BluePlayer>().greenBoard.nbCardOnBoard--;
+                    break;
+                default:
+                    break;
+            }*/
         }
         else if (player.name == "RedPlayer")
         {
             player.GetComponent<RedPlayer>().Qi -= 1;
             //player.GetComponent<RedPlayer>().board.usingTile = true;
+            /*switch (ghostToKill.GetComponent<Ghost>().couleur)
+            {
+                case "red":
+                    player.GetComponent<BluePlayer>().redBoard.nbCardOnBoard--;
+                    break;
+                case "yellow":
+                    player.GetComponent<BluePlayer>().yellowBoard.nbCardOnBoard--;
+                    break;
+                case "blue":
+                    player.GetComponent<BluePlayer>().blueBoard.nbCardOnBoard--;
+                    break;
+                case "green":
+                    player.GetComponent<BluePlayer>().greenBoard.nbCardOnBoard--;
+                    break;
+                default:
+                    break;
+            }*/
         }
 
         ghostToKill.transform.parent = defausse.transform;

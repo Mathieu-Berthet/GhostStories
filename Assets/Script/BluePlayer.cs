@@ -52,6 +52,7 @@ public class BluePlayer : MonoBehaviour
     public int nbBlackFace;
 
     public bool choose;
+    public bool choosePriority;
     public string choosenToken = "";
     public GameObject panelButtonChoice;
 
@@ -73,7 +74,7 @@ public class BluePlayer : MonoBehaviour
     public string ghostName;
     public string ghostName2;
 
-    public GameObject ghost;
+    public GameObject ghost1;
     public GameObject ghost2;
     public bool canLaunchDice;
     public bool canLaunchBlackDice;
@@ -98,13 +99,13 @@ public class BluePlayer : MonoBehaviour
     private bool hasDraw;
 
     [SerializeField]
-    private boardColor blueBoard;
+    public boardColor blueBoard;
     [SerializeField]
-    private boardColor redBoard;
+    public boardColor redBoard;
     [SerializeField]
-    private boardColor greenBoard;
+    public boardColor greenBoard;
     [SerializeField]
-    private boardColor yellowBoard;
+    public boardColor yellowBoard;
 
     public Text textInfo;
     public string colorPlayer = "blue";
@@ -125,7 +126,9 @@ public class BluePlayer : MonoBehaviour
     public GameObject explosion2;
 
     public GameObject panelJeton;
-
+    public Button buttonGhost1;
+    public Button buttonGhost2;
+    public string priority;
     #region accesseurs
     public int Qi
     {
@@ -720,96 +723,52 @@ public class BluePlayer : MonoBehaviour
             panelButtonChoice.SetActive(false);
 
             //Partie combat
-            if (ghost != null || ghost2 != null)
+            if (ghost1 != null || ghost2 != null)
             {
-                if ((ghost.GetComponent<Ghost>().couleur == "red" && nbRedFace >= ghost.GetComponent<Ghost>().life) || (ghost.GetComponent<Ghost>().couleur == "blue" && nbBlueFace >= ghost.GetComponent<Ghost>().life)
-                    || (ghost.GetComponent<Ghost>().couleur == "green" && nbGreenFace >= ghost.GetComponent<Ghost>().life) || (ghost.GetComponent<Ghost>().couleur == "yellow" && nbYellowFace >= ghost.GetComponent<Ghost>().life)
-                    || (ghost.GetComponent<Ghost>().couleur == "black" && nbBlackFace >= ghost.GetComponent<Ghost>().life))
+                if (ghost1 != null && ghost2 != null)
                 {
-                    //On ajouteras des particules à la mort du fantome (style explosion)
-                    explosion.transform.GetChild(2).GetComponent<ParticleSystem>().Play();
-                    ghost.transform.parent = defausse.transform;
-                    ghost.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
-                    ghost = null;
-                }
+                    buttonGhost1.gameObject.SetActive(true);
+                    buttonGhost1.transform.GetChild(0).GetComponent<Text>().text = ghost1.name;
+                    buttonGhost2.gameObject.SetActive(true);
+                    buttonGhost2.transform.GetChild(0).GetComponent<Text>().text = ghost2.name;
+                    //Définir priorité pour ghost puis ghost2 ou ghost2 puis ghost
 
-                else if ((ghost.GetComponent<Ghost>().couleur == "red" && nbRedFace < ghost.GetComponent<Ghost>().life) || (ghost.GetComponent<Ghost>().couleur == "blue" && nbBlueFace < ghost.GetComponent<Ghost>().life)
-                    || (ghost.GetComponent<Ghost>().couleur == "green" && nbGreenFace < ghost.GetComponent<Ghost>().life) || (ghost.GetComponent<Ghost>().couleur == "yellow" && nbYellowFace < ghost.GetComponent<Ghost>().life)
-                    || (ghost.GetComponent<Ghost>().couleur == "black" && nbBlackFace < ghost.GetComponent<Ghost>().life))
-                {
-                    //D'abord, check si on a un autre joueur (ou plusieurs) sur la meme case que nous.
-                    // Check résultat Dés + jetons pour tuer le fantome
-                    if (ghost.GetComponent<Ghost>().couleur == "red")
+                    while (!choosePriority)
                     {
-                        int resultRed = ghost.GetComponent<Ghost>().life - nbRedFace;
-                        if (nbRedToken >= resultRed)
-                        {
-                            nbRedToken -= resultRed;
-                            explosion.transform.GetChild(2).GetComponent<ParticleSystem>().Play();
-                            ghost.transform.parent = defausse.transform;
-                            ghost.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
-                            ghost = null;
-                            update = true;
-                        }
+                        yield return new WaitForSeconds(1.0f);
                     }
-                    else if (ghost.GetComponent<Ghost>().couleur == "blue")
+                    if (priority == ghost1.name)
                     {
-                        int resultBlue = ghost.GetComponent<Ghost>().life - nbBlueFace;
-                        if (nbBlueToken >= resultBlue)
-                        {
-                            nbBlueToken -= resultBlue;
-                            explosion.transform.GetChild(2).GetComponent<ParticleSystem>().Play();
-                            ghost.transform.parent = defausse.transform;
-                            ghost.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
-                            ghost = null;
-                            update = true;
-                        }
+                        buttonGhost1.gameObject.SetActive(false);
+                        buttonGhost2.gameObject.SetActive(false);
+                        Attack(ghost1);
+                        yield return new WaitForSeconds(1.5f);
+                        Attack(ghost2);
                     }
-                    else if (ghost.GetComponent<Ghost>().couleur == "green")
+                    else
                     {
-                        int resultGreen = ghost.GetComponent<Ghost>().life - nbGreenFace;
-                        if (nbGreenToken >= resultGreen)
-                        {
-                            nbGreenToken -= resultGreen;
-                            explosion.transform.GetChild(2).GetComponent<ParticleSystem>().Play();
-                            ghost.transform.parent = defausse.transform;
-                            ghost.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
-                            ghost = null;
-                            update = true;
-                        }
-                    }
-                    else if (ghost.GetComponent<Ghost>().couleur == "yellow")
-                    {
-                        int resultYellow = ghost.GetComponent<Ghost>().life - nbYellowFace;
-                        if (nbYellowToken >= resultYellow)
-                        {
-                            nbYellowToken -= resultYellow;
-                            explosion.transform.GetChild(2).GetComponent<ParticleSystem>().Play();
-                            ghost.transform.parent = defausse.transform;
-                            ghost.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
-                            ghost = null;
-                            update = true;
-                        }
-                    }
-                    else if (ghost.GetComponent<Ghost>().couleur == "black")
-                    {
-                        int resultBlack = ghost.GetComponent<Ghost>().life - nbBlackFace;
-                        if (nbBlackToken >= resultBlack)
-                        {
-                            nbBlackToken -= resultBlack;
-                            explosion.transform.GetChild(2).GetComponent<ParticleSystem>().Play();
-                            ghost.transform.parent = defausse.transform;
-                            ghost.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
-                            ghost = null;
-                            update = true;
-                        }
+                        buttonGhost1.gameObject.SetActive(false);
+                        buttonGhost2.gameObject.SetActive(false);
+                        Attack(ghost2);
+                        yield return new WaitForSeconds(1.5f);
+                        Attack(ghost1);
                     }
                 }
-                else
+                else if (ghost1 == null && ghost2 != null)
                 {
-                    //On a pas assez pour le tuer, alors il ne se passe rien
+                    Attack(ghost2);
+                }
+                else if (ghost1 != null && ghost2 == null)
+                {
+                    Attack(ghost1);
                 }
             }
+            yield return new WaitForSeconds(0.5f);
+            nbRedFace = 0;
+            nbBlackFace = 0;
+            nbBlueFace = 0;
+            nbYellowFace = 0;
+            nbGreenFace = 0;
             canLaunchDice = true;
             gameObject.GetComponent<Deplacement>().enabled = true;
             state = STATE_GAME.STATE_DRAW;
@@ -833,7 +792,7 @@ public class BluePlayer : MonoBehaviour
                 ghostName2 = hitZdirection.collider.transform.GetChild(0).name;*/
                 explosion = hitXdirection.collider.transform.GetChild(0).gameObject;
                 explosion2 = hitZdirection.collider.transform.GetChild(0).gameObject;
-                ghost = hitXdirection.collider.transform.GetChild(1).gameObject;
+                ghost1 = hitXdirection.collider.transform.GetChild(1).gameObject;
                 ghost2 = hitZdirection.collider.transform.GetChild(1).gameObject;
             }
         }
@@ -850,7 +809,7 @@ public class BluePlayer : MonoBehaviour
                 ghostName2 = hitZdirection.collider.transform.GetChild(0).name;*/
                 explosion = hitXdirection.collider.transform.GetChild(0).gameObject;
                 explosion2 = hitZdirection.collider.transform.GetChild(0).gameObject;
-                ghost = hitXdirection.collider.transform.GetChild(1).gameObject;
+                ghost1 = hitXdirection.collider.transform.GetChild(1).gameObject;
                 ghost2 = hitZdirection.collider.transform.GetChild(1).gameObject;
             }
         }
@@ -867,7 +826,7 @@ public class BluePlayer : MonoBehaviour
                 ghostName2 = hitZdirection.collider.transform.GetChild(0).name;*/
                 explosion = hitXdirection.collider.transform.GetChild(0).gameObject;
                 explosion2 = hitZdirection.collider.transform.GetChild(0).gameObject;
-                ghost = hitXdirection.collider.transform.GetChild(1).gameObject;
+                ghost1 = hitXdirection.collider.transform.GetChild(1).gameObject;
                 ghost2 = hitZdirection.collider.transform.GetChild(1).gameObject;
             }
         }
@@ -884,7 +843,7 @@ public class BluePlayer : MonoBehaviour
                 ghostName2 = hitZdirection.collider.transform.GetChild(0).name;*/
                 explosion = hitXdirection.collider.transform.GetChild(0).gameObject;
                 explosion2 = hitZdirection.collider.transform.GetChild(0).gameObject;
-                ghost = hitXdirection.collider.transform.GetChild(1).gameObject;
+                ghost1 = hitXdirection.collider.transform.GetChild(1).gameObject;
                 ghost2 = hitZdirection.collider.transform.GetChild(1).gameObject;
             }
         }
@@ -899,7 +858,7 @@ public class BluePlayer : MonoBehaviour
                 Debug.DrawRay(transform.position, Vector3.back, Color.red);
                 //ghostName = hitXdirection.collider.transform.GetChild(0).name;
                 explosion = hitXdirection.collider.transform.GetChild(0).gameObject;
-                ghost = hitXdirection.collider.transform.GetChild(1).gameObject;
+                ghost1 = hitXdirection.collider.transform.GetChild(1).gameObject;
             }
         }
         else if(Physics.Raycast(transform.position, Vector3.back, out hitZdirection, 1.5f))
@@ -913,7 +872,7 @@ public class BluePlayer : MonoBehaviour
                 Debug.DrawRay(transform.position, Vector3.back, Color.red);
                 //ghostName = hitZdirection.collider.transform.GetChild(0).name;
                 explosion = hitZdirection.collider.transform.GetChild(0).gameObject;
-                ghost = hitZdirection.collider.transform.GetChild(1).gameObject;
+                ghost1 = hitZdirection.collider.transform.GetChild(1).gameObject;
             }
         }
         else if (Physics.Raycast(transform.position, Vector3.left, out hitXdirection, 1.5f))
@@ -926,7 +885,7 @@ public class BluePlayer : MonoBehaviour
                 Debug.DrawRay(transform.position, Vector3.back, Color.red);
                 //ghostName = hitXdirection.collider.transform.GetChild(0).name;
                 explosion = hitXdirection.collider.transform.GetChild(0).gameObject;
-                ghost = hitXdirection.collider.transform.GetChild(1).gameObject;
+                ghost1 = hitXdirection.collider.transform.GetChild(1).gameObject;
             }
         }
         else if (Physics.Raycast(transform.position, Vector3.forward, out hitZdirection, 1.5f))
@@ -939,14 +898,14 @@ public class BluePlayer : MonoBehaviour
                 Debug.DrawRay(transform.position, Vector3.back, Color.red);
                 //ghostName = hitZdirection.collider.transform.GetChild(0).name;
                 explosion = hitZdirection.collider.transform.GetChild(0).gameObject;
-                ghost = hitZdirection.collider.transform.GetChild(1).gameObject;
+                ghost1 = hitZdirection.collider.transform.GetChild(1).gameObject;
             }
         }
         else
         {
             ghostName = "";
             ghostName2 = "";
-            ghost = null;
+            ghost1 = null;
             ghost2 = null;
             explosion = null;
             explosion2 = null;
@@ -971,5 +930,138 @@ public class BluePlayer : MonoBehaviour
     {
         choosenToken = buttonClick.transform.GetChild(0).GetComponent<Text>().text;
         choose = true;
+    }
+
+    public void SetPriority(Button buttonClick)
+    {
+        priority = buttonClick.transform.GetChild(0).GetComponent<Text>().text;
+        choosePriority = true;
+    }
+
+
+    public void Attack(GameObject ghost)
+    {
+        if ((ghost.GetComponent<Ghost>().couleur == "red" && nbRedFace >= ghost.GetComponent<Ghost>().life) || (ghost.GetComponent<Ghost>().couleur == "blue" && nbBlueFace >= ghost.GetComponent<Ghost>().life)
+                    || (ghost.GetComponent<Ghost>().couleur == "green" && nbGreenFace >= ghost.GetComponent<Ghost>().life) || (ghost.GetComponent<Ghost>().couleur == "yellow" && nbYellowFace >= ghost.GetComponent<Ghost>().life)
+                    || (ghost.GetComponent<Ghost>().couleur == "black" && nbBlackFace >= ghost.GetComponent<Ghost>().life))
+        {
+            //On ajouteras des particules à la mort du fantome (style explosion)
+            switch (ghost.GetComponent<Ghost>().couleur)
+            {
+                case "red":
+                    redBoard.nbCardOnBoard--;
+                    nbRedFace -= ghost.GetComponent<Ghost>().life;
+                    break;
+                case "yellow":
+                    yellowBoard.nbCardOnBoard--;
+                    nbYellowFace -= ghost.GetComponent<Ghost>().life;
+                    break;
+                case "blue":
+                    blueBoard.nbCardOnBoard--;
+                    nbBlueFace -= ghost.GetComponent<Ghost>().life;
+                    break;
+                case "black":
+                    blueBoard.nbCardOnBoard--;
+                    nbBlackFace -= ghost.GetComponent<Ghost>().life;
+                    break;
+                case "green":
+                    greenBoard.nbCardOnBoard--;
+                    nbGreenFace -= ghost.GetComponent<Ghost>().life;
+                    break;
+                default:
+                    break;
+            }
+            explosion.transform.GetChild(2).GetComponent<ParticleSystem>().Play();
+            ghost.transform.parent = defausse.transform;
+            ghost.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+            ghost = null;
+        }
+
+        else if ((ghost.GetComponent<Ghost>().couleur == "red" && nbRedFace < ghost.GetComponent<Ghost>().life) || (ghost.GetComponent<Ghost>().couleur == "blue" && nbBlueFace < ghost.GetComponent<Ghost>().life)
+            || (ghost.GetComponent<Ghost>().couleur == "green" && nbGreenFace < ghost.GetComponent<Ghost>().life) || (ghost.GetComponent<Ghost>().couleur == "yellow" && nbYellowFace < ghost.GetComponent<Ghost>().life)
+            || (ghost.GetComponent<Ghost>().couleur == "black" && nbBlackFace < ghost.GetComponent<Ghost>().life))
+        {
+            //D'abord, check si on a un autre joueur (ou plusieurs) sur la meme case que nous.
+            // Check résultat Dés + jetons pour tuer le fantome
+            if (ghost.GetComponent<Ghost>().couleur == "red")
+            {
+                int resultRed = ghost.GetComponent<Ghost>().life - nbRedFace;
+                if (nbRedToken >= resultRed)
+                {
+                    nbRedToken -= resultRed;
+                    redBoard.nbCardOnBoard--;
+                    nbRedFace = 0;
+                    explosion.transform.GetChild(2).GetComponent<ParticleSystem>().Play();
+                    ghost.transform.parent = defausse.transform;
+                    ghost.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+                    ghost = null;
+                    update = true;
+                }
+            }
+            else if (ghost.GetComponent<Ghost>().couleur == "blue")
+            {
+                int resultBlue = ghost.GetComponent<Ghost>().life - nbBlueFace;
+                if (nbBlueToken >= resultBlue)
+                {
+                    nbBlueToken -= resultBlue;
+                    blueBoard.nbCardOnBoard--;
+                    nbBlueFace = 0;
+                    explosion.transform.GetChild(2).GetComponent<ParticleSystem>().Play();
+                    ghost.transform.parent = defausse.transform;
+                    ghost.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+                    ghost = null;
+                    update = true;
+                }
+            }
+            else if (ghost.GetComponent<Ghost>().couleur == "green")
+            {
+                int resultGreen = ghost.GetComponent<Ghost>().life - nbGreenFace;
+                if (nbGreenToken >= resultGreen)
+                {
+                    nbGreenToken -= resultGreen;
+                    greenBoard.nbCardOnBoard--;
+                    nbGreenFace = 0;
+                    explosion.transform.GetChild(2).GetComponent<ParticleSystem>().Play();
+                    ghost.transform.parent = defausse.transform;
+                    ghost.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+                    ghost = null;
+                    update = true;
+                }
+            }
+            else if (ghost.GetComponent<Ghost>().couleur == "yellow")
+            {
+                int resultYellow = ghost.GetComponent<Ghost>().life - nbYellowFace;
+                if (nbYellowToken >= resultYellow)
+                {
+                    nbYellowToken -= resultYellow;
+                    yellowBoard.nbCardOnBoard--;
+                    nbYellowFace = 0;
+                    explosion.transform.GetChild(2).GetComponent<ParticleSystem>().Play();
+                    ghost.transform.parent = defausse.transform;
+                    ghost.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+                    ghost = null;
+                    update = true;
+                }
+            }
+            else if (ghost.GetComponent<Ghost>().couleur == "black")
+            {
+                int resultBlack = ghost.GetComponent<Ghost>().life - nbBlackFace;
+                if (nbBlackToken >= resultBlack)
+                {
+                    nbBlackToken -= resultBlack;
+                    blueBoard.nbCardOnBoard--;
+                    nbBlackFace = 0;
+                    explosion.transform.GetChild(2).GetComponent<ParticleSystem>().Play();
+                    ghost.transform.parent = defausse.transform;
+                    ghost.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+                    ghost = null;
+                    update = true;
+                }
+            }
+        }
+        else
+        {
+            //On a pas assez pour le tuer, alors il ne se passe rien
+        }
     }
 }
