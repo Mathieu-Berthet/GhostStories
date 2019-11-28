@@ -8894,6 +8894,7 @@ MonoBehaviour:
   powerSecondSouffle: 0
   powerSouffleCeleste: 0
   useTilePower: 0
+  canUsePower: 0
   dice: {fileID: 1483268768575792, guid: 6a3772ffda714d746bf307675dc5309c, type: 2}
   resultDiceOne: 
   resultDiceTwo: 
@@ -8957,6 +8958,8 @@ MonoBehaviour:
   buttonGhost1: {fileID: 1858481732}
   buttonGhost2: {fileID: 135805128}
   priority: 
+  blackDice: {fileID: 1847871859114552, guid: ff1789b7f180ad5458e0b8bdb4db6a34, type: 2}
+  resultFace: 
   state: 0
   textInfoPhase: {fileID: 654859118}
   textMort: {fileID: 1583025212}
@@ -11735,7 +11738,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hauntedTile: 0
   playerToResurrect: []
-  dice: {fileID: 1847871859114552, guid: ff1789b7f180ad5458e0b8bdb4db6a34, type: 2}
   blackDice: {fileID: 0}
   cube: {fileID: 0}
   resultFace: 
@@ -16438,6 +16440,8 @@ MonoBehaviour:
   actualTime: 0
   turn: 0
   nextPlayer: 0
+  nbDice: 0
+  canUseTaoToken: 0
 --- !u!4 &1626541477
 Transform:
   m_ObjectHideFlags: 0

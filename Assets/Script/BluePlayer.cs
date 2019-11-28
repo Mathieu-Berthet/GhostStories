@@ -31,6 +31,7 @@ public class BluePlayer : MonoBehaviour
 
     public bool useTilePower;
     private bool fight;
+    public bool canUsePower;
 
     [SerializeField]
     private GameObject dice;
@@ -129,6 +130,11 @@ public class BluePlayer : MonoBehaviour
     public Button buttonGhost1;
     public Button buttonGhost2;
     public string priority;
+
+    [SerializeField]
+    private GameObject blackDice;
+
+    public string resultFace;
     #region accesseurs
     public int Qi
     {
@@ -561,7 +567,7 @@ public class BluePlayer : MonoBehaviour
             nbGreenFace = 0;
             nbYellowFace = 0;
 
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < gm.nbDice; i++)
             {
                 GameObject go = Instantiate(dice, new Vector3(i, 2, 0), Quaternion.identity);
                 go.AddComponent<CubeScript>();
@@ -1063,5 +1069,128 @@ public class BluePlayer : MonoBehaviour
         {
             //On a pas assez pour le tuer, alors il ne se passe rien
         }
+    }
+
+
+    public IEnumerator LaunchBlackDice()
+    {
+        canLaunchBlackDice = false;
+        canLaunchDice = false;
+        gameObject.GetComponent<Deplacement>().enabled = false;
+
+        yield return new WaitForSeconds(0.2f);
+
+        GameObject go = Instantiate(blackDice, new Vector3(0, 2, 0), Quaternion.identity);
+        go.AddComponent<CubeScript>();
+        cube = go.GetComponent<CubeScript>();
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit))
+        {
+            cube.rb.AddForce(hit.point * cube.force);
+        }
+
+        blackDice = go;
+
+        yield return new WaitForSeconds(2.0f);
+
+        resultFace = blackDice.GetComponent<CubeScript>().face;
+
+        switch (resultFace)
+        {
+            case "HauntedFace": 
+                switch (tileName)
+                {
+                    case "MaisonThe":
+                        houseOfTea.GetComponent<HouseOfTea>().hauntedTile = true;
+                        houseOfTea.GetComponent<HouseOfTea>().haunted();
+                        break;
+                    case "HutteSorciere":
+                        witchHut.GetComponent<HutOfWitch>().hauntedTile = true;
+                        witchHut.GetComponent<HutOfWitch>().haunted();
+                        break;
+                    case "EchoppeHerboriste":
+                        herbalistStall.GetComponent<StallOfHerbalist>().hauntedTile = true;
+                        herbalistStall.GetComponent<StallOfHerbalist>().haunted();
+                        break;
+                    case "AutelTaoiste":
+                        taoisteAutel.GetComponent<TaoisteAutel>().hauntedTile = true;
+                        taoisteAutel.GetComponent<TaoisteAutel>().haunted();
+                        break;
+                    case "Cimetiere":
+                        graveyard.GetComponent<Graveyard>().hauntedTile = true;
+                        graveyard.GetComponent<Graveyard>().haunted();
+                        break;
+                    case "PavillonVentCeleste":
+                        windCelestialFlag.GetComponent<WindCelestialFlag>().hauntedTile = true;
+                        windCelestialFlag.GetComponent<WindCelestialFlag>().haunted();
+                        break;
+                    case "TourVeilleurNuit":
+                        nightTower.GetComponent<NightTower>().hauntedTile = true;
+                        nightTower.GetComponent<NightTower>().haunted();
+                        break;
+                    case "CerclePierre":
+                        priestCircle.GetComponent<PriestCircle>().hauntedTile = true;
+                        priestCircle.GetComponent<PriestCircle>().haunted();
+                        break;
+                    case "TempleBouddhiste":
+                        bouddhisteTemple.GetComponent<BouddhisteTemple>().hauntedTile = true;
+                        bouddhisteTemple.GetComponent<BouddhisteTemple>().haunted();
+                        break;
+                    default:
+                        break;
+                }
+                //To verify if we need that
+                canLaunchBlackDice = true;
+                useTilePower = false;
+                canLaunchDice = true;
+                gameObject.GetComponent<Deplacement>().enabled = true;
+                break;
+            case "DrawGhostFace":   
+                //player.GetComponent<BluePlayer>().state = BluePlayer.STATE_GAME.STATE_DRAW;
+                DrawAGhost();
+                //To verify if we need that
+                canLaunchBlackDice = true;
+                useTilePower = false;
+                canLaunchDice = true;
+                gameObject.GetComponent<Deplacement>().enabled = true;
+                break;
+            case "LoseJetonFace":
+                NbBlackToken = 0;
+                NbRedToken = 0;
+                NbBlueToken = 0;
+                NbGreenToken = 0;
+                NbYellowToken = 0;
+                //To verify if we need that
+                update = true;
+                canLaunchBlackDice = true;
+                canLaunchDice = true;
+                useTilePower = false;
+                gameObject.GetComponent<Deplacement>().enabled = true; ;
+                break;
+            case "LoseQIFace":
+                Qi -= 1;
+                //To verify if we need that
+                update = true;
+                canLaunchBlackDice = true;
+                useTilePower = false;
+                canLaunchDice = true;
+                gameObject.GetComponent<Deplacement>().enabled = true;
+                break;
+            case "EmptyFace":
+            case "EmptyFaceTwo":
+                //To verify if we need that
+                canLaunchBlackDice = true;
+                useTilePower = false;
+                canLaunchDice = true;
+                gameObject.GetComponent<Deplacement>().enabled = true;
+                break;
+            default:
+                break;
+        }
+        yield return new WaitForSeconds(0.5f);
+
+        Destroy(blackDice);
     }
 }

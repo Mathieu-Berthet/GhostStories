@@ -10,6 +10,10 @@ public class Ghost : MonoBehaviour {
 
     public GhostPower power;
 
+    //Un booleen par type de pouvoir : Entrer, En jeu, Mort
+
+    //Un booleen par pouvoir
+
 	// Use this for initialization
 	void Start ()
     {

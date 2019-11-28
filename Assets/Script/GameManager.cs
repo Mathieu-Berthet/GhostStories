@@ -44,10 +44,13 @@ public class GameManager : MonoBehaviour {
     public int turn;
     public bool nextPlayer;
 
+    public int nbDice;
+    public bool canUseTaoToken;
 	// Use this for initialization
 	void Start ()
     {
         //startTime = Time.time;
+        nbDice = 3;
         turn = 1;
         nextPlayer = false;
         canLerp = false;
