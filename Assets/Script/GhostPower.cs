@@ -20,6 +20,8 @@ public class GhostPower : MonoBehaviour {
     public string choseenAward;
     public bool chooseAward;
 
+    public bool hasHauntedTile;
+
     // Use this for initialization
     void Start ()
     {
@@ -108,7 +110,131 @@ public class GhostPower : MonoBehaviour {
 
     public void HauntedTile()
     {
-        //Modifier le booleen dans les script des tuiles
+        hasHauntedTile = false;
+        RaycastHit hitTiledirection;
+        GameObject tileToCheck;
+        do
+        {
+            if(Physics.Raycast(transform.position, Vector3.back, out hitTiledirection, 6.5f) || Physics.Raycast(transform.position, Vector3.forward, out hitTiledirection, 6.5f) ||
+               Physics.Raycast(transform.position, Vector3.right, out hitTiledirection, 6.5f) || Physics.Raycast(transform.position, Vector3.left, out hitTiledirection, 6.5f))
+            {
+                tileToCheck = hitTiledirection.collider.gameObject;
+                switch(tileToCheck.name)
+                {
+                    case "MaisonThe":
+                        if (!tileToCheck.GetComponent<HouseOfTea>().hauntedTile)
+                        {
+                            tileToCheck.GetComponent<HouseOfTea>().hauntedTile = true;
+                            tileToCheck.GetComponent<HouseOfTea>().haunted();
+                            hasHauntedTile = true;
+                        }
+                        else
+                        {
+                            tileToCheck.GetComponent<BoxCollider>().enabled = false;
+                        }
+                        break;
+                    case "HutteSorciere":
+                        if (!tileToCheck.GetComponent<HutOfWitch>().hauntedTile)
+                        {
+                            tileToCheck.GetComponent<HutOfWitch>().hauntedTile = true;
+                            tileToCheck.GetComponent<HutOfWitch>().haunted();
+                            hasHauntedTile = true;
+                        }
+                        else
+                        {
+                            tileToCheck.GetComponent<BoxCollider>().enabled = false;
+                        }
+                        break;
+                    case "EchoppeHerboriste":
+                        if (!tileToCheck.GetComponent<StallOfHerbalist>().hauntedTile)
+                        {
+                            tileToCheck.GetComponent<StallOfHerbalist>().hauntedTile = true;
+                            tileToCheck.GetComponent<StallOfHerbalist>().haunted();
+                            hasHauntedTile = true;
+                        }
+                        else
+                        {
+                            tileToCheck.GetComponent<BoxCollider>().enabled = false;
+                        }
+                        break;
+                    case "AutelTaoiste":
+                        if (!tileToCheck.GetComponent<TaoisteAutel>().hauntedTile)
+                        {
+                            tileToCheck.GetComponent<TaoisteAutel>().hauntedTile = true;
+                            tileToCheck.GetComponent<TaoisteAutel>().haunted();
+                            hasHauntedTile = true;
+                        }
+                        else
+                        {
+                            tileToCheck.GetComponent<BoxCollider>().enabled = false;
+                        }
+                        break;
+                    case "Cimetiere":
+                        if (!tileToCheck.GetComponent<Graveyard>().hauntedTile)
+                        {
+                            tileToCheck.GetComponent<Graveyard>().hauntedTile = true;
+                            tileToCheck.GetComponent<Graveyard>().haunted();
+                            hasHauntedTile = true;
+                        }
+                        else
+                        {
+                            tileToCheck.GetComponent<BoxCollider>().enabled = false;
+                        }
+                        break;
+                    case "PavillonVentCeleste":
+                        if (!tileToCheck.GetComponent<WindCelestialFlag>().hauntedTile)
+                        {
+                            tileToCheck.GetComponent<WindCelestialFlag>().hauntedTile = true;
+                            tileToCheck.GetComponent<WindCelestialFlag>().haunted();
+                            hasHauntedTile = true;
+                        }
+                        else
+                        {
+                            tileToCheck.GetComponent<BoxCollider>().enabled = false;
+                        }
+                        break;
+                    case "TourVeilleurNuit":
+                        if (!tileToCheck.GetComponent<NightTower>().hauntedTile)
+                        {
+                            tileToCheck.GetComponent<NightTower>().hauntedTile = true;
+                            tileToCheck.GetComponent<NightTower>().haunted();
+                            hasHauntedTile = true;
+                        }
+                        else
+                        {
+                            tileToCheck.GetComponent<BoxCollider>().enabled = false;
+                        }
+                        break;
+                    case "CerclePierre":
+                        if (!tileToCheck.GetComponent<PriestCircle>().hauntedTile)
+                        {
+                            tileToCheck.GetComponent<PriestCircle>().hauntedTile = true;
+                            tileToCheck.GetComponent<PriestCircle>().haunted();
+                            hasHauntedTile = true;
+                        }
+                        else
+                        {
+                            tileToCheck.GetComponent<BoxCollider>().enabled = false;
+                        }
+                        break;
+                    case "TempleBouddhiste":
+                        if (!tileToCheck.GetComponent<BouddhisteTemple>().hauntedTile)
+                        {
+                            tileToCheck.GetComponent<BouddhisteTemple>().hauntedTile = true;
+                            tileToCheck.GetComponent<BouddhisteTemple>().haunted();
+                            hasHauntedTile = true;
+                        }
+                        else
+                        {
+                            tileToCheck.GetComponent<BoxCollider>().enabled = false;
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+        while (!hasHauntedTile);
     }
 
     public void LoseLife(GameObject player)

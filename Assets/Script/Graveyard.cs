@@ -9,9 +9,6 @@ public class Graveyard : MonoBehaviour {
     private GameObject[] playerToResurrect;
 
     [SerializeField]
-    private GameObject blackDice;
-
-    [SerializeField]
     private CubeScript cube;
     public string resultFace;
 
@@ -51,8 +48,6 @@ public class Graveyard : MonoBehaviour {
                 //player.GetComponent<YellowPlayer>().DrawAGhost();
             }
         yield return new WaitForSeconds(0.5f);
-
-        Destroy(blackDice);
     }
 
     public void haunted()
