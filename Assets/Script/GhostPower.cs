@@ -22,6 +22,8 @@ public class GhostPower : MonoBehaviour {
 
     public bool hasHauntedTile;
 
+    public GameObject hauntingGhost;
+    public Vector3 startPosition;
     // Use this for initialization
     void Start ()
     {
@@ -89,6 +91,7 @@ public class GhostPower : MonoBehaviour {
 
     public void CantUsePower(GameObject player)
     {
+        //Bloque en fait le pouvoir du plateau ou il est posé
         //Booleen dans le script du joueur a modifier
         if (player.name == "BluePlayer")
         {
@@ -283,7 +286,12 @@ public class GhostPower : MonoBehaviour {
     //Funcitons when the ghost is not dead yet 
     public void HauntedGhost()
     {
-        //Faire avancer le fantome vers la tuile en face d'eux (a chaque tour)
+        Instantiate(hauntingGhost, hauntingGhost.GetComponent<Ghost>().positions.startPosition);
+        //Mettre la position locale en 0,0,0 // May be TODO
+        //Le déplacement se fera dans le script Ghost // TODO
+        //Dans le fantome, récupérer la position ou on le place lors de la pioche/pose ? //TODO
+        //Deplacement selon les positions avec un lerp entre chaque //TODO
+        //Reprendre la fonction HauntedTile() pour quand ils arrivent sur leurs dernières cases. //TODO
     }
 
     public void UnactiveWhiteFace()

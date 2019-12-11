@@ -250,6 +250,7 @@
     <Compile Include="Assets\Script\GhostPower.cs" />
     <Compile Include="Assets\Script\Graveyard.cs" />
     <Compile Include="Assets\Script\GreenPlayer.cs" />
+    <Compile Include="Assets\Script\HauntingGhostDeplacement.cs" />
     <Compile Include="Assets\Script\HouseOfTea.cs" />
     <Compile Include="Assets\Script\HutOfWitch.cs" />
     <Compile Include="Assets\Script\NightTower.cs" />

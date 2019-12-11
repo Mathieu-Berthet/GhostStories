@@ -10,6 +10,8 @@ public class Ghost : MonoBehaviour {
 
     public GhostPower power;
 
+    public HauntingGhostDeplacement positions;
+
     //Un booleen par type de pouvoir : Entrer, En jeu, Mort
 
     //Un booleen par pouvoir
@@ -25,4 +27,5 @@ public class Ghost : MonoBehaviour {
 	void Update () {
 		
 	}
+    //Pouvoir activé avant de faire la pioche.
 }

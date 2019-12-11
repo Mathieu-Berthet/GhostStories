@@ -360,7 +360,7 @@ public class BluePlayer : MonoBehaviour
     {
 
     }
-
+    
     public void DrawAGhost()
     {
         if (state == STATE_GAME.STATE_DRAW || useTilePower)

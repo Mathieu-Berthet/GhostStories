@@ -161,87 +161,87 @@ public class HutOfWitch : MonoBehaviour {
         switch(chooseenGhost)
         {
             case "BlueOne":
-                if (buttonClick.transform.parent.parent.GetComponent<BoardPosition>().bluePositionOne.transform.childCount > 1)
+                if (buttonClick.transform.parent.parent.GetComponent<BoardPosition>().bluePositionOne.transform.childCount > 4)
                 {
                     Debug.Log(buttonClick.transform.parent.parent.GetComponent<BoardPosition>().bluePositionOne.transform.childCount);
-                    ghostToKill = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().bluePositionOne.transform.GetChild(1).gameObject;
+                    ghostToKill = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().bluePositionOne.transform.GetChild(4).gameObject;
                 }
                 break;
             case "BlueTwo":
-                if (buttonClick.transform.parent.parent.GetComponent<BoardPosition>().bluePositionTwo.transform.childCount > 1)
+                if (buttonClick.transform.parent.parent.GetComponent<BoardPosition>().bluePositionTwo.transform.childCount > 4)
                 {
                     Debug.Log(buttonClick.transform.parent.parent.GetComponent<BoardPosition>().bluePositionTwo.transform.childCount);
-                    ghostToKill = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().bluePositionTwo.transform.GetChild(1).gameObject;
+                    ghostToKill = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().bluePositionTwo.transform.GetChild(4).gameObject;
                 }
                 break;
             case "BlueThree":
-                if (buttonClick.transform.parent.parent.GetComponent<BoardPosition>().bluePositionThree.transform.childCount > 1)
+                if (buttonClick.transform.parent.parent.GetComponent<BoardPosition>().bluePositionThree.transform.childCount > 4)
                 {
                     Debug.Log(buttonClick.transform.parent.parent.GetComponent<BoardPosition>().bluePositionThree.transform.childCount);
-                    ghostToKill = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().bluePositionThree.transform.GetChild(1).gameObject;
+                    ghostToKill = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().bluePositionThree.transform.GetChild(4).gameObject;
                 }
                 break;
             case "RedOne":
-                if (buttonClick.transform.parent.parent.GetComponent<BoardPosition>().redPositionOne.transform.childCount > 1)
+                if (buttonClick.transform.parent.parent.GetComponent<BoardPosition>().redPositionOne.transform.childCount > 4)
                 {
                     Debug.Log(buttonClick.transform.parent.parent.GetComponent<BoardPosition>().redPositionOne.transform.childCount);
-                    ghostToKill = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().redPositionOne.transform.GetChild(1).gameObject;
+                    ghostToKill = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().redPositionOne.transform.GetChild(4).gameObject;
                 }
                 break;
             case "RedTwo":
-                if (buttonClick.transform.parent.parent.GetComponent<BoardPosition>().redPositionTwo.transform.childCount > 1)
+                if (buttonClick.transform.parent.parent.GetComponent<BoardPosition>().redPositionTwo.transform.childCount > 4)
                 {
                     Debug.Log(buttonClick.transform.parent.parent.GetComponent<BoardPosition>().redPositionTwo.transform.childCount);
-                    ghostToKill = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().redPositionTwo.transform.GetChild(1).gameObject;
+                    ghostToKill = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().redPositionTwo.transform.GetChild(4).gameObject;
                 }
                 break;
             case "RedThree":
-                if (buttonClick.transform.parent.parent.GetComponent<BoardPosition>().redPositionThree.transform.childCount > 1)
+                if (buttonClick.transform.parent.parent.GetComponent<BoardPosition>().redPositionThree.transform.childCount > 4)
                 {
                     Debug.Log(buttonClick.transform.parent.parent.GetComponent<BoardPosition>().redPositionThree.transform.childCount);
-                    ghostToKill = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().redPositionThree.transform.GetChild(1).gameObject;
+                    ghostToKill = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().redPositionThree.transform.GetChild(4).gameObject;
                 }
                 break;
             case "GreenOne":
-                if (buttonClick.transform.parent.parent.GetComponent<BoardPosition>().greenPositionOne.transform.childCount > 1)
+                if (buttonClick.transform.parent.parent.GetComponent<BoardPosition>().greenPositionOne.transform.childCount > 4)
                 {
                     Debug.Log(buttonClick.transform.parent.parent.GetComponent<BoardPosition>().greenPositionOne.transform.childCount);
-                    ghostToKill = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().greenPositionOne.transform.GetChild(1).gameObject;
+                    ghostToKill = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().greenPositionOne.transform.GetChild(4).gameObject;
                 }
                 break;
             case "GreenTwo":
-                if (buttonClick.transform.parent.parent.GetComponent<BoardPosition>().greenPositionTwo.transform.childCount > 1)
+                if (buttonClick.transform.parent.parent.GetComponent<BoardPosition>().greenPositionTwo.transform.childCount > 4)
                 {
                     Debug.Log(buttonClick.transform.parent.parent.GetComponent<BoardPosition>().greenPositionTwo.transform.childCount);
-                    ghostToKill = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().greenPositionTwo.transform.GetChild(1).gameObject;
+                    ghostToKill = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().greenPositionTwo.transform.GetChild(4).gameObject;
                 }
                 break;
             case "GreenThree":
-                if (buttonClick.transform.parent.parent.GetComponent<BoardPosition>().greenPositionThree.transform.childCount > 1)
+                if (buttonClick.transform.parent.parent.GetComponent<BoardPosition>().greenPositionThree.transform.childCount > 4)
                 {
                     Debug.Log(buttonClick.transform.parent.parent.GetComponent<BoardPosition>().greenPositionThree.transform.childCount);
-                    ghostToKill = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().greenPositionThree.transform.GetChild(1).gameObject;
+                    ghostToKill = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().greenPositionThree.transform.GetChild(4).gameObject;
                 }
                 break;
             case "YellowOne":
-                if (buttonClick.transform.parent.parent.GetComponent<BoardPosition>().yellowPositionOne.transform.childCount > 1)
+                if (buttonClick.transform.parent.parent.GetComponent<BoardPosition>().yellowPositionOne.transform.childCount > 4)
                 {
                     Debug.Log(buttonClick.transform.parent.parent.GetComponent<BoardPosition>().yellowPositionOne.transform.childCount);
-                    ghostToKill = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().yellowPositionOne.transform.GetChild(1).gameObject;
+                    ghostToKill = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().yellowPositionOne.transform.GetChild(4).gameObject;
                 }
                 break;
             case "YellowTwo":
-                if (buttonClick.transform.parent.parent.GetComponent<BoardPosition>().yellowPositionTwo.transform.childCount > 1)
+                if (buttonClick.transform.parent.parent.GetComponent<BoardPosition>().yellowPositionTwo.transform.childCount > 4)
                 {
                     Debug.Log(buttonClick.transform.parent.parent.GetComponent<BoardPosition>().yellowPositionTwo.transform.childCount);
-                    ghostToKill = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().yellowPositionTwo.transform.GetChild(1).gameObject;
+                    ghostToKill = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().yellowPositionTwo.transform.GetChild(4).gameObject;
                 }
                 break;
             case "YellowThree":
-                if (buttonClick.transform.parent.parent.GetComponent<BoardPosition>().yellowPositionThree.transform.childCount > 1)
+                if (buttonClick.transform.parent.parent.GetComponent<BoardPosition>().yellowPositionThree.transform.childCount > 4)
                 {
                     Debug.Log(buttonClick.transform.parent.parent.GetComponent<BoardPosition>().yellowPositionThree.transform.childCount);
-                    ghostToKill = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().yellowPositionThree.transform.GetChild(1).gameObject;
+                    ghostToKill = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().yellowPositionThree.transform.GetChild(4).gameObject;
                 }
                 break;
         }
