@@ -12,6 +12,8 @@ public class Ghost : MonoBehaviour {
 
     public HauntingGhostDeplacement positions;
 
+    public bool killWithBouddha;
+
     //Un booleen par type de pouvoir : Entrer, En jeu, Mort
 
     //Un booleen par pouvoir

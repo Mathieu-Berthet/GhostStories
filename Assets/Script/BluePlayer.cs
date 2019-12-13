@@ -689,40 +689,43 @@ public class BluePlayer : MonoBehaviour
 
 
             yield return new WaitForSeconds(2.0f);
-            while (nbWhiteFace > 0)
+            if (!gm.cantTransformWhiteFace)
             {
-                panelButtonChoice.SetActive(true);
-                gameObject.GetComponent<Deplacement>().enabled = false;
-                while (!choose)
+                while (nbWhiteFace > 0)
                 {
-                    yield return new WaitForSeconds(2.0f);
-                }
-                if (choose)
-                {
-                    switch (choosenToken)
+                    panelButtonChoice.SetActive(true);
+                    gameObject.GetComponent<Deplacement>().enabled = false;
+                    while (!choose)
                     {
-                        case "Red":
-                            nbRedFace++;
-                            break;
-                        case "Blue":
-                            nbBlueFace++;
-                            break;
-                        case "Yellow":
-                            nbYellowFace++;
-                            break;
-                        case "Green":
-                            nbGreenFace++;
-                            break;
-                        case "Black":
-                            nbBlackFace++;
-                            break;
-                        default:
-                            break;
+                        yield return new WaitForSeconds(2.0f);
                     }
-                    choose = false;
-                    panelButtonChoice.SetActive(false);
+                    if (choose)
+                    {
+                        switch (choosenToken)
+                        {
+                            case "Red":
+                                nbRedFace++;
+                                break;
+                            case "Blue":
+                                nbBlueFace++;
+                                break;
+                            case "Yellow":
+                                nbYellowFace++;
+                                break;
+                            case "Green":
+                                nbGreenFace++;
+                                break;
+                            case "Black":
+                                nbBlackFace++;
+                                break;
+                            default:
+                                break;
+                        }
+                        choose = false;
+                        panelButtonChoice.SetActive(false);
+                    }
+                    nbWhiteFace--;
                 }
-                nbWhiteFace--;
             }
 
             yield return new WaitForSeconds(2.0f);
@@ -947,7 +950,7 @@ public class BluePlayer : MonoBehaviour
 
     public void Attack(GameObject ghost)
     {
-        if ((ghost.GetComponent<Ghost>().couleur == "red" && nbRedFace >= ghost.GetComponent<Ghost>().life) || (ghost.GetComponent<Ghost>().couleur == "blue" && nbBlueFace >= ghost.GetComponent<Ghost>().life)
+        if ( !gm.cantBeDestroyByDice && (ghost.GetComponent<Ghost>().couleur == "red" && nbRedFace >= ghost.GetComponent<Ghost>().life) || (ghost.GetComponent<Ghost>().couleur == "blue" && nbBlueFace >= ghost.GetComponent<Ghost>().life)
                     || (ghost.GetComponent<Ghost>().couleur == "green" && nbGreenFace >= ghost.GetComponent<Ghost>().life) || (ghost.GetComponent<Ghost>().couleur == "yellow" && nbYellowFace >= ghost.GetComponent<Ghost>().life)
                     || (ghost.GetComponent<Ghost>().couleur == "black" && nbBlackFace >= ghost.GetComponent<Ghost>().life))
         {
@@ -983,7 +986,7 @@ public class BluePlayer : MonoBehaviour
             ghost = null;
         }
 
-        else if ((ghost.GetComponent<Ghost>().couleur == "red" && nbRedFace < ghost.GetComponent<Ghost>().life) || (ghost.GetComponent<Ghost>().couleur == "blue" && nbBlueFace < ghost.GetComponent<Ghost>().life)
+        else if (gm.canUseTaoToken && (ghost.GetComponent<Ghost>().couleur == "red" && nbRedFace < ghost.GetComponent<Ghost>().life) || (ghost.GetComponent<Ghost>().couleur == "blue" && nbBlueFace < ghost.GetComponent<Ghost>().life)
             || (ghost.GetComponent<Ghost>().couleur == "green" && nbGreenFace < ghost.GetComponent<Ghost>().life) || (ghost.GetComponent<Ghost>().couleur == "yellow" && nbYellowFace < ghost.GetComponent<Ghost>().life)
             || (ghost.GetComponent<Ghost>().couleur == "black" && nbBlackFace < ghost.GetComponent<Ghost>().life))
         {

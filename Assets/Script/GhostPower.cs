@@ -58,12 +58,12 @@ public class GhostPower : MonoBehaviour {
     }
 
     //Functions for power activate when ghost is draw
-    public void CaptureOneDice()
+    public void CaptureOneDice() // May be an ui text to see how dice we have. And so, we must update UI
     {
         gm.nbDice--;
     }
 
-    public void CantUseTAOToken()
+    public void CantUseTAOToken() //Idem than previous function. See how to indicate that
     {
         gm.canUseTaoToken = false;
     }
@@ -246,6 +246,7 @@ public class GhostPower : MonoBehaviour {
         if (player.name == "BluePlayer")
         {
             player.GetComponent<BluePlayer>().Qi -= 1;
+            player.GetComponent<BluePlayer>().update = true;
         }
         else if (player.name == "RedPlayer")
         {
@@ -274,39 +275,36 @@ public class GhostPower : MonoBehaviour {
 
     public void HauntedGhostAdvanced()
     {
-        //Idem que HauntedGhost mais le fantome a deja avance d'une case
+        Instantiate(hauntingGhost, hauntingGhost.GetComponent<Ghost>().positions.middlePosition); //To verify if we need to ajust. I think we must warning with start function and this (Which function is before the other)
+        hauntingGhost.transform.localPosition = new Vector3(0, 0, 0);
     }
 
     //Functions for power activate when ghost in on the field
     public void Insensible() //To rename later
     {
-        // Insensible au dé
+        gm.cantBeDestroyByDice = true;
     }
 
     //Funcitons when the ghost is not dead yet 
     public void HauntedGhost()
     {
         Instantiate(hauntingGhost, hauntingGhost.GetComponent<Ghost>().positions.startPosition);
-        //Mettre la position locale en 0,0,0 // May be TODO
-        //Le déplacement se fera dans le script Ghost // TODO
-        //Dans le fantome, récupérer la position ou on le place lors de la pioche/pose ? //TODO
-        //Deplacement selon les positions avec un lerp entre chaque //TODO
-        //Reprendre la fonction HauntedTile() pour quand ils arrivent sur leurs dernières cases. //TODO
+        hauntingGhost.transform.localPosition = new Vector3(0, 0, 0);
     }
 
     public void UnactiveWhiteFace()
     {
-        //Les faces blanches ne font plus rien
+        gm.cantTransformWhiteFace = true;
     }
 
     public void MustBeKillWithBouddha()
     {
-        //Le fantome doit être tué par le Bouddha
+        gameObject.GetComponent<Ghost>().killWithBouddha = true;
     }
 
     //Functions for power activate when ghost dead (if dead naturally)
 
-    public IEnumerator WinQiORYinYangToken(GameObject player)
+    public IEnumerator WinQiORYinYangToken(GameObject player) //Warning : We must active Yin Yang token. Or may be in first, indicate them on UI
     {
         //panelButtonChoice.SetActive(true);
         while (!chooseAward)
@@ -602,7 +600,7 @@ public class GhostPower : MonoBehaviour {
         }
     }
 
-    public IEnumerator WinQIANDYinYang(GameObject player)
+    public IEnumerator WinQIANDYinYang(GameObject player) //Warning : We must active Yin Yang token. Or may be in first, indicate them on UI
     {
         panelButtonChoice.SetActive(true);
         while (!choose)
@@ -729,7 +727,7 @@ public class GhostPower : MonoBehaviour {
 
     public IEnumerator WinTwoTAOToken(GameObject player)
     {
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 2; i++)
         {
             panelButtonChoice.SetActive(true);
             while (!choose)
