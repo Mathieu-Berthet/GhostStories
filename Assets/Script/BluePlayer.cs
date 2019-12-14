@@ -268,7 +268,7 @@ public class BluePlayer : MonoBehaviour
     void Start ()
     {
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
-        Qi = 4; // Mode facile, seulement 3 pour les autres modes. Mais pour l'instant, test avec 4.
+        Qi = 200;//Test des pouvoirs. Donc faut etre large // Mode facile, seulement 3 pour les autres modes. Mais pour l'instant, test avec 4.
         NbBlueToken = 1;
         NbRedToken = 0;
         NbYellowToken = 0;
@@ -394,7 +394,8 @@ public class BluePlayer : MonoBehaviour
             drawedCard.gameObject.SetActive(true);
             card = deck.GetPoolByName(PoolNameDeck.ghost).GetItem(transform, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity, true, false, 0);
             card.transform.parent = null;
-            card.SetActive(false);
+            card.transform.position = new Vector3(100.0f, 100.0f, 100.0f);
+            card.SetActive(true);
             drawedCard.sprite = card.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
         }
     }
@@ -425,9 +426,17 @@ public class BluePlayer : MonoBehaviour
                 card.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
                 card.transform.localEulerAngles = new Vector3(90.0f, 0.0f, 180.0f);
                 card.transform.localScale = new Vector3(15.0f, 10.0f, 1);
-                card.SetActive(true);
+                //card.SetActive(true);
                 card.transform.parent.GetComponent<BoxCollider>().enabled = true;
-                card = null;
+                if (card.GetComponent<Ghost>().entryPower)
+                {
+                    card.GetComponent<Ghost>().UseEntryPower(gameObject);
+                    //card = null;
+                }
+                else
+                {
+                    //card = null;
+                }
 
                 if (position.transform.parent.GetComponent<boardColor>().color == "blue")
                 {
@@ -456,6 +465,7 @@ public class BluePlayer : MonoBehaviour
             canLaunchBlackDice = true;
             useTilePower = false;
             hasDraw = false;
+            //card = null;
             state = STATE_GAME.STATE_PLAYER;
         }
     }
@@ -950,7 +960,7 @@ public class BluePlayer : MonoBehaviour
 
     public void Attack(GameObject ghost)
     {
-        if ( !gm.cantBeDestroyByDice && (ghost.GetComponent<Ghost>().couleur == "red" && nbRedFace >= ghost.GetComponent<Ghost>().life) || (ghost.GetComponent<Ghost>().couleur == "blue" && nbBlueFace >= ghost.GetComponent<Ghost>().life)
+        if ( !ghost.GetComponent<Ghost>().cantBeDestroyByDice && (ghost.GetComponent<Ghost>().couleur == "red" && nbRedFace >= ghost.GetComponent<Ghost>().life) || (ghost.GetComponent<Ghost>().couleur == "blue" && nbBlueFace >= ghost.GetComponent<Ghost>().life)
                     || (ghost.GetComponent<Ghost>().couleur == "green" && nbGreenFace >= ghost.GetComponent<Ghost>().life) || (ghost.GetComponent<Ghost>().couleur == "yellow" && nbYellowFace >= ghost.GetComponent<Ghost>().life)
                     || (ghost.GetComponent<Ghost>().couleur == "black" && nbBlackFace >= ghost.GetComponent<Ghost>().life))
         {

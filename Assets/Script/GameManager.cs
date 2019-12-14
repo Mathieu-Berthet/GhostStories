@@ -46,7 +46,6 @@ public class GameManager : MonoBehaviour {
 
     public int nbDice;
     public bool canUseTaoToken;
-    public bool cantBeDestroyByDice;
     public bool cantTransformWhiteFace;
 	// Use this for initialization
 	void Start ()

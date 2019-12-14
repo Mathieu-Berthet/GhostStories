@@ -61,11 +61,13 @@ public class GhostPower : MonoBehaviour {
     public void CaptureOneDice() // May be an ui text to see how dice we have. And so, we must update UI
     {
         gm.nbDice--;
+        Debug.Log(gm.nbDice);
     }
 
     public void CantUseTAOToken() //Idem than previous function. See how to indicate that
     {
         gm.canUseTaoToken = false;
+        Debug.Log(gm.canUseTaoToken);
     }
 
     public void DrawAGhost(GameObject player)
@@ -96,6 +98,7 @@ public class GhostPower : MonoBehaviour {
         if (player.name == "BluePlayer")
         {
             player.GetComponent<BluePlayer>().canUsePower = false;
+            Debug.Log(player.GetComponent<BluePlayer>().canUsePower);
         }
         else if (player.name == "RedPlayer")
         {
@@ -109,6 +112,11 @@ public class GhostPower : MonoBehaviour {
         {
             //player.GetComponent<YellowPlayer>().canUsePower = false;
         }
+    }
+
+    public void BlockAllPower()
+    {
+        //Bloquer le pouvoir de tous les joueurs
     }
 
     public void HauntedTile()
@@ -282,7 +290,8 @@ public class GhostPower : MonoBehaviour {
     //Functions for power activate when ghost in on the field
     public void Insensible() //To rename later
     {
-        gm.cantBeDestroyByDice = true;
+        gameObject.GetComponent<Ghost>().cantBeDestroyByDice = true;
+        Debug.Log(gameObject.GetComponent<Ghost>().cantBeDestroyByDice);
     }
 
     //Funcitons when the ghost is not dead yet 
@@ -295,6 +304,7 @@ public class GhostPower : MonoBehaviour {
     public void UnactiveWhiteFace()
     {
         gm.cantTransformWhiteFace = true;
+        Debug.Log(gm.cantTransformWhiteFace);
     }
 
     public void MustBeKillWithBouddha()

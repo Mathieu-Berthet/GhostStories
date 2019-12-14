@@ -142,6 +142,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1852c90c2e233f34db32038e0eacf06b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gm: {fileID: 0}
+  circle: {fileID: 0}
+  tokenStock: {fileID: 0}
+  choseenToken: 
+  choose: 0
+  panelButtonChoice: {fileID: 0}
+  choseenAward: 
+  chooseAward: 0
+  hasHauntedTile: 0
+  hauntingGhost: {fileID: 1682856368587106, guid: 368504fe807cdf3478db1e8a55b16ee9,
+    type: 2}
+  startPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &114896279967724098
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -156,6 +168,30 @@ MonoBehaviour:
   couleur: green
   life: 2
   power: {fileID: 0}
+  positions: {fileID: 0}
+  killWithBouddha: 0
+  cantBeDestroyByDice: 0
+  entryPower: 0
+  inGamePower: 0
+  deathPower: 1
+  hasLaunchBlackDicePower: 1
+  hasCaptureDicePower: 0
+  hasCantUseTokenPower: 0
+  hasDrawAGhostPower: 0
+  hasCantUsePowerPower: 0
+  hasHauntedTilePower: 0
+  hasLoseLifePower: 0
+  hasLoseOneTokenPower: 0
+  hasUnactivePriestCirclePower: 0
+  hasHauntedGhostAdvancedPower: 0
+  hasInsensiblePower: 0
+  hasHauntedGhostPower: 0
+  hasUnactiveWhiteFacePower: 0
+  hasMustBeKillWithBouddhaPower: 0
+  hasWinQiOrYinYangTokenPower: 0
+  hasWinTAOTokenPower: 0
+  hasWinQiAndYinYangPower: 0
+  hasWinTwoTAOTokenPower: 0
 --- !u!212 &212453516950382636
 SpriteRenderer:
   m_ObjectHideFlags: 1
