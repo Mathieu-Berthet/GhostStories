@@ -65,6 +65,7 @@ public class HutOfWitch : MonoBehaviour {
                     player.GetComponent<BluePlayer>().yellowBoard.nbCardOnBoard--;
                     break;
                 case "blue":
+                case "black":
                     player.GetComponent<BluePlayer>().blueBoard.nbCardOnBoard--;
                     break;
                 case "green":

@@ -2,20 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HauntingGhostDeplacement : MonoBehaviour {
-
-    public Transform startPosition;
-    public Transform middlePosition;
-    public Transform endPosition;
+public class HauntingGhostDeplacement : MonoBehaviour
+{
 
     public bool hasHauntedTile;
     public float actualTime;
     // Use this for initialization
     void Start ()
     {
-        startPosition = transform.parent.parent.GetChild(1);
-        middlePosition = transform.parent.parent.GetChild(2);
-        endPosition = transform.parent.parent.GetChild(3);
+
     }
 	
 	// Update is called once per frame
@@ -159,20 +154,20 @@ public class HauntingGhostDeplacement : MonoBehaviour {
         if(gameObject.transform.parent.name.Contains("Depart"))
         {
             //gameObject.transform.position = Vector3.Lerp(startPosition.position, middlePosition.position, actualTime); // To see later
-            gameObject.transform.parent = middlePosition;
+            //gameObject.transform.parent = middlePosition;
             gameObject.transform.localPosition = new Vector3(0, 0, 0);
         }
         else if (gameObject.transform.parent.name.Contains("Case"))
         {
             //gameObject.transform.position = Vector3.Lerp(startPosition.position, middlePosition.position, actualTime); // To see later
-            gameObject.transform.parent = endPosition;
+            //gameObject.transform.parent = endPosition;
             gameObject.transform.localPosition = new Vector3(0, 0, 0);
         }
         else if (gameObject.transform.parent.name.Contains("Arrive"))
         {
             //gameObject.transform.position = Vector3.Lerp(startPosition.position, middlePosition.position, actualTime); // To see later
             HauntedTile();
-            gameObject.transform.parent = startPosition;
+            //gameObject.transform.parent = startPosition;
             gameObject.transform.localPosition = new Vector3(0, 0, 0);
 
         }

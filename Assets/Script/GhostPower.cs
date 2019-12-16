@@ -23,7 +23,10 @@ public class GhostPower : MonoBehaviour {
     public bool hasHauntedTile;
 
     public GameObject hauntingGhost;
-    public Vector3 startPosition;
+
+    public Transform startPosition;
+    public Transform middlePosition;
+    public Transform endPosition;
     // Use this for initialization
     void Start ()
     {
@@ -75,6 +78,7 @@ public class GhostPower : MonoBehaviour {
         //Relancer la pioche
         if (player.name == "BluePlayer")
         {
+            //player.GetComponent<BluePlayer>().state = BluePlayer.STATE_GAME.STATE_DRAW;
             player.GetComponent<BluePlayer>().DrawAGhost();
         }
         else if (player.name == "RedPlayer")
@@ -283,8 +287,9 @@ public class GhostPower : MonoBehaviour {
 
     public void HauntedGhostAdvanced()
     {
-        Instantiate(hauntingGhost, hauntingGhost.GetComponent<Ghost>().positions.middlePosition); //To verify if we need to ajust. I think we must warning with start function and this (Which function is before the other)
-        hauntingGhost.transform.localPosition = new Vector3(0, 0, 0);
+        GameObject go = Instantiate(hauntingGhost, middlePosition); //To verify if we need to ajust. I think we must warning with start function and this (Which function is before the other)
+        go.transform.localPosition = new Vector3(0.0f, 200.0f, 0.0f);
+        go.transform.localScale = new Vector3(1.0f, 200.0f, 1.0f);
     }
 
     //Functions for power activate when ghost in on the field
@@ -297,8 +302,9 @@ public class GhostPower : MonoBehaviour {
     //Funcitons when the ghost is not dead yet 
     public void HauntedGhost()
     {
-        Instantiate(hauntingGhost, hauntingGhost.GetComponent<Ghost>().positions.startPosition);
-        hauntingGhost.transform.localPosition = new Vector3(0, 0, 0);
+        GameObject go = Instantiate(hauntingGhost, startPosition);
+        go.transform.localPosition = new Vector3(0.0f, 200.0f, 0.0f);
+        go.transform.localScale = new Vector3(1.0f, 200.0f, 1.0f);
     }
 
     public void UnactiveWhiteFace()

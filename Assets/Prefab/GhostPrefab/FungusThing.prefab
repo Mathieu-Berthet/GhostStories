@@ -191,7 +191,9 @@ MonoBehaviour:
   hasHauntedTile: 0
   hauntingGhost: {fileID: 1682856368587106, guid: 368504fe807cdf3478db1e8a55b16ee9,
     type: 2}
-  startPosition: {x: 0, y: 0, z: 0}
+  startPosition: {fileID: 0}
+  middlePosition: {fileID: 0}
+  endPosition: {fileID: 0}
 --- !u!212 &212302469570113930
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -7003,7 +7003,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &654859117
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7019,7 +7019,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -517, y: 54}
+  m_AnchoredPosition: {x: -517, y: -232.5}
   m_SizeDelta: {x: 300, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &654859118
@@ -8875,7 +8875,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 122
   m_CollisionDetection: 0
 --- !u!195 &921742459
 NavMeshAgent:
@@ -8986,6 +8986,7 @@ MonoBehaviour:
   buttonGhost2: {fileID: 135805128}
   priority: 
   blackDice: {fileID: 1847871859114552, guid: ff1789b7f180ad5458e0b8bdb4db6a34, type: 2}
+  blackDiceOne: {fileID: 0}
   resultFace: 
   state: 0
   textInfoPhase: {fileID: 654859118}
@@ -16450,6 +16451,7 @@ MonoBehaviour:
   nextPlayer: 0
   nbDice: 0
   canUseTaoToken: 0
+  cantTransformWhiteFace: 0
 --- !u!4 &1626541477
 Transform:
   m_ObjectHideFlags: 0

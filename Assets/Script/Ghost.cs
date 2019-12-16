@@ -57,79 +57,66 @@ public class Ghost : MonoBehaviour {
 
     public void UseEntryPower(GameObject player)
     {
-        Debug.Log("HEYY");
-        Debug.Log(power);
         if (hasLaunchBlackDicePower)
         {
-            Debug.Log("Je lance le dé noir");
             power.LaunchBlackDice(player);
-            Debug.Log("Dé noir lancé");
         }
         if(hasCantUseTokenPower)
         {
-            Debug.Log("Je bloque les jetons");
             power.CantUseTAOToken();
-            Debug.Log("J'ai bloqué les jetons");
         }
         if(hasCaptureDicePower)
         {
-            Debug.Log("Je capture un dé");
             power.CaptureOneDice();
-            Debug.Log("J'ai capturé un dé");
         }
         if(hasDrawAGhostPower)
         {
-            Debug.Log("Je pioche un autre fantome");
             power.DrawAGhost(player);
-            Debug.Log("J'ai pioché un autre fantome");
         }
         if(hasHauntedTilePower)
         {
-            Debug.Log("J'hante une tuile");
             power.HauntedTile();
-            Debug.Log("Tuile hantée");
         }
         if(hasCantUsePowerPower)
         {
-            Debug.Log("Je bloque les pouvoirs");
             power.CantUsePower(player);
-            Debug.Log("Pouvoirs bloqués");
         }
         if(hasLoseLifePower)
         {
-            Debug.Log("Je perd une vie");
             power.LoseLife(player);
-            Debug.Log("J'ai perdu une vie");
         }
         if(hasHauntedGhostAdvancedPower)
         {
-            Debug.Log("Je suis un fantome hanteur avancé");
             power.HauntedGhostAdvanced();
-            Debug.Log("J'ai été mis sur la 2e case");
         }
         if(hasHauntedGhostPower)
         {
-            Debug.Log("Je suis un fantome hanteur");
             power.HauntedGhost();
-            Debug.Log("J'ai été mis sur la 1e case");
         }
         if(hasInsensiblePower)
         {
-            Debug.Log("Je suis insensible au dé");
             power.Insensible();
-            //Debug.Log("Je lance le dé noir");
         }
         if(hasUnactiveWhiteFacePower)
         {
-            Debug.Log("Je désactive les faces blanches");
             power.UnactiveWhiteFace();
-            //Debug.Log("Je lance le dé noir");
         }
     }
 
     public void UseInGamePower(GameObject player)
     {
-        if(hasHauntedGhostPower || hasHauntedGhostAdvancedPower)
+        if (positions == null)
+        {
+            if (gameObject.transform.parent.GetChild(1).childCount >= 1)
+            {
+                positions = gameObject.transform.parent.GetChild(1).GetComponent<HauntingGhostDeplacement>();
+            }
+            else
+            {
+                positions = gameObject.transform.parent.GetChild(2).GetComponent<HauntingGhostDeplacement>();
+            }
+        }
+        if (hasHauntedGhostPower || hasHauntedGhostAdvancedPower)
         {
             positions.GhostMove();
         }
