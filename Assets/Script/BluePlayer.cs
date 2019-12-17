@@ -55,7 +55,6 @@ public class BluePlayer : MonoBehaviour
     public bool choose;
     public bool choosePriority;
     public string choosenToken = "";
-    public GameObject panelButtonChoice;
 
     [SerializeField]
     private CubeScript cube;
@@ -714,7 +713,7 @@ public class BluePlayer : MonoBehaviour
             {
                 while (nbWhiteFace > 0)
                 {
-                    panelButtonChoice.SetActive(true);
+                    gm.panelButtonChoice.SetActive(true);
                     gameObject.GetComponent<Deplacement>().enabled = false;
                     while (!choose)
                     {
@@ -743,14 +742,14 @@ public class BluePlayer : MonoBehaviour
                                 break;
                         }
                         choose = false;
-                        panelButtonChoice.SetActive(false);
+                        gm.panelButtonChoice.SetActive(false);
                     }
                     nbWhiteFace--;
                 }
             }
 
             yield return new WaitForSeconds(2.0f);
-            panelButtonChoice.SetActive(false);
+            gm.panelButtonChoice.SetActive(false);
 
             //Partie combat
             if (ghost1 != null || ghost2 != null)
@@ -1004,6 +1003,13 @@ public class BluePlayer : MonoBehaviour
             explosion.transform.GetChild(2).GetComponent<ParticleSystem>().Play();
             ghost.transform.parent = defausse.transform;
             ghost.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+            Debug.Log(ghost);
+            if (ghost.GetComponent<Ghost>().deathPower)
+            {
+                Debug.Log("Coucou");
+                ghost.GetComponent<Ghost>().UseDeathPower(gameObject);
+                Debug.Log("Fin");
+            }
             ghost = null;
         }
         else if ((gm.canUseTaoToken) && ((ghost.GetComponent<Ghost>().couleur == "red" && nbRedFace < ghost.GetComponent<Ghost>().life) || (ghost.GetComponent<Ghost>().couleur == "blue" && nbBlueFace < ghost.GetComponent<Ghost>().life)
@@ -1023,6 +1029,10 @@ public class BluePlayer : MonoBehaviour
                     explosion.transform.GetChild(2).GetComponent<ParticleSystem>().Play();
                     ghost.transform.parent = defausse.transform;
                     ghost.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+                    if (ghost.GetComponent<Ghost>().deathPower)
+                    {
+                        ghost.GetComponent<Ghost>().UseDeathPower(gameObject);
+                    }
                     ghost = null;
                     update = true;
                 }
@@ -1038,6 +1048,10 @@ public class BluePlayer : MonoBehaviour
                     explosion.transform.GetChild(2).GetComponent<ParticleSystem>().Play();
                     ghost.transform.parent = defausse.transform;
                     ghost.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+                    if (ghost.GetComponent<Ghost>().deathPower)
+                    {
+                        ghost.GetComponent<Ghost>().UseDeathPower(gameObject);
+                    }
                     ghost = null;
                     update = true;
                 }
@@ -1053,6 +1067,10 @@ public class BluePlayer : MonoBehaviour
                     explosion.transform.GetChild(2).GetComponent<ParticleSystem>().Play();
                     ghost.transform.parent = defausse.transform;
                     ghost.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+                    if (ghost.GetComponent<Ghost>().deathPower)
+                    {
+                        ghost.GetComponent<Ghost>().UseDeathPower(gameObject);
+                    }
                     ghost = null;
                     update = true;
                 }
@@ -1068,6 +1086,10 @@ public class BluePlayer : MonoBehaviour
                     explosion.transform.GetChild(2).GetComponent<ParticleSystem>().Play();
                     ghost.transform.parent = defausse.transform;
                     ghost.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+                    if (ghost.GetComponent<Ghost>().deathPower)
+                    {
+                        ghost.GetComponent<Ghost>().UseDeathPower(gameObject);
+                    }
                     ghost = null;
                     update = true;
                 }
@@ -1083,6 +1105,10 @@ public class BluePlayer : MonoBehaviour
                     explosion.transform.GetChild(2).GetComponent<ParticleSystem>().Play();
                     ghost.transform.parent = defausse.transform;
                     ghost.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+                    if (ghost.GetComponent<Ghost>().deathPower)
+                    {
+                        ghost.GetComponent<Ghost>().UseDeathPower(gameObject);
+                    }
                     ghost = null;
                     update = true;
                 }

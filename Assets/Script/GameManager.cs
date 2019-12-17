@@ -47,8 +47,11 @@ public class GameManager : MonoBehaviour {
     public int nbDice;
     public bool canUseTaoToken;
     public bool cantTransformWhiteFace;
-	// Use this for initialization
-	void Start ()
+
+    public GameObject panelButtonChoice;
+    public GameObject panelAwardChoice;
+    // Use this for initialization
+    void Start ()
     {
         //startTime = Time.time;
         nbDice = 3;

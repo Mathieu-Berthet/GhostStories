@@ -15,7 +15,6 @@ public class GhostPower : MonoBehaviour {
     private StockOfToken tokenStock;
     public string choseenToken;
     public bool choose;
-    public GameObject panelButtonChoice;
 
     public string choseenAward;
     public bool chooseAward;
@@ -381,7 +380,8 @@ public class GhostPower : MonoBehaviour {
 
     public IEnumerator WinQiORYinYangToken(GameObject player) //Warning : We must active Yin Yang token. Or may be in first, indicate them on UI
     {
-        //panelButtonChoice.SetActive(true);
+        Debug.Log("Je suis entre");
+        gm.panelAwardChoice.SetActive(true);
         while (!chooseAward)
         {
             yield return new WaitForSeconds(1.0f);
@@ -389,8 +389,8 @@ public class GhostPower : MonoBehaviour {
         if (chooseAward)
         {
             Debug.Log("Couocu");
-            //panelButtonChoice.SetActive(false);
-            choose = false;
+            gm.panelAwardChoice.SetActive(false);
+            chooseAward = false;
         }
         switch (choseenAward)
         {
@@ -432,123 +432,43 @@ public class GhostPower : MonoBehaviour {
                     player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
                 }*/
                 break;
-            case "Token":
-                panelButtonChoice.SetActive(true);
-                while (!choose)
+            case "YinYang":
+                if (player.name == "BluePlayer")
                 {
-                    yield return new WaitForSeconds(1.0f);
+                    player.GetComponent<BluePlayer>().NbYinYangBlueToken += 1;
+                    player.GetComponent<BluePlayer>().update = true;
+                    player.GetComponent<BluePlayer>().canLaunchDice = true;
+                    player.GetComponent<BluePlayer>().useTilePower = false;
+                    player.GetComponent<Deplacement>().enabled = true;
+                    player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
                 }
-                if (choose)
+                /*else if (player.name == "RedPlayer")
                 {
-                    Debug.Log("Couocu");
-                    panelButtonChoice.SetActive(false);
-                    choose = false;
+                    player.GetComponent<BluePlayer>().NbYinYangRedToken += 1;
+                    player.GetComponent<BluePlayer>().update = true;
+                    player.GetComponent<BluePlayer>().canLaunchDice = true;
+                    player.GetComponent<BluePlayer>().useTilePower = false;
+                    player.GetComponent<Deplacement>().enabled = true;
+                    player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
                 }
-                switch (choseenToken)
+                else if (player.name == "YellowPlayer")
                 {
-                    case "Red":
-                        if (tokenStock.nbRedToken == 0)
-                        {
-                            //Indiquer qu'il y en a plus en reserve
-                            //Redemander de choisir une autre couleur
-                        }
-                        else
-                        {
-                            tokenStock.nbRedToken -= 1;
-                            if (player.name == "BluePlayer")
-                            {
-                                player.GetComponent<BluePlayer>().NbRedToken += 1;
-                                player.GetComponent<BluePlayer>().update = true;
-                                player.GetComponent<BluePlayer>().canLaunchDice = true;
-                                player.GetComponent<BluePlayer>().useTilePower = false;
-                                player.GetComponent<Deplacement>().enabled = true;
-                                player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
-                            }
-                        }
-                        break;
-                    case "Blue":
-                        if (tokenStock.nbBlueToken == 0)
-                        {
-                            //Indiquer qu'il y en a plus en reserve
-                            //Redemander de choisir une autre couleur
-                        }
-                        else
-                        {
-                            tokenStock.nbBlueToken -= 1;
-                            if (player.name == "BluePlayer")
-                            {
-                                player.GetComponent<BluePlayer>().NbBlueToken += 1;
-                                player.GetComponent<BluePlayer>().update = true;
-                                player.GetComponent<BluePlayer>().canLaunchDice = true;
-                                player.GetComponent<BluePlayer>().useTilePower = false;
-                                player.GetComponent<Deplacement>().enabled = true;
-                                player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
-                            }
-                        }
-                        break;
-                    case "Green":
-                        if (tokenStock.nbGreenToken == 0)
-                        {
-                            //Indiquer qu'il y en a plus en reserve
-                            //Redemander de choisir une autre couleur
-                        }
-                        else
-                        {
-                            tokenStock.nbGreenToken -= 1;
-                            if (player.name == "BluePlayer")
-                            {
-                                player.GetComponent<BluePlayer>().NbGreenToken += 1;
-                                player.GetComponent<BluePlayer>().update = true;
-                                player.GetComponent<BluePlayer>().canLaunchDice = true;
-                                player.GetComponent<BluePlayer>().useTilePower = false;
-                                player.GetComponent<Deplacement>().enabled = true;
-                                player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
-                            }
-                        }
-                        break;
-                    case "Yellow":
-                        if (tokenStock.nbYellowToken == 0)
-                        {
-                            //Indiquer qu'il y en a plus en reserve
-                            //Redemander de choisir une autre couleur
-                        }
-                        else
-                        {
-                            tokenStock.nbYellowToken -= 1;
-                            if (player.name == "BluePlayer")
-                            {
-                                player.GetComponent<BluePlayer>().NbYellowToken += 1;
-                                player.GetComponent<BluePlayer>().update = true;
-                                player.GetComponent<BluePlayer>().canLaunchDice = true;
-                                player.GetComponent<BluePlayer>().useTilePower = false;
-                                player.GetComponent<Deplacement>().enabled = true;
-                                player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
-                            }
-                        }
-                        break;
-                    case "black":
-                        if (tokenStock.nbBlackToken == 0)
-                        {
-                            //Indiquer qu'il y en a plus en reserve
-                            //Redemander de choisir une autre couleur
-                        }
-                        else
-                        {
-                            tokenStock.nbBlackToken -= 1;
-                            if (player.name == "BluePlayer")
-                            {
-                                player.GetComponent<BluePlayer>().NbBlackToken += 1;
-                                player.GetComponent<BluePlayer>().update = true;
-                                player.GetComponent<BluePlayer>().canLaunchDice = true;
-                                player.GetComponent<BluePlayer>().useTilePower = false;
-                                player.GetComponent<Deplacement>().enabled = true;
-                                player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
-                            }
-                        }
-                        break;
-                    default:
-                        break;
+                    player.GetComponent<BluePlayer>().NbYinYangYellowToken += 1;
+                    player.GetComponent<BluePlayer>().update = true;
+                    player.GetComponent<BluePlayer>().canLaunchDice = true;
+                    player.GetComponent<BluePlayer>().useTilePower = false;
+                    player.GetComponent<Deplacement>().enabled = true;
+                    player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
                 }
+                else if (player.name == "GreenPlayer")
+                {
+                    player.GetComponent<BluePlayer>().NbYinYangGreenToken += 1;
+                    player.GetComponent<BluePlayer>().update = true;
+                    player.GetComponent<BluePlayer>().canLaunchDice = true;
+                    player.GetComponent<BluePlayer>().useTilePower = false;
+                    player.GetComponent<Deplacement>().enabled = true;
+                    player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
+                }*/
                 break;
             default:
                 break;
@@ -557,7 +477,8 @@ public class GhostPower : MonoBehaviour {
 
     public IEnumerator WinTAOToken(GameObject player)
     {
-        panelButtonChoice.SetActive(true);
+        Debug.Log("Je suis entre");
+        gm.panelButtonChoice.SetActive(true);
         while (!choose)
         {
             yield return new WaitForSeconds(1.0f);
@@ -565,7 +486,7 @@ public class GhostPower : MonoBehaviour {
         if (choose)
         {
             Debug.Log("Couocu");
-            panelButtonChoice.SetActive(false);
+            gm.panelButtonChoice.SetActive(false);
             choose = false;
         }
         switch (choseenToken)
@@ -675,136 +596,57 @@ public class GhostPower : MonoBehaviour {
         }
     }
 
-    public IEnumerator WinQIANDYinYang(GameObject player) //Warning : We must active Yin Yang token. Or may be in first, indicate them on UI
+    public void WinQIANDYinYang(GameObject player) //Warning : We must active Yin Yang token. Or may be in first, indicate them on UI
     {
-        panelButtonChoice.SetActive(true);
-        while (!choose)
+        Debug.Log("Je suis entre");
+        if (player.name == "BluePlayer")
         {
-            yield return new WaitForSeconds(1.0f);
+            player.GetComponent<BluePlayer>().NbYinYangBlueToken += 1;
+            player.GetComponent<BluePlayer>().Qi += 1;
+            player.GetComponent<BluePlayer>().update = true;
+            player.GetComponent<BluePlayer>().canLaunchDice = true;
+            player.GetComponent<BluePlayer>().useTilePower = false;
+            player.GetComponent<Deplacement>().enabled = true;
+            player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
         }
-        if (choose)
+        /*else if (player.name == "BluePlayer")
         {
-            Debug.Log("Couocu");
-            panelButtonChoice.SetActive(false);
-            choose = false;
+            player.GetComponent<BluePlayer>().NbRedToken += 1;
+            player.GetComponent<BluePlayer>().Qi += 1;
+            player.GetComponent<BluePlayer>().update = true;
+            player.GetComponent<BluePlayer>().canLaunchDice = true;
+            player.GetComponent<BluePlayer>().useTilePower = false;
+            player.GetComponent<Deplacement>().enabled = true;
+            player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
         }
-        switch (choseenToken)
+        else if (player.name == "BluePlayer")
         {
-            case "Red":
-                if (tokenStock.nbRedToken == 0)
-                {
-                    //Indiquer qu'il y en a plus en reserve
-                    //Redemander de choisir une autre couleur
-                }
-                else
-                {
-                    tokenStock.nbRedToken -= 1;
-                    if (player.name == "BluePlayer")
-                    {
-                        player.GetComponent<BluePlayer>().NbRedToken += 1;
-                        player.GetComponent<BluePlayer>().Qi += 1;
-                        player.GetComponent<BluePlayer>().update = true;
-                        player.GetComponent<BluePlayer>().canLaunchDice = true;
-                        player.GetComponent<BluePlayer>().useTilePower = false;
-                        player.GetComponent<Deplacement>().enabled = true;
-                        player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
-                    }
-                }
-                break;
-            case "Blue":
-                if (tokenStock.nbBlueToken == 0)
-                {
-                    //Indiquer qu'il y en a plus en reserve
-                    //Redemander de choisir une autre couleur
-                }
-                else
-                {
-                    tokenStock.nbBlueToken -= 1;
-                    if (player.name == "BluePlayer")
-                    {
-                        player.GetComponent<BluePlayer>().NbBlueToken += 1;
-                        player.GetComponent<BluePlayer>().Qi += 1;
-                        player.GetComponent<BluePlayer>().update = true;
-                        player.GetComponent<BluePlayer>().canLaunchDice = true;
-                        player.GetComponent<BluePlayer>().useTilePower = false;
-                        player.GetComponent<Deplacement>().enabled = true;
-                        player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
-                    }
-                }
-                break;
-            case "Green":
-                if (tokenStock.nbGreenToken == 0)
-                {
-                    //Indiquer qu'il y en a plus en reserve
-                    //Redemander de choisir une autre couleur
-                }
-                else
-                {
-                    tokenStock.nbGreenToken -= 1;
-                    if (player.name == "BluePlayer")
-                    {
-                        player.GetComponent<BluePlayer>().NbGreenToken += 1;
-                        player.GetComponent<BluePlayer>().Qi += 1;
-                        player.GetComponent<BluePlayer>().update = true;
-                        player.GetComponent<BluePlayer>().canLaunchDice = true;
-                        player.GetComponent<BluePlayer>().useTilePower = false;
-                        player.GetComponent<Deplacement>().enabled = true;
-                        player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
-                    }
-                }
-                break;
-            case "Yellow":
-                if (tokenStock.nbYellowToken == 0)
-                {
-                    //Indiquer qu'il y en a plus en reserve
-                    //Redemander de choisir une autre couleur
-                }
-                else
-                {
-                    tokenStock.nbYellowToken -= 1;
-                    if (player.name == "BluePlayer")
-                    {
-                        player.GetComponent<BluePlayer>().NbYellowToken += 1;
-                        player.GetComponent<BluePlayer>().Qi += 1;
-                        player.GetComponent<BluePlayer>().update = true;
-                        player.GetComponent<BluePlayer>().canLaunchDice = true;
-                        player.GetComponent<BluePlayer>().useTilePower = false;
-                        player.GetComponent<Deplacement>().enabled = true;
-                        player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
-                    }
-                }
-                break;
-            case "black":
-                if (tokenStock.nbBlackToken == 0)
-                {
-                    //Indiquer qu'il y en a plus en reserve
-                    //Redemander de choisir une autre couleur
-                }
-                else
-                {
-                    tokenStock.nbBlackToken -= 1;
-                    if (player.name == "BluePlayer")
-                    {
-                        player.GetComponent<BluePlayer>().NbBlackToken += 1;
-                        player.GetComponent<BluePlayer>().Qi += 1;
-                        player.GetComponent<BluePlayer>().update = true;
-                        player.GetComponent<BluePlayer>().canLaunchDice = true;
-                        player.GetComponent<BluePlayer>().useTilePower = false;
-                        player.GetComponent<Deplacement>().enabled = true;
-                        player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
-                    }
-                }
-                break;
-            default:
-                break;
+            player.GetComponent<BluePlayer>().NbRedToken += 1;
+            player.GetComponent<BluePlayer>().Qi += 1;
+            player.GetComponent<BluePlayer>().update = true;
+            player.GetComponent<BluePlayer>().canLaunchDice = true;
+            player.GetComponent<BluePlayer>().useTilePower = false;
+            player.GetComponent<Deplacement>().enabled = true;
+            player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
         }
+        else if (player.name == "BluePlayer")
+        {
+            player.GetComponent<BluePlayer>().NbRedToken += 1;
+            player.GetComponent<BluePlayer>().Qi += 1;
+            player.GetComponent<BluePlayer>().update = true;
+            player.GetComponent<BluePlayer>().canLaunchDice = true;
+            player.GetComponent<BluePlayer>().useTilePower = false;
+            player.GetComponent<Deplacement>().enabled = true;
+            player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
+        }*/
     }
 
     public IEnumerator WinTwoTAOToken(GameObject player)
     {
+        Debug.Log("Je suis entre");
         for (int i = 0; i < 2; i++)
         {
-            panelButtonChoice.SetActive(true);
+            gm.panelButtonChoice.SetActive(true);
             while (!choose)
             {
                 yield return new WaitForSeconds(1.0f);
@@ -812,7 +654,7 @@ public class GhostPower : MonoBehaviour {
             if (choose)
             {
                 Debug.Log("Couocu");
-                panelButtonChoice.SetActive(false);
+                gm.panelButtonChoice.SetActive(false);
                 choose = false;
             }
             switch (choseenToken)
