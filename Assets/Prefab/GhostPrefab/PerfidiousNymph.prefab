@@ -172,14 +172,16 @@ MonoBehaviour:
   power: {fileID: 0}
   positions: {fileID: 0}
   killWithBouddha: 0
-  cantBeDestroyByDice: 0
+  canBeDestroyByDice: 1
   entryPower: 1
   inGamePower: 0
   deathPower: 0
-  hasLaunchBlackDicePower: 0
+  hasLaunchBlackDiceEntryPower: 0
+  hasLaunchBlackDiceInGamePower: 0
+  hasLaunchBlackDiceDeathPower: 0
   hasCaptureDicePower: 0
   hasCantUseTokenPower: 0
-  hasDrawAGhostPower: 0
+  hasDrawAGhostPower: 1
   hasCantUsePowerPower: 1
   hasHauntedTilePower: 0
   hasLoseLifePower: 0

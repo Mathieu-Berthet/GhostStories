@@ -971,10 +971,9 @@ public class BluePlayer : MonoBehaviour
 
     public void Attack(GameObject ghost)
     {
-        Debug.Log(ghost.GetComponent<Ghost>().cantBeDestroyByDice);
-        if ( (!ghost.GetComponent<Ghost>().cantBeDestroyByDice) && (ghost.GetComponent<Ghost>().couleur == "red" && nbRedFace >= ghost.GetComponent<Ghost>().life) || (ghost.GetComponent<Ghost>().couleur == "blue" && nbBlueFace >= ghost.GetComponent<Ghost>().life)
+        if ( (ghost.GetComponent<Ghost>().canBeDestroyByDice) && ((ghost.GetComponent<Ghost>().couleur == "red" && nbRedFace >= ghost.GetComponent<Ghost>().life) || (ghost.GetComponent<Ghost>().couleur == "blue" && nbBlueFace >= ghost.GetComponent<Ghost>().life)
                     || (ghost.GetComponent<Ghost>().couleur == "green" && nbGreenFace >= ghost.GetComponent<Ghost>().life) || (ghost.GetComponent<Ghost>().couleur == "yellow" && nbYellowFace >= ghost.GetComponent<Ghost>().life)
-                    || (ghost.GetComponent<Ghost>().couleur == "black" && nbBlackFace >= ghost.GetComponent<Ghost>().life))
+                    || (ghost.GetComponent<Ghost>().couleur == "black" && nbBlackFace >= ghost.GetComponent<Ghost>().life)) )
         {
             //On ajouteras des particules à la mort du fantome (style explosion)
             switch (ghost.GetComponent<Ghost>().couleur)
@@ -1007,9 +1006,9 @@ public class BluePlayer : MonoBehaviour
             ghost.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
             ghost = null;
         }
-        else if ((gm.canUseTaoToken) && (ghost.GetComponent<Ghost>().couleur == "red" && nbRedFace < ghost.GetComponent<Ghost>().life) || (ghost.GetComponent<Ghost>().couleur == "blue" && nbBlueFace < ghost.GetComponent<Ghost>().life)
+        else if ((gm.canUseTaoToken) && ((ghost.GetComponent<Ghost>().couleur == "red" && nbRedFace < ghost.GetComponent<Ghost>().life) || (ghost.GetComponent<Ghost>().couleur == "blue" && nbBlueFace < ghost.GetComponent<Ghost>().life)
             || (ghost.GetComponent<Ghost>().couleur == "green" && nbGreenFace < ghost.GetComponent<Ghost>().life) || (ghost.GetComponent<Ghost>().couleur == "yellow" && nbYellowFace < ghost.GetComponent<Ghost>().life)
-            || (ghost.GetComponent<Ghost>().couleur == "black" && nbBlackFace < ghost.GetComponent<Ghost>().life))
+            || (ghost.GetComponent<Ghost>().couleur == "black" && nbBlackFace < ghost.GetComponent<Ghost>().life)))
         {
             //D'abord, check si on a un autre joueur (ou plusieurs) sur la meme case que nous.
             // Check résultat Dés + jetons pour tuer le fantome

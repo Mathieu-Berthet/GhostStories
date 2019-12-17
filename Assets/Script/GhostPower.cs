@@ -58,20 +58,20 @@ public class GhostPower : MonoBehaviour {
         {
             //StartCoroutine(player.GetComponent<YellowPlayer>().LaunchBlackDice());
         }
-    }
+    } //OK (just modify the call of this function. Separe with 3 boolean. One for entry, one for inGame, and another for death)
 
     //Functions for power activate when ghost is draw
     public void CaptureOneDice() // May be an ui text to see how dice we have. And so, we must update UI
     {
         gm.nbDice--;
         Debug.Log(gm.nbDice);
-    }
+    } //OK
 
     public void CantUseTAOToken() //Idem than previous function. See how to indicate that
     {
         gm.canUseTaoToken = false;
         Debug.Log(gm.canUseTaoToken);
-    }
+    } //Okay
 
     public void DrawAGhost(GameObject player)
     {
@@ -93,7 +93,7 @@ public class GhostPower : MonoBehaviour {
         {
             //player.GetComponent<YellowPlayer>().DrawAGhost();
         }
-    }
+    } //Ok for draw but don't activate panel. Why ?
 
     public void CantUsePower(GameObject player)
     {
@@ -116,16 +116,16 @@ public class GhostPower : MonoBehaviour {
         {
             //player.GetComponent<YellowPlayer>().canUsePower = false;
         }
-    }
+    } // It seems okay, but we can't really test without include player's power. Try to check with debug
 
     public void BlockAllPower()
     {
         //Bloquer le pouvoir de tous les joueurs
-    }
+    } //Idem that previous function
 
-    public void HauntedTile()
+    public void HauntedTile() //To verify. May be transform into coroutine
     {
-        hasHauntedTile = false;
+        /*hasHauntedTile = false;
         RaycastHit hitTiledirection;
         GameObject tileToCheck;
         do
@@ -249,10 +249,10 @@ public class GhostPower : MonoBehaviour {
                 }
             }
         }
-        while (!hasHauntedTile);
+        while (!hasHauntedTile);*/
     }
 
-    public void LoseLife(GameObject player)
+    public void LoseLife(GameObject player) //Okay
     {
         //Player actif perd 1 qi
         if (player.name == "BluePlayer")
@@ -285,7 +285,7 @@ public class GhostPower : MonoBehaviour {
         //circle.GetComponent<PriestCircle>().
     }
 
-    public void HauntedGhostAdvanced()
+    public void HauntedGhostAdvanced() //Okay
     {
         GameObject go = Instantiate(hauntingGhost, middlePosition); //To verify if we need to ajust. I think we must warning with start function and this (Which function is before the other)
         go.transform.localPosition = new Vector3(0.0f, 200.0f, 0.0f);
@@ -293,21 +293,21 @@ public class GhostPower : MonoBehaviour {
     }
 
     //Functions for power activate when ghost in on the field
-    public void Insensible() //To rename later
+    public void Insensible() //To rename later //Okay
     {
-        gameObject.GetComponent<Ghost>().cantBeDestroyByDice = true;
-        Debug.Log(gameObject.GetComponent<Ghost>().cantBeDestroyByDice);
+        gameObject.GetComponent<Ghost>().canBeDestroyByDice = false;
+        Debug.Log(gameObject.GetComponent<Ghost>().canBeDestroyByDice);
     }
 
     //Funcitons when the ghost is not dead yet 
-    public void HauntedGhost()
+    public void HauntedGhost() //Okay
     {
         GameObject go = Instantiate(hauntingGhost, startPosition);
         go.transform.localPosition = new Vector3(0.0f, 200.0f, 0.0f);
         go.transform.localScale = new Vector3(1.0f, 200.0f, 1.0f);
     }
 
-    public void UnactiveWhiteFace()
+    public void UnactiveWhiteFace() //To test 
     {
         gm.cantTransformWhiteFace = true;
         Debug.Log(gm.cantTransformWhiteFace);

@@ -13,7 +13,7 @@ public class Ghost : MonoBehaviour {
     public HauntingGhostDeplacement positions;
 
     public bool killWithBouddha;
-    public bool cantBeDestroyByDice;
+    public bool canBeDestroyByDice;
 
     //Un booleen par type de pouvoir : Entrer, En jeu, Mort
     public bool entryPower;
@@ -22,7 +22,9 @@ public class Ghost : MonoBehaviour {
 
 
     //Un booleen par pouvoir
-    public bool hasLaunchBlackDicePower;
+    public bool hasLaunchBlackDiceEntryPower;
+    public bool hasLaunchBlackDiceInGamePower;
+    public bool hasLaunchBlackDiceDeathPower;
     public bool hasCaptureDicePower;
     public bool hasCantUseTokenPower;
     public bool hasDrawAGhostPower;
@@ -57,7 +59,7 @@ public class Ghost : MonoBehaviour {
 
     public void UseEntryPower(GameObject player)
     {
-        if (hasLaunchBlackDicePower)
+        if (hasLaunchBlackDiceEntryPower)
         {
             power.LaunchBlackDice(player);
         }
@@ -120,7 +122,7 @@ public class Ghost : MonoBehaviour {
         {
             positions.GhostMove();
         }
-        if(hasLaunchBlackDicePower)
+        if(hasLaunchBlackDiceInGamePower)
         {
             power.LaunchBlackDice(player);
         }
@@ -144,7 +146,7 @@ public class Ghost : MonoBehaviour {
         {
             power.WinTwoTAOToken(player);
         }
-        if (hasLaunchBlackDicePower)
+        if (hasLaunchBlackDiceDeathPower)
         {
             power.LaunchBlackDice(player);
         }

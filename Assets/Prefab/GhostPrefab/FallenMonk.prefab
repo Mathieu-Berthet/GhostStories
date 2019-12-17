@@ -172,7 +172,7 @@ MonoBehaviour:
   power: {fileID: 0}
   positions: {fileID: 0}
   killWithBouddha: 0
-  cantBeDestroyByDice: 0
+  canBeDestroyByDice: 1
   entryPower: 1
   inGamePower: 0
   deathPower: 0
