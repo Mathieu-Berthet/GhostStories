@@ -11,8 +11,6 @@ public class GhostPower : MonoBehaviour {
 
     public PriestCircle circle;
 
-    [SerializeField]
-    private StockOfToken tokenStock;
     public string choseenToken;
     public bool choose;
 
@@ -380,19 +378,19 @@ public class GhostPower : MonoBehaviour {
 
     public IEnumerator WinQiORYinYangToken(GameObject player) //Warning : We must active Yin Yang token. Or may be in first, indicate them on UI
     {
-        Debug.Log("Je suis entre");
+        gm.chooseAward = false;
         gm.panelAwardChoice.SetActive(true);
-        while (!chooseAward)
+        while (!gm.chooseAward)
         {
             yield return new WaitForSeconds(1.0f);
         }
-        if (chooseAward)
+        if (gm.chooseAward)
         {
             Debug.Log("Couocu");
             gm.panelAwardChoice.SetActive(false);
-            chooseAward = false;
+            gm.chooseAward = false;
         }
-        switch (choseenAward)
+        switch (gm.choseenAward)
         {
             case "Qi":
                 if (player.name == "BluePlayer")
@@ -477,29 +475,29 @@ public class GhostPower : MonoBehaviour {
 
     public IEnumerator WinTAOToken(GameObject player)
     {
-        Debug.Log("Je suis entre");
+        gm.choose = false;
         gm.panelButtonChoice.SetActive(true);
-        while (!choose)
+        while (!gm.choose)
         {
             yield return new WaitForSeconds(1.0f);
         }
-        if (choose)
+        if (gm.choose)
         {
             Debug.Log("Couocu");
             gm.panelButtonChoice.SetActive(false);
-            choose = false;
+            gm.choose = false;
         }
-        switch (choseenToken)
+        switch (gm.choseenToken)
         {
             case "Red":
-                if (tokenStock.nbRedToken == 0)
+                if (gm.tokenStock.nbRedToken == 0)
                 {
                     //Indiquer qu'il y en a plus en reserve
                     //Redemander de choisir une autre couleur
                 }
                 else
                 {
-                    tokenStock.nbRedToken -= 1;
+                    gm.tokenStock.nbRedToken -= 1;
                     if (player.name == "BluePlayer")
                     {
                         player.GetComponent<BluePlayer>().NbRedToken += 1;
@@ -512,14 +510,14 @@ public class GhostPower : MonoBehaviour {
                 }
                 break;
             case "Blue":
-                if (tokenStock.nbBlueToken == 0)
+                if (gm.tokenStock.nbBlueToken == 0)
                 {
                     //Indiquer qu'il y en a plus en reserve
                     //Redemander de choisir une autre couleur
                 }
                 else
                 {
-                    tokenStock.nbBlueToken -= 1;
+                    gm.tokenStock.nbBlueToken -= 1;
                     if (player.name == "BluePlayer")
                     {
                         player.GetComponent<BluePlayer>().NbBlueToken += 1;
@@ -532,14 +530,14 @@ public class GhostPower : MonoBehaviour {
                 }
                 break;
             case "Green":
-                if (tokenStock.nbGreenToken == 0)
+                if (gm.tokenStock.nbGreenToken == 0)
                 {
                     //Indiquer qu'il y en a plus en reserve
                     //Redemander de choisir une autre couleur
                 }
                 else
                 {
-                    tokenStock.nbGreenToken -= 1;
+                    gm.tokenStock.nbGreenToken -= 1;
                     if (player.name == "BluePlayer")
                     {
                         player.GetComponent<BluePlayer>().NbGreenToken += 1;
@@ -552,14 +550,14 @@ public class GhostPower : MonoBehaviour {
                 }
                 break;
             case "Yellow":
-                if (tokenStock.nbYellowToken == 0)
+                if (gm.tokenStock.nbYellowToken == 0)
                 {
                     //Indiquer qu'il y en a plus en reserve
                     //Redemander de choisir une autre couleur
                 }
                 else
                 {
-                    tokenStock.nbYellowToken -= 1;
+                    gm.tokenStock.nbYellowToken -= 1;
                     if (player.name == "BluePlayer")
                     {
                         player.GetComponent<BluePlayer>().NbYellowToken += 1;
@@ -572,14 +570,14 @@ public class GhostPower : MonoBehaviour {
                 }
                 break;
             case "black":
-                if (tokenStock.nbBlackToken == 0)
+                if (gm.tokenStock.nbBlackToken == 0)
                 {
                     //Indiquer qu'il y en a plus en reserve
                     //Redemander de choisir une autre couleur
                 }
                 else
                 {
-                    tokenStock.nbBlackToken -= 1;
+                    gm.tokenStock.nbBlackToken -= 1;
                     if (player.name == "BluePlayer")
                     {
                         player.GetComponent<BluePlayer>().NbBlackToken += 1;
@@ -598,7 +596,6 @@ public class GhostPower : MonoBehaviour {
 
     public void WinQIANDYinYang(GameObject player) //Warning : We must active Yin Yang token. Or may be in first, indicate them on UI
     {
-        Debug.Log("Je suis entre");
         if (player.name == "BluePlayer")
         {
             player.GetComponent<BluePlayer>().NbYinYangBlueToken += 1;
@@ -643,31 +640,31 @@ public class GhostPower : MonoBehaviour {
 
     public IEnumerator WinTwoTAOToken(GameObject player)
     {
-        Debug.Log("Je suis entre");
+        gm.choose = false;
         for (int i = 0; i < 2; i++)
         {
             gm.panelButtonChoice.SetActive(true);
-            while (!choose)
+            while (!gm.choose)
             {
                 yield return new WaitForSeconds(1.0f);
             }
-            if (choose)
+            if (gm.choose)
             {
                 Debug.Log("Couocu");
                 gm.panelButtonChoice.SetActive(false);
-                choose = false;
+                gm.choose = false;
             }
-            switch (choseenToken)
+            switch (gm.choseenToken)
             {
                 case "Red":
-                    if (tokenStock.nbRedToken == 0)
+                    if (gm.tokenStock.nbRedToken == 0)
                     {
                         //Indiquer qu'il y en a plus en reserve
                         //Redemander de choisir une autre couleur
                     }
                     else
                     {
-                        tokenStock.nbRedToken -= 1;
+                        gm.tokenStock.nbRedToken -= 1;
                         if (player.name == "BluePlayer")
                         {
                             player.GetComponent<BluePlayer>().NbRedToken += 1;
@@ -680,14 +677,14 @@ public class GhostPower : MonoBehaviour {
                     }
                     break;
                 case "Blue":
-                    if (tokenStock.nbBlueToken == 0)
+                    if (gm.tokenStock.nbBlueToken == 0)
                     {
                         //Indiquer qu'il y en a plus en reserve
                         //Redemander de choisir une autre couleur
                     }
                     else
                     {
-                        tokenStock.nbBlueToken -= 1;
+                        gm.tokenStock.nbBlueToken -= 1;
                         if (player.name == "BluePlayer")
                         {
                             player.GetComponent<BluePlayer>().NbBlueToken += 1;
@@ -700,14 +697,14 @@ public class GhostPower : MonoBehaviour {
                     }
                     break;
                 case "Green":
-                    if (tokenStock.nbGreenToken == 0)
+                    if (gm.tokenStock.nbGreenToken == 0)
                     {
                         //Indiquer qu'il y en a plus en reserve
                         //Redemander de choisir une autre couleur
                     }
                     else
                     {
-                        tokenStock.nbGreenToken -= 1;
+                        gm.tokenStock.nbGreenToken -= 1;
                         if (player.name == "BluePlayer")
                         {
                             player.GetComponent<BluePlayer>().NbGreenToken += 1;
@@ -720,14 +717,14 @@ public class GhostPower : MonoBehaviour {
                     }
                     break;
                 case "Yellow":
-                    if (tokenStock.nbYellowToken == 0)
+                    if (gm.tokenStock.nbYellowToken == 0)
                     {
                         //Indiquer qu'il y en a plus en reserve
                         //Redemander de choisir une autre couleur
                     }
                     else
                     {
-                        tokenStock.nbYellowToken -= 1;
+                        gm.tokenStock.nbYellowToken -= 1;
                         if (player.name == "BluePlayer")
                         {
                             player.GetComponent<BluePlayer>().NbYellowToken += 1;
@@ -740,14 +737,14 @@ public class GhostPower : MonoBehaviour {
                     }
                     break;
                 case "black":
-                    if (tokenStock.nbBlackToken == 0)
+                    if (gm.tokenStock.nbBlackToken == 0)
                     {
                         //Indiquer qu'il y en a plus en reserve
                         //Redemander de choisir une autre couleur
                     }
                     else
                     {
-                        tokenStock.nbBlackToken -= 1;
+                        gm.tokenStock.nbBlackToken -= 1;
                         if (player.name == "BluePlayer")
                         {
                             player.GetComponent<BluePlayer>().NbBlackToken += 1;
@@ -765,16 +762,4 @@ public class GhostPower : MonoBehaviour {
         }
     }
 
-
-    public void MustChooseToken(Button buttonClick)
-    {
-        choseenToken = buttonClick.transform.GetChild(0).GetComponent<Text>().text;
-        choose = true;
-    }
-
-    public void MustChooseAward(Button buttonClick)
-    {
-        choseenAward = buttonClick.transform.GetChild(0).GetComponent<Text>().text;
-        chooseAward = true;
-    }
 }

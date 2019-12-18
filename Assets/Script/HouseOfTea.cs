@@ -8,15 +8,13 @@ public class HouseOfTea : MonoBehaviour {
     public bool hauntedTile = false;
     [SerializeField]
     private StockOfToken tokenStock;
-    public string choseenToken;
-    public bool choose;
-    public GameObject panelButtonChoice;
+    public GameManager gm;
 
     // Use this for initialization
     void Start ()
     {
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         tokenStock = GameObject.Find("TokenStock").GetComponent<StockOfToken>();
-        choose = false;
     }
 	
 	// Update is called once per frame
@@ -26,18 +24,19 @@ public class HouseOfTea : MonoBehaviour {
 
     public IEnumerator GainTokenAndQI(GameObject player)
     {
-        panelButtonChoice.SetActive(true);
-        while (!choose)
+        gm.choose = false;
+        gm.panelButtonChoice.SetActive(true);
+        while (!gm.choose)
         {
             yield return new WaitForSeconds(1.0f);
         }
-        if (choose)
+        if (gm.choose)
         {
             Debug.Log("Couocu");
-            panelButtonChoice.SetActive(false);
-            choose = false;
+            gm.panelButtonChoice.SetActive(false);
+            gm.choose = false;
         }
-        switch (choseenToken)
+        switch (gm.choseenToken)
         {
             case "Red":
                 if (tokenStock.nbRedToken == 0)
@@ -169,11 +168,5 @@ public class HouseOfTea : MonoBehaviour {
         {
             gameObject.GetComponent<MeshRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 1);
         }
-    }
-
-    public void MustChooseToken(Button buttonClick)
-    {
-        choseenToken = buttonClick.transform.GetChild(0).GetComponent<Text>().text;
-        choose = true;
     }
 }

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class StallOfHerbalist : MonoBehaviour
 {
+    public GameManager gm;
 
     public bool hauntedTile = false;
     public int nbDiceHerbalist = 2;
@@ -14,12 +15,9 @@ public class StallOfHerbalist : MonoBehaviour
 
     private GameObject diceOne;
     private GameObject diceTwo;
-    //private GameObject diceThree;
 
-    //TODO : Faire remplir ces variables
     public string resultDiceOne;
     public string resultDiceTwo;
-    //public string resultDiceThree;
 
     public int nbRedFace;
     public int nbBlueFace;
@@ -28,22 +26,19 @@ public class StallOfHerbalist : MonoBehaviour
     public int nbWhiteFace;
     public int nbBlackFace;
 
-    public bool choose;
-    public string choosenToken = "";
-    public GameObject panelButtonChoice;
 
     [SerializeField]
     private CubeScript cube;
     // Use this for initialization
     void Start ()
     {
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         nbRedFace = 0;
         nbBlueFace = 0;
         nbBlackFace = 0;
         nbWhiteFace = 0;
         nbGreenFace = 0;
         nbYellowFace = 0;
-        choose = false;
     }
 	
 	// Update is called once per frame
@@ -54,6 +49,7 @@ public class StallOfHerbalist : MonoBehaviour
 
     public IEnumerator getToken(GameObject player)
     {
+        gm.choose = false;
         player.GetComponent<BluePlayer>().canLaunchDice = false;
         nbRedFace = 0;
         nbBlueFace = 0;
@@ -151,14 +147,14 @@ public class StallOfHerbalist : MonoBehaviour
         yield return new WaitForSeconds(2.0f);
         while (nbWhiteFace > 0)
         {
-            panelButtonChoice.SetActive(true);
-            while (!choose)
+            gm.panelButtonChoice.SetActive(true);
+            while (!gm.choose)
             {
                 yield return new WaitForSeconds(2.0f);
             }
-            if(choose)
+            if(gm.choose)
             {
-                switch (choosenToken)
+                switch (gm.choseenToken)
                 {
                     case "Red":
                         nbRedFace++;
@@ -178,14 +174,14 @@ public class StallOfHerbalist : MonoBehaviour
                     default:
                         break;
                 }
-                choose = false;
-                panelButtonChoice.SetActive(false);
+                gm.choose = false;
+                gm.panelButtonChoice.SetActive(false);
             }
             nbWhiteFace--;
         }
 
         yield return new WaitForSeconds(2.0f);
-        panelButtonChoice.SetActive(false);
+        gm.panelButtonChoice.SetActive(false);
         //Attribution des jetons
         Debug.Log("Attribution jeton");
 
@@ -214,12 +210,6 @@ public class StallOfHerbalist : MonoBehaviour
         {
             player.GetComponent<RedPlayer>().Qi += 1;
         }*/
-    }
-
-    public void MustChooseToken(Button buttonClick)
-    {
-        choosenToken = buttonClick.transform.GetChild(0).GetComponent<Text>().text;
-        choose = true;
     }
 
     public void haunted()

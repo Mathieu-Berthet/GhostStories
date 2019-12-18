@@ -130,30 +130,24 @@ public class Ghost : MonoBehaviour {
 
     public void UseDeathPower(GameObject player)
     {
-        Debug.Log("HHEYY");
         if (hasWinQiOrYinYangTokenPower)
         {
-            Debug.Log("ICI");
             StartCoroutine(power.WinQiORYinYangToken(player));
         }
         if (hasWinTAOTokenPower)
         {
-            Debug.Log("ICI");
             StartCoroutine(power.WinTAOToken(player));
         }
         if (hasWinQiAndYinYangPower)
         {
-            Debug.Log("ICI");
             power.WinQIANDYinYang(player);
         }
         if (hasWinTwoTAOTokenPower)
         {
-            Debug.Log("ICI");
             StartCoroutine(power.WinTwoTAOToken(player));
         }
         if (hasLaunchBlackDiceDeathPower)
         {
-            Debug.Log("ICI");
             power.LaunchBlackDice(player);
         }
     }

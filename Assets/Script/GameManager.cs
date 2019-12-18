@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 
+    public StockOfToken tokenStock;
 
     public Vector3 positionPlateau1;
     public Vector3 rotationPlateau1;
@@ -50,6 +52,12 @@ public class GameManager : MonoBehaviour {
 
     public GameObject panelButtonChoice;
     public GameObject panelAwardChoice;
+
+    public string choseenToken;
+    public bool choose;
+
+    public string choseenAward;
+    public bool chooseAward;
     // Use this for initialization
     void Start ()
     {
@@ -214,4 +222,19 @@ public class GameManager : MonoBehaviour {
         }
         nextPlayer = false;
     }
+
+
+    public void MustChooseToken(Button buttonClick)
+    {
+        choseenToken = buttonClick.transform.GetChild(0).GetComponent<Text>().text;
+        choose = true;
+    }
+
+    public void MustChooseAward(Button buttonClick)
+    {
+        choseenAward = buttonClick.transform.GetChild(0).GetComponent<Text>().text;
+        chooseAward = true;
+    }
+
+
 }

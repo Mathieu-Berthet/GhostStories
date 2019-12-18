@@ -601,41 +601,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1444573567}
-        m_MethodName: MustChooseToken
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 43979352}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 921742460}
-        m_MethodName: MustChooseToken
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 43979352}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1910284759}
-        m_MethodName: MustChooseToken
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 43979352}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 416534314}
-        m_MethodName: MustChooseToken
+      - m_Target: {fileID: 1626541476}
+        m_MethodName: MustChooseAward
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 43979352}
@@ -4745,9 +4712,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hauntedTile: 0
   tokenStock: {fileID: 0}
-  choseenToken: 
-  choose: 0
-  panelButtonChoice: {fileID: 1284516891}
+  gm: {fileID: 0}
 --- !u!23 &416534315
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5086,40 +5051,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1444573567}
-        m_MethodName: MustChooseToken
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 422297584}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 921742460}
-        m_MethodName: MustChooseToken
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 422297584}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1910284759}
-        m_MethodName: MustChooseToken
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 422297584}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 416534314}
+      - m_Target: {fileID: 1626541476}
         m_MethodName: MustChooseToken
         m_Mode: 2
         m_Arguments:
@@ -5523,40 +5455,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1444573567}
-        m_MethodName: MustChooseToken
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 464656045}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 921742460}
-        m_MethodName: MustChooseToken
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 464656045}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1910284759}
-        m_MethodName: MustChooseToken
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 464656045}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 416534314}
+      - m_Target: {fileID: 1626541476}
         m_MethodName: MustChooseToken
         m_Mode: 2
         m_Arguments:
@@ -9231,9 +9130,7 @@ MonoBehaviour:
   nbGreenFace: 0
   nbWhiteFace: 0
   nbBlackFace: 0
-  choose: 0
   choosePriority: 0
-  choosenToken: 
   cube: {fileID: 0}
   houseOfTea: {fileID: 416534313}
   graveyard: {fileID: 1241658704}
@@ -12288,40 +12185,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1444573567}
-        m_MethodName: MustChooseToken
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1260704639}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 921742460}
-        m_MethodName: MustChooseToken
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1260704639}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1910284759}
-        m_MethodName: MustChooseToken
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1260704639}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 416534314}
+      - m_Target: {fileID: 1626541476}
         m_MethodName: MustChooseToken
         m_Mode: 2
         m_Arguments:
@@ -14680,6 +14544,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d503178b66595ec47b67c9fa97986911, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gm: {fileID: 0}
   hauntedTile: 0
   nbDiceHerbalist: 2
   dice: {fileID: 1483268768575792, guid: 6a3772ffda714d746bf307675dc5309c, type: 2}
@@ -14691,9 +14556,6 @@ MonoBehaviour:
   nbGreenFace: 0
   nbWhiteFace: 0
   nbBlackFace: 0
-  choose: 0
-  choosenToken: 
-  panelButtonChoice: {fileID: 1284516891}
   cube: {fileID: 0}
 --- !u!23 &1444573568
 MeshRenderer:
@@ -16416,40 +16278,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1444573567}
-        m_MethodName: MustChooseToken
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1616178658}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 921742460}
-        m_MethodName: MustChooseToken
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1616178658}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1910284759}
-        m_MethodName: MustChooseToken
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1616178658}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 416534314}
+      - m_Target: {fileID: 1626541476}
         m_MethodName: MustChooseToken
         m_Mode: 2
         m_Arguments:
@@ -16794,6 +16623,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a64ebaa1e7a32443a550af80cf6279e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tokenStock: {fileID: 1682815800}
   positionPlateau1: {x: 0, y: 0, z: 0}
   rotationPlateau1: {x: 0, y: 0, z: 0}
   positionPlateau2: {x: 0, y: 0, z: 0}
@@ -16827,6 +16657,10 @@ MonoBehaviour:
   cantTransformWhiteFace: 0
   panelButtonChoice: {fileID: 1284516891}
   panelAwardChoice: {fileID: 909841335}
+  choseenToken: 
+  choose: 0
+  choseenAward: 
+  chooseAward: 0
 --- !u!4 &1626541477
 Transform:
   m_ObjectHideFlags: 0
@@ -19384,11 +19218,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hauntedTile: 0
+  gm: {fileID: 0}
   tokenStock: {fileID: 0}
-  choseenToken: 
-  choose: 0
   token: {fileID: 0}
-  panelButtonChoice: {fileID: 1284516891}
 --- !u!23 &1910284760
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -19926,40 +19758,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1444573567}
-        m_MethodName: MustChooseToken
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 2034669599}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 921742460}
-        m_MethodName: MustChooseToken
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 2034669599}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1910284759}
-        m_MethodName: MustChooseToken
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 2034669599}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 416534314}
+      - m_Target: {fileID: 1626541476}
         m_MethodName: MustChooseToken
         m_Mode: 2
         m_Arguments:
@@ -20081,41 +19880,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1444573567}
-        m_MethodName: MustChooseToken
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 2063548675}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 921742460}
-        m_MethodName: MustChooseToken
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 2063548675}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1910284759}
-        m_MethodName: MustChooseToken
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 2063548675}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 416534314}
-        m_MethodName: MustChooseToken
+      - m_Target: {fileID: 1626541476}
+        m_MethodName: MustChooseAward
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 2063548675}

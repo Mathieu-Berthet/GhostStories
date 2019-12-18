@@ -6,22 +6,19 @@ using UnityEngine.UI;
 public class PriestCircle : MonoBehaviour {
 
     public bool hauntedTile = false;
+    public GameManager gm;
 
     [SerializeField]
     private StockOfToken tokenStock;
-    public string choseenToken;
-    public bool choose;
     [SerializeField]
     private GameObject token;
 
-    public GameObject panelButtonChoice;
 
     // Use this for initialization
     void Start ()
     {
         tokenStock = GameObject.Find("TokenStock").GetComponent<StockOfToken>();
-
-        choose = false;
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
 	}
 	
 	// Update is called once per frame
@@ -32,18 +29,19 @@ public class PriestCircle : MonoBehaviour {
 
     public IEnumerator reduceGhostLife(GameObject player)
     {
-        panelButtonChoice.SetActive(true);
-        while(!choose)
+        gm.choose = false;
+        gm.panelButtonChoice.SetActive(true);
+        while(!gm.choose)
         {
             yield return new WaitForSeconds(1.0f);
         }
-        if(choose)
+        if(gm.choose)
         {
             Debug.Log("Couocu");
-            panelButtonChoice.SetActive(false);
-            choose = false;
+            gm.panelButtonChoice.SetActive(false);
+            gm.choose = false;
         }
-        switch(choseenToken)
+        switch(gm.choseenToken)
         {
             case "Red":
                 if (tokenStock.nbRedToken == 0)
@@ -293,11 +291,5 @@ public class PriestCircle : MonoBehaviour {
         {
             gameObject.GetComponent<MeshRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 1);
         }
-    }
-
-    public void MustChooseToken(Button buttonClick)
-    {
-        choseenToken = buttonClick.transform.GetChild(0).GetComponent<Text>().text;
-        choose = true;
     }
 }

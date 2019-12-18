@@ -52,9 +52,7 @@ public class BluePlayer : MonoBehaviour
     public int nbWhiteFace;
     public int nbBlackFace;
 
-    public bool choose;
     public bool choosePriority;
-    public string choosenToken = "";
 
     [SerializeField]
     private CubeScript cube;
@@ -571,6 +569,7 @@ public class BluePlayer : MonoBehaviour
 
     public IEnumerator LaunchDice()
     {
+        gm.choose = false;
         if (state == STATE_GAME.STATE_PLAYER)
         {
             canLaunchDice = false;
@@ -715,13 +714,13 @@ public class BluePlayer : MonoBehaviour
                 {
                     gm.panelButtonChoice.SetActive(true);
                     gameObject.GetComponent<Deplacement>().enabled = false;
-                    while (!choose)
+                    while (!gm.choose)
                     {
                         yield return new WaitForSeconds(2.0f);
                     }
-                    if (choose)
+                    if (gm.choose)
                     {
-                        switch (choosenToken)
+                        switch (gm.choseenToken)
                         {
                             case "Red":
                                 nbRedFace++;
@@ -741,7 +740,7 @@ public class BluePlayer : MonoBehaviour
                             default:
                                 break;
                         }
-                        choose = false;
+                        gm.choose = false;
                         gm.panelButtonChoice.SetActive(false);
                     }
                     nbWhiteFace--;
@@ -955,12 +954,6 @@ public class BluePlayer : MonoBehaviour
         update = false;
     }
 
-    public void MustChooseToken(Button buttonClick)
-    {
-        choosenToken = buttonClick.transform.GetChild(0).GetComponent<Text>().text;
-        choose = true;
-    }
-
     public void SetPriority(Button buttonClick)
     {
         priority = buttonClick.transform.GetChild(0).GetComponent<Text>().text;
@@ -1006,9 +999,7 @@ public class BluePlayer : MonoBehaviour
             Debug.Log(ghost);
             if (ghost.GetComponent<Ghost>().deathPower)
             {
-                Debug.Log("Coucou");
                 ghost.GetComponent<Ghost>().UseDeathPower(gameObject);
-                Debug.Log("Fin");
             }
             ghost = null;
         }
