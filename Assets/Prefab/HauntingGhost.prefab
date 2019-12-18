@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 23270417233195332}
   - component: {fileID: 54979992033605278}
   - component: {fileID: 114560482192473668}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: HauntingGhost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -111,6 +111,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 052c7daaf4128ab49bc473effdf5490b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasHauntedTile: 0
+  actualTime: 0
+  tileToCheck: {fileID: 0}
+  firstTileCheck: {fileID: 0}
+  secondTileCheck: {fileID: 0}
 --- !u!136 &136587527378589766
 CapsuleCollider:
   m_ObjectHideFlags: 1

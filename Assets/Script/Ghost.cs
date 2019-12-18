@@ -150,5 +150,17 @@ public class Ghost : MonoBehaviour {
         {
             power.LaunchBlackDice(player);
         }
+        if(hasCaptureDicePower)
+        {
+            power.UncaptureDice();
+        }
+        if(hasCantUsePowerPower)
+        {
+            power.UnblockPower(player);
+        }
+        if(hasCantUseTokenPower)
+        {
+            power.UnblockToken();
+        }
     }
 }

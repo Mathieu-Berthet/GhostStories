@@ -62,6 +62,7 @@ public class GameManager : MonoBehaviour {
     void Start ()
     {
         //startTime = Time.time;
+        canUseTaoToken = true;
         nbDice = 3;
         turn = 1;
         nextPlayer = false;

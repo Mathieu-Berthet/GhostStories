@@ -994,9 +994,17 @@ public class BluePlayer : MonoBehaviour
                     break;
             }
             explosion.transform.GetChild(2).GetComponent<ParticleSystem>().Play();
+            if (ghost.transform.parent.GetChild(1).childCount >= 1)
+            {
+                Destroy(ghost.transform.parent.GetChild(1).GetChild(0).gameObject);
+            }
+            if (ghost.transform.parent.GetChild(2).childCount >= 1)
+            {
+                Destroy(ghost.transform.parent.GetChild(2).GetChild(0).gameObject);
+            }
+
             ghost.transform.parent = defausse.transform;
             ghost.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
-            Debug.Log(ghost);
             if (ghost.GetComponent<Ghost>().deathPower)
             {
                 ghost.GetComponent<Ghost>().UseDeathPower(gameObject);
@@ -1018,6 +1026,14 @@ public class BluePlayer : MonoBehaviour
                     redBoard.nbCardOnBoard--;
                     nbRedFace = 0;
                     explosion.transform.GetChild(2).GetComponent<ParticleSystem>().Play();
+                    if (ghost.transform.parent.GetChild(1).childCount >= 1)
+                    {
+                        Destroy(ghost.transform.parent.GetChild(1).GetChild(0).gameObject);
+                    }
+                    if (ghost.transform.parent.GetChild(2).childCount >= 1)
+                    {
+                        Destroy(ghost.transform.parent.GetChild(2).GetChild(0).gameObject);
+                    }
                     ghost.transform.parent = defausse.transform;
                     ghost.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
                     if (ghost.GetComponent<Ghost>().deathPower)
@@ -1037,6 +1053,14 @@ public class BluePlayer : MonoBehaviour
                     blueBoard.nbCardOnBoard--;
                     nbBlueFace = 0;
                     explosion.transform.GetChild(2).GetComponent<ParticleSystem>().Play();
+                    if (ghost.transform.parent.GetChild(1).childCount >= 1)
+                    {
+                        Destroy(ghost.transform.parent.GetChild(1).GetChild(0).gameObject);
+                    }
+                    if (ghost.transform.parent.GetChild(2).childCount >= 1)
+                    {
+                        Destroy(ghost.transform.parent.GetChild(2).GetChild(0).gameObject);
+                    }
                     ghost.transform.parent = defausse.transform;
                     ghost.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
                     if (ghost.GetComponent<Ghost>().deathPower)
@@ -1056,6 +1080,14 @@ public class BluePlayer : MonoBehaviour
                     greenBoard.nbCardOnBoard--;
                     nbGreenFace = 0;
                     explosion.transform.GetChild(2).GetComponent<ParticleSystem>().Play();
+                    if (ghost.transform.parent.GetChild(1).childCount >= 1)
+                    {
+                        Destroy(ghost.transform.parent.GetChild(1).GetChild(0).gameObject);
+                    }
+                    if (ghost.transform.parent.GetChild(2).childCount >= 1)
+                    {
+                        Destroy(ghost.transform.parent.GetChild(2).GetChild(0).gameObject);
+                    }
                     ghost.transform.parent = defausse.transform;
                     ghost.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
                     if (ghost.GetComponent<Ghost>().deathPower)
@@ -1075,6 +1107,14 @@ public class BluePlayer : MonoBehaviour
                     yellowBoard.nbCardOnBoard--;
                     nbYellowFace = 0;
                     explosion.transform.GetChild(2).GetComponent<ParticleSystem>().Play();
+                    if (ghost.transform.parent.GetChild(1).childCount >= 1)
+                    {
+                        Destroy(ghost.transform.parent.GetChild(1).GetChild(0).gameObject);
+                    }
+                    if (ghost.transform.parent.GetChild(2).childCount >= 1)
+                    {
+                        Destroy(ghost.transform.parent.GetChild(2).GetChild(0).gameObject);
+                    }
                     ghost.transform.parent = defausse.transform;
                     ghost.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
                     if (ghost.GetComponent<Ghost>().deathPower)
@@ -1094,6 +1134,14 @@ public class BluePlayer : MonoBehaviour
                     blueBoard.nbCardOnBoard--;
                     nbBlackFace = 0;
                     explosion.transform.GetChild(2).GetComponent<ParticleSystem>().Play();
+                    if (ghost.transform.parent.GetChild(1).childCount >= 1)
+                    {
+                        Destroy(ghost.transform.parent.GetChild(1).GetChild(0).gameObject);
+                    }
+                    if (ghost.transform.parent.GetChild(2).childCount >= 1)
+                    {
+                        Destroy(ghost.transform.parent.GetChild(2).GetChild(0).gameObject);
+                    }
                     ghost.transform.parent = defausse.transform;
                     ghost.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
                     if (ghost.GetComponent<Ghost>().deathPower)

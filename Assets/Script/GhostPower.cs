@@ -762,4 +762,38 @@ public class GhostPower : MonoBehaviour {
         }
     }
 
+    public void UncaptureDice()
+    {
+        gm.nbDice += 1;
+        if(gm.nbDice > 3)
+        {
+            gm.nbDice = 3;
+        }
+    }
+
+    public void UnblockToken()
+    {
+        gm.canUseTaoToken = true;
+    }
+
+    public void UnblockPower(GameObject player)
+    {
+        if (player.name == "BluePlayer")
+        {
+            player.GetComponent<BluePlayer>().canUsePower = true;
+            Debug.Log(player.GetComponent<BluePlayer>().canUsePower);
+        }
+        else if (player.name == "RedPlayer")
+        {
+            //player.GetComponent<RedPlayer>().canUsePower = true;
+        }
+        else if (player.name == "GreenPlayer")
+        {
+            //player.GetComponent<GreenPlayer>().canUsePower = true;
+        }
+        else if (player.name == "YellowPlayer")
+        {
+            //player.GetComponent<YellowPlayer>().canUsePower = true;
+        }
+    }
 }

@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 136239115905910778}
   - component: {fileID: 23399598736214558}
   - component: {fileID: 114770648045399226}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: YellowFace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 136771848116558388}
   - component: {fileID: 23896881334416662}
   - component: {fileID: 114642096480314754}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: WhiteFace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61,7 +61,7 @@ GameObject:
   - component: {fileID: 136569669992093966}
   - component: {fileID: 23759782578010632}
   - component: {fileID: 114902520545838912}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BlackFace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -80,9 +80,9 @@ GameObject:
   - component: {fileID: 65117371968512204}
   - component: {fileID: 23821067483734276}
   - component: {fileID: 54870136441762278}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Dice
-  m_TagString: Untagged
+  m_TagString: "D\xE9s"
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 136162287428307586}
   - component: {fileID: 23826221970716276}
   - component: {fileID: 114703222508071720}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BlueFace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,7 +118,7 @@ GameObject:
   - component: {fileID: 136692606889807384}
   - component: {fileID: 23960033087522324}
   - component: {fileID: 114782888648264688}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GreenFace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 136936339734357772}
   - component: {fileID: 23101892255957398}
   - component: {fileID: 114849011658126192}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RedFace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
