@@ -196,7 +196,7 @@ public class StallOfHerbalist : MonoBehaviour
             player.GetComponent<BluePlayer>().gm.turn++;
             player.GetComponent<BluePlayer>().update = true;
             player.GetComponent<BluePlayer>().canLaunchDice = true;
-            player.GetComponent<BluePlayer>().canLaunchBlackDice = false;
+            player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
             player.GetComponent<BluePlayer>().useTilePower = false;
             player.GetComponent<Deplacement>().enabled = true;
         }

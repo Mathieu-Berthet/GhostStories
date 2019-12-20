@@ -1181,6 +1181,7 @@ public class BluePlayer : MonoBehaviour
 
     public IEnumerator LaunchBlackDice()
     {
+        Debug.Log("PAR ICI");
         canLaunchBlackDice = false;
         canLaunchDice = false;
         gameObject.GetComponent<Deplacement>().enabled = false;
@@ -1190,6 +1191,7 @@ public class BluePlayer : MonoBehaviour
         GameObject go = Instantiate(blackDice, new Vector3(0, 2, 0), Quaternion.identity);
         go.AddComponent<CubeScript>();
         cube = go.GetComponent<CubeScript>();
+        blackDiceOne = go;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
@@ -1198,15 +1200,16 @@ public class BluePlayer : MonoBehaviour
             cube.rb.AddForce(hit.point * cube.force);
         }
 
-        blackDiceOne = go;
-
-        yield return new WaitForSeconds(2.0f);
-
-        resultFace = blackDice.GetComponent<CubeScript>().face;
-
+        //blackDiceOne = go;
+        Debug.Log("De lance");
+        yield return new WaitForSeconds(5.0f);
+        if (blackDiceOne != null)
+        {
+            resultFace = blackDiceOne.GetComponent<CubeScript>().face;
+        }
         switch (resultFace)
         {
-            case "HauntedFace": 
+            case "HauntedFace":
                 switch (tileName)
                 {
                     case "MaisonThe":
@@ -1254,7 +1257,8 @@ public class BluePlayer : MonoBehaviour
                 canLaunchDice = true;
                 gameObject.GetComponent<Deplacement>().enabled = true;
                 break;
-            case "DrawGhostFace":   
+            case "DrawGhostFace":
+                Debug.Log("Dans le switch");
                 //player.GetComponent<BluePlayer>().state = BluePlayer.STATE_GAME.STATE_DRAW;
                 DrawAGhost();
                 //To verify if we need that
@@ -1264,6 +1268,7 @@ public class BluePlayer : MonoBehaviour
                 gameObject.GetComponent<Deplacement>().enabled = true;
                 break;
             case "LoseJetonFace":
+                Debug.Log("Dans le switch");
                 NbBlackToken = 0;
                 NbRedToken = 0;
                 NbBlueToken = 0;
@@ -1277,6 +1282,7 @@ public class BluePlayer : MonoBehaviour
                 gameObject.GetComponent<Deplacement>().enabled = true; ;
                 break;
             case "LoseQIFace":
+                Debug.Log("Dans le switch");
                 Qi -= 1;
                 //To verify if we need that
                 update = true;
@@ -1287,6 +1293,7 @@ public class BluePlayer : MonoBehaviour
                 break;
             case "EmptyFace":
             case "EmptyFaceTwo":
+                Debug.Log("Dans le switch");
                 //To verify if we need that
                 canLaunchBlackDice = true;
                 useTilePower = false;
