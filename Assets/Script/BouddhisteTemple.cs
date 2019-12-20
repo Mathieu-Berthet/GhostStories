@@ -28,6 +28,9 @@ public class BouddhisteTemple : MonoBehaviour {
         if (player.name == "BluePlayer")
         {
             player.GetComponent<BluePlayer>().NbBouddha += 1;
+            player.GetComponent<BluePlayer>().state = BluePlayer.STATE_GAME.STATE_DRAW;
+            player.GetComponent<BluePlayer>().gm.turn++;
+            player.GetComponent<BluePlayer>().update = true;
             //Test avec son pouvoir pour augmenter de 2 si il l'a
         }
         else if (player.name == "GreenPlayer")

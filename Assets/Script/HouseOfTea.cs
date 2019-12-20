@@ -52,6 +52,8 @@ public class HouseOfTea : MonoBehaviour {
                         player.GetComponent<BluePlayer>().Qi += 1;
                         player.GetComponent<BluePlayer>().NbRedToken += 1;
                         player.GetComponent<BluePlayer>().DrawAGhost();
+                        //player.GetComponent<BluePlayer>().state = BluePlayer.STATE_GAME.STATE_DRAW;
+                        player.GetComponent<BluePlayer>().gm.turn++;
                         player.GetComponent<BluePlayer>().update = true;
                         player.GetComponent<BluePlayer>().canLaunchDice = true;
                         player.GetComponent<BluePlayer>().useTilePower = false;
@@ -74,6 +76,8 @@ public class HouseOfTea : MonoBehaviour {
                         player.GetComponent<BluePlayer>().Qi += 1;
                         player.GetComponent<BluePlayer>().NbBlueToken += 1;
                         player.GetComponent<BluePlayer>().DrawAGhost();
+                        player.GetComponent<BluePlayer>().state = BluePlayer.STATE_GAME.STATE_DRAW;
+                        player.GetComponent<BluePlayer>().gm.turn++;
                         player.GetComponent<BluePlayer>().update = true;
                         player.GetComponent<BluePlayer>().canLaunchDice = true;
                         player.GetComponent<BluePlayer>().useTilePower = false;
@@ -96,6 +100,8 @@ public class HouseOfTea : MonoBehaviour {
                         player.GetComponent<BluePlayer>().Qi += 1;
                         player.GetComponent<BluePlayer>().NbGreenToken += 1;
                         player.GetComponent<BluePlayer>().DrawAGhost();
+                        player.GetComponent<BluePlayer>().state = BluePlayer.STATE_GAME.STATE_DRAW;
+                        player.GetComponent<BluePlayer>().gm.turn++;
                         player.GetComponent<BluePlayer>().update = true;
                         player.GetComponent<BluePlayer>().canLaunchDice = true;
                         player.GetComponent<BluePlayer>().useTilePower = false;
@@ -118,6 +124,8 @@ public class HouseOfTea : MonoBehaviour {
                         player.GetComponent<BluePlayer>().Qi += 1;
                         player.GetComponent<BluePlayer>().NbYellowToken += 1;
                         player.GetComponent<BluePlayer>().DrawAGhost();
+                        player.GetComponent<BluePlayer>().state = BluePlayer.STATE_GAME.STATE_DRAW;
+                        player.GetComponent<BluePlayer>().gm.turn++;
                         player.GetComponent<BluePlayer>().update = true;
                         player.GetComponent<BluePlayer>().canLaunchDice = true;
                         player.GetComponent<BluePlayer>().useTilePower = false;
@@ -140,6 +148,8 @@ public class HouseOfTea : MonoBehaviour {
                         player.GetComponent<BluePlayer>().Qi += 1;
                         player.GetComponent<BluePlayer>().NbBlackToken += 1;
                         player.GetComponent<BluePlayer>().DrawAGhost();
+                        player.GetComponent<BluePlayer>().state = BluePlayer.STATE_GAME.STATE_DRAW;
+                        player.GetComponent<BluePlayer>().gm.turn++;
                         player.GetComponent<BluePlayer>().update = true;
                         player.GetComponent<BluePlayer>().canLaunchDice = true;
                         player.GetComponent<BluePlayer>().useTilePower = false;

@@ -473,7 +473,10 @@ public class BluePlayer : MonoBehaviour
             useTilePower = false;
             hasDraw = false;
             card = null;
-            state = STATE_GAME.STATE_PLAYER;
+            if (state == STATE_GAME.STATE_DRAW)
+            {
+                state = STATE_GAME.STATE_PLAYER;
+            }
         }
     }
 
@@ -514,6 +517,7 @@ public class BluePlayer : MonoBehaviour
                     textInfoTuile.text = "Hutte de la sorcière";
                     canLaunchDice = false;
                     canLaunchBlackDice = false;
+                    textInfoPhase.gameObject.SetActive(false);
                     gameObject.GetComponent<Deplacement>().enabled = false;
                     //gameObject.GetComponent<BluePlayer>().enabled = false;
                     StartCoroutine(witchHut.GetComponent<HutOfWitch>().KillGhost(gameObject));
@@ -568,9 +572,6 @@ public class BluePlayer : MonoBehaviour
                 default:
                     break;
             }
-            state = STATE_GAME.STATE_DRAW;
-            gm.turn++;
-            updateUI();
         }
     }
 

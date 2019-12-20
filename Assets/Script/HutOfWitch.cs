@@ -54,7 +54,7 @@ public class HutOfWitch : MonoBehaviour {
 
         if (player.name == "BluePlayer")
         {
-            //player.GetComponent<BluePlayer>().enabled = true;
+            //player.GetComponent<BluePlayer>().textInfoPhase.gameObject.SetActive(false);
             //player.GetComponent<BluePlayer>().card = ghostToKill;
             switch (ghostToKill.GetComponent<Ghost>().couleur)
             {
@@ -76,11 +76,14 @@ public class HutOfWitch : MonoBehaviour {
             }
 
             player.GetComponent<BluePlayer>().Qi -= 1;
-            player.GetComponent<BluePlayer>().update = true;
             player.GetComponent<BluePlayer>().canLaunchDice = true;
             player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
             player.GetComponent<BluePlayer>().useTilePower = false;
             player.GetComponent<Deplacement>().enabled = true;
+            player.GetComponent<BluePlayer>().textInfoPhase.gameObject.SetActive(true);
+            player.GetComponent<BluePlayer>().state = BluePlayer.STATE_GAME.STATE_DRAW;
+            player.GetComponent<BluePlayer>().gm.turn++;
+            player.GetComponent<BluePlayer>().update = true;
         }
         else if (player.name == "GreenPlayer")
         {
