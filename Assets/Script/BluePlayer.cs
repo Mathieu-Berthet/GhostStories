@@ -364,6 +364,7 @@ public class BluePlayer : MonoBehaviour
         {
             hasDraw = true;
             gameObject.GetComponent<Deplacement>().enabled = false;
+            textInfoPhase.gameObject.SetActive(false);
             textInfo.text = " ";
             if (blueBoard.nbCardOnBoard == 3 && redBoard.nbCardOnBoard == 3 && greenBoard.nbCardOnBoard == 3 && yellowBoard.nbCardOnBoard == 3)
             {
@@ -464,6 +465,7 @@ public class BluePlayer : MonoBehaviour
             textInfo.gameObject.SetActive(false);
             drawedCard.gameObject.SetActive(false);
             gameObject.GetComponent<Deplacement>().enabled = true;
+            textInfoPhase.gameObject.SetActive(true);
             canLaunchBlackDice = true;
             useTilePower = false;
             hasDraw = false;
@@ -1005,6 +1007,7 @@ public class BluePlayer : MonoBehaviour
 
             ghost.transform.parent = defausse.transform;
             ghost.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+            ghost.transform.localEulerAngles = new Vector3(90.0f, 0.0f, 0.0f);
             if (ghost.GetComponent<Ghost>().deathPower)
             {
                 ghost.GetComponent<Ghost>().UseDeathPower(gameObject);
@@ -1036,6 +1039,7 @@ public class BluePlayer : MonoBehaviour
                     }
                     ghost.transform.parent = defausse.transform;
                     ghost.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+                    ghost.transform.localEulerAngles = new Vector3(90.0f, 0.0f, 0.0f);
                     if (ghost.GetComponent<Ghost>().deathPower)
                     {
                         ghost.GetComponent<Ghost>().UseDeathPower(gameObject);
@@ -1063,6 +1067,7 @@ public class BluePlayer : MonoBehaviour
                     }
                     ghost.transform.parent = defausse.transform;
                     ghost.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+                    ghost.transform.localEulerAngles = new Vector3(90.0f, 0.0f, 0.0f);
                     if (ghost.GetComponent<Ghost>().deathPower)
                     {
                         ghost.GetComponent<Ghost>().UseDeathPower(gameObject);
@@ -1090,6 +1095,7 @@ public class BluePlayer : MonoBehaviour
                     }
                     ghost.transform.parent = defausse.transform;
                     ghost.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+                    ghost.transform.localEulerAngles = new Vector3(90.0f, 0.0f, 0.0f);
                     if (ghost.GetComponent<Ghost>().deathPower)
                     {
                         ghost.GetComponent<Ghost>().UseDeathPower(gameObject);
@@ -1117,6 +1123,7 @@ public class BluePlayer : MonoBehaviour
                     }
                     ghost.transform.parent = defausse.transform;
                     ghost.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+                    ghost.transform.localEulerAngles = new Vector3(90.0f, 0.0f, 0.0f);
                     if (ghost.GetComponent<Ghost>().deathPower)
                     {
                         ghost.GetComponent<Ghost>().UseDeathPower(gameObject);
@@ -1144,6 +1151,7 @@ public class BluePlayer : MonoBehaviour
                     }
                     ghost.transform.parent = defausse.transform;
                     ghost.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+                    ghost.transform.localEulerAngles = new Vector3(90.0f, 0.0f, 0.0f);
                     if (ghost.GetComponent<Ghost>().deathPower)
                     {
                         ghost.GetComponent<Ghost>().UseDeathPower(gameObject);

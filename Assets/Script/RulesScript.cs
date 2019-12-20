@@ -11,6 +11,7 @@ public class RulesScript : MonoBehaviour {
     public Text infoPhase;
     public Text infoMort;
     public Text infoTuile;
+    public Text infoDefausse;
     public Button buttonNext;
     public Button buttonPrecedent;
     public Button buttonTile;
@@ -82,6 +83,7 @@ public class RulesScript : MonoBehaviour {
         infoMort.gameObject.SetActive(false);
         infoPhase.gameObject.SetActive(false);
         infoTuile.gameObject.SetActive(false);
+        infoDefausse.gameObject.SetActive(false);
     }
 
     public void Rules()
@@ -96,6 +98,7 @@ public class RulesScript : MonoBehaviour {
         infoMort.gameObject.SetActive(false);
         infoPhase.gameObject.SetActive(false);
         infoTuile.gameObject.SetActive(false);
+        infoDefausse.gameObject.SetActive(false);
     }
 
     public void Fermer()
@@ -111,5 +114,6 @@ public class RulesScript : MonoBehaviour {
         infoMort.gameObject.SetActive(true);
         infoPhase.gameObject.SetActive(true);
         infoTuile.gameObject.SetActive(true);
+        infoDefausse.gameObject.SetActive(true);
     }
 }

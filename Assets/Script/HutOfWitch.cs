@@ -151,6 +151,7 @@ public class HutOfWitch : MonoBehaviour {
 
         ghostToKill.transform.parent = defausse.transform;
         ghostToKill.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+        ghostToKill.transform.localEulerAngles = new Vector3(90.0f, 0.0f, 0.0f);
         ghostToKill = null;
         board.usingTile = false;
     }
