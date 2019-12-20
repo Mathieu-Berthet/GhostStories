@@ -103,6 +103,11 @@ public class Ghost : MonoBehaviour {
         {
             power.UnactiveWhiteFace();
         }
+
+        if(player.name == "BluePlayer")
+        {
+            player.GetComponent<BluePlayer>().update = true;
+        }
     }
 
     public void UseInGamePower(GameObject player)
@@ -125,6 +130,11 @@ public class Ghost : MonoBehaviour {
         if(hasLaunchBlackDiceInGamePower)
         {
             power.LaunchBlackDice(player);
+        }
+
+        if (player.name == "BluePlayer")
+        {
+            player.GetComponent<BluePlayer>().update = true;
         }
     }
 
@@ -161,6 +171,11 @@ public class Ghost : MonoBehaviour {
         if(hasCantUseTokenPower)
         {
             power.UnblockToken();
+        }
+
+        if (player.name == "BluePlayer")
+        {
+            player.GetComponent<BluePlayer>().update = true;
         }
     }
 }

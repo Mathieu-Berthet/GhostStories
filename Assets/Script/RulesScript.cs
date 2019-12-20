@@ -8,6 +8,9 @@ public class RulesScript : MonoBehaviour {
     public GameObject panelRules;
     public GameObject panelTiles;
     public GameObject panelToken;
+    public Text infoTurnPlayer;
+    public Text infoTurn;
+    public Text infoDice;
     public Text infoPhase;
     public Text infoMort;
     public Text infoTuile;
@@ -54,6 +57,10 @@ public class RulesScript : MonoBehaviour {
             infoMort.gameObject.SetActive(true);
             infoPhase.gameObject.SetActive(true);
             infoTuile.gameObject.SetActive(true);
+            infoDefausse.gameObject.SetActive(true);
+            infoTurnPlayer.gameObject.SetActive(true);
+            infoTurn.gameObject.SetActive(true);
+            infoDice.gameObject.SetActive(true);
             buttonRules.gameObject.SetActive(true);
             buttonTile.gameObject.SetActive(true);
             buttonFermer.gameObject.SetActive(false);
@@ -84,6 +91,9 @@ public class RulesScript : MonoBehaviour {
         infoPhase.gameObject.SetActive(false);
         infoTuile.gameObject.SetActive(false);
         infoDefausse.gameObject.SetActive(false);
+        infoTurnPlayer.gameObject.SetActive(false);
+        infoTurn.gameObject.SetActive(false);
+        infoDice.gameObject.SetActive(false);
     }
 
     public void Rules()
@@ -99,6 +109,9 @@ public class RulesScript : MonoBehaviour {
         infoPhase.gameObject.SetActive(false);
         infoTuile.gameObject.SetActive(false);
         infoDefausse.gameObject.SetActive(false);
+        infoTurnPlayer.gameObject.SetActive(false);
+        infoTurn.gameObject.SetActive(false);
+        infoDice.gameObject.SetActive(false);
     }
 
     public void Fermer()
@@ -115,5 +128,8 @@ public class RulesScript : MonoBehaviour {
         infoPhase.gameObject.SetActive(true);
         infoTuile.gameObject.SetActive(true);
         infoDefausse.gameObject.SetActive(true);
+        infoTurnPlayer.gameObject.SetActive(true);
+        infoTurn.gameObject.SetActive(true);
+        infoDice.gameObject.SetActive(true);
     }
 }

@@ -258,9 +258,12 @@ public class BluePlayer : MonoBehaviour
     }
 
     public STATE_GAME state;
+    public Text textPlayerTurn;
     public Text textInfoPhase;
     public Text textMort;
     public Text textInfoTuile;
+    public Text textNbDice;
+    public Text textTurn;
     // Use this for initialization
     void Start ()
     {
@@ -566,6 +569,8 @@ public class BluePlayer : MonoBehaviour
                     break;
             }
             state = STATE_GAME.STATE_DRAW;
+            gm.turn++;
+            updateUI();
         }
     }
 
@@ -802,6 +807,8 @@ public class BluePlayer : MonoBehaviour
             canLaunchDice = true;
             gameObject.GetComponent<Deplacement>().enabled = true;
             state = STATE_GAME.STATE_DRAW;
+            gm.turn++;
+            updateUI();
         }
     }
 
@@ -953,6 +960,9 @@ public class BluePlayer : MonoBehaviour
         textNbTokenYinYangBlue.text = "x " + NbYinYangBlueToken;
         textNbTokenPower.text = "x " + NbPowerToken;
         //textNbTokenPower.text = "x " + NbBlackToken; // Jeton mantra, juste pour le joueur jaune
+        textNbDice.text = "Dés en stock : " + gm.nbDice.ToString();
+        textTurn.text = "Tour : " + gm.turn.ToString();
+        textPlayerTurn.text = "Tour du joueur bleu";
         update = false;
     }
 
