@@ -74,7 +74,7 @@ public class HutOfWitch : MonoBehaviour {
                 default:
                     break;
             }
-
+            //player.GetComponent<BluePlayer>().explosion.transform.GetChild(2).GetComponent<ParticleSystem>().Play();
             player.GetComponent<BluePlayer>().Qi -= 1;
             player.GetComponent<BluePlayer>().canLaunchDice = true;
             player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
@@ -152,6 +152,14 @@ public class HutOfWitch : MonoBehaviour {
             }*/
         }
 
+        if (ghostToKill.transform.parent.GetChild(1).childCount >= 1)
+        {
+            Destroy(ghostToKill.transform.parent.GetChild(1).GetChild(0).gameObject);
+        }
+        if (ghostToKill.transform.parent.GetChild(2).childCount >= 1)
+        {
+            Destroy(ghostToKill.transform.parent.GetChild(2).GetChild(0).gameObject);
+        }
         ghostToKill.transform.parent = defausse.transform;
         ghostToKill.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
         ghostToKill.transform.localEulerAngles = new Vector3(90.0f, 0.0f, 0.0f);

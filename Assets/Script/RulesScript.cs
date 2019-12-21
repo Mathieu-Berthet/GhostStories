@@ -15,6 +15,7 @@ public class RulesScript : MonoBehaviour {
     public Text infoMort;
     public Text infoTuile;
     public Text infoDefausse;
+    public Text infoDebug;
     public Button buttonNext;
     public Button buttonPrecedent;
     public Button buttonTile;
@@ -61,6 +62,7 @@ public class RulesScript : MonoBehaviour {
             infoTurnPlayer.gameObject.SetActive(true);
             infoTurn.gameObject.SetActive(true);
             infoDice.gameObject.SetActive(true);
+            infoDebug.gameObject.SetActive(true);
             buttonRules.gameObject.SetActive(true);
             buttonTile.gameObject.SetActive(true);
             buttonFermer.gameObject.SetActive(false);
@@ -94,6 +96,7 @@ public class RulesScript : MonoBehaviour {
         infoTurnPlayer.gameObject.SetActive(false);
         infoTurn.gameObject.SetActive(false);
         infoDice.gameObject.SetActive(false);
+        infoDebug.gameObject.SetActive(false);
     }
 
     public void Rules()
@@ -112,6 +115,7 @@ public class RulesScript : MonoBehaviour {
         infoTurnPlayer.gameObject.SetActive(false);
         infoTurn.gameObject.SetActive(false);
         infoDice.gameObject.SetActive(false);
+        infoDebug.gameObject.SetActive(false);
     }
 
     public void Fermer()
@@ -131,5 +135,6 @@ public class RulesScript : MonoBehaviour {
         infoTurnPlayer.gameObject.SetActive(true);
         infoTurn.gameObject.SetActive(true);
         infoDice.gameObject.SetActive(true);
+        infoDebug.gameObject.SetActive(true);
     }
 }

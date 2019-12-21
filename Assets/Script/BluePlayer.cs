@@ -346,6 +346,23 @@ public class BluePlayer : MonoBehaviour
             textInfoPhase.text = " Phase de jeu, vous pouvez : \n\n - Vous déplacer (Clic gauche souris), \n - Attaquer un fantome se trouvant devant vous (Touche D), \n - Utilisez le pouvoir de la tuile sur laquelle vous vous trouvez (Touche E)";
         }
 
+        if(Input.GetKeyDown(KeyCode.A))
+        {
+            canLaunchBlackDice = true;
+            canLaunchDice = true;
+        }
+        if(Input.GetKeyDown(KeyCode.S))
+        {
+            if(state == STATE_GAME.STATE_DRAW)
+            {
+                state = STATE_GAME.STATE_PLAYER;
+            }
+            else if (state == STATE_GAME.STATE_PLAYER)
+            {
+                state = STATE_GAME.STATE_DRAW;
+            }
+        }
+
         if(Qi <= 0)
         {
             Qi = 0;
