@@ -268,7 +268,7 @@ public class BluePlayer : MonoBehaviour
     void Start ()
     {
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
-        Qi = 200;//Test des pouvoirs. Donc faut etre large // Mode facile, seulement 3 pour les autres modes. Mais pour l'instant, test avec 4.
+        Qi = 100;//Test des pouvoirs. Donc faut etre large // Mode facile, seulement 3 pour les autres modes. Mais pour l'instant, test avec 4.
         NbBlueToken = 1;
         NbRedToken = 0;
         NbYellowToken = 0;
@@ -350,6 +350,7 @@ public class BluePlayer : MonoBehaviour
         {
             canLaunchBlackDice = true;
             canLaunchDice = true;
+            gameObject.GetComponent<Deplacement>().enabled = true;
         }
         if(Input.GetKeyDown(KeyCode.S))
         {
