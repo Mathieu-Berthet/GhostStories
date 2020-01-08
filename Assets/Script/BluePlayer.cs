@@ -390,7 +390,7 @@ public class BluePlayer : MonoBehaviour
             if (blueBoard.nbCardOnBoard == 3 && redBoard.nbCardOnBoard == 3 && greenBoard.nbCardOnBoard == 3 && yellowBoard.nbCardOnBoard == 3)
             {
                 textInfo.gameObject.SetActive(true);
-                textInfo.text = "You can't draw another Ghost, there is too ghosts on the field";
+                textInfo.text = "Vous ne pouvez pas piocher un autre fantôme, il y en a trop sur le terrain";
                 hasDraw = false;
                 state = STATE_GAME.STATE_PLAYER;
                 return;
@@ -398,7 +398,7 @@ public class BluePlayer : MonoBehaviour
             else if (blueBoard.nbCardOnBoard == 3 && !useTilePower)
             {
                 textInfo.gameObject.SetActive(true);
-                textInfo.text = "You have too ghosts on your field, so you lose one life";
+                textInfo.text = "Votre plateau est plein de fantômes, vous perdez une vie";
                 Qi -= 1;
                 update = true;
                 hasDraw = false;
@@ -427,7 +427,7 @@ public class BluePlayer : MonoBehaviour
             {
                 if (card.GetComponent<Ghost>().couleur == "black" && position.transform.parent.GetComponent<boardColor>().color != colorPlayer && blueBoard.nbCardOnBoard < 3)
                 {
-                    textInfo.text = "Black ghost must be played on your board";
+                    textInfo.text = "Les fantômes noirs doivent être posés sur le plateau de votre couleur";
                     return;
                 }
                 else if (card.GetComponent<Ghost>().couleur != "black" && card.GetComponent<Ghost>().couleur != position.transform.parent.GetComponent<boardColor>().color)
@@ -437,7 +437,7 @@ public class BluePlayer : MonoBehaviour
                         (card.GetComponent<Ghost>().couleur == "yellow" && yellowBoard.nbCardOnBoard < 3) ||
                         (card.GetComponent<Ghost>().couleur == "green" && greenBoard.nbCardOnBoard < 3))
                     {
-                        textInfo.text = "You can't choose this place. It is not the same color as the card";
+                        textInfo.text = "Vous ne pouvez pas placer le fantôme ici. Il n'est pas de la bonne couleur";
                         return;
                     }
                 }
@@ -981,7 +981,7 @@ public class BluePlayer : MonoBehaviour
         //textNbTokenPower.text = "x " + NbBlackToken; // Jeton mantra, juste pour le joueur jaune
         textNbDice.text = "Dés en stock : " + gm.nbDice.ToString();
         textTurn.text = "Tour : " + gm.turn.ToString();
-        textPlayerTurn.text = "Tour du joueur bleu";
+        textPlayerTurn.text = "TOUR DU JOUEUR BLEU";
         update = false;
     }
 
