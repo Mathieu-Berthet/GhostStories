@@ -392,16 +392,20 @@ public class BluePlayer : MonoBehaviour
                 textInfo.gameObject.SetActive(true);
                 textInfo.text = "Vous ne pouvez pas piocher un autre fantôme, il y en a trop sur le terrain";
                 hasDraw = false;
+                gameObject.GetComponent<Deplacement>().enabled = true;
+                textInfoPhase.gameObject.SetActive(true);
                 state = STATE_GAME.STATE_PLAYER;
                 return;
             }
-            else if (blueBoard.nbCardOnBoard == 3 && !useTilePower)
+            if (blueBoard.nbCardOnBoard == 3 && !useTilePower)
             {
                 textInfo.gameObject.SetActive(true);
                 textInfo.text = "Votre plateau est plein de fantômes, vous perdez une vie";
                 Qi -= 1;
                 update = true;
                 hasDraw = false;
+                gameObject.GetComponent<Deplacement>().enabled = true;
+                textInfoPhase.gameObject.SetActive(true);
                 state = STATE_GAME.STATE_PLAYER;
                 return;
             }
@@ -517,6 +521,7 @@ public class BluePlayer : MonoBehaviour
 
     public void UsePowerTile()
     {
+        textInfo.gameObject.SetActive(false);
         if (state == STATE_GAME.STATE_PLAYER)
         {
             useTilePower = true;
@@ -595,7 +600,9 @@ public class BluePlayer : MonoBehaviour
 
     public IEnumerator LaunchDice()
     {
+        textInfo.gameObject.SetActive(false);
         gm.choose = false;
+        gameObject.GetComponent<Deplacement>().enabled = false;
         if (state == STATE_GAME.STATE_PLAYER)
         {
             canLaunchDice = false;
@@ -798,6 +805,8 @@ public class BluePlayer : MonoBehaviour
                         Attack(ghost1);
                         yield return new WaitForSeconds(1.5f);
                         Attack(ghost2);
+                        yield return new WaitForSeconds(0.5f);
+                        gameObject.GetComponent<Deplacement>().enabled = true;
                     }
                     else
                     {
@@ -806,15 +815,21 @@ public class BluePlayer : MonoBehaviour
                         Attack(ghost2);
                         yield return new WaitForSeconds(1.5f);
                         Attack(ghost1);
+                        yield return new WaitForSeconds(0.5f);
+                        gameObject.GetComponent<Deplacement>().enabled = true;
                     }
                 }
                 else if (ghost1 == null && ghost2 != null)
                 {
                     Attack(ghost2);
+                    yield return new WaitForSeconds(0.5f);
+                    gameObject.GetComponent<Deplacement>().enabled = true;
                 }
                 else if (ghost1 != null && ghost2 == null)
                 {
                     Attack(ghost1);
+                    yield return new WaitForSeconds(0.5f);
+                    gameObject.GetComponent<Deplacement>().enabled = true;
                 }
             }
             yield return new WaitForSeconds(0.5f);
