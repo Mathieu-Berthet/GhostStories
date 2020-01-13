@@ -30,6 +30,7 @@ public class BluePlayer : MonoBehaviour
     public bool powerSouffleCeleste;
 
     public bool useTilePower;
+    public bool useGhostPower;
     private bool fight;
     public bool canUsePower;
 
@@ -381,6 +382,7 @@ public class BluePlayer : MonoBehaviour
     
     public void DrawAGhost()
     {
+        card = null;
         if (state == STATE_GAME.STATE_DRAW || useTilePower)
         {
             hasDraw = true;
@@ -409,6 +411,7 @@ public class BluePlayer : MonoBehaviour
                 state = STATE_GAME.STATE_PLAYER;
                 return;
             }
+            Debug.Log("Coucou coucou coucou");
             panelBluePlace.SetActive(true);
             panelRedPlace.SetActive(true);
             panelGreenPlace.SetActive(true);
@@ -420,12 +423,13 @@ public class BluePlayer : MonoBehaviour
             card.transform.position = new Vector3(100.0f, 100.0f, 100.0f);
             card.SetActive(true);
             drawedCard.sprite = card.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
+            Debug.Log("Fin fin fin");
         }
     }
 
     public void SelectGhostPosition(GameObject position)
     {
-        if (state == STATE_GAME.STATE_DRAW)
+        if (state == STATE_GAME.STATE_DRAW || useGhostPower)
         {
             if (!useTilePower)
             {
@@ -454,18 +458,6 @@ public class BluePlayer : MonoBehaviour
                 card.GetComponent<GhostPower>().startPosition = card.transform.parent.GetChild(1);
                 card.GetComponent<GhostPower>().middlePosition = card.transform.parent.GetChild(2);
                 card.GetComponent<GhostPower>().endPosition = card.transform.parent.GetChild(3);
-
-                if (card.GetComponent<Ghost>().entryPower)
-                {
-                    card.GetComponent<Ghost>().UseEntryPower(gameObject);
-                    //card = null;
-                }
-                else
-                {
-                    //card = null;
-                }
-
-
                 if (position.transform.parent.GetComponent<boardColor>().color == "blue")
                 {
                     blueBoard.nbCardOnBoard++;
@@ -494,7 +486,11 @@ public class BluePlayer : MonoBehaviour
             canLaunchBlackDice = true;
             useTilePower = false;
             hasDraw = false;
-            card = null;
+            if (card.GetComponent<Ghost>().entryPower)
+            {
+                useGhostPower = true;
+                card.GetComponent<Ghost>().UseEntryPower(gameObject);
+            }
             if (state == STATE_GAME.STATE_DRAW)
             {
                 state = STATE_GAME.STATE_PLAYER;

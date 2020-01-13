@@ -107,6 +107,7 @@ public class Ghost : MonoBehaviour {
         if(player.name == "BluePlayer")
         {
             player.GetComponent<BluePlayer>().update = true;
+            //player.GetComponent<BluePlayer>().useGhostPower = false;
         }
     }
 
