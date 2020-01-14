@@ -21,6 +21,7 @@ public class RulesScript : MonoBehaviour {
     public Button buttonTile;
     public Button buttonRules;
     public Button buttonFermer;
+    public Button buttonEndTurn;
 
 	// Use this for initialization
 	void Start () {
@@ -66,6 +67,7 @@ public class RulesScript : MonoBehaviour {
             buttonRules.gameObject.SetActive(true);
             buttonTile.gameObject.SetActive(true);
             buttonFermer.gameObject.SetActive(false);
+            buttonEndTurn.gameObject.SetActive(true);
         }
     }
 
@@ -85,6 +87,7 @@ public class RulesScript : MonoBehaviour {
         buttonTile.gameObject.SetActive(false);
         buttonRules.gameObject.SetActive(false);
         buttonFermer.gameObject.SetActive(true);
+        buttonEndTurn.gameObject.SetActive(false);
         panelTiles.SetActive(true);
         buttonPrecedent.gameObject.SetActive(true);
         buttonNext.gameObject.SetActive(true);
@@ -104,6 +107,7 @@ public class RulesScript : MonoBehaviour {
         buttonTile.gameObject.SetActive(false);
         buttonRules.gameObject.SetActive(false);
         buttonFermer.gameObject.SetActive(true);
+        buttonEndTurn.gameObject.SetActive(false);
         panelRules.SetActive(true);
         buttonPrecedent.gameObject.SetActive(false);
         buttonNext.gameObject.SetActive(true);
@@ -127,6 +131,7 @@ public class RulesScript : MonoBehaviour {
         buttonTile.gameObject.SetActive(true);
         buttonRules.gameObject.SetActive(true);
         buttonFermer.gameObject.SetActive(false);
+        buttonEndTurn.gameObject.SetActive(true);
         panelToken.SetActive(true);
         infoMort.gameObject.SetActive(true);
         infoPhase.gameObject.SetActive(true);

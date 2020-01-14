@@ -82,11 +82,12 @@ public class TaoisteAutel : MonoBehaviour {
                 default:
                     break;
             }
+            player.GetComponent<BluePlayer>().state = BluePlayer.STATE_GAME.STATE_DRAW;
+            player.GetComponent<BluePlayer>().DrawAGhost();
             player.GetComponent<BluePlayer>().canLaunchDice = true;
             player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
             player.GetComponent<BluePlayer>().useTilePower = false;
             player.GetComponent<Deplacement>().enabled = true;
-            player.GetComponent<BluePlayer>().state = BluePlayer.STATE_GAME.STATE_DRAW;
             player.GetComponent<BluePlayer>().gm.turn++;
             player.GetComponent<BluePlayer>().update = true;
         }
