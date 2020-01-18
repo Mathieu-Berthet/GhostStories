@@ -407,7 +407,6 @@ public class BluePlayer : MonoBehaviour
                 state = STATE_GAME.STATE_PLAYER;
                 return;
             }
-            Debug.Log("Coucou coucou coucou");
             panelBluePlace.SetActive(true);
             panelRedPlace.SetActive(true);
             panelGreenPlace.SetActive(true);
@@ -419,7 +418,6 @@ public class BluePlayer : MonoBehaviour
             card.transform.position = new Vector3(100.0f, 100.0f, 100.0f);
             card.SetActive(true);
             drawedCard.sprite = card.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
-            Debug.Log("Fin fin fin");
         }
     }
 
@@ -573,7 +571,7 @@ public class BluePlayer : MonoBehaviour
                     textInfoTuile.text = "Cette tuile n'as pas encore d'effet";
                     //nightTower.GetComponent<NightTower>().RetreatGhost();
                     break;
-                case "CerclePierre":
+                case "CerclePriere":
                     Debug.Log("Le cercle de prière");
                     textInfoTuile.text = "Le cercle de prière";
                     gameObject.GetComponent<Deplacement>().enabled = false;
@@ -797,8 +795,10 @@ public class BluePlayer : MonoBehaviour
                     {
                         buttonGhost1.gameObject.SetActive(false);
                         buttonGhost2.gameObject.SetActive(false);
+                        ghost1.GetComponent<Ghost>().ReduceLife();
                         Attack(ghost1);
                         yield return new WaitForSeconds(1.5f);
+                        ghost2.GetComponent<Ghost>().ReduceLife();
                         Attack(ghost2);
                         yield return new WaitForSeconds(0.5f);
                         gameObject.GetComponent<Deplacement>().enabled = true;
@@ -807,8 +807,10 @@ public class BluePlayer : MonoBehaviour
                     {
                         buttonGhost1.gameObject.SetActive(false);
                         buttonGhost2.gameObject.SetActive(false);
+                        ghost2.GetComponent<Ghost>().ReduceLife();
                         Attack(ghost2);
                         yield return new WaitForSeconds(1.5f);
+                        ghost1.GetComponent<Ghost>().ReduceLife();
                         Attack(ghost1);
                         yield return new WaitForSeconds(0.5f);
                         gameObject.GetComponent<Deplacement>().enabled = true;
@@ -816,12 +818,14 @@ public class BluePlayer : MonoBehaviour
                 }
                 else if (ghost1 == null && ghost2 != null)
                 {
+                    ghost2.GetComponent<Ghost>().ReduceLife();
                     Attack(ghost2);
                     yield return new WaitForSeconds(0.5f);
                     gameObject.GetComponent<Deplacement>().enabled = true;
                 }
                 else if (ghost1 != null && ghost2 == null)
                 {
+                    ghost1.GetComponent<Ghost>().ReduceLife();
                     Attack(ghost1);
                     yield return new WaitForSeconds(0.5f);
                     gameObject.GetComponent<Deplacement>().enabled = true;
@@ -1199,6 +1203,47 @@ public class BluePlayer : MonoBehaviour
                     update = true;
                 }
             }
+        }
+        else if(!ghost.GetComponent<Ghost>().canBeDestroyByDice && ghost.GetComponent<Ghost>().life == 0)
+        {
+            switch (ghost.GetComponent<Ghost>().couleur)
+            {
+                case "red":
+                    redBoard.nbCardOnBoard--;
+                    break;
+                case "yellow":
+                    yellowBoard.nbCardOnBoard--;
+                    break;
+                case "blue":
+                    blueBoard.nbCardOnBoard--;
+                    break;
+                case "black":
+                    blueBoard.nbCardOnBoard--;
+                    break;
+                case "green":
+                    greenBoard.nbCardOnBoard--;
+                    break;
+                default:
+                    break;
+            }
+            explosion.transform.GetChild(2).GetComponent<ParticleSystem>().Play();
+            if (ghost.transform.parent.GetChild(1).childCount >= 1)
+            {
+                Destroy(ghost.transform.parent.GetChild(1).GetChild(0).gameObject);
+            }
+            if (ghost.transform.parent.GetChild(2).childCount >= 1)
+            {
+                Destroy(ghost.transform.parent.GetChild(2).GetChild(0).gameObject);
+            }
+
+            ghost.transform.parent = defausse.transform;
+            ghost.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+            ghost.transform.localEulerAngles = new Vector3(90.0f, 0.0f, 0.0f);
+            if (ghost.GetComponent<Ghost>().deathPower)
+            {
+                ghost.GetComponent<Ghost>().UseDeathPower(gameObject);
+            }
+            ghost = null;
         }
         else
         {

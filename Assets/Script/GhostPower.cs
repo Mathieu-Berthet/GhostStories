@@ -104,7 +104,6 @@ public class GhostPower : MonoBehaviour {
         if (player.name == "BluePlayer")
         {
             player.GetComponent<BluePlayer>().canUsePower = false;
-            Debug.Log(player.GetComponent<BluePlayer>().canUsePower);
         }
         else if (player.name == "RedPlayer")
         {

@@ -9,6 +9,7 @@ public class Ghost : MonoBehaviour {
     public int life;
 
     public GhostPower power;
+    public GameObject circlePriest;
 
     public HauntingGhostDeplacement positions;
 
@@ -48,6 +49,7 @@ public class Ghost : MonoBehaviour {
     {
         power = gameObject.GetComponent<GhostPower>();
         //life = 4;
+        circlePriest = GameObject.Find("CerclePriere");
 	}
 	
 	// Update is called once per frame
@@ -177,6 +179,33 @@ public class Ghost : MonoBehaviour {
         if (player.name == "BluePlayer")
         {
             player.GetComponent<BluePlayer>().update = true;
+        }
+    }
+
+    public void ReduceLife()
+    {
+        if (circlePriest.transform.childCount >= 1)
+        {
+            if (circlePriest.transform.GetChild(0).name == "RedToken(Clone)" && couleur == "red")
+            {
+                life--;
+            }
+            else if (circlePriest.transform.GetChild(0).name == "BlackToken(Clone)" && couleur == "black")
+            {
+                life--;
+            }
+            else if (circlePriest.transform.GetChild(0).name == "BlueToken(Clone)" && couleur == "blue")
+            {
+                life--;
+            }
+            else if (circlePriest.transform.GetChild(0).name == "YellowToken(Clone)" && couleur == "yellow")
+            {
+                life--;
+            }
+            else if (circlePriest.transform.GetChild(0).name == "GreenToken(Clone)" && couleur == "green")
+            {
+                life--;
+            }
         }
     }
 }

@@ -19909,7 +19909,7 @@ GameObject:
   - component: {fileID: 1910284760}
   - component: {fileID: 1910284759}
   m_Layer: 0
-  m_Name: CerclePierre
+  m_Name: CerclePriere
   m_TagString: Sol
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
