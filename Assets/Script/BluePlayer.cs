@@ -431,67 +431,69 @@ public class BluePlayer : MonoBehaviour
     {
         if (state == STATE_GAME.STATE_DRAW || useGhostPower || useTilePower)
         {
-            if (card.GetComponent<Ghost>().couleur == "black" && position.transform.parent.GetComponent<boardColor>().color != colorPlayer && blueBoard.nbCardOnBoard < 3)
+            if (card != null)
             {
-                textInfo.text = "Les fantômes noirs doivent être posés sur le plateau de votre couleur";
-                return;
-            }
-            else if (card.GetComponent<Ghost>().couleur != "black" && card.GetComponent<Ghost>().couleur != position.transform.parent.GetComponent<boardColor>().color)
-            {
-                if ((card.GetComponent<Ghost>().couleur == "red" && redBoard.nbCardOnBoard < 3) ||
-                    (card.GetComponent<Ghost>().couleur == "blue" && blueBoard.nbCardOnBoard < 3) ||
-                    (card.GetComponent<Ghost>().couleur == "yellow" && yellowBoard.nbCardOnBoard < 3) ||
-                    (card.GetComponent<Ghost>().couleur == "green" && greenBoard.nbCardOnBoard < 3))
+                if (card.GetComponent<Ghost>().couleur == "black" && position.transform.parent.GetComponent<boardColor>().color != colorPlayer && blueBoard.nbCardOnBoard < 3)
                 {
-                    textInfo.text = "Vous ne pouvez pas placer le fantôme ici. Il n'est pas de la bonne couleur";
+                    textInfo.text = "Les fantômes noirs doivent être posés sur le plateau de votre couleur";
                     return;
                 }
-            }
-            card.transform.SetParent(position.transform);
-            card.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
-            card.transform.localEulerAngles = new Vector3(90.0f, 0.0f, 180.0f);
-            card.transform.localScale = new Vector3(15.0f, 10.0f, 1);
-            card.SetActive(true);
-            card.transform.parent.GetComponent<BoxCollider>().enabled = true;
-            card.GetComponent<GhostPower>().startPosition = card.transform.parent.GetChild(1);
-            card.GetComponent<GhostPower>().middlePosition = card.transform.parent.GetChild(2);
-            card.GetComponent<GhostPower>().endPosition = card.transform.parent.GetChild(3);
-            if (position.transform.parent.GetComponent<boardColor>().color == "blue")
-            {
-                blueBoard.nbCardOnBoard++;
-            }
-            else if (position.transform.parent.GetComponent<boardColor>().color == "green")
-            {
-                greenBoard.nbCardOnBoard++;
-            }
-            else if (position.transform.parent.GetComponent<boardColor>().color == "red")
-            {
-                redBoard.nbCardOnBoard++;
-            }
-            else if (position.transform.parent.GetComponent<boardColor>().color == "yellow")
-            {
-                yellowBoard.nbCardOnBoard++;
-            }
-            panelBluePlace.SetActive(false);
-            panelRedPlace.SetActive(false);
-            panelGreenPlace.SetActive(false);
-            panelYellowPlace.SetActive(false);
-            textInfo.gameObject.SetActive(false);
-            drawedCard.gameObject.SetActive(false);
-            gameObject.GetComponent<Deplacement>().enabled = true;
-            textInfoPhase.gameObject.SetActive(true);
-            useTilePower = false;
-            canLaunchBlackDice = true;
-            hasDraw = false;
-            if (card.GetComponent<Ghost>().entryPower)
-            {
-                if (card.GetComponent<Ghost>().hasDrawAGhostPower)
+                else if (card.GetComponent<Ghost>().couleur != "black" && card.GetComponent<Ghost>().couleur != position.transform.parent.GetComponent<boardColor>().color)
                 {
-                    useGhostPower = true;
+                    if ((card.GetComponent<Ghost>().couleur == "red" && redBoard.nbCardOnBoard < 3) ||
+                        (card.GetComponent<Ghost>().couleur == "blue" && blueBoard.nbCardOnBoard < 3) ||
+                        (card.GetComponent<Ghost>().couleur == "yellow" && yellowBoard.nbCardOnBoard < 3) ||
+                        (card.GetComponent<Ghost>().couleur == "green" && greenBoard.nbCardOnBoard < 3))
+                    {
+                        textInfo.text = "Vous ne pouvez pas placer le fantôme ici. Il n'est pas de la bonne couleur";
+                        return;
+                    }
                 }
-                card.GetComponent<Ghost>().UseEntryPower(gameObject);
+                card.transform.SetParent(position.transform);
+                card.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+                card.transform.localEulerAngles = new Vector3(90.0f, 0.0f, 180.0f);
+                card.transform.localScale = new Vector3(15.0f, 10.0f, 1);
+                card.SetActive(true);
+                card.transform.parent.GetComponent<BoxCollider>().enabled = true;
+                card.GetComponent<GhostPower>().startPosition = card.transform.parent.GetChild(1);
+                card.GetComponent<GhostPower>().middlePosition = card.transform.parent.GetChild(2);
+                card.GetComponent<GhostPower>().endPosition = card.transform.parent.GetChild(3);
+                if (position.transform.parent.GetComponent<boardColor>().color == "blue")
+                {
+                    blueBoard.nbCardOnBoard++;
+                }
+                else if (position.transform.parent.GetComponent<boardColor>().color == "green")
+                {
+                    greenBoard.nbCardOnBoard++;
+                }
+                else if (position.transform.parent.GetComponent<boardColor>().color == "red")
+                {
+                    redBoard.nbCardOnBoard++;
+                }
+                else if (position.transform.parent.GetComponent<boardColor>().color == "yellow")
+                {
+                    yellowBoard.nbCardOnBoard++;
+                }
+                panelBluePlace.SetActive(false);
+                panelRedPlace.SetActive(false);
+                panelGreenPlace.SetActive(false);
+                panelYellowPlace.SetActive(false);
+                textInfo.gameObject.SetActive(false);
+                drawedCard.gameObject.SetActive(false);
+                gameObject.GetComponent<Deplacement>().enabled = true;
+                textInfoPhase.gameObject.SetActive(true);
+                useTilePower = false;
+                canLaunchBlackDice = true;
+                hasDraw = false;
+                if (card.GetComponent<Ghost>().entryPower)
+                {
+                    if (card.GetComponent<Ghost>().hasDrawAGhostPower)
+                    {
+                        useGhostPower = true;
+                    }
+                    card.GetComponent<Ghost>().UseEntryPower(gameObject);
+                }
             }
-
             if (state == STATE_GAME.STATE_DRAW)
             {
                 state = STATE_GAME.STATE_PLAYER;
@@ -536,6 +538,7 @@ public class BluePlayer : MonoBehaviour
                 case "HutteSorciere":
                     Debug.Log("Hutte de la sorcière");
                     textInfoTuile.text = "Hutte de la sorcière";
+                    card = null;
                     canLaunchDice = false;
                     canLaunchBlackDice = false;
                     textInfoPhase.gameObject.SetActive(false);

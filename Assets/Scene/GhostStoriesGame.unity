@@ -3770,7 +3770,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Cercle de pri\xE8re"
+  m_Text: Cercle de priere
 --- !u!222 &275499194
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7614,7 +7614,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Maison du th\xE9"
+  m_Text: Maison du The
 --- !u!222 &660076026
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7928,7 +7928,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Hutte de la Sorci\xE8re"
+  m_Text: Hutte de la Sorciere
 --- !u!222 &727597285
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9173,7 +9173,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Cimeti\xE8re"
+  m_Text: Cimetiere
 --- !u!222 &905250728
 CanvasRenderer:
   m_ObjectHideFlags: 0
