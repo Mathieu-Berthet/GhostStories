@@ -29,16 +29,16 @@ public class HauntingGhostDeplacement : MonoBehaviour
     {
         hasHauntedTile = false;
         RaycastHit hitTiledirection;
-        gameObject.transform.parent.GetComponent<BoxCollider>().enabled = false;
-        gameObject.transform.parent.GetChild(1).GetComponent<CapsuleCollider>().enabled = false;
-        gameObject.transform.parent.GetChild(2).GetComponent<CapsuleCollider>().enabled = false;
-        gameObject.transform.parent.GetChild(3).GetComponent<CapsuleCollider>().enabled = false;
+        //gameObject.transform.parent.GetComponent<BoxCollider>().enabled = false;
+        transform.parent.parent.GetChild(1).GetComponent<CapsuleCollider>().enabled = false;
+        transform.parent.parent.GetChild(2).GetComponent<CapsuleCollider>().enabled = false;
+        transform.parent.parent.GetChild(3).GetComponent<CapsuleCollider>().enabled = false;
         for (int i = 0; i < 3; i++)
         {
             if (!hasHauntedTile)
             {
-                if (Physics.Raycast(transform.parent.parent.GetChild(4).position, Vector3.back, out hitTiledirection, 100.0f) || Physics.Raycast(transform.parent.parent.GetChild(4).position, Vector3.forward, out hitTiledirection, 100.0f) ||
-                   Physics.Raycast(transform.parent.parent.GetChild(4).position, Vector3.right, out hitTiledirection, 100.0f) || Physics.Raycast(transform.parent.parent.GetChild(4).position, Vector3.left, out hitTiledirection, 100.0f))
+                if (Physics.Raycast(gameObject.transform.position, Vector3.back, out hitTiledirection, 100.0f) || Physics.Raycast(gameObject.transform.position, Vector3.forward, out hitTiledirection, 100.0f) ||
+                   Physics.Raycast(gameObject.transform.position, Vector3.right, out hitTiledirection, 100.0f) || Physics.Raycast(gameObject.transform.position, Vector3.left, out hitTiledirection, 100.0f))
                 {
                     tileToCheck = hitTiledirection.collider.gameObject;
                     switch (tileToCheck.name)
@@ -49,10 +49,10 @@ public class HauntingGhostDeplacement : MonoBehaviour
                                 tileToCheck.GetComponent<HouseOfTea>().hauntedTile = true;
                                 tileToCheck.GetComponent<HouseOfTea>().haunted();
                                 hasHauntedTile = true;
-                                gameObject.transform.parent.GetComponent<BoxCollider>().enabled = true;
-                                gameObject.transform.parent.GetChild(1).GetComponent<CapsuleCollider>().enabled = true;
-                                gameObject.transform.parent.GetChild(2).GetComponent<CapsuleCollider>().enabled = true;
-                                gameObject.transform.parent.GetChild(3).GetComponent<CapsuleCollider>().enabled = true;
+                                //gameObject.transform.parent.GetComponent<BoxCollider>().enabled = true;
+                                gameObject.transform.parent.parent.GetChild(1).GetComponent<CapsuleCollider>().enabled = true;
+                                gameObject.transform.parent.parent.GetChild(2).GetComponent<CapsuleCollider>().enabled = true;
+                                gameObject.transform.parent.parent.GetChild(3).GetComponent<CapsuleCollider>().enabled = true;
                             }
                             else
                             {
@@ -65,10 +65,10 @@ public class HauntingGhostDeplacement : MonoBehaviour
                                 tileToCheck.GetComponent<HutOfWitch>().hauntedTile = true;
                                 tileToCheck.GetComponent<HutOfWitch>().haunted();
                                 hasHauntedTile = true;
-                                gameObject.transform.parent.GetComponent<BoxCollider>().enabled = true;
-                                gameObject.transform.parent.GetChild(1).GetComponent<CapsuleCollider>().enabled = true;
-                                gameObject.transform.parent.GetChild(2).GetComponent<CapsuleCollider>().enabled = true;
-                                gameObject.transform.parent.GetChild(3).GetComponent<CapsuleCollider>().enabled = true;
+                                //gameObject.transform.parent.GetComponent<BoxCollider>().enabled = true;
+                                gameObject.transform.parent.parent.GetChild(1).GetComponent<CapsuleCollider>().enabled = true;
+                                gameObject.transform.parent.parent.GetChild(2).GetComponent<CapsuleCollider>().enabled = true;
+                                gameObject.transform.parent.parent.GetChild(3).GetComponent<CapsuleCollider>().enabled = true;
                             }
                             else
                             {
@@ -81,10 +81,10 @@ public class HauntingGhostDeplacement : MonoBehaviour
                                 tileToCheck.GetComponent<StallOfHerbalist>().hauntedTile = true;
                                 tileToCheck.GetComponent<StallOfHerbalist>().haunted();
                                 hasHauntedTile = true;
-                                gameObject.transform.parent.GetComponent<BoxCollider>().enabled = true;
-                                gameObject.transform.parent.GetChild(1).GetComponent<CapsuleCollider>().enabled = true;
-                                gameObject.transform.parent.GetChild(2).GetComponent<CapsuleCollider>().enabled = true;
-                                gameObject.transform.parent.GetChild(3).GetComponent<CapsuleCollider>().enabled = true;
+                                //gameObject.transform.parent.GetComponent<BoxCollider>().enabled = true;
+                                gameObject.transform.parent.parent.GetChild(1).GetComponent<CapsuleCollider>().enabled = true;
+                                gameObject.transform.parent.parent.GetChild(2).GetComponent<CapsuleCollider>().enabled = true;
+                                gameObject.transform.parent.parent.GetChild(3).GetComponent<CapsuleCollider>().enabled = true;
                             }
                             else
                             {
@@ -97,10 +97,10 @@ public class HauntingGhostDeplacement : MonoBehaviour
                                 tileToCheck.GetComponent<TaoisteAutel>().hauntedTile = true;
                                 tileToCheck.GetComponent<TaoisteAutel>().haunted();
                                 hasHauntedTile = true;
-                                gameObject.transform.parent.GetComponent<BoxCollider>().enabled = true;
-                                gameObject.transform.parent.GetChild(1).GetComponent<CapsuleCollider>().enabled = true;
-                                gameObject.transform.parent.GetChild(2).GetComponent<CapsuleCollider>().enabled = true;
-                                gameObject.transform.parent.GetChild(3).GetComponent<CapsuleCollider>().enabled = true;
+                                //gameObject.transform.parent.GetComponent<BoxCollider>().enabled = true;
+                                gameObject.transform.parent.parent.GetChild(1).GetComponent<CapsuleCollider>().enabled = true;
+                                gameObject.transform.parent.parent.GetChild(2).GetComponent<CapsuleCollider>().enabled = true;
+                                gameObject.transform.parent.parent.GetChild(3).GetComponent<CapsuleCollider>().enabled = true;
                             }
                             else
                             {
@@ -113,10 +113,10 @@ public class HauntingGhostDeplacement : MonoBehaviour
                                 tileToCheck.GetComponent<Graveyard>().hauntedTile = true;
                                 tileToCheck.GetComponent<Graveyard>().haunted();
                                 hasHauntedTile = true;
-                                gameObject.transform.parent.GetComponent<BoxCollider>().enabled = true;
-                                gameObject.transform.parent.GetChild(1).GetComponent<CapsuleCollider>().enabled = true;
-                                gameObject.transform.parent.GetChild(2).GetComponent<CapsuleCollider>().enabled = true;
-                                gameObject.transform.parent.GetChild(3).GetComponent<CapsuleCollider>().enabled = true;
+                                //gameObject.transform.parent.GetComponent<BoxCollider>().enabled = true;
+                                gameObject.transform.parent.parent.GetChild(1).GetComponent<CapsuleCollider>().enabled = true;
+                                gameObject.transform.parent.parent.GetChild(2).GetComponent<CapsuleCollider>().enabled = true;
+                                gameObject.transform.parent.parent.GetChild(3).GetComponent<CapsuleCollider>().enabled = true;
                             }
                             else
                             {
@@ -129,10 +129,10 @@ public class HauntingGhostDeplacement : MonoBehaviour
                                 tileToCheck.GetComponent<WindCelestialFlag>().hauntedTile = true;
                                 tileToCheck.GetComponent<WindCelestialFlag>().haunted();
                                 hasHauntedTile = true;
-                                gameObject.transform.parent.GetComponent<BoxCollider>().enabled = true;
-                                gameObject.transform.parent.GetChild(1).GetComponent<CapsuleCollider>().enabled = true;
-                                gameObject.transform.parent.GetChild(2).GetComponent<CapsuleCollider>().enabled = true;
-                                gameObject.transform.parent.GetChild(3).GetComponent<CapsuleCollider>().enabled = true;
+                                //gameObject.transform.parent.GetComponent<BoxCollider>().enabled = true;
+                                gameObject.transform.parent.parent.GetChild(1).GetComponent<CapsuleCollider>().enabled = true;
+                                gameObject.transform.parent.parent.GetChild(2).GetComponent<CapsuleCollider>().enabled = true;
+                                gameObject.transform.parent.parent.GetChild(3).GetComponent<CapsuleCollider>().enabled = true;
                             }
                             else
                             {
@@ -145,26 +145,26 @@ public class HauntingGhostDeplacement : MonoBehaviour
                                 tileToCheck.GetComponent<NightTower>().hauntedTile = true;
                                 tileToCheck.GetComponent<NightTower>().haunted();
                                 hasHauntedTile = true;
-                                gameObject.transform.parent.GetComponent<BoxCollider>().enabled = true;
-                                gameObject.transform.parent.GetChild(1).GetComponent<CapsuleCollider>().enabled = true;
-                                gameObject.transform.parent.GetChild(2).GetComponent<CapsuleCollider>().enabled = true;
-                                gameObject.transform.parent.GetChild(3).GetComponent<CapsuleCollider>().enabled = true;
+                                //gameObject.transform.parent.GetComponent<BoxCollider>().enabled = true;
+                                gameObject.transform.parent.parent.GetChild(1).GetComponent<CapsuleCollider>().enabled = true;
+                                gameObject.transform.parent.parent.GetChild(2).GetComponent<CapsuleCollider>().enabled = true;
+                                gameObject.transform.parent.parent.GetChild(3).GetComponent<CapsuleCollider>().enabled = true;
                             }
                             else
                             {
                                 tileToCheck.GetComponent<BoxCollider>().enabled = false;
                             }
                             break;
-                        case "CerclePierre":
+                        case "CerclePriere":
                             if (!tileToCheck.GetComponent<PriestCircle>().hauntedTile)
                             {
                                 tileToCheck.GetComponent<PriestCircle>().hauntedTile = true;
                                 tileToCheck.GetComponent<PriestCircle>().haunted();
                                 hasHauntedTile = true;
-                                gameObject.transform.parent.GetComponent<BoxCollider>().enabled = true;
-                                gameObject.transform.parent.GetChild(1).GetComponent<CapsuleCollider>().enabled = true;
-                                gameObject.transform.parent.GetChild(2).GetComponent<CapsuleCollider>().enabled = true;
-                                gameObject.transform.parent.GetChild(3).GetComponent<CapsuleCollider>().enabled = true;
+                                //gameObject.transform.parent.GetComponent<BoxCollider>().enabled = true;
+                                gameObject.transform.parent.parent.GetChild(1).GetComponent<CapsuleCollider>().enabled = true;
+                                gameObject.transform.parent.parent.GetChild(2).GetComponent<CapsuleCollider>().enabled = true;
+                                gameObject.transform.parent.parent.GetChild(3).GetComponent<CapsuleCollider>().enabled = true;
                             }
                             else
                             {
@@ -177,10 +177,10 @@ public class HauntingGhostDeplacement : MonoBehaviour
                                 tileToCheck.GetComponent<BouddhisteTemple>().hauntedTile = true;
                                 tileToCheck.GetComponent<BouddhisteTemple>().haunted();
                                 hasHauntedTile = true;
-                                gameObject.transform.parent.GetComponent<BoxCollider>().enabled = true;
-                                gameObject.transform.parent.GetChild(1).GetComponent<CapsuleCollider>().enabled = true;
-                                gameObject.transform.parent.GetChild(2).GetComponent<CapsuleCollider>().enabled = true;
-                                gameObject.transform.parent.GetChild(3).GetComponent<CapsuleCollider>().enabled = true;
+                                //gameObject.transform.parent.GetComponent<BoxCollider>().enabled = true;
+                                gameObject.transform.parent.parent.GetChild(1).GetComponent<CapsuleCollider>().enabled = true;
+                                gameObject.transform.parent.parent.GetChild(2).GetComponent<CapsuleCollider>().enabled = true;
+                                gameObject.transform.parent.parent.GetChild(3).GetComponent<CapsuleCollider>().enabled = true;
                             }
                             else
                             {

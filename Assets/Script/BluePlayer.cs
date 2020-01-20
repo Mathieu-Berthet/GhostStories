@@ -368,8 +368,8 @@ public class BluePlayer : MonoBehaviour
 
         if(state == STATE_GAME.STATE_GHOSTPOWER)
         {
-            ActivateInGameEffect();
             state = STATE_GAME.STATE_DRAW;
+            ActivateInGameEffect();
         }
 
         if(Qi <= 0)
