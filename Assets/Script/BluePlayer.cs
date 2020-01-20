@@ -366,6 +366,12 @@ public class BluePlayer : MonoBehaviour
             }
         }
 
+        if(state == STATE_GAME.STATE_GHOSTPOWER)
+        {
+            ActivateInGameEffect();
+            state = STATE_GAME.STATE_DRAW;
+        }
+
         if(Qi <= 0)
         {
             Qi = 0;
@@ -1254,7 +1260,6 @@ public class BluePlayer : MonoBehaviour
 
     public IEnumerator LaunchBlackDice()
     {
-        Debug.Log("PAR ICI");
         canLaunchBlackDice = false;
         canLaunchDice = false;
         gameObject.GetComponent<Deplacement>().enabled = false;
@@ -1273,8 +1278,6 @@ public class BluePlayer : MonoBehaviour
             cube.rb.AddForce(hit.point * cube.force);
         }
 
-        //blackDiceOne = go;
-        Debug.Log("De lance");
         yield return new WaitForSeconds(5.0f);
         if (blackDiceOne != null)
         {
@@ -1384,6 +1387,22 @@ public class BluePlayer : MonoBehaviour
 
     public void EndTurn()
     {
-        state = STATE_GAME.STATE_DRAW; // Par la suite, passer a STATE_GHOSTPOWER
+        state = STATE_GAME.STATE_GHOSTPOWER; // Par la suite, passer a STATE_GHOSTPOWER
+    }
+
+
+    public void ActivateInGameEffect()
+    {
+        int maxChild = blueBoard.gameObject.transform.childCount;
+        for(int i = 0; i < maxChild; i++)
+        {
+            if (blueBoard.gameObject.transform.GetChild(i).childCount >= 5)
+            {
+               if(blueBoard.gameObject.transform.GetChild(i).GetChild(4) != null && blueBoard.gameObject.transform.GetChild(i).GetChild(4).GetComponent<Ghost>().inGamePower)
+                {
+                    blueBoard.gameObject.transform.GetChild(i).GetChild(4).GetComponent<Ghost>().UseInGamePower(gameObject);
+                }
+            }
+        }
     }
 }

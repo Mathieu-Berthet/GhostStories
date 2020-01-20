@@ -119,16 +119,20 @@ public class Ghost : MonoBehaviour {
         {
             if (gameObject.transform.parent.GetChild(1).childCount >= 1)
             {
-                positions = gameObject.transform.parent.GetChild(1).GetComponent<HauntingGhostDeplacement>();
+                positions = gameObject.transform.parent.GetChild(1).GetChild(0).GetComponent<HauntingGhostDeplacement>();
+            }
+            else if (gameObject.transform.parent.GetChild(2).childCount >= 1)
+            {
+                positions = gameObject.transform.parent.GetChild(2).GetChild(0).GetComponent<HauntingGhostDeplacement>();
             }
             else
             {
-                positions = gameObject.transform.parent.GetChild(2).GetComponent<HauntingGhostDeplacement>();
+
             }
         }
         if (hasHauntedGhostPower || hasHauntedGhostAdvancedPower)
         {
-            positions.GhostMove();
+            positions.GetComponent<HauntingGhostDeplacement>().GhostMove(gameObject);
         }
         if(hasLaunchBlackDiceInGamePower)
         {

@@ -11,6 +11,7 @@ public class HauntingGhostDeplacement : MonoBehaviour
     public GameObject tileToCheck;
     public GameObject firstTileCheck;
     public GameObject secondTileCheck;
+
     // Use this for initialization
     void Start ()
     {
@@ -18,9 +19,10 @@ public class HauntingGhostDeplacement : MonoBehaviour
     }
 	
 	// Update is called once per frame
-	void Update () {
-		
-	}
+	void Update ()
+    {
+
+    }
 
 
     public void HauntedTile() //Okay 
@@ -206,27 +208,28 @@ public class HauntingGhostDeplacement : MonoBehaviour
         }
     }
 
-    public void GhostMove()
+    public void GhostMove(GameObject ghost)
     {
         if(gameObject.transform.parent.name.Contains("Depart"))
         {
             //gameObject.transform.position = Vector3.Lerp(startPosition.position, middlePosition.position, actualTime); // To see later
-            //gameObject.transform.parent = middlePosition;
+            gameObject.transform.parent = ghost.GetComponent<Ghost>().power.middlePosition;
             gameObject.transform.localPosition = new Vector3(0, 0, 0);
         }
         else if (gameObject.transform.parent.name.Contains("Case"))
         {
             //gameObject.transform.position = Vector3.Lerp(startPosition.position, middlePosition.position, actualTime); // To see later
-            //gameObject.transform.parent = endPosition;
+            gameObject.transform.parent = ghost.GetComponent<Ghost>().power.endPosition;
             gameObject.transform.localPosition = new Vector3(0, 0, 0);
         }
-        else if (gameObject.transform.parent.name.Contains("Arrive"))
+
+
+        if (gameObject.transform.parent.name.Contains("Arrive"))
         {
             //gameObject.transform.position = Vector3.Lerp(startPosition.position, middlePosition.position, actualTime); // To see later
             HauntedTile();
-            //gameObject.transform.parent = startPosition;
+            gameObject.transform.parent = ghost.GetComponent<Ghost>().power.startPosition;
             gameObject.transform.localPosition = new Vector3(0, 0, 0);
-
         }
     }
 }
