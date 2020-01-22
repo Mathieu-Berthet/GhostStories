@@ -97,15 +97,6 @@ public class BluePlayer : MonoBehaviour
     [SerializeField]
     private bool hasDraw;
 
-    [SerializeField]
-    public boardColor blueBoard;
-    [SerializeField]
-    public boardColor redBoard;
-    [SerializeField]
-    public boardColor greenBoard;
-    [SerializeField]
-    public boardColor yellowBoard;
-
     public Text textInfo;
     public string colorPlayer = "blue";
 
@@ -284,10 +275,6 @@ public class BluePlayer : MonoBehaviour
         deck = GameObject.Find("Deck").GetComponent<PoolManagerDeck>();
         board = GameObject.Find("Canvas").GetComponent<BoardPosition>();
 
-        redBoard = GameObject.Find("PlateauJoueurRouge").GetComponent<boardColor>();
-        blueBoard = GameObject.Find("PlateauJoueurBleu").GetComponent<boardColor>();
-        greenBoard = GameObject.Find("PlateauJoueurVert").GetComponent<boardColor>();
-        yellowBoard = GameObject.Find("PlateauJoueurJaune").GetComponent<boardColor>();
         canLaunchDice = true;
         canLaunchBlackDice = true;
         useTilePower = false;
@@ -391,7 +378,7 @@ public class BluePlayer : MonoBehaviour
             gameObject.GetComponent<Deplacement>().enabled = false;
             textInfoPhase.gameObject.SetActive(false);
             textInfo.text = " ";
-            if (blueBoard.nbCardOnBoard == 3 && redBoard.nbCardOnBoard == 3 && greenBoard.nbCardOnBoard == 3 && yellowBoard.nbCardOnBoard == 3)
+            if (gm.blueBoard.nbCardOnBoard == 3 && gm.redBoard.nbCardOnBoard == 3 && gm.greenBoard.nbCardOnBoard == 3 && gm.yellowBoard.nbCardOnBoard == 3)
             {
                 textInfo.gameObject.SetActive(true);
                 textInfo.text = "Vous ne pouvez pas piocher un autre fantôme, il y en a trop sur le terrain";
@@ -401,7 +388,7 @@ public class BluePlayer : MonoBehaviour
                 state = STATE_GAME.STATE_PLAYER;
                 return;
             }
-            if (blueBoard.nbCardOnBoard == 3 && !useTilePower)
+            if (gm.blueBoard.nbCardOnBoard == 3 && !useTilePower)
             {
                 textInfo.gameObject.SetActive(true);
                 textInfo.text = "Votre plateau est plein de fantômes, vous perdez une vie";
@@ -433,17 +420,17 @@ public class BluePlayer : MonoBehaviour
         {
             if (card != null)
             {
-                if (card.GetComponent<Ghost>().couleur == "black" && position.transform.parent.GetComponent<boardColor>().color != colorPlayer && blueBoard.nbCardOnBoard < 3)
+                if (card.GetComponent<Ghost>().couleur == "black" && position.transform.parent.GetComponent<boardColor>().color != colorPlayer && gm.blueBoard.nbCardOnBoard < 3)
                 {
                     textInfo.text = "Les fantômes noirs doivent être posés sur le plateau de votre couleur";
                     return;
                 }
                 else if (card.GetComponent<Ghost>().couleur != "black" && card.GetComponent<Ghost>().couleur != position.transform.parent.GetComponent<boardColor>().color)
                 {
-                    if ((card.GetComponent<Ghost>().couleur == "red" && redBoard.nbCardOnBoard < 3) ||
-                        (card.GetComponent<Ghost>().couleur == "blue" && blueBoard.nbCardOnBoard < 3) ||
-                        (card.GetComponent<Ghost>().couleur == "yellow" && yellowBoard.nbCardOnBoard < 3) ||
-                        (card.GetComponent<Ghost>().couleur == "green" && greenBoard.nbCardOnBoard < 3))
+                    if ((card.GetComponent<Ghost>().couleur == "red" && gm.redBoard.nbCardOnBoard < 3) ||
+                        (card.GetComponent<Ghost>().couleur == "blue" && gm.blueBoard.nbCardOnBoard < 3) ||
+                        (card.GetComponent<Ghost>().couleur == "yellow" && gm.yellowBoard.nbCardOnBoard < 3) ||
+                        (card.GetComponent<Ghost>().couleur == "green" && gm.greenBoard.nbCardOnBoard < 3))
                     {
                         textInfo.text = "Vous ne pouvez pas placer le fantôme ici. Il n'est pas de la bonne couleur";
                         return;
@@ -460,19 +447,19 @@ public class BluePlayer : MonoBehaviour
                 card.GetComponent<GhostPower>().endPosition = card.transform.parent.GetChild(3);
                 if (position.transform.parent.GetComponent<boardColor>().color == "blue")
                 {
-                    blueBoard.nbCardOnBoard++;
+                    gm.blueBoard.nbCardOnBoard++;
                 }
                 else if (position.transform.parent.GetComponent<boardColor>().color == "green")
                 {
-                    greenBoard.nbCardOnBoard++;
+                    gm.greenBoard.nbCardOnBoard++;
                 }
                 else if (position.transform.parent.GetComponent<boardColor>().color == "red")
                 {
-                    redBoard.nbCardOnBoard++;
+                    gm.redBoard.nbCardOnBoard++;
                 }
                 else if (position.transform.parent.GetComponent<boardColor>().color == "yellow")
                 {
-                    yellowBoard.nbCardOnBoard++;
+                    gm.yellowBoard.nbCardOnBoard++;
                 }
                 panelBluePlace.SetActive(false);
                 panelRedPlace.SetActive(false);
@@ -577,8 +564,8 @@ public class BluePlayer : MonoBehaviour
                     break;
                 case "TourVeilleurNuit":
                     Debug.Log("Tour du veilleur de nuit");
-                    textInfoTuile.text = "Cette tuile n'as pas encore d'effet";
-                    //nightTower.GetComponent<NightTower>().RetreatGhost();
+                    textInfoTuile.text = "Tour du veilleur de nuit";
+                    StartCoroutine(nightTower.GetComponent<NightTower>().RetreatGhost());
                     break;
                 case "CerclePriere":
                     Debug.Log("Le cercle de prière");
@@ -1025,23 +1012,23 @@ public class BluePlayer : MonoBehaviour
             switch (ghost.GetComponent<Ghost>().couleur)
             {
                 case "red":
-                    redBoard.nbCardOnBoard--;
+                    gm.redBoard.nbCardOnBoard--;
                     nbRedFace -= ghost.GetComponent<Ghost>().life;
                     break;
                 case "yellow":
-                    yellowBoard.nbCardOnBoard--;
+                    gm.yellowBoard.nbCardOnBoard--;
                     nbYellowFace -= ghost.GetComponent<Ghost>().life;
                     break;
                 case "blue":
-                    blueBoard.nbCardOnBoard--;
+                    gm.blueBoard.nbCardOnBoard--;
                     nbBlueFace -= ghost.GetComponent<Ghost>().life;
                     break;
                 case "black":
-                    blueBoard.nbCardOnBoard--;
+                    gm.blueBoard.nbCardOnBoard--;
                     nbBlackFace -= ghost.GetComponent<Ghost>().life;
                     break;
                 case "green":
-                    greenBoard.nbCardOnBoard--;
+                    gm.greenBoard.nbCardOnBoard--;
                     nbGreenFace -= ghost.GetComponent<Ghost>().life;
                     break;
                 default:
@@ -1078,7 +1065,7 @@ public class BluePlayer : MonoBehaviour
                 if (nbRedToken >= resultRed)
                 {
                     nbRedToken -= resultRed;
-                    redBoard.nbCardOnBoard--;
+                    gm.redBoard.nbCardOnBoard--;
                     nbRedFace = 0;
                     explosion.transform.GetChild(2).GetComponent<ParticleSystem>().Play();
                     if (ghost.transform.parent.GetChild(1).childCount >= 1)
@@ -1106,7 +1093,7 @@ public class BluePlayer : MonoBehaviour
                 if (nbBlueToken >= resultBlue)
                 {
                     nbBlueToken -= resultBlue;
-                    blueBoard.nbCardOnBoard--;
+                    gm.blueBoard.nbCardOnBoard--;
                     nbBlueFace = 0;
                     explosion.transform.GetChild(2).GetComponent<ParticleSystem>().Play();
                     if (ghost.transform.parent.GetChild(1).childCount >= 1)
@@ -1134,7 +1121,7 @@ public class BluePlayer : MonoBehaviour
                 if (nbGreenToken >= resultGreen)
                 {
                     nbGreenToken -= resultGreen;
-                    greenBoard.nbCardOnBoard--;
+                    gm.greenBoard.nbCardOnBoard--;
                     nbGreenFace = 0;
                     explosion.transform.GetChild(2).GetComponent<ParticleSystem>().Play();
                     if (ghost.transform.parent.GetChild(1).childCount >= 1)
@@ -1162,7 +1149,7 @@ public class BluePlayer : MonoBehaviour
                 if (nbYellowToken >= resultYellow)
                 {
                     nbYellowToken -= resultYellow;
-                    yellowBoard.nbCardOnBoard--;
+                    gm.yellowBoard.nbCardOnBoard--;
                     nbYellowFace = 0;
                     explosion.transform.GetChild(2).GetComponent<ParticleSystem>().Play();
                     if (ghost.transform.parent.GetChild(1).childCount >= 1)
@@ -1190,7 +1177,7 @@ public class BluePlayer : MonoBehaviour
                 if (nbBlackToken >= resultBlack)
                 {
                     nbBlackToken -= resultBlack;
-                    blueBoard.nbCardOnBoard--;
+                    gm.blueBoard.nbCardOnBoard--;
                     nbBlackFace = 0;
                     explosion.transform.GetChild(2).GetComponent<ParticleSystem>().Play();
                     if (ghost.transform.parent.GetChild(1).childCount >= 1)
@@ -1218,19 +1205,19 @@ public class BluePlayer : MonoBehaviour
             switch (ghost.GetComponent<Ghost>().couleur)
             {
                 case "red":
-                    redBoard.nbCardOnBoard--;
+                    gm.redBoard.nbCardOnBoard--;
                     break;
                 case "yellow":
-                    yellowBoard.nbCardOnBoard--;
+                    gm.yellowBoard.nbCardOnBoard--;
                     break;
                 case "blue":
-                    blueBoard.nbCardOnBoard--;
+                    gm.blueBoard.nbCardOnBoard--;
                     break;
                 case "black":
-                    blueBoard.nbCardOnBoard--;
+                    gm.blueBoard.nbCardOnBoard--;
                     break;
                 case "green":
-                    greenBoard.nbCardOnBoard--;
+                    gm.greenBoard.nbCardOnBoard--;
                     break;
                 default:
                     break;
@@ -1396,14 +1383,14 @@ public class BluePlayer : MonoBehaviour
 
     public void ActivateInGameEffect()
     {
-        int maxChild = blueBoard.gameObject.transform.childCount;
+        int maxChild = gm.blueBoard.gameObject.transform.childCount;
         for(int i = 0; i < maxChild; i++)
         {
-            if (blueBoard.gameObject.transform.GetChild(i).childCount >= 5)
+            if (gm.blueBoard.gameObject.transform.GetChild(i).childCount >= 5)
             {
-               if(blueBoard.gameObject.transform.GetChild(i).GetChild(4) != null && blueBoard.gameObject.transform.GetChild(i).GetChild(4).GetComponent<Ghost>().inGamePower)
+               if(gm.blueBoard.gameObject.transform.GetChild(i).GetChild(4).GetComponent<Ghost>().inGamePower)
                 {
-                    blueBoard.gameObject.transform.GetChild(i).GetChild(4).GetComponent<Ghost>().UseInGamePower(gameObject);
+                    gm.blueBoard.gameObject.transform.GetChild(i).GetChild(4).GetComponent<Ghost>().UseInGamePower(gameObject);
                 }
             }
         }

@@ -46,6 +46,11 @@ public class GameManager : MonoBehaviour {
     public int turn;
     public bool nextPlayer;
 
+    public boardColor blueBoard;
+    public boardColor redBoard;
+    public boardColor greenBoard;
+    public boardColor yellowBoard;
+
     public int nbDice;
     public bool canUseTaoToken;
     public bool cantTransformWhiteFace;
@@ -92,6 +97,11 @@ public class GameManager : MonoBehaviour {
 
         positionCamera4 = new Vector3(5.4f, 3.65f, 1.5f);
         rotationCamera4 = new Vector3(55.0f, 270.0f, 0.0f);
+
+        redBoard = GameObject.Find("PlateauJoueurRouge").GetComponent<boardColor>();
+        blueBoard = GameObject.Find("PlateauJoueurBleu").GetComponent<boardColor>();
+        greenBoard = GameObject.Find("PlateauJoueurVert").GetComponent<boardColor>();
+        yellowBoard = GameObject.Find("PlateauJoueurJaune").GetComponent<boardColor>();
 
     }
 
