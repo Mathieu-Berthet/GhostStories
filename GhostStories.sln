@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GhostStories", "GhostStorie
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GhostStories.Editor.Plugins", "GhostStories.Editor.Plugins.csproj", "{1E5A5EE7-5056-8A97-4A8D-D59E7152130D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GhostStories.Editor", "GhostStories.Editor.csproj", "{5337CD19-75BA-0715-6B11-82BEAB5FC993}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{1E5A5EE7-5056-8A97-4A8D-D59E7152130D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1E5A5EE7-5056-8A97-4A8D-D59E7152130D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1E5A5EE7-5056-8A97-4A8D-D59E7152130D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5337CD19-75BA-0715-6B11-82BEAB5FC993}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5337CD19-75BA-0715-6B11-82BEAB5FC993}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5337CD19-75BA-0715-6B11-82BEAB5FC993}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5337CD19-75BA-0715-6B11-82BEAB5FC993}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

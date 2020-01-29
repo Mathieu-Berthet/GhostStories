@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.AI;
 
 public class BluePlayer : MonoBehaviour
 {
@@ -124,6 +125,20 @@ public class BluePlayer : MonoBehaviour
     private GameObject blackDice;
     public GameObject blackDiceOne;
     public string resultFace;
+
+
+
+    public NavMeshModifier navMeshEchoppe;
+    public NavMeshModifier navMeshHut;
+    public NavMeshModifier navMeshHouse;
+    public NavMeshModifier navMeshAutel;
+    public NavMeshModifier navMeshGraveyard;
+    public NavMeshModifier navMeshPavillon;
+    public NavMeshModifier navMeshTower;
+    public NavMeshModifier navMeshCircle;
+    public NavMeshModifier navMeshTemple;
+
+
     #region accesseurs
     public int Qi
     {
@@ -293,6 +308,12 @@ public class BluePlayer : MonoBehaviour
         {
             Debug.Log("Sortie");
             Application.Quit();
+        }
+
+
+        if(Input.GetKeyDown(KeyCode.B))
+        {
+            CheckDeplacement();
         }
 
         RaycastHit hitt;
@@ -1393,6 +1414,611 @@ public class BluePlayer : MonoBehaviour
                     gm.blueBoard.gameObject.transform.GetChild(i).GetChild(4).GetComponent<Ghost>().UseInGamePower(gameObject);
                 }
             }
+        }
+    }
+
+
+    public void CheckDeplacement()
+    {
+        switch (tileName)
+        {
+            case "MaisonThe":
+                if(Vector3.Distance(houseOfTea.transform.position, witchHut.transform.position) < 1.5f)
+                {
+                    navMeshHut.area = 0;
+                    Debug.Log("Test : " + navMeshHut.area);
+                }
+                else
+                {
+                    navMeshHut.area = 1;
+                }
+                if (Vector3.Distance(houseOfTea.transform.position, herbalistStall.transform.position) < 1.5f)
+                {
+                    navMeshEchoppe.area = 0;
+                }
+                else
+                {
+                    navMeshEchoppe.area = 1;
+                }
+                /*if (Vector3.Distance(houseOfTea.transform.position, windCelestialFlag.transform.position) < 1.5f)
+                {
+                    navMeshPavillon.area = 0;
+                }
+                else
+                {
+                    navMeshPavillon.area = 1;
+                }*/
+                /*if (Vector3.Distance(houseOfTea.transform.position, graveyard.transform.position) < 1.5f)
+                {
+                    navMeshGraveyard.area = 0;
+                }
+                else
+                {
+                    navMeshGraveyard.area = 1;
+                }
+                if (Vector3.Distance(houseOfTea.transform.position, taoisteAutel.transform.position) < 1.5f)
+                {
+                    navMeshAutel.area = 0;
+                }
+                else
+                {
+                    navMeshAutel.area = 1;
+                }
+                if (Vector3.Distance(houseOfTea.transform.position, bouddhisteTemple.transform.position) < 1.5f)
+                {
+                    navMeshTemple.area = 0;
+                }
+                else
+                {
+                    navMeshTemple.area = 1;
+                }
+                if (Vector3.Distance(houseOfTea.transform.position, priestCircle.transform.position) < 1.5f)
+                {
+                    navMeshCircle.area = 0;
+                }
+                else
+                {
+                    navMeshCircle.area = 1;
+                }
+                if (Vector3.Distance(houseOfTea.transform.position, nightTower.transform.position) < 1.5f)
+                {
+                    navMeshTower.area = 0;
+                }
+                else
+                {
+                    navMeshTower.area = 1;
+                }*/
+                break;
+            /*case "HutteSorciere":
+                if (Vector3.Distance(witchHut.transform.position, houseOfTea.transform.position) < 1.5f)
+                {
+                    navMeshHouse.area = 0;
+                }
+                else
+                {
+                    navMeshHouse.area = 1;
+                }
+                if (Vector3.Distance(witchHut.transform.position, herbalistStall.transform.position) < 1.5f)
+                {
+                    navMeshEchoppe.area = 0;
+                }
+                else
+                {
+                    navMeshEchoppe.area = 1;
+                }
+                if (Vector3.Distance(witchHut.transform.position, windCelestialFlag.transform.position) < 1.5f)
+                {
+                    navMeshPavillon.area = 0;
+                }
+                else
+                {
+                    navMeshPavillon.area = 1;
+                }
+                if (Vector3.Distance(witchHut.transform.position, graveyard.transform.position) < 1.5f)
+                {
+                    navMeshGraveyard.area = 0;
+                }
+                else
+                {
+                    navMeshGraveyard.area = 1;
+                }
+                if (Vector3.Distance(witchHut.transform.position, taoisteAutel.transform.position) < 1.5f)
+                {
+                    navMeshAutel.area = 0;
+                }
+                else
+                {
+                    navMeshAutel.area = 1;
+                }
+                if (Vector3.Distance(witchHut.transform.position, bouddhisteTemple.transform.position) < 1.5f)
+                {
+                    navMeshTemple.area = 0;
+                }
+                else
+                {
+                    navMeshTemple.area = 1;
+                }
+                if (Vector3.Distance(witchHut.transform.position, priestCircle.transform.position) < 1.5f)
+                {
+                    navMeshCircle.area = 0;
+                }
+                else
+                {
+                    navMeshCircle.area = 1;
+                }
+                if (Vector3.Distance(witchHut.transform.position, nightTower.transform.position) < 1.5f)
+                {
+                    navMeshTower.area = 0;
+                }
+                else
+                {
+                    navMeshTower.area = 1;
+                }
+                break;
+            case "EchoppeHerboriste":
+                if (Vector3.Distance(herbalistStall.transform.position, houseOfTea.transform.position) < 1.5f)
+                {
+                    navMeshHouse.area = 0;
+                }
+                else
+                {
+                    navMeshHouse.area = 1;
+                }
+                if (Vector3.Distance(herbalistStall.transform.position, witchHut.transform.position) < 1.5f)
+                {
+                    navMeshHut.area = 0;
+                }
+                else
+                {
+                    navMeshHut.area = 1;
+                }
+                if (Vector3.Distance(herbalistStall.transform.position, windCelestialFlag.transform.position) < 1.5f)
+                {
+                    navMeshPavillon.area = 0;
+                }
+                else
+                {
+                    navMeshPavillon.area = 1;
+                }
+                if (Vector3.Distance(herbalistStall.transform.position, graveyard.transform.position) < 1.5f)
+                {
+                    navMeshGraveyard.area = 0;
+                }
+                else
+                {
+                    navMeshGraveyard.area = 1;
+                }
+                if (Vector3.Distance(herbalistStall.transform.position, taoisteAutel.transform.position) < 1.5f)
+                {
+                    navMeshAutel.area = 0;
+                }
+                else
+                {
+                    navMeshAutel.area = 1;
+                }
+                if (Vector3.Distance(herbalistStall.transform.position, bouddhisteTemple.transform.position) < 1.5f)
+                {
+                    navMeshTemple.area = 0;
+                }
+                else
+                {
+                    navMeshTemple.area = 1;
+                }
+                if (Vector3.Distance(herbalistStall.transform.position, priestCircle.transform.position) < 1.5f)
+                {
+                    navMeshCircle.area = 0;
+                }
+                else
+                {
+                    navMeshCircle.area = 1;
+                }
+                if (Vector3.Distance(herbalistStall.transform.position, nightTower.transform.position) < 1.5f)
+                {
+                    navMeshTower.area = 0;
+                }
+                else
+                {
+                    navMeshTower.area = 1;
+                }
+                break;
+            case "AutelTaoiste":
+                if (Vector3.Distance(taoisteAutel.transform.position, houseOfTea.transform.position) < 1.5f)
+                {
+                    navMeshHouse.area = 0;
+                }
+                else
+                {
+                    navMeshHouse.area = 1;
+                }
+                if (Vector3.Distance(taoisteAutel.transform.position, witchHut.transform.position) < 1.5f)
+                {
+                    navMeshHut.area = 0;
+                }
+                else
+                {
+                    navMeshHut.area = 1;
+                }
+                if (Vector3.Distance(taoisteAutel.transform.position, windCelestialFlag.transform.position) < 1.5f)
+                {
+                    navMeshPavillon.area = 0;
+                }
+                else
+                {
+                    navMeshPavillon.area = 1;
+                }
+                if (Vector3.Distance(taoisteAutel.transform.position, graveyard.transform.position) < 1.5f)
+                {
+                    navMeshGraveyard.area = 0;
+                }
+                else
+                {
+                    navMeshGraveyard.area = 1;
+                }
+                if (Vector3.Distance(taoisteAutel.transform.position, herbalistStall.transform.position) < 1.5f)
+                {
+                    navMeshEchoppe.area = 0;
+                }
+                else
+                {
+                    navMeshEchoppe.area = 1;
+                }
+                if (Vector3.Distance(taoisteAutel.transform.position, bouddhisteTemple.transform.position) < 1.5f)
+                {
+                    navMeshTemple.area = 0;
+                }
+                else
+                {
+                    navMeshTemple.area = 1;
+                }
+                if (Vector3.Distance(taoisteAutel.transform.position, priestCircle.transform.position) < 1.5f)
+                {
+                    navMeshCircle.area = 0;
+                }
+                else
+                {
+                    navMeshCircle.area = 1;
+                }
+                if (Vector3.Distance(taoisteAutel.transform.position, nightTower.transform.position) < 1.5f)
+                {
+                    navMeshTower.area = 0;
+                }
+                else
+                {
+                    navMeshTower.area = 1;
+                }
+                break;
+            case "Cimetiere":
+                if (Vector3.Distance(graveyard.transform.position, houseOfTea.transform.position) < 1.5f)
+                {
+                    navMeshHouse.area = 0;
+                }
+                else
+                {
+                    navMeshHouse.area = 1;
+                }
+                if (Vector3.Distance(graveyard.transform.position, witchHut.transform.position) < 1.5f)
+                {
+                    navMeshHut.area = 0;
+                }
+                else
+                {
+                    navMeshHut.area = 1;
+                }
+                if (Vector3.Distance(graveyard.transform.position, windCelestialFlag.transform.position) < 1.5f)
+                {
+                    navMeshPavillon.area = 0;
+                }
+                else
+                {
+                    navMeshPavillon.area = 1;
+                }
+                if (Vector3.Distance(graveyard.transform.position, taoisteAutel.transform.position) < 1.5f)
+                {
+                    navMeshAutel.area = 0;
+                }
+                else
+                {
+                    navMeshAutel.area = 1;
+                }
+                if (Vector3.Distance(graveyard.transform.position, herbalistStall.transform.position) < 1.5f)
+                {
+                    navMeshEchoppe.area = 0;
+                }
+                else
+                {
+                    navMeshEchoppe.area = 1;
+                }
+                if (Vector3.Distance(graveyard.transform.position, bouddhisteTemple.transform.position) < 1.5f)
+                {
+                    navMeshTemple.area = 0;
+                }
+                else
+                {
+                    navMeshTemple.area = 1;
+                }
+                if (Vector3.Distance(graveyard.transform.position, priestCircle.transform.position) < 1.5f)
+                {
+                    navMeshCircle.area = 0;
+                }
+                else
+                {
+                    navMeshCircle.area = 1;
+                }
+                if (Vector3.Distance(graveyard.transform.position, nightTower.transform.position) < 1.5f)
+                {
+                    navMeshTower.area = 0;
+                }
+                else
+                {
+                    navMeshTower.area = 1;
+                }
+                break;
+            case "PavillonVentCeleste":
+                if (Vector3.Distance(windCelestialFlag.transform.position, houseOfTea.transform.position) < 1.5f)
+                {
+                    navMeshHouse.area = 0;
+                }
+                else
+                {
+                    navMeshHouse.area = 1;
+                }
+                if (Vector3.Distance(windCelestialFlag.transform.position, witchHut.transform.position) < 1.5f)
+                {
+                    navMeshHut.area = 0;
+                }
+                else
+                {
+                    navMeshHut.area = 1;
+                }
+                if (Vector3.Distance(windCelestialFlag.transform.position, graveyard.transform.position) < 1.5f)
+                {
+                    navMeshGraveyard.area = 0;
+                }
+                else
+                {
+                    navMeshGraveyard.area = 1;
+                }
+                if (Vector3.Distance(windCelestialFlag.transform.position, taoisteAutel.transform.position) < 1.5f)
+                {
+                    navMeshAutel.area = 0;
+                }
+                else
+                {
+                    navMeshAutel.area = 1;
+                }
+                if (Vector3.Distance(windCelestialFlag.transform.position, herbalistStall.transform.position) < 1.5f)
+                {
+                    navMeshEchoppe.area = 0;
+                }
+                else
+                {
+                    navMeshEchoppe.area = 1;
+                }
+                if (Vector3.Distance(windCelestialFlag.transform.position, bouddhisteTemple.transform.position) < 1.5f)
+                {
+                    navMeshTemple.area = 0;
+                }
+                else
+                {
+                    navMeshTemple.area = 1;
+                }
+                if (Vector3.Distance(windCelestialFlag.transform.position, priestCircle.transform.position) < 1.5f)
+                {
+                    navMeshCircle.area = 0;
+                }
+                else
+                {
+                    navMeshCircle.area = 1;
+                }
+                if (Vector3.Distance(windCelestialFlag.transform.position, nightTower.transform.position) < 1.5f)
+                {
+                    navMeshTower.area = 0;
+                }
+                else
+                {
+                    navMeshTower.area = 1;
+                }
+                break;
+            case "TourVeilleurNuit":
+                if (Vector3.Distance(nightTower.transform.position, houseOfTea.transform.position) < 1.5f)
+                {
+                    navMeshHouse.area = 0;
+                }
+                else
+                {
+                    navMeshHouse.area = 1;
+                }
+                if (Vector3.Distance(nightTower.transform.position, witchHut.transform.position) < 1.5f)
+                {
+                    navMeshHut.area = 0;
+                }
+                else
+                {
+                    navMeshHut.area = 1;
+                }
+                if (Vector3.Distance(nightTower.transform.position, graveyard.transform.position) < 1.5f)
+                {
+                    navMeshGraveyard.area = 0;
+                }
+                else
+                {
+                    navMeshGraveyard.area = 1;
+                }
+                if (Vector3.Distance(nightTower.transform.position, taoisteAutel.transform.position) < 1.5f)
+                {
+                    navMeshAutel.area = 0;
+                }
+                else
+                {
+                    navMeshAutel.area = 1;
+                }
+                if (Vector3.Distance(nightTower.transform.position, herbalistStall.transform.position) < 1.5f)
+                {
+                    navMeshEchoppe.area = 0;
+                }
+                else
+                {
+                    navMeshEchoppe.area = 1;
+                }
+                if (Vector3.Distance(nightTower.transform.position, bouddhisteTemple.transform.position) < 1.5f)
+                {
+                    navMeshTemple.area = 0;
+                }
+                else
+                {
+                    navMeshTemple.area = 1;
+                }
+                if (Vector3.Distance(nightTower.transform.position, priestCircle.transform.position) < 1.5f)
+                {
+                    navMeshCircle.area = 0;
+                }
+                else
+                {
+                    navMeshCircle.area = 1;
+                }
+                if (Vector3.Distance(nightTower.transform.position, windCelestialFlag.transform.position) < 1.5f)
+                {
+                    navMeshPavillon.area = 0;
+                }
+                else
+                {
+                    navMeshPavillon.area = 1;
+                }
+                break;
+            case "CerclePriere":
+                if (Vector3.Distance(priestCircle.transform.position, houseOfTea.transform.position) < 1.5f)
+                {
+                    navMeshHouse.area = 0;
+                }
+                else
+                {
+                    navMeshHouse.area = 1;
+                }
+                if (Vector3.Distance(priestCircle.transform.position, witchHut.transform.position) < 1.5f)
+                {
+                    navMeshHut.area = 0;
+                }
+                else
+                {
+                    navMeshHut.area = 1;
+                }
+                if (Vector3.Distance(priestCircle.transform.position, graveyard.transform.position) < 1.5f)
+                {
+                    navMeshGraveyard.area = 0;
+                }
+                else
+                {
+                    navMeshGraveyard.area = 1;
+                }
+                if (Vector3.Distance(priestCircle.transform.position, taoisteAutel.transform.position) < 1.5f)
+                {
+                    navMeshAutel.area = 0;
+                }
+                else
+                {
+                    navMeshAutel.area = 1;
+                }
+                if (Vector3.Distance(priestCircle.transform.position, herbalistStall.transform.position) < 1.5f)
+                {
+                    navMeshEchoppe.area = 0;
+                }
+                else
+                {
+                    navMeshEchoppe.area = 1;
+                }
+                if (Vector3.Distance(priestCircle.transform.position, bouddhisteTemple.transform.position) < 1.5f)
+                {
+                    navMeshTemple.area = 0;
+                }
+                else
+                {
+                    navMeshTemple.area = 1;
+                }
+                if (Vector3.Distance(priestCircle.transform.position, nightTower.transform.position) < 1.5f)
+                {
+                    navMeshTower.area = 0;
+                }
+                else
+                {
+                    navMeshTower.area = 1;
+                }
+                if (Vector3.Distance(priestCircle.transform.position, windCelestialFlag.transform.position) < 1.5f)
+                {
+                    navMeshPavillon.area = 0;
+                }
+                else
+                {
+                    navMeshPavillon.area = 1;
+                }
+                break;
+            case "TempleBouddhiste":
+                if (Vector3.Distance(bouddhisteTemple.transform.position, houseOfTea.transform.position) < 1.5f)
+                {
+                    navMeshHouse.area = 0;
+                }
+                else
+                {
+                    navMeshHouse.area = 1;
+                }
+                if (Vector3.Distance(bouddhisteTemple.transform.position, witchHut.transform.position) < 1.5f)
+                {
+                    navMeshHut.area = 0;
+                }
+                else
+                {
+                    navMeshHut.area = 1;
+                }
+                if (Vector3.Distance(bouddhisteTemple.transform.position, graveyard.transform.position) < 1.5f)
+                {
+                    navMeshGraveyard.area = 0;
+                }
+                else
+                {
+                    navMeshGraveyard.area = 1;
+                }
+                if (Vector3.Distance(bouddhisteTemple.transform.position, taoisteAutel.transform.position) < 1.5f)
+                {
+                    navMeshAutel.area = 0;
+                }
+                else
+                {
+                    navMeshAutel.area = 1;
+                }
+                if (Vector3.Distance(bouddhisteTemple.transform.position, herbalistStall.transform.position) < 1.5f)
+                {
+                    navMeshEchoppe.area = 0;
+                }
+                else
+                {
+                    navMeshEchoppe.area = 1;
+                }
+                if (Vector3.Distance(bouddhisteTemple.transform.position, priestCircle.transform.position) < 1.5f)
+                {
+                    navMeshCircle.area = 0;
+                }
+                else
+                {
+                    navMeshCircle.area = 1;
+                }
+                if (Vector3.Distance(bouddhisteTemple.transform.position, nightTower.transform.position) < 1.5f)
+                {
+                    navMeshTower.area = 0;
+                }
+                else
+                {
+                    navMeshTower.area = 1;
+                }
+                if (Vector3.Distance(bouddhisteTemple.transform.position, windCelestialFlag.transform.position) < 1.5f)
+                {
+                    navMeshPavillon.area = 0;
+                }
+                else
+                {
+                    navMeshPavillon.area = 1;
+                }
+                break;*/
+            default:
+                break;
         }
     }
 }

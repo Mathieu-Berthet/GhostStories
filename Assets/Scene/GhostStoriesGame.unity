@@ -112,7 +112,7 @@ NavMeshSettings:
     accuratePlacement: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 23800000, guid: 23b59a5a7a1d6734bb75d5b6c9f71d08, type: 2}
+  m_NavMeshData: {fileID: 0}
 --- !u!1 &1564601
 GameObject:
   m_ObjectHideFlags: 0
@@ -3050,6 +3050,7 @@ GameObject:
   - component: {fileID: 233401642}
   - component: {fileID: 233401641}
   - component: {fileID: 233401640}
+  - component: {fileID: 233401644}
   - component: {fileID: 233401639}
   m_Layer: 0
   m_Name: HutteSorciere
@@ -3146,6 +3147,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &233401644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 233401638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 0
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &236058381
 GameObject:
   m_ObjectHideFlags: 0
@@ -5050,6 +5066,7 @@ GameObject:
   - component: {fileID: 416534317}
   - component: {fileID: 416534316}
   - component: {fileID: 416534315}
+  - component: {fileID: 416534319}
   - component: {fileID: 416534314}
   m_Layer: 0
   m_Name: MaisonThe
@@ -5138,6 +5155,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &416534319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 416534313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 0
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &417473981
 GameObject:
   m_ObjectHideFlags: 0
@@ -8757,6 +8789,46 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &799644556
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 799644558}
+  - component: {fileID: 799644557}
+  m_Layer: 0
+  m_Name: NavMeshUpdater
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &799644557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 799644556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5e42bd83b70e634192870f92cb241c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &799644558
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 799644556}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 33
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &843489408
 GameObject:
   m_ObjectHideFlags: 0
@@ -9758,6 +9830,15 @@ MonoBehaviour:
   blackDice: {fileID: 1847871859114552, guid: ff1789b7f180ad5458e0b8bdb4db6a34, type: 2}
   blackDiceOne: {fileID: 0}
   resultFace: 
+  navMeshEchoppe: {fileID: 1444573572}
+  navMeshHut: {fileID: 233401644}
+  navMeshHouse: {fileID: 416534319}
+  navMeshAutel: {fileID: 1581580253}
+  navMeshGraveyard: {fileID: 1241658710}
+  navMeshPavillon: {fileID: 1335580321}
+  navMeshTower: {fileID: 1585650258}
+  navMeshCircle: {fileID: 1910284764}
+  navMeshTemple: {fileID: 1907267172}
   state: 0
   textPlayerTurn: {fileID: 1573462237}
   textInfoPhase: {fileID: 654859118}
@@ -13162,6 +13243,7 @@ GameObject:
   - component: {fileID: 1241658708}
   - component: {fileID: 1241658707}
   - component: {fileID: 1241658706}
+  - component: {fileID: 1241658710}
   - component: {fileID: 1241658705}
   m_Layer: 0
   m_Name: Cimetiere
@@ -13251,6 +13333,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1241658710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1241658704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 0
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &1242765974
 GameObject:
   m_ObjectHideFlags: 0
@@ -14041,6 +14138,7 @@ GameObject:
   - component: {fileID: 1304139355}
   - component: {fileID: 1304139354}
   - component: {fileID: 1304139358}
+  - component: {fileID: 1304139359}
   m_Layer: 0
   m_Name: PlateauJoueurVert
   m_TagString: Sol
@@ -14130,6 +14228,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   color: green
   nbCardOnBoard: 0
+--- !u!114 &1304139359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1304139353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 0
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &1312516943
 GameObject:
   m_ObjectHideFlags: 0
@@ -14549,6 +14662,7 @@ GameObject:
   - component: {fileID: 1335580319}
   - component: {fileID: 1335580318}
   - component: {fileID: 1335580317}
+  - component: {fileID: 1335580321}
   - component: {fileID: 1335580316}
   m_Layer: 0
   m_Name: PavillonVentCeleste
@@ -14635,6 +14749,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1335580321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1335580315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 0
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &1336535910
 GameObject:
   m_ObjectHideFlags: 0
@@ -14647,6 +14776,7 @@ GameObject:
   - component: {fileID: 1336535912}
   - component: {fileID: 1336535911}
   - component: {fileID: 1336535915}
+  - component: {fileID: 1336535916}
   m_Layer: 0
   m_Name: PlateauJoueurJaune
   m_TagString: Sol
@@ -14736,6 +14866,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   color: yellow
   nbCardOnBoard: 0
+--- !u!114 &1336535916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1336535910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 0
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &1345205209
 GameObject:
   m_ObjectHideFlags: 0
@@ -15618,6 +15763,7 @@ GameObject:
   - component: {fileID: 1423926758}
   - component: {fileID: 1423926757}
   - component: {fileID: 1423926761}
+  - component: {fileID: 1423926762}
   m_Layer: 0
   m_Name: PlateauJoueurRouge
   m_TagString: Sol
@@ -15707,6 +15853,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   color: red
   nbCardOnBoard: 0
+--- !u!114 &1423926762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1423926756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 0
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &1437413504
 GameObject:
   m_ObjectHideFlags: 0
@@ -15719,6 +15880,7 @@ GameObject:
   - component: {fileID: 1437413506}
   - component: {fileID: 1437413505}
   - component: {fileID: 1437413509}
+  - component: {fileID: 1437413510}
   m_Layer: 0
   m_Name: PlateauJoueurBleu
   m_TagString: Sol
@@ -15808,6 +15970,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   color: blue
   nbCardOnBoard: 0
+--- !u!114 &1437413510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1437413504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 0
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &1444573566
 GameObject:
   m_ObjectHideFlags: 0
@@ -15819,6 +15996,7 @@ GameObject:
   - component: {fileID: 1444573570}
   - component: {fileID: 1444573569}
   - component: {fileID: 1444573568}
+  - component: {fileID: 1444573572}
   - component: {fileID: 1444573567}
   m_Layer: 0
   m_Name: EchoppeHerboriste
@@ -15917,6 +16095,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1444573572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1444573566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 0
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &1448923215
 GameObject:
   m_ObjectHideFlags: 0
@@ -17225,6 +17418,7 @@ GameObject:
   - component: {fileID: 1581580251}
   - component: {fileID: 1581580250}
   - component: {fileID: 1581580249}
+  - component: {fileID: 1581580253}
   - component: {fileID: 1581580248}
   m_Layer: 0
   m_Name: AutelTaoiste
@@ -17314,6 +17508,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1581580253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1581580247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 0
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &1583025211
 GameObject:
   m_ObjectHideFlags: 0
@@ -17399,6 +17608,7 @@ GameObject:
   - component: {fileID: 1585650256}
   - component: {fileID: 1585650255}
   - component: {fileID: 1585650254}
+  - component: {fileID: 1585650258}
   - component: {fileID: 1585650253}
   m_Layer: 0
   m_Name: TourVeilleurNuit
@@ -17420,6 +17630,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hauntedTile: 0
   panelBoardChoice: {fileID: 1871381456}
+  hauntingGhost: {fileID: 0}
+  ghostCard: {fileID: 0}
   chooseBoard: 0
   boardToRetreatGhost: 
   gm: {fileID: 0}
@@ -17489,6 +17701,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1585650258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1585650252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 0
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &1593914829
 GameObject:
   m_ObjectHideFlags: 0
@@ -20623,6 +20850,7 @@ GameObject:
   - component: {fileID: 1907267170}
   - component: {fileID: 1907267169}
   - component: {fileID: 1907267168}
+  - component: {fileID: 1907267172}
   - component: {fileID: 1907267167}
   m_Layer: 0
   m_Name: TempleBouddhiste
@@ -20712,6 +20940,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1907267172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1907267166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 0
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &1910284758
 GameObject:
   m_ObjectHideFlags: 0
@@ -20723,6 +20966,7 @@ GameObject:
   - component: {fileID: 1910284762}
   - component: {fileID: 1910284761}
   - component: {fileID: 1910284760}
+  - component: {fileID: 1910284764}
   - component: {fileID: 1910284759}
   m_Layer: 0
   m_Name: CerclePriere
@@ -20812,6 +21056,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1910284764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1910284758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 0
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &1972383195
 GameObject:
   m_ObjectHideFlags: 0
