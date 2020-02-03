@@ -126,9 +126,19 @@ public class BluePlayer : MonoBehaviour
     public GameObject blackDiceOne;
     public string resultFace;
 
+    public Transform bluePosStall;
+    public Transform bluePosHouse;
+    public Transform bluePosHut;
+    public Transform bluePosPavillon;
+    public Transform bluePosGraveyard;
+    public Transform bluePosAutel;
+    public Transform bluePosCircle;
+    public Transform bluePosTemple;
+    public Transform bluePosTower;
 
+    public Vector3 actualPosition;
 
-    public NavMeshModifier navMeshEchoppe;
+    /*public NavMeshModifier navMeshEchoppe;
     public NavMeshModifier navMeshHut;
     public NavMeshModifier navMeshHouse;
     public NavMeshModifier navMeshAutel;
@@ -136,7 +146,7 @@ public class BluePlayer : MonoBehaviour
     public NavMeshModifier navMeshPavillon;
     public NavMeshModifier navMeshTower;
     public NavMeshModifier navMeshCircle;
-    public NavMeshModifier navMeshTemple;
+    public NavMeshModifier navMeshTemple;*/
 
 
     #region accesseurs
@@ -313,7 +323,7 @@ public class BluePlayer : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.B))
         {
-            CheckDeplacement();
+            StartCoroutine(gameObject.GetComponent<Deplacement>().PlayerDeplacement());
         }
 
         RaycastHit hitt;
@@ -1418,7 +1428,7 @@ public class BluePlayer : MonoBehaviour
     }
 
 
-    public void CheckDeplacement()
+    /*public void CheckDeplacement()
     {
         switch (tileName)
         {
@@ -1440,15 +1450,15 @@ public class BluePlayer : MonoBehaviour
                 {
                     navMeshEchoppe.area = 1;
                 }
-                /*if (Vector3.Distance(houseOfTea.transform.position, windCelestialFlag.transform.position) < 1.5f)
+                if (Vector3.Distance(houseOfTea.transform.position, windCelestialFlag.transform.position) < 1.5f)
                 {
                     navMeshPavillon.area = 0;
                 }
                 else
                 {
                     navMeshPavillon.area = 1;
-                }*/
-                /*if (Vector3.Distance(houseOfTea.transform.position, graveyard.transform.position) < 1.5f)
+                }
+                if (Vector3.Distance(houseOfTea.transform.position, graveyard.transform.position) < 1.5f)
                 {
                     navMeshGraveyard.area = 0;
                 }
@@ -1487,9 +1497,9 @@ public class BluePlayer : MonoBehaviour
                 else
                 {
                     navMeshTower.area = 1;
-                }*/
+                }
                 break;
-            /*case "HutteSorciere":
+            case "HutteSorciere":
                 if (Vector3.Distance(witchHut.transform.position, houseOfTea.transform.position) < 1.5f)
                 {
                     navMeshHouse.area = 0;
@@ -2016,9 +2026,9 @@ public class BluePlayer : MonoBehaviour
                 {
                     navMeshPavillon.area = 1;
                 }
-                break;*/
+                break;
             default:
                 break;
         }
-    }
+    }*/
 }
