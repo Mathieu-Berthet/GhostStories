@@ -138,6 +138,7 @@ public class BluePlayer : MonoBehaviour
 
     public Vector3 actualPosition;
 
+    public bool stop;
     /*public NavMeshModifier navMeshEchoppe;
     public NavMeshModifier navMeshHut;
     public NavMeshModifier navMeshHouse;
@@ -272,7 +273,8 @@ public class BluePlayer : MonoBehaviour
     {
         STATE_GHOSTPOWER = 0,
         STATE_DRAW = 1,
-        STATE_PLAYER = 2
+        STATE_MOVE = 2,
+        STATE_PLAYER = 3
     }
 
     public STATE_GAME state;
@@ -303,6 +305,7 @@ public class BluePlayer : MonoBehaviour
         canLaunchDice = true;
         canLaunchBlackDice = true;
         useTilePower = false;
+        stop = false;
         updateUI();
     }
 	
@@ -361,9 +364,13 @@ public class BluePlayer : MonoBehaviour
         {
             textInfoPhase.text = " Phase de pioche : \n\n - Il vous faut piochez une carte fantôme (Clic droit souris)";
         }
+        else if(state == STATE_GAME.STATE_MOVE)
+        {
+            textInfoPhase.text = " Phase de déplacement : \n\n - Veuillez choisir ou vous voulez vous déplacer";
+        }
         else if (state == STATE_GAME.STATE_PLAYER)
         {
-            textInfoPhase.text = " Phase de jeu, vous pouvez : \n\n - Vous déplacer (Clic gauche souris), \n - Attaquer un fantome se trouvant devant vous (Touche D), \n - Utilisez le pouvoir de la tuile sur laquelle vous vous trouvez (Touche E)";
+            textInfoPhase.text = " Phase de jeu, vous pouvez : \n\n - Attaquer un fantome se trouvant devant vous (Touche D), \n - Utilisez le pouvoir de la tuile sur laquelle vous vous trouvez (Touche E)";
         }
 
         if(Input.GetKeyDown(KeyCode.A))
@@ -387,7 +394,13 @@ public class BluePlayer : MonoBehaviour
         if(state == STATE_GAME.STATE_GHOSTPOWER)
         {
             state = STATE_GAME.STATE_DRAW;
+            stop = false;
             ActivateInGameEffect();
+        }
+        else if(state == STATE_GAME.STATE_MOVE && !stop)
+        {
+            stop = true;
+            StartCoroutine(gameObject.GetComponent<Deplacement>().PlayerDeplacement());
         }
 
         if(Qi <= 0)
@@ -514,7 +527,7 @@ public class BluePlayer : MonoBehaviour
             }
             if (state == STATE_GAME.STATE_DRAW)
             {
-                state = STATE_GAME.STATE_PLAYER;
+                state = STATE_GAME.STATE_MOVE;
             }
         }
     }
