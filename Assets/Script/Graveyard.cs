@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Graveyard : MonoBehaviour {
 
@@ -11,6 +12,7 @@ public class Graveyard : MonoBehaviour {
     [SerializeField]
     private CubeScript cube;
     public string resultFace;
+    public Text infos;
 
     // Use this for initialization
     void Start ()
@@ -26,31 +28,41 @@ public class Graveyard : MonoBehaviour {
 
     public void Resurrect(GameObject player)
     {
-        StartCoroutine(LaunchBlackDice(player));
+        if (!hauntedTile)
+        {
+            //PARTIE POUR RESU ^^'
+            LaunchBlackDice(player);
+        }
+        else
+        {
+            infos.text = "Cette tuile est hantée. Vous ne pouvez pas activez son pouvoir";
+            infos.gameObject.SetActive(true);
+        }
     }
 
-    public IEnumerator LaunchBlackDice(GameObject player)
+    public void LaunchBlackDice(GameObject player)
     {
-            if (player.name == "BluePlayer")
-            {
-                StartCoroutine(player.GetComponent<BluePlayer>().LaunchBlackDice());
-                //player.GetComponent<BluePlayer>().state = BluePlayer.STATE_GAME.STATE_DRAW;
-                player.GetComponent<BluePlayer>().gm.turn++;
-                player.GetComponent<BluePlayer>().update = true;
-            }
-            else if (player.name == "RedPlayer")
-            {
-                //player.GetComponent<RedPlayer>().DrawAGhost();
-            }
-            else if (player.name == "GreenPlayer")
-            {
-                //player.GetComponent<GreenPlayer>().DrawAGhost();
-            }
-            else if (player.name == "YellowPlayer")
-            {
-                //player.GetComponent<YellowPlayer>().DrawAGhost();
-            }
-        yield return new WaitForSeconds(0.5f);
+        if (player.name == "BluePlayer")
+        {
+            StartCoroutine(player.GetComponent<BluePlayer>().LaunchBlackDice());
+            player.GetComponent<BluePlayer>().update = true;
+            player.GetComponent<BluePlayer>().canLaunchDice = true;
+            player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
+            player.GetComponent<BluePlayer>().useTilePower = false;
+            player.GetComponent<Deplacement>().enabled = true;
+        }
+        /*else if (player.name == "RedPlayer")
+        {
+            //player.GetComponent<RedPlayer>().DrawAGhost();
+        }
+        else if (player.name == "GreenPlayer")
+        {
+            //player.GetComponent<GreenPlayer>().DrawAGhost();
+        }
+        else if (player.name == "YellowPlayer")
+        {
+            //player.GetComponent<YellowPlayer>().DrawAGhost();
+        }*/
     }
 
     public void haunted()

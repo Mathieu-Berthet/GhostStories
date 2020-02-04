@@ -102,6 +102,7 @@ public class GameManager : MonoBehaviour {
         blueBoard = GameObject.Find("PlateauJoueurBleu").GetComponent<boardColor>();
         greenBoard = GameObject.Find("PlateauJoueurVert").GetComponent<boardColor>();
         yellowBoard = GameObject.Find("PlateauJoueurJaune").GetComponent<boardColor>();
+        tokenStock = GameObject.Find("TokenStock").GetComponent<StockOfToken>();
 
     }
 

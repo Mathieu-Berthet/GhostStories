@@ -6,15 +6,15 @@ using UnityEngine.UI;
 public class HouseOfTea : MonoBehaviour {
 
     public bool hauntedTile = false;
-    [SerializeField]
-    private StockOfToken tokenStock;
     public GameManager gm;
+    public Text infoHouse;
+    public Text infos;
+    public GameObject playerSave;
 
     // Use this for initialization
     void Start ()
     {
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
-        tokenStock = GameObject.Find("TokenStock").GetComponent<StockOfToken>();
     }
 	
 	// Update is called once per frame
@@ -24,142 +24,159 @@ public class HouseOfTea : MonoBehaviour {
 
     public IEnumerator GainTokenAndQI(GameObject player)
     {
-        gm.choose = false;
-        gm.panelButtonChoice.SetActive(true);
-        while (!gm.choose)
+        if (!hauntedTile)
         {
-            yield return new WaitForSeconds(1.0f);
-        }
-        if (gm.choose)
-        {
-            Debug.Log("Couocu");
-            gm.panelButtonChoice.SetActive(false);
             gm.choose = false;
+            //infoNbJetons.gameObject.SetActive(false);
+            gm.panelButtonChoice.SetActive(true);
+            infoHouse = gm.panelButtonChoice.transform.GetChild(0).GetComponent<Text>();
+            infoHouse.text = "Veuillez choisir votre jeton : ";
+            playerSave = player;
+            while (!gm.choose)
+            {
+                yield return new WaitForSeconds(1.0f);
+            }
+            if (gm.choose)
+            {
+                Debug.Log("Couocu");
+                gm.panelButtonChoice.SetActive(false);
+                gm.choose = false;
+            }
+            switch (gm.choseenToken)
+            {
+                case "Red":
+                    if (gm.tokenStock.nbRedToken == 0)
+                    {
+                        infos.text = "Il n'y a plus de jetons rouges, veuillez choisir une autre couleur";
+                        infos.gameObject.SetActive(true);
+                        StopCoroutine(GainTokenAndQI(player));
+                        StartCoroutine(GainTokenAndQI(playerSave));
+                    }
+                    else
+                    {
+                        gm.tokenStock.nbRedToken -= 1;
+                        if (player.name == "BluePlayer")
+                        {
+                            player.GetComponent<BluePlayer>().Qi += 1;
+                            player.GetComponent<BluePlayer>().NbRedToken += 1;
+                            player.GetComponent<BluePlayer>().state = BluePlayer.STATE_GAME.STATE_DRAW; // PEUT ETRE
+                            player.GetComponent<BluePlayer>().DrawAGhost();
+                            player.GetComponent<BluePlayer>().update = true;
+                            player.GetComponent<BluePlayer>().canLaunchDice = true;
+                            player.GetComponent<BluePlayer>().useTilePower = false;
+                            player.GetComponent<Deplacement>().enabled = true;
+                            player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
+                        }
+                    }
+                    break;
+                case "Blue":
+                    if (gm.tokenStock.nbBlueToken == 0)
+                    {
+                        infos.text = "Il n'y a plus de jetons bleus, veuillez choisir une autre couleur";
+                        infos.gameObject.SetActive(true);
+                        StopCoroutine(GainTokenAndQI(player));
+                        StartCoroutine(GainTokenAndQI(playerSave));
+                    }
+                    else
+                    {
+                        gm.tokenStock.nbBlueToken -= 1;
+                        if (player.name == "BluePlayer")
+                        {
+                            player.GetComponent<BluePlayer>().Qi += 1;
+                            player.GetComponent<BluePlayer>().NbBlueToken += 1;
+                            player.GetComponent<BluePlayer>().state = BluePlayer.STATE_GAME.STATE_DRAW; //PEUT ETRE
+                            player.GetComponent<BluePlayer>().DrawAGhost();
+                            player.GetComponent<BluePlayer>().update = true;
+                            player.GetComponent<BluePlayer>().canLaunchDice = true;
+                            player.GetComponent<BluePlayer>().useTilePower = false;
+                            player.GetComponent<Deplacement>().enabled = true;
+                            player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
+                        }
+                    }
+                    break;
+                case "Green":
+                    if (gm.tokenStock.nbGreenToken == 0)
+                    {
+                        infos.text = "Il n'y a plus de jetons verts, veuillez choisir une autre couleur";
+                        infos.gameObject.SetActive(true);
+                        StopCoroutine(GainTokenAndQI(player));
+                        StartCoroutine(GainTokenAndQI(playerSave));
+                    }
+                    else
+                    {
+                        gm.tokenStock.nbGreenToken -= 1;
+                        if (player.name == "BluePlayer")
+                        {
+                            player.GetComponent<BluePlayer>().Qi += 1;
+                            player.GetComponent<BluePlayer>().NbGreenToken += 1;
+                            player.GetComponent<BluePlayer>().state = BluePlayer.STATE_GAME.STATE_DRAW; // PEUT ETRE
+                            player.GetComponent<BluePlayer>().DrawAGhost();
+                            player.GetComponent<BluePlayer>().update = true;
+                            player.GetComponent<BluePlayer>().canLaunchDice = true;
+                            player.GetComponent<BluePlayer>().useTilePower = false;
+                            player.GetComponent<Deplacement>().enabled = true;
+                            player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
+                        }
+                    }
+                    break;
+                case "Yellow":
+                    if (gm.tokenStock.nbYellowToken == 0)
+                    {
+                        infos.text = "Il n'y a plus de jetons jaunes, veuillez choisir une autre couleur";
+                        infos.gameObject.SetActive(true);
+                        StopCoroutine(GainTokenAndQI(player));
+                        StartCoroutine(GainTokenAndQI(playerSave));
+                    }
+                    else
+                    {
+                        gm.tokenStock.nbYellowToken -= 1;
+                        if (player.name == "BluePlayer")
+                        {
+                            player.GetComponent<BluePlayer>().Qi += 1;
+                            player.GetComponent<BluePlayer>().NbYellowToken += 1;
+                            player.GetComponent<BluePlayer>().state = BluePlayer.STATE_GAME.STATE_DRAW; // PEUT ETRE
+                            player.GetComponent<BluePlayer>().DrawAGhost();
+                            player.GetComponent<BluePlayer>().update = true;
+                            player.GetComponent<BluePlayer>().canLaunchDice = true;
+                            player.GetComponent<BluePlayer>().useTilePower = false;
+                            player.GetComponent<Deplacement>().enabled = true;
+                            player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
+                        }
+                    }
+                    break;
+                case "Black":
+                    if (gm.tokenStock.nbBlackToken == 0)
+                    {
+                        infos.text = "Il n'y a plus de jetons noirs, veuillez choisir une autre couleur";
+                        infos.gameObject.SetActive(true);
+                        StopCoroutine(GainTokenAndQI(player));
+                        StartCoroutine(GainTokenAndQI(playerSave));
+                    }
+                    else
+                    {
+                        gm.tokenStock.nbBlackToken -= 1;
+                        if (player.name == "BluePlayer")
+                        {
+                            player.GetComponent<BluePlayer>().Qi += 1;
+                            player.GetComponent<BluePlayer>().NbBlackToken += 1;
+                            player.GetComponent<BluePlayer>().state = BluePlayer.STATE_GAME.STATE_DRAW; //PEUT ETRE
+                            player.GetComponent<BluePlayer>().DrawAGhost();
+                            player.GetComponent<BluePlayer>().update = true;
+                            player.GetComponent<BluePlayer>().canLaunchDice = true;
+                            player.GetComponent<BluePlayer>().useTilePower = false;
+                            player.GetComponent<Deplacement>().enabled = true;
+                            player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
+                        }
+                    }
+                    break;
+                default:
+                    break;
+            }
         }
-        switch (gm.choseenToken)
+        else
         {
-            case "Red":
-                if (tokenStock.nbRedToken == 0)
-                {
-                    //Indiquer qu'il y en a plus en reserve
-                    //Redemander de choisir une autre couleur
-                }
-                else
-                {
-                    tokenStock.nbRedToken -= 1;
-                    if (player.name == "BluePlayer")
-                    {
-                        player.GetComponent<BluePlayer>().Qi += 1;
-                        player.GetComponent<BluePlayer>().NbRedToken += 1;
-                        player.GetComponent<BluePlayer>().state = BluePlayer.STATE_GAME.STATE_DRAW;
-                        player.GetComponent<BluePlayer>().DrawAGhost();
-                        player.GetComponent<BluePlayer>().gm.turn++;
-                        player.GetComponent<BluePlayer>().update = true;
-                        player.GetComponent<BluePlayer>().canLaunchDice = true;
-                        player.GetComponent<BluePlayer>().useTilePower = false;
-                        player.GetComponent<Deplacement>().enabled = true;
-                        player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
-                    }
-                }
-                break;
-            case "Blue":
-                if(tokenStock.nbBlueToken == 0)
-                {
-                    //Indiquer qu'il y en a plus en reserve
-                    //Redemander de choisir une autre couleur
-                }
-                else
-                {
-                    tokenStock.nbBlueToken -= 1;
-                    if (player.name == "BluePlayer")
-                    {
-                        player.GetComponent<BluePlayer>().Qi += 1;
-                        player.GetComponent<BluePlayer>().NbBlueToken += 1;
-                        player.GetComponent<BluePlayer>().state = BluePlayer.STATE_GAME.STATE_DRAW;
-                        player.GetComponent<BluePlayer>().DrawAGhost();
-                        player.GetComponent<BluePlayer>().gm.turn++;
-                        player.GetComponent<BluePlayer>().update = true;
-                        player.GetComponent<BluePlayer>().canLaunchDice = true;
-                        player.GetComponent<BluePlayer>().useTilePower = false;
-                        player.GetComponent<Deplacement>().enabled = true;
-                        player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
-                    }
-                }
-                break;
-            case "Green":
-                if(tokenStock.nbGreenToken == 0)
-                {
-                    //Indiquer qu'il y en a plus en reserve
-                    //Redemander de choisir une autre couleur
-                }
-                else
-                {
-                    tokenStock.nbGreenToken -= 1;
-                    if (player.name == "BluePlayer")
-                    {
-                        player.GetComponent<BluePlayer>().Qi += 1;
-                        player.GetComponent<BluePlayer>().NbGreenToken += 1;
-                        player.GetComponent<BluePlayer>().state = BluePlayer.STATE_GAME.STATE_DRAW;
-                        player.GetComponent<BluePlayer>().DrawAGhost();
-                        player.GetComponent<BluePlayer>().gm.turn++;
-                        player.GetComponent<BluePlayer>().update = true;
-                        player.GetComponent<BluePlayer>().canLaunchDice = true;
-                        player.GetComponent<BluePlayer>().useTilePower = false;
-                        player.GetComponent<Deplacement>().enabled = true;
-                        player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
-                    }
-                }
-                break;
-            case "Yellow":
-                if(tokenStock.nbYellowToken == 0)
-                {
-                    //Indiquer qu'il y en a plus en reserve
-                    //Redemander de choisir une autre couleur
-                }
-                else
-                {
-                    tokenStock.nbYellowToken -= 1;
-                    if (player.name == "BluePlayer")
-                    {
-                        player.GetComponent<BluePlayer>().Qi += 1;
-                        player.GetComponent<BluePlayer>().NbYellowToken += 1;
-                        player.GetComponent<BluePlayer>().state = BluePlayer.STATE_GAME.STATE_DRAW;
-                        player.GetComponent<BluePlayer>().DrawAGhost();
-                        player.GetComponent<BluePlayer>().gm.turn++;
-                        player.GetComponent<BluePlayer>().update = true;
-                        player.GetComponent<BluePlayer>().canLaunchDice = true;
-                        player.GetComponent<BluePlayer>().useTilePower = false;
-                        player.GetComponent<Deplacement>().enabled = true;
-                        player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
-                    }
-                }
-                break;
-            case "Black":
-                if(tokenStock.nbBlackToken == 0)
-                {
-                    //Indiquer qu'il y en a plus en reserve
-                    //Redemander de choisir une autre couleur
-                }
-                else
-                {
-                    tokenStock.nbBlackToken -= 1;
-                    if (player.name == "BluePlayer")
-                    {
-                        player.GetComponent<BluePlayer>().Qi += 1;
-                        player.GetComponent<BluePlayer>().NbBlackToken += 1;
-                        player.GetComponent<BluePlayer>().state = BluePlayer.STATE_GAME.STATE_DRAW;
-                        player.GetComponent<BluePlayer>().DrawAGhost();
-                        player.GetComponent<BluePlayer>().gm.turn++;
-                        player.GetComponent<BluePlayer>().update = true;
-                        player.GetComponent<BluePlayer>().canLaunchDice = true;
-                        player.GetComponent<BluePlayer>().useTilePower = false;
-                        player.GetComponent<Deplacement>().enabled = true;
-                        player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
-                    }
-                }
-                break;
-            default:
-                break;
+            infos.text = "Cette tuile est hantée. Vous ne pouvez pas activez son pouvoir";
+            infos.gameObject.SetActive(true);
         }
     }
 

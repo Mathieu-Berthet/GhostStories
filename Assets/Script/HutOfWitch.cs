@@ -16,6 +16,7 @@ public class HutOfWitch : MonoBehaviour {
     public GameObject panelGreenPlace;
     public GameObject panelYellowPlace;
     public BoardPosition board;
+    public Text infos;
 
     public GameManager gm;
     // Use this for initialization
@@ -33,95 +34,96 @@ public class HutOfWitch : MonoBehaviour {
 
     public IEnumerator KillGhost(GameObject player)
     {
-        choose = false;
-        board.usingTile = true;
-        yield return new WaitForSeconds(0.5f);
-
-        panelBluePlace.SetActive(true);
-        panelRedPlace.SetActive(true);
-        panelGreenPlace.SetActive(true);
-        panelYellowPlace.SetActive(true);
-        while (!choose)
+        if (!hauntedTile)
         {
-            yield return new WaitForSeconds(1.0f);
-        }
-        if (choose)
-        {
-            Debug.Log("Couocu");
-            panelBluePlace.SetActive(false);
-            panelRedPlace.SetActive(false);
-            panelGreenPlace.SetActive(false);
-            panelYellowPlace.SetActive(false);
             choose = false;
-        }
+            board.usingTile = true;
+            yield return new WaitForSeconds(0.5f);
 
-        switch (ghostToKill.GetComponent<Ghost>().couleur)
-        {
-            case "red":
-                gm.redBoard.nbCardOnBoard--;
-                break;
-            case "yellow":
-                gm.yellowBoard.nbCardOnBoard--;
-                break;
-            case "blue":
-            case "black":
-                gm.blueBoard.nbCardOnBoard--;
-                break;
-            case "green":
-                gm.greenBoard.nbCardOnBoard--;
-                break;
-            default:
-                break;
-        }
+            panelBluePlace.SetActive(true);
+            panelRedPlace.SetActive(true);
+            panelGreenPlace.SetActive(true);
+            panelYellowPlace.SetActive(true);
+            while (!choose)
+            {
+                yield return new WaitForSeconds(1.0f);
+            }
+            if (choose)
+            {
+                Debug.Log("Couocu");
+                panelBluePlace.SetActive(false);
+                panelRedPlace.SetActive(false);
+                panelGreenPlace.SetActive(false);
+                panelYellowPlace.SetActive(false);
+                choose = false;
+            }
 
-        if (player.name == "BluePlayer")
-        {
-            //player.GetComponent<BluePlayer>().textInfoPhase.gameObject.SetActive(false);
-            //player.GetComponent<BluePlayer>().card = ghostToKill;
-            
-            //player.GetComponent<BluePlayer>().explosion.transform.GetChild(2).GetComponent<ParticleSystem>().Play();
-            player.GetComponent<BluePlayer>().Qi -= 1;
-            player.GetComponent<BluePlayer>().canLaunchDice = true;
-            player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
-            player.GetComponent<BluePlayer>().useTilePower = false;
-            player.GetComponent<Deplacement>().enabled = true;
-            player.GetComponent<BluePlayer>().textInfoPhase.gameObject.SetActive(true);
-            //player.GetComponent<BluePlayer>().state = BluePlayer.STATE_GAME.STATE_DRAW;
-            player.GetComponent<BluePlayer>().gm.turn++;
-            player.GetComponent<BluePlayer>().update = true;
-        }
-        else if (player.name == "GreenPlayer")
-        {
-            player.GetComponent<GreenPlayer>().Qi -= 1;
-            //player.GetComponent<GreenPlayer>().board.usingTile = true;
+            switch (ghostToKill.GetComponent<Ghost>().couleur)
+            {
+                case "red":
+                    gm.redBoard.nbCardOnBoard--;
+                    break;
+                case "yellow":
+                    gm.yellowBoard.nbCardOnBoard--;
+                    break;
+                case "blue":
+                case "black":
+                    gm.blueBoard.nbCardOnBoard--;
+                    break;
+                case "green":
+                    gm.greenBoard.nbCardOnBoard--;
+                    break;
+                default:
+                    break;
+            }
 
-        }
-        else if (player.name == "YellowPlayer")
-        {
-            player.GetComponent<YellowPlayer>().Qi -= 1;
-            //player.GetComponent<YellowPlayer>().board.usingTile = true;
+            if (player.name == "BluePlayer")
+            {
+                player.GetComponent<BluePlayer>().Qi -= 1;
+                player.GetComponent<BluePlayer>().canLaunchDice = true;
+                player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
+                player.GetComponent<BluePlayer>().useTilePower = false;
+                player.GetComponent<Deplacement>().enabled = true;
+                player.GetComponent<BluePlayer>().update = true;
+            }
+            else if (player.name == "GreenPlayer")
+            {
+                player.GetComponent<GreenPlayer>().Qi -= 1;
+                //player.GetComponent<GreenPlayer>().board.usingTile = true;
 
-        }
-        else if (player.name == "RedPlayer")
-        {
-            player.GetComponent<RedPlayer>().Qi -= 1;
-            //player.GetComponent<RedPlayer>().board.usingTile = true;
-            
-        }
+            }
+            else if (player.name == "YellowPlayer")
+            {
+                player.GetComponent<YellowPlayer>().Qi -= 1;
+                //player.GetComponent<YellowPlayer>().board.usingTile = true;
 
-        if (ghostToKill.transform.parent.GetChild(1).childCount >= 1)
-        {
-            Destroy(ghostToKill.transform.parent.GetChild(1).GetChild(0).gameObject);
+            }
+            else if (player.name == "RedPlayer")
+            {
+                player.GetComponent<RedPlayer>().Qi -= 1;
+                //player.GetComponent<RedPlayer>().board.usingTile = true;
+
+            }
+            ghostToKill.transform.parent.GetChild(0).GetChild(2).GetComponent<ParticleSystem>().Play();
+            if (ghostToKill.transform.parent.GetChild(1).childCount >= 1)
+            {
+                Destroy(ghostToKill.transform.parent.GetChild(1).GetChild(0).gameObject);
+            }
+            if (ghostToKill.transform.parent.GetChild(2).childCount >= 1)
+            {
+                Destroy(ghostToKill.transform.parent.GetChild(2).GetChild(0).gameObject);
+            }
+            ghostToKill.transform.parent = defausse.transform;
+            ghostToKill.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+            ghostToKill.transform.localEulerAngles = new Vector3(90.0f, 0.0f, 0.0f);
+            ghostToKill = null;
+            board.usingTile = false;
         }
-        if (ghostToKill.transform.parent.GetChild(2).childCount >= 1)
+        else
         {
-            Destroy(ghostToKill.transform.parent.GetChild(2).GetChild(0).gameObject);
+            infos.text = "Cette tuile est hantée. Vous ne pouvez pas activez son pouvoir";
+            infos.gameObject.SetActive(true);
         }
-        ghostToKill.transform.parent = defausse.transform;
-        ghostToKill.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
-        ghostToKill.transform.localEulerAngles = new Vector3(90.0f, 0.0f, 0.0f);
-        ghostToKill = null;
-        board.usingTile = false;
     }
 
     public void MustChooseGhost(Button buttonClick)

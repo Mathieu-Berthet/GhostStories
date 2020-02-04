@@ -572,9 +572,7 @@ public class BluePlayer : MonoBehaviour
                     card = null;
                     canLaunchDice = false;
                     canLaunchBlackDice = false;
-                    textInfoPhase.gameObject.SetActive(false);
                     gameObject.GetComponent<Deplacement>().enabled = false;
-                    //gameObject.GetComponent<BluePlayer>().enabled = false;
                     StartCoroutine(witchHut.GetComponent<HutOfWitch>().KillGhost(gameObject));
                     break;
                 case "EchoppeHerboriste":
@@ -1368,7 +1366,6 @@ public class BluePlayer : MonoBehaviour
                 gameObject.GetComponent<Deplacement>().enabled = true;
                 break;
             case "DrawGhostFace":
-                Debug.Log("Dans le switch");
                 //player.GetComponent<BluePlayer>().state = BluePlayer.STATE_GAME.STATE_DRAW;
                 DrawAGhost();
                 //To verify if we need that
@@ -1378,11 +1375,15 @@ public class BluePlayer : MonoBehaviour
                 gameObject.GetComponent<Deplacement>().enabled = true;
                 break;
             case "LoseJetonFace":
-                Debug.Log("Dans le switch");
+                gm.tokenStock.nbBlackToken += NbBlackToken;
                 NbBlackToken = 0;
+                gm.tokenStock.nbRedToken += NbRedToken;
                 NbRedToken = 0;
+                gm.tokenStock.nbBlueToken += NbBlueToken;
                 NbBlueToken = 0;
+                gm.tokenStock.nbGreenToken += NbGreenToken;
                 NbGreenToken = 0;
+                gm.tokenStock.nbYellowToken += NbYellowToken;
                 NbYellowToken = 0;
                 //To verify if we need that
                 update = true;
@@ -1392,7 +1393,6 @@ public class BluePlayer : MonoBehaviour
                 gameObject.GetComponent<Deplacement>().enabled = true; ;
                 break;
             case "LoseQIFace":
-                Debug.Log("Dans le switch");
                 Qi -= 1;
                 //To verify if we need that
                 update = true;
@@ -1403,7 +1403,6 @@ public class BluePlayer : MonoBehaviour
                 break;
             case "EmptyFace":
             case "EmptyFaceTwo":
-                Debug.Log("Dans le switch");
                 //To verify if we need that
                 canLaunchBlackDice = true;
                 useTilePower = false;

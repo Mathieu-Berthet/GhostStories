@@ -5422,6 +5422,9 @@ MonoBehaviour:
   hauntedTile: 0
   tokenStock: {fileID: 0}
   gm: {fileID: 0}
+  infoHouse: {fileID: 1179219311}
+  infoNbJetons: {fileID: 1662648799}
+  playerSave: {fileID: 0}
 --- !u!23 &416534315
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5718,7 +5721,7 @@ RectTransform:
   m_Children:
   - {fileID: 312996960}
   m_Father: {fileID: 1284516892}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5924,6 +5927,22 @@ Prefab:
     - target: {fileID: 100010, guid: 031d08f52af1daa4f929b85221519426, type: 2}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800004, guid: 031d08f52af1daa4f929b85221519426, type: 2}
+      propertyPath: InitialModule.startSizeY.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800004, guid: 031d08f52af1daa4f929b85221519426, type: 2}
+      propertyPath: InitialModule.startSizeZ.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800004, guid: 031d08f52af1daa4f929b85221519426, type: 2}
+      propertyPath: InitialModule.startRotationX.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800004, guid: 031d08f52af1daa4f929b85221519426, type: 2}
+      propertyPath: InitialModule.startRotationY.minMaxState
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 031d08f52af1daa4f929b85221519426, type: 2}
@@ -6298,7 +6317,7 @@ RectTransform:
   m_Children:
   - {fileID: 1986042914}
   m_Father: {fileID: 1284516892}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -10934,6 +10953,7 @@ MonoBehaviour:
   bluePosTemple: {fileID: 1078937944}
   bluePosTower: {fileID: 1145425398}
   actualPosition: {x: 0, y: 0, z: 0}
+  stop: 0
   state: 0
   textPlayerTurn: {fileID: 1573462237}
   textInfoPhase: {fileID: 654859118}
@@ -14131,7 +14151,7 @@ RectTransform:
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 1284516892}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -14170,7 +14190,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Veuillez choisir la couleur de votre jeton/face blanche : '
+  m_Text: 
 --- !u!222 &1179219312
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -15203,7 +15223,7 @@ RectTransform:
   m_Children:
   - {fileID: 1270387255}
   m_Father: {fileID: 1284516892}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -15836,12 +15856,12 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
+  - {fileID: 1179219310}
   - {fileID: 422297583}
   - {fileID: 1616178657}
   - {fileID: 464656044}
   - {fileID: 2034669598}
   - {fileID: 1260704638}
-  - {fileID: 1179219310}
   m_Father: {fileID: 1334380935}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -17978,6 +17998,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gm: {fileID: 0}
+  infoStall: {fileID: 1179219311}
+  infoNbJetons: {fileID: 1662648799}
   hauntedTile: 0
   nbDiceHerbalist: 2
   dice: {fileID: 1483268768575792, guid: 6a3772ffda714d746bf307675dc5309c, type: 2}
@@ -20037,7 +20059,7 @@ RectTransform:
   m_Children:
   - {fileID: 765402687}
   m_Father: {fileID: 1284516892}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -20870,7 +20892,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35b0a903106d91a4c81f34be21c49708, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nbRedToken: 4
+  nbRedToken: 0
   nbGreenToken: 4
   nbBlueToken: 4
   nbYellowToken: 4
@@ -24414,7 +24436,7 @@ RectTransform:
   m_Children:
   - {fileID: 1381796084}
   m_Father: {fileID: 1284516892}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
