@@ -607,7 +607,10 @@ public class BluePlayer : MonoBehaviour
                 case "TourVeilleurNuit":
                     Debug.Log("Tour du veilleur de nuit");
                     textInfoTuile.text = "Tour du veilleur de nuit";
-                    StartCoroutine(nightTower.GetComponent<NightTower>().RetreatGhost());
+                    canLaunchDice = false;
+                    canLaunchBlackDice = false;
+                    gameObject.GetComponent<Deplacement>().enabled = false;
+                    StartCoroutine(nightTower.GetComponent<NightTower>().RetreatGhost(gameObject));
                     break;
                 case "CerclePriere":
                     Debug.Log("Le cercle de prière");

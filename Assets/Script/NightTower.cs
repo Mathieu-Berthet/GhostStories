@@ -11,7 +11,7 @@ public class NightTower : MonoBehaviour {
     public GameObject ghostCard;
     public bool chooseBoard;
     public string boardToRetreatGhost;
-
+    public Text infos;
     public GameManager gm;
     // Use this for initialization
     void Start ()
@@ -26,195 +26,230 @@ public class NightTower : MonoBehaviour {
 		
 	}
 
-    public IEnumerator RetreatGhost()
+    public IEnumerator RetreatGhost(GameObject player)
     {
-        //Choix du plateau
-        panelBoardChoice.SetActive(true);
-        while (!chooseBoard)
+        if (!hauntedTile)
         {
-            yield return new WaitForSeconds(2.0f);
-        }
-        if (chooseBoard)
-        {
-            switch (boardToRetreatGhost)
+            //Choix du plateau
+            panelBoardChoice.SetActive(true);
+            while (!chooseBoard)
             {
-                case "Red":
-                    int maxChildRed = gm.redBoard.gameObject.transform.childCount;
-                    for (int i = 0; i < maxChildRed; i++)
-                    {
-                        if (gm.redBoard.gameObject.transform.GetChild(i).childCount >= 5)
-                        {
-                            if (gm.redBoard.gameObject.transform.GetChild(i).GetChild(1).childCount >= 1)
-                            {
-                                hauntingGhost = gm.redBoard.gameObject.transform.GetChild(i).GetChild(1).GetChild(0).gameObject;
-                                ghostCard = gm.redBoard.gameObject.transform.GetChild(i).GetChild(4).gameObject;
-                                if (hauntingGhost.transform.parent.name.Contains("Case"))
-                                {
-                                    //gameObject.transform.position = Vector3.Lerp(startPosition.position, middlePosition.position, actualTime); // To see later
-                                    hauntingGhost.transform.parent = ghostCard.GetComponent<Ghost>().power.startPosition;
-                                    hauntingGhost.transform.localPosition = new Vector3(0, 0, 0);
-                                }
-                                else if (hauntingGhost.transform.parent.name.Contains("Depart"))
-                                {
-                                    //gameObject.transform.position = Vector3.Lerp(startPosition.position, middlePosition.position, actualTime); // To see later
-                                    hauntingGhost.transform.parent = ghostCard.GetComponent<Ghost>().power.startPosition;
-                                    hauntingGhost.transform.localPosition = new Vector3(0, 0, 0);
-                                }
-                            }
-                            else if (gm.redBoard.gameObject.transform.GetChild(i).GetChild(2).childCount >= 1)
-                            {
-                                hauntingGhost = gm.redBoard.gameObject.transform.GetChild(i).GetChild(2).GetChild(0).gameObject;
-                                ghostCard = gm.redBoard.gameObject.transform.GetChild(i).GetChild(4).gameObject;
-                                if (hauntingGhost.transform.parent.name.Contains("Case"))
-                                {
-                                    //gameObject.transform.position = Vector3.Lerp(startPosition.position, middlePosition.position, actualTime); // To see later
-                                    hauntingGhost.transform.parent = ghostCard.GetComponent<Ghost>().power.startPosition;
-                                    hauntingGhost.transform.localPosition = new Vector3(0, 0, 0);
-                                }
-                                else if (hauntingGhost.transform.parent.name.Contains("Depart"))
-                                {
-                                    //gameObject.transform.position = Vector3.Lerp(startPosition.position, middlePosition.position, actualTime); // To see later
-                                    hauntingGhost.transform.parent = ghostCard.GetComponent<Ghost>().power.startPosition;
-                                    hauntingGhost.transform.localPosition = new Vector3(0, 0, 0);
-                                }
-                            }
-                        }
-                    }
-                    break;
-                case "Blue":
-                    int maxChildBlue = gm.blueBoard.gameObject.transform.childCount;
-                    for (int i = 0; i < maxChildBlue; i++)
-                    {
-                        if (gm.blueBoard.gameObject.transform.GetChild(i).childCount >= 5)
-                        {
-                            if (gm.blueBoard.gameObject.transform.GetChild(i).GetChild(1).childCount >= 1)
-                            {
-                                hauntingGhost = gm.blueBoard.gameObject.transform.GetChild(i).GetChild(1).GetChild(0).gameObject;
-                                ghostCard = gm.blueBoard.gameObject.transform.GetChild(i).GetChild(4).gameObject;
-                                if (hauntingGhost.transform.parent.name.Contains("Case"))
-                                {
-                                    //gameObject.transform.position = Vector3.Lerp(startPosition.position, middlePosition.position, actualTime); // To see later
-                                    hauntingGhost.transform.parent = ghostCard.GetComponent<Ghost>().power.startPosition;
-                                    hauntingGhost.transform.localPosition = new Vector3(0, 0, 0);
-                                }
-                                else if (hauntingGhost.transform.parent.name.Contains("Depart"))
-                                {
-                                    //gameObject.transform.position = Vector3.Lerp(startPosition.position, middlePosition.position, actualTime); // To see later
-                                    hauntingGhost.transform.parent = ghostCard.GetComponent<Ghost>().power.startPosition;
-                                    hauntingGhost.transform.localPosition = new Vector3(0, 0, 0);
-                                }
-                            }
-                            else if(gm.blueBoard.gameObject.transform.GetChild(i).GetChild(2).childCount >= 1)
-                            {
-                                hauntingGhost = gm.blueBoard.gameObject.transform.GetChild(i).GetChild(2).GetChild(0).gameObject;
-                                ghostCard = gm.blueBoard.gameObject.transform.GetChild(i).GetChild(4).gameObject;
-                                if (hauntingGhost.transform.parent.name.Contains("Case"))
-                                {
-                                    //gameObject.transform.position = Vector3.Lerp(startPosition.position, middlePosition.position, actualTime); // To see later
-                                    hauntingGhost.transform.parent = ghostCard.GetComponent<Ghost>().power.startPosition;
-                                    hauntingGhost.transform.localPosition = new Vector3(0, 0, 0);
-                                }
-                                else if (hauntingGhost.transform.parent.name.Contains("Depart"))
-                                {
-                                    //gameObject.transform.position = Vector3.Lerp(startPosition.position, middlePosition.position, actualTime); // To see later
-                                    hauntingGhost.transform.parent = ghostCard.GetComponent<Ghost>().power.startPosition;
-                                    hauntingGhost.transform.localPosition = new Vector3(0, 0, 0);
-                                }
-                            }
-                        }
-                    }
-                    break;
-                case "Yellow":
-                    int maxChildYellow = gm.yellowBoard.gameObject.transform.childCount;
-                    for (int i = 0; i < maxChildYellow; i++)
-                    {
-                        if (gm.yellowBoard.gameObject.transform.GetChild(i).childCount >= 5)
-                        {
-                            if (gm.yellowBoard.gameObject.transform.GetChild(i).GetChild(1).childCount >= 1)
-                            {
-                                hauntingGhost = gm.yellowBoard.gameObject.transform.GetChild(i).GetChild(1).GetChild(0).gameObject;
-                                ghostCard = gm.yellowBoard.gameObject.transform.GetChild(i).GetChild(4).gameObject;
-                                if (hauntingGhost.transform.parent.name.Contains("Case"))
-                                {
-                                    //gameObject.transform.position = Vector3.Lerp(startPosition.position, middlePosition.position, actualTime); // To see later
-                                    hauntingGhost.transform.parent = ghostCard.GetComponent<Ghost>().power.startPosition;
-                                    hauntingGhost.transform.localPosition = new Vector3(0, 0, 0);
-                                }
-                                else if (hauntingGhost.transform.parent.name.Contains("Depart"))
-                                {
-                                    //gameObject.transform.position = Vector3.Lerp(startPosition.position, middlePosition.position, actualTime); // To see later
-                                    hauntingGhost.transform.parent = ghostCard.GetComponent<Ghost>().power.startPosition;
-                                    hauntingGhost.transform.localPosition = new Vector3(0, 0, 0);
-                                }
-                            }
-                            else if (gm.yellowBoard.gameObject.transform.GetChild(i).GetChild(2).childCount >= 1)
-                            {
-                                hauntingGhost = gm.yellowBoard.gameObject.transform.GetChild(i).GetChild(2).GetChild(0).gameObject;
-                                ghostCard = gm.yellowBoard.gameObject.transform.GetChild(i).GetChild(4).gameObject;
-                                if (hauntingGhost.transform.parent.name.Contains("Case"))
-                                {
-                                    //gameObject.transform.position = Vector3.Lerp(startPosition.position, middlePosition.position, actualTime); // To see later
-                                    hauntingGhost.transform.parent = ghostCard.GetComponent<Ghost>().power.startPosition;
-                                    hauntingGhost.transform.localPosition = new Vector3(0, 0, 0);
-                                }
-                                else if (hauntingGhost.transform.parent.name.Contains("Depart"))
-                                {
-                                    //gameObject.transform.position = Vector3.Lerp(startPosition.position, middlePosition.position, actualTime); // To see later
-                                    hauntingGhost.transform.parent = ghostCard.GetComponent<Ghost>().power.startPosition;
-                                    hauntingGhost.transform.localPosition = new Vector3(0, 0, 0);
-                                }
-                            }
-                        }
-                    }
-                    break;
-                case "Green":
-                    int maxChildGreen = gm.greenBoard.gameObject.transform.childCount;
-                    for (int i = 0; i < maxChildGreen; i++)
-                    {
-                        if (gm.greenBoard.gameObject.transform.GetChild(i).childCount >= 5)
-                        {
-                            if (gm.greenBoard.gameObject.transform.GetChild(i).GetChild(1).childCount >= 1)
-                            {
-                                hauntingGhost = gm.greenBoard.gameObject.transform.GetChild(i).GetChild(1).GetChild(0).gameObject;
-                                ghostCard = gm.greenBoard.gameObject.transform.GetChild(i).GetChild(4).gameObject;
-                                if (hauntingGhost.transform.parent.name.Contains("Case"))
-                                {
-                                    //gameObject.transform.position = Vector3.Lerp(startPosition.position, middlePosition.position, actualTime); // To see later
-                                    hauntingGhost.transform.parent = ghostCard.GetComponent<Ghost>().power.startPosition;
-                                    hauntingGhost.transform.localPosition = new Vector3(0, 0, 0);
-                                }
-                                else if (hauntingGhost.transform.parent.name.Contains("Depart"))
-                                {
-                                    //gameObject.transform.position = Vector3.Lerp(startPosition.position, middlePosition.position, actualTime); // To see later
-                                    hauntingGhost.transform.parent = ghostCard.GetComponent<Ghost>().power.startPosition;
-                                    hauntingGhost.transform.localPosition = new Vector3(0, 0, 0);
-                                }
-                            }
-                            else if (gm.greenBoard.gameObject.transform.GetChild(i).GetChild(2).childCount >= 1)
-                            {
-                                hauntingGhost = gm.greenBoard.gameObject.transform.GetChild(i).GetChild(2).GetChild(0).gameObject;
-                                ghostCard = gm.greenBoard.gameObject.transform.GetChild(i).GetChild(4).gameObject;
-                                if (hauntingGhost.transform.parent.name.Contains("Case"))
-                                {
-                                    //gameObject.transform.position = Vector3.Lerp(startPosition.position, middlePosition.position, actualTime); // To see later
-                                    hauntingGhost.transform.parent = ghostCard.GetComponent<Ghost>().power.startPosition;
-                                    hauntingGhost.transform.localPosition = new Vector3(0, 0, 0);
-                                }
-                                else if (hauntingGhost.transform.parent.name.Contains("Depart"))
-                                {
-                                    //gameObject.transform.position = Vector3.Lerp(startPosition.position, middlePosition.position, actualTime); // To see later
-                                    hauntingGhost.transform.parent = ghostCard.GetComponent<Ghost>().power.startPosition;
-                                    hauntingGhost.transform.localPosition = new Vector3(0, 0, 0);
-                                }
-                            }
-                        }
-                    }
-                    break;
-                default:
-                    break;
+                yield return new WaitForSeconds(2.0f);
             }
-            chooseBoard = false;
-            panelBoardChoice.SetActive(false);
+            if (chooseBoard)
+            {
+                switch (boardToRetreatGhost)
+                {
+                    case "Red":
+                        int maxChildRed = gm.redBoard.gameObject.transform.childCount;
+                        for (int i = 0; i < maxChildRed; i++)
+                        {
+                            if (gm.redBoard.gameObject.transform.GetChild(i).childCount >= 5)
+                            {
+                                if (gm.redBoard.gameObject.transform.GetChild(i).GetChild(1).childCount >= 1)
+                                {
+                                    hauntingGhost = gm.redBoard.gameObject.transform.GetChild(i).GetChild(1).GetChild(0).gameObject;
+                                    ghostCard = gm.redBoard.gameObject.transform.GetChild(i).GetChild(4).gameObject;
+                                    if (hauntingGhost.transform.parent.name.Contains("Case"))
+                                    {
+                                        //gameObject.transform.position = Vector3.Lerp(startPosition.position, middlePosition.position, actualTime); // To see later
+                                        hauntingGhost.transform.parent = ghostCard.GetComponent<Ghost>().power.startPosition;
+                                        hauntingGhost.transform.localPosition = new Vector3(0, 0, 0);
+                                    }
+                                    else if (hauntingGhost.transform.parent.name.Contains("Depart"))
+                                    {
+                                        //gameObject.transform.position = Vector3.Lerp(startPosition.position, middlePosition.position, actualTime); // To see later
+                                        hauntingGhost.transform.parent = ghostCard.GetComponent<Ghost>().power.startPosition;
+                                        hauntingGhost.transform.localPosition = new Vector3(0, 0, 0);
+                                    }
+                                }
+                                else if (gm.redBoard.gameObject.transform.GetChild(i).GetChild(2).childCount >= 1)
+                                {
+                                    hauntingGhost = gm.redBoard.gameObject.transform.GetChild(i).GetChild(2).GetChild(0).gameObject;
+                                    ghostCard = gm.redBoard.gameObject.transform.GetChild(i).GetChild(4).gameObject;
+                                    if (hauntingGhost.transform.parent.name.Contains("Case"))
+                                    {
+                                        //gameObject.transform.position = Vector3.Lerp(startPosition.position, middlePosition.position, actualTime); // To see later
+                                        hauntingGhost.transform.parent = ghostCard.GetComponent<Ghost>().power.startPosition;
+                                        hauntingGhost.transform.localPosition = new Vector3(0, 0, 0);
+                                    }
+                                    else if (hauntingGhost.transform.parent.name.Contains("Depart"))
+                                    {
+                                        //gameObject.transform.position = Vector3.Lerp(startPosition.position, middlePosition.position, actualTime); // To see later
+                                        hauntingGhost.transform.parent = ghostCard.GetComponent<Ghost>().power.startPosition;
+                                        hauntingGhost.transform.localPosition = new Vector3(0, 0, 0);
+                                    }
+                                }
+                            }
+                        }
+                        break;
+                    case "Blue":
+                        int maxChildBlue = gm.blueBoard.gameObject.transform.childCount;
+                        for (int i = 0; i < maxChildBlue; i++)
+                        {
+                            if (gm.blueBoard.gameObject.transform.GetChild(i).childCount >= 5)
+                            {
+                                if (gm.blueBoard.gameObject.transform.GetChild(i).GetChild(1).childCount >= 1)
+                                {
+                                    hauntingGhost = gm.blueBoard.gameObject.transform.GetChild(i).GetChild(1).GetChild(0).gameObject;
+                                    ghostCard = gm.blueBoard.gameObject.transform.GetChild(i).GetChild(4).gameObject;
+                                    if (hauntingGhost.transform.parent.name.Contains("Case"))
+                                    {
+                                        //gameObject.transform.position = Vector3.Lerp(startPosition.position, middlePosition.position, actualTime); // To see later
+                                        hauntingGhost.transform.parent = ghostCard.GetComponent<Ghost>().power.startPosition;
+                                        hauntingGhost.transform.localPosition = new Vector3(0, 0, 0);
+                                    }
+                                    else if (hauntingGhost.transform.parent.name.Contains("Depart"))
+                                    {
+                                        //gameObject.transform.position = Vector3.Lerp(startPosition.position, middlePosition.position, actualTime); // To see later
+                                        hauntingGhost.transform.parent = ghostCard.GetComponent<Ghost>().power.startPosition;
+                                        hauntingGhost.transform.localPosition = new Vector3(0, 0, 0);
+                                    }
+                                }
+                                else if (gm.blueBoard.gameObject.transform.GetChild(i).GetChild(2).childCount >= 1)
+                                {
+                                    hauntingGhost = gm.blueBoard.gameObject.transform.GetChild(i).GetChild(2).GetChild(0).gameObject;
+                                    ghostCard = gm.blueBoard.gameObject.transform.GetChild(i).GetChild(4).gameObject;
+                                    if (hauntingGhost.transform.parent.name.Contains("Case"))
+                                    {
+                                        //gameObject.transform.position = Vector3.Lerp(startPosition.position, middlePosition.position, actualTime); // To see later
+                                        hauntingGhost.transform.parent = ghostCard.GetComponent<Ghost>().power.startPosition;
+                                        hauntingGhost.transform.localPosition = new Vector3(0, 0, 0);
+                                    }
+                                    else if (hauntingGhost.transform.parent.name.Contains("Depart"))
+                                    {
+                                        //gameObject.transform.position = Vector3.Lerp(startPosition.position, middlePosition.position, actualTime); // To see later
+                                        hauntingGhost.transform.parent = ghostCard.GetComponent<Ghost>().power.startPosition;
+                                        hauntingGhost.transform.localPosition = new Vector3(0, 0, 0);
+                                    }
+                                }
+                            }
+                        }
+                        break;
+                    case "Yellow":
+                        int maxChildYellow = gm.yellowBoard.gameObject.transform.childCount;
+                        for (int i = 0; i < maxChildYellow; i++)
+                        {
+                            if (gm.yellowBoard.gameObject.transform.GetChild(i).childCount >= 5)
+                            {
+                                if (gm.yellowBoard.gameObject.transform.GetChild(i).GetChild(1).childCount >= 1)
+                                {
+                                    hauntingGhost = gm.yellowBoard.gameObject.transform.GetChild(i).GetChild(1).GetChild(0).gameObject;
+                                    ghostCard = gm.yellowBoard.gameObject.transform.GetChild(i).GetChild(4).gameObject;
+                                    if (hauntingGhost.transform.parent.name.Contains("Case"))
+                                    {
+                                        //gameObject.transform.position = Vector3.Lerp(startPosition.position, middlePosition.position, actualTime); // To see later
+                                        hauntingGhost.transform.parent = ghostCard.GetComponent<Ghost>().power.startPosition;
+                                        hauntingGhost.transform.localPosition = new Vector3(0, 0, 0);
+                                    }
+                                    else if (hauntingGhost.transform.parent.name.Contains("Depart"))
+                                    {
+                                        //gameObject.transform.position = Vector3.Lerp(startPosition.position, middlePosition.position, actualTime); // To see later
+                                        hauntingGhost.transform.parent = ghostCard.GetComponent<Ghost>().power.startPosition;
+                                        hauntingGhost.transform.localPosition = new Vector3(0, 0, 0);
+                                    }
+                                }
+                                else if (gm.yellowBoard.gameObject.transform.GetChild(i).GetChild(2).childCount >= 1)
+                                {
+                                    hauntingGhost = gm.yellowBoard.gameObject.transform.GetChild(i).GetChild(2).GetChild(0).gameObject;
+                                    ghostCard = gm.yellowBoard.gameObject.transform.GetChild(i).GetChild(4).gameObject;
+                                    if (hauntingGhost.transform.parent.name.Contains("Case"))
+                                    {
+                                        //gameObject.transform.position = Vector3.Lerp(startPosition.position, middlePosition.position, actualTime); // To see later
+                                        hauntingGhost.transform.parent = ghostCard.GetComponent<Ghost>().power.startPosition;
+                                        hauntingGhost.transform.localPosition = new Vector3(0, 0, 0);
+                                    }
+                                    else if (hauntingGhost.transform.parent.name.Contains("Depart"))
+                                    {
+                                        //gameObject.transform.position = Vector3.Lerp(startPosition.position, middlePosition.position, actualTime); // To see later
+                                        hauntingGhost.transform.parent = ghostCard.GetComponent<Ghost>().power.startPosition;
+                                        hauntingGhost.transform.localPosition = new Vector3(0, 0, 0);
+                                    }
+                                }
+                            }
+                        }
+                        break;
+                    case "Green":
+                        int maxChildGreen = gm.greenBoard.gameObject.transform.childCount;
+                        for (int i = 0; i < maxChildGreen; i++)
+                        {
+                            if (gm.greenBoard.gameObject.transform.GetChild(i).childCount >= 5)
+                            {
+                                if (gm.greenBoard.gameObject.transform.GetChild(i).GetChild(1).childCount >= 1)
+                                {
+                                    hauntingGhost = gm.greenBoard.gameObject.transform.GetChild(i).GetChild(1).GetChild(0).gameObject;
+                                    ghostCard = gm.greenBoard.gameObject.transform.GetChild(i).GetChild(4).gameObject;
+                                    if (hauntingGhost.transform.parent.name.Contains("Case"))
+                                    {
+                                        //gameObject.transform.position = Vector3.Lerp(startPosition.position, middlePosition.position, actualTime); // To see later
+                                        hauntingGhost.transform.parent = ghostCard.GetComponent<Ghost>().power.startPosition;
+                                        hauntingGhost.transform.localPosition = new Vector3(0, 0, 0);
+                                    }
+                                    else if (hauntingGhost.transform.parent.name.Contains("Depart"))
+                                    {
+                                        //gameObject.transform.position = Vector3.Lerp(startPosition.position, middlePosition.position, actualTime); // To see later
+                                        hauntingGhost.transform.parent = ghostCard.GetComponent<Ghost>().power.startPosition;
+                                        hauntingGhost.transform.localPosition = new Vector3(0, 0, 0);
+                                    }
+                                }
+                                else if (gm.greenBoard.gameObject.transform.GetChild(i).GetChild(2).childCount >= 1)
+                                {
+                                    hauntingGhost = gm.greenBoard.gameObject.transform.GetChild(i).GetChild(2).GetChild(0).gameObject;
+                                    ghostCard = gm.greenBoard.gameObject.transform.GetChild(i).GetChild(4).gameObject;
+                                    if (hauntingGhost.transform.parent.name.Contains("Case"))
+                                    {
+                                        //gameObject.transform.position = Vector3.Lerp(startPosition.position, middlePosition.position, actualTime); // To see later
+                                        hauntingGhost.transform.parent = ghostCard.GetComponent<Ghost>().power.startPosition;
+                                        hauntingGhost.transform.localPosition = new Vector3(0, 0, 0);
+                                    }
+                                    else if (hauntingGhost.transform.parent.name.Contains("Depart"))
+                                    {
+                                        //gameObject.transform.position = Vector3.Lerp(startPosition.position, middlePosition.position, actualTime); // To see later
+                                        hauntingGhost.transform.parent = ghostCard.GetComponent<Ghost>().power.startPosition;
+                                        hauntingGhost.transform.localPosition = new Vector3(0, 0, 0);
+                                    }
+                                }
+                            }
+                        }
+                        break;
+                    default:
+                        break;
+                }
+                chooseBoard = false;
+                panelBoardChoice.SetActive(false);
+            }
+
+            if (player.name == "BluePlayer")
+            {
+                player.GetComponent<BluePlayer>().canLaunchDice = true;
+                player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
+                player.GetComponent<BluePlayer>().useTilePower = false;
+                player.GetComponent<Deplacement>().enabled = true;
+                player.GetComponent<BluePlayer>().update = true;
+            }
+            /*else if (player.name == "GreenPlayer")
+            {
+                player.GetComponent<GreenPlayer>().Qi -= 1;
+                //player.GetComponent<GreenPlayer>().board.usingTile = true;
+
+            }
+            else if (player.name == "YellowPlayer")
+            {
+                player.GetComponent<YellowPlayer>().Qi -= 1;
+                //player.GetComponent<YellowPlayer>().board.usingTile = true;
+
+            }
+            else if (player.name == "RedPlayer")
+            {
+                player.GetComponent<RedPlayer>().Qi -= 1;
+                //player.GetComponent<RedPlayer>().board.usingTile = true;
+
+            }*/
+        }
+        else
+        {
+            infos.text = "Cette tuile est hantée. Vous ne pouvez pas activez son pouvoir";
+            infos.gameObject.SetActive(true);
         }
     }
 

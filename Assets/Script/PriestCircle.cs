@@ -9,15 +9,16 @@ public class PriestCircle : MonoBehaviour {
     public GameManager gm;
 
     [SerializeField]
-    private StockOfToken tokenStock;
-    [SerializeField]
+    //private StockOfToken tokenStock;
     private GameObject token;
-
+    public Text infos;
+    public Text infoCircle;
+    public GameObject playerSave;
 
     // Use this for initialization
     void Start ()
     {
-        tokenStock = GameObject.Find("TokenStock").GetComponent<StockOfToken>();
+        //tokenStock = GameObject.Find("TokenStock").GetComponent<StockOfToken>();
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
 	}
 	
@@ -29,253 +30,266 @@ public class PriestCircle : MonoBehaviour {
 
     public IEnumerator reduceGhostLife(GameObject player)
     {
-        gm.choose = false;
-        gm.panelButtonChoice.SetActive(true);
-        while(!gm.choose)
+        if (!hauntedTile)
         {
-            yield return new WaitForSeconds(1.0f);
-        }
-        if(gm.choose)
-        {
-            Debug.Log("Couocu");
-            gm.panelButtonChoice.SetActive(false);
             gm.choose = false;
-        }
-        switch(gm.choseenToken)
-        {
-            case "Red":
-                if (tokenStock.nbRedToken == 0)
-                {
-                    Debug.Log("Il n'y a plus de jeton rouge en stock, veuillez choisir une autre couleur");
-                    //Indiquer qu'il y en a plus en reserve
-                    //Redemander de choisir une autre couleur
-                }
-                else
-                {
-                    tokenStock.nbRedToken -= 1;
-                    if (token != null)
+            gm.panelButtonChoice.SetActive(true);
+            playerSave = player;
+            infoCircle = gm.panelButtonChoice.transform.GetChild(0).GetComponent<Text>();
+            infoCircle.text = "Veuillez choisir votre jeton : ";
+            while (!gm.choose)
+            {
+                yield return new WaitForSeconds(1.0f);
+            }
+            if (gm.choose)
+            {
+                gm.panelButtonChoice.SetActive(false);
+                gm.choose = false;
+            }
+            switch (gm.choseenToken)
+            {
+                case "Red":
+                    if (gm.tokenStock.nbRedToken == 0)
                     {
-                        switch (token.name)
-                        {
-                            case "BlueToken":
-                                tokenStock.nbBlueToken += 1;
-                                break;
-                            case "YellowToken":
-                                tokenStock.nbYellowToken += 1;
-                                break;
-                            case "GreenToken":
-                                tokenStock.nbGreenToken += 1;
-                                break;
-                            case "BlackToken":
-                                tokenStock.nbBlackToken += 1;
-                                break;
-                            default:
-                                break;
-                        }
-                        token.GetComponent<PoolChild>().ReturnToPool();
-                        token = null;
-                        token = tokenStock.GetComponent<PoolManager>().GetPoolByName(PoolName.redToken).GetItem(transform, new Vector3(-0.32f, 0.75f, 0.32f), Quaternion.identity, true, false, 0);
-                        token.transform.SetParent(gameObject.transform);
+                        infos.text = "Il n'y a plus de jetons rouges, veuillez choisir une autre couleur";
+                        infos.gameObject.SetActive(true);
+                        StopCoroutine(reduceGhostLife(player));
+                        StartCoroutine(reduceGhostLife(playerSave));
                     }
                     else
                     {
-                        token = tokenStock.GetComponent<PoolManager>().GetPoolByName(PoolName.redToken).GetItem(transform, new Vector3(-0.32f, 0.75f, 0.32f), Quaternion.identity, true, false, 0);
-                        token.transform.SetParent(gameObject.transform);
-                    }
-                }
-                break;
-            case "Blue":
-                if (tokenStock.nbBlueToken == 0)
-                {
-                    Debug.Log("Il n'y a plus de jeton bleu en stock, veuillez choisir une autre couleur");
-                    //Indiquer qu'il y en a plus en reserve
-                    //Redemander de choisir une autre couleur
-                }
-                else
-                {
-                    tokenStock.nbBlueToken -= 1;
-                    if (token != null)
-                    {
-                        switch(token.name)
+                        gm.tokenStock.nbRedToken -= 1;
+                        if (token != null)
                         {
-                            case "RedToken":
-                                tokenStock.nbRedToken += 1;
-                                break;
-                            case "YellowToken":
-                                tokenStock.nbYellowToken += 1;
-                                break;
-                            case "GreenToken":
-                                tokenStock.nbGreenToken += 1;
-                                break;
-                            case "BlackToken":
-                                tokenStock.nbBlackToken += 1;
-                                break;
-                            default:
-                                break;
+                            switch (token.name)
+                            {
+                                case "BlueToken":
+                                    gm.tokenStock.nbBlueToken += 1;
+                                    break;
+                                case "YellowToken":
+                                    gm.tokenStock.nbYellowToken += 1;
+                                    break;
+                                case "GreenToken":
+                                    gm.tokenStock.nbGreenToken += 1;
+                                    break;
+                                case "BlackToken":
+                                    gm.tokenStock.nbBlackToken += 1;
+                                    break;
+                                default:
+                                    break;
+                            }
+                            token.GetComponent<PoolChild>().ReturnToPool();
+                            token = null;
+                            token = gm.tokenStock.GetComponent<PoolManager>().GetPoolByName(PoolName.redToken).GetItem(transform, new Vector3(-0.32f, 0.75f, 0.32f), Quaternion.identity, true, false, 0);
+                            token.transform.SetParent(gameObject.transform);
                         }
-                        token.GetComponent<PoolChild>().ReturnToPool();
-                        token = null;
-                        token = tokenStock.GetComponent<PoolManager>().GetPoolByName(PoolName.blueToken).GetItem(transform, new Vector3(-0.32f, 0.75f, 0.32f), Quaternion.identity, true, false, 0);
-                        token.transform.SetParent(gameObject.transform);
+                        else
+                        {
+                            token = gm.tokenStock.GetComponent<PoolManager>().GetPoolByName(PoolName.redToken).GetItem(transform, new Vector3(-0.32f, 0.75f, 0.32f), Quaternion.identity, true, false, 0);
+                            token.transform.SetParent(gameObject.transform);
+                        }
+                    }
+                    break;
+                case "Blue":
+                    if (gm.tokenStock.nbBlueToken == 0)
+                    {
+                        infos.text = "Il n'y a plus de jetons bleus, veuillez choisir une autre couleur";
+                        infos.gameObject.SetActive(true);
+                        StopCoroutine(reduceGhostLife(player));
+                        StartCoroutine(reduceGhostLife(playerSave));
                     }
                     else
                     {
-                        token = tokenStock.GetComponent<PoolManager>().GetPoolByName(PoolName.blueToken).GetItem(transform, new Vector3(-0.32f, 0.75f, 0.32f), Quaternion.identity, true, false, 0);
-                        token.transform.SetParent(gameObject.transform);
-                    }
-                }
-                break;
-            case "Green":
-                if (tokenStock.nbGreenToken == 0)
-                {
-                    Debug.Log("Il n'y a plus de jeton vert en stock, veuillez choisir une autre couleur");
-                    //Indiquer qu'il y en a plus en reserve
-                    //Redemander de choisir une autre couleur
-                }
-                else
-                {
-                    tokenStock.nbGreenToken -= 1;
-                    if (token != null)
-                    {
-                        switch (token.name)
+                        gm.tokenStock.nbBlueToken -= 1;
+                        if (token != null)
                         {
-                            case "RedToken":
-                                tokenStock.nbRedToken += 1;
-                                break;
-                            case "YellowToken":
-                                tokenStock.nbYellowToken += 1;
-                                break;
-                            case "BlueToken":
-                                tokenStock.nbBlueToken += 1;
-                                break;
-                            case "BlackToken":
-                                tokenStock.nbBlackToken += 1;
-                                break;
-                            default:
-                                break;
+                            switch (token.name)
+                            {
+                                case "RedToken":
+                                    gm.tokenStock.nbRedToken += 1;
+                                    break;
+                                case "YellowToken":
+                                    gm.tokenStock.nbYellowToken += 1;
+                                    break;
+                                case "GreenToken":
+                                    gm.tokenStock.nbGreenToken += 1;
+                                    break;
+                                case "BlackToken":
+                                    gm.tokenStock.nbBlackToken += 1;
+                                    break;
+                                default:
+                                    break;
+                            }
+                            token.GetComponent<PoolChild>().ReturnToPool();
+                            token = null;
+                            token = gm.tokenStock.GetComponent<PoolManager>().GetPoolByName(PoolName.blueToken).GetItem(transform, new Vector3(-0.32f, 0.75f, 0.32f), Quaternion.identity, true, false, 0);
+                            token.transform.SetParent(gameObject.transform);
                         }
-                        token.GetComponent<PoolChild>().ReturnToPool();
-                        token = null;
-                        token = tokenStock.GetComponent<PoolManager>().GetPoolByName(PoolName.greenToken).GetItem(transform, new Vector3(-0.32f, 0.75f, 0.32f), Quaternion.identity, true, false, 0);
-                        token.transform.SetParent(gameObject.transform);
+                        else
+                        {
+                            token = gm.tokenStock.GetComponent<PoolManager>().GetPoolByName(PoolName.blueToken).GetItem(transform, new Vector3(-0.32f, 0.75f, 0.32f), Quaternion.identity, true, false, 0);
+                            token.transform.SetParent(gameObject.transform);
+                        }
+                    }
+                    break;
+                case "Green":
+                    if (gm.tokenStock.nbGreenToken == 0)
+                    {
+                        infos.text = "Il n'y a plus de jetons verts, veuillez choisir une autre couleur";
+                        infos.gameObject.SetActive(true);
+                        StopCoroutine(reduceGhostLife(player));
+                        StartCoroutine(reduceGhostLife(playerSave));
                     }
                     else
                     {
-                        token = tokenStock.GetComponent<PoolManager>().GetPoolByName(PoolName.greenToken).GetItem(transform, new Vector3(-0.32f, 0.75f, 0.32f), Quaternion.identity, true, false, 0);
-                        token.transform.SetParent(gameObject.transform);
-                    }
-                }
-                break;
-            case "Yellow":
-                if (tokenStock.nbYellowToken == 0)
-                {
-                    Debug.Log("Il n'y a plus de jeton jaune en stock, veuillez choisir une autre couleur");
-                    //Indiquer qu'il y en a plus en reserve
-                    //Redemander de choisir une autre couleur
-                }
-                else
-                {
-                    tokenStock.nbYellowToken -= 1;
-                    if (token != null)
-                    {
-                        switch (token.name)
+                        gm.tokenStock.nbGreenToken -= 1;
+                        if (token != null)
                         {
-                            case "RedToken":
-                                tokenStock.nbRedToken += 1;
-                                break;
-                            case "GreenToken":
-                                tokenStock.nbGreenToken += 1;
-                                break;
-                            case "BlueToken":
-                                tokenStock.nbBlueToken += 1;
-                                break;
-                            case "BlackToken":
-                                tokenStock.nbBlackToken += 1;
-                                break;
-                            default:
-                                break;
+                            switch (token.name)
+                            {
+                                case "RedToken":
+                                    gm.tokenStock.nbRedToken += 1;
+                                    break;
+                                case "YellowToken":
+                                    gm.tokenStock.nbYellowToken += 1;
+                                    break;
+                                case "BlueToken":
+                                    gm.tokenStock.nbBlueToken += 1;
+                                    break;
+                                case "BlackToken":
+                                    gm.tokenStock.nbBlackToken += 1;
+                                    break;
+                                default:
+                                    break;
+                            }
+                            token.GetComponent<PoolChild>().ReturnToPool();
+                            token = null;
+                            token = gm.tokenStock.GetComponent<PoolManager>().GetPoolByName(PoolName.greenToken).GetItem(transform, new Vector3(-0.32f, 0.75f, 0.32f), Quaternion.identity, true, false, 0);
+                            token.transform.SetParent(gameObject.transform);
                         }
-                        token.GetComponent<PoolChild>().ReturnToPool();
-                        token = null;
-                        token = tokenStock.GetComponent<PoolManager>().GetPoolByName(PoolName.yellowToken).GetItem(transform, new Vector3(-0.32f, 0.75f, 0.32f), Quaternion.identity, true, false, 0);
-                        token.transform.SetParent(gameObject.transform);
+                        else
+                        {
+                            token = gm.tokenStock.GetComponent<PoolManager>().GetPoolByName(PoolName.greenToken).GetItem(transform, new Vector3(-0.32f, 0.75f, 0.32f), Quaternion.identity, true, false, 0);
+                            token.transform.SetParent(gameObject.transform);
+                        }
+                    }
+                    break;
+                case "Yellow":
+                    if (gm.tokenStock.nbYellowToken == 0)
+                    {
+                        infos.text = "Il n'y a plus de jetons jaunes, veuillez choisir une autre couleur";
+                        infos.gameObject.SetActive(true);
+                        StopCoroutine(reduceGhostLife(player));
+                        StartCoroutine(reduceGhostLife(playerSave));
                     }
                     else
                     {
-                        token = tokenStock.GetComponent<PoolManager>().GetPoolByName(PoolName.yellowToken).GetItem(transform, new Vector3(-0.32f, 0.75f, 0.32f), Quaternion.identity, true, false, 0);
-                        token.transform.SetParent(gameObject.transform);
-                    }
-                }
-                break;
-            case "Black":
-                if (tokenStock.nbBlackToken == 0)
-                {
-                    Debug.Log("Il n'y a plus de jeton noir en stock, veuillez choisir une autre couleur");
-                    //Indiquer qu'il y en a plus en reserve
-                    //Redemander de choisir une autre couleur
-                }
-                else
-                {
-                    tokenStock.nbBlackToken -= 1;
-                    if (token != null)
-                    {
-                        switch (token.name)
+                        gm.tokenStock.nbYellowToken -= 1;
+                        if (token != null)
                         {
-                            case "RedToken":
-                                tokenStock.nbRedToken += 1;
-                                break;
-                            case "GreenToken":
-                                tokenStock.nbGreenToken += 1;
-                                break;
-                            case "BlueToken":
-                                tokenStock.nbBlueToken += 1;
-                                break;
-                            case "YellowToken":
-                                tokenStock.nbYellowToken += 1;
-                                break;
-                            default:
-                                break;
+                            switch (token.name)
+                            {
+                                case "RedToken":
+                                    gm.tokenStock.nbRedToken += 1;
+                                    break;
+                                case "GreenToken":
+                                    gm.tokenStock.nbGreenToken += 1;
+                                    break;
+                                case "BlueToken":
+                                    gm.tokenStock.nbBlueToken += 1;
+                                    break;
+                                case "BlackToken":
+                                    gm.tokenStock.nbBlackToken += 1;
+                                    break;
+                                default:
+                                    break;
+                            }
+                            token.GetComponent<PoolChild>().ReturnToPool();
+                            token = null;
+                            token = gm.tokenStock.GetComponent<PoolManager>().GetPoolByName(PoolName.yellowToken).GetItem(transform, new Vector3(-0.32f, 0.75f, 0.32f), Quaternion.identity, true, false, 0);
+                            token.transform.SetParent(gameObject.transform);
                         }
-                        token.GetComponent<PoolChild>().ReturnToPool();
-                        token = null;
-                        token = tokenStock.GetComponent<PoolManager>().GetPoolByName(PoolName.blackToken).GetItem(transform, new Vector3(-0.32f, 0.75f, 0.32f), Quaternion.identity, true, false, 0);
-                        token.transform.SetParent(gameObject.transform);
+                        else
+                        {
+                            token = gm.tokenStock.GetComponent<PoolManager>().GetPoolByName(PoolName.yellowToken).GetItem(transform, new Vector3(-0.32f, 0.75f, 0.32f), Quaternion.identity, true, false, 0);
+                            token.transform.SetParent(gameObject.transform);
+                        }
+                    }
+                    break;
+                case "Black":
+                    if (gm.tokenStock.nbBlackToken == 0)
+                    {
+                        infos.text = "Il n'y a plus de jetons black, veuillez choisir une autre couleur";
+                        infos.gameObject.SetActive(true);
+                        StopCoroutine(reduceGhostLife(player));
+                        StartCoroutine(reduceGhostLife(playerSave));
                     }
                     else
                     {
-                        token = tokenStock.GetComponent<PoolManager>().GetPoolByName(PoolName.blackToken).GetItem(transform, new Vector3(-0.32f, 0.75f, 0.32f), Quaternion.identity, true, false, 0);
-                        token.transform.SetParent(gameObject.transform);
+                        gm.tokenStock.nbBlackToken -= 1;
+                        if (token != null)
+                        {
+                            switch (token.name)
+                            {
+                                case "RedToken":
+                                    gm.tokenStock.nbRedToken += 1;
+                                    break;
+                                case "GreenToken":
+                                    gm.tokenStock.nbGreenToken += 1;
+                                    break;
+                                case "BlueToken":
+                                    gm.tokenStock.nbBlueToken += 1;
+                                    break;
+                                case "YellowToken":
+                                    gm.tokenStock.nbYellowToken += 1;
+                                    break;
+                                default:
+                                    break;
+                            }
+                            token.GetComponent<PoolChild>().ReturnToPool();
+                            token = null;
+                            token = gm.tokenStock.GetComponent<PoolManager>().GetPoolByName(PoolName.blackToken).GetItem(transform, new Vector3(-0.32f, 0.75f, 0.32f), Quaternion.identity, true, false, 0);
+                            token.transform.SetParent(gameObject.transform);
+                        }
+                        else
+                        {
+                            token = gm.tokenStock.GetComponent<PoolManager>().GetPoolByName(PoolName.blackToken).GetItem(transform, new Vector3(-0.32f, 0.75f, 0.32f), Quaternion.identity, true, false, 0);
+                            token.transform.SetParent(gameObject.transform);
+                        }
                     }
-                }
-                break;
-            default:
-                break;
-        }
+                    break;
+                default:
+                    break;
+            }
 
-        if (player.name == "BluePlayer")
-        {
-            player.GetComponent<BluePlayer>().canLaunchDice = true;
-            player.GetComponent<BluePlayer>().useTilePower = false;
-            player.GetComponent<Deplacement>().enabled = true;
-            player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
-            //player.GetComponent<BluePlayer>().state = BluePlayer.STATE_GAME.STATE_DRAW;
-            player.GetComponent<BluePlayer>().gm.turn++;
-            player.GetComponent<BluePlayer>().update = true;
+            if (player.name == "BluePlayer")
+            {
+                player.GetComponent<BluePlayer>().canLaunchDice = true;
+                player.GetComponent<BluePlayer>().useTilePower = false;
+                player.GetComponent<Deplacement>().enabled = true;
+                player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
+                player.GetComponent<BluePlayer>().update = true;
+            }
+            else if (player.name == "GreenPlayer")
+            {
+                player.GetComponent<GreenPlayer>().Qi -= 1;
+                //player.GetComponent<GreenPlayer>().board.usingTile = true;
+            }
+            else if (player.name == "YellowPlayer")
+            {
+                player.GetComponent<YellowPlayer>().Qi -= 1;
+                //player.GetComponent<YellowPlayer>().board.usingTile = true;
+            }
+            else if (player.name == "RedPlayer")
+            {
+                player.GetComponent<RedPlayer>().Qi -= 1;
+                //player.GetComponent<RedPlayer>().board.usingTile = true;
+            }
         }
-        else if (player.name == "GreenPlayer")
+        else
         {
-            player.GetComponent<GreenPlayer>().Qi -= 1;
-            //player.GetComponent<GreenPlayer>().board.usingTile = true;
-        }
-        else if (player.name == "YellowPlayer")
-        {
-            player.GetComponent<YellowPlayer>().Qi -= 1;
-            //player.GetComponent<YellowPlayer>().board.usingTile = true;
-        }
-        else if (player.name == "RedPlayer")
-        {
-            player.GetComponent<RedPlayer>().Qi -= 1;
-            //player.GetComponent<RedPlayer>().board.usingTile = true;
+            infos.text = "Cette tuile est hantée. Vous ne pouvez pas activez son pouvoir";
+            infos.gameObject.SetActive(true);
         }
     }
 

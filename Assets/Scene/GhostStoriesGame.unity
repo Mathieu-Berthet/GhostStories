@@ -3247,6 +3247,7 @@ MonoBehaviour:
   panelGreenPlace: {fileID: 18601231}
   panelYellowPlace: {fileID: 111140190}
   board: {fileID: 1334380936}
+  infos: {fileID: 1662648799}
   gm: {fileID: 0}
 --- !u!23 &233401640
 MeshRenderer:
@@ -5420,10 +5421,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hauntedTile: 0
-  tokenStock: {fileID: 0}
   gm: {fileID: 0}
   infoHouse: {fileID: 1179219311}
-  infoNbJetons: {fileID: 1662648799}
+  infos: {fileID: 1662648799}
   playerSave: {fileID: 0}
 --- !u!23 &416534315
 MeshRenderer:
@@ -15027,6 +15027,7 @@ MonoBehaviour:
   playerToResurrect: []
   cube: {fileID: 0}
   resultFace: 
+  infos: {fileID: 1662648799}
 --- !u!23 &1241658706
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -17999,7 +18000,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gm: {fileID: 0}
   infoStall: {fileID: 1179219311}
-  infoNbJetons: {fileID: 1662648799}
+  infos: {fileID: 1662648799}
   hauntedTile: 0
   nbDiceHerbalist: 2
   dice: {fileID: 1483268768575792, guid: 6a3772ffda714d746bf307675dc5309c, type: 2}
@@ -19637,6 +19638,7 @@ MonoBehaviour:
   tileToUnhaunted: 
   choose: 0
   panelTile: {fileID: 1540370682}
+  infos: {fileID: 1662648799}
 --- !u!23 &1581580249
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -19845,6 +19847,7 @@ MonoBehaviour:
   ghostCard: {fileID: 0}
   chooseBoard: 0
   boardToRetreatGhost: 
+  infos: {fileID: 1662648799}
   gm: {fileID: 0}
 --- !u!23 &1585650254
 MeshRenderer:
@@ -23641,8 +23644,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hauntedTile: 0
   gm: {fileID: 0}
-  tokenStock: {fileID: 0}
   token: {fileID: 0}
+  infos: {fileID: 1662648799}
+  infoCircle: {fileID: 1179219311}
+  playerSave: {fileID: 0}
 --- !u!23 &1910284760
 MeshRenderer:
   m_ObjectHideFlags: 0
