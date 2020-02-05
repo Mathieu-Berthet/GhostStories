@@ -601,8 +601,12 @@ public class BluePlayer : MonoBehaviour
                     break;
                 case "PavillonVentCeleste":
                     Debug.Log("Le pavillon du vent celeste");
-                    textInfoTuile.text = "Cette tuile n'as pas encore d'effet";
-                    //windCelestialFlag.GetComponent<WindCelestialFlag>().MovePlayerAndGhost();
+                    textInfoTuile.text = "Le pavillon du vent celeste";
+                    card = null;
+                    canLaunchDice = false;
+                    canLaunchBlackDice = false;
+                    gameObject.GetComponent<Deplacement>().enabled = false;
+                    StartCoroutine(windCelestialFlag.GetComponent<WindCelestialFlag>().MovePlayerAndGhost());
                     break;
                 case "TourVeilleurNuit":
                     Debug.Log("Tour du veilleur de nuit");

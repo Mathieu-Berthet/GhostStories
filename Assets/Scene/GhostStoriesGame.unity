@@ -1189,6 +1189,28 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1335580316}
+        m_MethodName: MustChooseGhostToMove
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 81464518}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1335580316}
+        m_MethodName: SelectGhostNewPosition
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1448923215}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &81464519
@@ -1385,6 +1407,28 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 89183947}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1335580316}
+        m_MethodName: MustChooseGhostToMove
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 89183947}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1335580316}
+        m_MethodName: SelectGhostNewPosition
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 570049726}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2223,6 +2267,28 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 138495530}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1335580316}
+        m_MethodName: MustChooseGhostToMove
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 138495530}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1335580316}
+        m_MethodName: SelectGhostNewPosition
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1623060065}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3689,6 +3755,28 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 243868417}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1335580316}
+        m_MethodName: MustChooseGhostToMove
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 243868417}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1335580316}
+        m_MethodName: SelectGhostNewPosition
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1036858072}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -7626,6 +7714,28 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1335580316}
+        m_MethodName: MustChooseGhostToMove
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 598802600}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1335580316}
+        m_MethodName: SelectGhostNewPosition
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 937504354}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &598802601
@@ -9461,6 +9571,28 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1335580316}
+        m_MethodName: MustChooseGhostToMove
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 753594422}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1335580316}
+        m_MethodName: SelectGhostNewPosition
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 9783639}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &753594423
@@ -10204,6 +10336,28 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 852453446}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1335580316}
+        m_MethodName: MustChooseGhostToMove
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 852453446}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1335580316}
+        m_MethodName: SelectGhostNewPosition
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 326308552}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -11344,6 +11498,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1335580316}
+        m_MethodName: getPlayer
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1221269284}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &936419657
@@ -12438,6 +12603,28 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1335580316}
+        m_MethodName: MustChooseGhostToMove
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1037057374}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1335580316}
+        m_MethodName: SelectGhostNewPosition
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1715530345}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1037057375
@@ -12957,6 +13144,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1335580316}
+        m_MethodName: getPlayer
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1742816404}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1089314212
@@ -13074,6 +13272,17 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 1098913534}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1335580316}
+        m_MethodName: getPlayer
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1775335297}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -16565,6 +16774,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hauntedTile: 0
+  gm: {fileID: 0}
+  infos: {fileID: 1662648799}
+  ghostToMove: {fileID: 0}
+  chooseenGhost: 
+  choosePlayer: 0
+  chooseGhost: 0
+  selectedPosition: 0
+  playerToMove: 
+  panelBoardPlayer: {fileID: 1871381456}
+  playerChoose: {fileID: 0}
+  panelBluePlace: {fileID: 243812752}
+  panelRedPlace: {fileID: 2078919588}
+  panelGreenPlace: {fileID: 18601231}
+  panelYellowPlace: {fileID: 111140190}
+  previousPosition: {fileID: 0}
+  board: {fileID: 1334380936}
 --- !u!23 &1335580317
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -16829,6 +17054,28 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 1345205211}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1335580316}
+        m_MethodName: MustChooseGhostToMove
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1345205211}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1335580316}
+        m_MethodName: SelectGhostNewPosition
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 953267858}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -18687,6 +18934,28 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1335580316}
+        m_MethodName: MustChooseGhostToMove
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1476392582}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1335580316}
+        m_MethodName: SelectGhostNewPosition
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 995317037}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1476392583
@@ -19366,6 +19635,28 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 1551261269}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1335580316}
+        m_MethodName: MustChooseGhostToMove
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1551261269}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1335580316}
+        m_MethodName: SelectGhostNewPosition
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 646876189}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -22431,6 +22722,28 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1335580316}
+        m_MethodName: MustChooseGhostToMove
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1779620736}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1335580316}
+        m_MethodName: SelectGhostNewPosition
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 772431112}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1779620737
@@ -24171,6 +24484,17 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 1988831296}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1335580316}
+        m_MethodName: getPlayer
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 921742452}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
