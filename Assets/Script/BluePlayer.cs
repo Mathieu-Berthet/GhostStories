@@ -2046,4 +2046,608 @@ public class BluePlayer : MonoBehaviour
                 break;
         }
     }*/
+
+
+    public void CheckDistance()
+    {
+        switch (tileName)
+        {
+            case "MaisonThe":
+                if (Vector3.Distance(houseOfTea.transform.position, witchHut.transform.position) < 1.5f)
+                {
+                    gameObject.GetComponent<Deplacement>().hutOfWitch.interactable = true;
+                }
+                else
+                {
+                    gameObject.GetComponent<Deplacement>().hutOfWitch.interactable = false;
+                }
+                if (Vector3.Distance(houseOfTea.transform.position, herbalistStall.transform.position) < 1.5f)
+                {
+                    gameObject.GetComponent<Deplacement>().herbalistStall.interactable = true;
+                }
+                else
+                {
+                    gameObject.GetComponent<Deplacement>().herbalistStall.interactable = false;
+                }
+                if (Vector3.Distance(houseOfTea.transform.position, windCelestialFlag.transform.position) < 1.5f)
+                {
+                    gameObject.GetComponent<Deplacement>().windCelestialFlag.interactable = true;
+                }
+                else
+                {
+                    gameObject.GetComponent<Deplacement>().windCelestialFlag.interactable = false;
+                }
+                if (Vector3.Distance(houseOfTea.transform.position, graveyard.transform.position) < 1.5f)
+                {
+                    gameObject.GetComponent<Deplacement>().graveyard.interactable = true;
+                }
+                else
+                {
+                    gameObject.GetComponent<Deplacement>().graveyard.interactable = false;
+                }
+                if (Vector3.Distance(houseOfTea.transform.position, taoisteAutel.transform.position) < 1.5f)
+                {
+                    gameObject.GetComponent<Deplacement>().taoisteAutel.interactable = true;
+                }
+                else
+                {
+                    gameObject.GetComponent<Deplacement>().taoisteAutel.interactable = false;
+                }
+                if (Vector3.Distance(houseOfTea.transform.position, bouddhisteTemple.transform.position) < 1.5f)
+                {
+                    gameObject.GetComponent<Deplacement>().bouddhisteTemple.interactable = true;
+                }
+                else
+                {
+                    gameObject.GetComponent<Deplacement>().bouddhisteTemple.interactable = false;
+                }
+                if (Vector3.Distance(houseOfTea.transform.position, priestCircle.transform.position) < 1.5f)
+                {
+                    gameObject.GetComponent<Deplacement>().priestCircle.interactable = true;
+                }
+                else
+                {
+                    gameObject.GetComponent<Deplacement>().priestCircle.interactable = false;
+                }
+                if (Vector3.Distance(houseOfTea.transform.position, nightTower.transform.position) < 1.5f)
+                {
+                    gameObject.GetComponent<Deplacement>().nightTower.interactable = true;
+                }
+                else
+                {
+                    gameObject.GetComponent<Deplacement>().nightTower.interactable = false;
+                }
+                break;
+            case "HutteSorciere":
+                if (Vector3.Distance(witchHut.transform.position, houseOfTea.transform.position) < 1.5f)
+                {
+                    gameObject.GetComponent<Deplacement>().houseOfTea.interactable = true;
+                }
+                else
+                {
+                    gameObject.GetComponent<Deplacement>().houseOfTea.interactable = false;
+                }
+                if (Vector3.Distance(witchHut.transform.position, herbalistStall.transform.position) < 1.5f)
+                {
+                    gameObject.GetComponent<Deplacement>().herbalistStall.interactable = true;
+                }
+                else
+                {
+                    gameObject.GetComponent<Deplacement>().herbalistStall.interactable = false;
+                }
+                if (Vector3.Distance(witchHut.transform.position, windCelestialFlag.transform.position) < 1.5f)
+                {
+                    gameObject.GetComponent<Deplacement>().windCelestialFlag.interactable = true;
+                }
+                else
+                {
+                    gameObject.GetComponent<Deplacement>().windCelestialFlag.interactable = false;
+                }
+                if (Vector3.Distance(witchHut.transform.position, graveyard.transform.position) < 1.5f)
+                {
+                    gameObject.GetComponent<Deplacement>().graveyard.interactable = true;
+                }
+                else
+                {
+                    gameObject.GetComponent<Deplacement>().graveyard.interactable = false;
+                }
+                if (Vector3.Distance(witchHut.transform.position, taoisteAutel.transform.position) < 1.5f)
+                {
+                    gameObject.GetComponent<Deplacement>().taoisteAutel.interactable = true;
+                }
+                else
+                {
+                    gameObject.GetComponent<Deplacement>().taoisteAutel.interactable = false;
+                }
+                if (Vector3.Distance(witchHut.transform.position, bouddhisteTemple.transform.position) < 1.5f)
+                {
+                    gameObject.GetComponent<Deplacement>().bouddhisteTemple.interactable = true;
+                }
+                else
+                {
+                    gameObject.GetComponent<Deplacement>().bouddhisteTemple.interactable = false;
+                }
+                if (Vector3.Distance(witchHut.transform.position, priestCircle.transform.position) < 1.5f)
+                {
+                    gameObject.GetComponent<Deplacement>().priestCircle.interactable = true;
+                }
+                else
+                {
+                    gameObject.GetComponent<Deplacement>().priestCircle.interactable = false;
+                }
+                if (Vector3.Distance(witchHut.transform.position, nightTower.transform.position) < 1.5f)
+                {
+                    gameObject.GetComponent<Deplacement>().nightTower.interactable = true;
+                }
+                else
+                {
+                    gameObject.GetComponent<Deplacement>().nightTower.interactable = false;
+                }
+                break;
+            case "EchoppeHerboriste":
+                if (Vector3.Distance(herbalistStall.transform.position, houseOfTea.transform.position) < 1.5f)
+                {
+                    gameObject.GetComponent<Deplacement>().houseOfTea.interactable = true;
+                }
+                else
+                {
+                    gameObject.GetComponent<Deplacement>().houseOfTea.interactable = false;
+                }
+                if (Vector3.Distance(herbalistStall.transform.position, witchHut.transform.position) < 1.5f)
+                {
+                    gameObject.GetComponent<Deplacement>().hutOfWitch.interactable = true;
+                }
+                else
+                {
+                    gameObject.GetComponent<Deplacement>().hutOfWitch.interactable = false;
+                }
+                if (Vector3.Distance(herbalistStall.transform.position, windCelestialFlag.transform.position) < 1.5f)
+                {
+                    gameObject.GetComponent<Deplacement>().windCelestialFlag.interactable = true;
+                }
+                else
+                {
+                    gameObject.GetComponent<Deplacement>().windCelestialFlag.interactable = false;
+                }
+                if (Vector3.Distance(herbalistStall.transform.position, graveyard.transform.position) < 1.5f)
+                {
+                    gameObject.GetComponent<Deplacement>().graveyard.interactable = true;
+                }
+                else
+                {
+                    gameObject.GetComponent<Deplacement>().graveyard.interactable = false;
+                }
+                if (Vector3.Distance(herbalistStall.transform.position, taoisteAutel.transform.position) < 1.5f)
+                {
+                    gameObject.GetComponent<Deplacement>().taoisteAutel.interactable = true;
+                }
+                else
+                {
+                    gameObject.GetComponent<Deplacement>().taoisteAutel.interactable = false;
+                }
+                if (Vector3.Distance(herbalistStall.transform.position, bouddhisteTemple.transform.position) < 1.5f)
+                {
+                    gameObject.GetComponent<Deplacement>().bouddhisteTemple.interactable = true;
+                }
+                else
+                {
+                    gameObject.GetComponent<Deplacement>().bouddhisteTemple.interactable = false;
+                }
+                if (Vector3.Distance(herbalistStall.transform.position, priestCircle.transform.position) < 1.5f)
+                {
+                    gameObject.GetComponent<Deplacement>().priestCircle.interactable = true;
+                }
+                else
+                {
+                    gameObject.GetComponent<Deplacement>().priestCircle.interactable = false;
+                }
+                if (Vector3.Distance(herbalistStall.transform.position, nightTower.transform.position) < 1.5f)
+                {
+                    gameObject.GetComponent<Deplacement>().nightTower.interactable = true;
+                }
+                else
+                {
+                    gameObject.GetComponent<Deplacement>().nightTower.interactable = false;
+                }
+                break;
+            case "AutelTaoiste":
+                if (Vector3.Distance(taoisteAutel.transform.position, houseOfTea.transform.position) < 1.5f)
+                {
+                    gameObject.GetComponent<Deplacement>().houseOfTea.interactable = true;
+                }
+                else
+                {
+                    gameObject.GetComponent<Deplacement>().houseOfTea.interactable = false;
+                }
+                if (Vector3.Distance(taoisteAutel.transform.position, witchHut.transform.position) < 1.5f)
+                {
+                    gameObject.GetComponent<Deplacement>().hutOfWitch.interactable = true;
+                }
+                else
+                {
+                    gameObject.GetComponent<Deplacement>().hutOfWitch.interactable = false;
+                }
+                if (Vector3.Distance(taoisteAutel.transform.position, graveyard.transform.position) < 1.5f)
+                {
+                    gameObject.GetComponent<Deplacement>().graveyard.interactable = true;
+                }
+                else
+                {
+                    gameObject.GetComponent<Deplacement>().graveyard.interactable = false;
+                }
+                if (Vector3.Distance(taoisteAutel.transform.position, herbalistStall.transform.position) < 1.5f)
+                {
+                    gameObject.GetComponent<Deplacement>().herbalistStall.interactable = true;
+                }
+                else
+                {
+                    gameObject.GetComponent<Deplacement>().herbalistStall.interactable = false;
+                }
+                if (Vector3.Distance(taoisteAutel.transform.position, bouddhisteTemple.transform.position) < 1.5f)
+                {
+                    gameObject.GetComponent<Deplacement>().bouddhisteTemple.interactable = true;
+                }
+                else
+                {
+                    gameObject.GetComponent<Deplacement>().bouddhisteTemple.interactable = false;
+                }
+                if (Vector3.Distance(taoisteAutel.transform.position, priestCircle.transform.position) < 1.5f)
+                {
+                    gameObject.GetComponent<Deplacement>().priestCircle.interactable = true;
+                }
+                else
+                {
+                    gameObject.GetComponent<Deplacement>().priestCircle.interactable = false;
+                }
+                if (Vector3.Distance(taoisteAutel.transform.position, nightTower.transform.position) < 1.5f)
+                {
+                    gameObject.GetComponent<Deplacement>().nightTower.interactable = true;
+                }
+                else
+                {
+                    gameObject.GetComponent<Deplacement>().nightTower.interactable = false;
+                }
+                if (Vector3.Distance(taoisteAutel.transform.position, windCelestialFlag.transform.position) < 1.5f)
+                {
+                    gameObject.GetComponent<Deplacement>().windCelestialFlag.interactable = true;
+                }
+                else
+                {
+                    gameObject.GetComponent<Deplacement>().windCelestialFlag.interactable = false;
+                }
+                break;
+            case "Cimetiere":
+                if (Vector3.Distance(graveyard.transform.position, houseOfTea.transform.position) < 1.5f)
+                {
+                    gameObject.GetComponent<Deplacement>().houseOfTea.interactable = true;
+                }
+                else
+                {
+                    gameObject.GetComponent<Deplacement>().houseOfTea.interactable = false;
+                }
+                if (Vector3.Distance(graveyard.transform.position, witchHut.transform.position) < 1.5f)
+                {
+                    gameObject.GetComponent<Deplacement>().hutOfWitch.interactable = true;
+                }
+                else
+                {
+                    gameObject.GetComponent<Deplacement>().hutOfWitch.interactable = false;
+                }
+                if (Vector3.Distance(graveyard.transform.position, windCelestialFlag.transform.position) < 1.5f)
+                {
+                    gameObject.GetComponent<Deplacement>().windCelestialFlag.interactable = true;
+                }
+                else
+                {
+                    gameObject.GetComponent<Deplacement>().windCelestialFlag.interactable = false;
+                }
+                if (Vector3.Distance(graveyard.transform.position, taoisteAutel.transform.position) < 1.5f)
+                {
+                    gameObject.GetComponent<Deplacement>().taoisteAutel.interactable = true;
+                }
+                else
+                {
+                    gameObject.GetComponent<Deplacement>().taoisteAutel.interactable = false;
+                }
+                if (Vector3.Distance(graveyard.transform.position, herbalistStall.transform.position) < 1.5f)
+                {
+                    gameObject.GetComponent<Deplacement>().herbalistStall.interactable = true;
+                }
+                else
+                {
+                    gameObject.GetComponent<Deplacement>().herbalistStall.interactable = false;
+                }
+                if (Vector3.Distance(graveyard.transform.position, bouddhisteTemple.transform.position) < 1.5f)
+                {
+                    gameObject.GetComponent<Deplacement>().bouddhisteTemple.interactable = true;
+                }
+                else
+                {
+                    gameObject.GetComponent<Deplacement>().bouddhisteTemple.interactable = false;
+                }
+                if (Vector3.Distance(graveyard.transform.position, priestCircle.transform.position) < 1.5f)
+                {
+                    gameObject.GetComponent<Deplacement>().priestCircle.interactable = true;
+                }
+                else
+                {
+                    gameObject.GetComponent<Deplacement>().priestCircle.interactable = false;
+                }
+                if (Vector3.Distance(graveyard.transform.position, nightTower.transform.position) < 1.5f)
+                {
+                    gameObject.GetComponent<Deplacement>().nightTower.interactable = true;
+                }
+                else
+                {
+                    gameObject.GetComponent<Deplacement>().nightTower.interactable = false;
+                }
+                break;
+            case "PavillonVentCeleste":
+                if (Vector3.Distance(windCelestialFlag.transform.position, houseOfTea.transform.position) < 1.5f)
+                {
+                    gameObject.GetComponent<Deplacement>().houseOfTea.interactable = true;
+                }
+                else
+                {
+                    gameObject.GetComponent<Deplacement>().houseOfTea.interactable = false;
+                }
+                if (Vector3.Distance(windCelestialFlag.transform.position, witchHut.transform.position) < 1.5f)
+                {
+                    gameObject.GetComponent<Deplacement>().hutOfWitch.interactable = true;
+                }
+                else
+                {
+                    gameObject.GetComponent<Deplacement>().hutOfWitch.interactable = false;
+                }
+                if (Vector3.Distance(windCelestialFlag.transform.position, graveyard.transform.position) < 1.5f)
+                {
+                    gameObject.GetComponent<Deplacement>().graveyard.interactable = true;
+                }
+                else
+                {
+                    gameObject.GetComponent<Deplacement>().graveyard.interactable = false;
+                }
+                if (Vector3.Distance(windCelestialFlag.transform.position, taoisteAutel.transform.position) < 1.5f)
+                {
+                    gameObject.GetComponent<Deplacement>().taoisteAutel.interactable = true;
+                }
+                else
+                {
+                    gameObject.GetComponent<Deplacement>().taoisteAutel.interactable = false;
+                }
+                if (Vector3.Distance(windCelestialFlag.transform.position, herbalistStall.transform.position) < 1.5f)
+                {
+                    gameObject.GetComponent<Deplacement>().herbalistStall.interactable = true;
+                }
+                else
+                {
+                    gameObject.GetComponent<Deplacement>().herbalistStall.interactable = false;
+                }
+                if (Vector3.Distance(windCelestialFlag.transform.position, bouddhisteTemple.transform.position) < 1.5f)
+                {
+                    gameObject.GetComponent<Deplacement>().bouddhisteTemple.interactable = true;
+                }
+                else
+                {
+                    gameObject.GetComponent<Deplacement>().bouddhisteTemple.interactable = false;
+                }
+                if (Vector3.Distance(windCelestialFlag.transform.position, priestCircle.transform.position) < 1.5f)
+                {
+                    gameObject.GetComponent<Deplacement>().priestCircle.interactable = true;
+                }
+                else
+                {
+                    gameObject.GetComponent<Deplacement>().priestCircle.interactable = false;
+                }
+                if (Vector3.Distance(windCelestialFlag.transform.position, nightTower.transform.position) < 1.5f)
+                {
+                    gameObject.GetComponent<Deplacement>().nightTower.interactable = true;
+                }
+                else
+                {
+                    gameObject.GetComponent<Deplacement>().nightTower.interactable = false;
+                }
+                break;
+            case "TourVeilleurNuit":
+                if (Vector3.Distance(nightTower.transform.position, houseOfTea.transform.position) < 1.5f)
+                {
+                    gameObject.GetComponent<Deplacement>().houseOfTea.interactable = true;
+                }
+                else
+                {
+                    gameObject.GetComponent<Deplacement>().houseOfTea.interactable = false;
+                }
+                if (Vector3.Distance(nightTower.transform.position, witchHut.transform.position) < 1.5f)
+                {
+                    gameObject.GetComponent<Deplacement>().hutOfWitch.interactable = true;
+                }
+                else
+                {
+                    gameObject.GetComponent<Deplacement>().hutOfWitch.interactable = false;
+                }
+                if (Vector3.Distance(nightTower.transform.position, graveyard.transform.position) < 1.5f)
+                {
+                    gameObject.GetComponent<Deplacement>().graveyard.interactable = true;
+                }
+                else
+                {
+                    gameObject.GetComponent<Deplacement>().graveyard.interactable = false;
+                }
+                if (Vector3.Distance(nightTower.transform.position, taoisteAutel.transform.position) < 1.5f)
+                {
+                    gameObject.GetComponent<Deplacement>().taoisteAutel.interactable = true;
+                }
+                else
+                {
+                    gameObject.GetComponent<Deplacement>().taoisteAutel.interactable = false;
+                }
+                if (Vector3.Distance(nightTower.transform.position, herbalistStall.transform.position) < 1.5f)
+                {
+                    gameObject.GetComponent<Deplacement>().herbalistStall.interactable = true;
+                }
+                else
+                {
+                    gameObject.GetComponent<Deplacement>().herbalistStall.interactable = false;
+                }
+                if (Vector3.Distance(nightTower.transform.position, bouddhisteTemple.transform.position) < 1.5f)
+                {
+                    gameObject.GetComponent<Deplacement>().bouddhisteTemple.interactable = true;
+                }
+                else
+                {
+                    gameObject.GetComponent<Deplacement>().bouddhisteTemple.interactable = false;
+                }
+                if (Vector3.Distance(nightTower.transform.position, priestCircle.transform.position) < 1.5f)
+                {
+                    gameObject.GetComponent<Deplacement>().priestCircle.interactable = true;
+                }
+                else
+                {
+                    gameObject.GetComponent<Deplacement>().priestCircle.interactable = false;
+                }
+                if (Vector3.Distance(nightTower.transform.position, windCelestialFlag.transform.position) < 1.5f)
+                {
+                    gameObject.GetComponent<Deplacement>().windCelestialFlag.interactable = true;
+                }
+                else
+                {
+                    gameObject.GetComponent<Deplacement>().windCelestialFlag.interactable = false;
+                }
+                break;
+            case "CerclePriere":
+                if (Vector3.Distance(priestCircle.transform.position, houseOfTea.transform.position) < 1.5f)
+                {
+                    gameObject.GetComponent<Deplacement>().houseOfTea.interactable = true;
+                }
+                else
+                {
+                    gameObject.GetComponent<Deplacement>().houseOfTea.interactable = false;
+                }
+                if (Vector3.Distance(priestCircle.transform.position, witchHut.transform.position) < 1.5f)
+                {
+                    gameObject.GetComponent<Deplacement>().hutOfWitch.interactable = true;
+                }
+                else
+                {
+                    gameObject.GetComponent<Deplacement>().hutOfWitch.interactable = false;
+                }
+                if (Vector3.Distance(priestCircle.transform.position, graveyard.transform.position) < 1.5f)
+                {
+                    gameObject.GetComponent<Deplacement>().graveyard.interactable = true;
+                }
+                else
+                {
+                    gameObject.GetComponent<Deplacement>().graveyard.interactable = false;
+                }
+                if (Vector3.Distance(priestCircle.transform.position, taoisteAutel.transform.position) < 1.5f)
+                {
+                    gameObject.GetComponent<Deplacement>().taoisteAutel.interactable = true;
+                }
+                else
+                {
+                    gameObject.GetComponent<Deplacement>().taoisteAutel.interactable = false;
+                }
+                if (Vector3.Distance(priestCircle.transform.position, herbalistStall.transform.position) < 1.5f)
+                {
+                    gameObject.GetComponent<Deplacement>().herbalistStall.interactable = true;
+                }
+                else
+                {
+                    gameObject.GetComponent<Deplacement>().herbalistStall.interactable = false;
+                }
+                if (Vector3.Distance(priestCircle.transform.position, bouddhisteTemple.transform.position) < 1.5f)
+                {
+                    gameObject.GetComponent<Deplacement>().bouddhisteTemple.interactable = true;
+                }
+                else
+                {
+                    gameObject.GetComponent<Deplacement>().bouddhisteTemple.interactable = false;
+                }
+                if (Vector3.Distance(priestCircle.transform.position, nightTower.transform.position) < 1.5f)
+                {
+                    gameObject.GetComponent<Deplacement>().nightTower.interactable = true;
+                }
+                else
+                {
+                    gameObject.GetComponent<Deplacement>().nightTower.interactable = false;
+                }
+                if (Vector3.Distance(priestCircle.transform.position, windCelestialFlag.transform.position) < 1.5f)
+                {
+                    gameObject.GetComponent<Deplacement>().windCelestialFlag.interactable = true;
+                }
+                else
+                {
+                    gameObject.GetComponent<Deplacement>().windCelestialFlag.interactable = false;
+                }
+                break;
+            case "TempleBouddhiste":
+                if (Vector3.Distance(bouddhisteTemple.transform.position, houseOfTea.transform.position) < 1.5f)
+                {
+                    gameObject.GetComponent<Deplacement>().houseOfTea.interactable = true;
+                }
+                else
+                {
+                    gameObject.GetComponent<Deplacement>().houseOfTea.interactable = false;
+                }
+                if (Vector3.Distance(bouddhisteTemple.transform.position, witchHut.transform.position) < 1.5f)
+                {
+                    gameObject.GetComponent<Deplacement>().hutOfWitch.interactable = true;
+                }
+                else
+                {
+                    gameObject.GetComponent<Deplacement>().hutOfWitch.interactable = false;
+                }
+                if (Vector3.Distance(bouddhisteTemple.transform.position, graveyard.transform.position) < 1.5f)
+                {
+                    gameObject.GetComponent<Deplacement>().graveyard.interactable = true;
+                }
+                else
+                {
+                    gameObject.GetComponent<Deplacement>().graveyard.interactable = false;
+                }
+                if (Vector3.Distance(bouddhisteTemple.transform.position, taoisteAutel.transform.position) < 1.5f)
+                {
+                    gameObject.GetComponent<Deplacement>().taoisteAutel.interactable = true;
+                }
+                else
+                {
+                    gameObject.GetComponent<Deplacement>().taoisteAutel.interactable = false;
+                }
+                if (Vector3.Distance(bouddhisteTemple.transform.position, herbalistStall.transform.position) < 1.5f)
+                {
+                    gameObject.GetComponent<Deplacement>().herbalistStall.interactable = true;
+                }
+                else
+                {
+                    gameObject.GetComponent<Deplacement>().herbalistStall.interactable = false;
+                }
+                if (Vector3.Distance(bouddhisteTemple.transform.position, priestCircle.transform.position) < 1.5f)
+                {
+                    gameObject.GetComponent<Deplacement>().priestCircle.interactable = true;
+                }
+                else
+                {
+                    gameObject.GetComponent<Deplacement>().priestCircle.interactable = false;
+                }
+                if (Vector3.Distance(bouddhisteTemple.transform.position, nightTower.transform.position) < 1.5f)
+                {
+                    gameObject.GetComponent<Deplacement>().nightTower.interactable = true;
+                }
+                else
+                {
+                    gameObject.GetComponent<Deplacement>().nightTower.interactable = false;
+                }
+                if (Vector3.Distance(bouddhisteTemple.transform.position, windCelestialFlag.transform.position) < 1.5f)
+                {
+                    gameObject.GetComponent<Deplacement>().windCelestialFlag.interactable = true;
+                }
+                else
+                {
+                    gameObject.GetComponent<Deplacement>().windCelestialFlag.interactable = false;
+                }
+                break;
+            default:
+                break;
+        }
+    }
 }

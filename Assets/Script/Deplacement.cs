@@ -15,6 +15,19 @@ public class Deplacement : MonoBehaviour {
 
     public string tileToMove;
     public bool chooseDepla;
+
+    public Button houseOfTea;
+    public Button hutOfWitch;
+    public Button herbalistStall;
+
+    public Button taoisteAutel;
+    public Button graveyard;
+    public Button windCelestialFlag;
+
+    public Button priestCircle;
+    public Button bouddhisteTemple;
+    public Button nightTower;
+
     // Use this for initialization
     void Start()
     {
@@ -35,6 +48,10 @@ public class Deplacement : MonoBehaviour {
                 Debug.Log(hit.transform.name);
             }
         }*/
+        if (player.name == "BluePlayer")
+        {
+            player.GetComponent<BluePlayer>().CheckDistance();
+        }
     }
 
     public IEnumerator PlayerDeplacement()

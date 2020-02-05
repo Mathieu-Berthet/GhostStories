@@ -10978,6 +10978,15 @@ MonoBehaviour:
   player: {fileID: 921742452}
   tileToMove: 
   chooseDepla: 0
+  houseOfTea: {fileID: 1465312975}
+  hutOfWitch: {fileID: 1406584098}
+  herbalistStall: {fileID: 933271350}
+  taoisteAutel: {fileID: 1899647170}
+  graveyard: {fileID: 1166281920}
+  windCelestialFlag: {fileID: 583434074}
+  priestCircle: {fileID: 1851458301}
+  bouddhisteTemple: {fileID: 334785777}
+  nightTower: {fileID: 730265533}
 --- !u!1 &926461337
 GameObject:
   m_ObjectHideFlags: 0
@@ -14993,6 +15002,15 @@ MonoBehaviour:
   player: {fileID: 0}
   tileToMove: 
   chooseDepla: 0
+  houseOfTea: {fileID: 0}
+  hutOfWitch: {fileID: 0}
+  herbalistStall: {fileID: 0}
+  taoisteAutel: {fileID: 0}
+  graveyard: {fileID: 0}
+  windCelestialFlag: {fileID: 0}
+  priestCircle: {fileID: 0}
+  bouddhisteTemple: {fileID: 0}
+  nightTower: {fileID: 0}
 --- !u!1 &1241658704
 GameObject:
   m_ObjectHideFlags: 0
@@ -21717,6 +21735,15 @@ MonoBehaviour:
   player: {fileID: 0}
   tileToMove: 
   chooseDepla: 0
+  houseOfTea: {fileID: 0}
+  hutOfWitch: {fileID: 0}
+  herbalistStall: {fileID: 0}
+  taoisteAutel: {fileID: 0}
+  graveyard: {fileID: 0}
+  windCelestialFlag: {fileID: 0}
+  priestCircle: {fileID: 0}
+  bouddhisteTemple: {fileID: 0}
+  nightTower: {fileID: 0}
 --- !u!1 &1747781636
 GameObject:
   m_ObjectHideFlags: 0
@@ -22212,6 +22239,15 @@ MonoBehaviour:
   player: {fileID: 0}
   tileToMove: 
   chooseDepla: 0
+  houseOfTea: {fileID: 0}
+  hutOfWitch: {fileID: 0}
+  herbalistStall: {fileID: 0}
+  taoisteAutel: {fileID: 0}
+  graveyard: {fileID: 0}
+  windCelestialFlag: {fileID: 0}
+  priestCircle: {fileID: 0}
+  bouddhisteTemple: {fileID: 0}
+  nightTower: {fileID: 0}
 --- !u!1 &1777324649
 GameObject:
   m_ObjectHideFlags: 0
