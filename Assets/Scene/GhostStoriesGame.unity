@@ -16790,6 +16790,9 @@ MonoBehaviour:
   panelBoardPlayer: {fileID: 1871381456}
   playerChoose: {fileID: 0}
   hauntingGhostToMove: {fileID: 0}
+  defausse: {fileID: 54337049}
+  bouddhisteTemple: {fileID: 1907267166}
+  bouddha: {fileID: 0}
   canPlace: 0
   panelBluePlace: {fileID: 243812752}
   panelRedPlace: {fileID: 2078919588}

@@ -5,7 +5,7 @@ using UnityEngine;
 public class BouddhisteTemple : MonoBehaviour {
 
     [SerializeField]
-    private int numberOfBouddha = 2;
+    public int numberOfBouddha = 2;
     public bool hauntedTile = false;
 
     public GameObject bouddhaFirst;

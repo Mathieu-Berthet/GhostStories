@@ -19,6 +19,9 @@ public class WindCelestialFlag : MonoBehaviour {
     public GameObject playerChoose;
     public GameObject hauntingGhostToMove;
 
+    public GameObject defausse;
+    public GameObject bouddhisteTemple;
+    public GameObject bouddha;
     public bool canPlace;
 
     public GameObject panelBluePlace;
@@ -148,92 +151,95 @@ public class WindCelestialFlag : MonoBehaviour {
     {
         Debug.Log("coucou");
         chooseenGhost = buttonClick.name;
-        switch (chooseenGhost)
+        if (ghostToMove == null)
         {
-            case "BlueOne":
-                if (buttonClick.transform.parent.parent.GetComponent<BoardPosition>().bluePositionOne.transform.childCount > 4)
-                {
-                    ghostToMove = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().bluePositionOne.transform.GetChild(4).gameObject;
-                    previousPosition = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().bluePositionOne;
-                }
-                break;
-            case "BlueTwo":
-                if (buttonClick.transform.parent.parent.GetComponent<BoardPosition>().bluePositionTwo.transform.childCount > 4)
-                {
-                    ghostToMove = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().bluePositionTwo.transform.GetChild(4).gameObject;
-                    previousPosition = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().bluePositionTwo;
-                }
-                break;
-            case "BlueThree":
-                if (buttonClick.transform.parent.parent.GetComponent<BoardPosition>().bluePositionThree.transform.childCount > 4)
-                {
-                    ghostToMove = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().bluePositionThree.transform.GetChild(4).gameObject;
-                    previousPosition = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().bluePositionThree;
-                }
-                break;
-            case "RedOne":
-                if (buttonClick.transform.parent.parent.GetComponent<BoardPosition>().redPositionOne.transform.childCount > 4)
-                {
-                    ghostToMove = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().redPositionOne.transform.GetChild(4).gameObject;
-                    previousPosition = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().redPositionOne;
-                }
-                break;
-            case "RedTwo":
-                if (buttonClick.transform.parent.parent.GetComponent<BoardPosition>().redPositionTwo.transform.childCount > 4)
-                {
-                    ghostToMove = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().redPositionTwo.transform.GetChild(4).gameObject;
-                    previousPosition = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().redPositionTwo;
-                }
-                break;
-            case "RedThree":
-                if (buttonClick.transform.parent.parent.GetComponent<BoardPosition>().redPositionThree.transform.childCount > 4)
-                {
-                    ghostToMove = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().redPositionThree.transform.GetChild(4).gameObject;
-                    previousPosition = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().redPositionThree;
-                }
-                break;
-            case "GreenOne":
-                if (buttonClick.transform.parent.parent.GetComponent<BoardPosition>().greenPositionOne.transform.childCount > 4)
-                {
-                    ghostToMove = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().greenPositionOne.transform.GetChild(4).gameObject;
-                    previousPosition = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().greenPositionOne;
-                }
-                break;
-            case "GreenTwo":
-                if (buttonClick.transform.parent.parent.GetComponent<BoardPosition>().greenPositionTwo.transform.childCount > 4)
-                {
-                    ghostToMove = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().greenPositionTwo.transform.GetChild(4).gameObject;
-                    previousPosition = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().greenPositionTwo;
-                }
-                break;
-            case "GreenThree":
-                if (buttonClick.transform.parent.parent.GetComponent<BoardPosition>().greenPositionThree.transform.childCount > 4)
-                {
-                    ghostToMove = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().greenPositionThree.transform.GetChild(4).gameObject;
-                    previousPosition = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().greenPositionThree;
-                }
-                break;
-            case "YellowOne":
-                if (buttonClick.transform.parent.parent.GetComponent<BoardPosition>().yellowPositionOne.transform.childCount > 4)
-                {
-                    ghostToMove = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().yellowPositionOne.transform.GetChild(4).gameObject;
-                    previousPosition = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().yellowPositionOne;
-                }
-                break;
-            case "YellowTwo":
-                if (buttonClick.transform.parent.parent.GetComponent<BoardPosition>().yellowPositionTwo.transform.childCount > 4)
-                {
-                    ghostToMove = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().yellowPositionTwo.transform.GetChild(4).gameObject;
-                    previousPosition = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().yellowPositionTwo;
-                }
-                break;
-            case "YellowThree":
-                if (buttonClick.transform.parent.parent.GetComponent<BoardPosition>().yellowPositionThree.transform.childCount > 4)
-                {
-                    ghostToMove = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().yellowPositionThree.transform.GetChild(4).gameObject;
-                    previousPosition = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().yellowPositionThree;
-                }
-                break;
+            switch (chooseenGhost)
+            {
+                case "BlueOne":
+                    if (buttonClick.transform.parent.parent.GetComponent<BoardPosition>().bluePositionOne.transform.childCount > 4)
+                    {
+                        ghostToMove = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().bluePositionOne.transform.GetChild(4).gameObject;
+                        previousPosition = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().bluePositionOne;
+                    }
+                    break;
+                case "BlueTwo":
+                    if (buttonClick.transform.parent.parent.GetComponent<BoardPosition>().bluePositionTwo.transform.childCount > 4)
+                    {
+                        ghostToMove = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().bluePositionTwo.transform.GetChild(4).gameObject;
+                        previousPosition = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().bluePositionTwo;
+                    }
+                    break;
+                case "BlueThree":
+                    if (buttonClick.transform.parent.parent.GetComponent<BoardPosition>().bluePositionThree.transform.childCount > 4)
+                    {
+                        ghostToMove = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().bluePositionThree.transform.GetChild(4).gameObject;
+                        previousPosition = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().bluePositionThree;
+                    }
+                    break;
+                case "RedOne":
+                    if (buttonClick.transform.parent.parent.GetComponent<BoardPosition>().redPositionOne.transform.childCount > 4)
+                    {
+                        ghostToMove = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().redPositionOne.transform.GetChild(4).gameObject;
+                        previousPosition = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().redPositionOne;
+                    }
+                    break;
+                case "RedTwo":
+                    if (buttonClick.transform.parent.parent.GetComponent<BoardPosition>().redPositionTwo.transform.childCount > 4)
+                    {
+                        ghostToMove = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().redPositionTwo.transform.GetChild(4).gameObject;
+                        previousPosition = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().redPositionTwo;
+                    }
+                    break;
+                case "RedThree":
+                    if (buttonClick.transform.parent.parent.GetComponent<BoardPosition>().redPositionThree.transform.childCount > 4)
+                    {
+                        ghostToMove = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().redPositionThree.transform.GetChild(4).gameObject;
+                        previousPosition = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().redPositionThree;
+                    }
+                    break;
+                case "GreenOne":
+                    if (buttonClick.transform.parent.parent.GetComponent<BoardPosition>().greenPositionOne.transform.childCount > 4)
+                    {
+                        ghostToMove = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().greenPositionOne.transform.GetChild(4).gameObject;
+                        previousPosition = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().greenPositionOne;
+                    }
+                    break;
+                case "GreenTwo":
+                    if (buttonClick.transform.parent.parent.GetComponent<BoardPosition>().greenPositionTwo.transform.childCount > 4)
+                    {
+                        ghostToMove = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().greenPositionTwo.transform.GetChild(4).gameObject;
+                        previousPosition = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().greenPositionTwo;
+                    }
+                    break;
+                case "GreenThree":
+                    if (buttonClick.transform.parent.parent.GetComponent<BoardPosition>().greenPositionThree.transform.childCount > 4)
+                    {
+                        ghostToMove = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().greenPositionThree.transform.GetChild(4).gameObject;
+                        previousPosition = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().greenPositionThree;
+                    }
+                    break;
+                case "YellowOne":
+                    if (buttonClick.transform.parent.parent.GetComponent<BoardPosition>().yellowPositionOne.transform.childCount > 4)
+                    {
+                        ghostToMove = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().yellowPositionOne.transform.GetChild(4).gameObject;
+                        previousPosition = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().yellowPositionOne;
+                    }
+                    break;
+                case "YellowTwo":
+                    if (buttonClick.transform.parent.parent.GetComponent<BoardPosition>().yellowPositionTwo.transform.childCount > 4)
+                    {
+                        ghostToMove = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().yellowPositionTwo.transform.GetChild(4).gameObject;
+                        previousPosition = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().yellowPositionTwo;
+                    }
+                    break;
+                case "YellowThree":
+                    if (buttonClick.transform.parent.parent.GetComponent<BoardPosition>().yellowPositionThree.transform.childCount > 4)
+                    {
+                        ghostToMove = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().yellowPositionThree.transform.GetChild(4).gameObject;
+                        previousPosition = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().yellowPositionThree;
+                    }
+                    break;
+            }
         }
         chooseGhost = true;
     }
@@ -244,65 +250,87 @@ public class WindCelestialFlag : MonoBehaviour {
         selectedPosition = false;
         if (ghostToMove != null && canPlace)
         {
-            ghostToMove.transform.SetParent(position.transform);
-            ghostToMove.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
-            ghostToMove.transform.localEulerAngles = new Vector3(90.0f, 0.0f, 180.0f);
-            ghostToMove.transform.localScale = new Vector3(15.0f, 10.0f, 1);
-            ghostToMove.transform.parent.GetComponent<BoxCollider>().enabled = true;
-            ghostToMove.GetComponent<GhostPower>().startPosition = ghostToMove.transform.parent.GetChild(1);
-            ghostToMove.GetComponent<GhostPower>().middlePosition = ghostToMove.transform.parent.GetChild(2);
-            ghostToMove.GetComponent<GhostPower>().endPosition = ghostToMove.transform.parent.GetChild(3);
-            if(namePositionGhost == "One")
+            if (position.transform.childCount > 4)
             {
-                hauntingGhostToMove.transform.parent = ghostToMove.GetComponent<GhostPower>().startPosition;
-                hauntingGhostToMove.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
-            }
-            else if(namePositionGhost == "Two")
-            {
-                hauntingGhostToMove.transform.parent = ghostToMove.GetComponent<GhostPower>().middlePosition;
-                hauntingGhostToMove.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
-            }
-            //Décompte du plateau précédent
-            if (previousPosition.transform.parent.GetComponent<boardColor>().color == "blue")
-            {
-                gm.blueBoard.nbCardOnBoard--;
-            }
-            else if (previousPosition.transform.parent.GetComponent<boardColor>().color == "green")
-            {
-                gm.greenBoard.nbCardOnBoard--;
-            }
-            else if (previousPosition.transform.parent.GetComponent<boardColor>().color == "red")
-            {
-                gm.redBoard.nbCardOnBoard--;
-            }
-            else if (previousPosition.transform.parent.GetComponent<boardColor>().color == "yellow")
-            {
-                gm.yellowBoard.nbCardOnBoard--;
-            }
+                bouddha = position.transform.GetChild(4).gameObject;
+                ghostToMove.transform.SetParent(defausse.transform);
+                ghostToMove.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+                ghostToMove.transform.localEulerAngles = new Vector3(90.0f, 0.0f, 0.0f);
+                bouddhisteTemple.GetComponent<BouddhisteTemple>().numberOfBouddha += 1;
+                bouddha.transform.parent = bouddhisteTemple.transform;
+                bouddha.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+                bouddha.SetActive(false);
+                bouddha = null;
 
-            //Compte sur le nouveau plateau
-            if (position.transform.parent.GetComponent<boardColor>().color == "blue")
-            {
-                gm.blueBoard.nbCardOnBoard++;
+                panelBluePlace.SetActive(false);
+                panelRedPlace.SetActive(false);
+                panelGreenPlace.SetActive(false);
+                panelYellowPlace.SetActive(false);
+                selectedPosition = true;
+                canPlace = false;
             }
-            else if (position.transform.parent.GetComponent<boardColor>().color == "green")
+            else
             {
-                gm.greenBoard.nbCardOnBoard++;
+                ghostToMove.transform.SetParent(position.transform);
+                ghostToMove.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+                ghostToMove.transform.localEulerAngles = new Vector3(90.0f, 0.0f, 180.0f);
+                ghostToMove.transform.localScale = new Vector3(15.0f, 10.0f, 1);
+                ghostToMove.transform.parent.GetComponent<BoxCollider>().enabled = true;
+                ghostToMove.GetComponent<GhostPower>().startPosition = ghostToMove.transform.parent.GetChild(1);
+                ghostToMove.GetComponent<GhostPower>().middlePosition = ghostToMove.transform.parent.GetChild(2);
+                ghostToMove.GetComponent<GhostPower>().endPosition = ghostToMove.transform.parent.GetChild(3);
+                if (namePositionGhost == "One")
+                {
+                    hauntingGhostToMove.transform.parent = ghostToMove.GetComponent<GhostPower>().startPosition;
+                    hauntingGhostToMove.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+                }
+                else if (namePositionGhost == "Two")
+                {
+                    hauntingGhostToMove.transform.parent = ghostToMove.GetComponent<GhostPower>().middlePosition;
+                    hauntingGhostToMove.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+                }
+                //Décompte du plateau précédent
+                if (previousPosition.transform.parent.GetComponent<boardColor>().color == "blue")
+                {
+                    gm.blueBoard.nbCardOnBoard--;
+                }
+                else if (previousPosition.transform.parent.GetComponent<boardColor>().color == "green")
+                {
+                    gm.greenBoard.nbCardOnBoard--;
+                }
+                else if (previousPosition.transform.parent.GetComponent<boardColor>().color == "red")
+                {
+                    gm.redBoard.nbCardOnBoard--;
+                }
+                else if (previousPosition.transform.parent.GetComponent<boardColor>().color == "yellow")
+                {
+                    gm.yellowBoard.nbCardOnBoard--;
+                }
+
+                //Compte sur le nouveau plateau
+                if (position.transform.parent.GetComponent<boardColor>().color == "blue")
+                {
+                    gm.blueBoard.nbCardOnBoard++;
+                }
+                else if (position.transform.parent.GetComponent<boardColor>().color == "green")
+                {
+                    gm.greenBoard.nbCardOnBoard++;
+                }
+                else if (position.transform.parent.GetComponent<boardColor>().color == "red")
+                {
+                    gm.redBoard.nbCardOnBoard++;
+                }
+                else if (position.transform.parent.GetComponent<boardColor>().color == "yellow")
+                {
+                    gm.yellowBoard.nbCardOnBoard++;
+                }
+                panelBluePlace.SetActive(false);
+                panelRedPlace.SetActive(false);
+                panelGreenPlace.SetActive(false);
+                panelYellowPlace.SetActive(false);
+                selectedPosition = true;
+                canPlace = false;
             }
-            else if (position.transform.parent.GetComponent<boardColor>().color == "red")
-            {
-                gm.redBoard.nbCardOnBoard++;
-            }
-            else if (position.transform.parent.GetComponent<boardColor>().color == "yellow")
-            {
-                gm.yellowBoard.nbCardOnBoard++;
-            }
-            panelBluePlace.SetActive(false);
-            panelRedPlace.SetActive(false);
-            panelGreenPlace.SetActive(false);
-            panelYellowPlace.SetActive(false);
-            selectedPosition = true;
-            canPlace = false;
         }
     }
 }

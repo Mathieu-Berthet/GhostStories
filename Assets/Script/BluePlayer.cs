@@ -492,49 +492,75 @@ public class BluePlayer : MonoBehaviour
                         return;
                     }
                 }
-                card.transform.SetParent(position.transform);
-                card.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
-                card.transform.localEulerAngles = new Vector3(90.0f, 0.0f, 180.0f);
-                card.transform.localScale = new Vector3(15.0f, 10.0f, 1);
-                card.SetActive(true);
-                card.transform.parent.GetComponent<BoxCollider>().enabled = true;
-                card.GetComponent<GhostPower>().startPosition = card.transform.parent.GetChild(1);
-                card.GetComponent<GhostPower>().middlePosition = card.transform.parent.GetChild(2);
-                card.GetComponent<GhostPower>().endPosition = card.transform.parent.GetChild(3);
-                if (position.transform.parent.GetComponent<boardColor>().color == "blue")
+                if (position.transform.childCount > 4)
                 {
-                    gm.blueBoard.nbCardOnBoard++;
+                    card.transform.SetParent(defausse.transform);
+                    card.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+                    card.transform.localEulerAngles = new Vector3(90.0f, 0.0f, 0.0f);
+                    bouddhisteTemple.GetComponent<BouddhisteTemple>().numberOfBouddha += 1;
+                    bouddhaOne.transform.parent = bouddhisteTemple.transform;
+                    bouddhaOne.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+                    bouddhaOne.SetActive(false);
+                    bouddhaOne = null;
+
+                    panelBluePlace.SetActive(false);
+                    panelRedPlace.SetActive(false);
+                    panelGreenPlace.SetActive(false);
+                    panelYellowPlace.SetActive(false);
+                    textInfo.gameObject.SetActive(false);
+                    drawedCard.gameObject.SetActive(false);
+                    gameObject.GetComponent<Deplacement>().enabled = true;
+                    textInfoPhase.gameObject.SetActive(true);
+                    useTilePower = false;
+                    canLaunchBlackDice = true;
+                    hasDraw = false;
                 }
-                else if (position.transform.parent.GetComponent<boardColor>().color == "green")
+                else
                 {
-                    gm.greenBoard.nbCardOnBoard++;
-                }
-                else if (position.transform.parent.GetComponent<boardColor>().color == "red")
-                {
-                    gm.redBoard.nbCardOnBoard++;
-                }
-                else if (position.transform.parent.GetComponent<boardColor>().color == "yellow")
-                {
-                    gm.yellowBoard.nbCardOnBoard++;
-                }
-                panelBluePlace.SetActive(false);
-                panelRedPlace.SetActive(false);
-                panelGreenPlace.SetActive(false);
-                panelYellowPlace.SetActive(false);
-                textInfo.gameObject.SetActive(false);
-                drawedCard.gameObject.SetActive(false);
-                gameObject.GetComponent<Deplacement>().enabled = true;
-                textInfoPhase.gameObject.SetActive(true);
-                useTilePower = false;
-                canLaunchBlackDice = true;
-                hasDraw = false;
-                if (card.GetComponent<Ghost>().entryPower)
-                {
-                    if (card.GetComponent<Ghost>().hasDrawAGhostPower)
+                    card.transform.SetParent(position.transform);
+                    card.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+                    card.transform.localEulerAngles = new Vector3(90.0f, 0.0f, 180.0f);
+                    card.transform.localScale = new Vector3(15.0f, 10.0f, 1);
+                    card.SetActive(true);
+                    card.transform.parent.GetComponent<BoxCollider>().enabled = true;
+                    card.GetComponent<GhostPower>().startPosition = card.transform.parent.GetChild(1);
+                    card.GetComponent<GhostPower>().middlePosition = card.transform.parent.GetChild(2);
+                    card.GetComponent<GhostPower>().endPosition = card.transform.parent.GetChild(3);
+                    if (position.transform.parent.GetComponent<boardColor>().color == "blue")
                     {
-                        useGhostPower = true;
+                        gm.blueBoard.nbCardOnBoard++;
                     }
-                    card.GetComponent<Ghost>().UseEntryPower(gameObject);
+                    else if (position.transform.parent.GetComponent<boardColor>().color == "green")
+                    {
+                        gm.greenBoard.nbCardOnBoard++;
+                    }
+                    else if (position.transform.parent.GetComponent<boardColor>().color == "red")
+                    {
+                        gm.redBoard.nbCardOnBoard++;
+                    }
+                    else if (position.transform.parent.GetComponent<boardColor>().color == "yellow")
+                    {
+                        gm.yellowBoard.nbCardOnBoard++;
+                    }
+                    panelBluePlace.SetActive(false);
+                    panelRedPlace.SetActive(false);
+                    panelGreenPlace.SetActive(false);
+                    panelYellowPlace.SetActive(false);
+                    textInfo.gameObject.SetActive(false);
+                    drawedCard.gameObject.SetActive(false);
+                    gameObject.GetComponent<Deplacement>().enabled = true;
+                    textInfoPhase.gameObject.SetActive(true);
+                    useTilePower = false;
+                    canLaunchBlackDice = true;
+                    hasDraw = false;
+                    if (card.GetComponent<Ghost>().entryPower)
+                    {
+                        if (card.GetComponent<Ghost>().hasDrawAGhostPower)
+                        {
+                            useGhostPower = true;
+                        }
+                        card.GetComponent<Ghost>().UseEntryPower(gameObject);
+                    }
                 }
             }
             if (state == STATE_GAME.STATE_DRAW)
@@ -1518,7 +1544,7 @@ public class BluePlayer : MonoBehaviour
         {
             if (gm.blueBoard.gameObject.transform.GetChild(i).childCount >= 5)
             {
-               if(gm.blueBoard.gameObject.transform.GetChild(i).GetChild(4).GetComponent<Ghost>().inGamePower)
+               if(gm.blueBoard.gameObject.transform.GetChild(i).GetChild(4).GetComponent<Ghost>().inGamePower && !gm.blueBoard.gameObject.transform.GetChild(i).GetChild(4).name.Contains("Bouddha"))
                 {
                     gm.blueBoard.gameObject.transform.GetChild(i).GetChild(4).GetComponent<Ghost>().UseInGamePower(gameObject);
                 }
@@ -2756,6 +2782,7 @@ public class BluePlayer : MonoBehaviour
                 }
                 else
                 {
+                    NbBouddha -= 1;
                     bouddhaOne.transform.parent = positionTwo.transform;
                     bouddhaOne.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
                     bouddhaOne.SetActive(true);
