@@ -70,6 +70,13 @@ public class BluePlayer : MonoBehaviour
     public GameObject windCelestialFlag;
     public GameObject nightTower;
 
+
+    public GameObject positionOne;
+    public GameObject positionTwo;
+
+    public GameObject bouddhaOne;
+    public GameObject bouddhaTwo;
+
     public string tileName;
     public string ghostName;
     public string ghostName2;
@@ -328,6 +335,10 @@ public class BluePlayer : MonoBehaviour
         {
             StartCoroutine(gameObject.GetComponent<Deplacement>().PlayerDeplacement());
         }
+        if(Input.GetKeyDown(KeyCode.C))
+        {
+            PlaceBouddha();
+        }
 
         RaycastHit hitt;
         if (Physics.Raycast(transform.position, Vector3.down, out hitt, 1.0f))
@@ -411,6 +422,7 @@ public class BluePlayer : MonoBehaviour
         }
 
         checkGhost();
+        checkPosition();
     }
     
     public void DrawAGhost()
@@ -626,8 +638,11 @@ public class BluePlayer : MonoBehaviour
                     break;
                 case "TempleBouddhiste":
                     Debug.Log("Temple Bouddhiste");
-                    textInfoTuile.text = "Cette tuile n'as pas encore d'effet";
-                    //bouddhisteTemple.GetComponent<BouddhisteTemple>().getBouddha();
+                    textInfoTuile.text = "Temple Bouddhiste";
+                    gameObject.GetComponent<Deplacement>().enabled = false;
+                    canLaunchDice = false;
+                    canLaunchBlackDice = false;
+                    bouddhisteTemple.GetComponent<BouddhisteTemple>().getBouddha(gameObject);
                     break;
                 default:
                     break;
@@ -890,6 +905,89 @@ public class BluePlayer : MonoBehaviour
         }
     }
 
+    public void checkPosition()
+    {
+        RaycastHit hitXdirection;
+        RaycastHit hitZdirection;
+        if (Physics.Raycast(transform.position, Vector3.right, out hitXdirection, 1.5f) && Physics.Raycast(transform.position, Vector3.back, out hitZdirection, 1.5f))
+        {
+            Debug.DrawRay(transform.position, Vector3.right, Color.blue);
+            Debug.DrawRay(transform.position, Vector3.forward, Color.red);
+            Debug.DrawRay(transform.position, Vector3.left, Color.blue);
+            Debug.DrawRay(transform.position, Vector3.back, Color.red);
+            positionOne = hitXdirection.collider.gameObject;
+            positionTwo = hitZdirection.collider.gameObject;
+        }
+        else if (Physics.Raycast(transform.position, Vector3.back, out hitZdirection, 1.5f) && Physics.Raycast(transform.position, Vector3.left, out hitXdirection, 1.5f))
+        {
+            Debug.DrawRay(transform.position, Vector3.right, Color.blue);
+            Debug.DrawRay(transform.position, Vector3.forward, Color.red);
+            Debug.DrawRay(transform.position, Vector3.left, Color.blue);
+            Debug.DrawRay(transform.position, Vector3.back, Color.red);
+            positionOne = hitXdirection.collider.gameObject;
+            positionTwo = hitZdirection.collider.gameObject;
+        }
+        else if (Physics.Raycast(transform.position, Vector3.left, out hitXdirection, 1.5f) && Physics.Raycast(transform.position, Vector3.forward, out hitZdirection, 1.5f))
+        {
+            Debug.DrawRay(transform.position, Vector3.right, Color.blue);
+            Debug.DrawRay(transform.position, Vector3.forward, Color.red);
+            Debug.DrawRay(transform.position, Vector3.left, Color.blue);
+            Debug.DrawRay(transform.position, Vector3.back, Color.red);
+            positionOne = hitXdirection.collider.gameObject;
+            positionTwo = hitZdirection.collider.gameObject;
+        }
+        else if (Physics.Raycast(transform.position, Vector3.forward, out hitZdirection, 1.5f) && Physics.Raycast(transform.position, Vector3.right, out hitXdirection, 1.5f))
+        {
+            Debug.DrawRay(transform.position, Vector3.right, Color.blue);
+            Debug.DrawRay(transform.position, Vector3.forward, Color.red);
+            Debug.DrawRay(transform.position, Vector3.left, Color.blue);
+            Debug.DrawRay(transform.position, Vector3.back, Color.red);
+            positionOne = hitXdirection.collider.gameObject;
+            positionTwo = hitZdirection.collider.gameObject;
+        }
+        else if (Physics.Raycast(transform.position, Vector3.right, out hitXdirection, 1.5f))
+        {
+            Debug.DrawRay(transform.position, Vector3.right, Color.blue);
+            Debug.DrawRay(transform.position, Vector3.forward, Color.red);
+            Debug.DrawRay(transform.position, Vector3.left, Color.blue);
+            Debug.DrawRay(transform.position, Vector3.back, Color.red);
+            positionOne = hitXdirection.collider.gameObject;
+            positionTwo = null;
+        }
+        else if (Physics.Raycast(transform.position, Vector3.back, out hitZdirection, 1.5f))
+        {
+            Debug.DrawRay(transform.position, Vector3.right, Color.blue);
+            Debug.DrawRay(transform.position, Vector3.forward, Color.red);
+            Debug.DrawRay(transform.position, Vector3.left, Color.blue);
+            Debug.DrawRay(transform.position, Vector3.back, Color.red);
+            positionOne = hitZdirection.collider.gameObject;
+            positionTwo = null;
+        }
+        else if (Physics.Raycast(transform.position, Vector3.left, out hitXdirection, 1.5f))
+        {
+            Debug.DrawRay(transform.position, Vector3.right, Color.blue);
+            Debug.DrawRay(transform.position, Vector3.forward, Color.red);
+            Debug.DrawRay(transform.position, Vector3.left, Color.blue);
+            Debug.DrawRay(transform.position, Vector3.back, Color.red);
+            positionOne = hitXdirection.collider.gameObject;
+            positionTwo = null;
+        }
+        else if (Physics.Raycast(transform.position, Vector3.forward, out hitZdirection, 1.5f))
+        {
+            Debug.DrawRay(transform.position, Vector3.right, Color.blue);
+            Debug.DrawRay(transform.position, Vector3.forward, Color.red);
+            Debug.DrawRay(transform.position, Vector3.left, Color.blue);
+            Debug.DrawRay(transform.position, Vector3.back, Color.red);
+            positionOne = hitZdirection.collider.gameObject;
+            positionTwo = null;
+        }
+        else
+        {
+            positionOne = null;
+            positionTwo = null;
+        }
+    }
+
     public void checkGhost()
     {
         RaycastHit hitXdirection;
@@ -898,13 +996,10 @@ public class BluePlayer : MonoBehaviour
         {
             if (hitXdirection.collider.transform.childCount > 4 && hitZdirection.collider.transform.childCount > 4)
             {
-                //tileName = hitt.transform.gameObject.name;
                 Debug.DrawRay(transform.position, Vector3.right, Color.blue);
                 Debug.DrawRay(transform.position, Vector3.forward, Color.red);
                 Debug.DrawRay(transform.position, Vector3.left, Color.blue);
                 Debug.DrawRay(transform.position, Vector3.back, Color.red);
-                /*ghostName = hitXdirection.collider.transform.GetChild(0).name;
-                ghostName2 = hitZdirection.collider.transform.GetChild(0).name;*/
                 explosion = hitXdirection.collider.transform.GetChild(0).gameObject;
                 explosion2 = hitZdirection.collider.transform.GetChild(0).gameObject;
                 ghost1 = hitXdirection.collider.transform.GetChild(4).gameObject;
@@ -915,13 +1010,10 @@ public class BluePlayer : MonoBehaviour
         {
             if (hitXdirection.collider.transform.childCount > 4 && hitZdirection.collider.transform.childCount > 4)
             {
-                //tileName = hitt.transform.gameObject.name;
                 Debug.DrawRay(transform.position, Vector3.right, Color.blue);
                 Debug.DrawRay(transform.position, Vector3.forward, Color.red);
                 Debug.DrawRay(transform.position, Vector3.left, Color.blue);
                 Debug.DrawRay(transform.position, Vector3.back, Color.red);
-                /*ghostName = hitXdirection.collider.transform.GetChild(0).name;
-                ghostName2 = hitZdirection.collider.transform.GetChild(0).name;*/
                 explosion = hitXdirection.collider.transform.GetChild(0).gameObject;
                 explosion2 = hitZdirection.collider.transform.GetChild(0).gameObject;
                 ghost1 = hitXdirection.collider.transform.GetChild(4).gameObject;
@@ -932,13 +1024,10 @@ public class BluePlayer : MonoBehaviour
         {
             if (hitXdirection.collider.transform.childCount > 4 && hitZdirection.collider.transform.childCount > 4)
             {
-                //tileName = hitt.transform.gameObject.name;
                 Debug.DrawRay(transform.position, Vector3.right, Color.blue);
                 Debug.DrawRay(transform.position, Vector3.forward, Color.red);
                 Debug.DrawRay(transform.position, Vector3.left, Color.blue);
                 Debug.DrawRay(transform.position, Vector3.back, Color.red);
-                /*ghostName = hitXdirection.collider.transform.GetChild(0).name;
-                ghostName2 = hitZdirection.collider.transform.GetChild(0).name;*/
                 explosion = hitXdirection.collider.transform.GetChild(0).gameObject;
                 explosion2 = hitZdirection.collider.transform.GetChild(0).gameObject;
                 ghost1 = hitXdirection.collider.transform.GetChild(4).gameObject;
@@ -949,13 +1038,10 @@ public class BluePlayer : MonoBehaviour
         {
             if (hitXdirection.collider.transform.childCount > 4 && hitZdirection.collider.transform.childCount > 4)
             {
-                //tileName = hitt.transform.gameObject.name;
                 Debug.DrawRay(transform.position, Vector3.right, Color.blue);
                 Debug.DrawRay(transform.position, Vector3.forward, Color.red);
                 Debug.DrawRay(transform.position, Vector3.left, Color.blue);
                 Debug.DrawRay(transform.position, Vector3.back, Color.red);
-                /*ghostName = hitXdirection.collider.transform.GetChild(0).name;
-                ghostName2 = hitZdirection.collider.transform.GetChild(0).name;*/
                 explosion = hitXdirection.collider.transform.GetChild(0).gameObject;
                 explosion2 = hitZdirection.collider.transform.GetChild(0).gameObject;
                 ghost1 = hitXdirection.collider.transform.GetChild(4).gameObject;
@@ -966,12 +1052,10 @@ public class BluePlayer : MonoBehaviour
         {
             if (hitXdirection.collider.transform.childCount > 4)
             {
-                //tileName = hitt.transform.gameObject.name;
                 Debug.DrawRay(transform.position, Vector3.right, Color.blue);
                 Debug.DrawRay(transform.position, Vector3.forward, Color.red);
                 Debug.DrawRay(transform.position, Vector3.left, Color.blue);
                 Debug.DrawRay(transform.position, Vector3.back, Color.red);
-                //ghostName = hitXdirection.collider.transform.GetChild(0).name;
                 explosion = hitXdirection.collider.transform.GetChild(0).gameObject;
                 ghost1 = hitXdirection.collider.transform.GetChild(4).gameObject;
             }
@@ -980,12 +1064,10 @@ public class BluePlayer : MonoBehaviour
         {
             if (hitZdirection.collider.transform.childCount > 4)
             {
-                //tileName = hitt.transform.gameObject.name;
                 Debug.DrawRay(transform.position, Vector3.right, Color.blue);
                 Debug.DrawRay(transform.position, Vector3.forward, Color.red);
                 Debug.DrawRay(transform.position, Vector3.left, Color.blue);
                 Debug.DrawRay(transform.position, Vector3.back, Color.red);
-                //ghostName = hitZdirection.collider.transform.GetChild(0).name;
                 explosion = hitZdirection.collider.transform.GetChild(0).gameObject;
                 ghost1 = hitZdirection.collider.transform.GetChild(4).gameObject;
             }
@@ -998,7 +1080,6 @@ public class BluePlayer : MonoBehaviour
                 Debug.DrawRay(transform.position, Vector3.forward, Color.red);
                 Debug.DrawRay(transform.position, Vector3.left, Color.blue);
                 Debug.DrawRay(transform.position, Vector3.back, Color.red);
-                //ghostName = hitXdirection.collider.transform.GetChild(0).name;
                 explosion = hitXdirection.collider.transform.GetChild(0).gameObject;
                 ghost1 = hitXdirection.collider.transform.GetChild(4).gameObject;
             }
@@ -1011,7 +1092,6 @@ public class BluePlayer : MonoBehaviour
                 Debug.DrawRay(transform.position, Vector3.forward, Color.red);
                 Debug.DrawRay(transform.position, Vector3.left, Color.blue);
                 Debug.DrawRay(transform.position, Vector3.back, Color.red);
-                //ghostName = hitZdirection.collider.transform.GetChild(0).name;
                 explosion = hitZdirection.collider.transform.GetChild(0).gameObject;
                 ghost1 = hitZdirection.collider.transform.GetChild(4).gameObject;
             }
@@ -2652,6 +2732,53 @@ public class BluePlayer : MonoBehaviour
                 break;
             default:
                 break;
+        }
+    }
+
+    public void PlaceBouddha()
+    {
+        if (NbBouddha > 0)
+        {
+            if (positionOne == null && positionTwo == null)
+            {
+                textInfo.text = "Vous êtes trop loin d'une case. Vous ne pouvez pas placer de bouddha";
+            }
+            else if (positionOne != null && positionTwo != null)
+            {
+                //Demander un choix si qu'un bouddha. Sinon placer les 2 ? 
+            }
+            else if (positionTwo != null && positionOne == null)
+            {
+                //Verif 
+                if (positionTwo.transform.childCount > 4)
+                {
+                    textInfo.text = "Il y a un fantôme sur cette case, vous ne pouvez pas placer de bouddha";
+                }
+                else
+                {
+                    bouddhaOne.transform.parent = positionTwo.transform;
+                    bouddhaOne.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+                    bouddhaOne.SetActive(true);
+                }
+            }
+            else if (positionOne != null && positionTwo == null)
+            {
+                //Verif
+                if (positionOne.transform.childCount > 4)
+                {
+                    textInfo.text = "Il y a un fantôme sur cette case, vous ne pouvez pas placer de bouddha";
+                }
+                else
+                {
+                    bouddhaOne.transform.parent = positionOne.transform;
+                    bouddhaOne.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+                    bouddhaOne.SetActive(true);
+                }
+            }
+        }
+        else
+        {
+            textInfo.text = "Vous n'avez pas de bouddha, pourquoi voulez vous en placer ?";
         }
     }
 }

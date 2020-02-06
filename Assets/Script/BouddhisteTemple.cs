@@ -8,6 +8,9 @@ public class BouddhisteTemple : MonoBehaviour {
     private int numberOfBouddha = 2;
     public bool hauntedTile = false;
 
+    public GameObject bouddhaFirst;
+    public GameObject bouddhaSecond;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -27,10 +30,17 @@ public class BouddhisteTemple : MonoBehaviour {
         //Augementer la reserve de bouddha du joueur de 1 ou 2
         if (player.name == "BluePlayer")
         {
+            numberOfBouddha -= 1;
             player.GetComponent<BluePlayer>().NbBouddha += 1;
-            player.GetComponent<BluePlayer>().state = BluePlayer.STATE_GAME.STATE_DRAW;
-            player.GetComponent<BluePlayer>().gm.turn++;
+            player.GetComponent<BluePlayer>().bouddhaOne = bouddhaFirst;
+            bouddhaFirst.transform.parent = player.transform;
+            bouddhaFirst.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+            bouddhaFirst.SetActive(false);
+            //Faire récupérer le 2e si pouvoir x2
             player.GetComponent<BluePlayer>().update = true;
+            player.GetComponent<Deplacement>().enabled = true;
+            player.GetComponent<BluePlayer>().canLaunchDice = true;
+            player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
             //Test avec son pouvoir pour augmenter de 2 si il l'a
         }
         else if (player.name == "GreenPlayer")

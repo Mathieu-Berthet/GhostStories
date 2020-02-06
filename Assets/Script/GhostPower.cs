@@ -128,7 +128,7 @@ public class GhostPower : MonoBehaviour {
     {
         hasHauntedTile = false;
         RaycastHit hitTiledirection;
-        gameObject.transform.parent.GetComponent<BoxCollider>().enabled = false;
+        //gameObject.transform.parent.GetComponent<BoxCollider>().enabled = false;
         gameObject.transform.parent.GetChild(1).GetComponent<CapsuleCollider>().enabled = false;
         gameObject.transform.parent.GetChild(2).GetComponent<CapsuleCollider>().enabled = false;
         gameObject.transform.parent.GetChild(3).GetComponent<CapsuleCollider>().enabled = false;

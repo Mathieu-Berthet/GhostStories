@@ -286,7 +286,7 @@ BoxCollider:
   m_GameObject: {fileID: 9783639}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 10.000002, y: 20, z: 10.000002}
   m_Center: {x: 0, y: 12.5, z: 0}
@@ -4484,7 +4484,7 @@ BoxCollider:
   m_GameObject: {fileID: 326308552}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 10.000002, y: 20, z: 10.000002}
   m_Center: {x: 0, y: 12.5, z: 0}
@@ -7311,7 +7311,7 @@ BoxCollider:
   m_GameObject: {fileID: 570049726}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 10.000002, y: 20, z: 10.000002}
   m_Center: {x: 0, y: 12.5, z: 0}
@@ -8613,7 +8613,7 @@ BoxCollider:
   m_GameObject: {fileID: 646876189}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 10.000002, y: 20, z: 10.000002}
   m_Center: {x: 0, y: 12.5, z: 0}
@@ -9931,7 +9931,7 @@ BoxCollider:
   m_GameObject: {fileID: 772431112}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 10.000002, y: 20, z: 10.000002}
   m_Center: {x: 0, y: 12.5, z: 0}
@@ -11059,6 +11059,10 @@ MonoBehaviour:
   witchHut: {fileID: 233401638}
   windCelestialFlag: {fileID: 1335580315}
   nightTower: {fileID: 1585650252}
+  positionOne: {fileID: 0}
+  positionTwo: {fileID: 0}
+  bouddhaOne: {fileID: 0}
+  bouddhaTwo: {fileID: 0}
   tileName: 
   ghostName: 
   ghostName2: 
@@ -11643,7 +11647,7 @@ BoxCollider:
   m_GameObject: {fileID: 937504354}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 10.000002, y: 20, z: 10.000002}
   m_Center: {x: 0, y: 12.5, z: 0}
@@ -11979,7 +11983,7 @@ BoxCollider:
   m_GameObject: {fileID: 953267858}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 10.000002, y: 20, z: 10.000002}
   m_Center: {x: 0, y: 12.5, z: 0}
@@ -12263,7 +12267,7 @@ BoxCollider:
   m_GameObject: {fileID: 995317037}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 10.000002, y: 20, z: 10.000002}
   m_Center: {x: 0, y: 12.5, z: 0}
@@ -12501,7 +12505,7 @@ BoxCollider:
   m_GameObject: {fileID: 1036858072}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 10.000002, y: 20, z: 10.000002}
   m_Center: {x: 0, y: 12.5, z: 0}
@@ -16782,8 +16786,11 @@ MonoBehaviour:
   chooseGhost: 0
   selectedPosition: 0
   playerToMove: 
+  namePositionGhost: 
   panelBoardPlayer: {fileID: 1871381456}
   playerChoose: {fileID: 0}
+  hauntingGhostToMove: {fileID: 0}
+  canPlace: 0
   panelBluePlace: {fileID: 243812752}
   panelRedPlace: {fileID: 2078919588}
   panelGreenPlace: {fileID: 18601231}
@@ -18447,7 +18454,7 @@ BoxCollider:
   m_GameObject: {fileID: 1448923215}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 10.000002, y: 20, z: 10.000002}
   m_Center: {x: 0, y: 12.5, z: 0}
@@ -20721,7 +20728,7 @@ BoxCollider:
   m_GameObject: {fileID: 1623060065}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 10.000002, y: 20, z: 10.000002}
   m_Center: {x: 0, y: 12.5, z: 0}
@@ -21761,7 +21768,7 @@ BoxCollider:
   m_GameObject: {fileID: 1715530345}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 10.000002, y: 20, z: 10.000002}
   m_Center: {x: 0, y: 12.5, z: 0}
@@ -23889,6 +23896,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberOfBouddha: 2
   hauntedTile: 0
+  bouddhaFirst: {fileID: 1624371096}
+  bouddhaSecond: {fileID: 843489408}
 --- !u!23 &1907267168
 MeshRenderer:
   m_ObjectHideFlags: 0
