@@ -81,57 +81,67 @@ public class Deplacement : MonoBehaviour {
                     player.transform.localPosition = new Vector3(0, 8.25f, 0);
                     player.transform.parent = null;
                     player.GetComponent<BluePlayer>().state = BluePlayer.STATE_GAME.STATE_PLAYER;
+                    player.GetComponent<BluePlayer>().alreadyMove = true;
                     break;
                 case "Hutte de la Sorciere":
                     player.transform.parent = player.GetComponent<BluePlayer>().bluePosHut;
                     player.transform.localPosition = new Vector3(0, 8.25f, 0);
                     player.transform.parent = null;
                     player.GetComponent<BluePlayer>().state = BluePlayer.STATE_GAME.STATE_PLAYER;
+                    player.GetComponent<BluePlayer>().alreadyMove = true;
                     break;
                 case "Echoppe de L'herboriste":
                     player.transform.parent = player.GetComponent<BluePlayer>().bluePosStall;
                     player.transform.localPosition = new Vector3(0, 8.25f, 0);
                     player.transform.parent = null;
                     player.GetComponent<BluePlayer>().state = BluePlayer.STATE_GAME.STATE_PLAYER;
+                    player.GetComponent<BluePlayer>().alreadyMove = true;
                     break;
                 case "Autel Taoiste":
                     player.transform.parent = player.GetComponent<BluePlayer>().bluePosAutel;
                     player.transform.localPosition = new Vector3(0, 8.25f, 0);
                     player.transform.parent = null;
                     player.GetComponent<BluePlayer>().state = BluePlayer.STATE_GAME.STATE_PLAYER;
+                    player.GetComponent<BluePlayer>().alreadyMove = true;
                     break;
                 case "Cimetiere":
                     player.transform.parent = player.GetComponent<BluePlayer>().bluePosGraveyard;
                     player.transform.localPosition = new Vector3(0, 8.25f, 0);
                     player.transform.parent = null;
                     player.GetComponent<BluePlayer>().state = BluePlayer.STATE_GAME.STATE_PLAYER;
+                    player.GetComponent<BluePlayer>().alreadyMove = true;
                     break;
                 case "Pavillon du Vent Celeste":
                     player.transform.parent = player.GetComponent<BluePlayer>().bluePosPavillon;
                     player.transform.localPosition = new Vector3(0, 8.25f, 0);
                     player.transform.parent = null;
                     player.GetComponent<BluePlayer>().state = BluePlayer.STATE_GAME.STATE_PLAYER;
+                    player.GetComponent<BluePlayer>().alreadyMove = true;
                     break;
                 case "Tour du Veilleur de Nuit":
                     player.transform.parent = player.GetComponent<BluePlayer>().bluePosTower;
                     player.transform.localPosition = new Vector3(0, 8.25f, 0);
                     player.transform.parent = null;
                     player.GetComponent<BluePlayer>().state = BluePlayer.STATE_GAME.STATE_PLAYER;
+                    player.GetComponent<BluePlayer>().alreadyMove = true;
                     break;
                 case "Cercle de priere":
                     player.transform.parent = player.GetComponent<BluePlayer>().bluePosCircle;
                     player.transform.localPosition = new Vector3(0, 8.25f, 0);
                     player.transform.parent = null;
                     player.GetComponent<BluePlayer>().state = BluePlayer.STATE_GAME.STATE_PLAYER;
+                    player.GetComponent<BluePlayer>().alreadyMove = true;
                     break;
                 case "Temple Bouddhiste":
                     player.transform.parent = player.GetComponent<BluePlayer>().bluePosTemple;
                     player.transform.localPosition = new Vector3(0, 8.25f, 0);
                     player.transform.parent = null;
                     player.GetComponent<BluePlayer>().state = BluePlayer.STATE_GAME.STATE_PLAYER;
+                    player.GetComponent<BluePlayer>().alreadyMove = true;
                     break;
                 case "Rester sur la tuile":
                     player.GetComponent<BluePlayer>().state = BluePlayer.STATE_GAME.STATE_PLAYER;
+                    player.GetComponent<BluePlayer>().alreadyMove = true;
                     break;
                 default:
                     break;

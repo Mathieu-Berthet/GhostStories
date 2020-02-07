@@ -80,7 +80,6 @@ public class GhostPower : MonoBehaviour {
         //Relancer la pioche
         if (player.name == "BluePlayer")
         {
-            //player.GetComponent<BluePlayer>().state = BluePlayer.STATE_GAME.STATE_DRAW;
             player.GetComponent<BluePlayer>().DrawAGhost();
         }
         else if (player.name == "RedPlayer")

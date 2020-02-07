@@ -121,6 +121,7 @@ public class BluePlayer : MonoBehaviour
     public Text textNbBouddha;
     public bool update;
 
+    public bool alreadyMove;
     public GameObject explosion;
     public GameObject explosion2;
 
@@ -314,6 +315,7 @@ public class BluePlayer : MonoBehaviour
         canLaunchBlackDice = true;
         useTilePower = false;
         stop = false;
+        alreadyMove = false;
         updateUI();
     }
 	
@@ -566,7 +568,14 @@ public class BluePlayer : MonoBehaviour
             }
             if (state == STATE_GAME.STATE_DRAW)
             {
-                state = STATE_GAME.STATE_MOVE;
+                if (!alreadyMove)
+                {
+                    state = STATE_GAME.STATE_MOVE;
+                }
+                else
+                {
+                    state = STATE_GAME.STATE_PLAYER;
+                }
             }
         }
     }
@@ -888,7 +897,6 @@ public class BluePlayer : MonoBehaviour
                         ghost2.GetComponent<Ghost>().ReduceLife();
                         Attack(ghost2);
                         yield return new WaitForSeconds(0.5f);
-                        gameObject.GetComponent<Deplacement>().enabled = true;
                     }
                     else
                     {
@@ -900,7 +908,6 @@ public class BluePlayer : MonoBehaviour
                         ghost1.GetComponent<Ghost>().ReduceLife();
                         Attack(ghost1);
                         yield return new WaitForSeconds(0.5f);
-                        gameObject.GetComponent<Deplacement>().enabled = true;
                     }
                 }
                 else if (ghost1 == null && ghost2 != null)
@@ -908,14 +915,12 @@ public class BluePlayer : MonoBehaviour
                     ghost2.GetComponent<Ghost>().ReduceLife();
                     Attack(ghost2);
                     yield return new WaitForSeconds(0.5f);
-                    gameObject.GetComponent<Deplacement>().enabled = true;
                 }
                 else if (ghost1 != null && ghost2 == null)
                 {
                     ghost1.GetComponent<Ghost>().ReduceLife();
                     Attack(ghost1);
                     yield return new WaitForSeconds(0.5f);
-                    gameObject.GetComponent<Deplacement>().enabled = true;
                 }
             }
             yield return new WaitForSeconds(0.5f);
@@ -925,9 +930,8 @@ public class BluePlayer : MonoBehaviour
             nbYellowFace = 0;
             nbGreenFace = 0;
             canLaunchDice = true;
+            canLaunchBlackDice = true;
             gameObject.GetComponent<Deplacement>().enabled = true;
-            state = STATE_GAME.STATE_DRAW;
-            gm.turn++;
             updateUI();
         }
     }
@@ -1537,6 +1541,7 @@ public class BluePlayer : MonoBehaviour
     {
         state = STATE_GAME.STATE_GHOSTPOWER;
         gm.turn++;
+        alreadyMove = false;
         updateUI();
     }
 
