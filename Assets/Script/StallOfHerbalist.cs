@@ -6,12 +6,6 @@ using UnityEngine.UI;
 public class StallOfHerbalist : MonoBehaviour
 {
     public GameManager gm;
-    //private StockOfToken tokenStock;
-    public Text infoStall;
-    public Text infos;
-
-    public bool hauntedTile = false;
-    public int nbDiceHerbalist = 2;
 
     [SerializeField]
     private GameObject dice;
@@ -19,9 +13,18 @@ public class StallOfHerbalist : MonoBehaviour
     private GameObject diceOne;
     private GameObject diceTwo;
 
+    [SerializeField]
+    private CubeScript cube;
+
+    public Text infoStall;
+    public Text infos;
+
+    public bool hauntedTile = false;    
+
     public string resultDiceOne;
     public string resultDiceTwo;
 
+    public int nbDiceHerbalist = 2;
     public int nbRedFace;
     public int nbBlueFace;
     public int nbYellowFace;
@@ -29,9 +32,6 @@ public class StallOfHerbalist : MonoBehaviour
     public int nbWhiteFace;
     public int nbBlackFace;
 
-
-    [SerializeField]
-    private CubeScript cube;
     // Use this for initialization
     void Start ()
     {
@@ -232,7 +232,6 @@ public class StallOfHerbalist : MonoBehaviour
                 yield return new WaitForSeconds(1.0f);
             }
 
-            //yield return new WaitForSeconds(2.0f);
             gm.panelButtonChoice.SetActive(false);
             //Attribution des jetons
             int nbBlueTokenToGive= 0;

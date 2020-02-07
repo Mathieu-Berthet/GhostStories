@@ -3303,18 +3303,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcf3c4f9162069f4dbe34a6c8f27b05c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hauntedTile: 0
+  gm: {fileID: 0}
   ghostToKill: {fileID: 0}
   defausse: {fileID: 54337049}
-  chooseenGhost: 
-  choose: 0
   panelBluePlace: {fileID: 243812752}
   panelRedPlace: {fileID: 2078919588}
   panelGreenPlace: {fileID: 18601231}
   panelYellowPlace: {fileID: 111140190}
   board: {fileID: 1334380936}
   infos: {fileID: 1662648799}
-  gm: {fileID: 0}
+  chooseenGhost: 
+  hauntedTile: 0
+  choose: 0
 --- !u!23 &233401640
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3817,6 +3817,82 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 243868415}
+--- !u!1 &250672008
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 250672009}
+  - component: {fileID: 250672011}
+  - component: {fileID: 250672010}
+  m_Layer: 5
+  m_Name: TextBouddha
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &250672009
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 250672008}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 10, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1134883029}
+  m_RootOrder: 18
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 323, y: -305}
+  m_SizeDelta: {x: 120, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &250672010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 250672008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 20
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 2
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'x 0
+
+'
+--- !u!222 &250672011
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 250672008}
 --- !u!1 &253676266
 GameObject:
   m_ObjectHideFlags: 0
@@ -5508,11 +5584,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa4bf2dd535a32c448784b6cc2a863be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hauntedTile: 0
   gm: {fileID: 0}
+  playerSave: {fileID: 0}
   infoHouse: {fileID: 1179219311}
   infos: {fileID: 1662648799}
-  playerSave: {fileID: 0}
+  hauntedTile: 0
 --- !u!23 &416534315
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -11091,6 +11167,7 @@ MonoBehaviour:
   textNbTokenPower: {fileID: 736988357}
   textNbTokenYinYangBlue: {fileID: 1574852739}
   textNbQI: {fileID: 880454822}
+  textNbBouddha: {fileID: 250672010}
   update: 0
   explosion: {fileID: 0}
   explosion2: {fileID: 0}
@@ -13759,7 +13836,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1125057353
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13898,7 +13975,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1134883029
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13927,6 +14004,8 @@ RectTransform:
   - {fileID: 736988356}
   - {fileID: 1574852738}
   - {fileID: 416275755}
+  - {fileID: 250672009}
+  - {fileID: 1140153537}
   m_Father: {fileID: 1334380935}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -14036,6 +14115,80 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1139849606}
+--- !u!1 &1140153536
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1140153537}
+  - component: {fileID: 1140153539}
+  - component: {fileID: 1140153538}
+  m_Layer: 5
+  m_Name: TextTitleBouddha
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1140153537
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1140153536}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 10, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1134883029}
+  m_RootOrder: 19
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -658, y: -300}
+  m_SizeDelta: {x: 60, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1140153538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1140153536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 0
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Bouddha
+--- !u!222 &1140153539
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1140153536}
 --- !u!1 &1143664957
 GameObject:
   m_ObjectHideFlags: 0
@@ -15254,11 +15407,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e94c92c25c4337944896c81a3810a21e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hauntedTile: 0
   playerToResurrect: []
   cube: {fileID: 0}
-  resultFace: 
   infos: {fileID: 1662648799}
+  resultFace: 
+  hauntedTile: 0
 --- !u!23 &1241658706
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -16777,29 +16930,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5af3c7bae2ae7104192931a8c1b68725, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hauntedTile: 0
   gm: {fileID: 0}
-  infos: {fileID: 1662648799}
-  ghostToMove: {fileID: 0}
-  chooseenGhost: 
-  choosePlayer: 0
-  chooseGhost: 0
-  selectedPosition: 0
-  playerToMove: 
-  namePositionGhost: 
   panelBoardPlayer: {fileID: 1871381456}
-  playerChoose: {fileID: 0}
-  hauntingGhostToMove: {fileID: 0}
-  defausse: {fileID: 54337049}
-  bouddhisteTemple: {fileID: 1907267166}
-  bouddha: {fileID: 0}
-  canPlace: 0
   panelBluePlace: {fileID: 243812752}
   panelRedPlace: {fileID: 2078919588}
   panelGreenPlace: {fileID: 18601231}
   panelYellowPlace: {fileID: 111140190}
   previousPosition: {fileID: 0}
+  playerChoose: {fileID: 0}
+  hauntingGhostToMove: {fileID: 0}
+  ghostToMove: {fileID: 0}
+  defausse: {fileID: 54337049}
+  bouddhisteTemple: {fileID: 1907267166}
+  bouddha: {fileID: 0}
   board: {fileID: 1334380936}
+  infos: {fileID: 1662648799}
+  playerToMove: 
+  namePositionGhost: 
+  chooseenGhost: 
+  hauntedTile: 0
+  choosePlayer: 0
+  chooseGhost: 0
+  selectedPosition: 0
+  canPlace: 0
+  isActiveTilePower: 0
 --- !u!23 &1335580317
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -17746,7 +17900,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1404518190
 RectTransform:
   m_ObjectHideFlags: 0
@@ -18274,20 +18428,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gm: {fileID: 0}
+  dice: {fileID: 1483268768575792, guid: 6a3772ffda714d746bf307675dc5309c, type: 2}
+  cube: {fileID: 0}
   infoStall: {fileID: 1179219311}
   infos: {fileID: 1662648799}
   hauntedTile: 0
-  nbDiceHerbalist: 2
-  dice: {fileID: 1483268768575792, guid: 6a3772ffda714d746bf307675dc5309c, type: 2}
   resultDiceOne: 
   resultDiceTwo: 
+  nbDiceHerbalist: 2
   nbRedFace: 0
   nbBlueFace: 0
   nbYellowFace: 0
   nbGreenFace: 0
   nbWhiteFace: 0
   nbBlackFace: 0
-  cube: {fileID: 0}
 --- !u!23 &1444573568
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -19953,11 +20107,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3c0c0d0ecf6fc849a09bba69161fc11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hauntedTile: 0
-  tileToUnhaunted: 
-  choose: 0
   panelTile: {fileID: 1540370682}
   infos: {fileID: 1662648799}
+  tileToUnhaunted: 
+  hauntedTile: 0
+  choose: 0
 --- !u!23 &1581580249
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -20160,14 +20314,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3605dd17d4a79ec4cae825542c95ffd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hauntedTile: 0
+  gm: {fileID: 0}
   panelBoardChoice: {fileID: 1871381456}
   hauntingGhost: {fileID: 0}
   ghostCard: {fileID: 0}
-  chooseBoard: 0
-  boardToRetreatGhost: 
   infos: {fileID: 1662648799}
-  gm: {fileID: 0}
+  boardToRetreatGhost: 
+  hauntedTile: 0
+  chooseBoard: 0
 --- !u!23 &1585650254
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -23901,6 +24055,7 @@ MonoBehaviour:
   hauntedTile: 0
   bouddhaFirst: {fileID: 1624371096}
   bouddhaSecond: {fileID: 843489408}
+  infos: {fileID: 0}
 --- !u!23 &1907267168
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -24003,12 +24158,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5cd057bbd9186c44b8adf1ab7443f7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hauntedTile: 0
   gm: {fileID: 0}
   token: {fileID: 0}
+  playerSave: {fileID: 0}
+  hauntedTile: 0
   infos: {fileID: 1662648799}
   infoCircle: {fileID: 1179219311}
-  playerSave: {fileID: 0}
 --- !u!23 &1910284760
 MeshRenderer:
   m_ObjectHideFlags: 0

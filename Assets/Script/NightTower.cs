@@ -3,16 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class NightTower : MonoBehaviour {
+public class NightTower : MonoBehaviour
+{
+    public GameManager gm;
 
-    public bool hauntedTile = false;
     public GameObject panelBoardChoice;
     public GameObject hauntingGhost;
     public GameObject ghostCard;
-    public bool chooseBoard;
-    public string boardToRetreatGhost;
+
     public Text infos;
-    public GameManager gm;
+
+    public string boardToRetreatGhost;
+   
+    public bool hauntedTile = false;
+    public bool chooseBoard;
     // Use this for initialization
     void Start ()
     {

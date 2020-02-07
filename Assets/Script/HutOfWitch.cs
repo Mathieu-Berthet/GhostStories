@@ -3,22 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HutOfWitch : MonoBehaviour {
-
-    public bool hauntedTile = false;
+public class HutOfWitch : MonoBehaviour
+{
+    public GameManager gm;
 
     public GameObject ghostToKill;
     public GameObject defausse;
-    public string chooseenGhost;
-    public bool choose;
+
     public GameObject panelBluePlace;
     public GameObject panelRedPlace;
     public GameObject panelGreenPlace;
     public GameObject panelYellowPlace;
+
     public BoardPosition board;
     public Text infos;
 
-    public GameManager gm;
+    public string chooseenGhost;
+
+    public bool hauntedTile = false;
+    public bool choose;
     // Use this for initialization
     void Start ()
     {

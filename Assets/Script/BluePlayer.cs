@@ -118,6 +118,7 @@ public class BluePlayer : MonoBehaviour
     public Text textNbTokenPower;
     public Text textNbTokenYinYangBlue;
     public Text textNbQI;
+    public Text textNbBouddha;
     public bool update;
 
     public GameObject explosion;
@@ -1143,6 +1144,7 @@ public class BluePlayer : MonoBehaviour
         textNbQI.text = "QI : x " + Qi;
         textNbTokenYinYangBlue.text = "x " + NbYinYangBlueToken;
         textNbTokenPower.text = "x " + NbPowerToken;
+        textNbBouddha.text = "x " + NbBouddha;
         //textNbTokenPower.text = "x " + NbBlackToken; // Jeton mantra, juste pour le joueur jaune
         textNbDice.text = "Dés en stock : " + gm.nbDice.ToString();
         textTurn.text = "Tour : " + gm.turn.ToString();
@@ -1533,7 +1535,9 @@ public class BluePlayer : MonoBehaviour
 
     public void EndTurn()
     {
-        state = STATE_GAME.STATE_GHOSTPOWER; // Par la suite, passer a STATE_GHOSTPOWER
+        state = STATE_GAME.STATE_GHOSTPOWER;
+        gm.turn++;
+        updateUI();
     }
 
 

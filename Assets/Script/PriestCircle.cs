@@ -3,22 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PriestCircle : MonoBehaviour {
-
-    public bool hauntedTile = false;
+public class PriestCircle : MonoBehaviour
+{
     public GameManager gm;
 
     [SerializeField]
-    //private StockOfToken tokenStock;
     private GameObject token;
-    public Text infos;
-    public Text infoCircle;
     public GameObject playerSave;
 
+    public bool hauntedTile = false;
+
+    public Text infos;
+    public Text infoCircle;
+    
     // Use this for initialization
     void Start ()
     {
-        //tokenStock = GameObject.Find("TokenStock").GetComponent<StockOfToken>();
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
 	}
 	
@@ -272,17 +272,17 @@ public class PriestCircle : MonoBehaviour {
             }
             else if (player.name == "GreenPlayer")
             {
-                player.GetComponent<GreenPlayer>().Qi -= 1;
+                //player.GetComponent<GreenPlayer>().Qi -= 1;
                 //player.GetComponent<GreenPlayer>().board.usingTile = true;
             }
             else if (player.name == "YellowPlayer")
             {
-                player.GetComponent<YellowPlayer>().Qi -= 1;
+                //player.GetComponent<YellowPlayer>().Qi -= 1;
                 //player.GetComponent<YellowPlayer>().board.usingTile = true;
             }
             else if (player.name == "RedPlayer")
             {
-                player.GetComponent<RedPlayer>().Qi -= 1;
+                //player.GetComponent<RedPlayer>().Qi -= 1;
                 //player.GetComponent<RedPlayer>().board.usingTile = true;
             }
         }

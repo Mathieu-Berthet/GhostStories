@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TaoisteAutel : MonoBehaviour {
+public class TaoisteAutel : MonoBehaviour
+{
+    public GameObject panelTile;
+
+    public Text infos;
+
+    public string tileToUnhaunted;
 
     public bool hauntedTile = false;
-    public string tileToUnhaunted;
     public bool choose;
-    public GameObject panelTile;
-    public Text infos;
     // Use this for initialization
     void Start ()
     {

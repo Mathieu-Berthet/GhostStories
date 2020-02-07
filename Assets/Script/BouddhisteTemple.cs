@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BouddhisteTemple : MonoBehaviour {
 
@@ -11,6 +12,7 @@ public class BouddhisteTemple : MonoBehaviour {
     public GameObject bouddhaFirst;
     public GameObject bouddhaSecond;
 
+    public Text infos;
 	// Use this for initialization
 	void Start () {
 		
@@ -24,45 +26,46 @@ public class BouddhisteTemple : MonoBehaviour {
 
     public void getBouddha(GameObject player)
     {
-        //Si joueur bleu avec pouvoir "Second souffle" : numberOfBouddha -=2
-
-        numberOfBouddha -= 1;
-        //Augementer la reserve de bouddha du joueur de 1 ou 2
-        if (player.name == "BluePlayer")
+        if (!hauntedTile)
         {
+            //Si joueur bleu avec pouvoir "Second souffle" : numberOfBouddha -=2
+
             numberOfBouddha -= 1;
-            player.GetComponent<BluePlayer>().NbBouddha += 1;
-            player.GetComponent<BluePlayer>().bouddhaOne = bouddhaFirst;
-            bouddhaFirst.transform.parent = player.transform;
-            bouddhaFirst.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
-            bouddhaFirst.SetActive(false);
-            //Faire récupérer le 2e si pouvoir x2
-            player.GetComponent<BluePlayer>().update = true;
-            player.GetComponent<Deplacement>().enabled = true;
-            player.GetComponent<BluePlayer>().canLaunchDice = true;
-            player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
-            //Test avec son pouvoir pour augmenter de 2 si il l'a
+            //Augementer la reserve de bouddha du joueur de 1 ou 2
+            if (player.name == "BluePlayer")
+            {
+                numberOfBouddha -= 1;
+                player.GetComponent<BluePlayer>().NbBouddha += 1;
+                player.GetComponent<BluePlayer>().bouddhaOne = bouddhaFirst;
+                bouddhaFirst.transform.parent = player.transform;
+                bouddhaFirst.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+                bouddhaFirst.SetActive(false);
+                //Faire récupérer le 2e si pouvoir x2
+                player.GetComponent<BluePlayer>().update = true;
+                player.GetComponent<Deplacement>().enabled = true;
+                player.GetComponent<BluePlayer>().canLaunchDice = true;
+                player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
+                //Test avec son pouvoir pour augmenter de 2 si il l'a
+            }
+            else if (player.name == "GreenPlayer")
+            {
+                player.GetComponent<GreenPlayer>().NbBouddha += 1;
+            }
+            else if (player.name == "YellowPlayer")
+            {
+                player.GetComponent<YellowPlayer>().NbBouddha += 1;
+            }
+            else if (player.name == "RedPlayer")
+            {
+                player.GetComponent<RedPlayer>().NbBouddha += 1;
+            }
         }
-        else if (player.name == "GreenPlayer")
+        else
         {
-            player.GetComponent<GreenPlayer>().NbBouddha += 1;
-        }
-        else if (player.name == "YellowPlayer")
-        {
-            player.GetComponent<YellowPlayer>().NbBouddha += 1;
-        }
-        else if (player.name == "RedPlayer")
-        {
-            player.GetComponent<RedPlayer>().NbBouddha += 1;
+            infos.text = "Cette tuile est hantée. Vous ne pouvez pas activez son pouvoir";
+            infos.gameObject.SetActive(true);
         }
     }
-
-    public void KillGhost()
-    {
-        //Kill le fantome qui apparait sur la meme case que le bouddha
-        //Remettre le bouddha a sa place et augmenter le nombre de bouddha de la tuile.
-    }
-
 
     public void haunted()
     {

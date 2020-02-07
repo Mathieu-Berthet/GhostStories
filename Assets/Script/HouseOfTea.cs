@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HouseOfTea : MonoBehaviour {
-
-    public bool hauntedTile = false;
+public class HouseOfTea : MonoBehaviour
+{
     public GameManager gm;
+
+    public GameObject playerSave;
+    
     public Text infoHouse;
     public Text infos;
-    public GameObject playerSave;
-
+    
+    public bool hauntedTile = false;
     // Use this for initialization
     void Start ()
     {

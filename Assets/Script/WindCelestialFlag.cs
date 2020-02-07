@@ -5,31 +5,42 @@ using UnityEngine.UI;
 
 public class WindCelestialFlag : MonoBehaviour {
 
-    public bool hauntedTile = false;
     public GameManager gm;
-    public Text infos;
-    public GameObject ghostToMove;
-    public string chooseenGhost;
-    public bool choosePlayer;
-    public bool chooseGhost;
-    public bool selectedPosition;
-    public string playerToMove;
-    public string namePositionGhost;
+
+    [Header("Les panels")]
     public GameObject panelBoardPlayer;
-    public GameObject playerChoose;
-    public GameObject hauntingGhostToMove;
-
-    public GameObject defausse;
-    public GameObject bouddhisteTemple;
-    public GameObject bouddha;
-    public bool canPlace;
-
     public GameObject panelBluePlace;
     public GameObject panelRedPlace;
     public GameObject panelGreenPlace;
     public GameObject panelYellowPlace;
+
+    [Header("Les objets à récupérer par la fonction")]
     public GameObject previousPosition;
+    public GameObject playerChoose;
+    public GameObject hauntingGhostToMove;
+    public GameObject ghostToMove;
+
+    [Header("Les autres objets")]
+    public GameObject defausse;
+    public GameObject bouddhisteTemple;
+    public GameObject bouddha;
+
+    [Header("Divers scripts et textes d'information")]
     public BoardPosition board;
+    public Text infos;
+
+    [Header("String")]
+    public string playerToMove;
+    public string namePositionGhost;
+    public string chooseenGhost;
+
+    [Header("Booléens")]
+    public bool hauntedTile = false;
+    public bool choosePlayer;
+    public bool chooseGhost;
+    public bool selectedPosition;
+    public bool canPlace;
+    public bool isActiveTilePower;
     // Use this for initialization
     void Start ()
     {
@@ -37,6 +48,7 @@ public class WindCelestialFlag : MonoBehaviour {
         canPlace = false;
         chooseGhost = false;
         choosePlayer = false;
+        isActiveTilePower = false;
     }
 	
 	// Update is called once per frame
@@ -49,6 +61,7 @@ public class WindCelestialFlag : MonoBehaviour {
         if(!hauntedTile)
         {
             //PARTIE DEPLACEMENT FANTOME
+            isActiveTilePower = true;
             chooseGhost = false;
             canPlace = false;
             board.usingTile = true;
@@ -115,6 +128,7 @@ public class WindCelestialFlag : MonoBehaviour {
                 playerChoose.GetComponent<BluePlayer>().useTilePower = false;
                 playerChoose.GetComponent<Deplacement>().enabled = true;
                 playerChoose.GetComponent<BluePlayer>().update = true;
+                isActiveTilePower = false;
             }
             //Pour les autres joueurs ...
         }
@@ -122,6 +136,7 @@ public class WindCelestialFlag : MonoBehaviour {
         {
             infos.text = "Cette tuile est hantée. Vous ne pouvez pas activez son pouvoir";
             infos.gameObject.SetActive(true);
+            isActiveTilePower = false;
         }
     }
 
@@ -151,7 +166,7 @@ public class WindCelestialFlag : MonoBehaviour {
     {
         Debug.Log("coucou");
         chooseenGhost = buttonClick.name;
-        if (ghostToMove == null)
+        if (isActiveTilePower)
         {
             switch (chooseenGhost)
             {
@@ -243,7 +258,6 @@ public class WindCelestialFlag : MonoBehaviour {
         }
         chooseGhost = true;
     }
-
 
     public void SelectGhostNewPosition(GameObject position)
     {

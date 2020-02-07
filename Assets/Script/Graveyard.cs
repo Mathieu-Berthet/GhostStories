@@ -3,17 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Graveyard : MonoBehaviour {
-
-    public bool hauntedTile = false;
+public class Graveyard : MonoBehaviour
+{
     [SerializeField]
     private GameObject[] playerToResurrect;
 
     [SerializeField]
     private CubeScript cube;
-    public string resultFace;
     public Text infos;
 
+    public string resultFace;
+
+    public bool hauntedTile = false;
     // Use this for initialization
     void Start ()
     {
