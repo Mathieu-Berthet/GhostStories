@@ -355,10 +355,10 @@ public class BluePlayer : MonoBehaviour
             tileName = hitt.transform.gameObject.name;
         }
 
-        if (Input.GetKeyDown(KeyCode.N))
+        /*if (Input.GetKeyDown(KeyCode.N))
         {
             gm.nextTurn();
-        }
+        }*/
 
         if (Input.GetKeyDown(KeyCode.D) && canLaunchDice)
         {
@@ -402,6 +402,10 @@ public class BluePlayer : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.S))
         {
             if(state == STATE_GAME.STATE_DRAW)
+            {
+                state = STATE_GAME.STATE_MOVE;
+            }
+            else if (state == STATE_GAME.STATE_MOVE)
             {
                 state = STATE_GAME.STATE_PLAYER;
             }
@@ -471,7 +475,7 @@ public class BluePlayer : MonoBehaviour
             panelYellowPlace.SetActive(true);
             textInfo.gameObject.SetActive(true);
             drawedCard.gameObject.SetActive(true);
-            if (gm.nbCardOnDeck == 10)
+            if (gm.nbCardOnDeck == 45 && gm.nbCardOnBossDeck == 10)
             {
                 card = deck.GetPoolByName(PoolNameDeck.boss).GetItem(transform, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity, true, false, 0);
                 card.transform.parent = null;
