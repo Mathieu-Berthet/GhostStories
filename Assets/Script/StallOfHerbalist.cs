@@ -18,6 +18,7 @@ public class StallOfHerbalist : MonoBehaviour
 
     public Text infoStall;
     public Text infos;
+    public Text textNbWhiteFace;
 
     public bool hauntedTile = false;    
 
@@ -154,6 +155,8 @@ public class StallOfHerbalist : MonoBehaviour
             infoStall.text = "Veuillez choisir la couleur de vos faces blanches : ";
             while (nbWhiteFace > 0)
             {
+                textNbWhiteFace.text = "Nombre de face blanches : " + nbWhiteFace.ToString();
+                textNbWhiteFace.gameObject.SetActive(true);
                 gm.panelButtonChoice.SetActive(true);
                 while (!gm.choose)
                 {
@@ -232,6 +235,7 @@ public class StallOfHerbalist : MonoBehaviour
                 yield return new WaitForSeconds(1.0f);
             }
 
+            textNbWhiteFace.gameObject.SetActive(false);
             gm.panelButtonChoice.SetActive(false);
             //Attribution des jetons
             int nbBlueTokenToGive= 0;
@@ -345,6 +349,14 @@ public class StallOfHerbalist : MonoBehaviour
         {
             infos.text = "Cette tuile est hantée. Vous ne pouvez pas activez son pouvoir";
             infos.gameObject.SetActive(true);
+            if (player.name == "BluePlayer")
+            {
+                player.GetComponent<BluePlayer>().canLaunchDice = true;
+                player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
+                player.GetComponent<BluePlayer>().useTilePower = false;
+                player.GetComponent<Deplacement>().enabled = true;
+                player.GetComponent<BluePlayer>().update = true;
+            }
         }
     }
 

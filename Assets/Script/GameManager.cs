@@ -52,6 +52,8 @@ public class GameManager : MonoBehaviour {
     public boardColor yellowBoard;
 
     public int nbDice;
+    public int nbCardOnDeck;
+    public int nbCardOnBossDeck;
     public bool canUseTaoToken;
     public bool cantTransformWhiteFace;
 
@@ -63,13 +65,24 @@ public class GameManager : MonoBehaviour {
 
     public string choseenAward;
     public bool chooseAward;
+
+    public Text textEntry;
+    public Text textInGame;
+    public Text textDeath;
     // Use this for initialization
     void Start ()
     {
         //startTime = Time.time;
         canUseTaoToken = true;
         nbDice = 3;
+        nbCardOnDeck = 55;
+        nbCardOnBossDeck = 10;
         turn = 1;
+
+        textEntry.text = "";
+        textInGame.text = "";
+        textDeath.text = "";
+
         nextPlayer = false;
         canLerp = false;
         scalePlateau = new Vector3(3.0f, 0.03f, 2.0f);
@@ -249,4 +262,85 @@ public class GameManager : MonoBehaviour {
     }
 
 
+    public void PowerGhostInformation(GameObject ghost)
+    {
+        textEntry.text = "";
+        textInGame.text = "";
+        textDeath.text = "";
+        if (ghost.GetComponent<Ghost>().entryPower)
+        {
+            if(ghost.GetComponent<Ghost>().hasLaunchBlackDiceEntryPower)
+            {
+                textEntry.text += "- Lancez le dé noir lorsque le fantôme rentre en jeu \n";
+            }
+            if(ghost.GetComponent<Ghost>().hasCantUseTokenPower)
+            {
+                textEntry.text += "- Les jetons sont inutilisables pendant que le fantôme est vivant \n";
+            }
+            if(ghost.GetComponent<Ghost>().hasCaptureDicePower)
+            {
+                textEntry.text += "- Vous perdez un dé \n";
+            }
+            if(ghost.GetComponent<Ghost>().hasDrawAGhostPower)
+            {
+                textEntry.text += "- Piochez un nouveau fantôme juste après avoir posé celui ci \n";
+            }
+            if(ghost.GetComponent<Ghost>().hasCantUsePowerPower)
+            {
+                textEntry.text += "- Bloque le pouvoir du plateau ou est posé le fantôme \n";
+            }
+            if(ghost.GetComponent<Ghost>().hasLoseLifePower)
+            {
+                textEntry.text += "- Vous perdez un QI \n";
+            }
+            if(ghost.GetComponent<Ghost>().hasHauntedGhostAdvancedPower)
+            {
+                textEntry.text += "- Le fantôme hanteur entre avancé d'une case supplémentaire \n";
+            }
+            if(ghost.GetComponent<Ghost>().hasHauntedTilePower)
+            {
+                textEntry.text += "- Le fantôme hante directement la première tuile devant lui \n";
+            }
+        }
+
+        if(ghost.GetComponent<Ghost>().inGamePower)
+        {
+            if(ghost.GetComponent<Ghost>().hasHauntedGhostPower)
+            {
+                textInGame.text += "- Le fantôme hanteur apparait sur la carte \n";
+            }
+            if(ghost.GetComponent<Ghost>().hasLaunchBlackDiceInGamePower)
+            {
+                textInGame.text += "- Lancez le dé noir à chaque tour \n";
+            }
+            if(ghost.GetComponent<Ghost>().hasInsensiblePower)
+            {
+                textInGame.text += "- Le fantôme est insensible aux dés \n";
+            }
+        }
+
+        if(ghost.GetComponent<Ghost>().deathPower)
+        {
+            if(ghost.GetComponent<Ghost>().hasWinQiOrYinYangTokenPower)
+            {
+                textDeath.text += "- A la mort du fantôme, récupérer un QI ou votre jeton Yin Yang \n";
+            }
+            if(ghost.GetComponent<Ghost>().hasWinTAOTokenPower)
+            {
+                textDeath.text += "- A la mort du fantôme, récupérer un jeton de votre choix \n";
+            }
+            if(ghost.GetComponent<Ghost>().hasWinQiAndYinYangPower)
+            {
+                textDeath.text += "- A la mort du fantôme, récupérer un QI et votre jeton Yin Yang \n";
+            }
+            if(ghost.GetComponent<Ghost>().hasWinTwoTAOTokenPower)
+            {
+                textDeath.text += "- A la mort du fantôme, récupérer 2 jetons de votre choix \n";
+            }
+            if(ghost.GetComponent<Ghost>().hasLaunchBlackDiceDeathPower)
+            {
+                textDeath.text += "- A la mort du fantôme, lancez le dé noir \n";
+            }
+        }
+    }
 }

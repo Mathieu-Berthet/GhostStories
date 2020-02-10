@@ -13,6 +13,7 @@ public class Ghost : MonoBehaviour {
 
     public HauntingGhostDeplacement positions;
 
+    public bool canBeKillByBouddha;
     public bool killWithBouddha;
     public bool canBeDestroyByDice;
 

@@ -145,6 +145,34 @@ MonoBehaviour:
   couleur: black
   life: 3
   power: {fileID: 0}
+  circlePriest: {fileID: 0}
+  positions: {fileID: 0}
+  cantBeKillByBouddha: 1
+  killWithBouddha: 0
+  canBeDestroyByDice: 0
+  entryPower: 1
+  inGamePower: 0
+  deathPower: 0
+  hasLaunchBlackDiceEntryPower: 0
+  hasLaunchBlackDiceInGamePower: 0
+  hasLaunchBlackDiceDeathPower: 0
+  hasCaptureDicePower: 0
+  hasCantUseTokenPower: 0
+  hasDrawAGhostPower: 0
+  hasCantUsePowerPower: 1
+  hasHauntedTilePower: 0
+  hasLoseLifePower: 0
+  hasLoseOneTokenPower: 0
+  hasUnactivePriestCirclePower: 0
+  hasHauntedGhostAdvancedPower: 0
+  hasInsensiblePower: 0
+  hasHauntedGhostPower: 0
+  hasUnactiveWhiteFacePower: 0
+  hasMustBeKillWithBouddhaPower: 0
+  hasWinQiOrYinYangTokenPower: 0
+  hasWinTAOTokenPower: 0
+  hasWinQiAndYinYangPower: 1
+  hasWinTwoTAOTokenPower: 0
 --- !u!114 &114987269121393790
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -156,6 +184,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1852c90c2e233f34db32038e0eacf06b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gm: {fileID: 0}
+  bluePlayer: {fileID: 0}
+  redPlayer: {fileID: 0}
+  greenPlayer: {fileID: 0}
+  yellowPlayer: {fileID: 0}
+  circle: {fileID: 0}
+  choseenToken: 
+  choose: 0
+  choseenAward: 
+  chooseAward: 0
+  hasHauntedTile: 0
+  hauntingGhost: {fileID: 0}
+  startPosition: {fileID: 0}
+  middlePosition: {fileID: 0}
+  endPosition: {fileID: 0}
+  tileToCheck: {fileID: 0}
+  firstTileCheck: {fileID: 0}
+  secondTileCheck: {fileID: 0}
 --- !u!212 &212007011297992508
 SpriteRenderer:
   m_ObjectHideFlags: 1

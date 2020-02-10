@@ -96,6 +96,8 @@ public class BluePlayer : MonoBehaviour
     public GameObject panelRedPlace;
     public GameObject panelGreenPlace;
     public GameObject panelYellowPlace;
+    public GameObject panelInfoGhostPower;
+    public GameObject panelPrio;
 
     [SerializeField]
     private GameObject defausse;
@@ -119,6 +121,10 @@ public class BluePlayer : MonoBehaviour
     public Text textNbTokenYinYangBlue;
     public Text textNbQI;
     public Text textNbBouddha;
+    public Text textNbWhiteFace;
+
+    public Text infosWhiteFace;
+
     public bool update;
 
     public bool alreadyMove;
@@ -465,10 +471,26 @@ public class BluePlayer : MonoBehaviour
             panelYellowPlace.SetActive(true);
             textInfo.gameObject.SetActive(true);
             drawedCard.gameObject.SetActive(true);
-            card = deck.GetPoolByName(PoolNameDeck.ghost).GetItem(transform, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity, true, false, 0);
-            card.transform.parent = null;
-            card.transform.position = new Vector3(100.0f, 100.0f, 100.0f);
-            card.SetActive(true);
+            if (gm.nbCardOnDeck == 10)
+            {
+                card = deck.GetPoolByName(PoolNameDeck.boss).GetItem(transform, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity, true, false, 0);
+                card.transform.parent = null;
+                card.transform.position = new Vector3(100.0f, 100.0f, 100.0f);
+                card.SetActive(true);
+                gm.PowerGhostInformation(card);
+                panelInfoGhostPower.SetActive(true);
+                gm.nbCardOnBossDeck--;
+            }
+            else
+            {
+                card = deck.GetPoolByName(PoolNameDeck.ghost).GetItem(transform, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity, true, false, 0);
+                card.transform.parent = null;
+                card.transform.position = new Vector3(100.0f, 100.0f, 100.0f);
+                card.SetActive(true);
+                gm.PowerGhostInformation(card);
+                panelInfoGhostPower.SetActive(true);
+                gm.nbCardOnDeck--;
+            }
             drawedCard.sprite = card.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
         }
     }
@@ -497,26 +519,83 @@ public class BluePlayer : MonoBehaviour
                 }
                 if (position.transform.childCount > 4)
                 {
-                    card.transform.SetParent(defausse.transform);
-                    card.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
-                    card.transform.localEulerAngles = new Vector3(90.0f, 0.0f, 0.0f);
-                    bouddhisteTemple.GetComponent<BouddhisteTemple>().numberOfBouddha += 1;
-                    bouddhaOne.transform.parent = bouddhisteTemple.transform;
-                    bouddhaOne.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
-                    bouddhaOne.SetActive(false);
-                    bouddhaOne = null;
+                    if (card.GetComponent<Ghost>().canBeKillByBouddha)
+                    {
+                        card.transform.SetParent(defausse.transform);
+                        card.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+                        card.transform.localEulerAngles = new Vector3(90.0f, 0.0f, 0.0f);
+                        bouddhisteTemple.GetComponent<BouddhisteTemple>().numberOfBouddha += 1;
+                        bouddhaOne.transform.parent = bouddhisteTemple.transform;
+                        bouddhaOne.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+                        bouddhaOne.SetActive(false);
+                        bouddhaOne = null;
 
-                    panelBluePlace.SetActive(false);
-                    panelRedPlace.SetActive(false);
-                    panelGreenPlace.SetActive(false);
-                    panelYellowPlace.SetActive(false);
-                    textInfo.gameObject.SetActive(false);
-                    drawedCard.gameObject.SetActive(false);
-                    gameObject.GetComponent<Deplacement>().enabled = true;
-                    textInfoPhase.gameObject.SetActive(true);
-                    useTilePower = false;
-                    canLaunchBlackDice = true;
-                    hasDraw = false;
+                        panelBluePlace.SetActive(false);
+                        panelRedPlace.SetActive(false);
+                        panelGreenPlace.SetActive(false);
+                        panelYellowPlace.SetActive(false);
+                        panelInfoGhostPower.SetActive(false);
+                        textInfo.gameObject.SetActive(false);
+                        drawedCard.gameObject.SetActive(false);
+                        gameObject.GetComponent<Deplacement>().enabled = true;
+                        textInfoPhase.gameObject.SetActive(true);
+                        useTilePower = false;
+                        canLaunchBlackDice = true;
+                        hasDraw = false;
+                    }
+                    else
+                    {
+                        bouddhisteTemple.GetComponent<BouddhisteTemple>().numberOfBouddha += 1;
+                        bouddhaOne.transform.parent = bouddhisteTemple.transform;
+                        bouddhaOne.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+                        bouddhaOne.SetActive(false);
+                        bouddhaOne = null;
+                        card.transform.SetParent(position.transform);
+                        card.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+                        card.transform.localEulerAngles = new Vector3(90.0f, 0.0f, 0.0f);
+                        card.transform.localScale = new Vector3(15.0f, 10.0f, 1);
+                        card.SetActive(true);
+                        card.transform.parent.GetComponent<BoxCollider>().enabled = true;
+                        card.GetComponent<GhostPower>().startPosition = card.transform.parent.GetChild(1);
+                        card.GetComponent<GhostPower>().middlePosition = card.transform.parent.GetChild(2);
+                        card.GetComponent<GhostPower>().endPosition = card.transform.parent.GetChild(3);
+                        if (position.transform.parent.GetComponent<boardColor>().color == "blue")
+                        {
+                            gm.blueBoard.nbCardOnBoard++;
+                        }
+                        else if (position.transform.parent.GetComponent<boardColor>().color == "green")
+                        {
+                            gm.greenBoard.nbCardOnBoard++;
+                        }
+                        else if (position.transform.parent.GetComponent<boardColor>().color == "red")
+                        {
+                            gm.redBoard.nbCardOnBoard++;
+                        }
+                        else if (position.transform.parent.GetComponent<boardColor>().color == "yellow")
+                        {
+                            gm.yellowBoard.nbCardOnBoard++;
+                        }
+                        panelBluePlace.SetActive(false);
+                        panelRedPlace.SetActive(false);
+                        panelGreenPlace.SetActive(false);
+                        panelYellowPlace.SetActive(false);
+                        panelInfoGhostPower.SetActive(false);
+                        textInfo.gameObject.SetActive(false);
+                        drawedCard.gameObject.SetActive(false);
+                        gameObject.GetComponent<Deplacement>().enabled = true;
+                        textInfoPhase.gameObject.SetActive(true);
+                        useTilePower = false;
+                        canLaunchBlackDice = true;
+                        hasDraw = false;
+                        if (card.GetComponent<Ghost>().entryPower)
+                        {
+                            if (card.GetComponent<Ghost>().hasDrawAGhostPower)
+                            {
+                                useGhostPower = true;
+                            }
+                            card.GetComponent<Ghost>().UseEntryPower(gameObject);
+                        }
+                    }
                 }
                 else
                 {
@@ -549,6 +628,7 @@ public class BluePlayer : MonoBehaviour
                     panelRedPlace.SetActive(false);
                     panelGreenPlace.SetActive(false);
                     panelYellowPlace.SetActive(false);
+                    panelInfoGhostPower.SetActive(false);
                     textInfo.gameObject.SetActive(false);
                     drawedCard.gameObject.SetActive(false);
                     gameObject.GetComponent<Deplacement>().enabled = true;
@@ -654,7 +734,7 @@ public class BluePlayer : MonoBehaviour
                     canLaunchDice = false;
                     canLaunchBlackDice = false;
                     gameObject.GetComponent<Deplacement>().enabled = false;
-                    StartCoroutine(windCelestialFlag.GetComponent<WindCelestialFlag>().MovePlayerAndGhost());
+                    StartCoroutine(windCelestialFlag.GetComponent<WindCelestialFlag>().MovePlayerAndGhost(gameObject));
                     break;
                 case "TourVeilleurNuit":
                     Debug.Log("Tour du veilleur de nuit");
@@ -834,6 +914,10 @@ public class BluePlayer : MonoBehaviour
             {
                 while (nbWhiteFace > 0)
                 {
+                    textNbWhiteFace.text = "Nombre de face blanches : " + nbWhiteFace.ToString();
+                    textNbWhiteFace.gameObject.SetActive(true);
+                    infosWhiteFace = gm.panelButtonChoice.transform.GetChild(0).GetComponent<Text>();
+                    infosWhiteFace.text = "Veuillez choisir la couleur de vos faces blanches : ";
                     gm.panelButtonChoice.SetActive(true);
                     gameObject.GetComponent<Deplacement>().enabled = false;
                     while (!gm.choose)
@@ -868,7 +952,7 @@ public class BluePlayer : MonoBehaviour
                     nbWhiteFace--;
                 }
             }
-
+            textNbWhiteFace.gameObject.SetActive(false);
             yield return new WaitForSeconds(2.0f);
             gm.panelButtonChoice.SetActive(false);
 
@@ -877,9 +961,10 @@ public class BluePlayer : MonoBehaviour
             {
                 if (ghost1 != null && ghost2 != null)
                 {
-                    buttonGhost1.gameObject.SetActive(true);
+                    panelPrio.SetActive(true);
+                    //buttonGhost1.gameObject.SetActive(true);
                     buttonGhost1.transform.GetChild(0).GetComponent<Text>().text = ghost1.name;
-                    buttonGhost2.gameObject.SetActive(true);
+                    //buttonGhost2.gameObject.SetActive(true);
                     buttonGhost2.transform.GetChild(0).GetComponent<Text>().text = ghost2.name;
                     //Définir priorité pour ghost puis ghost2 ou ghost2 puis ghost
 
@@ -889,8 +974,9 @@ public class BluePlayer : MonoBehaviour
                     }
                     if (priority == ghost1.name)
                     {
-                        buttonGhost1.gameObject.SetActive(false);
-                        buttonGhost2.gameObject.SetActive(false);
+                        panelPrio.SetActive(false);
+                        /*buttonGhost1.gameObject.SetActive(false);
+                        buttonGhost2.gameObject.SetActive(false);*/
                         ghost1.GetComponent<Ghost>().ReduceLife();
                         Attack(ghost1);
                         yield return new WaitForSeconds(1.5f);
@@ -900,8 +986,9 @@ public class BluePlayer : MonoBehaviour
                     }
                     else
                     {
-                        buttonGhost1.gameObject.SetActive(false);
-                        buttonGhost2.gameObject.SetActive(false);
+                        panelPrio.SetActive(false);
+                        /*buttonGhost1.gameObject.SetActive(false);
+                        buttonGhost2.gameObject.SetActive(false);*/
                         ghost2.GetComponent<Ghost>().ReduceLife();
                         Attack(ghost2);
                         yield return new WaitForSeconds(1.5f);

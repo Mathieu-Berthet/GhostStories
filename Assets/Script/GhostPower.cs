@@ -9,6 +9,11 @@ public class GhostPower : MonoBehaviour {
 
     public GameManager gm;
 
+    public GameObject bluePlayer;
+    public GameObject redPlayer;
+    public GameObject greenPlayer;
+    public GameObject yellowPlayer;
+
     public PriestCircle circle;
 
     public string choseenToken;
@@ -120,8 +125,11 @@ public class GhostPower : MonoBehaviour {
 
     public void BlockAllPower()
     {
-        //Bloquer le pouvoir de tous les joueurs
-    } //Idem that previous function
+        bluePlayer.GetComponent<BluePlayer>().canUsePower = false;
+        /*redPlayer.GetComponent<RedPlayer>().canUsePower = false;
+        greenPlayer.GetComponent<GreenPlayer>().canUsePower = false;
+        yellowPlayer.GetComponent<YellowPlayer>().canUsePower = false;*/
+    }
 
     public void HauntedTile() //Okay
     {

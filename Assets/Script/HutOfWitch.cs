@@ -126,6 +126,14 @@ public class HutOfWitch : MonoBehaviour
         {
             infos.text = "Cette tuile est hantée. Vous ne pouvez pas activez son pouvoir";
             infos.gameObject.SetActive(true);
+            if (player.name == "BluePlayer")
+            {
+                player.GetComponent<BluePlayer>().canLaunchDice = true;
+                player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
+                player.GetComponent<BluePlayer>().useTilePower = false;
+                player.GetComponent<Deplacement>().enabled = true;
+                player.GetComponent<BluePlayer>().update = true;
+            }
         }
     }
 

@@ -145,7 +145,9 @@ MonoBehaviour:
   couleur: green
   life: 1
   power: {fileID: 0}
+  circlePriest: {fileID: 0}
   positions: {fileID: 0}
+  canBeKillByBouddha: 1
   killWithBouddha: 0
   canBeDestroyByDice: 1
   entryPower: 1
@@ -183,11 +185,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gm: {fileID: 0}
+  bluePlayer: {fileID: 0}
+  redPlayer: {fileID: 0}
+  greenPlayer: {fileID: 0}
+  yellowPlayer: {fileID: 0}
   circle: {fileID: 0}
-  tokenStock: {fileID: 0}
   choseenToken: 
   choose: 0
-  panelButtonChoice: {fileID: 0}
   choseenAward: 
   chooseAward: 0
   hasHauntedTile: 0
@@ -196,6 +200,9 @@ MonoBehaviour:
   startPosition: {fileID: 0}
   middlePosition: {fileID: 0}
   endPosition: {fileID: 0}
+  tileToCheck: {fileID: 0}
+  firstTileCheck: {fileID: 0}
+  secondTileCheck: {fileID: 0}
 --- !u!212 &212886835210155426
 SpriteRenderer:
   m_ObjectHideFlags: 1

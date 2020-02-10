@@ -56,7 +56,7 @@ public class WindCelestialFlag : MonoBehaviour {
 		
 	}
 
-    public IEnumerator MovePlayerAndGhost()
+    public IEnumerator MovePlayerAndGhost(GameObject player)
     {
         if(!hauntedTile)
         {
@@ -123,6 +123,9 @@ public class WindCelestialFlag : MonoBehaviour {
                 infos.text = "Veuillez choisir la tuile d'arrivée";
                 playerChoose.GetComponent<BluePlayer>().CheckDistance();
                 StartCoroutine(playerChoose.GetComponent<Deplacement>().PlayerDeplacement());
+            }
+            if (player.name == "BluePlayer")
+            {
                 playerChoose.GetComponent<BluePlayer>().canLaunchDice = true;
                 playerChoose.GetComponent<BluePlayer>().canLaunchBlackDice = true;
                 playerChoose.GetComponent<BluePlayer>().useTilePower = false;
@@ -137,6 +140,14 @@ public class WindCelestialFlag : MonoBehaviour {
             infos.text = "Cette tuile est hantée. Vous ne pouvez pas activez son pouvoir";
             infos.gameObject.SetActive(true);
             isActiveTilePower = false;
+            if (player.name == "BluePlayer")
+            {
+                player.GetComponent<BluePlayer>().canLaunchDice = true;
+                player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
+                player.GetComponent<BluePlayer>().useTilePower = false;
+                player.GetComponent<Deplacement>().enabled = true;
+                player.GetComponent<BluePlayer>().update = true;
+            }
         }
     }
 
