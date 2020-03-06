@@ -382,15 +382,15 @@ public class BluePlayer : MonoBehaviour
 
         if(state == STATE_GAME.STATE_DRAW)
         {
-            textInfoPhase.text = " Phase de pioche : \n\n - Il vous faut piochez une carte fantôme (Clic droit souris)";
+            textInfoPhase.text = " Phase de pioche : \n - Il vous faut piochez une carte fantôme (Clic droit souris)";
         }
         else if(state == STATE_GAME.STATE_MOVE)
         {
-            textInfoPhase.text = " Phase de déplacement : \n\n - Veuillez choisir ou vous voulez vous déplacer";
+            textInfoPhase.text = " Phase de déplacement : \n - Veuillez choisir où vous voulez vous déplacer";
         }
         else if (state == STATE_GAME.STATE_PLAYER)
         {
-            textInfoPhase.text = " Phase de jeu, vous pouvez : \n\n - Attaquer un fantome se trouvant devant vous (Touche D), \n - Utilisez le pouvoir de la tuile sur laquelle vous vous trouvez (Touche E)";
+            textInfoPhase.text = " Phase de jeu. Vous pouvez : \n - Attaquer un fantôme se trouvant devant vous (D), \n - Utilisez le pouvoir de la tuile sur laquelle vous vous trouvez (E)";
         }
 
         if(Input.GetKeyDown(KeyCode.A))

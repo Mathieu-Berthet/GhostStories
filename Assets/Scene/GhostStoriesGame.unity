@@ -396,7 +396,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 165, y: 285}
+  m_AnchoredPosition: {x: 165, y: 370}
   m_SizeDelta: {x: 300, y: 225}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &17258799
@@ -431,10 +431,10 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Echoppe de l\u2019Herboriste : \nLancez 2 d\xE9s et obtenez les jetons
-    des couleurs correspondant (blanc compte pour n\u2019importe qu\u2019elle couleur).
+  m_Text: "Echoppe de l\u2019Herboriste : \n- Lancez 2 d\xE9s et obtenez les jetons
+    des couleurs correspondantes (blanc compte pour n\u2019importe qu\u2019elle couleur).
     Mais attention, s\u2019il n\u2019y a plus assez de type de jeton dans la r\xE9serve,
-    le joueur ne gagne rien."
+    vous ne gagnez rien."
 --- !u!222 &17258800
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -937,7 +937,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -675, y: -80}
+  m_AnchoredPosition: {x: -675, y: 95}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &65465880
@@ -1278,7 +1278,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 510, y: -240}
+  m_AnchoredPosition: {x: 510, y: -375}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &81824543
@@ -2389,7 +2389,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -840, y: -240}
+  m_AnchoredPosition: {x: -840, y: -375}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &142825481
@@ -2762,7 +2762,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 510, y: 300}
+  m_AnchoredPosition: {x: 510, y: 375}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &167250729
@@ -3108,7 +3108,7 @@ RectTransform:
   m_GameObject: {fileID: 214588147}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 10, y: 9, z: 1}
+  m_LocalScale: {x: 10.8, y: 10.8, z: 1}
   m_Children: []
   m_Father: {fileID: 1125057353}
   m_RootOrder: 0
@@ -3849,7 +3849,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 323, y: -305}
+  m_AnchoredPosition: {x: 323, y: -85}
   m_SizeDelta: {x: 120, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &250672010
@@ -3918,14 +3918,14 @@ RectTransform:
   m_GameObject: {fileID: 253676266}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1.25, z: 1}
   m_Children: []
   m_Father: {fileID: 1334380935}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 350, y: 330}
+  m_AnchoredPosition: {x: 390, y: 420}
   m_SizeDelta: {x: 300, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &253676268
@@ -4153,7 +4153,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 20
+    m_FontSize: 23
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
@@ -4179,14 +4179,14 @@ RectTransform:
   m_GameObject: {fileID: 296792466}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 1334380935}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -860, y: 360}
+  m_AnchoredPosition: {x: -860, y: 450}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &300142764
@@ -4792,7 +4792,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -675, y: 270}
+  m_AnchoredPosition: {x: -675, y: 395}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &344008358
@@ -5189,18 +5189,18 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
+    m_MinSize: 0
+    m_MaxSize: 120
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Tiles' effects
+  m_Text: Tuiles
 --- !u!222 &374359002
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5462,10 +5462,10 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 2
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -5508,11 +5508,11 @@ RectTransform:
   m_LocalScale: {x: 10, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1134883029}
-  m_RootOrder: 17
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 275, y: -220}
+  m_AnchoredPosition: {x: 275, y: 35}
   m_SizeDelta: {x: 120, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &416275756
@@ -6147,7 +6147,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 165, y: 65}
+  m_AnchoredPosition: {x: 165, y: 35}
   m_SizeDelta: {x: 300, y: 125}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &439561597
@@ -6182,8 +6182,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Cimeti\xE8re : \nRessuscite un joueur avec 2 QI mais fais lancer au joueur
-    le d\xE9 noir"
+  m_Text: "Cimeti\xE8re : \n- Ressuscitez un joueur avec 2 QI. Puis lancez le d\xE9
+    noir"
 --- !u!222 &439561598
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6599,7 +6599,7 @@ RectTransform:
   m_GameObject: {fileID: 472869235}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.25, y: 1.25, z: 1.5}
+  m_LocalScale: {x: 2, y: 1.25, z: 1.5}
   m_Children:
   - {fileID: 1122801712}
   m_Father: {fileID: 1334380935}
@@ -6607,7 +6607,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -840, y: -395}
+  m_AnchoredPosition: {x: -740, y: -510}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &472869237
@@ -6801,7 +6801,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -100, y: -240}
+  m_AnchoredPosition: {x: -100, y: -375}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &493255442
@@ -6869,7 +6869,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -100, y: 30}
+  m_AnchoredPosition: {x: -100, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &501130180
@@ -7252,7 +7252,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 18
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -7278,7 +7278,7 @@ RectTransform:
   m_GameObject: {fileID: 568136416}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1.25, z: 1}
   m_Children: []
   m_Father: {fileID: 1334380935}
   m_RootOrder: 15
@@ -7424,7 +7424,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -730, y: 28}
-  m_SizeDelta: {x: 250, y: 300}
+  m_SizeDelta: {x: 250, y: 450}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &575177577
 MonoBehaviour:
@@ -7447,7 +7447,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 18
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -7458,10 +7458,10 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Nb joueurs : 1 \xE0 4\n\nBut du jeu : \n- Vaincre une arm\xE9e de fant\xF4me
-    ainsi que leur(s) chef(s)\n\nLes joueurs gagnent :\n- Si ils \xE9liminent le ou
-    les boss\n\nLes joueurs perdent :\n- Si il n'y a plus aucun survivant\n- Si 3
-    tuiles se sont faites hant\xE9es \n- Si le paquet de cartes est vide"
+  m_Text: "Nombre joueurs : De 1 \xE0 4\n\nBut du jeu : \n- Vaincre une arm\xE9e de
+    fant\xF4me ainsi que leur(s) chef(s)\n\nLes joueurs gagnent :\n- Si ils \xE9liminent
+    le ou les boss pr\xE9sents\n\nLes joueurs perdent :\n- Si il n'y a plus aucun
+    survivant\n- Si 3 tuiles se sont faites hanter \n- Si le paquet de carte est vide"
 --- !u!222 &575177578
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7907,7 +7907,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 275, y: 130}
+  m_AnchoredPosition: {x: 275, y: 275}
   m_SizeDelta: {x: 120, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &603758991
@@ -7931,7 +7931,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 20
+    m_FontSize: 22
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
@@ -8345,7 +8345,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 275, y: 60}
+  m_AnchoredPosition: {x: 275, y: 215}
   m_SizeDelta: {x: 120, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &631369074
@@ -8369,7 +8369,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 20
+    m_FontSize: 22
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
@@ -8506,7 +8506,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -840, y: 30}
+  m_AnchoredPosition: {x: -840, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &638782718
@@ -8792,14 +8792,14 @@ RectTransform:
   m_GameObject: {fileID: 654859116}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1.25, z: 1}
   m_Children: []
   m_Father: {fileID: 1334380935}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -740, y: 235}
+  m_AnchoredPosition: {x: -740, y: 295}
   m_SizeDelta: {x: 400, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &654859118
@@ -8823,7 +8823,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 22
+    m_FontSize: 23
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
@@ -8990,7 +8990,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 695582312}
   m_LocalRotation: {x: 0.46174863, y: 0, z: 0, w: 0.8870109}
-  m_LocalPosition: {x: 1.5, y: 3.65, z: -2.4}
+  m_LocalPosition: {x: 1.6, y: 3.65, z: -2.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -9505,7 +9505,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 275, y: -80}
+  m_AnchoredPosition: {x: 275, y: 95}
   m_SizeDelta: {x: 120, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &736988357
@@ -9529,7 +9529,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 20
+    m_FontSize: 22
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
@@ -9579,7 +9579,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 275, y: 200}
+  m_AnchoredPosition: {x: 275, y: 335}
   m_SizeDelta: {x: 120, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &748434481
@@ -9603,7 +9603,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 20
+    m_FontSize: 22
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
@@ -10777,7 +10777,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 350}
+  m_AnchoredPosition: {x: 0, y: 455}
   m_SizeDelta: {x: 125, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &880454822
@@ -10801,7 +10801,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 20
+    m_FontSize: 22
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
@@ -10995,7 +10995,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 765, y: -220}
+  m_AnchoredPosition: {x: 765, y: -350}
   m_SizeDelta: {x: 250, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &918254783
@@ -11030,8 +11030,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Tour du veilleur de nuit : \nReculer tous les fant\xF4mes hanteurs d\u2019un
-    plateau sur leur carte d\u2019origine"
+  m_Text: "Tour du veilleur de nuit : \n- Reculez tous les fant\xF4mes hanteurs d\u2019un
+    plateau sur leur case de d\xE9part"
 --- !u!222 &918254784
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12274,7 +12274,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -675, y: -10}
+  m_AnchoredPosition: {x: -675, y: 155}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &971884927
@@ -12586,8 +12586,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -545, y: 25}
-  m_SizeDelta: {x: 350, y: 250}
+  m_AnchoredPosition: {x: -545, y: -35}
+  m_SizeDelta: {x: 350, y: 275}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1020189158
 MonoBehaviour:
@@ -12621,12 +12621,12 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Temple Bouddhiste : \nPrenez un bouddha. A votre prochain tour, le joueur
-    peut poser un Bouddha sur un espace adjacent ou se trouve le joueur. Cela ne marche
-    pas sur le/les boss. Le pion Bouddha reste sur l\u2019emplacement cibl\xE9 jusqu'\xE0
-    ce qu\u2019il \xE9limine un fant\xF4me, puis reviens dans le stock. Le joueur
-    ne re\xE7ois pas de r\xE9compense/malus un \xE9liminant un fant\xF4me de cette
-    mani\xE8re."
+  m_Text: "Temple Bouddhiste : \n- Prenez un bouddha. A votre prochain tour, vous
+    pouvez poser un Bouddha sur un emplacement de fant\xF4me libre adjacent \xE0 votre
+    position. Cela ne marche pas sur les boss. Le pion Bouddha reste sur l\u2019emplacement
+    cibl\xE9 jusqu'\xE0 ce qu\u2019il \xE9limine un fant\xF4me, puis revient dans
+    le stock. Vous ne recevez pas de r\xE9compense/malus en \xE9liminant un fant\xF4me
+    de cette mani\xE8re."
 --- !u!222 &1020189159
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -13143,7 +13143,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 765, y: 325}
+  m_AnchoredPosition: {x: 765, y: 400}
   m_SizeDelta: {x: 250, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1063128298
@@ -13178,8 +13178,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Maison de Th\xE9 : \nGagnez 1 QI et 1 jeton de la couleur de votre choix,
-    mais piocher une carte fant\xF4me."
+  m_Text: "Maison de Th\xE9 : \n- Gagnez 1 QI et 1 jeton de la couleur de votre choix,
+    puis piochez une carte fant\xF4me."
 --- !u!222 &1063128299
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -13218,7 +13218,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -545, y: 350}
+  m_AnchoredPosition: {x: -545, y: 420}
   m_SizeDelta: {x: 350, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1066755061
@@ -13253,7 +13253,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Autel Taoiste : \nD\xE9shanter une tuile puis piochez une carte fant\xF4me."
+  m_Text: "Autel Taoiste : \n- D\xE9shantez une tuile puis piochez une carte fant\xF4me."
 --- !u!222 &1066755062
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -13738,7 +13738,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -100, y: 300}
+  m_AnchoredPosition: {x: -100, y: 375}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1105969712
@@ -13921,7 +13921,7 @@ RectTransform:
   m_GameObject: {fileID: 1122801711}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1.2, z: 1}
   m_Children: []
   m_Father: {fileID: 472869236}
   m_RootOrder: 0
@@ -13952,7 +13952,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 17
+    m_FontSize: 19
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -14073,7 +14073,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 510, y: 30}
+  m_AnchoredPosition: {x: 510, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1127476062
@@ -14149,11 +14149,11 @@ RectTransform:
   - {fileID: 631369073}
   - {fileID: 1469052363}
   - {fileID: 65465879}
-  - {fileID: 1705396486}
   - {fileID: 1242765975}
+  - {fileID: 1705396486}
   - {fileID: 736988356}
-  - {fileID: 1574852738}
   - {fileID: 416275755}
+  - {fileID: 1574852738}
   - {fileID: 250672009}
   - {fileID: 1140153537}
   m_Father: {fileID: 1334380935}
@@ -14229,7 +14229,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -675, y: 200}
+  m_AnchoredPosition: {x: -675, y: 335}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1139849608
@@ -14297,7 +14297,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -658, y: -300}
+  m_AnchoredPosition: {x: -658, y: -85}
   m_SizeDelta: {x: 60, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1140153538
@@ -14371,8 +14371,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 400}
-  m_SizeDelta: {x: 150, y: 30}
+  m_AnchoredPosition: {x: 0, y: 510}
+  m_SizeDelta: {x: 165, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1143664959
 MonoBehaviour:
@@ -14395,12 +14395,12 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 20
+    m_FontSize: 22
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -14748,7 +14748,7 @@ RectTransform:
   m_GameObject: {fileID: 1185512188}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalScale: {x: 1.25, y: 1.25, z: 1.5}
   m_Children:
   - {fileID: 1544965287}
   m_Father: {fileID: 1334380935}
@@ -14756,7 +14756,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -826, y: -385}
+  m_AnchoredPosition: {x: -830, y: -505}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1185512190
@@ -15236,7 +15236,7 @@ RectTransform:
   m_GameObject: {fileID: 1210743909}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalScale: {x: 1.25, y: 1.25, z: 1.5}
   m_Children:
   - {fileID: 412871004}
   m_Father: {fileID: 1334380935}
@@ -15244,7 +15244,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 525, y: -390}
+  m_AnchoredPosition: {x: 540, y: -500}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1210743911
@@ -15660,11 +15660,11 @@ RectTransform:
   m_LocalScale: {x: 6, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1134883029}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -675, y: -220}
+  m_AnchoredPosition: {x: -675, y: 35}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1242765976
@@ -16673,7 +16673,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -840, y: 300}
+  m_AnchoredPosition: {x: -840, y: 375}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1312516945
@@ -16741,7 +16741,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 275, y: 270}
+  m_AnchoredPosition: {x: 275, y: 395}
   m_SizeDelta: {x: 120, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1317696754
@@ -16765,7 +16765,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 20
+    m_FontSize: 22
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
@@ -16817,7 +16817,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -545, y: -245}
+  m_AnchoredPosition: {x: -545, y: -375}
   m_SizeDelta: {x: 350, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1324432555
@@ -16852,9 +16852,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Cercle de Pri\xE8re : \nPermet de mettre un pion de la r\xE9serve sur la
-    tuile et affaibli tout les fant\xF4mes du type concern\xE9 de 1 point. Cet effet
-    reste jusqu\u2019\xE0 qu\u2019un autre joueur change la couleur du jeton."
+  m_Text: "Cercle de Pri\xE8re : \n- Permet de mettre un pion de la r\xE9serve sur
+    la tuile et d'affaiblir tout les fant\xF4mes de la couleur concern\xE9e de 1 point.
+    Cet effet reste jusqu\u2019\xE0 qu\u2019un autre joueur change la couleur du jeton."
 --- !u!222 &1324432556
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -17531,7 +17531,7 @@ RectTransform:
   m_GameObject: {fileID: 1352656642}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalScale: {x: 1.25, y: 1.25, z: 1.5}
   m_Children:
   - {fileID: 374359000}
   m_Father: {fileID: 1334380935}
@@ -17539,7 +17539,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -576, y: -385}
+  m_AnchoredPosition: {x: -615, y: -505}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1352656644
@@ -17983,7 +17983,7 @@ RectTransform:
   m_GameObject: {fileID: 1399154953}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1.2, z: 1}
   m_Children: []
   m_Father: {fileID: 1404518190}
   m_RootOrder: 0
@@ -18014,7 +18014,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 17
+    m_FontSize: 19
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -18060,7 +18060,7 @@ RectTransform:
   m_GameObject: {fileID: 1404518189}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.25, y: 1.25, z: 1.5}
+  m_LocalScale: {x: 2, y: 1.25, z: 1.5}
   m_Children:
   - {fileID: 1399154954}
   m_Father: {fileID: 1334380935}
@@ -18068,7 +18068,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 620, y: -395}
+  m_AnchoredPosition: {x: 740, y: -510}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1404518191
@@ -18188,7 +18188,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -675, y: 60}
+  m_AnchoredPosition: {x: -675, y: 215}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1405130312
@@ -19108,7 +19108,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 275, y: -10}
+  m_AnchoredPosition: {x: 275, y: 155}
   m_SizeDelta: {x: 120, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1469052364
@@ -19132,7 +19132,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 20
+    m_FontSize: 22
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
@@ -19840,10 +19840,10 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -19851,7 +19851,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Rules
+  m_Text: "R\xE8gles"
 --- !u!222 &1544965289
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -20126,9 +20126,9 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 27
-    m_FontStyle: 0
+    m_FontStyle: 1
     m_BestFit: 0
-    m_MinSize: 1
+    m_MinSize: 0
     m_MaxSize: 40
     m_Alignment: 0
     m_AlignByGeometry: 0
@@ -20151,14 +20151,14 @@ RectTransform:
   m_GameObject: {fileID: 1573462236}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 1334380935}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -770, y: 400}
+  m_AnchoredPosition: {x: -770, y: 505}
   m_SizeDelta: {x: 350, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1574852737
@@ -20189,11 +20189,11 @@ RectTransform:
   m_LocalScale: {x: 10, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1134883029}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 275, y: -150}
+  m_AnchoredPosition: {x: 275, y: -25}
   m_SizeDelta: {x: 120, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1574852739
@@ -20217,7 +20217,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 20
+    m_FontSize: 22
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
@@ -20267,7 +20267,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -675, y: 130}
+  m_AnchoredPosition: {x: -675, y: 275}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1581280076
@@ -20472,14 +20472,14 @@ RectTransform:
   m_GameObject: {fileID: 1583025211}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1.25, z: 1}
   m_Children: []
   m_Father: {fileID: 1334380935}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 350, y: 390}
+  m_AnchoredPosition: {x: 390, y: 480}
   m_SizeDelta: {x: 300, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1583953711
@@ -21670,7 +21670,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35b0a903106d91a4c81f34be21c49708, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nbRedToken: 0
+  nbRedToken: 4
   nbGreenToken: 4
   nbBlueToken: 4
   nbYellowToken: 4
@@ -21986,11 +21986,11 @@ RectTransform:
   m_LocalScale: {x: 6, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1134883029}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -675, y: -150}
+  m_AnchoredPosition: {x: -675, y: -25}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1705396487
@@ -23436,8 +23436,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 716, y: 30}
-  m_SizeDelta: {x: 300, y: 600}
+  m_AnchoredPosition: {x: 749, y: 44}
+  m_SizeDelta: {x: 300, y: 800}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1784731989
 MonoBehaviour:
@@ -23460,7 +23460,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 17
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -23471,17 +23471,18 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Tour du joueur :\n1 - Phase Fantome : \n- On applique ensuite les pouvoirs
-    des fantomes.\n- Le joueur pioche une carte fantome puis la place sur un emplacement
-    libre du plateau : \n\t-  Si les 3 emplacements de son plateau sont pris, alors
-    il ne pioche pas de fantome mais perd une vie.\n\t- Si le fant\xF4me est de couleur
-    noire, alors il doit le poser sur son plateau.\n\t- Si le fant\xF4me est d'une
-    autre couleur, alors il doit le poser sur le plateau correspondant. Si ce dernier
-    est plein, alors il le pose sur un emplacement libre sur un des autres plateaux.\n\n2
-    - Phase joueur : \n- Le joueur peut se d\xE9placer d'une case vers une tuile adjacente.
-    \n\nEnsuite 2 options s'offre \xE0 lui : \n- Appliquer l'effet de la tuile sur
-    laquelle il se trouve\n- Combattre le/les fantomes qui se trouvent en face de
-    lui."
+  m_Text: "Tour du joueur :\n1 - Phase Fantome : \n- On applique les pouvoirs des
+    fantomes pr\xE9sents sur le plateau du joueur dont c'est le tour.\n\n- Le joueur
+    pioche une carte fant\xF4me puis la place sur un emplacement libre du plateau
+    : \n\t-  Si les 3 emplacements de son plateau sont pris, alors il ne pioche pas
+    de fantome mais perd une vie.\n\t- Si le fant\xF4me est de couleur noire, alors
+    il doit le poser sur son plateau.\n\t- Si le fant\xF4me est d'une autre couleur,
+    alors il doit le poser sur le plateau correspondant. Si ce dernier est plein,
+    alors il le pose sur un emplacement libre sur un des autres plateaux.\n\n2 - Phase
+    joueur : \n- Le joueur peut se d\xE9placer d'une case vers une tuile adjacente.
+    \n\nEnsuite 2 options s'offrent \xE0 lui : \n- Appliquer l'effet de la tuile sur
+    laquelle il se trouve\n- Combattre le/les fant\xF4me(s) qui se trouvent en face
+    de lui."
 --- !u!222 &1784731990
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -25343,7 +25344,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 165, y: -240}
+  m_AnchoredPosition: {x: 165, y: -375}
   m_SizeDelta: {x: 300, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2000728500
@@ -25378,9 +25379,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Hutte de la sorci\xE8re : \nPerdez 1 QI pour \xE9liminer n\u2019importe
-    quel fant\xF4me du plateau sans appliquer les pouvoirs li\xE9s \xE0 la mort du
-    fant\xF4me. On ne peut pas \xE9liminer les boss de cette mani\xE8re."
+  m_Text: "Hutte de la sorci\xE8re : \n- Perdez 1 QI pour \xE9liminer n\u2019importe
+    quel fant\xF4me du plateau. Les pouvoirs de ce dernier ne sont pas appliqu\xE9s.
+    Vous ne pouvez pas \xE9liminer les boss de cette mani\xE8re."
 --- !u!222 &2000728501
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -25419,7 +25420,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 765, y: 60}
+  m_AnchoredPosition: {x: 765, y: 30}
   m_SizeDelta: {x: 250, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2003667034
@@ -25454,8 +25455,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Pavillon du vent c\xE9leste : \nD\xE9place un autre joueur d\u2019une case
-    et d\xE9place un fant\xF4me sur un autre emplacement libre."
+  m_Text: "Pavillon du vent c\xE9leste : \n- D\xE9placez un autre joueur d\u2019une
+    case puis d\xE9placez un fant\xF4me sur un autre emplacement libre."
 --- !u!222 &2003667035
 CanvasRenderer:
   m_ObjectHideFlags: 0
