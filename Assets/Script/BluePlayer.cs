@@ -454,7 +454,7 @@ public class BluePlayer : MonoBehaviour
                 hasDraw = false;
                 gameObject.GetComponent<Deplacement>().enabled = true;
                 textInfoPhase.gameObject.SetActive(true);
-                state = STATE_GAME.STATE_PLAYER;
+                state = STATE_GAME.STATE_MOVE;
                 return;
             }
             if (gm.blueBoard.nbCardOnBoard == 3 && !useTilePower)
@@ -466,7 +466,7 @@ public class BluePlayer : MonoBehaviour
                 hasDraw = false;
                 gameObject.GetComponent<Deplacement>().enabled = true;
                 textInfoPhase.gameObject.SetActive(true);
-                state = STATE_GAME.STATE_PLAYER;
+                state = STATE_GAME.STATE_MOVE;
                 return;
             }
             panelBluePlace.SetActive(true);
@@ -1264,28 +1264,42 @@ public class BluePlayer : MonoBehaviour
             switch (ghost.GetComponent<Ghost>().couleur)
             {
                 case "red":
-                    gm.redBoard.nbCardOnBoard--;
                     nbRedFace -= ghost.GetComponent<Ghost>().life;
                     break;
                 case "yellow":
-                    gm.yellowBoard.nbCardOnBoard--;
                     nbYellowFace -= ghost.GetComponent<Ghost>().life;
                     break;
                 case "blue":
-                    gm.blueBoard.nbCardOnBoard--;
                     nbBlueFace -= ghost.GetComponent<Ghost>().life;
                     break;
                 case "black":
-                    gm.blueBoard.nbCardOnBoard--;
                     nbBlackFace -= ghost.GetComponent<Ghost>().life;
                     break;
                 case "green":
-                    gm.greenBoard.nbCardOnBoard--;
                     nbGreenFace -= ghost.GetComponent<Ghost>().life;
                     break;
                 default:
                     break;
             }
+
+            //Décompte du nombre de fantômes sur le plateau
+            if(ghost.transform.parent.parent.GetComponent<boardColor>().color == "blue")
+            {
+                gm.blueBoard.nbCardOnBoard--;
+            }
+            else if (ghost.transform.parent.parent.GetComponent<boardColor>().color == "red")
+            {
+                gm.redBoard.nbCardOnBoard--;
+            }
+            else if (ghost.transform.parent.parent.GetComponent<boardColor>().color == "green")
+            {
+                gm.greenBoard.nbCardOnBoard--;
+            }
+            else if (ghost.transform.parent.parent.GetComponent<boardColor>().color == "yellow")
+            {
+                gm.yellowBoard.nbCardOnBoard--;
+            }
+
             explosion.transform.GetChild(2).GetComponent<ParticleSystem>().Play();
             if (ghost.transform.parent.GetChild(1).childCount >= 1)
             {
@@ -1311,13 +1325,29 @@ public class BluePlayer : MonoBehaviour
         {
             //D'abord, check si on a un autre joueur (ou plusieurs) sur la meme case que nous.
             // Check résultat Dés + jetons pour tuer le fantome
+            if (ghost.transform.parent.parent.GetComponent<boardColor>().color == "blue")
+            {
+                gm.blueBoard.nbCardOnBoard--;
+            }
+            else if (ghost.transform.parent.parent.GetComponent<boardColor>().color == "red")
+            {
+                gm.redBoard.nbCardOnBoard--;
+            }
+            else if (ghost.transform.parent.parent.GetComponent<boardColor>().color == "green")
+            {
+                gm.greenBoard.nbCardOnBoard--;
+            }
+            else if (ghost.transform.parent.parent.GetComponent<boardColor>().color == "yellow")
+            {
+                gm.yellowBoard.nbCardOnBoard--;
+            }
+
             if (ghost.GetComponent<Ghost>().couleur == "red")
             {
                 int resultRed = ghost.GetComponent<Ghost>().life - nbRedFace;
                 if (nbRedToken >= resultRed)
                 {
                     nbRedToken -= resultRed;
-                    gm.redBoard.nbCardOnBoard--;
                     nbRedFace = 0;
                     explosion.transform.GetChild(2).GetComponent<ParticleSystem>().Play();
                     if (ghost.transform.parent.GetChild(1).childCount >= 1)
@@ -1345,7 +1375,6 @@ public class BluePlayer : MonoBehaviour
                 if (nbBlueToken >= resultBlue)
                 {
                     nbBlueToken -= resultBlue;
-                    gm.blueBoard.nbCardOnBoard--;
                     nbBlueFace = 0;
                     explosion.transform.GetChild(2).GetComponent<ParticleSystem>().Play();
                     if (ghost.transform.parent.GetChild(1).childCount >= 1)
@@ -1373,7 +1402,6 @@ public class BluePlayer : MonoBehaviour
                 if (nbGreenToken >= resultGreen)
                 {
                     nbGreenToken -= resultGreen;
-                    gm.greenBoard.nbCardOnBoard--;
                     nbGreenFace = 0;
                     explosion.transform.GetChild(2).GetComponent<ParticleSystem>().Play();
                     if (ghost.transform.parent.GetChild(1).childCount >= 1)
@@ -1401,7 +1429,6 @@ public class BluePlayer : MonoBehaviour
                 if (nbYellowToken >= resultYellow)
                 {
                     nbYellowToken -= resultYellow;
-                    gm.yellowBoard.nbCardOnBoard--;
                     nbYellowFace = 0;
                     explosion.transform.GetChild(2).GetComponent<ParticleSystem>().Play();
                     if (ghost.transform.parent.GetChild(1).childCount >= 1)
@@ -1429,7 +1456,6 @@ public class BluePlayer : MonoBehaviour
                 if (nbBlackToken >= resultBlack)
                 {
                     nbBlackToken -= resultBlack;
-                    gm.blueBoard.nbCardOnBoard--;
                     nbBlackFace = 0;
                     explosion.transform.GetChild(2).GetComponent<ParticleSystem>().Play();
                     if (ghost.transform.parent.GetChild(1).childCount >= 1)
@@ -1454,26 +1480,23 @@ public class BluePlayer : MonoBehaviour
         }
         else if(!ghost.GetComponent<Ghost>().canBeDestroyByDice && ghost.GetComponent<Ghost>().life == 0)
         {
-            switch (ghost.GetComponent<Ghost>().couleur)
+            if (ghost.transform.parent.parent.GetComponent<boardColor>().color == "blue")
             {
-                case "red":
-                    gm.redBoard.nbCardOnBoard--;
-                    break;
-                case "yellow":
-                    gm.yellowBoard.nbCardOnBoard--;
-                    break;
-                case "blue":
-                    gm.blueBoard.nbCardOnBoard--;
-                    break;
-                case "black":
-                    gm.blueBoard.nbCardOnBoard--;
-                    break;
-                case "green":
-                    gm.greenBoard.nbCardOnBoard--;
-                    break;
-                default:
-                    break;
+                gm.blueBoard.nbCardOnBoard--;
             }
+            else if (ghost.transform.parent.parent.GetComponent<boardColor>().color == "red")
+            {
+                gm.redBoard.nbCardOnBoard--;
+            }
+            else if (ghost.transform.parent.parent.GetComponent<boardColor>().color == "green")
+            {
+                gm.greenBoard.nbCardOnBoard--;
+            }
+            else if (ghost.transform.parent.parent.GetComponent<boardColor>().color == "yellow")
+            {
+                gm.yellowBoard.nbCardOnBoard--;
+            }
+
             explosion.transform.GetChild(2).GetComponent<ParticleSystem>().Play();
             if (ghost.transform.parent.GetChild(1).childCount >= 1)
             {

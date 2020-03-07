@@ -151,7 +151,7 @@ MonoBehaviour:
   killWithBouddha: 0
   canBeDestroyByDice: 1
   entryPower: 1
-  inGamePower: 0
+  inGamePower: 1
   deathPower: 0
   hasLaunchBlackDiceEntryPower: 0
   hasLaunchBlackDiceInGamePower: 0

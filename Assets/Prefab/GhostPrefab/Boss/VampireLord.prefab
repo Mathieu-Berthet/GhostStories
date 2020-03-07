@@ -147,10 +147,10 @@ MonoBehaviour:
   power: {fileID: 0}
   circlePriest: {fileID: 0}
   positions: {fileID: 0}
-  cantBeKillByBouddha: 1
+  canBeKillByBouddha: 0
   killWithBouddha: 0
   canBeDestroyByDice: 0
-  entryPower: 0
+  entryPower: 1
   inGamePower: 1
   deathPower: 1
   hasLaunchBlackDiceEntryPower: 0

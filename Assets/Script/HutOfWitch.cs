@@ -61,23 +61,21 @@ public class HutOfWitch : MonoBehaviour
                 choose = false;
             }
 
-            switch (ghostToKill.GetComponent<Ghost>().couleur)
+            if (ghostToKill.transform.parent.parent.GetComponent<boardColor>().color == "blue")
             {
-                case "red":
-                    gm.redBoard.nbCardOnBoard--;
-                    break;
-                case "yellow":
-                    gm.yellowBoard.nbCardOnBoard--;
-                    break;
-                case "blue":
-                case "black":
-                    gm.blueBoard.nbCardOnBoard--;
-                    break;
-                case "green":
-                    gm.greenBoard.nbCardOnBoard--;
-                    break;
-                default:
-                    break;
+                gm.blueBoard.nbCardOnBoard--;
+            }
+            else if (ghostToKill.transform.parent.parent.GetComponent<boardColor>().color == "red")
+            {
+                gm.redBoard.nbCardOnBoard--;
+            }
+            else if (ghostToKill.transform.parent.parent.GetComponent<boardColor>().color == "green")
+            {
+                gm.greenBoard.nbCardOnBoard--;
+            }
+            else if (ghostToKill.transform.parent.parent.GetComponent<boardColor>().color == "yellow")
+            {
+                gm.yellowBoard.nbCardOnBoard--;
             }
 
             if (player.name == "BluePlayer")
