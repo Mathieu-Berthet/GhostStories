@@ -55,6 +55,7 @@ public class BluePlayer : MonoBehaviour
     public int nbBlackFace;
 
     public bool choosePriority;
+    public bool chooseBouddha;
 
     [SerializeField]
     private CubeScript cube;
@@ -98,6 +99,7 @@ public class BluePlayer : MonoBehaviour
     public GameObject panelYellowPlace;
     public GameObject panelInfoGhostPower;
     public GameObject panelPrio;
+    public GameObject panelBouddha;
 
     [SerializeField]
     private GameObject defausse;
@@ -134,7 +136,12 @@ public class BluePlayer : MonoBehaviour
     public GameObject panelJeton;
     public Button buttonGhost1;
     public Button buttonGhost2;
+
+    public Button buttonBouddha1;
+    public Button buttonBouddha2;
+
     public string priority;
+    public string bouddhaChoice;
 
     [SerializeField]
     private GameObject blackDice;
@@ -346,7 +353,7 @@ public class BluePlayer : MonoBehaviour
         }
         if(Input.GetKeyDown(KeyCode.C))
         {
-            PlaceBouddha();
+            StartCoroutine(PlaceBouddha());
         }
 
         RaycastHit hitt;
@@ -521,7 +528,7 @@ public class BluePlayer : MonoBehaviour
                         return;
                     }
                 }
-                if (position.transform.childCount > 4)
+                if (position.transform.childCount > 4 && position.transform.GetChild(4).name.Contains("Bouddha"))
                 {
                     if (card.GetComponent<Ghost>().canBeKillByBouddha)
                     {
@@ -775,6 +782,7 @@ public class BluePlayer : MonoBehaviour
         useGhostPower = false; // A Voir si utile
         textInfo.gameObject.SetActive(false);
         gm.choose = false;
+        choosePriority = false;
         gameObject.GetComponent<Deplacement>().enabled = false;
         if (state == STATE_GAME.STATE_PLAYER)
         {
@@ -2884,17 +2892,107 @@ public class BluePlayer : MonoBehaviour
         }
     }
 
-    public void PlaceBouddha()
+
+    public void SetBouddha(Button buttonClick)
     {
+        bouddhaChoice = buttonClick.transform.GetChild(0).GetComponent<Text>().text;
+        chooseBouddha = true;
+    }
+
+    public IEnumerator PlaceBouddha()
+    {
+        chooseBouddha = false;
         if (NbBouddha > 0)
         {
             if (positionOne == null && positionTwo == null)
             {
                 textInfo.text = "Vous êtes trop loin d'une case. Vous ne pouvez pas placer de bouddha";
+                textInfo.gameObject.SetActive(true);
             }
             else if (positionOne != null && positionTwo != null)
             {
-                //Demander un choix si qu'un bouddha. Sinon placer les 2 ? 
+                //Demander un choix si qu'un bouddha. Sinon placer les 2 ?
+                if(NbBouddha == 1)
+                {
+                    panelBouddha.SetActive(true);
+                    //buttonGhost1.gameObject.SetActive(true);
+                    buttonBouddha1.transform.GetChild(0).GetComponent<Text>().text = positionOne.name;
+                    //buttonGhost2.gameObject.SetActive(true);
+                    buttonBouddha2.transform.GetChild(0).GetComponent<Text>().text = positionTwo.name;
+                    //Définir priorité pour ghost puis ghost2 ou ghost2 puis ghost
+                    while (!chooseBouddha)
+                    {
+                        yield return new WaitForSeconds(1.0f);
+                    }
+
+                    if (bouddhaChoice == positionOne.name)
+                    {
+                        if (positionOne.transform.childCount > 4)
+                        {
+                            textInfo.text = "Il y a un fantôme sur cette case, vous ne pouvez pas placer de bouddha";
+                            textInfo.gameObject.SetActive(true);
+                            panelBouddha.SetActive(false);
+                            StopCoroutine(PlaceBouddha());
+                            StartCoroutine(PlaceBouddha());
+                        }
+                        else
+                        {
+                            panelBouddha.SetActive(false);
+                            NbBouddha -= 1;
+                            bouddhaOne.transform.parent = positionOne.transform;
+                            bouddhaOne.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+                            bouddhaOne.SetActive(true);
+                            yield return new WaitForSeconds(0.5f);
+                        }
+                    }
+                    else if(bouddhaChoice == positionTwo.name)
+                    {
+                        if (positionTwo.transform.childCount > 4)
+                        {
+                            textInfo.text = "Il y a un fantôme sur cette case, vous ne pouvez pas placer de bouddha";
+                            textInfo.gameObject.SetActive(true);
+                            panelBouddha.SetActive(false);
+                            StopCoroutine(PlaceBouddha());
+                            StartCoroutine(PlaceBouddha());
+                        }
+                        else
+                        {
+                            panelBouddha.SetActive(false);
+                            NbBouddha -= 1;
+                            bouddhaOne.transform.parent = positionTwo.transform;
+                            bouddhaOne.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+                            bouddhaOne.SetActive(true);
+                            yield return new WaitForSeconds(0.5f);
+                        }
+                    }
+                }
+                else if(NbBouddha == 2)
+                {
+                    if (positionTwo.transform.childCount > 4)
+                    {
+                        textInfo.text = "Il y a un fantôme sur cette case, vous ne pouvez pas placer de bouddha";
+                        textInfo.gameObject.SetActive(true);
+                    }
+                    else
+                    {
+                        NbBouddha -= 1;
+                        bouddhaTwo.transform.parent = positionTwo.transform;
+                        bouddhaTwo.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+                        bouddhaTwo.SetActive(true);
+                    }
+
+                    if (positionOne.transform.childCount > 4)
+                    {
+                        textInfo.text = "Il y a un fantôme sur cette case, vous ne pouvez pas placer de bouddha";
+                        textInfo.gameObject.SetActive(true);
+                    }
+                    else
+                    {
+                        bouddhaOne.transform.parent = positionOne.transform;
+                        bouddhaOne.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+                        bouddhaOne.SetActive(true);
+                    }
+                }
             }
             else if (positionTwo != null && positionOne == null)
             {
@@ -2902,6 +3000,7 @@ public class BluePlayer : MonoBehaviour
                 if (positionTwo.transform.childCount > 4)
                 {
                     textInfo.text = "Il y a un fantôme sur cette case, vous ne pouvez pas placer de bouddha";
+                    textInfo.gameObject.SetActive(true);
                 }
                 else
                 {
@@ -2917,6 +3016,7 @@ public class BluePlayer : MonoBehaviour
                 if (positionOne.transform.childCount > 4)
                 {
                     textInfo.text = "Il y a un fantôme sur cette case, vous ne pouvez pas placer de bouddha";
+                    textInfo.gameObject.SetActive(true);
                 }
                 else
                 {
@@ -2929,6 +3029,7 @@ public class BluePlayer : MonoBehaviour
         else
         {
             textInfo.text = "Vous n'avez pas de bouddha, pourquoi voulez vous en placer ?";
+            textInfo.gameObject.SetActive(true);
         }
     }
 }

@@ -30,7 +30,7 @@ public class BouddhisteTemple : MonoBehaviour {
         {
             //Si joueur bleu avec pouvoir "Second souffle" : numberOfBouddha -=2
 
-            numberOfBouddha -= 1;
+            //numberOfBouddha -= 1;
             //Augementer la reserve de bouddha du joueur de 1 ou 2
             if (player.name == "BluePlayer")
             {

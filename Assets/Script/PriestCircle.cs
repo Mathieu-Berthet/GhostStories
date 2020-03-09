@@ -63,16 +63,16 @@ public class PriestCircle : MonoBehaviour
                         {
                             switch (token.name)
                             {
-                                case "BlueToken":
+                                case "BlueToken(Clone)":
                                     gm.tokenStock.nbBlueToken += 1;
                                     break;
-                                case "YellowToken":
+                                case "YellowToken(Clone)":
                                     gm.tokenStock.nbYellowToken += 1;
                                     break;
-                                case "GreenToken":
+                                case "GreenToken(Clone)":
                                     gm.tokenStock.nbGreenToken += 1;
                                     break;
-                                case "BlackToken":
+                                case "BlackToken(Clone)":
                                     gm.tokenStock.nbBlackToken += 1;
                                     break;
                                 default:
@@ -105,16 +105,16 @@ public class PriestCircle : MonoBehaviour
                         {
                             switch (token.name)
                             {
-                                case "RedToken":
+                                case "RedToken(Clone)":
                                     gm.tokenStock.nbRedToken += 1;
                                     break;
-                                case "YellowToken":
+                                case "YellowToken(Clone)":
                                     gm.tokenStock.nbYellowToken += 1;
                                     break;
-                                case "GreenToken":
+                                case "GreenToken(Clone)":
                                     gm.tokenStock.nbGreenToken += 1;
                                     break;
-                                case "BlackToken":
+                                case "BlackToken(Clone)":
                                     gm.tokenStock.nbBlackToken += 1;
                                     break;
                                 default:
@@ -147,16 +147,16 @@ public class PriestCircle : MonoBehaviour
                         {
                             switch (token.name)
                             {
-                                case "RedToken":
+                                case "RedToken(Clone)":
                                     gm.tokenStock.nbRedToken += 1;
                                     break;
-                                case "YellowToken":
+                                case "YellowToken(Clone)":
                                     gm.tokenStock.nbYellowToken += 1;
                                     break;
-                                case "BlueToken":
+                                case "BlueToken(Clone)":
                                     gm.tokenStock.nbBlueToken += 1;
                                     break;
-                                case "BlackToken":
+                                case "BlackToken(Clone)":
                                     gm.tokenStock.nbBlackToken += 1;
                                     break;
                                 default:
@@ -189,16 +189,16 @@ public class PriestCircle : MonoBehaviour
                         {
                             switch (token.name)
                             {
-                                case "RedToken":
+                                case "RedToken(Clone)":
                                     gm.tokenStock.nbRedToken += 1;
                                     break;
-                                case "GreenToken":
+                                case "GreenToken(Clone)":
                                     gm.tokenStock.nbGreenToken += 1;
                                     break;
-                                case "BlueToken":
+                                case "BlueToken(Clone)":
                                     gm.tokenStock.nbBlueToken += 1;
                                     break;
-                                case "BlackToken":
+                                case "BlackToken(Clone)":
                                     gm.tokenStock.nbBlackToken += 1;
                                     break;
                                 default:
@@ -231,16 +231,16 @@ public class PriestCircle : MonoBehaviour
                         {
                             switch (token.name)
                             {
-                                case "RedToken":
+                                case "RedToken(Clone)":
                                     gm.tokenStock.nbRedToken += 1;
                                     break;
-                                case "GreenToken":
+                                case "GreenToken(Clone)":
                                     gm.tokenStock.nbGreenToken += 1;
                                     break;
-                                case "BlueToken":
+                                case "BlueToken(Clone)":
                                     gm.tokenStock.nbBlueToken += 1;
                                     break;
-                                case "YellowToken":
+                                case "YellowToken(Clone)":
                                     gm.tokenStock.nbYellowToken += 1;
                                     break;
                                 default:
@@ -307,6 +307,7 @@ public class PriestCircle : MonoBehaviour
         if(hauntedTile)
         {
             gameObject.GetComponent<MeshRenderer>().material.color = new Color(0.25f, 0.25f, 0.25f, 1);
+            RemovePawn();
         }
     }
 
@@ -315,6 +316,36 @@ public class PriestCircle : MonoBehaviour
         if (!hauntedTile)
         {
             gameObject.GetComponent<MeshRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 1);
+        }
+    }
+
+
+    public void RemovePawn()
+    {
+        if(hauntedTile)
+        {
+            switch (token.name)
+            {
+                case "BlueToken(Clone)":
+                    gm.tokenStock.nbBlueToken += 1;
+                    break;
+                case "YellowToken(Clone)":
+                    gm.tokenStock.nbYellowToken += 1;
+                    break;
+                case "GreenToken(Clone)":
+                    gm.tokenStock.nbGreenToken += 1;
+                    break;
+                case "BlackToken(Clone)":
+                    gm.tokenStock.nbBlackToken += 1;
+                    break;
+                case "RedToken(Clone)":
+                    gm.tokenStock.nbBlackToken += 1;
+                    break;
+                default:
+                    break;
+            }
+            token.GetComponent<PoolChild>().ReturnToPool();
+            token = null;
         }
     }
 }
