@@ -12,6 +12,7 @@ public class NightTower : MonoBehaviour
     public GameObject ghostCard;
 
     public Text infos;
+    public Text infoTower;
 
     public string boardToRetreatGhost;
    
@@ -35,6 +36,7 @@ public class NightTower : MonoBehaviour
         if (!hauntedTile)
         {
             //Choix du plateau
+            infoTower.text = "Veuillez choisir le plateau dont vous voulez faire reculez les fantômes : ";
             panelBoardChoice.SetActive(true);
             while (!chooseBoard)
             {

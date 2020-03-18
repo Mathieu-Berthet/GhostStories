@@ -68,13 +68,23 @@ public class BoardPosition : MonoBehaviour {
 
     public void checkPosition(GameObject pos, Button button)
     {
-        if(pos.transform.childCount <= 5 || usingTile)
+        if (pos.transform.childCount < 5 || usingTile)
         {
             button.interactable = true;
         }
-        else
+        else if(pos.transform.childCount > 4)
         {
-            button.interactable = false;
+            if (pos.transform.GetChild(4) != null)
+            {
+                if (pos.transform.childCount == 5 && pos.transform.GetChild(4).name.Contains("Bouddha"))
+                {
+                    button.interactable = true;
+                }
+                else
+                {
+                    button.interactable = false;
+                }
+            }
         }
     }
 }

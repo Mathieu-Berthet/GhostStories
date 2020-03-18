@@ -28,6 +28,7 @@ public class WindCelestialFlag : MonoBehaviour {
     [Header("Divers scripts et textes d'information")]
     public BoardPosition board;
     public Text infos;
+    public Text infoWindCelestialFlag;
 
     [Header("String")]
     public string playerToMove;
@@ -109,6 +110,7 @@ public class WindCelestialFlag : MonoBehaviour {
             //PARTIE DEPLACEMENT JOUEUR
             panelBoardPlayer.SetActive(true);
             infos.text = "Veuillez choisir le joueur à déplacer";
+            infoWindCelestialFlag.text = "Veuillez choisir le joueur à déplacer : ";
             while (!choosePlayer)
             {
                 yield return new WaitForSeconds(1.0f);

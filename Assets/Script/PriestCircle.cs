@@ -35,8 +35,8 @@ public class PriestCircle : MonoBehaviour
             gm.choose = false;
             gm.panelButtonChoice.SetActive(true);
             playerSave = player;
-            infoCircle = gm.panelButtonChoice.transform.GetChild(0).GetComponent<Text>();
-            infoCircle.text = "Veuillez choisir votre jeton : ";
+            //infoCircle = gm.panelButtonChoice.transform.GetChild(0).GetComponent<Text>();
+            infoCircle.text = "Veuillez choisir le jeton à mettre sur la tuile : ";
             while (!gm.choose)
             {
                 yield return new WaitForSeconds(1.0f);

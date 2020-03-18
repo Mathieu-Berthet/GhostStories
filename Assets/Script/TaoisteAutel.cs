@@ -8,6 +8,7 @@ public class TaoisteAutel : MonoBehaviour
     public GameObject panelTile;
 
     public Text infos;
+    public Text infoTaoiste;
 
     public string tileToUnhaunted;
 
@@ -33,7 +34,7 @@ public class TaoisteAutel : MonoBehaviour
                 choose = false;
 
                 yield return new WaitForSeconds(0.5f);
-
+                infoTaoiste.text = "Veuillez choisir la tuile à déshanter : ";
                 panelTile.SetActive(true);
                 while (!choose)
                 {
