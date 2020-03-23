@@ -86,6 +86,8 @@ public class HutOfWitch : MonoBehaviour
                 player.GetComponent<BluePlayer>().useTilePower = false;
                 player.GetComponent<Deplacement>().enabled = true;
                 player.GetComponent<BluePlayer>().update = true;
+                player.GetComponent<BluePlayer>().panelJeton.SetActive(true);
+                player.GetComponent<BluePlayer>().textInfoPhase.gameObject.SetActive(true);
             }
             else if (player.name == "GreenPlayer")
             {
@@ -131,6 +133,8 @@ public class HutOfWitch : MonoBehaviour
                 player.GetComponent<BluePlayer>().useTilePower = false;
                 player.GetComponent<Deplacement>().enabled = true;
                 player.GetComponent<BluePlayer>().update = true;
+                player.GetComponent<BluePlayer>().panelJeton.SetActive(true);
+                player.GetComponent<BluePlayer>().textInfoPhase.gameObject.SetActive(true);
             }
         }
     }

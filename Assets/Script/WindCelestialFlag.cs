@@ -133,6 +133,8 @@ public class WindCelestialFlag : MonoBehaviour {
                 playerChoose.GetComponent<BluePlayer>().useTilePower = false;
                 playerChoose.GetComponent<Deplacement>().enabled = true;
                 playerChoose.GetComponent<BluePlayer>().update = true;
+                player.GetComponent<BluePlayer>().textInfoPhase.gameObject.SetActive(true);
+                player.GetComponent<BluePlayer>().panelJeton.SetActive(true);
                 isActiveTilePower = false;
             }
             //Pour les autres joueurs ...
@@ -149,6 +151,8 @@ public class WindCelestialFlag : MonoBehaviour {
                 player.GetComponent<BluePlayer>().useTilePower = false;
                 player.GetComponent<Deplacement>().enabled = true;
                 player.GetComponent<BluePlayer>().update = true;
+                player.GetComponent<BluePlayer>().textInfoPhase.gameObject.SetActive(true);
+                player.GetComponent<BluePlayer>().panelJeton.SetActive(true);
             }
         }
     }

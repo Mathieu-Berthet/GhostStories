@@ -452,6 +452,7 @@ public class BluePlayer : MonoBehaviour
         {
             hasDraw = true;
             gameObject.GetComponent<Deplacement>().enabled = false;
+            panelJeton.SetActive(false);
             textInfoPhase.gameObject.SetActive(false);
             textInfo.text = " ";
             if (gm.blueBoard.nbCardOnBoard == 3 && gm.redBoard.nbCardOnBoard == 3 && gm.greenBoard.nbCardOnBoard == 3 && gm.yellowBoard.nbCardOnBoard == 3)
@@ -550,6 +551,7 @@ public class BluePlayer : MonoBehaviour
                         drawedCard.gameObject.SetActive(false);
                         gameObject.GetComponent<Deplacement>().enabled = true;
                         textInfoPhase.gameObject.SetActive(true);
+                        panelJeton.SetActive(true);
                         useTilePower = false;
                         canLaunchBlackDice = true;
                         hasDraw = false;
@@ -595,6 +597,7 @@ public class BluePlayer : MonoBehaviour
                         drawedCard.gameObject.SetActive(false);
                         gameObject.GetComponent<Deplacement>().enabled = true;
                         textInfoPhase.gameObject.SetActive(true);
+                        panelJeton.SetActive(true);
                         useTilePower = false;
                         canLaunchBlackDice = true;
                         hasDraw = false;
@@ -644,6 +647,7 @@ public class BluePlayer : MonoBehaviour
                     drawedCard.gameObject.SetActive(false);
                     gameObject.GetComponent<Deplacement>().enabled = true;
                     textInfoPhase.gameObject.SetActive(true);
+                    panelJeton.SetActive(true);
                     useTilePower = false;
                     canLaunchBlackDice = true;
                     hasDraw = false;
@@ -712,6 +716,8 @@ public class BluePlayer : MonoBehaviour
                     canLaunchDice = false;
                     canLaunchBlackDice = false;
                     gameObject.GetComponent<Deplacement>().enabled = false;
+                    panelJeton.SetActive(false);
+                    textInfoPhase.gameObject.SetActive(false);
                     StartCoroutine(witchHut.GetComponent<HutOfWitch>().KillGhost(gameObject));
                     break;
                 case "EchoppeHerboriste":
@@ -745,6 +751,8 @@ public class BluePlayer : MonoBehaviour
                     canLaunchDice = false;
                     canLaunchBlackDice = false;
                     gameObject.GetComponent<Deplacement>().enabled = false;
+                    textInfoPhase.gameObject.SetActive(false);
+                    panelJeton.SetActive(false);
                     StartCoroutine(windCelestialFlag.GetComponent<WindCelestialFlag>().MovePlayerAndGhost(gameObject));
                     break;
                 case "TourVeilleurNuit":
@@ -926,7 +934,7 @@ public class BluePlayer : MonoBehaviour
             {
                 while (nbWhiteFace > 0)
                 {
-                    textNbWhiteFace.text = "Nombre de face blanches : " + nbWhiteFace.ToString();
+                    textNbWhiteFace.text = "Nombre de face blanches restantes : " + nbWhiteFace.ToString();
                     textNbWhiteFace.gameObject.SetActive(true);
                     infosWhiteFace = gm.panelButtonChoice.transform.GetChild(0).GetComponent<Text>();
                     infosWhiteFace.text = "Veuillez choisir la couleur de vos faces blanches : ";
@@ -974,11 +982,12 @@ public class BluePlayer : MonoBehaviour
                 if (ghost1 != null && ghost2 != null)
                 {
                     panelPrio.SetActive(true);
-                    //buttonGhost1.gameObject.SetActive(true);
-                    buttonGhost1.transform.GetChild(0).GetComponent<Text>().text = ghost1.name;
-                    //buttonGhost2.gameObject.SetActive(true);
-                    buttonGhost2.transform.GetChild(0).GetComponent<Text>().text = ghost2.name;
-                    //Définir priorité pour ghost puis ghost2 ou ghost2 puis ghost
+                    string nameOne = ghost1.name;
+                    nameOne = nameOne.Replace("(Clone)", "");
+                    buttonGhost1.transform.GetChild(0).GetComponent<Text>().text = nameOne;
+                    string nameTwo = ghost2.name;
+                    nameTwo = nameTwo.Replace("(Clone)", "");
+                    buttonGhost2.transform.GetChild(0).GetComponent<Text>().text = nameTwo;
 
                     while (!choosePriority)
                     {
@@ -987,8 +996,6 @@ public class BluePlayer : MonoBehaviour
                     if (priority == ghost1.name)
                     {
                         panelPrio.SetActive(false);
-                        /*buttonGhost1.gameObject.SetActive(false);
-                        buttonGhost2.gameObject.SetActive(false);*/
                         ghost1.GetComponent<Ghost>().ReduceLife();
                         Attack(ghost1);
                         yield return new WaitForSeconds(1.5f);
@@ -999,8 +1006,6 @@ public class BluePlayer : MonoBehaviour
                     else
                     {
                         panelPrio.SetActive(false);
-                        /*buttonGhost1.gameObject.SetActive(false);
-                        buttonGhost2.gameObject.SetActive(false);*/
                         ghost2.GetComponent<Ghost>().ReduceLife();
                         Attack(ghost2);
                         yield return new WaitForSeconds(1.5f);
