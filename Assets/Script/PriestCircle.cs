@@ -322,7 +322,7 @@ public class PriestCircle : MonoBehaviour
 
     public void RemovePawn()
     {
-        if(hauntedTile)
+        if(hauntedTile && token != null)
         {
             switch (token.name)
             {

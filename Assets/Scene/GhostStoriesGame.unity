@@ -11740,7 +11740,7 @@ MonoBehaviour:
   nbPowerToken: 0
   nbYinYangBlueToken: 0
   nbBouddha: 0
-  powerSecondSouffle: 0
+  powerSecondSouffle: 1
   powerSouffleCeleste: 0
   useTilePower: 0
   useGhostPower: 0
@@ -11830,6 +11830,8 @@ MonoBehaviour:
   bluePosTower: {fileID: 1145425398}
   actualPosition: {x: 0, y: 0, z: 0}
   stop: 0
+  nbActionEffect: 0
+  nbActionBattle: 0
   state: 0
   textPlayerTurn: {fileID: 1573462237}
   textInfoPhase: {fileID: 654859118}
@@ -17606,7 +17608,6 @@ MonoBehaviour:
   infoMort: {fileID: 1583025212}
   infoTuile: {fileID: 253676268}
   infoDefausse: {fileID: 14589470}
-  infoDebug: {fileID: 0}
   buttonNext: {fileID: 1404518191}
   buttonPrecedent: {fileID: 472869237}
   buttonTile: {fileID: 1352656644}
