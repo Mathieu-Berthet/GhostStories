@@ -52,6 +52,10 @@ public class Deplacement : MonoBehaviour {
         {
             player.GetComponent<BluePlayer>().CheckDistance();
         }
+        else if (player.name == "YellowPlayer")
+        {
+            player.GetComponent<YellowPlayer>().CheckDistance();
+        }
     }
 
     public IEnumerator PlayerDeplacement()
@@ -147,12 +151,100 @@ public class Deplacement : MonoBehaviour {
                     break;
             }
         }
+        else if (player.name == "YellowPlayer")
+        {
+            chooseDepla = false;
+
+            yield return new WaitForSeconds(0.5f);
+
+            panelTileDeplacement.SetActive(true);
+            while (!chooseDepla)
+            {
+                yield return new WaitForSeconds(1.0f);
+            }
+            if (chooseDepla)
+            {
+                panelTileDeplacement.SetActive(false);
+                chooseDepla = false;
+            }
+            switch (tileToMove)
+            {
+                case "Maison du The":
+                    player.transform.parent = player.GetComponent<YellowPlayer>().yellowPosHouse;
+                    player.transform.localPosition = new Vector3(0, 8.25f, 0);
+                    player.transform.parent = null;
+                    player.GetComponent<YellowPlayer>().state = YellowPlayer.STATE_GAME.STATE_PLAYER;
+                    player.GetComponent<YellowPlayer>().alreadyMove = true;
+                    break;
+                case "Hutte de la Sorciere":
+                    player.transform.parent = player.GetComponent<YellowPlayer>().yellowPosHut;
+                    player.transform.localPosition = new Vector3(0, 8.25f, 0);
+                    player.transform.parent = null;
+                    player.GetComponent<YellowPlayer>().state = YellowPlayer.STATE_GAME.STATE_PLAYER;
+                    player.GetComponent<YellowPlayer>().alreadyMove = true;
+                    break;
+                case "Echoppe de L'herboriste":
+                    player.transform.parent = player.GetComponent<YellowPlayer>().yellowPosStall;
+                    player.transform.localPosition = new Vector3(0, 8.25f, 0);
+                    player.transform.parent = null;
+                    player.GetComponent<YellowPlayer>().state = YellowPlayer.STATE_GAME.STATE_PLAYER;
+                    player.GetComponent<YellowPlayer>().alreadyMove = true;
+                    break;
+                case "Autel Taoiste":
+                    player.transform.parent = player.GetComponent<YellowPlayer>().yellowPosAutel;
+                    player.transform.localPosition = new Vector3(0, 8.25f, 0);
+                    player.transform.parent = null;
+                    player.GetComponent<YellowPlayer>().state = YellowPlayer.STATE_GAME.STATE_PLAYER;
+                    player.GetComponent<YellowPlayer>().alreadyMove = true;
+                    break;
+                case "Cimetiere":
+                    player.transform.parent = player.GetComponent<YellowPlayer>().yellowPosGraveyard;
+                    player.transform.localPosition = new Vector3(0, 8.25f, 0);
+                    player.transform.parent = null;
+                    player.GetComponent<YellowPlayer>().state = YellowPlayer.STATE_GAME.STATE_PLAYER;
+                    player.GetComponent<YellowPlayer>().alreadyMove = true;
+                    break;
+                case "Pavillon du Vent Celeste":
+                    player.transform.parent = player.GetComponent<YellowPlayer>().yellowPosPavillon;
+                    player.transform.localPosition = new Vector3(0, 8.25f, 0);
+                    player.transform.parent = null;
+                    player.GetComponent<YellowPlayer>().state = YellowPlayer.STATE_GAME.STATE_PLAYER;
+                    player.GetComponent<YellowPlayer>().alreadyMove = true;
+                    break;
+                case "Tour du Veilleur de Nuit":
+                    player.transform.parent = player.GetComponent<YellowPlayer>().yellowPosTower;
+                    player.transform.localPosition = new Vector3(0, 8.25f, 0);
+                    player.transform.parent = null;
+                    player.GetComponent<YellowPlayer>().state = YellowPlayer.STATE_GAME.STATE_PLAYER;
+                    player.GetComponent<YellowPlayer>().alreadyMove = true;
+                    break;
+                case "Cercle de priere":
+                    player.transform.parent = player.GetComponent<YellowPlayer>().yellowPosCircle;
+                    player.transform.localPosition = new Vector3(0, 8.25f, 0);
+                    player.transform.parent = null;
+                    player.GetComponent<YellowPlayer>().state = YellowPlayer.STATE_GAME.STATE_PLAYER;
+                    player.GetComponent<YellowPlayer>().alreadyMove = true;
+                    break;
+                case "Temple Bouddhiste":
+                    player.transform.parent = player.GetComponent<YellowPlayer>().yellowPosTemple;
+                    player.transform.localPosition = new Vector3(0, 8.25f, 0);
+                    player.transform.parent = null;
+                    player.GetComponent<YellowPlayer>().state = YellowPlayer.STATE_GAME.STATE_PLAYER;
+                    player.GetComponent<YellowPlayer>().alreadyMove = true;
+                    break;
+                case "Rester sur la tuile":
+                    player.GetComponent<YellowPlayer>().state = YellowPlayer.STATE_GAME.STATE_PLAYER;
+                    player.GetComponent<YellowPlayer>().alreadyMove = true;
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 
     public void getTileToDepla(Button buttonClick)
     {
         tileToMove = buttonClick.transform.GetChild(0).GetComponent<Text>().text;
-        Debug.Log("HEY");
         chooseDepla = true;
     }
 }

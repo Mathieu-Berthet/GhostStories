@@ -277,8 +277,11 @@ public class PriestCircle : MonoBehaviour
             }
             else if (player.name == "YellowPlayer")
             {
-                //player.GetComponent<YellowPlayer>().Qi -= 1;
-                //player.GetComponent<YellowPlayer>().board.usingTile = true;
+                player.GetComponent<YellowPlayer>().canLaunchDice = true;
+                player.GetComponent<YellowPlayer>().canLaunchBlackDice = true;
+                player.GetComponent<YellowPlayer>().useTilePower = false;
+                player.GetComponent<Deplacement>().enabled = true;
+                player.GetComponent<YellowPlayer>().update = true;
             }
             else if (player.name == "RedPlayer")
             {
@@ -297,6 +300,14 @@ public class PriestCircle : MonoBehaviour
                 player.GetComponent<BluePlayer>().useTilePower = false;
                 player.GetComponent<Deplacement>().enabled = true;
                 player.GetComponent<BluePlayer>().update = true;
+            }
+            else if (player.name == "YellowPlayer")
+            {
+                player.GetComponent<YellowPlayer>().canLaunchDice = true;
+                player.GetComponent<YellowPlayer>().canLaunchBlackDice = true;
+                player.GetComponent<YellowPlayer>().useTilePower = false;
+                player.GetComponent<Deplacement>().enabled = true;
+                player.GetComponent<YellowPlayer>().update = true;
             }
         }
     }

@@ -98,7 +98,13 @@ public class HutOfWitch : MonoBehaviour
             else if (player.name == "YellowPlayer")
             {
                 player.GetComponent<YellowPlayer>().Qi -= 1;
-                //player.GetComponent<YellowPlayer>().board.usingTile = true;
+                player.GetComponent<YellowPlayer>().canLaunchDice = true;
+                player.GetComponent<YellowPlayer>().canLaunchBlackDice = true;
+                player.GetComponent<YellowPlayer>().useTilePower = false;
+                player.GetComponent<Deplacement>().enabled = true;
+                player.GetComponent<YellowPlayer>().update = true;
+                player.GetComponent<YellowPlayer>().panelJeton.SetActive(true);
+                player.GetComponent<YellowPlayer>().textInfoPhase.gameObject.SetActive(true);
 
             }
             else if (player.name == "RedPlayer")
@@ -135,6 +141,16 @@ public class HutOfWitch : MonoBehaviour
                 player.GetComponent<BluePlayer>().update = true;
                 player.GetComponent<BluePlayer>().panelJeton.SetActive(true);
                 player.GetComponent<BluePlayer>().textInfoPhase.gameObject.SetActive(true);
+            }
+            else if (player.name == "YellowPlayer")
+            {
+                player.GetComponent<YellowPlayer>().canLaunchDice = true;
+                player.GetComponent<YellowPlayer>().canLaunchBlackDice = true;
+                player.GetComponent<YellowPlayer>().useTilePower = false;
+                player.GetComponent<Deplacement>().enabled = true;
+                player.GetComponent<YellowPlayer>().update = true;
+                player.GetComponent<YellowPlayer>().panelJeton.SetActive(true);
+                player.GetComponent<YellowPlayer>().textInfoPhase.gameObject.SetActive(true);
             }
         }
     }

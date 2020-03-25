@@ -99,7 +99,6 @@ public class WindCelestialFlag : MonoBehaviour {
             infos.text = "Veuillez choisir le nouvel emplacement du fantôme";
             while (!selectedPosition)
             {
-                Debug.Log("Couocu");
                 panelBluePlace.SetActive(true);
                 panelRedPlace.SetActive(true);
                 panelGreenPlace.SetActive(true);
@@ -126,15 +125,32 @@ public class WindCelestialFlag : MonoBehaviour {
                 playerChoose.GetComponent<BluePlayer>().CheckDistance();
                 StartCoroutine(playerChoose.GetComponent<Deplacement>().PlayerDeplacement());
             }
+            else if (playerChoose.name == "YellowPlayer")
+            {
+                infos.text = "Veuillez choisir la tuile d'arrivée";
+                playerChoose.GetComponent<YellowPlayer>().CheckDistance();
+                StartCoroutine(playerChoose.GetComponent<Deplacement>().PlayerDeplacement());
+            }
             if (player.name == "BluePlayer")
             {
-                playerChoose.GetComponent<BluePlayer>().canLaunchDice = true;
-                playerChoose.GetComponent<BluePlayer>().canLaunchBlackDice = true;
-                playerChoose.GetComponent<BluePlayer>().useTilePower = false;
-                playerChoose.GetComponent<Deplacement>().enabled = true;
-                playerChoose.GetComponent<BluePlayer>().update = true;
+                player.GetComponent<BluePlayer>().canLaunchDice = true;
+                player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
+                player.GetComponent<BluePlayer>().useTilePower = false;
+                player.GetComponent<Deplacement>().enabled = true;
+                player.GetComponent<BluePlayer>().update = true;
                 player.GetComponent<BluePlayer>().textInfoPhase.gameObject.SetActive(true);
                 player.GetComponent<BluePlayer>().panelJeton.SetActive(true);
+                isActiveTilePower = false;
+            }
+            else if (player.name == "YellowPlayer")
+            {
+                player.GetComponent<YellowPlayer>().canLaunchDice = true;
+                player.GetComponent<YellowPlayer>().canLaunchBlackDice = true;
+                player.GetComponent<YellowPlayer>().useTilePower = false;
+                player.GetComponent<Deplacement>().enabled = true;
+                player.GetComponent<YellowPlayer>().update = true;
+                player.GetComponent<YellowPlayer>().textInfoPhase.gameObject.SetActive(true);
+                player.GetComponent<YellowPlayer>().panelJeton.SetActive(true);
                 isActiveTilePower = false;
             }
             //Pour les autres joueurs ...
@@ -153,6 +169,16 @@ public class WindCelestialFlag : MonoBehaviour {
                 player.GetComponent<BluePlayer>().update = true;
                 player.GetComponent<BluePlayer>().textInfoPhase.gameObject.SetActive(true);
                 player.GetComponent<BluePlayer>().panelJeton.SetActive(true);
+            }
+            else if (player.name == "YellowPlayer")
+            {
+                player.GetComponent<YellowPlayer>().canLaunchDice = true;
+                player.GetComponent<YellowPlayer>().canLaunchBlackDice = true;
+                player.GetComponent<YellowPlayer>().useTilePower = false;
+                player.GetComponent<Deplacement>().enabled = true;
+                player.GetComponent<YellowPlayer>().update = true;
+                player.GetComponent<YellowPlayer>().textInfoPhase.gameObject.SetActive(true);
+                player.GetComponent<YellowPlayer>().panelJeton.SetActive(true);
             }
         }
     }
@@ -181,7 +207,6 @@ public class WindCelestialFlag : MonoBehaviour {
 
     public void MustChooseGhostToMove(Button buttonClick)
     {
-        Debug.Log("coucou");
         chooseenGhost = buttonClick.name;
         if (isActiveTilePower)
         {

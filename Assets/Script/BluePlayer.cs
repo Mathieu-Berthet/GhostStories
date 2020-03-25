@@ -6,7 +6,10 @@ using UnityEngine.AI;
 
 public class BluePlayer : MonoBehaviour
 {
-    #region variableJeton
+    [Header("Game Manager")]
+    public GameManager gm;
+
+    [Header("Infos joueur")]
     [SerializeField]
     private int qi = 0; // PV du joueur
     [SerializeField]
@@ -25,24 +28,32 @@ public class BluePlayer : MonoBehaviour
     private int nbYinYangBlueToken; // Jeton yin yang. Max possible 1, et uniquement de sa couleur
     [SerializeField]
     private int nbBouddha; // Pour les bouddha du temple bouddhiste
-    #endregion
+
+    public GameObject panelJeton;
 
     public bool powerSecondSouffle;
     public bool powerSouffleCeleste;
 
     public bool useTilePower;
     public bool useGhostPower;
-    private bool fight;
     public bool canUsePower;
+    public bool canLaunchDice;
+    public bool canLaunchBlackDice;
 
+    public int nbActionEffect;
+    public int nbActionBattle;
+
+    //Les dés et leurs résultats
+    [Header("Les dés")]
     [SerializeField]
     private GameObject dice;
+    [SerializeField]
+    private CubeScript cube;
 
     private GameObject diceOne;
     private GameObject diceTwo;
     private GameObject diceThree;
 
-    //TODO : Faire remplir ces variables
     public string resultDiceOne;
     public string resultDiceTwo;
     public string resultDiceThree;
@@ -54,12 +65,12 @@ public class BluePlayer : MonoBehaviour
     public int nbWhiteFace;
     public int nbBlackFace;
 
-    public bool choosePriority;
-    public bool chooseBouddha;
-
     [SerializeField]
-    private CubeScript cube;
+    private GameObject blackDice;
+    public GameObject blackDiceOne;
+    public string resultFace;
 
+    [Header("Les tuiles")]
     //Les tuiles
     public GameObject houseOfTea;
     public GameObject graveyard;
@@ -70,7 +81,12 @@ public class BluePlayer : MonoBehaviour
     public GameObject witchHut;
     public GameObject windCelestialFlag;
     public GameObject nightTower;
+    public string tileName;
 
+    //Les positions pour placer les bouddhas
+    [Header("Les Bouddhas")]
+    public bool choosePriority;
+    public bool chooseBouddha;
 
     public GameObject positionOne;
     public GameObject positionTwo;
@@ -78,15 +94,29 @@ public class BluePlayer : MonoBehaviour
     public GameObject bouddhaOne;
     public GameObject bouddhaTwo;
 
-    public string tileName;
+    public string priority;
+    public string bouddhaChoice;
+
+    public Button buttonGhost1;
+    public Button buttonGhost2;
+
+    public Button buttonBouddha1;
+    public Button buttonBouddha2;
+
+
+    //Les fantômes ciblables
+    [Header("Les fantômes")]
     public string ghostName;
     public string ghostName2;
 
     public GameObject ghost1;
     public GameObject ghost2;
-    public bool canLaunchDice;
-    public bool canLaunchBlackDice;
 
+    public GameObject explosion;
+    public GameObject explosion2;
+
+    //Le deck et l'emplacement des fantômes pour la pioche
+    [Header("La pioche")]
     [SerializeField]
     private PoolManagerDeck deck;
     [SerializeField]
@@ -101,19 +131,22 @@ public class BluePlayer : MonoBehaviour
     public GameObject panelPrio;
     public GameObject panelBouddha;
 
+    public string colorPlayer = "blue";
+
     [SerializeField]
     private GameObject defausse;
 
-    //public BoxCollider boxCollider;
-
+    //Booleen utilitaire
+    [Header("Booleens")]
     [SerializeField]
     private bool hasDraw;
+    public bool update;
+    public bool alreadyMove;
+    public bool stop;
 
+    //Les différents textes
+    [Header("Les textes")]
     public Text textInfo;
-    public string colorPlayer = "blue";
-
-    public GameManager gm;
-
     public Text textNbTokenBlue;
     public Text textNbTokenRed;
     public Text textNbTokenGreen;
@@ -124,30 +157,16 @@ public class BluePlayer : MonoBehaviour
     public Text textNbQI;
     public Text textNbBouddha;
     public Text textNbWhiteFace;
-
     public Text infosWhiteFace;
+    public Text textPlayerTurn;
+    public Text textInfoPhase;
+    public Text textMort;
+    public Text textInfoTuile;
+    public Text textNbDice;
+    public Text textTurn;
 
-    public bool update;
-
-    public bool alreadyMove;
-    public GameObject explosion;
-    public GameObject explosion2;
-
-    public GameObject panelJeton;
-    public Button buttonGhost1;
-    public Button buttonGhost2;
-
-    public Button buttonBouddha1;
-    public Button buttonBouddha2;
-
-    public string priority;
-    public string bouddhaChoice;
-
-    [SerializeField]
-    private GameObject blackDice;
-    public GameObject blackDiceOne;
-    public string resultFace;
-
+    //Déplacement
+    [Header("Le déplacement")]
     public Transform bluePosStall;
     public Transform bluePosHouse;
     public Transform bluePosHut;
@@ -157,13 +176,8 @@ public class BluePlayer : MonoBehaviour
     public Transform bluePosCircle;
     public Transform bluePosTemple;
     public Transform bluePosTower;
-
     public Vector3 actualPosition;
 
-    public bool stop;
-
-    public int nbActionEffect;
-    public int nbActionBattle;
     /*public NavMeshModifier navMeshEchoppe;
     public NavMeshModifier navMeshHut;
     public NavMeshModifier navMeshHouse;
@@ -303,12 +317,6 @@ public class BluePlayer : MonoBehaviour
     }
 
     public STATE_GAME state;
-    public Text textPlayerTurn;
-    public Text textInfoPhase;
-    public Text textMort;
-    public Text textInfoTuile;
-    public Text textNbDice;
-    public Text textTurn;
     // Use this for initialization
     void Start ()
     {
@@ -707,7 +715,6 @@ public class BluePlayer : MonoBehaviour
             switch (tileName)
             {
                 case "MaisonThe":
-                    Debug.Log("Maison du Thé");
                     textInfoTuile.text = "Maison du Thé";
                     canLaunchDice = false;
                     canLaunchBlackDice = false;
@@ -715,7 +722,6 @@ public class BluePlayer : MonoBehaviour
                     StartCoroutine(houseOfTea.GetComponent<HouseOfTea>().GainTokenAndQI(gameObject));
                     break;
                 case "HutteSorciere":
-                    Debug.Log("Hutte de la sorcière");
                     textInfoTuile.text = "Hutte de la sorcière";
                     card = null;
                     canLaunchDice = false;
@@ -726,7 +732,6 @@ public class BluePlayer : MonoBehaviour
                     StartCoroutine(witchHut.GetComponent<HutOfWitch>().KillGhost(gameObject));
                     break;
                 case "EchoppeHerboriste":
-                    Debug.Log("Echoppe de l'herboriste");
                     textInfoTuile.text = "Echoppe de l'herboriste";
                     canLaunchDice = false;
                     canLaunchBlackDice = false;
@@ -734,7 +739,6 @@ public class BluePlayer : MonoBehaviour
                     StartCoroutine(herbalistStall.GetComponent<StallOfHerbalist>().getToken(gameObject));
                     break;
                 case "AutelTaoiste":
-                    Debug.Log("Autel Taoiste");
                     textInfoTuile.text = "Autel Taoiste";
                     canLaunchDice = false;
                     canLaunchBlackDice = false;
@@ -742,7 +746,6 @@ public class BluePlayer : MonoBehaviour
                     StartCoroutine(taoisteAutel.GetComponent<TaoisteAutel>().UnhauntTile(gameObject));
                     break;
                 case "Cimetiere":
-                    Debug.Log("Le cimetière");
                     textInfoTuile.text = "Le cimetière";
                     canLaunchDice = false;
                     canLaunchBlackDice = false;
@@ -750,7 +753,6 @@ public class BluePlayer : MonoBehaviour
                     graveyard.GetComponent<Graveyard>().Resurrect(gameObject);
                     break;
                 case "PavillonVentCeleste":
-                    Debug.Log("Le pavillon du vent celeste");
                     textInfoTuile.text = "Le pavillon du vent celeste";
                     card = null;
                     canLaunchDice = false;
@@ -761,7 +763,6 @@ public class BluePlayer : MonoBehaviour
                     StartCoroutine(windCelestialFlag.GetComponent<WindCelestialFlag>().MovePlayerAndGhost(gameObject));
                     break;
                 case "TourVeilleurNuit":
-                    Debug.Log("Tour du veilleur de nuit");
                     textInfoTuile.text = "Tour du veilleur de nuit";
                     canLaunchDice = false;
                     canLaunchBlackDice = false;
@@ -769,7 +770,6 @@ public class BluePlayer : MonoBehaviour
                     StartCoroutine(nightTower.GetComponent<NightTower>().RetreatGhost(gameObject));
                     break;
                 case "CerclePriere":
-                    Debug.Log("Le cercle de prière");
                     textInfoTuile.text = "Le cercle de prière";
                     gameObject.GetComponent<Deplacement>().enabled = false;
                     canLaunchDice = false;
@@ -777,7 +777,6 @@ public class BluePlayer : MonoBehaviour
                     StartCoroutine(priestCircle.GetComponent<PriestCircle>().reduceGhostLife(gameObject));
                     break;
                 case "TempleBouddhiste":
-                    Debug.Log("Temple Bouddhiste");
                     textInfoTuile.text = "Temple Bouddhiste";
                     gameObject.GetComponent<Deplacement>().enabled = false;
                     canLaunchDice = false;
@@ -1150,14 +1149,10 @@ public class BluePlayer : MonoBehaviour
     {
         RaycastHit hitXdirection;
         RaycastHit hitZdirection;
-        if(Physics.Raycast(transform.position, Vector3.right, out hitXdirection, 1.5f) && Physics.Raycast(transform.position, Vector3.back, out hitZdirection, 1.5f))
+        if (Physics.Raycast(transform.position, Vector3.right, out hitXdirection, 1.5f) && Physics.Raycast(transform.position, Vector3.back, out hitZdirection, 1.5f))
         {
             if (hitXdirection.collider.transform.childCount > 4)
             {
-                /*Debug.DrawRay(transform.position, Vector3.right, Color.blue);
-                Debug.DrawRay(transform.position, Vector3.forward, Color.red);
-                Debug.DrawRay(transform.position, Vector3.left, Color.blue);
-                Debug.DrawRay(transform.position, Vector3.back, Color.red);*/
                 explosion = hitXdirection.collider.transform.GetChild(0).gameObject;
                 ghost1 = hitXdirection.collider.transform.GetChild(4).gameObject;
             }
@@ -1178,16 +1173,12 @@ public class BluePlayer : MonoBehaviour
                 ghost2 = null;
             }
         }
-        else if(Physics.Raycast(transform.position, Vector3.back, out hitZdirection, 1.5f) && Physics.Raycast(transform.position, Vector3.left, out hitXdirection, 1.5f))
+        else if (Physics.Raycast(transform.position, Vector3.back, out hitZdirection, 1.5f) && Physics.Raycast(transform.position, Vector3.left, out hitXdirection, 1.5f))
         {
-            if (hitXdirection.collider.transform.childCount > 4)
+            if (hitZdirection.collider.transform.childCount > 4)
             {
-                /*Debug.DrawRay(transform.position, Vector3.right, Color.blue);
-                Debug.DrawRay(transform.position, Vector3.forward, Color.red);
-                Debug.DrawRay(transform.position, Vector3.left, Color.blue);
-                Debug.DrawRay(transform.position, Vector3.back, Color.red);*/
-                explosion = hitXdirection.collider.transform.GetChild(0).gameObject;
-                ghost1 = hitXdirection.collider.transform.GetChild(4).gameObject;
+                explosion = hitZdirection.collider.transform.GetChild(0).gameObject;
+                ghost1 = hitZdirection.collider.transform.GetChild(4).gameObject;
             }
             else
             {
@@ -1195,10 +1186,10 @@ public class BluePlayer : MonoBehaviour
                 ghost1 = null;
             }
 
-            if (hitZdirection.collider.transform.childCount > 4)
+            if (hitXdirection.collider.transform.childCount > 4)
             {
-                explosion2 = hitZdirection.collider.transform.GetChild(0).gameObject;
-                ghost2 = hitZdirection.collider.transform.GetChild(4).gameObject;
+                explosion2 = hitXdirection.collider.transform.GetChild(0).gameObject;
+                ghost2 = hitXdirection.collider.transform.GetChild(4).gameObject;
             }
             else
             {
@@ -1210,10 +1201,6 @@ public class BluePlayer : MonoBehaviour
         {
             if (hitXdirection.collider.transform.childCount > 4)
             {
-                /*Debug.DrawRay(transform.position, Vector3.right, Color.blue);
-                Debug.DrawRay(transform.position, Vector3.forward, Color.red);
-                Debug.DrawRay(transform.position, Vector3.left, Color.blue);
-                Debug.DrawRay(transform.position, Vector3.back, Color.red);*/
                 explosion = hitXdirection.collider.transform.GetChild(0).gameObject;
                 ghost1 = hitXdirection.collider.transform.GetChild(4).gameObject;
             }
@@ -1236,14 +1223,10 @@ public class BluePlayer : MonoBehaviour
         }
         else if (Physics.Raycast(transform.position, Vector3.forward, out hitZdirection, 1.5f) && Physics.Raycast(transform.position, Vector3.right, out hitXdirection, 1.5f))
         {
-            if (hitXdirection.collider.transform.childCount > 4)
+            if (hitZdirection.collider.transform.childCount > 4)
             {
-                /*Debug.DrawRay(transform.position, Vector3.right, Color.blue);
-                Debug.DrawRay(transform.position, Vector3.forward, Color.red);
-                Debug.DrawRay(transform.position, Vector3.left, Color.blue);
-                Debug.DrawRay(transform.position, Vector3.back, Color.red);*/
-                explosion = hitXdirection.collider.transform.GetChild(0).gameObject;
-                ghost1 = hitXdirection.collider.transform.GetChild(4).gameObject;
+                explosion = hitZdirection.collider.transform.GetChild(0).gameObject;
+                ghost1 = hitZdirection.collider.transform.GetChild(4).gameObject;
             }
             else
             {
@@ -1251,10 +1234,10 @@ public class BluePlayer : MonoBehaviour
                 ghost1 = null;
             }
 
-            if (hitZdirection.collider.transform.childCount > 4)
+            if (hitXdirection.collider.transform.childCount > 4)
             {
-                explosion2 = hitZdirection.collider.transform.GetChild(0).gameObject;
-                ghost2 = hitZdirection.collider.transform.GetChild(4).gameObject;
+                explosion2 = hitXdirection.collider.transform.GetChild(0).gameObject;
+                ghost2 = hitXdirection.collider.transform.GetChild(4).gameObject;
             }
             else
             {
@@ -1266,68 +1249,68 @@ public class BluePlayer : MonoBehaviour
         {
             if (hitXdirection.collider.transform.childCount > 4)
             {
-                /*Debug.DrawRay(transform.position, Vector3.right, Color.blue);
-                Debug.DrawRay(transform.position, Vector3.forward, Color.red);
-                Debug.DrawRay(transform.position, Vector3.left, Color.blue);
-                Debug.DrawRay(transform.position, Vector3.back, Color.red);*/
                 explosion = hitXdirection.collider.transform.GetChild(0).gameObject;
                 ghost1 = hitXdirection.collider.transform.GetChild(4).gameObject;
+                ghost2 = null;
+                explosion2 = null;
             }
             else
             {
                 explosion = null;
                 ghost1 = null;
+                ghost2 = null;
+                explosion2 = null;
             }
         }
-        else if(Physics.Raycast(transform.position, Vector3.back, out hitZdirection, 1.5f))
+        else if (Physics.Raycast(transform.position, Vector3.back, out hitZdirection, 1.5f))
         {
             if (hitZdirection.collider.transform.childCount > 4)
             {
-                /*Debug.DrawRay(transform.position, Vector3.right, Color.blue);
-                Debug.DrawRay(transform.position, Vector3.forward, Color.red);
-                Debug.DrawRay(transform.position, Vector3.left, Color.blue);
-                Debug.DrawRay(transform.position, Vector3.back, Color.red);*/
                 explosion = hitZdirection.collider.transform.GetChild(0).gameObject;
                 ghost1 = hitZdirection.collider.transform.GetChild(4).gameObject;
+                ghost2 = null;
+                explosion2 = null;
             }
             else
             {
                 explosion = null;
                 ghost1 = null;
+                ghost2 = null;
+                explosion2 = null;
             }
         }
         else if (Physics.Raycast(transform.position, Vector3.left, out hitXdirection, 1.5f))
         {
             if (hitXdirection.collider.transform.childCount > 4)
             {
-                /*Debug.DrawRay(transform.position, Vector3.right, Color.blue);
-                Debug.DrawRay(transform.position, Vector3.forward, Color.red);
-                Debug.DrawRay(transform.position, Vector3.left, Color.blue);
-                Debug.DrawRay(transform.position, Vector3.back, Color.red);*/
                 explosion = hitXdirection.collider.transform.GetChild(0).gameObject;
                 ghost1 = hitXdirection.collider.transform.GetChild(4).gameObject;
+                ghost2 = null;
+                explosion2 = null;
             }
             else
             {
                 explosion = null;
                 ghost1 = null;
+                ghost2 = null;
+                explosion2 = null;
             }
         }
         else if (Physics.Raycast(transform.position, Vector3.forward, out hitZdirection, 1.5f))
         {
             if (hitZdirection.collider.transform.childCount > 4)
             {
-                /*Debug.DrawRay(transform.position, Vector3.right, Color.blue);
-                Debug.DrawRay(transform.position, Vector3.forward, Color.red);
-                Debug.DrawRay(transform.position, Vector3.left, Color.blue);
-                Debug.DrawRay(transform.position, Vector3.back, Color.red);*/
                 explosion = hitZdirection.collider.transform.GetChild(0).gameObject;
                 ghost1 = hitZdirection.collider.transform.GetChild(4).gameObject;
+                ghost2 = null;
+                explosion2 = null;
             }
             else
             {
                 explosion = null;
                 ghost1 = null;
+                ghost2 = null;
+                explosion2 = null;
             }
         }
         else

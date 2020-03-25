@@ -46,6 +46,14 @@ public class Graveyard : MonoBehaviour
                 player.GetComponent<Deplacement>().enabled = true;
                 player.GetComponent<BluePlayer>().update = true;
             }
+            else if (player.name == "YellowPlayer")
+            {
+                player.GetComponent<YellowPlayer>().canLaunchDice = true;
+                player.GetComponent<YellowPlayer>().canLaunchBlackDice = true;
+                player.GetComponent<YellowPlayer>().useTilePower = false;
+                player.GetComponent<Deplacement>().enabled = true;
+                player.GetComponent<YellowPlayer>().update = true;
+            }
         }
     }
 
@@ -67,11 +75,16 @@ public class Graveyard : MonoBehaviour
         else if (player.name == "GreenPlayer")
         {
             //player.GetComponent<GreenPlayer>().DrawAGhost();
-        }
+        }*/
         else if (player.name == "YellowPlayer")
         {
-            //player.GetComponent<YellowPlayer>().DrawAGhost();
-        }*/
+            StartCoroutine(player.GetComponent<YellowPlayer>().LaunchBlackDice());
+            player.GetComponent<YellowPlayer>().update = true;
+            player.GetComponent<YellowPlayer>().canLaunchDice = true;
+            player.GetComponent<YellowPlayer>().canLaunchBlackDice = true;
+            player.GetComponent<YellowPlayer>().useTilePower = false;
+            player.GetComponent<Deplacement>().enabled = true;
+        }
     }
 
     public void haunted()

@@ -110,7 +110,10 @@ public class Ghost : MonoBehaviour {
         if(player.name == "BluePlayer")
         {
             player.GetComponent<BluePlayer>().update = true;
-            //player.GetComponent<BluePlayer>().useGhostPower = false;
+        }
+        else if (player.name == "YellowPlayer")
+        {
+            player.GetComponent<YellowPlayer>().update = true;
         }
     }
 
@@ -143,6 +146,10 @@ public class Ghost : MonoBehaviour {
         if (player.name == "BluePlayer")
         {
             player.GetComponent<BluePlayer>().update = true;
+        }
+        else if (player.name == "YellowPlayer")
+        {
+            player.GetComponent<YellowPlayer>().update = true;
         }
     }
 
@@ -184,6 +191,10 @@ public class Ghost : MonoBehaviour {
         if (player.name == "BluePlayer")
         {
             player.GetComponent<BluePlayer>().update = true;
+        }
+        else if (player.name == "YellowPlayer")
+        {
+            player.GetComponent<YellowPlayer>().update = true;
         }
     }
 

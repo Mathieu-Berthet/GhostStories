@@ -63,9 +63,9 @@ public class GhostPower : MonoBehaviour {
         }
         else if (player.name == "YellowPlayer")
         {
-            //StartCoroutine(player.GetComponent<YellowPlayer>().LaunchBlackDice());
+            StartCoroutine(player.GetComponent<YellowPlayer>().LaunchBlackDice());
         }
-    } //OK
+    } 
 
     //Functions for power activate when ghost is draw
     public void CaptureOneDice() // May be an ui text to see how dice we have. And so, we must update UI
@@ -97,9 +97,9 @@ public class GhostPower : MonoBehaviour {
         }
         else if (player.name == "YellowPlayer")
         {
-            //player.GetComponent<YellowPlayer>().DrawAGhost();
+            player.GetComponent<YellowPlayer>().DrawAGhost();
         }
-    } //Ok for draw but don't activate panel. Why ?
+    }
 
     public void CantUsePower(GameObject player)
     {
@@ -119,7 +119,7 @@ public class GhostPower : MonoBehaviour {
         }
         else if (player.name == "YellowPlayer")
         {
-            //player.GetComponent<YellowPlayer>().canUsePower = false;
+            player.GetComponent<YellowPlayer>().canUsePower = false;
         }
     } // It seems okay, but we can't really test without include player's power. Try to check with debug
 
@@ -332,7 +332,8 @@ public class GhostPower : MonoBehaviour {
         }
         else if (player.name == "YellowPlayer")
         {
-            //player.GetComponent<YellowPlayer>().Qi -= 1;
+            player.GetComponent<YellowPlayer>().Qi -= 1;
+            player.GetComponent<YellowPlayer>().update = true;
         }
     }
 
@@ -416,17 +417,17 @@ public class GhostPower : MonoBehaviour {
                     player.GetComponent<BluePlayer>().useTilePower = false;
                     player.GetComponent<Deplacement>().enabled = true;
                     player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
-                }
+                }*/
                 else if (player.name == "YellowPlayer")
                 {
-                    player.GetComponent<BluePlayer>().Qi += 1;
-                    player.GetComponent<BluePlayer>().update = true;
-                    player.GetComponent<BluePlayer>().canLaunchDice = true;
-                    player.GetComponent<BluePlayer>().useTilePower = false;
+                    player.GetComponent<YellowPlayer>().Qi += 1;
+                    player.GetComponent<YellowPlayer>().update = true;
+                    player.GetComponent<YellowPlayer>().canLaunchDice = true;
+                    player.GetComponent<YellowPlayer>().useTilePower = false;
                     player.GetComponent<Deplacement>().enabled = true;
-                    player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
+                    player.GetComponent<YellowPlayer>().canLaunchBlackDice = true;
                 }
-                else if (player.name == "GreenPlayer")
+                /*else if (player.name == "GreenPlayer")
                 {
                     player.GetComponent<BluePlayer>().Qi += 1;
                     player.GetComponent<BluePlayer>().update = true;
@@ -454,17 +455,17 @@ public class GhostPower : MonoBehaviour {
                     player.GetComponent<BluePlayer>().useTilePower = false;
                     player.GetComponent<Deplacement>().enabled = true;
                     player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
-                }
+                }*/
                 else if (player.name == "YellowPlayer")
                 {
-                    player.GetComponent<BluePlayer>().NbYinYangYellowToken += 1;
-                    player.GetComponent<BluePlayer>().update = true;
-                    player.GetComponent<BluePlayer>().canLaunchDice = true;
-                    player.GetComponent<BluePlayer>().useTilePower = false;
+                    player.GetComponent<YellowPlayer>().NbYinYangYellowToken += 1;
+                    player.GetComponent<YellowPlayer>().update = true;
+                    player.GetComponent<YellowPlayer>().canLaunchDice = true;
+                    player.GetComponent<YellowPlayer>().useTilePower = false;
                     player.GetComponent<Deplacement>().enabled = true;
-                    player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
+                    player.GetComponent<YellowPlayer>().canLaunchBlackDice = true;
                 }
-                else if (player.name == "GreenPlayer")
+                /*else if (player.name == "GreenPlayer")
                 {
                     player.GetComponent<BluePlayer>().NbYinYangGreenToken += 1;
                     player.GetComponent<BluePlayer>().update = true;
@@ -513,6 +514,15 @@ public class GhostPower : MonoBehaviour {
                         player.GetComponent<Deplacement>().enabled = true;
                         player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
                     }
+                    else if (player.name == "YellowPlayer")
+                    {
+                        player.GetComponent<YellowPlayer>().NbRedToken += 1;
+                        player.GetComponent<YellowPlayer>().update = true;
+                        player.GetComponent<YellowPlayer>().canLaunchDice = true;
+                        player.GetComponent<YellowPlayer>().useTilePower = false;
+                        player.GetComponent<Deplacement>().enabled = true;
+                        player.GetComponent<YellowPlayer>().canLaunchBlackDice = true;
+                    }
                 }
                 break;
             case "Blue":
@@ -532,6 +542,15 @@ public class GhostPower : MonoBehaviour {
                         player.GetComponent<BluePlayer>().useTilePower = false;
                         player.GetComponent<Deplacement>().enabled = true;
                         player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
+                    }
+                    else if (player.name == "YellowPlayer")
+                    {
+                        player.GetComponent<YellowPlayer>().NbBlueToken += 1;
+                        player.GetComponent<YellowPlayer>().update = true;
+                        player.GetComponent<YellowPlayer>().canLaunchDice = true;
+                        player.GetComponent<YellowPlayer>().useTilePower = false;
+                        player.GetComponent<Deplacement>().enabled = true;
+                        player.GetComponent<YellowPlayer>().canLaunchBlackDice = true;
                     }
                 }
                 break;
@@ -553,6 +572,15 @@ public class GhostPower : MonoBehaviour {
                         player.GetComponent<Deplacement>().enabled = true;
                         player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
                     }
+                    else if (player.name == "YellowPlayer")
+                    {
+                        player.GetComponent<YellowPlayer>().NbGreenToken += 1;
+                        player.GetComponent<YellowPlayer>().update = true;
+                        player.GetComponent<YellowPlayer>().canLaunchDice = true;
+                        player.GetComponent<YellowPlayer>().useTilePower = false;
+                        player.GetComponent<Deplacement>().enabled = true;
+                        player.GetComponent<YellowPlayer>().canLaunchBlackDice = true;
+                    }
                 }
                 break;
             case "Yellow":
@@ -572,6 +600,15 @@ public class GhostPower : MonoBehaviour {
                         player.GetComponent<BluePlayer>().useTilePower = false;
                         player.GetComponent<Deplacement>().enabled = true;
                         player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
+                    }
+                    else if (player.name == "YellowPlayer")
+                    {
+                        player.GetComponent<YellowPlayer>().NbYellowToken += 1;
+                        player.GetComponent<YellowPlayer>().update = true;
+                        player.GetComponent<YellowPlayer>().canLaunchDice = true;
+                        player.GetComponent<YellowPlayer>().useTilePower = false;
+                        player.GetComponent<Deplacement>().enabled = true;
+                        player.GetComponent<YellowPlayer>().canLaunchBlackDice = true;
                     }
                 }
                 break;
@@ -593,6 +630,15 @@ public class GhostPower : MonoBehaviour {
                         player.GetComponent<Deplacement>().enabled = true;
                         player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
                     }
+                    else if (player.name == "YellowPlayer")
+                    {
+                        player.GetComponent<YellowPlayer>().NbBlackToken += 1;
+                        player.GetComponent<YellowPlayer>().update = true;
+                        player.GetComponent<YellowPlayer>().canLaunchDice = true;
+                        player.GetComponent<YellowPlayer>().useTilePower = false;
+                        player.GetComponent<Deplacement>().enabled = true;
+                        player.GetComponent<YellowPlayer>().canLaunchBlackDice = true;
+                    }
                 }
                 break;
             default:
@@ -612,17 +658,17 @@ public class GhostPower : MonoBehaviour {
             player.GetComponent<Deplacement>().enabled = true;
             player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
         }
-        /*else if (player.name == "BluePlayer")
+        else if (player.name == "YellowPlayer")
         {
-            player.GetComponent<BluePlayer>().NbRedToken += 1;
-            player.GetComponent<BluePlayer>().Qi += 1;
-            player.GetComponent<BluePlayer>().update = true;
-            player.GetComponent<BluePlayer>().canLaunchDice = true;
-            player.GetComponent<BluePlayer>().useTilePower = false;
+            player.GetComponent<YellowPlayer>().NbYinYangYellowToken += 1;
+            player.GetComponent<YellowPlayer>().Qi += 1;
+            player.GetComponent<YellowPlayer>().update = true;
+            player.GetComponent<YellowPlayer>().canLaunchDice = true;
+            player.GetComponent<YellowPlayer>().useTilePower = false;
             player.GetComponent<Deplacement>().enabled = true;
-            player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
+            player.GetComponent<YellowPlayer>().canLaunchBlackDice = true;
         }
-        else if (player.name == "BluePlayer")
+        /*else if (player.name == "BluePlayer")
         {
             player.GetComponent<BluePlayer>().NbRedToken += 1;
             player.GetComponent<BluePlayer>().Qi += 1;
@@ -680,6 +726,15 @@ public class GhostPower : MonoBehaviour {
                             player.GetComponent<Deplacement>().enabled = true;
                             player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
                         }
+                        else if (player.name == "YellowPlayer")
+                        {
+                            player.GetComponent<YellowPlayer>().NbRedToken += 1;
+                            player.GetComponent<YellowPlayer>().update = true;
+                            player.GetComponent<YellowPlayer>().canLaunchDice = true;
+                            player.GetComponent<YellowPlayer>().useTilePower = false;
+                            player.GetComponent<Deplacement>().enabled = true;
+                            player.GetComponent<YellowPlayer>().canLaunchBlackDice = true;
+                        }
                     }
                     break;
                 case "Blue":
@@ -699,6 +754,15 @@ public class GhostPower : MonoBehaviour {
                             player.GetComponent<BluePlayer>().useTilePower = false;
                             player.GetComponent<Deplacement>().enabled = true;
                             player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
+                        }
+                        else if (player.name == "YellowPlayer")
+                        {
+                            player.GetComponent<YellowPlayer>().NbBlueToken += 1;
+                            player.GetComponent<YellowPlayer>().update = true;
+                            player.GetComponent<YellowPlayer>().canLaunchDice = true;
+                            player.GetComponent<YellowPlayer>().useTilePower = false;
+                            player.GetComponent<Deplacement>().enabled = true;
+                            player.GetComponent<YellowPlayer>().canLaunchBlackDice = true;
                         }
                     }
                     break;
@@ -720,6 +784,15 @@ public class GhostPower : MonoBehaviour {
                             player.GetComponent<Deplacement>().enabled = true;
                             player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
                         }
+                        else if (player.name == "YellowPlayer")
+                        {
+                            player.GetComponent<YellowPlayer>().NbGreenToken += 1;
+                            player.GetComponent<YellowPlayer>().update = true;
+                            player.GetComponent<YellowPlayer>().canLaunchDice = true;
+                            player.GetComponent<YellowPlayer>().useTilePower = false;
+                            player.GetComponent<Deplacement>().enabled = true;
+                            player.GetComponent<YellowPlayer>().canLaunchBlackDice = true;
+                        }
                     }
                     break;
                 case "Yellow":
@@ -740,6 +813,15 @@ public class GhostPower : MonoBehaviour {
                             player.GetComponent<Deplacement>().enabled = true;
                             player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
                         }
+                        else if (player.name == "YellowPlayer")
+                        {
+                            player.GetComponent<YellowPlayer>().NbYellowToken += 1;
+                            player.GetComponent<YellowPlayer>().update = true;
+                            player.GetComponent<YellowPlayer>().canLaunchDice = true;
+                            player.GetComponent<YellowPlayer>().useTilePower = false;
+                            player.GetComponent<Deplacement>().enabled = true;
+                            player.GetComponent<YellowPlayer>().canLaunchBlackDice = true;
+                        }
                     }
                     break;
                 case "black":
@@ -759,6 +841,15 @@ public class GhostPower : MonoBehaviour {
                             player.GetComponent<BluePlayer>().useTilePower = false;
                             player.GetComponent<Deplacement>().enabled = true;
                             player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
+                        }
+                        else if (player.name == "YellowPlayer")
+                        {
+                            player.GetComponent<YellowPlayer>().NbBlackToken += 1;
+                            player.GetComponent<YellowPlayer>().update = true;
+                            player.GetComponent<YellowPlayer>().canLaunchDice = true;
+                            player.GetComponent<YellowPlayer>().useTilePower = false;
+                            player.GetComponent<Deplacement>().enabled = true;
+                            player.GetComponent<YellowPlayer>().canLaunchBlackDice = true;
                         }
                     }
                     break;
@@ -799,7 +890,7 @@ public class GhostPower : MonoBehaviour {
         }
         else if (player.name == "YellowPlayer")
         {
-            //player.GetComponent<YellowPlayer>().canUsePower = true;
+            player.GetComponent<YellowPlayer>().canUsePower = true;
         }
     }
 }

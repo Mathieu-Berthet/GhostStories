@@ -53,7 +53,16 @@ public class BouddhisteTemple : MonoBehaviour {
             }
             else if (player.name == "YellowPlayer")
             {
+                numberOfBouddha -= 1;
                 player.GetComponent<YellowPlayer>().NbBouddha += 1;
+                player.GetComponent<YellowPlayer>().bouddhaOne = bouddhaFirst;
+                bouddhaFirst.transform.parent = player.transform;
+                bouddhaFirst.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+                bouddhaFirst.SetActive(false);
+                player.GetComponent<YellowPlayer>().update = true;
+                player.GetComponent<Deplacement>().enabled = true;
+                player.GetComponent<YellowPlayer>().canLaunchDice = true;
+                player.GetComponent<YellowPlayer>().canLaunchBlackDice = true;
             }
             else if (player.name == "RedPlayer")
             {
@@ -71,6 +80,14 @@ public class BouddhisteTemple : MonoBehaviour {
                 player.GetComponent<BluePlayer>().useTilePower = false;
                 player.GetComponent<Deplacement>().enabled = true;
                 player.GetComponent<BluePlayer>().update = true;
+            }
+            else if (player.name == "YellowPlayer")
+            {
+                player.GetComponent<YellowPlayer>().canLaunchDice = true;
+                player.GetComponent<YellowPlayer>().canLaunchBlackDice = true;
+                player.GetComponent<YellowPlayer>().useTilePower = false;
+                player.GetComponent<Deplacement>().enabled = true;
+                player.GetComponent<YellowPlayer>().update = true;
             }
         }
     }
