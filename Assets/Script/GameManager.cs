@@ -69,6 +69,37 @@ public class GameManager : MonoBehaviour {
     public Text textEntry;
     public Text textInGame;
     public Text textDeath;
+
+    public Text textPlayerTurn;
+
+    public GameObject bluePlayer;
+    public GameObject yellowPlayer;
+    public GameObject greenPlayer;
+    public GameObject redPlayer;
+
+    //Enum game phase
+
+    //Enum player turn
+    public enum STATE_PLAYER_TURN
+    {
+        BLUE_PLAYER_TURN = 0,
+        YELLOW_PLAYER_TURN = 1,
+        GREEN_PLAYER_TURN = 2,
+        RED_PLAYER_TURN = 3
+    }
+    //Ordre prédéfini pour l'instant. A voir par la suite
+
+    public enum STATE_GAME
+    {
+        STATE_GHOSTPOWER = 0,
+        STATE_DRAW = 1,
+        STATE_MOVE = 2,
+        STATE_PLAYER = 3
+    }
+
+    public STATE_GAME state;
+    public STATE_PLAYER_TURN turnPlayer;
+
     // Use this for initialization
     void Start ()
     {
@@ -78,6 +109,8 @@ public class GameManager : MonoBehaviour {
         nbCardOnDeck = 55;
         nbCardOnBossDeck = 10;
         turn = 1;
+
+        turnPlayer = STATE_PLAYER_TURN.BLUE_PLAYER_TURN;
 
         textEntry.text = "";
         textInGame.text = "";
@@ -122,6 +155,45 @@ public class GameManager : MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
+        if(turnPlayer == STATE_PLAYER_TURN.BLUE_PLAYER_TURN)
+        {
+            textPlayerTurn.text = "TOUR DU JOUEUR BLEU";
+            bluePlayer.GetComponent<BluePlayer>().blueTurn = true;
+            bluePlayer.GetComponent<BluePlayer>().CheckDistance();
+            yellowPlayer.GetComponent<YellowPlayer>().yellowTurn = false;
+            //bluePlayer.GetComponent<GreenPlayer>().greenTurn = false;
+            //bluePlayer.GetComponent<RedPlayer>().redTurn = false;
+        }
+        else if(turnPlayer == STATE_PLAYER_TURN.YELLOW_PLAYER_TURN)
+        {
+            textPlayerTurn.text = "TOUR DU JOUEUR JAUNE";
+            bluePlayer.GetComponent<BluePlayer>().blueTurn = false;
+            yellowPlayer.GetComponent<YellowPlayer>().yellowTurn = true;
+            yellowPlayer.GetComponent<YellowPlayer>().CheckDistance();
+            //bluePlayer.GetComponent<GreenPlayer>().greenTurn = false;
+            //bluePlayer.GetComponent<RedPlayer>().redTurn = false;
+        }
+        else if (turnPlayer == STATE_PLAYER_TURN.GREEN_PLAYER_TURN)
+        {
+            textPlayerTurn.text = "TOUR DU JOUEUR VERT";
+            bluePlayer.GetComponent<BluePlayer>().blueTurn = false;
+            yellowPlayer.GetComponent<YellowPlayer>().yellowTurn = false;
+            //bluePlayer.GetComponent<GreenPlayer>().greenTurn = true;
+            //bluePlayer.GetComponent<RedPlayer>().redTurn = false;
+        }
+        else if (turnPlayer == STATE_PLAYER_TURN.RED_PLAYER_TURN)
+        {
+            textPlayerTurn.text = "TOUR DU JOUEUR ROUGE";
+            bluePlayer.GetComponent<BluePlayer>().blueTurn = false;
+            yellowPlayer.GetComponent<YellowPlayer>().yellowTurn = false;
+            //bluePlayer.GetComponent<GreenPlayer>().greenTurn = false;
+            //bluePlayer.GetComponent<RedPlayer>().redTurn = true;
+        }
+        if((int)turnPlayer > 3)
+        {
+            turnPlayer = 0;
+        }
+
         if (Input.GetKeyDown(KeyCode.Return))
         {
             GameObject go = Instantiate(test);

@@ -11759,7 +11759,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!23 &921742453
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -11953,6 +11953,7 @@ MonoBehaviour:
   update: 0
   alreadyMove: 0
   stop: 0
+  blueTurn: 0
   textInfo: {fileID: 1662648799}
   textNbTokenBlue: {fileID: 748434481}
   textNbTokenRed: {fileID: 1317696754}
@@ -11965,7 +11966,6 @@ MonoBehaviour:
   textNbBouddha: {fileID: 250672010}
   textNbWhiteFace: {fileID: 1785031443}
   infosWhiteFace: {fileID: 1179219311}
-  textPlayerTurn: {fileID: 1573462237}
   textInfoPhase: {fileID: 654859118}
   textMort: {fileID: 1583025212}
   textInfoTuile: {fileID: 253676268}
@@ -11981,7 +11981,6 @@ MonoBehaviour:
   bluePosTemple: {fileID: 1078937944}
   bluePosTower: {fileID: 1145425398}
   actualPosition: {x: 0, y: 0, z: 0}
-  state: 0
 --- !u!114 &921742461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22153,6 +22152,13 @@ MonoBehaviour:
   textEntry: {fileID: 1533582897}
   textInGame: {fileID: 1735004727}
   textDeath: {fileID: 1850010376}
+  textPlayerTurn: {fileID: 1573462237}
+  bluePlayer: {fileID: 921742452}
+  yellowPlayer: {fileID: 1742816404}
+  greenPlayer: {fileID: 1775335297}
+  redPlayer: {fileID: 1221269284}
+  state: 0
+  turnPlayer: 0
 --- !u!4 &1626541477
 Transform:
   m_ObjectHideFlags: 0
@@ -23404,6 +23410,7 @@ MonoBehaviour:
   update: 0
   alreadyMove: 0
   stop: 0
+  yellowTurn: 0
   textInfo: {fileID: 1662648799}
   textNbTokenBlue: {fileID: 748434481}
   textNbTokenRed: {fileID: 1317696754}
@@ -23416,7 +23423,6 @@ MonoBehaviour:
   textNbBouddha: {fileID: 250672010}
   textNbWhiteFace: {fileID: 1785031443}
   infosWhiteFace: {fileID: 1179219311}
-  textPlayerTurn: {fileID: 1573462237}
   textInfoPhase: {fileID: 654859118}
   textMort: {fileID: 1583025212}
   textInfoTuile: {fileID: 253676268}
@@ -23432,7 +23438,6 @@ MonoBehaviour:
   yellowPosTemple: {fileID: 1393700420}
   yellowPosTower: {fileID: 615769476}
   actualPosition: {x: 0, y: 0, z: 0}
-  state: 0
 --- !u!114 &1742816413
 MonoBehaviour:
   m_ObjectHideFlags: 0

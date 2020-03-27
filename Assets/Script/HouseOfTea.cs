@@ -29,7 +29,6 @@ public class HouseOfTea : MonoBehaviour
         if (!hauntedTile)
         {
             gm.choose = false;
-            //infoNbJetons.gameObject.SetActive(false);
             gm.panelButtonChoice.SetActive(true);
             infoHouse = gm.panelButtonChoice.transform.GetChild(0).GetComponent<Text>();
             infoHouse.text = "Veuillez choisir votre jeton : ";
@@ -40,7 +39,6 @@ public class HouseOfTea : MonoBehaviour
             }
             if (gm.choose)
             {
-                Debug.Log("Couocu");
                 gm.panelButtonChoice.SetActive(false);
                 gm.choose = false;
             }
@@ -61,7 +59,7 @@ public class HouseOfTea : MonoBehaviour
                         {
                             player.GetComponent<BluePlayer>().Qi += 1;
                             player.GetComponent<BluePlayer>().NbRedToken += 1;
-                            player.GetComponent<BluePlayer>().state = BluePlayer.STATE_GAME.STATE_DRAW; // PEUT ETRE
+                            player.GetComponent<BluePlayer>().gm.state = GameManager.STATE_GAME.STATE_DRAW; // PEUT ETRE
                             player.GetComponent<BluePlayer>().DrawAGhost();
                             player.GetComponent<BluePlayer>().update = true;
                             player.GetComponent<BluePlayer>().canLaunchDice = true;
@@ -73,7 +71,7 @@ public class HouseOfTea : MonoBehaviour
                         {
                             player.GetComponent<YellowPlayer>().Qi += 1;
                             player.GetComponent<YellowPlayer>().NbRedToken += 1;
-                            player.GetComponent<YellowPlayer>().state = YellowPlayer.STATE_GAME.STATE_DRAW; // PEUT ETRE
+                            player.GetComponent<YellowPlayer>().gm.state = GameManager.STATE_GAME.STATE_DRAW; // PEUT ETRE
                             player.GetComponent<YellowPlayer>().DrawAGhost();
                             player.GetComponent<YellowPlayer>().update = true;
                             player.GetComponent<YellowPlayer>().canLaunchDice = true;
@@ -98,7 +96,7 @@ public class HouseOfTea : MonoBehaviour
                         {
                             player.GetComponent<BluePlayer>().Qi += 1;
                             player.GetComponent<BluePlayer>().NbBlueToken += 1;
-                            player.GetComponent<BluePlayer>().state = BluePlayer.STATE_GAME.STATE_DRAW; //PEUT ETRE
+                            player.GetComponent<BluePlayer>().gm.state = GameManager.STATE_GAME.STATE_DRAW; //PEUT ETRE
                             player.GetComponent<BluePlayer>().DrawAGhost();
                             player.GetComponent<BluePlayer>().update = true;
                             player.GetComponent<BluePlayer>().canLaunchDice = true;
@@ -110,7 +108,7 @@ public class HouseOfTea : MonoBehaviour
                         {
                             player.GetComponent<YellowPlayer>().Qi += 1;
                             player.GetComponent<YellowPlayer>().NbBlueToken += 1;
-                            player.GetComponent<YellowPlayer>().state = YellowPlayer.STATE_GAME.STATE_DRAW; // PEUT ETRE
+                            player.GetComponent<YellowPlayer>().gm.state = GameManager.STATE_GAME.STATE_DRAW; // PEUT ETRE
                             player.GetComponent<YellowPlayer>().DrawAGhost();
                             player.GetComponent<YellowPlayer>().update = true;
                             player.GetComponent<YellowPlayer>().canLaunchDice = true;
@@ -135,7 +133,7 @@ public class HouseOfTea : MonoBehaviour
                         {
                             player.GetComponent<BluePlayer>().Qi += 1;
                             player.GetComponent<BluePlayer>().NbGreenToken += 1;
-                            player.GetComponent<BluePlayer>().state = BluePlayer.STATE_GAME.STATE_DRAW; // PEUT ETRE
+                            player.GetComponent<BluePlayer>().gm.state = GameManager.STATE_GAME.STATE_DRAW; // PEUT ETRE
                             player.GetComponent<BluePlayer>().DrawAGhost();
                             player.GetComponent<BluePlayer>().update = true;
                             player.GetComponent<BluePlayer>().canLaunchDice = true;
@@ -147,7 +145,7 @@ public class HouseOfTea : MonoBehaviour
                         {
                             player.GetComponent<YellowPlayer>().Qi += 1;
                             player.GetComponent<YellowPlayer>().NbGreenToken += 1;
-                            player.GetComponent<YellowPlayer>().state = YellowPlayer.STATE_GAME.STATE_DRAW; // PEUT ETRE
+                            player.GetComponent<YellowPlayer>().gm.state = GameManager.STATE_GAME.STATE_DRAW; // PEUT ETRE
                             player.GetComponent<YellowPlayer>().DrawAGhost();
                             player.GetComponent<YellowPlayer>().update = true;
                             player.GetComponent<YellowPlayer>().canLaunchDice = true;
@@ -172,7 +170,7 @@ public class HouseOfTea : MonoBehaviour
                         {
                             player.GetComponent<BluePlayer>().Qi += 1;
                             player.GetComponent<BluePlayer>().NbYellowToken += 1;
-                            player.GetComponent<BluePlayer>().state = BluePlayer.STATE_GAME.STATE_DRAW; // PEUT ETRE
+                            player.GetComponent<BluePlayer>().gm.state = GameManager.STATE_GAME.STATE_DRAW; // PEUT ETRE
                             player.GetComponent<BluePlayer>().DrawAGhost();
                             player.GetComponent<BluePlayer>().update = true;
                             player.GetComponent<BluePlayer>().canLaunchDice = true;
@@ -184,7 +182,7 @@ public class HouseOfTea : MonoBehaviour
                         {
                             player.GetComponent<YellowPlayer>().Qi += 1;
                             player.GetComponent<YellowPlayer>().NbYellowToken += 1;
-                            player.GetComponent<YellowPlayer>().state = YellowPlayer.STATE_GAME.STATE_DRAW; // PEUT ETRE
+                            player.GetComponent<YellowPlayer>().gm.state = GameManager.STATE_GAME.STATE_DRAW; // PEUT ETRE
                             player.GetComponent<YellowPlayer>().DrawAGhost();
                             player.GetComponent<YellowPlayer>().update = true;
                             player.GetComponent<YellowPlayer>().canLaunchDice = true;
@@ -209,7 +207,7 @@ public class HouseOfTea : MonoBehaviour
                         {
                             player.GetComponent<BluePlayer>().Qi += 1;
                             player.GetComponent<BluePlayer>().NbBlackToken += 1;
-                            player.GetComponent<BluePlayer>().state = BluePlayer.STATE_GAME.STATE_DRAW; //PEUT ETRE
+                            player.GetComponent<BluePlayer>().gm.state = GameManager.STATE_GAME.STATE_DRAW; //PEUT ETRE
                             player.GetComponent<BluePlayer>().DrawAGhost();
                             player.GetComponent<BluePlayer>().update = true;
                             player.GetComponent<BluePlayer>().canLaunchDice = true;
@@ -221,7 +219,7 @@ public class HouseOfTea : MonoBehaviour
                         {
                             player.GetComponent<YellowPlayer>().Qi += 1;
                             player.GetComponent<YellowPlayer>().NbBlackToken += 1;
-                            player.GetComponent<YellowPlayer>().state = YellowPlayer.STATE_GAME.STATE_DRAW; // PEUT ETRE
+                            player.GetComponent<YellowPlayer>().gm.state = GameManager.STATE_GAME.STATE_DRAW; // PEUT ETRE
                             player.GetComponent<YellowPlayer>().DrawAGhost();
                             player.GetComponent<YellowPlayer>().update = true;
                             player.GetComponent<YellowPlayer>().canLaunchDice = true;

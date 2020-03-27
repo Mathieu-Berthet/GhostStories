@@ -42,12 +42,9 @@ public class TaoisteAutel : MonoBehaviour
                 }
                 if (choose)
                 {
-                    Debug.Log("Couocu145");
                     panelTile.SetActive(false);
                     choose = false;
                 }
-                Debug.Log(tileToUnhaunted);
-                //player.GetComponent<BluePlayer>().tileName = tileToUnhaunted;
                 switch (tileToUnhaunted)
                 {
                     case "Maison du The":
@@ -64,7 +61,6 @@ public class TaoisteAutel : MonoBehaviour
                         break;
                     case "Autel Taoiste":
                         hauntedTile = false;
-                        Debug.Log("Tuile déshantée");
                         Unhaunted();
                         break;
                     case "Cimetiere":
@@ -90,7 +86,7 @@ public class TaoisteAutel : MonoBehaviour
                     default:
                         break;
                 }
-                player.GetComponent<BluePlayer>().state = BluePlayer.STATE_GAME.STATE_DRAW; //PEUT ETRE
+                player.GetComponent<BluePlayer>().gm.state = GameManager.STATE_GAME.STATE_DRAW; //PEUT ETRE
                 player.GetComponent<BluePlayer>().DrawAGhost();
                 player.GetComponent<BluePlayer>().canLaunchDice = true;
                 player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
@@ -115,8 +111,6 @@ public class TaoisteAutel : MonoBehaviour
                     panelTile.SetActive(false);
                     choose = false;
                 }
-                Debug.Log(tileToUnhaunted);
-                //player.GetComponent<BluePlayer>().tileName = tileToUnhaunted;
                 switch (tileToUnhaunted)
                 {
                     case "Maison du The":
@@ -133,7 +127,6 @@ public class TaoisteAutel : MonoBehaviour
                         break;
                     case "Autel Taoiste":
                         hauntedTile = false;
-                        Debug.Log("Tuile déshantée");
                         Unhaunted();
                         break;
                     case "Cimetiere":
@@ -159,7 +152,7 @@ public class TaoisteAutel : MonoBehaviour
                     default:
                         break;
                 }
-                player.GetComponent<YellowPlayer>().state = YellowPlayer.STATE_GAME.STATE_DRAW; //PEUT ETRE
+                player.GetComponent<YellowPlayer>().gm.state = GameManager.STATE_GAME.STATE_DRAW; //PEUT ETRE
                 player.GetComponent<YellowPlayer>().DrawAGhost();
                 player.GetComponent<YellowPlayer>().canLaunchDice = true;
                 player.GetComponent<YellowPlayer>().canLaunchBlackDice = true;

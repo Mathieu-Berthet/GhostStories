@@ -157,7 +157,6 @@ public class HutOfWitch : MonoBehaviour
 
     public void MustChooseGhost(Button buttonClick)
     {
-        Debug.Log("coucou");
         chooseenGhost = buttonClick.name;
         switch(chooseenGhost)
         {
