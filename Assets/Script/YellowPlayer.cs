@@ -30,10 +30,16 @@ public class YellowPlayer : MonoBehaviour
     [SerializeField]
     private int nbMantraToken;
 
+    public GameObject mantraToken;
+    public GameObject ghostToWeakned;
+    public string chooseenGhost;
+    public bool choose;
+
+
     public GameObject panelJeton;
 
     public bool powerMantraAffaiblissement;
-    public bool powerSouffleCeleste;
+    public bool powerPocheSansFond;
 
     public bool useTilePower;
     public bool useGhostPower;
@@ -165,6 +171,8 @@ public class YellowPlayer : MonoBehaviour
     public Text textInfoTuile;
     public Text textNbDice;
     public Text textTurn;
+    public Text infos;
+    public Text infoPower;
 
     //Déplacement
     [Header("Le déplacement")]
@@ -306,6 +314,20 @@ public class YellowPlayer : MonoBehaviour
             nbBouddha = value;
         }
     }
+
+    public int NbMantraToken
+    {
+        get
+        {
+            return nbMantraToken;
+        }
+
+        set
+        {
+            nbMantraToken = value;
+        }
+    }
+
     #endregion
 
     // Use this for initialization
@@ -451,6 +473,19 @@ public class YellowPlayer : MonoBehaviour
             Qi = 0;
             textMort.text = "Vous êtes mort";
             updateUI();
+        }
+
+
+        if(Input.GetKeyDown(KeyCode.LeftShift) && yellowTurn)
+        {
+            if(powerMantraAffaiblissement)
+            {
+                StartCoroutine(MantraAffaiblissement());
+            }
+            else if(powerPocheSansFond)
+            {
+                StartCoroutine(PocheSansFond());
+            }
         }
 
         checkGhost();
@@ -771,17 +806,131 @@ public class YellowPlayer : MonoBehaviour
     }
 
 
-    public void PocheSansFond()
+    public IEnumerator PocheSansFond()
     {
+        gm.choose = false;
+        gm.panelButtonChoice.SetActive(true);
+        infoPower = gm.panelButtonChoice.transform.GetChild(0).GetComponent<Text>();
+        infoPower.text = "Veuillez choisir votre jeton : ";
+        while (!gm.choose)
+        {
+            yield return new WaitForSeconds(1.0f);
+        }
+        if (gm.choose)
+        {
+            gm.panelButtonChoice.SetActive(false);
+            gm.choose = false;
+        }
+        switch (gm.choseenToken)
+        {
+            case "Red":
+                if (gm.tokenStock.nbRedToken == 0)
+                {
+                    infos.text = "Il n'y a plus de jetons rouges, veuillez choisir une autre couleur";
+                    infos.gameObject.SetActive(true);
+                    StopCoroutine(PocheSansFond());
+                    StartCoroutine(PocheSansFond());
+                }
+                else
+                {
+                    gm.tokenStock.nbRedToken -= 1;
+                    NbRedToken += 1;
+                }
+                break;
+            case "Blue":
+                if (gm.tokenStock.nbBlueToken == 0)
+                {
+                    infos.text = "Il n'y a plus de jetons bleus, veuillez choisir une autre couleur";
+                    infos.gameObject.SetActive(true);
+                    StopCoroutine(PocheSansFond());
+                    StartCoroutine(PocheSansFond());
+                }
+                else
+                {
+                    gm.tokenStock.nbBlueToken -= 1;
+                    NbBlueToken += 1;
 
+                }
+                break;
+            case "Green":
+                if (gm.tokenStock.nbGreenToken == 0)
+                {
+                    infos.text = "Il n'y a plus de jetons verts, veuillez choisir une autre couleur";
+                    infos.gameObject.SetActive(true);
+                    StopCoroutine(PocheSansFond());
+                    StartCoroutine(PocheSansFond());
+                }
+                else
+                {
+                    gm.tokenStock.nbGreenToken -= 1;
+                    NbGreenToken += 1;
+                }
+                break;
+            case "Yellow":
+                if (gm.tokenStock.nbYellowToken == 0)
+                {
+                    infos.text = "Il n'y a plus de jetons jaunes, veuillez choisir une autre couleur";
+                    infos.gameObject.SetActive(true);
+                    StopCoroutine(PocheSansFond());
+                    StartCoroutine(PocheSansFond());
+                }
+                else
+                {
+                    gm.tokenStock.nbYellowToken -= 1;
+                    NbYellowToken += 1;
+                }
+                break;
+            case "Black":
+                if (gm.tokenStock.nbBlackToken == 0)
+                {
+                    infos.text = "Il n'y a plus de jetons noirs, veuillez choisir une autre couleur";
+                    infos.gameObject.SetActive(true);
+                    StopCoroutine(PocheSansFond());
+                    StartCoroutine(PocheSansFond());
+                }
+                else
+                {
+                    gm.tokenStock.nbBlackToken -= 1;
+                    NbBlackToken += 1;
+                }
+                break;
+            default:
+                break;
+        }
     }
 
-    public void MantraAffaiblissement()
+    public IEnumerator MantraAffaiblissement()
     {
-        //Recupérer le fantôme ciblé // Seulement si le joueur a encore son jeton mantra // Doit le jouer AVANT le combat
-        nbMantraToken -= 1;
+        if (nbMantraToken > 0)
+        {
+            //Recupérer le fantôme ciblé // Seulement si le joueur a encore son jeton mantra // Doit le jouer AVANT le combat
+            choose = false;
+            board.usingTile = true;
+            yield return new WaitForSeconds(0.5f);
+
+            panelBluePlace.SetActive(true);
+            panelRedPlace.SetActive(true);
+            panelGreenPlace.SetActive(true);
+            panelYellowPlace.SetActive(true);
+            while (!choose)
+            {
+                yield return new WaitForSeconds(1.0f);
+            }
+            if (choose)
+            {
+                panelBluePlace.SetActive(false);
+                panelRedPlace.SetActive(false);
+                panelGreenPlace.SetActive(false);
+                panelYellowPlace.SetActive(false);
+                choose = false;
+            }
+            GameObject newMantraToken = Instantiate(mantraToken);
+            newMantraToken.transform.SetParent(ghostToWeakned.transform);
+            newMantraToken.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+            //ghostToWeakned.GetComponent<Ghost>().ReduceLife();
+        }
         //Si fantome mort
-        nbMantraToken += 1;
+        //nbMantraToken += 1;
     }
 
     public IEnumerator LaunchDice()
@@ -1393,6 +1542,7 @@ public class YellowPlayer : MonoBehaviour
                 ghost.GetComponent<Ghost>().UseDeathPower(gameObject);
             }
             ghost = null;
+            gm.RegainMantraToken();
         }
         else if ((gm.canUseTaoToken) && ((ghost.GetComponent<Ghost>().couleur == "red" && nbRedFace < ghost.GetComponent<Ghost>().life) || (ghost.GetComponent<Ghost>().couleur == "blue" && nbBlueFace < ghost.GetComponent<Ghost>().life)
             || (ghost.GetComponent<Ghost>().couleur == "green" && nbGreenFace < ghost.GetComponent<Ghost>().life) || (ghost.GetComponent<Ghost>().couleur == "yellow" && nbYellowFace < ghost.GetComponent<Ghost>().life)
@@ -1441,6 +1591,7 @@ public class YellowPlayer : MonoBehaviour
                         ghost.GetComponent<Ghost>().UseDeathPower(gameObject);
                     }
                     ghost = null;
+                    gm.RegainMantraToken();
                     update = true;
                 }
             }
@@ -1468,6 +1619,7 @@ public class YellowPlayer : MonoBehaviour
                         ghost.GetComponent<Ghost>().UseDeathPower(gameObject);
                     }
                     ghost = null;
+                    gm.RegainMantraToken();
                     update = true;
                 }
             }
@@ -1495,6 +1647,7 @@ public class YellowPlayer : MonoBehaviour
                         ghost.GetComponent<Ghost>().UseDeathPower(gameObject);
                     }
                     ghost = null;
+                    gm.RegainMantraToken();
                     update = true;
                 }
             }
@@ -1522,6 +1675,7 @@ public class YellowPlayer : MonoBehaviour
                         ghost.GetComponent<Ghost>().UseDeathPower(gameObject);
                     }
                     ghost = null;
+                    gm.RegainMantraToken();
                     update = true;
                 }
             }
@@ -1549,6 +1703,7 @@ public class YellowPlayer : MonoBehaviour
                         ghost.GetComponent<Ghost>().UseDeathPower(gameObject);
                     }
                     ghost = null;
+                    gm.RegainMantraToken();
                     update = true;
                 }
             }
@@ -1590,6 +1745,7 @@ public class YellowPlayer : MonoBehaviour
                 ghost.GetComponent<Ghost>().UseDeathPower(gameObject);
             }
             ghost = null;
+            gm.RegainMantraToken();
         }
         else
         {
@@ -3130,4 +3286,86 @@ public class YellowPlayer : MonoBehaviour
             }
         }
     }
+
+    public void MustChooseGhost(Button buttonClick)
+    {
+        chooseenGhost = buttonClick.name;
+        switch (chooseenGhost)
+        {
+            case "BlueOne":
+                if (buttonClick.transform.parent.parent.GetComponent<BoardPosition>().bluePositionOne.transform.childCount > 4)
+                {
+                    ghostToWeakned = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().bluePositionOne.transform.GetChild(4).gameObject;
+                }
+                break;
+            case "BlueTwo":
+                if (buttonClick.transform.parent.parent.GetComponent<BoardPosition>().bluePositionTwo.transform.childCount > 4)
+                {
+                    ghostToWeakned = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().bluePositionTwo.transform.GetChild(4).gameObject;
+                }
+                break;
+            case "BlueThree":
+                if (buttonClick.transform.parent.parent.GetComponent<BoardPosition>().bluePositionThree.transform.childCount > 4)
+                {
+                    ghostToWeakned = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().bluePositionThree.transform.GetChild(4).gameObject;
+                }
+                break;
+            case "RedOne":
+                if (buttonClick.transform.parent.parent.GetComponent<BoardPosition>().redPositionOne.transform.childCount > 4)
+                {
+                    ghostToWeakned = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().redPositionOne.transform.GetChild(4).gameObject;
+                }
+                break;
+            case "RedTwo":
+                if (buttonClick.transform.parent.parent.GetComponent<BoardPosition>().redPositionTwo.transform.childCount > 4)
+                {
+                    ghostToWeakned = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().redPositionTwo.transform.GetChild(4).gameObject;
+                }
+                break;
+            case "RedThree":
+                if (buttonClick.transform.parent.parent.GetComponent<BoardPosition>().redPositionThree.transform.childCount > 4)
+                {
+                    ghostToWeakned = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().redPositionThree.transform.GetChild(4).gameObject;
+                }
+                break;
+            case "GreenOne":
+                if (buttonClick.transform.parent.parent.GetComponent<BoardPosition>().greenPositionOne.transform.childCount > 4)
+                {
+                    ghostToWeakned = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().greenPositionOne.transform.GetChild(4).gameObject;
+                }
+                break;
+            case "GreenTwo":
+                if (buttonClick.transform.parent.parent.GetComponent<BoardPosition>().greenPositionTwo.transform.childCount > 4)
+                {
+                    ghostToWeakned = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().greenPositionTwo.transform.GetChild(4).gameObject;
+                }
+                break;
+            case "GreenThree":
+                if (buttonClick.transform.parent.parent.GetComponent<BoardPosition>().greenPositionThree.transform.childCount > 4)
+                {
+                    ghostToWeakned = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().greenPositionThree.transform.GetChild(4).gameObject;
+                }
+                break;
+            case "YellowOne":
+                if (buttonClick.transform.parent.parent.GetComponent<BoardPosition>().yellowPositionOne.transform.childCount > 4)
+                {
+                    ghostToWeakned = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().yellowPositionOne.transform.GetChild(4).gameObject;
+                }
+                break;
+            case "YellowTwo":
+                if (buttonClick.transform.parent.parent.GetComponent<BoardPosition>().yellowPositionTwo.transform.childCount > 4)
+                {
+                    ghostToWeakned = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().yellowPositionTwo.transform.GetChild(4).gameObject;
+                }
+                break;
+            case "YellowThree":
+                if (buttonClick.transform.parent.parent.GetComponent<BoardPosition>().yellowPositionThree.transform.childCount > 4)
+                {
+                    ghostToWeakned = buttonClick.transform.parent.parent.GetComponent<BoardPosition>().yellowPositionThree.transform.GetChild(4).gameObject;
+                }
+                break;
+        }
+        choose = true;
+    }
+
 }

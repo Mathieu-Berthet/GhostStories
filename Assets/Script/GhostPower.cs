@@ -359,7 +359,6 @@ public class GhostPower : MonoBehaviour {
     public void Insensible() //Okay
     {
         gameObject.GetComponent<Ghost>().canBeDestroyByDice = false;
-        Debug.Log(gameObject.GetComponent<Ghost>().canBeDestroyByDice);
     }
 
     //Funcitons when the ghost is not dead yet 

@@ -320,6 +320,11 @@ public class GameManager : MonoBehaviour {
         nextPlayer = false;
     }
 
+    public void RegainMantraToken()
+    {
+        yellowPlayer.GetComponent<YellowPlayer>().NbMantraToken += 1;
+        yellowPlayer.GetComponent<YellowPlayer>().ghostToWeakned = null;
+    }
 
     public void MustChooseToken(Button buttonClick)
     {

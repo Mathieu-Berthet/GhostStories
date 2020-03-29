@@ -1406,6 +1406,7 @@ public class BluePlayer : MonoBehaviour
                 ghost.GetComponent<Ghost>().UseDeathPower(gameObject);
             }
             ghost = null;
+            gm.RegainMantraToken();
         }
         else if ((gm.canUseTaoToken) && ((ghost.GetComponent<Ghost>().couleur == "red" && nbRedFace < ghost.GetComponent<Ghost>().life) || (ghost.GetComponent<Ghost>().couleur == "blue" && nbBlueFace < ghost.GetComponent<Ghost>().life)
             || (ghost.GetComponent<Ghost>().couleur == "green" && nbGreenFace < ghost.GetComponent<Ghost>().life) || (ghost.GetComponent<Ghost>().couleur == "yellow" && nbYellowFace < ghost.GetComponent<Ghost>().life)
@@ -1454,6 +1455,7 @@ public class BluePlayer : MonoBehaviour
                         ghost.GetComponent<Ghost>().UseDeathPower(gameObject);
                     }
                     ghost = null;
+                    gm.RegainMantraToken();
                     update = true;
                 }
             }
@@ -1481,6 +1483,7 @@ public class BluePlayer : MonoBehaviour
                         ghost.GetComponent<Ghost>().UseDeathPower(gameObject);
                     }
                     ghost = null;
+                    gm.RegainMantraToken();
                     update = true;
                 }
             }
@@ -1508,6 +1511,7 @@ public class BluePlayer : MonoBehaviour
                         ghost.GetComponent<Ghost>().UseDeathPower(gameObject);
                     }
                     ghost = null;
+                    gm.RegainMantraToken();
                     update = true;
                 }
             }
@@ -1535,6 +1539,7 @@ public class BluePlayer : MonoBehaviour
                         ghost.GetComponent<Ghost>().UseDeathPower(gameObject);
                     }
                     ghost = null;
+                    gm.RegainMantraToken();
                     update = true;
                 }
             }
@@ -1562,6 +1567,7 @@ public class BluePlayer : MonoBehaviour
                         ghost.GetComponent<Ghost>().UseDeathPower(gameObject);
                     }
                     ghost = null;
+                    gm.RegainMantraToken();
                     update = true;
                 }
             }
@@ -1603,6 +1609,7 @@ public class BluePlayer : MonoBehaviour
                 ghost.GetComponent<Ghost>().UseDeathPower(gameObject);
             }
             ghost = null;
+            gm.RegainMantraToken();
         }
         else
         {

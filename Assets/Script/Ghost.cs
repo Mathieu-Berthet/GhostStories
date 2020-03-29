@@ -223,5 +223,13 @@ public class Ghost : MonoBehaviour {
                 life--;
             }
         }
+
+        if(gameObject.transform.childCount >= 3)
+        {
+            if(gameObject.transform.GetChild(2).name == "MantraToken")
+            {
+                life--;
+            }
+        }
     }
 }

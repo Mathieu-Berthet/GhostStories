@@ -53,7 +53,6 @@ public class HutOfWitch : MonoBehaviour
             }
             if (choose)
             {
-                Debug.Log("Couocu");
                 panelBluePlace.SetActive(false);
                 panelRedPlace.SetActive(false);
                 panelGreenPlace.SetActive(false);

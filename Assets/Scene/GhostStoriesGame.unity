@@ -1222,6 +1222,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1742816412}
+        m_MethodName: MustChooseGhost
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 81464518}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &81464519
@@ -1451,6 +1462,17 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 570049726}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1742816412}
+        m_MethodName: MustChooseGhost
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 89183947}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2333,6 +2355,17 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 1623060065}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1742816412}
+        m_MethodName: MustChooseGhost
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 138495530}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3980,6 +4013,17 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 1036858072}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1742816412}
+        m_MethodName: MustChooseGhost
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 243868417}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -8249,6 +8293,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1742816412}
+        m_MethodName: MustChooseGhost
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 598802600}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &598802601
@@ -10361,6 +10416,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1742816412}
+        m_MethodName: MustChooseGhost
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 753594422}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &753594423
@@ -11137,6 +11203,17 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 326308552}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1742816412}
+        m_MethodName: MustChooseGhost
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 852453446}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -13579,6 +13656,17 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 995317037}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1742816412}
+        m_MethodName: MustChooseGhost
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1037057374}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -18157,6 +18245,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1742816412}
+        m_MethodName: MustChooseGhost
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1345205211}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1345205212
@@ -20066,6 +20165,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1742816412}
+        m_MethodName: MustChooseGhost
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1476392582}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1476392583
@@ -20853,6 +20963,17 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 772431112}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1742816412}
+        m_MethodName: MustChooseGhost
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1551261269}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -23341,9 +23462,14 @@ MonoBehaviour:
   nbYinYangYellowToken: 0
   nbBouddha: 0
   nbMantraToken: 0
+  mantraToken: {fileID: 1771454159998648, guid: 2b937cd01d452b341b06d688cae78207,
+    type: 2}
+  ghostToWeakned: {fileID: 0}
+  chooseenGhost: 
+  choose: 0
   panelJeton: {fileID: 1134883028}
   powerMantraAffaiblissement: 0
-  powerSouffleCeleste: 0
+  powerPocheSansFond: 1
   useTilePower: 0
   useGhostPower: 0
   canUsePower: 0
@@ -23428,6 +23554,8 @@ MonoBehaviour:
   textInfoTuile: {fileID: 253676268}
   textNbDice: {fileID: 568136417}
   textTurn: {fileID: 296792467}
+  infos: {fileID: 1662648799}
+  infoPower: {fileID: 1179219311}
   yellowPosStall: {fileID: 1583953712}
   yellowPosHouse: {fileID: 452540468}
   yellowPosHut: {fileID: 953954895}
@@ -24179,6 +24307,17 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 646876189}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1742816412}
+        m_MethodName: MustChooseGhost
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1779620736}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
