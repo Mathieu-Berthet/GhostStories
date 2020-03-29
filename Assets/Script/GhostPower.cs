@@ -71,7 +71,6 @@ public class GhostPower : MonoBehaviour {
     public void CaptureOneDice() // May be an ui text to see how dice we have. And so, we must update UI
     {
         gm.nbDice--;
-        Debug.Log(gm.nbDice);
     } //OK
 
     public void CantUseTAOToken() //Idem than previous function. See how to indicate that

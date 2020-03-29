@@ -248,12 +248,15 @@ public class NightTower : MonoBehaviour
                 player.GetComponent<YellowPlayer>().update = true;
 
             }
-            /*else if (player.name == "RedPlayer")
+            else if (player.name == "RedPlayer")
             {
-                player.GetComponent<RedPlayer>().Qi -= 1;
-                //player.GetComponent<RedPlayer>().board.usingTile = true;
+                player.GetComponent<RedPlayer>().canLaunchDice = true;
+                player.GetComponent<RedPlayer>().canLaunchBlackDice = true;
+                player.GetComponent<RedPlayer>().useTilePower = false;
+                player.GetComponent<Deplacement>().enabled = true;
+                player.GetComponent<RedPlayer>().update = true;
 
-            }*/
+            }
         }
         else
         {
@@ -274,6 +277,15 @@ public class NightTower : MonoBehaviour
                 player.GetComponent<YellowPlayer>().useTilePower = false;
                 player.GetComponent<Deplacement>().enabled = true;
                 player.GetComponent<YellowPlayer>().update = true;
+
+            }
+            else if (player.name == "RedPlayer")
+            {
+                player.GetComponent<RedPlayer>().canLaunchDice = true;
+                player.GetComponent<RedPlayer>().canLaunchBlackDice = true;
+                player.GetComponent<RedPlayer>().useTilePower = false;
+                player.GetComponent<Deplacement>().enabled = true;
+                player.GetComponent<RedPlayer>().update = true;
 
             }
         }

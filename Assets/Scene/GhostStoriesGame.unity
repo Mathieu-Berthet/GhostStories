@@ -1233,6 +1233,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1221269292}
+        m_MethodName: SelectGhostPosition
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 9783639}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &81464519
@@ -1473,6 +1484,17 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 89183947}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1221269292}
+        m_MethodName: SelectGhostPosition
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 570049726}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2109,6 +2131,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1221269292}
+        m_MethodName: SetPriority
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 135805128}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &135805129
@@ -2366,6 +2399,17 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 138495530}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1221269292}
+        m_MethodName: SelectGhostPosition
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1623060065}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -4029,6 +4073,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1221269292}
+        m_MethodName: SelectGhostPosition
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1036858072}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &243868418
@@ -4973,6 +5028,17 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1742816413}
+        m_MethodName: getTileToDepla
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 334785777}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1221269293}
         m_MethodName: getTileToDepla
         m_Mode: 2
         m_Arguments:
@@ -7638,6 +7704,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1221269292}
+        m_MethodName: SetBouddha
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 560638329}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &560638330
@@ -8053,6 +8130,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1221269293}
+        m_MethodName: getTileToDepla
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 583434074}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &583434075
@@ -8299,6 +8387,17 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 598802600}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1221269292}
+        m_MethodName: SelectGhostPosition
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 937504354}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -9660,6 +9759,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1221269293}
+        m_MethodName: getTileToDepla
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 703821522}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &703821523
@@ -10100,6 +10210,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1221269293}
+        m_MethodName: getTileToDepla
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 730265533}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &730265534
@@ -10422,6 +10543,17 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 753594422}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1221269292}
+        m_MethodName: SelectGhostPosition
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1448923215}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -11214,6 +11346,17 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 852453446}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1221269292}
+        m_MethodName: SelectGhostPosition
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 326308552}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -12320,6 +12463,17 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1742816413}
+        m_MethodName: getTileToDepla
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 933271350}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1221269293}
         m_MethodName: getTileToDepla
         m_Mode: 2
         m_Arguments:
@@ -13667,6 +13821,17 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 1037057374}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1221269292}
+        m_MethodName: SelectGhostPosition
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 995317037}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -15514,6 +15679,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1221269293}
+        m_MethodName: getTileToDepla
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1166281920}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1166281921
@@ -16256,7 +16432,6 @@ GameObject:
   - component: {fileID: 1221269289}
   - component: {fileID: 1221269288}
   - component: {fileID: 1221269287}
-  - component: {fileID: 1221269286}
   - component: {fileID: 1221269285}
   - component: {fileID: 1221269292}
   - component: {fileID: 1221269293}
@@ -16266,7 +16441,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!195 &1221269285
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -16288,17 +16463,6 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &1221269286
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1221269284}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 159805812f7ca1f4184f64fa58d3dac4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!54 &1221269287
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -16312,7 +16476,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!23 &1221269288
 MeshRenderer:
@@ -16392,6 +16556,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3096e2ee53984840a476b9a9d44ce3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gm: {fileID: 0}
   qi: 0
   nbBlueToken: 0
   nbRedToken: 0
@@ -16401,18 +16566,103 @@ MonoBehaviour:
   nbPowerToken: 0
   nbYinYangRedToken: 0
   nbBouddha: 0
+  panelJeton: {fileID: 1134883028}
   powerDanseDesVentsJumaux: 0
   powerDanseDesCimes: 0
-  houseOfTea: {fileID: 0}
-  graveyard: {fileID: 0}
-  bouddhisteTemple: {fileID: 0}
-  priestCircle: {fileID: 0}
-  taoisteAutel: {fileID: 0}
-  herbalistStall: {fileID: 0}
-  witchHut: {fileID: 0}
-  windCelestialFlag: {fileID: 0}
-  nightTower: {fileID: 0}
+  useTilePower: 0
+  useGhostPower: 0
+  canUsePower: 0
+  canLaunchDice: 0
+  canLaunchBlackDice: 0
+  nbActionEffect: 10
+  nbActionBattle: 10
+  dice: {fileID: 1483268768575792, guid: 6a3772ffda714d746bf307675dc5309c, type: 2}
+  cube: {fileID: 0}
+  resultDiceOne: 
+  resultDiceTwo: 
+  resultDiceThree: 
+  nbRedFace: 0
+  nbBlueFace: 0
+  nbYellowFace: 0
+  nbGreenFace: 0
+  nbWhiteFace: 0
+  nbBlackFace: 0
+  blackDice: {fileID: 1847871859114552, guid: ff1789b7f180ad5458e0b8bdb4db6a34, type: 2}
+  blackDiceOne: {fileID: 0}
+  resultFace: 
+  houseOfTea: {fileID: 416534313}
+  graveyard: {fileID: 1241658704}
+  bouddhisteTemple: {fileID: 1907267166}
+  priestCircle: {fileID: 1910284758}
+  taoisteAutel: {fileID: 1581580247}
+  herbalistStall: {fileID: 1444573566}
+  witchHut: {fileID: 233401638}
+  windCelestialFlag: {fileID: 1335580315}
+  nightTower: {fileID: 1585650252}
   tileName: 
+  choosePriority: 0
+  chooseBouddha: 0
+  positionOne: {fileID: 0}
+  positionTwo: {fileID: 0}
+  bouddhaOne: {fileID: 0}
+  bouddhaTwo: {fileID: 0}
+  priority: 
+  bouddhaChoice: 
+  buttonGhost1: {fileID: 1858481732}
+  buttonGhost2: {fileID: 135805128}
+  buttonBouddha1: {fileID: 560638329}
+  buttonBouddha2: {fileID: 1854426567}
+  ghostName: 
+  ghostName2: 
+  ghost1: {fileID: 0}
+  ghost2: {fileID: 0}
+  explosion: {fileID: 0}
+  explosion2: {fileID: 0}
+  deck: {fileID: 0}
+  card: {fileID: 0}
+  drawedCard: {fileID: 236058383}
+  board: {fileID: 0}
+  panelBluePlace: {fileID: 2078919588}
+  panelRedPlace: {fileID: 243812752}
+  panelGreenPlace: {fileID: 18601231}
+  panelYellowPlace: {fileID: 111140190}
+  panelInfoGhostPower: {fileID: 940957162}
+  panelPrio: {fileID: 1613610552}
+  panelBouddha: {fileID: 860647544}
+  colorPlayer: red
+  defausse: {fileID: 54337049}
+  hasDraw: 0
+  update: 0
+  alreadyMove: 0
+  stop: 0
+  redTurn: 0
+  textInfo: {fileID: 1662648799}
+  textNbTokenBlue: {fileID: 748434481}
+  textNbTokenRed: {fileID: 1317696754}
+  textNbTokenGreen: {fileID: 603758991}
+  textNbTokenYellow: {fileID: 631369074}
+  textNbTokenBlack: {fileID: 1469052364}
+  textNbTokenPower: {fileID: 736988357}
+  textNbTokenYinYangRed: {fileID: 1574852739}
+  textNbQI: {fileID: 880454822}
+  textNbBouddha: {fileID: 250672010}
+  textNbWhiteFace: {fileID: 1785031443}
+  infosWhiteFace: {fileID: 1179219311}
+  textInfoPhase: {fileID: 654859118}
+  textMort: {fileID: 1583025212}
+  textInfoTuile: {fileID: 253676268}
+  textNbDice: {fileID: 568136417}
+  textTurn: {fileID: 296792467}
+  redPosStall: {fileID: 1251037143}
+  redPosHouse: {fileID: 582666822}
+  redPosHut: {fileID: 1369593021}
+  redPosPavillon: {fileID: 1760589861}
+  redPosGraveyard: {fileID: 1019340897}
+  redPosAutel: {fileID: 764026558}
+  redPosCircle: {fileID: 1949437191}
+  redPosTemple: {fileID: 300142765}
+  redPosTower: {fileID: 1708176047}
+  actualPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &1221269293
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16426,19 +16676,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   navMeshPlayer: {fileID: 0}
-  panelTileDeplacement: {fileID: 0}
-  player: {fileID: 0}
+  panelTileDeplacement: {fileID: 1100408807}
+  player: {fileID: 1221269284}
   tileToMove: 
   chooseDepla: 0
-  houseOfTea: {fileID: 0}
-  hutOfWitch: {fileID: 0}
-  herbalistStall: {fileID: 0}
-  taoisteAutel: {fileID: 0}
-  graveyard: {fileID: 0}
-  windCelestialFlag: {fileID: 0}
-  priestCircle: {fileID: 0}
-  bouddhisteTemple: {fileID: 0}
-  nightTower: {fileID: 0}
+  houseOfTea: {fileID: 1465312975}
+  hutOfWitch: {fileID: 1406584098}
+  herbalistStall: {fileID: 933271350}
+  taoisteAutel: {fileID: 1899647170}
+  graveyard: {fileID: 1166281920}
+  windCelestialFlag: {fileID: 583434074}
+  priestCircle: {fileID: 1851458301}
+  bouddhisteTemple: {fileID: 334785777}
+  nightTower: {fileID: 730265533}
 --- !u!1 &1241658704
 GameObject:
   m_ObjectHideFlags: 0
@@ -18256,6 +18506,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1221269292}
+        m_MethodName: SelectGhostPosition
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 953267858}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1345205212
@@ -19182,6 +19443,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1221269293}
+        m_MethodName: getTileToDepla
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1406584098}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1406584099
@@ -19923,6 +20195,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1221269293}
+        m_MethodName: getTileToDepla
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1465312975}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1465312976
@@ -20171,6 +20454,17 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 1476392582}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1221269292}
+        m_MethodName: SelectGhostPosition
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1715530345}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -20974,6 +21268,17 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 1551261269}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1221269292}
+        m_MethodName: SelectGhostPosition
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 772431112}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -23544,7 +23849,7 @@ MonoBehaviour:
   textNbTokenYellow: {fileID: 631369074}
   textNbTokenBlack: {fileID: 1469052364}
   textNbTokenPower: {fileID: 736988357}
-  textNbTokenYinYangBlue: {fileID: 1574852739}
+  textNbTokenYinYangYellow: {fileID: 1574852739}
   textNbQI: {fileID: 880454822}
   textNbBouddha: {fileID: 250672010}
   textNbWhiteFace: {fileID: 1785031443}
@@ -23554,7 +23859,6 @@ MonoBehaviour:
   textInfoTuile: {fileID: 253676268}
   textNbDice: {fileID: 568136417}
   textTurn: {fileID: 296792467}
-  infos: {fileID: 1662648799}
   infoPower: {fileID: 1179219311}
   yellowPosStall: {fileID: 1583953712}
   yellowPosHouse: {fileID: 452540468}
@@ -24323,6 +24627,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1221269292}
+        m_MethodName: SelectGhostPosition
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 646876189}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1779620737
@@ -25046,6 +25361,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1221269293}
+        m_MethodName: getTileToDepla
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1851458301}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1851458302
@@ -25169,6 +25495,17 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1742816412}
+        m_MethodName: SetBouddha
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1854426567}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1221269292}
         m_MethodName: SetBouddha
         m_Mode: 2
         m_Arguments:
@@ -25387,6 +25724,17 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1742816412}
+        m_MethodName: SetPriority
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1858481732}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1221269292}
         m_MethodName: SetPriority
         m_Mode: 2
         m_Arguments:
@@ -25706,6 +26054,17 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1742816413}
+        m_MethodName: getTileToDepla
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1899647170}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1221269293}
         m_MethodName: getTileToDepla
         m_Mode: 2
         m_Arguments:

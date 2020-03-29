@@ -153,6 +153,17 @@ public class WindCelestialFlag : MonoBehaviour {
                 player.GetComponent<YellowPlayer>().panelJeton.SetActive(true);
                 isActiveTilePower = false;
             }
+            else if (player.name == "RedPlayer")
+            {
+                player.GetComponent<RedPlayer>().canLaunchDice = true;
+                player.GetComponent<RedPlayer>().canLaunchBlackDice = true;
+                player.GetComponent<RedPlayer>().useTilePower = false;
+                player.GetComponent<Deplacement>().enabled = true;
+                player.GetComponent<RedPlayer>().update = true;
+                player.GetComponent<RedPlayer>().textInfoPhase.gameObject.SetActive(true);
+                player.GetComponent<RedPlayer>().panelJeton.SetActive(true);
+                isActiveTilePower = false;
+            }
             //Pour les autres joueurs ...
         }
         else
@@ -179,6 +190,16 @@ public class WindCelestialFlag : MonoBehaviour {
                 player.GetComponent<YellowPlayer>().update = true;
                 player.GetComponent<YellowPlayer>().textInfoPhase.gameObject.SetActive(true);
                 player.GetComponent<YellowPlayer>().panelJeton.SetActive(true);
+            }
+            else if (player.name == "RedPlayer")
+            {
+                player.GetComponent<RedPlayer>().canLaunchDice = true;
+                player.GetComponent<RedPlayer>().canLaunchBlackDice = true;
+                player.GetComponent<RedPlayer>().useTilePower = false;
+                player.GetComponent<Deplacement>().enabled = true;
+                player.GetComponent<RedPlayer>().update = true;
+                player.GetComponent<RedPlayer>().textInfoPhase.gameObject.SetActive(true);
+                player.GetComponent<RedPlayer>().panelJeton.SetActive(true);
             }
         }
     }

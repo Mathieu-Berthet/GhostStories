@@ -317,7 +317,6 @@ public class StallOfHerbalist : MonoBehaviour
                 nbBlackTokenToGive = nbBlackFace - gm.tokenStock.nbBlackToken;
                 gm.tokenStock.nbBlackToken -= nbBlackFace - gm.tokenStock.nbBlackToken;
             }
-            Debug.Log("Attribution jeton");
 
             if (player.name == "BluePlayer")
             {
@@ -348,12 +347,21 @@ public class StallOfHerbalist : MonoBehaviour
             /*else if (player.name == "GreenPlayer")
             {
                 player.GetComponent<GreenPlayer>().Qi += 1;
-            }
+            }*/
             
             else if (player.name == "RedPlayer")
             {
-                player.GetComponent<RedPlayer>().Qi += 1;
-            }*/
+                player.GetComponent<RedPlayer>().NbBlueToken += nbBlueTokenToGive;
+                player.GetComponent<RedPlayer>().NbRedToken += nbRedTokenToGive;
+                player.GetComponent<RedPlayer>().NbGreenToken += nbGreenTokenToGive;
+                player.GetComponent<RedPlayer>().NbYellowToken += nbYellowTokenToGive;
+                player.GetComponent<RedPlayer>().NbBlackToken += nbBlackTokenToGive;
+                player.GetComponent<RedPlayer>().update = true;
+                player.GetComponent<RedPlayer>().canLaunchDice = true;
+                player.GetComponent<RedPlayer>().canLaunchBlackDice = true;
+                player.GetComponent<RedPlayer>().useTilePower = false;
+                player.GetComponent<Deplacement>().enabled = true;
+            }
         }
         else
         {
@@ -374,6 +382,14 @@ public class StallOfHerbalist : MonoBehaviour
                 player.GetComponent<YellowPlayer>().useTilePower = false;
                 player.GetComponent<Deplacement>().enabled = true;
                 player.GetComponent<YellowPlayer>().update = true;
+            }
+            else if (player.name == "RedPlayer")
+            {
+                player.GetComponent<RedPlayer>().canLaunchDice = true;
+                player.GetComponent<RedPlayer>().canLaunchBlackDice = true;
+                player.GetComponent<RedPlayer>().useTilePower = false;
+                player.GetComponent<Deplacement>().enabled = true;
+                player.GetComponent<RedPlayer>().update = true;
             }
         }
     }

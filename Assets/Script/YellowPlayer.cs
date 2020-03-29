@@ -161,7 +161,7 @@ public class YellowPlayer : MonoBehaviour
     public Text textNbTokenYellow;
     public Text textNbTokenBlack;
     public Text textNbTokenPower;
-    public Text textNbTokenYinYangBlue;
+    public Text textNbTokenYinYangYellow;
     public Text textNbQI;
     public Text textNbBouddha;
     public Text textNbWhiteFace;
@@ -171,7 +171,6 @@ public class YellowPlayer : MonoBehaviour
     public Text textInfoTuile;
     public Text textNbDice;
     public Text textTurn;
-    public Text infos;
     public Text infoPower;
 
     //Déplacement
@@ -382,10 +381,10 @@ public class YellowPlayer : MonoBehaviour
         }
 
 
-        if (Input.GetKeyDown(KeyCode.B))
+        /*if (Input.GetKeyDown(KeyCode.B))
         {
             StartCoroutine(gameObject.GetComponent<Deplacement>().PlayerDeplacement());
-        }
+        }*/
         if (Input.GetKeyDown(KeyCode.C))
         {
             StartCoroutine(PlaceBouddha());
@@ -826,8 +825,8 @@ public class YellowPlayer : MonoBehaviour
             case "Red":
                 if (gm.tokenStock.nbRedToken == 0)
                 {
-                    infos.text = "Il n'y a plus de jetons rouges, veuillez choisir une autre couleur";
-                    infos.gameObject.SetActive(true);
+                    textInfo.text = "Il n'y a plus de jetons rouges, veuillez choisir une autre couleur";
+                    textInfo.gameObject.SetActive(true);
                     StopCoroutine(PocheSansFond());
                     StartCoroutine(PocheSansFond());
                 }
@@ -840,8 +839,8 @@ public class YellowPlayer : MonoBehaviour
             case "Blue":
                 if (gm.tokenStock.nbBlueToken == 0)
                 {
-                    infos.text = "Il n'y a plus de jetons bleus, veuillez choisir une autre couleur";
-                    infos.gameObject.SetActive(true);
+                    textInfo.text = "Il n'y a plus de jetons bleus, veuillez choisir une autre couleur";
+                    textInfo.gameObject.SetActive(true);
                     StopCoroutine(PocheSansFond());
                     StartCoroutine(PocheSansFond());
                 }
@@ -855,8 +854,8 @@ public class YellowPlayer : MonoBehaviour
             case "Green":
                 if (gm.tokenStock.nbGreenToken == 0)
                 {
-                    infos.text = "Il n'y a plus de jetons verts, veuillez choisir une autre couleur";
-                    infos.gameObject.SetActive(true);
+                    textInfo.text = "Il n'y a plus de jetons verts, veuillez choisir une autre couleur";
+                    textInfo.gameObject.SetActive(true);
                     StopCoroutine(PocheSansFond());
                     StartCoroutine(PocheSansFond());
                 }
@@ -869,8 +868,8 @@ public class YellowPlayer : MonoBehaviour
             case "Yellow":
                 if (gm.tokenStock.nbYellowToken == 0)
                 {
-                    infos.text = "Il n'y a plus de jetons jaunes, veuillez choisir une autre couleur";
-                    infos.gameObject.SetActive(true);
+                    textInfo.text = "Il n'y a plus de jetons jaunes, veuillez choisir une autre couleur";
+                    textInfo.gameObject.SetActive(true);
                     StopCoroutine(PocheSansFond());
                     StartCoroutine(PocheSansFond());
                 }
@@ -883,8 +882,8 @@ public class YellowPlayer : MonoBehaviour
             case "Black":
                 if (gm.tokenStock.nbBlackToken == 0)
                 {
-                    infos.text = "Il n'y a plus de jetons noirs, veuillez choisir une autre couleur";
-                    infos.gameObject.SetActive(true);
+                    textInfo.text = "Il n'y a plus de jetons noirs, veuillez choisir une autre couleur";
+                    textInfo.gameObject.SetActive(true);
                     StopCoroutine(PocheSansFond());
                     StartCoroutine(PocheSansFond());
                 }
@@ -1460,7 +1459,7 @@ public class YellowPlayer : MonoBehaviour
         textNbTokenYellow.text = "x " + NbYellowToken;
         textNbTokenBlack.text = "x " + NbBlackToken;
         textNbQI.text = "QI : x " + Qi;
-        textNbTokenYinYangBlue.text = "x " + NbYinYangYellowToken;
+        textNbTokenYinYangYellow.text = "x " + NbYinYangYellowToken;
         textNbTokenPower.text = "x " + NbPowerToken;
         textNbBouddha.text = "x " + NbBouddha;
         //textNbTokenPower.text = "x " + NbBlackToken; // Jeton mantra, juste pour le joueur jaune
@@ -1891,7 +1890,7 @@ public class YellowPlayer : MonoBehaviour
         {
             gm.state = GameManager.STATE_GAME.STATE_GHOSTPOWER;
             gm.turn++;
-            gm.turnPlayer += 3; //Pour repasser direct au joueur bleu. A modifier lors de l'ajout des joueurs vert et rouge.
+            gm.turnPlayer++;
             alreadyMove = false;
             stop = false;
             updateUI();

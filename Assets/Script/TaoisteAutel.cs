@@ -160,6 +160,71 @@ public class TaoisteAutel : MonoBehaviour
                 player.GetComponent<Deplacement>().enabled = true;
                 player.GetComponent<YellowPlayer>().update = true;
             }
+            else if (player.name == "RedPlayer")
+            {
+                choose = false;
+
+                yield return new WaitForSeconds(0.5f);
+                infoTaoiste.text = "Veuillez choisir la tuile à déshanter : ";
+                panelTile.SetActive(true);
+                while (!choose)
+                {
+                    yield return new WaitForSeconds(1.0f);
+                }
+                if (choose)
+                {
+                    panelTile.SetActive(false);
+                    choose = false;
+                }
+                switch (tileToUnhaunted)
+                {
+                    case "Maison du The":
+                        player.GetComponent<RedPlayer>().houseOfTea.GetComponent<HouseOfTea>().hauntedTile = false;
+                        player.GetComponent<RedPlayer>().houseOfTea.GetComponent<HouseOfTea>().Unhaunted();
+                        break;
+                    case "Hutte de la Sorciere":
+                        player.GetComponent<RedPlayer>().witchHut.GetComponent<HutOfWitch>().hauntedTile = false;
+                        player.GetComponent<RedPlayer>().witchHut.GetComponent<HutOfWitch>().Unhaunted();
+                        break;
+                    case "Echoppe de L'herboriste":
+                        player.GetComponent<RedPlayer>().herbalistStall.GetComponent<StallOfHerbalist>().hauntedTile = false;
+                        player.GetComponent<RedPlayer>().herbalistStall.GetComponent<StallOfHerbalist>().Unhaunted();
+                        break;
+                    case "Autel Taoiste":
+                        hauntedTile = false;
+                        Unhaunted();
+                        break;
+                    case "Cimetiere":
+                        player.GetComponent<RedPlayer>().taoisteAutel.GetComponent<TaoisteAutel>().hauntedTile = false;
+                        player.GetComponent<RedPlayer>().taoisteAutel.GetComponent<TaoisteAutel>().Unhaunted();
+                        break;
+                    case "Pavillon du Vent Celeste":
+                        player.GetComponent<RedPlayer>().windCelestialFlag.GetComponent<WindCelestialFlag>().hauntedTile = false;
+                        player.GetComponent<RedPlayer>().windCelestialFlag.GetComponent<WindCelestialFlag>().Unhaunted();
+                        break;
+                    case "Tour du Veilleur de Nuit":
+                        player.GetComponent<RedPlayer>().nightTower.GetComponent<NightTower>().hauntedTile = false;
+                        player.GetComponent<RedPlayer>().nightTower.GetComponent<NightTower>().Unhaunted();
+                        break;
+                    case "Cercle de priere":
+                        player.GetComponent<RedPlayer>().priestCircle.GetComponent<PriestCircle>().hauntedTile = false;
+                        player.GetComponent<RedPlayer>().priestCircle.GetComponent<PriestCircle>().Unhaunted();
+                        break;
+                    case "Temple Bouddhiste":
+                        player.GetComponent<RedPlayer>().bouddhisteTemple.GetComponent<BouddhisteTemple>().hauntedTile = false;
+                        player.GetComponent<RedPlayer>().bouddhisteTemple.GetComponent<BouddhisteTemple>().Unhaunted();
+                        break;
+                    default:
+                        break;
+                }
+                player.GetComponent<RedPlayer>().gm.state = GameManager.STATE_GAME.STATE_DRAW; //PEUT ETRE
+                player.GetComponent<RedPlayer>().DrawAGhost();
+                player.GetComponent<RedPlayer>().canLaunchDice = true;
+                player.GetComponent<RedPlayer>().canLaunchBlackDice = true;
+                player.GetComponent<RedPlayer>().useTilePower = false;
+                player.GetComponent<Deplacement>().enabled = true;
+                player.GetComponent<RedPlayer>().update = true;
+            }
         }
         else
         {
@@ -180,6 +245,14 @@ public class TaoisteAutel : MonoBehaviour
                 player.GetComponent<YellowPlayer>().useTilePower = false;
                 player.GetComponent<Deplacement>().enabled = true;
                 player.GetComponent<YellowPlayer>().update = true;
+            }
+            else if (player.name == "RedPlayer")
+            {
+                player.GetComponent<RedPlayer>().canLaunchDice = true;
+                player.GetComponent<RedPlayer>().canLaunchBlackDice = true;
+                player.GetComponent<RedPlayer>().useTilePower = false;
+                player.GetComponent<Deplacement>().enabled = true;
+                player.GetComponent<RedPlayer>().update = true;
             }
         }
     }

@@ -109,7 +109,13 @@ public class HutOfWitch : MonoBehaviour
             else if (player.name == "RedPlayer")
             {
                 player.GetComponent<RedPlayer>().Qi -= 1;
-                //player.GetComponent<RedPlayer>().board.usingTile = true;
+                player.GetComponent<RedPlayer>().canLaunchDice = true;
+                player.GetComponent<RedPlayer>().canLaunchBlackDice = true;
+                player.GetComponent<RedPlayer>().useTilePower = false;
+                player.GetComponent<Deplacement>().enabled = true;
+                player.GetComponent<RedPlayer>().update = true;
+                player.GetComponent<RedPlayer>().panelJeton.SetActive(true);
+                player.GetComponent<RedPlayer>().textInfoPhase.gameObject.SetActive(true);
 
             }
             ghostToKill.transform.parent.GetChild(0).GetChild(2).GetComponent<ParticleSystem>().Play();
@@ -150,6 +156,16 @@ public class HutOfWitch : MonoBehaviour
                 player.GetComponent<YellowPlayer>().update = true;
                 player.GetComponent<YellowPlayer>().panelJeton.SetActive(true);
                 player.GetComponent<YellowPlayer>().textInfoPhase.gameObject.SetActive(true);
+            }
+            else if (player.name == "RedPlayer")
+            {
+                player.GetComponent<RedPlayer>().canLaunchDice = true;
+                player.GetComponent<RedPlayer>().canLaunchBlackDice = true;
+                player.GetComponent<RedPlayer>().useTilePower = false;
+                player.GetComponent<Deplacement>().enabled = true;
+                player.GetComponent<RedPlayer>().update = true;
+                player.GetComponent<RedPlayer>().panelJeton.SetActive(true);
+                player.GetComponent<RedPlayer>().textInfoPhase.gameObject.SetActive(true);
             }
         }
     }

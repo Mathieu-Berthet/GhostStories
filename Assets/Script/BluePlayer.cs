@@ -360,10 +360,10 @@ public class BluePlayer : MonoBehaviour
         }
 
 
-        if(Input.GetKeyDown(KeyCode.B))
+        /*if(Input.GetKeyDown(KeyCode.B))
         {
             StartCoroutine(gameObject.GetComponent<Deplacement>().PlayerDeplacement());
-        }
+        }*/
         if(Input.GetKeyDown(KeyCode.C))
         {
             StartCoroutine(PlaceBouddha());
