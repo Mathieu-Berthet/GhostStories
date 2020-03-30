@@ -28,9 +28,15 @@ public class RedPlayer : MonoBehaviour
     [SerializeField]
     private int nbBouddha; // Pour les bouddha du temple bouddhiste
 
+    public float distanceToCheck;
+
     public GameObject panelJeton;
 
     public bool powerDanseDesVentsJumaux;
+    public GameObject playerChoose;
+    public bool choosePlayer;
+    public GameObject panelBoardPlayer;
+
     public bool powerDanseDesCimes;
 
     public bool useTilePower;
@@ -143,6 +149,8 @@ public class RedPlayer : MonoBehaviour
     public bool alreadyMove;
     public bool stop;
     public bool redTurn;
+    //public bool useRedPower;
+    public bool useWindCelestialPower;
 
     //Les différents textes
     [Header("Les textes")]
@@ -347,9 +355,9 @@ public class RedPlayer : MonoBehaviour
             Application.Quit();
         }
 
-
         if (Input.GetKeyDown(KeyCode.B))
         {
+            CheckDistance();
             StartCoroutine(gameObject.GetComponent<Deplacement>().PlayerDeplacement());
         }
         if (Input.GetKeyDown(KeyCode.C))
@@ -431,6 +439,7 @@ public class RedPlayer : MonoBehaviour
         else if (gm.state == GameManager.STATE_GAME.STATE_MOVE && !stop && redTurn)
         {
             stop = true;
+            CheckDistance();
             StartCoroutine(gameObject.GetComponent<Deplacement>().PlayerDeplacement());
         }
 
@@ -441,8 +450,58 @@ public class RedPlayer : MonoBehaviour
             updateUI();
         }
 
+        if (Input.GetKeyDown(KeyCode.LeftShift) && redTurn)
+        {
+            if (powerDanseDesVentsJumaux)
+            {
+                StartCoroutine(DanseDesVentJumeaux());
+            }
+        }
+
         checkGhost();
         checkPosition();
+    }
+
+    public IEnumerator DanseDesVentJumeaux()
+    {
+        panelBoardPlayer.SetActive(true);
+        textInfo.text = "Veuillez choisir le joueur à déplacer";
+        CheckBoard();
+        while (!choosePlayer)
+        {
+            yield return new WaitForSeconds(1.0f);
+        }
+        if (choosePlayer)
+        {
+            panelBoardPlayer.SetActive(false);
+            choosePlayer = false;
+        }
+        if (playerChoose.name == "BluePlayer")
+        {
+            textInfo.text = "Veuillez choisir la tuile d'arrivée";
+            playerChoose.GetComponent<BluePlayer>().useRedPower = true;
+            playerChoose.GetComponent<BluePlayer>().CheckDistance();
+            StartCoroutine(playerChoose.GetComponent<Deplacement>().PlayerDeplacement());
+        }
+        else if (playerChoose.name == "YellowPlayer")
+        {
+            textInfo.text = "Veuillez choisir la tuile d'arrivée";
+            playerChoose.GetComponent<YellowPlayer>().useRedPower = true;
+            playerChoose.GetComponent<YellowPlayer>().CheckDistance();
+            StartCoroutine(playerChoose.GetComponent<Deplacement>().PlayerDeplacement());
+        }
+        else if (playerChoose.name == "RedPlayer")
+        {
+            textInfo.text = "Veuillez choisir la tuile d'arrivée";
+            playerChoose.GetComponent<RedPlayer>().CheckDistance();
+            StartCoroutine(playerChoose.GetComponent<Deplacement>().PlayerDeplacement());
+        }
+        else if (playerChoose.name == "GreenPlayer")
+        {
+            /*textInfo.text = "Veuillez choisir la tuile d'arrivée";
+            playerChoose.GetComponent<GreenPlayer>().CheckDistance();
+            StartCoroutine(playerChoose.GetComponent<Deplacement>().PlayerDeplacement());*/
+        }
     }
 
     public void DrawAGhost()
@@ -2353,13 +2412,22 @@ public class RedPlayer : MonoBehaviour
 
     public void CheckDistance()
     {
-        if (redTurn)
+        if (redTurn || useWindCelestialPower)
         {
+            if(powerDanseDesCimes && !useTilePower)
+            {
+                distanceToCheck = 3.0f;
+            }
+            else
+            {
+                distanceToCheck = 1.5f;
+                useTilePower = false;
+            }
             switch (tileName)
             {
                 case "MaisonThe":
                     gameObject.GetComponent<Deplacement>().houseOfTea.interactable = true;
-                    if (Vector3.Distance(houseOfTea.transform.position, witchHut.transform.position) < 1.5f)
+                    if (Vector3.Distance(houseOfTea.transform.position, witchHut.transform.position) < distanceToCheck)
                     {
                         gameObject.GetComponent<Deplacement>().hutOfWitch.interactable = true;
                     }
@@ -2367,7 +2435,7 @@ public class RedPlayer : MonoBehaviour
                     {
                         gameObject.GetComponent<Deplacement>().hutOfWitch.interactable = false;
                     }
-                    if (Vector3.Distance(houseOfTea.transform.position, herbalistStall.transform.position) < 1.5f)
+                    if (Vector3.Distance(houseOfTea.transform.position, herbalistStall.transform.position) < distanceToCheck)
                     {
                         gameObject.GetComponent<Deplacement>().herbalistStall.interactable = true;
                     }
@@ -2375,7 +2443,7 @@ public class RedPlayer : MonoBehaviour
                     {
                         gameObject.GetComponent<Deplacement>().herbalistStall.interactable = false;
                     }
-                    if (Vector3.Distance(houseOfTea.transform.position, windCelestialFlag.transform.position) < 1.5f)
+                    if (Vector3.Distance(houseOfTea.transform.position, windCelestialFlag.transform.position) < distanceToCheck)
                     {
                         gameObject.GetComponent<Deplacement>().windCelestialFlag.interactable = true;
                     }
@@ -2383,7 +2451,7 @@ public class RedPlayer : MonoBehaviour
                     {
                         gameObject.GetComponent<Deplacement>().windCelestialFlag.interactable = false;
                     }
-                    if (Vector3.Distance(houseOfTea.transform.position, graveyard.transform.position) < 1.5f)
+                    if (Vector3.Distance(houseOfTea.transform.position, graveyard.transform.position) < distanceToCheck)
                     {
                         gameObject.GetComponent<Deplacement>().graveyard.interactable = true;
                     }
@@ -2391,7 +2459,7 @@ public class RedPlayer : MonoBehaviour
                     {
                         gameObject.GetComponent<Deplacement>().graveyard.interactable = false;
                     }
-                    if (Vector3.Distance(houseOfTea.transform.position, taoisteAutel.transform.position) < 1.5f)
+                    if (Vector3.Distance(houseOfTea.transform.position, taoisteAutel.transform.position) < distanceToCheck)
                     {
                         gameObject.GetComponent<Deplacement>().taoisteAutel.interactable = true;
                     }
@@ -2399,7 +2467,7 @@ public class RedPlayer : MonoBehaviour
                     {
                         gameObject.GetComponent<Deplacement>().taoisteAutel.interactable = false;
                     }
-                    if (Vector3.Distance(houseOfTea.transform.position, bouddhisteTemple.transform.position) < 1.5f)
+                    if (Vector3.Distance(houseOfTea.transform.position, bouddhisteTemple.transform.position) < distanceToCheck)
                     {
                         gameObject.GetComponent<Deplacement>().bouddhisteTemple.interactable = true;
                     }
@@ -2407,7 +2475,7 @@ public class RedPlayer : MonoBehaviour
                     {
                         gameObject.GetComponent<Deplacement>().bouddhisteTemple.interactable = false;
                     }
-                    if (Vector3.Distance(houseOfTea.transform.position, priestCircle.transform.position) < 1.5f)
+                    if (Vector3.Distance(houseOfTea.transform.position, priestCircle.transform.position) < distanceToCheck)
                     {
                         gameObject.GetComponent<Deplacement>().priestCircle.interactable = true;
                     }
@@ -2415,7 +2483,7 @@ public class RedPlayer : MonoBehaviour
                     {
                         gameObject.GetComponent<Deplacement>().priestCircle.interactable = false;
                     }
-                    if (Vector3.Distance(houseOfTea.transform.position, nightTower.transform.position) < 1.5f)
+                    if (Vector3.Distance(houseOfTea.transform.position, nightTower.transform.position) < distanceToCheck)
                     {
                         gameObject.GetComponent<Deplacement>().nightTower.interactable = true;
                     }
@@ -2426,7 +2494,7 @@ public class RedPlayer : MonoBehaviour
                     break;
                 case "HutteSorciere":
                     gameObject.GetComponent<Deplacement>().hutOfWitch.interactable = true;
-                    if (Vector3.Distance(witchHut.transform.position, houseOfTea.transform.position) < 1.5f)
+                    if (Vector3.Distance(witchHut.transform.position, houseOfTea.transform.position) < distanceToCheck)
                     {
                         gameObject.GetComponent<Deplacement>().houseOfTea.interactable = true;
                     }
@@ -2434,7 +2502,7 @@ public class RedPlayer : MonoBehaviour
                     {
                         gameObject.GetComponent<Deplacement>().houseOfTea.interactable = false;
                     }
-                    if (Vector3.Distance(witchHut.transform.position, herbalistStall.transform.position) < 1.5f)
+                    if (Vector3.Distance(witchHut.transform.position, herbalistStall.transform.position) < distanceToCheck)
                     {
                         gameObject.GetComponent<Deplacement>().herbalistStall.interactable = true;
                     }
@@ -2442,7 +2510,7 @@ public class RedPlayer : MonoBehaviour
                     {
                         gameObject.GetComponent<Deplacement>().herbalistStall.interactable = false;
                     }
-                    if (Vector3.Distance(witchHut.transform.position, windCelestialFlag.transform.position) < 1.5f)
+                    if (Vector3.Distance(witchHut.transform.position, windCelestialFlag.transform.position) < distanceToCheck)
                     {
                         gameObject.GetComponent<Deplacement>().windCelestialFlag.interactable = true;
                     }
@@ -2450,7 +2518,7 @@ public class RedPlayer : MonoBehaviour
                     {
                         gameObject.GetComponent<Deplacement>().windCelestialFlag.interactable = false;
                     }
-                    if (Vector3.Distance(witchHut.transform.position, graveyard.transform.position) < 1.5f)
+                    if (Vector3.Distance(witchHut.transform.position, graveyard.transform.position) < distanceToCheck)
                     {
                         gameObject.GetComponent<Deplacement>().graveyard.interactable = true;
                     }
@@ -2458,7 +2526,7 @@ public class RedPlayer : MonoBehaviour
                     {
                         gameObject.GetComponent<Deplacement>().graveyard.interactable = false;
                     }
-                    if (Vector3.Distance(witchHut.transform.position, taoisteAutel.transform.position) < 1.5f)
+                    if (Vector3.Distance(witchHut.transform.position, taoisteAutel.transform.position) < distanceToCheck)
                     {
                         gameObject.GetComponent<Deplacement>().taoisteAutel.interactable = true;
                     }
@@ -2466,7 +2534,7 @@ public class RedPlayer : MonoBehaviour
                     {
                         gameObject.GetComponent<Deplacement>().taoisteAutel.interactable = false;
                     }
-                    if (Vector3.Distance(witchHut.transform.position, bouddhisteTemple.transform.position) < 1.5f)
+                    if (Vector3.Distance(witchHut.transform.position, bouddhisteTemple.transform.position) < distanceToCheck)
                     {
                         gameObject.GetComponent<Deplacement>().bouddhisteTemple.interactable = true;
                     }
@@ -2474,7 +2542,7 @@ public class RedPlayer : MonoBehaviour
                     {
                         gameObject.GetComponent<Deplacement>().bouddhisteTemple.interactable = false;
                     }
-                    if (Vector3.Distance(witchHut.transform.position, priestCircle.transform.position) < 1.5f)
+                    if (Vector3.Distance(witchHut.transform.position, priestCircle.transform.position) < distanceToCheck)
                     {
                         gameObject.GetComponent<Deplacement>().priestCircle.interactable = true;
                     }
@@ -2482,7 +2550,7 @@ public class RedPlayer : MonoBehaviour
                     {
                         gameObject.GetComponent<Deplacement>().priestCircle.interactable = false;
                     }
-                    if (Vector3.Distance(witchHut.transform.position, nightTower.transform.position) < 1.5f)
+                    if (Vector3.Distance(witchHut.transform.position, nightTower.transform.position) < distanceToCheck)
                     {
                         gameObject.GetComponent<Deplacement>().nightTower.interactable = true;
                     }
@@ -2493,7 +2561,7 @@ public class RedPlayer : MonoBehaviour
                     break;
                 case "EchoppeHerboriste":
                     gameObject.GetComponent<Deplacement>().herbalistStall.interactable = true;
-                    if (Vector3.Distance(herbalistStall.transform.position, houseOfTea.transform.position) < 1.5f)
+                    if (Vector3.Distance(herbalistStall.transform.position, houseOfTea.transform.position) < distanceToCheck)
                     {
                         gameObject.GetComponent<Deplacement>().houseOfTea.interactable = true;
                     }
@@ -2501,7 +2569,7 @@ public class RedPlayer : MonoBehaviour
                     {
                         gameObject.GetComponent<Deplacement>().houseOfTea.interactable = false;
                     }
-                    if (Vector3.Distance(herbalistStall.transform.position, witchHut.transform.position) < 1.5f)
+                    if (Vector3.Distance(herbalistStall.transform.position, witchHut.transform.position) < distanceToCheck)
                     {
                         gameObject.GetComponent<Deplacement>().hutOfWitch.interactable = true;
                     }
@@ -2509,7 +2577,7 @@ public class RedPlayer : MonoBehaviour
                     {
                         gameObject.GetComponent<Deplacement>().hutOfWitch.interactable = false;
                     }
-                    if (Vector3.Distance(herbalistStall.transform.position, windCelestialFlag.transform.position) < 1.5f)
+                    if (Vector3.Distance(herbalistStall.transform.position, windCelestialFlag.transform.position) < distanceToCheck)
                     {
                         gameObject.GetComponent<Deplacement>().windCelestialFlag.interactable = true;
                     }
@@ -2517,7 +2585,7 @@ public class RedPlayer : MonoBehaviour
                     {
                         gameObject.GetComponent<Deplacement>().windCelestialFlag.interactable = false;
                     }
-                    if (Vector3.Distance(herbalistStall.transform.position, graveyard.transform.position) < 1.5f)
+                    if (Vector3.Distance(herbalistStall.transform.position, graveyard.transform.position) < distanceToCheck)
                     {
                         gameObject.GetComponent<Deplacement>().graveyard.interactable = true;
                     }
@@ -2525,7 +2593,7 @@ public class RedPlayer : MonoBehaviour
                     {
                         gameObject.GetComponent<Deplacement>().graveyard.interactable = false;
                     }
-                    if (Vector3.Distance(herbalistStall.transform.position, taoisteAutel.transform.position) < 1.5f)
+                    if (Vector3.Distance(herbalistStall.transform.position, taoisteAutel.transform.position) < distanceToCheck)
                     {
                         gameObject.GetComponent<Deplacement>().taoisteAutel.interactable = true;
                     }
@@ -2533,7 +2601,7 @@ public class RedPlayer : MonoBehaviour
                     {
                         gameObject.GetComponent<Deplacement>().taoisteAutel.interactable = false;
                     }
-                    if (Vector3.Distance(herbalistStall.transform.position, bouddhisteTemple.transform.position) < 1.5f)
+                    if (Vector3.Distance(herbalistStall.transform.position, bouddhisteTemple.transform.position) < distanceToCheck)
                     {
                         gameObject.GetComponent<Deplacement>().bouddhisteTemple.interactable = true;
                     }
@@ -2541,7 +2609,7 @@ public class RedPlayer : MonoBehaviour
                     {
                         gameObject.GetComponent<Deplacement>().bouddhisteTemple.interactable = false;
                     }
-                    if (Vector3.Distance(herbalistStall.transform.position, priestCircle.transform.position) < 1.5f)
+                    if (Vector3.Distance(herbalistStall.transform.position, priestCircle.transform.position) < distanceToCheck)
                     {
                         gameObject.GetComponent<Deplacement>().priestCircle.interactable = true;
                     }
@@ -2549,7 +2617,7 @@ public class RedPlayer : MonoBehaviour
                     {
                         gameObject.GetComponent<Deplacement>().priestCircle.interactable = false;
                     }
-                    if (Vector3.Distance(herbalistStall.transform.position, nightTower.transform.position) < 1.5f)
+                    if (Vector3.Distance(herbalistStall.transform.position, nightTower.transform.position) < distanceToCheck)
                     {
                         gameObject.GetComponent<Deplacement>().nightTower.interactable = true;
                     }
@@ -2560,7 +2628,7 @@ public class RedPlayer : MonoBehaviour
                     break;
                 case "AutelTaoiste":
                     gameObject.GetComponent<Deplacement>().taoisteAutel.interactable = true;
-                    if (Vector3.Distance(taoisteAutel.transform.position, houseOfTea.transform.position) < 1.5f)
+                    if (Vector3.Distance(taoisteAutel.transform.position, houseOfTea.transform.position) < distanceToCheck)
                     {
                         gameObject.GetComponent<Deplacement>().houseOfTea.interactable = true;
                     }
@@ -2568,7 +2636,7 @@ public class RedPlayer : MonoBehaviour
                     {
                         gameObject.GetComponent<Deplacement>().houseOfTea.interactable = false;
                     }
-                    if (Vector3.Distance(taoisteAutel.transform.position, witchHut.transform.position) < 1.5f)
+                    if (Vector3.Distance(taoisteAutel.transform.position, witchHut.transform.position) < distanceToCheck)
                     {
                         gameObject.GetComponent<Deplacement>().hutOfWitch.interactable = true;
                     }
@@ -2576,7 +2644,7 @@ public class RedPlayer : MonoBehaviour
                     {
                         gameObject.GetComponent<Deplacement>().hutOfWitch.interactable = false;
                     }
-                    if (Vector3.Distance(taoisteAutel.transform.position, graveyard.transform.position) < 1.5f)
+                    if (Vector3.Distance(taoisteAutel.transform.position, graveyard.transform.position) < distanceToCheck)
                     {
                         gameObject.GetComponent<Deplacement>().graveyard.interactable = true;
                     }
@@ -2584,7 +2652,7 @@ public class RedPlayer : MonoBehaviour
                     {
                         gameObject.GetComponent<Deplacement>().graveyard.interactable = false;
                     }
-                    if (Vector3.Distance(taoisteAutel.transform.position, herbalistStall.transform.position) < 1.5f)
+                    if (Vector3.Distance(taoisteAutel.transform.position, herbalistStall.transform.position) < distanceToCheck)
                     {
                         gameObject.GetComponent<Deplacement>().herbalistStall.interactable = true;
                     }
@@ -2592,7 +2660,7 @@ public class RedPlayer : MonoBehaviour
                     {
                         gameObject.GetComponent<Deplacement>().herbalistStall.interactable = false;
                     }
-                    if (Vector3.Distance(taoisteAutel.transform.position, bouddhisteTemple.transform.position) < 1.5f)
+                    if (Vector3.Distance(taoisteAutel.transform.position, bouddhisteTemple.transform.position) < distanceToCheck)
                     {
                         gameObject.GetComponent<Deplacement>().bouddhisteTemple.interactable = true;
                     }
@@ -2600,7 +2668,7 @@ public class RedPlayer : MonoBehaviour
                     {
                         gameObject.GetComponent<Deplacement>().bouddhisteTemple.interactable = false;
                     }
-                    if (Vector3.Distance(taoisteAutel.transform.position, priestCircle.transform.position) < 1.5f)
+                    if (Vector3.Distance(taoisteAutel.transform.position, priestCircle.transform.position) < distanceToCheck)
                     {
                         gameObject.GetComponent<Deplacement>().priestCircle.interactable = true;
                     }
@@ -2608,7 +2676,7 @@ public class RedPlayer : MonoBehaviour
                     {
                         gameObject.GetComponent<Deplacement>().priestCircle.interactable = false;
                     }
-                    if (Vector3.Distance(taoisteAutel.transform.position, nightTower.transform.position) < 1.5f)
+                    if (Vector3.Distance(taoisteAutel.transform.position, nightTower.transform.position) < distanceToCheck)
                     {
                         gameObject.GetComponent<Deplacement>().nightTower.interactable = true;
                     }
@@ -2616,7 +2684,7 @@ public class RedPlayer : MonoBehaviour
                     {
                         gameObject.GetComponent<Deplacement>().nightTower.interactable = false;
                     }
-                    if (Vector3.Distance(taoisteAutel.transform.position, windCelestialFlag.transform.position) < 1.5f)
+                    if (Vector3.Distance(taoisteAutel.transform.position, windCelestialFlag.transform.position) < distanceToCheck)
                     {
                         gameObject.GetComponent<Deplacement>().windCelestialFlag.interactable = true;
                     }
@@ -2627,7 +2695,7 @@ public class RedPlayer : MonoBehaviour
                     break;
                 case "Cimetiere":
                     gameObject.GetComponent<Deplacement>().graveyard.interactable = true;
-                    if (Vector3.Distance(graveyard.transform.position, houseOfTea.transform.position) < 1.5f)
+                    if (Vector3.Distance(graveyard.transform.position, houseOfTea.transform.position) < distanceToCheck)
                     {
                         gameObject.GetComponent<Deplacement>().houseOfTea.interactable = true;
                     }
@@ -2635,7 +2703,7 @@ public class RedPlayer : MonoBehaviour
                     {
                         gameObject.GetComponent<Deplacement>().houseOfTea.interactable = false;
                     }
-                    if (Vector3.Distance(graveyard.transform.position, witchHut.transform.position) < 1.5f)
+                    if (Vector3.Distance(graveyard.transform.position, witchHut.transform.position) < distanceToCheck)
                     {
                         gameObject.GetComponent<Deplacement>().hutOfWitch.interactable = true;
                     }
@@ -2643,7 +2711,7 @@ public class RedPlayer : MonoBehaviour
                     {
                         gameObject.GetComponent<Deplacement>().hutOfWitch.interactable = false;
                     }
-                    if (Vector3.Distance(graveyard.transform.position, windCelestialFlag.transform.position) < 1.5f)
+                    if (Vector3.Distance(graveyard.transform.position, windCelestialFlag.transform.position) < distanceToCheck)
                     {
                         gameObject.GetComponent<Deplacement>().windCelestialFlag.interactable = true;
                     }
@@ -2651,7 +2719,7 @@ public class RedPlayer : MonoBehaviour
                     {
                         gameObject.GetComponent<Deplacement>().windCelestialFlag.interactable = false;
                     }
-                    if (Vector3.Distance(graveyard.transform.position, taoisteAutel.transform.position) < 1.5f)
+                    if (Vector3.Distance(graveyard.transform.position, taoisteAutel.transform.position) < distanceToCheck)
                     {
                         gameObject.GetComponent<Deplacement>().taoisteAutel.interactable = true;
                     }
@@ -2659,7 +2727,7 @@ public class RedPlayer : MonoBehaviour
                     {
                         gameObject.GetComponent<Deplacement>().taoisteAutel.interactable = false;
                     }
-                    if (Vector3.Distance(graveyard.transform.position, herbalistStall.transform.position) < 1.5f)
+                    if (Vector3.Distance(graveyard.transform.position, herbalistStall.transform.position) < distanceToCheck)
                     {
                         gameObject.GetComponent<Deplacement>().herbalistStall.interactable = true;
                     }
@@ -2667,7 +2735,7 @@ public class RedPlayer : MonoBehaviour
                     {
                         gameObject.GetComponent<Deplacement>().herbalistStall.interactable = false;
                     }
-                    if (Vector3.Distance(graveyard.transform.position, bouddhisteTemple.transform.position) < 1.5f)
+                    if (Vector3.Distance(graveyard.transform.position, bouddhisteTemple.transform.position) < distanceToCheck)
                     {
                         gameObject.GetComponent<Deplacement>().bouddhisteTemple.interactable = true;
                     }
@@ -2675,7 +2743,7 @@ public class RedPlayer : MonoBehaviour
                     {
                         gameObject.GetComponent<Deplacement>().bouddhisteTemple.interactable = false;
                     }
-                    if (Vector3.Distance(graveyard.transform.position, priestCircle.transform.position) < 1.5f)
+                    if (Vector3.Distance(graveyard.transform.position, priestCircle.transform.position) < distanceToCheck)
                     {
                         gameObject.GetComponent<Deplacement>().priestCircle.interactable = true;
                     }
@@ -2683,7 +2751,7 @@ public class RedPlayer : MonoBehaviour
                     {
                         gameObject.GetComponent<Deplacement>().priestCircle.interactable = false;
                     }
-                    if (Vector3.Distance(graveyard.transform.position, nightTower.transform.position) < 1.5f)
+                    if (Vector3.Distance(graveyard.transform.position, nightTower.transform.position) < distanceToCheck)
                     {
                         gameObject.GetComponent<Deplacement>().nightTower.interactable = true;
                     }
@@ -2694,7 +2762,7 @@ public class RedPlayer : MonoBehaviour
                     break;
                 case "PavillonVentCeleste":
                     gameObject.GetComponent<Deplacement>().windCelestialFlag.interactable = true;
-                    if (Vector3.Distance(windCelestialFlag.transform.position, houseOfTea.transform.position) < 1.5f)
+                    if (Vector3.Distance(windCelestialFlag.transform.position, houseOfTea.transform.position) < distanceToCheck)
                     {
                         gameObject.GetComponent<Deplacement>().houseOfTea.interactable = true;
                     }
@@ -2702,7 +2770,7 @@ public class RedPlayer : MonoBehaviour
                     {
                         gameObject.GetComponent<Deplacement>().houseOfTea.interactable = false;
                     }
-                    if (Vector3.Distance(windCelestialFlag.transform.position, witchHut.transform.position) < 1.5f)
+                    if (Vector3.Distance(windCelestialFlag.transform.position, witchHut.transform.position) < distanceToCheck)
                     {
                         gameObject.GetComponent<Deplacement>().hutOfWitch.interactable = true;
                     }
@@ -2710,7 +2778,7 @@ public class RedPlayer : MonoBehaviour
                     {
                         gameObject.GetComponent<Deplacement>().hutOfWitch.interactable = false;
                     }
-                    if (Vector3.Distance(windCelestialFlag.transform.position, graveyard.transform.position) < 1.5f)
+                    if (Vector3.Distance(windCelestialFlag.transform.position, graveyard.transform.position) < distanceToCheck)
                     {
                         gameObject.GetComponent<Deplacement>().graveyard.interactable = true;
                     }
@@ -2718,7 +2786,7 @@ public class RedPlayer : MonoBehaviour
                     {
                         gameObject.GetComponent<Deplacement>().graveyard.interactable = false;
                     }
-                    if (Vector3.Distance(windCelestialFlag.transform.position, taoisteAutel.transform.position) < 1.5f)
+                    if (Vector3.Distance(windCelestialFlag.transform.position, taoisteAutel.transform.position) < distanceToCheck)
                     {
                         gameObject.GetComponent<Deplacement>().taoisteAutel.interactable = true;
                     }
@@ -2726,7 +2794,7 @@ public class RedPlayer : MonoBehaviour
                     {
                         gameObject.GetComponent<Deplacement>().taoisteAutel.interactable = false;
                     }
-                    if (Vector3.Distance(windCelestialFlag.transform.position, herbalistStall.transform.position) < 1.5f)
+                    if (Vector3.Distance(windCelestialFlag.transform.position, herbalistStall.transform.position) < distanceToCheck)
                     {
                         gameObject.GetComponent<Deplacement>().herbalistStall.interactable = true;
                     }
@@ -2734,7 +2802,7 @@ public class RedPlayer : MonoBehaviour
                     {
                         gameObject.GetComponent<Deplacement>().herbalistStall.interactable = false;
                     }
-                    if (Vector3.Distance(windCelestialFlag.transform.position, bouddhisteTemple.transform.position) < 1.5f)
+                    if (Vector3.Distance(windCelestialFlag.transform.position, bouddhisteTemple.transform.position) < distanceToCheck)
                     {
                         gameObject.GetComponent<Deplacement>().bouddhisteTemple.interactable = true;
                     }
@@ -2742,7 +2810,7 @@ public class RedPlayer : MonoBehaviour
                     {
                         gameObject.GetComponent<Deplacement>().bouddhisteTemple.interactable = false;
                     }
-                    if (Vector3.Distance(windCelestialFlag.transform.position, priestCircle.transform.position) < 1.5f)
+                    if (Vector3.Distance(windCelestialFlag.transform.position, priestCircle.transform.position) < distanceToCheck)
                     {
                         gameObject.GetComponent<Deplacement>().priestCircle.interactable = true;
                     }
@@ -2750,7 +2818,7 @@ public class RedPlayer : MonoBehaviour
                     {
                         gameObject.GetComponent<Deplacement>().priestCircle.interactable = false;
                     }
-                    if (Vector3.Distance(windCelestialFlag.transform.position, nightTower.transform.position) < 1.5f)
+                    if (Vector3.Distance(windCelestialFlag.transform.position, nightTower.transform.position) < distanceToCheck)
                     {
                         gameObject.GetComponent<Deplacement>().nightTower.interactable = true;
                     }
@@ -2761,7 +2829,7 @@ public class RedPlayer : MonoBehaviour
                     break;
                 case "TourVeilleurNuit":
                     gameObject.GetComponent<Deplacement>().nightTower.interactable = true;
-                    if (Vector3.Distance(nightTower.transform.position, houseOfTea.transform.position) < 1.5f)
+                    if (Vector3.Distance(nightTower.transform.position, houseOfTea.transform.position) < distanceToCheck)
                     {
                         gameObject.GetComponent<Deplacement>().houseOfTea.interactable = true;
                     }
@@ -2769,7 +2837,7 @@ public class RedPlayer : MonoBehaviour
                     {
                         gameObject.GetComponent<Deplacement>().houseOfTea.interactable = false;
                     }
-                    if (Vector3.Distance(nightTower.transform.position, witchHut.transform.position) < 1.5f)
+                    if (Vector3.Distance(nightTower.transform.position, witchHut.transform.position) < distanceToCheck)
                     {
                         gameObject.GetComponent<Deplacement>().hutOfWitch.interactable = true;
                     }
@@ -2777,7 +2845,7 @@ public class RedPlayer : MonoBehaviour
                     {
                         gameObject.GetComponent<Deplacement>().hutOfWitch.interactable = false;
                     }
-                    if (Vector3.Distance(nightTower.transform.position, graveyard.transform.position) < 1.5f)
+                    if (Vector3.Distance(nightTower.transform.position, graveyard.transform.position) < distanceToCheck)
                     {
                         gameObject.GetComponent<Deplacement>().graveyard.interactable = true;
                     }
@@ -2785,7 +2853,7 @@ public class RedPlayer : MonoBehaviour
                     {
                         gameObject.GetComponent<Deplacement>().graveyard.interactable = false;
                     }
-                    if (Vector3.Distance(nightTower.transform.position, taoisteAutel.transform.position) < 1.5f)
+                    if (Vector3.Distance(nightTower.transform.position, taoisteAutel.transform.position) < distanceToCheck)
                     {
                         gameObject.GetComponent<Deplacement>().taoisteAutel.interactable = true;
                     }
@@ -2793,7 +2861,7 @@ public class RedPlayer : MonoBehaviour
                     {
                         gameObject.GetComponent<Deplacement>().taoisteAutel.interactable = false;
                     }
-                    if (Vector3.Distance(nightTower.transform.position, herbalistStall.transform.position) < 1.5f)
+                    if (Vector3.Distance(nightTower.transform.position, herbalistStall.transform.position) < distanceToCheck)
                     {
                         gameObject.GetComponent<Deplacement>().herbalistStall.interactable = true;
                     }
@@ -2801,7 +2869,7 @@ public class RedPlayer : MonoBehaviour
                     {
                         gameObject.GetComponent<Deplacement>().herbalistStall.interactable = false;
                     }
-                    if (Vector3.Distance(nightTower.transform.position, bouddhisteTemple.transform.position) < 1.5f)
+                    if (Vector3.Distance(nightTower.transform.position, bouddhisteTemple.transform.position) < distanceToCheck)
                     {
                         gameObject.GetComponent<Deplacement>().bouddhisteTemple.interactable = true;
                     }
@@ -2809,7 +2877,7 @@ public class RedPlayer : MonoBehaviour
                     {
                         gameObject.GetComponent<Deplacement>().bouddhisteTemple.interactable = false;
                     }
-                    if (Vector3.Distance(nightTower.transform.position, priestCircle.transform.position) < 1.5f)
+                    if (Vector3.Distance(nightTower.transform.position, priestCircle.transform.position) < distanceToCheck)
                     {
                         gameObject.GetComponent<Deplacement>().priestCircle.interactable = true;
                     }
@@ -2817,7 +2885,7 @@ public class RedPlayer : MonoBehaviour
                     {
                         gameObject.GetComponent<Deplacement>().priestCircle.interactable = false;
                     }
-                    if (Vector3.Distance(nightTower.transform.position, windCelestialFlag.transform.position) < 1.5f)
+                    if (Vector3.Distance(nightTower.transform.position, windCelestialFlag.transform.position) < distanceToCheck)
                     {
                         gameObject.GetComponent<Deplacement>().windCelestialFlag.interactable = true;
                     }
@@ -2828,7 +2896,7 @@ public class RedPlayer : MonoBehaviour
                     break;
                 case "CerclePriere":
                     gameObject.GetComponent<Deplacement>().priestCircle.interactable = true;
-                    if (Vector3.Distance(priestCircle.transform.position, houseOfTea.transform.position) < 1.5f)
+                    if (Vector3.Distance(priestCircle.transform.position, houseOfTea.transform.position) < distanceToCheck)
                     {
                         gameObject.GetComponent<Deplacement>().houseOfTea.interactable = true;
                     }
@@ -2836,7 +2904,7 @@ public class RedPlayer : MonoBehaviour
                     {
                         gameObject.GetComponent<Deplacement>().houseOfTea.interactable = false;
                     }
-                    if (Vector3.Distance(priestCircle.transform.position, witchHut.transform.position) < 1.5f)
+                    if (Vector3.Distance(priestCircle.transform.position, witchHut.transform.position) < distanceToCheck)
                     {
                         gameObject.GetComponent<Deplacement>().hutOfWitch.interactable = true;
                     }
@@ -2844,7 +2912,7 @@ public class RedPlayer : MonoBehaviour
                     {
                         gameObject.GetComponent<Deplacement>().hutOfWitch.interactable = false;
                     }
-                    if (Vector3.Distance(priestCircle.transform.position, graveyard.transform.position) < 1.5f)
+                    if (Vector3.Distance(priestCircle.transform.position, graveyard.transform.position) < distanceToCheck)
                     {
                         gameObject.GetComponent<Deplacement>().graveyard.interactable = true;
                     }
@@ -2852,7 +2920,7 @@ public class RedPlayer : MonoBehaviour
                     {
                         gameObject.GetComponent<Deplacement>().graveyard.interactable = false;
                     }
-                    if (Vector3.Distance(priestCircle.transform.position, taoisteAutel.transform.position) < 1.5f)
+                    if (Vector3.Distance(priestCircle.transform.position, taoisteAutel.transform.position) < distanceToCheck)
                     {
                         gameObject.GetComponent<Deplacement>().taoisteAutel.interactable = true;
                     }
@@ -2860,7 +2928,7 @@ public class RedPlayer : MonoBehaviour
                     {
                         gameObject.GetComponent<Deplacement>().taoisteAutel.interactable = false;
                     }
-                    if (Vector3.Distance(priestCircle.transform.position, herbalistStall.transform.position) < 1.5f)
+                    if (Vector3.Distance(priestCircle.transform.position, herbalistStall.transform.position) < distanceToCheck)
                     {
                         gameObject.GetComponent<Deplacement>().herbalistStall.interactable = true;
                     }
@@ -2868,7 +2936,7 @@ public class RedPlayer : MonoBehaviour
                     {
                         gameObject.GetComponent<Deplacement>().herbalistStall.interactable = false;
                     }
-                    if (Vector3.Distance(priestCircle.transform.position, bouddhisteTemple.transform.position) < 1.5f)
+                    if (Vector3.Distance(priestCircle.transform.position, bouddhisteTemple.transform.position) < distanceToCheck)
                     {
                         gameObject.GetComponent<Deplacement>().bouddhisteTemple.interactable = true;
                     }
@@ -2876,7 +2944,7 @@ public class RedPlayer : MonoBehaviour
                     {
                         gameObject.GetComponent<Deplacement>().bouddhisteTemple.interactable = false;
                     }
-                    if (Vector3.Distance(priestCircle.transform.position, nightTower.transform.position) < 1.5f)
+                    if (Vector3.Distance(priestCircle.transform.position, nightTower.transform.position) < distanceToCheck)
                     {
                         gameObject.GetComponent<Deplacement>().nightTower.interactable = true;
                     }
@@ -2884,7 +2952,7 @@ public class RedPlayer : MonoBehaviour
                     {
                         gameObject.GetComponent<Deplacement>().nightTower.interactable = false;
                     }
-                    if (Vector3.Distance(priestCircle.transform.position, windCelestialFlag.transform.position) < 1.5f)
+                    if (Vector3.Distance(priestCircle.transform.position, windCelestialFlag.transform.position) < distanceToCheck)
                     {
                         gameObject.GetComponent<Deplacement>().windCelestialFlag.interactable = true;
                     }
@@ -2895,7 +2963,7 @@ public class RedPlayer : MonoBehaviour
                     break;
                 case "TempleBouddhiste":
                     gameObject.GetComponent<Deplacement>().bouddhisteTemple.interactable = true;
-                    if (Vector3.Distance(bouddhisteTemple.transform.position, houseOfTea.transform.position) < 1.5f)
+                    if (Vector3.Distance(bouddhisteTemple.transform.position, houseOfTea.transform.position) < distanceToCheck)
                     {
                         gameObject.GetComponent<Deplacement>().houseOfTea.interactable = true;
                     }
@@ -2903,7 +2971,7 @@ public class RedPlayer : MonoBehaviour
                     {
                         gameObject.GetComponent<Deplacement>().houseOfTea.interactable = false;
                     }
-                    if (Vector3.Distance(bouddhisteTemple.transform.position, witchHut.transform.position) < 1.5f)
+                    if (Vector3.Distance(bouddhisteTemple.transform.position, witchHut.transform.position) < distanceToCheck)
                     {
                         gameObject.GetComponent<Deplacement>().hutOfWitch.interactable = true;
                     }
@@ -2911,7 +2979,7 @@ public class RedPlayer : MonoBehaviour
                     {
                         gameObject.GetComponent<Deplacement>().hutOfWitch.interactable = false;
                     }
-                    if (Vector3.Distance(bouddhisteTemple.transform.position, graveyard.transform.position) < 1.5f)
+                    if (Vector3.Distance(bouddhisteTemple.transform.position, graveyard.transform.position) < distanceToCheck)
                     {
                         gameObject.GetComponent<Deplacement>().graveyard.interactable = true;
                     }
@@ -2919,7 +2987,7 @@ public class RedPlayer : MonoBehaviour
                     {
                         gameObject.GetComponent<Deplacement>().graveyard.interactable = false;
                     }
-                    if (Vector3.Distance(bouddhisteTemple.transform.position, taoisteAutel.transform.position) < 1.5f)
+                    if (Vector3.Distance(bouddhisteTemple.transform.position, taoisteAutel.transform.position) < distanceToCheck)
                     {
                         gameObject.GetComponent<Deplacement>().taoisteAutel.interactable = true;
                     }
@@ -2927,7 +2995,7 @@ public class RedPlayer : MonoBehaviour
                     {
                         gameObject.GetComponent<Deplacement>().taoisteAutel.interactable = false;
                     }
-                    if (Vector3.Distance(bouddhisteTemple.transform.position, herbalistStall.transform.position) < 1.5f)
+                    if (Vector3.Distance(bouddhisteTemple.transform.position, herbalistStall.transform.position) < distanceToCheck)
                     {
                         gameObject.GetComponent<Deplacement>().herbalistStall.interactable = true;
                     }
@@ -2935,7 +3003,7 @@ public class RedPlayer : MonoBehaviour
                     {
                         gameObject.GetComponent<Deplacement>().herbalistStall.interactable = false;
                     }
-                    if (Vector3.Distance(bouddhisteTemple.transform.position, priestCircle.transform.position) < 1.5f)
+                    if (Vector3.Distance(bouddhisteTemple.transform.position, priestCircle.transform.position) < distanceToCheck)
                     {
                         gameObject.GetComponent<Deplacement>().priestCircle.interactable = true;
                     }
@@ -2943,7 +3011,7 @@ public class RedPlayer : MonoBehaviour
                     {
                         gameObject.GetComponent<Deplacement>().priestCircle.interactable = false;
                     }
-                    if (Vector3.Distance(bouddhisteTemple.transform.position, nightTower.transform.position) < 1.5f)
+                    if (Vector3.Distance(bouddhisteTemple.transform.position, nightTower.transform.position) < distanceToCheck)
                     {
                         gameObject.GetComponent<Deplacement>().nightTower.interactable = true;
                     }
@@ -2951,7 +3019,7 @@ public class RedPlayer : MonoBehaviour
                     {
                         gameObject.GetComponent<Deplacement>().nightTower.interactable = false;
                     }
-                    if (Vector3.Distance(bouddhisteTemple.transform.position, windCelestialFlag.transform.position) < 1.5f)
+                    if (Vector3.Distance(bouddhisteTemple.transform.position, windCelestialFlag.transform.position) < distanceToCheck)
                     {
                         gameObject.GetComponent<Deplacement>().windCelestialFlag.interactable = true;
                     }
@@ -2966,6 +3034,13 @@ public class RedPlayer : MonoBehaviour
         }
     }
 
+    public void CheckBoard()
+    {
+        panelBoardPlayer.transform.GetChild(0).GetComponent<Button>().interactable = false;
+        panelBoardPlayer.transform.GetChild(1).GetComponent<Button>().interactable = true;
+        panelBoardPlayer.transform.GetChild(2).GetComponent<Button>().interactable = true;
+        panelBoardPlayer.transform.GetChild(3).GetComponent<Button>().interactable = true;
+    }
 
     public void SetBouddha(Button buttonClick)
     {
@@ -3111,5 +3186,11 @@ public class RedPlayer : MonoBehaviour
                 textInfo.gameObject.SetActive(true);
             }
         }
+    }
+
+    public void getPlayer(GameObject player)
+    {
+        playerChoose = player;
+        choosePlayer = true;
     }
 }

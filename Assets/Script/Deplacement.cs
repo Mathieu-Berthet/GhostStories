@@ -48,14 +48,14 @@ public class Deplacement : MonoBehaviour {
                 Debug.Log(hit.transform.name);
             }
         }*/
-        if (player.name == "BluePlayer")
+        /*if (player.name == "BluePlayer")
         {
             player.GetComponent<BluePlayer>().CheckDistance();
         }
         else if (player.name == "YellowPlayer")
         {
             player.GetComponent<YellowPlayer>().CheckDistance();
-        }
+        }*/
     }
 
     public IEnumerator PlayerDeplacement()

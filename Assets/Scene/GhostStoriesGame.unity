@@ -12174,6 +12174,8 @@ MonoBehaviour:
   alreadyMove: 0
   stop: 0
   blueTurn: 0
+  useRedPower: 0
+  useWindCelestialPower: 0
   textInfo: {fileID: 1662648799}
   textNbTokenBlue: {fileID: 748434481}
   textNbTokenRed: {fileID: 1317696754}
@@ -12607,6 +12609,17 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1335580316}
+        m_MethodName: getPlayer
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1221269284}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1221269292}
         m_MethodName: getPlayer
         m_Mode: 2
         m_Arguments:
@@ -14367,6 +14380,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1221269292}
+        m_MethodName: getPlayer
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1742816404}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1089314212
@@ -14490,6 +14514,17 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1335580316}
+        m_MethodName: getPlayer
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1775335297}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1221269292}
         m_MethodName: getPlayer
         m_Mode: 2
         m_Arguments:
@@ -16385,6 +16420,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1221269292}
+        m_MethodName: EndTurn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1210743912
@@ -16566,9 +16612,13 @@ MonoBehaviour:
   nbPowerToken: 0
   nbYinYangRedToken: 0
   nbBouddha: 0
+  distanceToCheck: 0
   panelJeton: {fileID: 1134883028}
   powerDanseDesVentsJumaux: 0
-  powerDanseDesCimes: 0
+  playerChoose: {fileID: 0}
+  choosePlayer: 0
+  panelBoardPlayer: {fileID: 1871381456}
+  powerDanseDesCimes: 1
   useTilePower: 0
   useGhostPower: 0
   canUsePower: 0
@@ -16636,6 +16686,7 @@ MonoBehaviour:
   alreadyMove: 0
   stop: 0
   redTurn: 0
+  useWindCelestialPower: 0
   textInfo: {fileID: 1662648799}
   textNbTokenBlue: {fileID: 748434481}
   textNbTokenRed: {fileID: 1317696754}
@@ -23842,6 +23893,8 @@ MonoBehaviour:
   alreadyMove: 0
   stop: 0
   yellowTurn: 0
+  useRedPower: 0
+  useWindCelestialPower: 0
   textInfo: {fileID: 1662648799}
   textNbTokenBlue: {fileID: 748434481}
   textNbTokenRed: {fileID: 1317696754}
@@ -26746,6 +26799,17 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1335580316}
+        m_MethodName: getPlayer
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 921742452}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1221269292}
         m_MethodName: getPlayer
         m_Mode: 2
         m_Arguments:

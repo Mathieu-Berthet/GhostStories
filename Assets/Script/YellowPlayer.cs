@@ -151,6 +151,8 @@ public class YellowPlayer : MonoBehaviour
     public bool alreadyMove;
     public bool stop;
     public bool yellowTurn;
+    public bool useRedPower;
+    public bool useWindCelestialPower;
 
     //Les différents textes
     [Header("Les textes")]
@@ -464,6 +466,7 @@ public class YellowPlayer : MonoBehaviour
         else if (gm.state == GameManager.STATE_GAME.STATE_MOVE && !stop && yellowTurn)
         {
             stop = true;
+            CheckDistance();
             StartCoroutine(gameObject.GetComponent<Deplacement>().PlayerDeplacement());
         }
 
@@ -2526,7 +2529,7 @@ public class YellowPlayer : MonoBehaviour
 
     public void CheckDistance()
     {
-        if (yellowTurn)
+        if (yellowTurn || useRedPower || useWindCelestialPower)
         {
             switch (tileName)
             {
@@ -3136,6 +3139,7 @@ public class YellowPlayer : MonoBehaviour
                 default:
                     break;
             }
+            useRedPower = false;
         }
     }
 

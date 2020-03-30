@@ -107,6 +107,7 @@ public class WindCelestialFlag : MonoBehaviour {
             }
 
             //PARTIE DEPLACEMENT JOUEUR
+            CheckBoard(player);
             panelBoardPlayer.SetActive(true);
             infos.text = "Veuillez choisir le joueur à déplacer";
             infoWindCelestialFlag.text = "Veuillez choisir le joueur à déplacer : ";
@@ -129,6 +130,14 @@ public class WindCelestialFlag : MonoBehaviour {
             {
                 infos.text = "Veuillez choisir la tuile d'arrivée";
                 playerChoose.GetComponent<YellowPlayer>().CheckDistance();
+                StartCoroutine(playerChoose.GetComponent<Deplacement>().PlayerDeplacement());
+            }
+            else if (playerChoose.name == "RedPlayer")
+            {
+                infos.text = "Veuillez choisir la tuile d'arrivée";
+                playerChoose.GetComponent<RedPlayer>().CheckDistance();
+                playerChoose.GetComponent<RedPlayer>().useTilePower = true;
+                playerChoose.GetComponent<RedPlayer>().redTurn = true;
                 StartCoroutine(playerChoose.GetComponent<Deplacement>().PlayerDeplacement());
             }
             if (player.name == "BluePlayer")
@@ -408,6 +417,38 @@ public class WindCelestialFlag : MonoBehaviour {
                 selectedPosition = true;
                 canPlace = false;
             }
+        }
+    }
+
+    public void CheckBoard(GameObject player)
+    {
+        if (player.name == "BluePlayer")
+        {
+            panelBoardPlayer.transform.GetChild(1).GetComponent<Button>().interactable = true;
+            panelBoardPlayer.transform.GetChild(2).GetComponent<Button>().interactable = false;
+            panelBoardPlayer.transform.GetChild(3).GetComponent<Button>().interactable = true;
+            panelBoardPlayer.transform.GetChild(4).GetComponent<Button>().interactable = true;
+        }
+        else if (player.name == "YellowPlayer")
+        {
+            panelBoardPlayer.transform.GetChild(1).GetComponent<Button>().interactable = true;
+            panelBoardPlayer.transform.GetChild(2).GetComponent<Button>().interactable = true;
+            panelBoardPlayer.transform.GetChild(3).GetComponent<Button>().interactable = false;
+            panelBoardPlayer.transform.GetChild(4).GetComponent<Button>().interactable = true;
+        }
+        else if (player.name == "RedPlayer")
+        {
+            panelBoardPlayer.transform.GetChild(1).GetComponent<Button>().interactable = false;
+            panelBoardPlayer.transform.GetChild(2).GetComponent<Button>().interactable = true;
+            panelBoardPlayer.transform.GetChild(3).GetComponent<Button>().interactable = true;
+            panelBoardPlayer.transform.GetChild(4).GetComponent<Button>().interactable = true;
+        }
+        else if (player.name == "GreenPlayer")
+        {
+            panelBoardPlayer.transform.GetChild(1).GetComponent<Button>().interactable = true;
+            panelBoardPlayer.transform.GetChild(2).GetComponent<Button>().interactable = true;
+            panelBoardPlayer.transform.GetChild(3).GetComponent<Button>().interactable = true;
+            panelBoardPlayer.transform.GetChild(4).GetComponent<Button>().interactable = false;
         }
     }
 }
