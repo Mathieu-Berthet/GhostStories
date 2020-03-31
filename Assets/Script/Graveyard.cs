@@ -62,6 +62,14 @@ public class Graveyard : MonoBehaviour
                 player.GetComponent<Deplacement>().enabled = true;
                 player.GetComponent<RedPlayer>().update = true;
             }
+            else if (player.name == "GreenPlayer")
+            {
+                player.GetComponent<GreenPlayer>().canLaunchDice = true;
+                player.GetComponent<GreenPlayer>().canLaunchBlackDice = true;
+                player.GetComponent<GreenPlayer>().useTilePower = false;
+                player.GetComponent<Deplacement>().enabled = true;
+                player.GetComponent<GreenPlayer>().update = true;
+            }
         }
     }
 
@@ -85,10 +93,15 @@ public class Graveyard : MonoBehaviour
             player.GetComponent<RedPlayer>().useTilePower = false;
             player.GetComponent<Deplacement>().enabled = true;
         }
-        /*else if (player.name == "GreenPlayer")
+        else if (player.name == "GreenPlayer")
         {
-            //player.GetComponent<GreenPlayer>().DrawAGhost();
-        }*/
+            StartCoroutine(player.GetComponent<GreenPlayer>().LaunchBlackDice());
+            player.GetComponent<GreenPlayer>().update = true;
+            player.GetComponent<GreenPlayer>().canLaunchDice = true;
+            player.GetComponent<GreenPlayer>().canLaunchBlackDice = true;
+            player.GetComponent<GreenPlayer>().useTilePower = false;
+            player.GetComponent<Deplacement>().enabled = true;
+        }
         else if (player.name == "YellowPlayer")
         {
             StartCoroutine(player.GetComponent<YellowPlayer>().LaunchBlackDice());

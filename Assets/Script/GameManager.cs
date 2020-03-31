@@ -160,10 +160,9 @@ public class GameManager : MonoBehaviour {
         {
             textPlayerTurn.text = "TOUR DU JOUEUR BLEU";
             bluePlayer.GetComponent<BluePlayer>().blueTurn = true;
-            //bluePlayer.GetComponent<BluePlayer>().CheckDistance();
             bluePlayer.GetComponent<BluePlayer>().update = true;
             yellowPlayer.GetComponent<YellowPlayer>().yellowTurn = false;
-            //bluePlayer.GetComponent<GreenPlayer>().greenTurn = false;
+            greenPlayer.GetComponent<GreenPlayer>().greenTurn = false;
             redPlayer.GetComponent<RedPlayer>().redTurn = false;
         }
         else if(turnPlayer == STATE_PLAYER_TURN.YELLOW_PLAYER_TURN)
@@ -171,9 +170,8 @@ public class GameManager : MonoBehaviour {
             textPlayerTurn.text = "TOUR DU JOUEUR JAUNE";
             bluePlayer.GetComponent<BluePlayer>().blueTurn = false;
             yellowPlayer.GetComponent<YellowPlayer>().yellowTurn = true;
-            //yellowPlayer.GetComponent<YellowPlayer>().CheckDistance();
             yellowPlayer.GetComponent<YellowPlayer>().update = true;
-            //bluePlayer.GetComponent<GreenPlayer>().greenTurn = false;
+            greenPlayer.GetComponent<GreenPlayer>().greenTurn = false;
             redPlayer.GetComponent<RedPlayer>().redTurn = false;
         }
         else if (turnPlayer == STATE_PLAYER_TURN.RED_PLAYER_TURN)
@@ -181,9 +179,8 @@ public class GameManager : MonoBehaviour {
             textPlayerTurn.text = "TOUR DU JOUEUR ROUGE";
             bluePlayer.GetComponent<BluePlayer>().blueTurn = false;
             yellowPlayer.GetComponent<YellowPlayer>().yellowTurn = false;
-            //bluePlayer.GetComponent<GreenPlayer>().greenTurn = true;
+            greenPlayer.GetComponent<GreenPlayer>().greenTurn = false;
             redPlayer.GetComponent<RedPlayer>().redTurn = true;
-            //redPlayer.GetComponent<RedPlayer>().CheckDistance();
             redPlayer.GetComponent<RedPlayer>().update = true;
         }
         else if (turnPlayer == STATE_PLAYER_TURN.GREEN_PLAYER_TURN)
@@ -191,8 +188,9 @@ public class GameManager : MonoBehaviour {
             textPlayerTurn.text = "TOUR DU JOUEUR VERT";
             bluePlayer.GetComponent<BluePlayer>().blueTurn = false;
             yellowPlayer.GetComponent<YellowPlayer>().yellowTurn = false;
-            //bluePlayer.GetComponent<GreenPlayer>().greenTurn = false;
-            //bluePlayer.GetComponent<RedPlayer>().redTurn = true;
+            redPlayer.GetComponent<RedPlayer>().redTurn = false;
+            greenPlayer.GetComponent<GreenPlayer>().greenTurn = true;
+            greenPlayer.GetComponent<GreenPlayer>().update = true;
         }
         if((int)turnPlayer > 3)
         {

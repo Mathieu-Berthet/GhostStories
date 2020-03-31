@@ -233,12 +233,15 @@ public class NightTower : MonoBehaviour
                 player.GetComponent<Deplacement>().enabled = true;
                 player.GetComponent<BluePlayer>().update = true;
             }
-            /*else if (player.name == "GreenPlayer")
+            else if (player.name == "GreenPlayer")
             {
-                player.GetComponent<GreenPlayer>().Qi -= 1;
-                //player.GetComponent<GreenPlayer>().board.usingTile = true;
+                player.GetComponent<GreenPlayer>().canLaunchDice = true;
+                player.GetComponent<GreenPlayer>().canLaunchBlackDice = true;
+                player.GetComponent<GreenPlayer>().useTilePower = false;
+                player.GetComponent<Deplacement>().enabled = true;
+                player.GetComponent<GreenPlayer>().update = true;
 
-            }*/
+            }
             else if (player.name == "YellowPlayer")
             {
                 player.GetComponent<YellowPlayer>().canLaunchDice = true;
@@ -246,7 +249,6 @@ public class NightTower : MonoBehaviour
                 player.GetComponent<YellowPlayer>().useTilePower = false;
                 player.GetComponent<Deplacement>().enabled = true;
                 player.GetComponent<YellowPlayer>().update = true;
-
             }
             else if (player.name == "RedPlayer")
             {
@@ -255,7 +257,6 @@ public class NightTower : MonoBehaviour
                 player.GetComponent<RedPlayer>().useTilePower = false;
                 player.GetComponent<Deplacement>().enabled = true;
                 player.GetComponent<RedPlayer>().update = true;
-
             }
         }
         else
@@ -277,7 +278,6 @@ public class NightTower : MonoBehaviour
                 player.GetComponent<YellowPlayer>().useTilePower = false;
                 player.GetComponent<Deplacement>().enabled = true;
                 player.GetComponent<YellowPlayer>().update = true;
-
             }
             else if (player.name == "RedPlayer")
             {
@@ -286,7 +286,14 @@ public class NightTower : MonoBehaviour
                 player.GetComponent<RedPlayer>().useTilePower = false;
                 player.GetComponent<Deplacement>().enabled = true;
                 player.GetComponent<RedPlayer>().update = true;
-
+            }
+            else if (player.name == "GreenPlayer")
+            {
+                player.GetComponent<GreenPlayer>().canLaunchDice = true;
+                player.GetComponent<GreenPlayer>().canLaunchBlackDice = true;
+                player.GetComponent<GreenPlayer>().useTilePower = false;
+                player.GetComponent<Deplacement>().enabled = true;
+                player.GetComponent<GreenPlayer>().update = true;
             }
         }
     }

@@ -344,11 +344,19 @@ public class StallOfHerbalist : MonoBehaviour
                 player.GetComponent<YellowPlayer>().useTilePower = false;
                 player.GetComponent<Deplacement>().enabled = true;
             }
-            /*else if (player.name == "GreenPlayer")
+            else if (player.name == "GreenPlayer")
             {
-                player.GetComponent<GreenPlayer>().Qi += 1;
-            }*/
-            
+                player.GetComponent<GreenPlayer>().NbBlueToken += nbBlueTokenToGive;
+                player.GetComponent<GreenPlayer>().NbRedToken += nbRedTokenToGive;
+                player.GetComponent<GreenPlayer>().NbGreenToken += nbGreenTokenToGive;
+                player.GetComponent<GreenPlayer>().NbYellowToken += nbYellowTokenToGive;
+                player.GetComponent<GreenPlayer>().NbBlackToken += nbBlackTokenToGive;
+                player.GetComponent<GreenPlayer>().update = true;
+                player.GetComponent<GreenPlayer>().canLaunchDice = true;
+                player.GetComponent<GreenPlayer>().canLaunchBlackDice = true;
+                player.GetComponent<GreenPlayer>().useTilePower = false;
+                player.GetComponent<Deplacement>().enabled = true;
+            }
             else if (player.name == "RedPlayer")
             {
                 player.GetComponent<RedPlayer>().NbBlueToken += nbBlueTokenToGive;
@@ -390,6 +398,14 @@ public class StallOfHerbalist : MonoBehaviour
                 player.GetComponent<RedPlayer>().useTilePower = false;
                 player.GetComponent<Deplacement>().enabled = true;
                 player.GetComponent<RedPlayer>().update = true;
+            }
+            else if (player.name == "GreenPlayer")
+            {
+                player.GetComponent<GreenPlayer>().canLaunchDice = true;
+                player.GetComponent<GreenPlayer>().canLaunchBlackDice = true;
+                player.GetComponent<GreenPlayer>().useTilePower = false;
+                player.GetComponent<Deplacement>().enabled = true;
+                player.GetComponent<GreenPlayer>().update = true;
             }
         }
     }

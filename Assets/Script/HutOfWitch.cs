@@ -91,7 +91,13 @@ public class HutOfWitch : MonoBehaviour
             else if (player.name == "GreenPlayer")
             {
                 player.GetComponent<GreenPlayer>().Qi -= 1;
-                //player.GetComponent<GreenPlayer>().board.usingTile = true;
+                player.GetComponent<GreenPlayer>().canLaunchDice = true;
+                player.GetComponent<GreenPlayer>().canLaunchBlackDice = true;
+                player.GetComponent<GreenPlayer>().useTilePower = false;
+                player.GetComponent<Deplacement>().enabled = true;
+                player.GetComponent<GreenPlayer>().update = true;
+                player.GetComponent<GreenPlayer>().panelJeton.SetActive(true);
+                player.GetComponent<GreenPlayer>().textInfoPhase.gameObject.SetActive(true);
 
             }
             else if (player.name == "YellowPlayer")

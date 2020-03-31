@@ -355,11 +355,11 @@ public class RedPlayer : MonoBehaviour
             Application.Quit();
         }
 
-        if (Input.GetKeyDown(KeyCode.B))
+        /*if (Input.GetKeyDown(KeyCode.B))
         {
             CheckDistance();
             StartCoroutine(gameObject.GetComponent<Deplacement>().PlayerDeplacement());
-        }
+        }*/
         if (Input.GetKeyDown(KeyCode.C))
         {
             StartCoroutine(PlaceBouddha());
@@ -1776,7 +1776,7 @@ public class RedPlayer : MonoBehaviour
         {
             gm.state = GameManager.STATE_GAME.STATE_GHOSTPOWER;
             gm.turn++;
-            gm.turnPlayer += 2;
+            gm.turnPlayer++;
             alreadyMove = false;
             stop = false;
             updateUI();

@@ -115,6 +115,14 @@ public class Ghost : MonoBehaviour {
         {
             player.GetComponent<YellowPlayer>().update = true;
         }
+        else if (player.name == "RedPlayer")
+        {
+            player.GetComponent<RedPlayer>().update = true;
+        }
+        else if (player.name == "GreenPlayer")
+        {
+            player.GetComponent<GreenPlayer>().update = true;
+        }
     }
 
     public void UseInGamePower(GameObject player)
@@ -150,6 +158,14 @@ public class Ghost : MonoBehaviour {
         else if (player.name == "YellowPlayer")
         {
             player.GetComponent<YellowPlayer>().update = true;
+        }
+        else if (player.name == "RedPlayer")
+        {
+            player.GetComponent<RedPlayer>().update = true;
+        }
+        else if (player.name == "GreenPlayer")
+        {
+            player.GetComponent<GreenPlayer>().update = true;
         }
     }
 
@@ -195,6 +211,14 @@ public class Ghost : MonoBehaviour {
         else if (player.name == "YellowPlayer")
         {
             player.GetComponent<YellowPlayer>().update = true;
+        }
+        else if (player.name == "RedPlayer")
+        {
+            player.GetComponent<RedPlayer>().update = true;
+        }
+        else if (player.name == "GreenPlayer")
+        {
+            player.GetComponent<GreenPlayer>().update = true;
         }
     }
 

@@ -33,10 +33,23 @@ public class GhostPower : MonoBehaviour {
     public GameObject tileToCheck;
     public GameObject firstTileCheck;
     public GameObject secondTileCheck;
+
+    public string[] tabTiles = new string[9];
+    public bool isInArray;
     // Use this for initialization
     void Start ()
     {
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+        isInArray = false;
+        tabTiles[0] = "MaisonThe";
+        tabTiles[1] = "HutteSorciere";
+        tabTiles[2] = "EchoppeHerboriste";
+        tabTiles[3] = "AutelTaoiste";
+        tabTiles[4] = "PavillonVentCeleste";
+        tabTiles[5] = "Cimetiere";
+        tabTiles[6] = "CerclePriere";
+        tabTiles[7] = "TempleBouddhiste";
+        tabTiles[8] = "TourVeilleurNuit";
     }
 	
 	// Update is called once per frame
@@ -76,7 +89,6 @@ public class GhostPower : MonoBehaviour {
     public void CantUseTAOToken() //Idem than previous function. See how to indicate that
     {
         gm.canUseTaoToken = false;
-        Debug.Log(gm.canUseTaoToken);
     } //Okay
 
     public void DrawAGhost(GameObject player)
@@ -92,7 +104,7 @@ public class GhostPower : MonoBehaviour {
         }
         else if (player.name == "GreenPlayer")
         {
-            //player.GetComponent<GreenPlayer>().DrawAGhost();
+            player.GetComponent<GreenPlayer>().DrawAGhost();
         }
         else if (player.name == "YellowPlayer")
         {
@@ -114,7 +126,7 @@ public class GhostPower : MonoBehaviour {
         }
         else if (player.name == "GreenPlayer")
         {
-            //player.GetComponent<GreenPlayer>().canUsePower = false;
+            player.GetComponent<GreenPlayer>().canUsePower = false;
         }
         else if (player.name == "YellowPlayer")
         {
@@ -142,159 +154,231 @@ public class GhostPower : MonoBehaviour {
         {
             if (!hasHauntedTile)
             {
-                if (Physics.Raycast(transform.position, Vector3.back, out hitTiledirection, 100.0f) || Physics.Raycast(transform.position, Vector3.forward, out hitTiledirection, 100.0f) ||
-                   Physics.Raycast(transform.position, Vector3.right, out hitTiledirection, 100.0f) || Physics.Raycast(transform.position, Vector3.left, out hitTiledirection, 100.0f))
+                if (Physics.Raycast(transform.position, Vector3.back, out hitTiledirection, 100.0f) && !isInArray)
                 {
                     tileToCheck = hitTiledirection.collider.gameObject;
-                    switch (tileToCheck.name)
+                    for(int j = 0; j < tabTiles.Length; j++)
                     {
-                        case "MaisonThe":
-                            if (!tileToCheck.GetComponent<HouseOfTea>().hauntedTile)
-                            {
-                                tileToCheck.GetComponent<HouseOfTea>().hauntedTile = true;
-                                tileToCheck.GetComponent<HouseOfTea>().haunted();
-                                hasHauntedTile = true;
-                                gameObject.transform.parent.GetComponent<BoxCollider>().enabled = true;
-                                gameObject.transform.parent.GetChild(1).GetComponent<CapsuleCollider>().enabled = true;
-                                gameObject.transform.parent.GetChild(2).GetComponent<CapsuleCollider>().enabled = true;
-                                gameObject.transform.parent.GetChild(3).GetComponent<CapsuleCollider>().enabled = true;
-                            }
-                            else
-                            {
-                                tileToCheck.GetComponent<BoxCollider>().enabled = false;
-                            }
+                        if(tabTiles[j] == tileToCheck.name)
+                        {
+                            isInArray = true;
+                        }
+                        else
+                        {
+                            isInArray = false;
+                        }
+                        if(isInArray)
+                        {
                             break;
-                        case "HutteSorciere":
-                            if (!tileToCheck.GetComponent<HutOfWitch>().hauntedTile)
-                            {
-                                tileToCheck.GetComponent<HutOfWitch>().hauntedTile = true;
-                                tileToCheck.GetComponent<HutOfWitch>().haunted();
-                                hasHauntedTile = true;
-                                gameObject.transform.parent.GetComponent<BoxCollider>().enabled = true;
-                                gameObject.transform.parent.GetChild(1).GetComponent<CapsuleCollider>().enabled = true;
-                                gameObject.transform.parent.GetChild(2).GetComponent<CapsuleCollider>().enabled = true;
-                                gameObject.transform.parent.GetChild(3).GetComponent<CapsuleCollider>().enabled = true;
-                            }
-                            else
-                            {
-                                tileToCheck.GetComponent<BoxCollider>().enabled = false;
-                            }
-                            break;
-                        case "EchoppeHerboriste":
-                            if (!tileToCheck.GetComponent<StallOfHerbalist>().hauntedTile)
-                            {
-                                tileToCheck.GetComponent<StallOfHerbalist>().hauntedTile = true;
-                                tileToCheck.GetComponent<StallOfHerbalist>().haunted();
-                                hasHauntedTile = true;
-                                gameObject.transform.parent.GetComponent<BoxCollider>().enabled = true;
-                                gameObject.transform.parent.GetChild(1).GetComponent<CapsuleCollider>().enabled = true;
-                                gameObject.transform.parent.GetChild(2).GetComponent<CapsuleCollider>().enabled = true;
-                                gameObject.transform.parent.GetChild(3).GetComponent<CapsuleCollider>().enabled = true;
-                            }
-                            else
-                            {
-                                tileToCheck.GetComponent<BoxCollider>().enabled = false;
-                            }
-                            break;
-                        case "AutelTaoiste":
-                            if (!tileToCheck.GetComponent<TaoisteAutel>().hauntedTile)
-                            {
-                                tileToCheck.GetComponent<TaoisteAutel>().hauntedTile = true;
-                                tileToCheck.GetComponent<TaoisteAutel>().haunted();
-                                hasHauntedTile = true;
-                                gameObject.transform.parent.GetComponent<BoxCollider>().enabled = true;
-                                gameObject.transform.parent.GetChild(1).GetComponent<CapsuleCollider>().enabled = true;
-                                gameObject.transform.parent.GetChild(2).GetComponent<CapsuleCollider>().enabled = true;
-                                gameObject.transform.parent.GetChild(3).GetComponent<CapsuleCollider>().enabled = true;
-                            }
-                            else
-                            {
-                                tileToCheck.GetComponent<BoxCollider>().enabled = false;
-                            }
-                            break;
-                        case "Cimetiere":
-                            if (!tileToCheck.GetComponent<Graveyard>().hauntedTile)
-                            {
-                                tileToCheck.GetComponent<Graveyard>().hauntedTile = true;
-                                tileToCheck.GetComponent<Graveyard>().haunted();
-                                hasHauntedTile = true;
-                                gameObject.transform.parent.GetComponent<BoxCollider>().enabled = true;
-                                gameObject.transform.parent.GetChild(1).GetComponent<CapsuleCollider>().enabled = true;
-                                gameObject.transform.parent.GetChild(2).GetComponent<CapsuleCollider>().enabled = true;
-                                gameObject.transform.parent.GetChild(3).GetComponent<CapsuleCollider>().enabled = true;
-                            }
-                            else
-                            {
-                                tileToCheck.GetComponent<BoxCollider>().enabled = false;
-                            }
-                            break;
-                        case "PavillonVentCeleste":
-                            if (!tileToCheck.GetComponent<WindCelestialFlag>().hauntedTile)
-                            {
-                                tileToCheck.GetComponent<WindCelestialFlag>().hauntedTile = true;
-                                tileToCheck.GetComponent<WindCelestialFlag>().haunted();
-                                hasHauntedTile = true;
-                                gameObject.transform.parent.GetComponent<BoxCollider>().enabled = true;
-                                gameObject.transform.parent.GetChild(1).GetComponent<CapsuleCollider>().enabled = true;
-                                gameObject.transform.parent.GetChild(2).GetComponent<CapsuleCollider>().enabled = true;
-                                gameObject.transform.parent.GetChild(3).GetComponent<CapsuleCollider>().enabled = true;
-                            }
-                            else
-                            {
-                                tileToCheck.GetComponent<BoxCollider>().enabled = false;
-                            }
-                            break;
-                        case "TourVeilleurNuit":
-                            if (!tileToCheck.GetComponent<NightTower>().hauntedTile)
-                            {
-                                tileToCheck.GetComponent<NightTower>().hauntedTile = true;
-                                tileToCheck.GetComponent<NightTower>().haunted();
-                                hasHauntedTile = true;
-                                gameObject.transform.parent.GetComponent<BoxCollider>().enabled = true;
-                                gameObject.transform.parent.GetChild(1).GetComponent<CapsuleCollider>().enabled = true;
-                                gameObject.transform.parent.GetChild(2).GetComponent<CapsuleCollider>().enabled = true;
-                                gameObject.transform.parent.GetChild(3).GetComponent<CapsuleCollider>().enabled = true;
-                            }
-                            else
-                            {
-                                tileToCheck.GetComponent<BoxCollider>().enabled = false;
-                            }
-                            break;
-                        case "CerclePierre":
-                            if (!tileToCheck.GetComponent<PriestCircle>().hauntedTile)
-                            {
-                                tileToCheck.GetComponent<PriestCircle>().hauntedTile = true;
-                                tileToCheck.GetComponent<PriestCircle>().haunted();
-                                hasHauntedTile = true;
-                                gameObject.transform.parent.GetComponent<BoxCollider>().enabled = true;
-                                gameObject.transform.parent.GetChild(1).GetComponent<CapsuleCollider>().enabled = true;
-                                gameObject.transform.parent.GetChild(2).GetComponent<CapsuleCollider>().enabled = true;
-                                gameObject.transform.parent.GetChild(3).GetComponent<CapsuleCollider>().enabled = true;
-                            }
-                            else
-                            {
-                                tileToCheck.GetComponent<BoxCollider>().enabled = false;
-                            }
-                            break;
-                        case "TempleBouddhiste":
-                            if (!tileToCheck.GetComponent<BouddhisteTemple>().hauntedTile)
-                            {
-                                tileToCheck.GetComponent<BouddhisteTemple>().hauntedTile = true;
-                                tileToCheck.GetComponent<BouddhisteTemple>().haunted();
-                                hasHauntedTile = true;
-                                gameObject.transform.parent.GetComponent<BoxCollider>().enabled = true;
-                                gameObject.transform.parent.GetChild(1).GetComponent<CapsuleCollider>().enabled = true;
-                                gameObject.transform.parent.GetChild(2).GetComponent<CapsuleCollider>().enabled = true;
-                                gameObject.transform.parent.GetChild(3).GetComponent<CapsuleCollider>().enabled = true;
-                            }
-                            else
-                            {
-                                tileToCheck.GetComponent<BoxCollider>().enabled = false;
-                            }
-                            break;
-                        default:
-                            break;
+                        }
                     }
+                }
+                if(Physics.Raycast(transform.position, Vector3.forward, out hitTiledirection, 100.0f) && !isInArray)
+                {
+                    tileToCheck = hitTiledirection.collider.gameObject;
+                    for (int j = 0; j < tabTiles.Length; j++)
+                    {
+                        if (tabTiles[j] == tileToCheck.name)
+                        {
+                            isInArray = true;
+                        }
+                        else
+                        {
+                            isInArray = false;
+                        }
+                        if (isInArray)
+                        {
+                            break;
+                        }
+                    }
+                }
+                if(Physics.Raycast(transform.position, Vector3.right, out hitTiledirection, 100.0f) && !isInArray)
+                {
+                    tileToCheck = hitTiledirection.collider.gameObject;
+                    for (int j = 0; j < tabTiles.Length; j++)
+                    {
+                        if (tabTiles[j] == tileToCheck.name)
+                        {
+                            isInArray = true;
+                        }
+                        else
+                        {
+                            isInArray = false;
+                        }
+                        if (isInArray)
+                        {
+                            break;
+                        }
+                    }
+                }
+                if(Physics.Raycast(transform.position, Vector3.left, out hitTiledirection, 100.0f) && !isInArray)
+                {
+                    tileToCheck = hitTiledirection.collider.gameObject;
+                    for (int j = 0; j < tabTiles.Length; j++)
+                    {
+                        if (tabTiles[j] == tileToCheck.name)
+                        {
+                            isInArray = true;
+                        }
+                        else
+                        {
+                            isInArray = false;
+                        }
+                        if (isInArray)
+                        {
+                            break;
+                        }
+                    }
+                }
+                Debug.Log(tileToCheck.name);
+                switch (tileToCheck.name)
+                {
+                    case "MaisonThe":
+                        if (!tileToCheck.GetComponent<HouseOfTea>().hauntedTile)
+                        {
+                            tileToCheck.GetComponent<HouseOfTea>().hauntedTile = true;
+                            tileToCheck.GetComponent<HouseOfTea>().haunted();
+                            hasHauntedTile = true;
+                            gameObject.transform.parent.GetComponent<BoxCollider>().enabled = true;
+                            gameObject.transform.parent.GetChild(1).GetComponent<CapsuleCollider>().enabled = true;
+                            gameObject.transform.parent.GetChild(2).GetComponent<CapsuleCollider>().enabled = true;
+                            gameObject.transform.parent.GetChild(3).GetComponent<CapsuleCollider>().enabled = true;
+                        }
+                        else
+                        {
+                            tileToCheck.GetComponent<BoxCollider>().enabled = false;
+                        }
+                        break;
+                    case "HutteSorciere":
+                        if (!tileToCheck.GetComponent<HutOfWitch>().hauntedTile)
+                        {
+                            tileToCheck.GetComponent<HutOfWitch>().hauntedTile = true;
+                            tileToCheck.GetComponent<HutOfWitch>().haunted();
+                            hasHauntedTile = true;
+                            gameObject.transform.parent.GetComponent<BoxCollider>().enabled = true;
+                            gameObject.transform.parent.GetChild(1).GetComponent<CapsuleCollider>().enabled = true;
+                            gameObject.transform.parent.GetChild(2).GetComponent<CapsuleCollider>().enabled = true;
+                            gameObject.transform.parent.GetChild(3).GetComponent<CapsuleCollider>().enabled = true;
+                        }
+                        else
+                        {
+                            tileToCheck.GetComponent<BoxCollider>().enabled = false;
+                        }
+                        break;
+                    case "EchoppeHerboriste":
+                        if (!tileToCheck.GetComponent<StallOfHerbalist>().hauntedTile)
+                        {
+                            tileToCheck.GetComponent<StallOfHerbalist>().hauntedTile = true;
+                            tileToCheck.GetComponent<StallOfHerbalist>().haunted();
+                            hasHauntedTile = true;
+                            gameObject.transform.parent.GetComponent<BoxCollider>().enabled = true;
+                            gameObject.transform.parent.GetChild(1).GetComponent<CapsuleCollider>().enabled = true;
+                            gameObject.transform.parent.GetChild(2).GetComponent<CapsuleCollider>().enabled = true;
+                            gameObject.transform.parent.GetChild(3).GetComponent<CapsuleCollider>().enabled = true;
+                        }
+                        else
+                        {
+                            tileToCheck.GetComponent<BoxCollider>().enabled = false;
+                        }
+                        break;
+                    case "AutelTaoiste":
+                        if (!tileToCheck.GetComponent<TaoisteAutel>().hauntedTile)
+                        {
+                            tileToCheck.GetComponent<TaoisteAutel>().hauntedTile = true;
+                            tileToCheck.GetComponent<TaoisteAutel>().haunted();
+                            hasHauntedTile = true;
+                            gameObject.transform.parent.GetComponent<BoxCollider>().enabled = true;
+                            gameObject.transform.parent.GetChild(1).GetComponent<CapsuleCollider>().enabled = true;
+                            gameObject.transform.parent.GetChild(2).GetComponent<CapsuleCollider>().enabled = true;
+                            gameObject.transform.parent.GetChild(3).GetComponent<CapsuleCollider>().enabled = true;
+                        }
+                        else
+                        {
+                            tileToCheck.GetComponent<BoxCollider>().enabled = false;
+                        }
+                        break;
+                    case "Cimetiere":
+                        if (!tileToCheck.GetComponent<Graveyard>().hauntedTile)
+                        {
+                            tileToCheck.GetComponent<Graveyard>().hauntedTile = true;
+                            tileToCheck.GetComponent<Graveyard>().haunted();
+                            hasHauntedTile = true;
+                            gameObject.transform.parent.GetComponent<BoxCollider>().enabled = true;
+                            gameObject.transform.parent.GetChild(1).GetComponent<CapsuleCollider>().enabled = true;
+                            gameObject.transform.parent.GetChild(2).GetComponent<CapsuleCollider>().enabled = true;
+                            gameObject.transform.parent.GetChild(3).GetComponent<CapsuleCollider>().enabled = true;
+                        }
+                        else
+                        {
+                            tileToCheck.GetComponent<BoxCollider>().enabled = false;
+                        }
+                        break;
+                    case "PavillonVentCeleste":
+                        if (!tileToCheck.GetComponent<WindCelestialFlag>().hauntedTile)
+                        {
+                            tileToCheck.GetComponent<WindCelestialFlag>().hauntedTile = true;
+                            tileToCheck.GetComponent<WindCelestialFlag>().haunted();
+                            hasHauntedTile = true;
+                            gameObject.transform.parent.GetComponent<BoxCollider>().enabled = true;
+                            gameObject.transform.parent.GetChild(1).GetComponent<CapsuleCollider>().enabled = true;
+                            gameObject.transform.parent.GetChild(2).GetComponent<CapsuleCollider>().enabled = true;
+                            gameObject.transform.parent.GetChild(3).GetComponent<CapsuleCollider>().enabled = true;
+                        }
+                        else
+                        {
+                            tileToCheck.GetComponent<BoxCollider>().enabled = false;
+                        }
+                        break;
+                    case "TourVeilleurNuit":
+                        if (!tileToCheck.GetComponent<NightTower>().hauntedTile)
+                        {
+                            tileToCheck.GetComponent<NightTower>().hauntedTile = true;
+                            tileToCheck.GetComponent<NightTower>().haunted();
+                            hasHauntedTile = true;
+                            gameObject.transform.parent.GetComponent<BoxCollider>().enabled = true;
+                            gameObject.transform.parent.GetChild(1).GetComponent<CapsuleCollider>().enabled = true;
+                            gameObject.transform.parent.GetChild(2).GetComponent<CapsuleCollider>().enabled = true;
+                            gameObject.transform.parent.GetChild(3).GetComponent<CapsuleCollider>().enabled = true;
+                        }
+                        else
+                        {
+                            tileToCheck.GetComponent<BoxCollider>().enabled = false;
+                        }
+                        break;
+                    case "CerclePriere":
+                        if (!tileToCheck.GetComponent<PriestCircle>().hauntedTile)
+                        {
+                            tileToCheck.GetComponent<PriestCircle>().hauntedTile = true;
+                            tileToCheck.GetComponent<PriestCircle>().haunted();
+                            hasHauntedTile = true;
+                            gameObject.transform.parent.GetComponent<BoxCollider>().enabled = true;
+                            gameObject.transform.parent.GetChild(1).GetComponent<CapsuleCollider>().enabled = true;
+                            gameObject.transform.parent.GetChild(2).GetComponent<CapsuleCollider>().enabled = true;
+                            gameObject.transform.parent.GetChild(3).GetComponent<CapsuleCollider>().enabled = true;
+                        }
+                        else
+                        {
+                            tileToCheck.GetComponent<BoxCollider>().enabled = false;
+                        }
+                        break;
+                    case "TempleBouddhiste":
+                        if (!tileToCheck.GetComponent<BouddhisteTemple>().hauntedTile)
+                        {
+                            tileToCheck.GetComponent<BouddhisteTemple>().hauntedTile = true;
+                            tileToCheck.GetComponent<BouddhisteTemple>().haunted();
+                            hasHauntedTile = true;
+                            gameObject.transform.parent.GetComponent<BoxCollider>().enabled = true;
+                            gameObject.transform.parent.GetChild(1).GetComponent<CapsuleCollider>().enabled = true;
+                            gameObject.transform.parent.GetChild(2).GetComponent<CapsuleCollider>().enabled = true;
+                            gameObject.transform.parent.GetChild(3).GetComponent<CapsuleCollider>().enabled = true;
+                        }
+                        else
+                        {
+                            tileToCheck.GetComponent<BoxCollider>().enabled = false;
+                        }
+                        break;
+                    default:
+                        break;
                 }
             }
             if(i == 0)
@@ -328,7 +412,8 @@ public class GhostPower : MonoBehaviour {
         }
         else if (player.name == "GreenPlayer")
         {
-            //player.GetComponent<GreenPlayer>().Qi -= 1;
+            player.GetComponent<GreenPlayer>().Qi -= 1;
+            player.GetComponent<GreenPlayer>().update = true;
         }
         else if (player.name == "YellowPlayer")
         {
@@ -425,15 +510,15 @@ public class GhostPower : MonoBehaviour {
                     player.GetComponent<Deplacement>().enabled = true;
                     player.GetComponent<YellowPlayer>().canLaunchBlackDice = true;
                 }
-                /*else if (player.name == "GreenPlayer")
+                else if (player.name == "GreenPlayer")
                 {
-                    player.GetComponent<BluePlayer>().Qi += 1;
-                    player.GetComponent<BluePlayer>().update = true;
-                    player.GetComponent<BluePlayer>().canLaunchDice = true;
-                    player.GetComponent<BluePlayer>().useTilePower = false;
+                    player.GetComponent<GreenPlayer>().Qi += 1;
+                    player.GetComponent<GreenPlayer>().update = true;
+                    player.GetComponent<GreenPlayer>().canLaunchDice = true;
+                    player.GetComponent<GreenPlayer>().useTilePower = false;
                     player.GetComponent<Deplacement>().enabled = true;
-                    player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
-                }*/
+                    player.GetComponent<GreenPlayer>().canLaunchBlackDice = true;
+                }
                 break;
             case "Jeton Yin Yang":
                 if (player.name == "BluePlayer")
@@ -463,15 +548,15 @@ public class GhostPower : MonoBehaviour {
                     player.GetComponent<Deplacement>().enabled = true;
                     player.GetComponent<YellowPlayer>().canLaunchBlackDice = true;
                 }
-                /*else if (player.name == "GreenPlayer")
+                else if (player.name == "GreenPlayer")
                 {
-                    player.GetComponent<BluePlayer>().NbYinYangGreenToken += 1;
-                    player.GetComponent<BluePlayer>().update = true;
-                    player.GetComponent<BluePlayer>().canLaunchDice = true;
-                    player.GetComponent<BluePlayer>().useTilePower = false;
+                    player.GetComponent<GreenPlayer>().NbYinYangGreenToken += 1;
+                    player.GetComponent<GreenPlayer>().update = true;
+                    player.GetComponent<GreenPlayer>().canLaunchDice = true;
+                    player.GetComponent<GreenPlayer>().useTilePower = false;
                     player.GetComponent<Deplacement>().enabled = true;
-                    player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
-                }*/
+                    player.GetComponent<GreenPlayer>().canLaunchBlackDice = true;
+                }
                 break;
             default:
                 break;
@@ -529,6 +614,15 @@ public class GhostPower : MonoBehaviour {
                         player.GetComponent<Deplacement>().enabled = true;
                         player.GetComponent<RedPlayer>().canLaunchBlackDice = true;
                     }
+                    else if (player.name == "GreenPlayer")
+                    {
+                        player.GetComponent<GreenPlayer>().NbRedToken += 1;
+                        player.GetComponent<GreenPlayer>().update = true;
+                        player.GetComponent<GreenPlayer>().canLaunchDice = true;
+                        player.GetComponent<GreenPlayer>().useTilePower = false;
+                        player.GetComponent<Deplacement>().enabled = true;
+                        player.GetComponent<GreenPlayer>().canLaunchBlackDice = true;
+                    }
                 }
                 break;
             case "Blue":
@@ -566,6 +660,15 @@ public class GhostPower : MonoBehaviour {
                         player.GetComponent<RedPlayer>().useTilePower = false;
                         player.GetComponent<Deplacement>().enabled = true;
                         player.GetComponent<RedPlayer>().canLaunchBlackDice = true;
+                    }
+                    else if (player.name == "GreenPlayer")
+                    {
+                        player.GetComponent<GreenPlayer>().NbBlueToken += 1;
+                        player.GetComponent<GreenPlayer>().update = true;
+                        player.GetComponent<GreenPlayer>().canLaunchDice = true;
+                        player.GetComponent<GreenPlayer>().useTilePower = false;
+                        player.GetComponent<Deplacement>().enabled = true;
+                        player.GetComponent<GreenPlayer>().canLaunchBlackDice = true;
                     }
                 }
                 break;
@@ -605,6 +708,15 @@ public class GhostPower : MonoBehaviour {
                         player.GetComponent<Deplacement>().enabled = true;
                         player.GetComponent<RedPlayer>().canLaunchBlackDice = true;
                     }
+                    else if (player.name == "GreenPlayer")
+                    {
+                        player.GetComponent<GreenPlayer>().NbGreenToken += 1;
+                        player.GetComponent<GreenPlayer>().update = true;
+                        player.GetComponent<GreenPlayer>().canLaunchDice = true;
+                        player.GetComponent<GreenPlayer>().useTilePower = false;
+                        player.GetComponent<Deplacement>().enabled = true;
+                        player.GetComponent<GreenPlayer>().canLaunchBlackDice = true;
+                    }
                 }
                 break;
             case "Yellow":
@@ -643,6 +755,15 @@ public class GhostPower : MonoBehaviour {
                         player.GetComponent<Deplacement>().enabled = true;
                         player.GetComponent<RedPlayer>().canLaunchBlackDice = true;
                     }
+                    else if (player.name == "GreenPlayer")
+                    {
+                        player.GetComponent<GreenPlayer>().NbYellowToken += 1;
+                        player.GetComponent<GreenPlayer>().update = true;
+                        player.GetComponent<GreenPlayer>().canLaunchDice = true;
+                        player.GetComponent<GreenPlayer>().useTilePower = false;
+                        player.GetComponent<Deplacement>().enabled = true;
+                        player.GetComponent<GreenPlayer>().canLaunchBlackDice = true;
+                    }
                 }
                 break;
             case "black":
@@ -680,6 +801,15 @@ public class GhostPower : MonoBehaviour {
                         player.GetComponent<RedPlayer>().useTilePower = false;
                         player.GetComponent<Deplacement>().enabled = true;
                         player.GetComponent<RedPlayer>().canLaunchBlackDice = true;
+                    }
+                    else if (player.name == "GreenPlayer")
+                    {
+                        player.GetComponent<GreenPlayer>().NbBlackToken += 1;
+                        player.GetComponent<GreenPlayer>().update = true;
+                        player.GetComponent<GreenPlayer>().canLaunchDice = true;
+                        player.GetComponent<GreenPlayer>().useTilePower = false;
+                        player.GetComponent<Deplacement>().enabled = true;
+                        player.GetComponent<GreenPlayer>().canLaunchBlackDice = true;
                     }
                 }
                 break;
@@ -720,16 +850,16 @@ public class GhostPower : MonoBehaviour {
             player.GetComponent<Deplacement>().enabled = true;
             player.GetComponent<RedPlayer>().canLaunchBlackDice = true;
         }
-        /*else if (player.name == "BluePlayer")
+        else if (player.name == "GreenPlayer")
         {
-            player.GetComponent<BluePlayer>().NbRedToken += 1;
-            player.GetComponent<BluePlayer>().Qi += 1;
-            player.GetComponent<BluePlayer>().update = true;
-            player.GetComponent<BluePlayer>().canLaunchDice = true;
-            player.GetComponent<BluePlayer>().useTilePower = false;
+            player.GetComponent<GreenPlayer>().NbYinYangGreenToken += 1;
+            player.GetComponent<GreenPlayer>().Qi += 1;
+            player.GetComponent<GreenPlayer>().update = true;
+            player.GetComponent<GreenPlayer>().canLaunchDice = true;
+            player.GetComponent<GreenPlayer>().useTilePower = false;
             player.GetComponent<Deplacement>().enabled = true;
-            player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
-        }*/
+            player.GetComponent<GreenPlayer>().canLaunchBlackDice = true;
+        }
     }
 
     public IEnumerator WinTwoTAOToken(GameObject player)
@@ -785,6 +915,15 @@ public class GhostPower : MonoBehaviour {
                             player.GetComponent<Deplacement>().enabled = true;
                             player.GetComponent<RedPlayer>().canLaunchBlackDice = true;
                         }
+                        else if (player.name == "GreenPlayer")
+                        {
+                            player.GetComponent<GreenPlayer>().NbRedToken += 1;
+                            player.GetComponent<GreenPlayer>().update = true;
+                            player.GetComponent<GreenPlayer>().canLaunchDice = true;
+                            player.GetComponent<GreenPlayer>().useTilePower = false;
+                            player.GetComponent<Deplacement>().enabled = true;
+                            player.GetComponent<GreenPlayer>().canLaunchBlackDice = true;
+                        }
                     }
                     break;
                 case "Blue":
@@ -822,6 +961,15 @@ public class GhostPower : MonoBehaviour {
                             player.GetComponent<RedPlayer>().useTilePower = false;
                             player.GetComponent<Deplacement>().enabled = true;
                             player.GetComponent<RedPlayer>().canLaunchBlackDice = true;
+                        }
+                        else if (player.name == "GreenPlayer")
+                        {
+                            player.GetComponent<GreenPlayer>().NbBlueToken += 1;
+                            player.GetComponent<GreenPlayer>().update = true;
+                            player.GetComponent<GreenPlayer>().canLaunchDice = true;
+                            player.GetComponent<GreenPlayer>().useTilePower = false;
+                            player.GetComponent<Deplacement>().enabled = true;
+                            player.GetComponent<GreenPlayer>().canLaunchBlackDice = true;
                         }
                     }
                     break;
@@ -861,6 +1009,15 @@ public class GhostPower : MonoBehaviour {
                             player.GetComponent<Deplacement>().enabled = true;
                             player.GetComponent<RedPlayer>().canLaunchBlackDice = true;
                         }
+                        else if (player.name == "GreenPlayer")
+                        {
+                            player.GetComponent<GreenPlayer>().NbGreenToken += 1;
+                            player.GetComponent<GreenPlayer>().update = true;
+                            player.GetComponent<GreenPlayer>().canLaunchDice = true;
+                            player.GetComponent<GreenPlayer>().useTilePower = false;
+                            player.GetComponent<Deplacement>().enabled = true;
+                            player.GetComponent<GreenPlayer>().canLaunchBlackDice = true;
+                        }
                     }
                     break;
                 case "Yellow":
@@ -898,6 +1055,15 @@ public class GhostPower : MonoBehaviour {
                             player.GetComponent<RedPlayer>().useTilePower = false;
                             player.GetComponent<Deplacement>().enabled = true;
                             player.GetComponent<RedPlayer>().canLaunchBlackDice = true;
+                        }
+                        else if (player.name == "GreenPlayer")
+                        {
+                            player.GetComponent<GreenPlayer>().NbYellowToken += 1;
+                            player.GetComponent<GreenPlayer>().update = true;
+                            player.GetComponent<GreenPlayer>().canLaunchDice = true;
+                            player.GetComponent<GreenPlayer>().useTilePower = false;
+                            player.GetComponent<Deplacement>().enabled = true;
+                            player.GetComponent<GreenPlayer>().canLaunchBlackDice = true;
                         }
                     }
                     break;
@@ -937,6 +1103,15 @@ public class GhostPower : MonoBehaviour {
                             player.GetComponent<Deplacement>().enabled = true;
                             player.GetComponent<RedPlayer>().canLaunchBlackDice = true;
                         }
+                        else if (player.name == "GreenPlayer")
+                        {
+                            player.GetComponent<GreenPlayer>().NbBlackToken += 1;
+                            player.GetComponent<GreenPlayer>().update = true;
+                            player.GetComponent<GreenPlayer>().canLaunchDice = true;
+                            player.GetComponent<GreenPlayer>().useTilePower = false;
+                            player.GetComponent<Deplacement>().enabled = true;
+                            player.GetComponent<GreenPlayer>().canLaunchBlackDice = true;
+                        }
                     }
                     break;
                 default:
@@ -972,7 +1147,7 @@ public class GhostPower : MonoBehaviour {
         }
         else if (player.name == "GreenPlayer")
         {
-            //player.GetComponent<GreenPlayer>().canUsePower = true;
+            player.GetComponent<GreenPlayer>().canUsePower = true;
         }
         else if (player.name == "YellowPlayer")
         {
