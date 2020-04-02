@@ -4273,6 +4273,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1775335305}
+        m_MethodName: SelectGhostPosition
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1036858072}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &243868418
@@ -11628,6 +11639,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1775335305}
+        m_MethodName: SelectGhostPosition
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 326308552}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &852453447
@@ -18879,6 +18901,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1775335305}
+        m_MethodName: SelectGhostPosition
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 953267858}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1345205212
@@ -25078,14 +25111,15 @@ MonoBehaviour:
   nbYinYangGreenToken: 0
   nbBouddha: 0
   panelJeton: {fileID: 1134883028}
-  powerForceDeLaMontagne: 1
+  powerForceDeLaMontagne: 0
   nbDiceBonus: 1
   nbDiceTotal: 0
-  powerFavoriDesDieux: 0
+  powerFavoriDesDieux: 1
   panelRelance: {fileID: 13773119}
   chooseRelance: 0
   alreadyRelaunch: 0
   relance: 
+  jumpDiceEffect: 0
   useTilePower: 0
   useGhostPower: 0
   canUsePower: 0

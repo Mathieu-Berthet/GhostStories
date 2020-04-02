@@ -41,6 +41,7 @@ public class GreenPlayer : MonoBehaviour
     public string relance;
 
 
+
     public bool useTilePower;
     public bool useGhostPower;
     public bool canUsePower;
@@ -783,6 +784,7 @@ public class GreenPlayer : MonoBehaviour
     {
         if (gm.state == GameManager.STATE_GAME.STATE_PLAYER && nbActionBattle > 0 && greenTurn)
         {
+            Debug.Log("Coucou");
             useGhostPower = false; // A Voir si utile
             textInfo.gameObject.SetActive(false);
             gm.choose = false;
@@ -798,6 +800,10 @@ public class GreenPlayer : MonoBehaviour
             if(powerForceDeLaMontagne)
             {
                 nbDiceTotal = gm.nbDice + nbDiceBonus;
+            }
+            else
+            {
+                nbDiceTotal = gm.nbDice;
             }
 
             for (int i = 0; i < nbDiceTotal; i++)
@@ -963,117 +969,142 @@ public class GreenPlayer : MonoBehaviour
                         break;
                 }
             }
-
-            yield return new WaitForSeconds(2.0f);
-            if (!gm.cantTransformWhiteFace)
+            if (powerFavoriDesDieux && !alreadyRelaunch)
             {
-                while (nbWhiteFace > 0)
+                alreadyRelaunch = true;
+                panelRelance.SetActive(true);
+                while (!chooseRelance)
                 {
-                    textNbWhiteFace.text = "Nombre de face blanches restantes : " + nbWhiteFace.ToString();
-                    textNbWhiteFace.gameObject.SetActive(true);
-                    infosWhiteFace = gm.panelButtonChoice.transform.GetChild(0).GetComponent<Text>();
-                    infosWhiteFace.text = "Veuillez choisir la couleur de vos faces blanches : ";
-                    gm.panelButtonChoice.SetActive(true);
-                    gameObject.GetComponent<Deplacement>().enabled = false;
-                    while (!gm.choose)
-                    {
-                        yield return new WaitForSeconds(2.0f);
-                    }
-                    if (gm.choose)
-                    {
-                        switch (gm.choseenToken)
-                        {
-                            case "Red":
-                                nbRedFace++;
-                                break;
-                            case "Blue":
-                                nbBlueFace++;
-                                break;
-                            case "Yellow":
-                                nbYellowFace++;
-                                break;
-                            case "Green":
-                                nbGreenFace++;
-                                break;
-                            case "Black":
-                                nbBlackFace++;
-                                break;
-                            default:
-                                break;
-                        }
-                        gm.choose = false;
-                        gm.panelButtonChoice.SetActive(false);
-                    }
-                    nbWhiteFace--;
+                    yield return new WaitForSeconds(2.0f);
                 }
-            }
-            textNbWhiteFace.gameObject.SetActive(false);
-            yield return new WaitForSeconds(2.0f);
-            gm.panelButtonChoice.SetActive(false);
-
-            //Partie combat
-            if (ghost1 != null || ghost2 != null)
-            {
-                if (ghost1 != null && ghost2 != null)
+                if (chooseRelance)
                 {
-                    panelPrio.SetActive(true);
-                    string nameOne = ghost1.name;
-                    nameOne = nameOne.Replace("(Clone)", "");
-                    buttonGhost1.transform.GetChild(0).GetComponent<Text>().text = nameOne;
-                    string nameTwo = ghost2.name;
-                    nameTwo = nameTwo.Replace("(Clone)", "");
-                    buttonGhost2.transform.GetChild(0).GetComponent<Text>().text = nameTwo;
-
-                    while (!choosePriority)
+                    panelRelance.SetActive(false);
+                    if (relance == "Oui")
                     {
-                        yield return new WaitForSeconds(1.0f);
-                    }
-                    if (priority == ghost1.name)
-                    {
-                        panelPrio.SetActive(false);
-                        ghost1.GetComponent<Ghost>().ReduceLife();
-                        Attack(ghost1);
-                        yield return new WaitForSeconds(1.5f);
-                        ghost2.GetComponent<Ghost>().ReduceLife();
-                        Attack(ghost2);
-                        yield return new WaitForSeconds(0.5f);
+                        StopCoroutine(LaunchDice());
+                        StartCoroutine(LaunchDice());
                     }
                     else
                     {
-                        panelPrio.SetActive(false);
+                        //On continue la fonction
+                    }
+                }
+            }
+            else
+            {
+                yield return new WaitForSeconds(2.0f);
+                if (!gm.cantTransformWhiteFace)
+                {
+                    while (nbWhiteFace > 0)
+                    {
+                        textNbWhiteFace.text = "Nombre de face blanches restantes : " + nbWhiteFace.ToString();
+                        textNbWhiteFace.gameObject.SetActive(true);
+                        infosWhiteFace = gm.panelButtonChoice.transform.GetChild(0).GetComponent<Text>();
+                        infosWhiteFace.text = "Veuillez choisir la couleur de vos faces blanches : ";
+                        gm.panelButtonChoice.SetActive(true);
+                        gameObject.GetComponent<Deplacement>().enabled = false;
+                        while (!gm.choose)
+                        {
+                            yield return new WaitForSeconds(2.0f);
+                        }
+                        if (gm.choose)
+                        {
+                            switch (gm.choseenToken)
+                            {
+                                case "Red":
+                                    nbRedFace++;
+                                    break;
+                                case "Blue":
+                                    nbBlueFace++;
+                                    break;
+                                case "Yellow":
+                                    nbYellowFace++;
+                                    break;
+                                case "Green":
+                                    nbGreenFace++;
+                                    break;
+                                case "Black":
+                                    nbBlackFace++;
+                                    break;
+                                default:
+                                    break;
+                            }
+                            gm.choose = false;
+                            gm.panelButtonChoice.SetActive(false);
+                        }
+                        nbWhiteFace--;
+                    }
+                }
+                textNbWhiteFace.gameObject.SetActive(false);
+                yield return new WaitForSeconds(2.0f);
+                gm.panelButtonChoice.SetActive(false);
+
+                //Partie combat
+                if (ghost1 != null || ghost2 != null)
+                {
+                    if (ghost1 != null && ghost2 != null)
+                    {
+                        panelPrio.SetActive(true);
+                        string nameOne = ghost1.name;
+                        nameOne = nameOne.Replace("(Clone)", "");
+                        buttonGhost1.transform.GetChild(0).GetComponent<Text>().text = nameOne;
+                        string nameTwo = ghost2.name;
+                        nameTwo = nameTwo.Replace("(Clone)", "");
+                        buttonGhost2.transform.GetChild(0).GetComponent<Text>().text = nameTwo;
+
+                        while (!choosePriority)
+                        {
+                            yield return new WaitForSeconds(1.0f);
+                        }
+                        if (priority == ghost1.name)
+                        {
+                            panelPrio.SetActive(false);
+                            ghost1.GetComponent<Ghost>().ReduceLife();
+                            Attack(ghost1);
+                            yield return new WaitForSeconds(1.5f);
+                            ghost2.GetComponent<Ghost>().ReduceLife();
+                            Attack(ghost2);
+                            yield return new WaitForSeconds(0.5f);
+                        }
+                        else
+                        {
+                            panelPrio.SetActive(false);
+                            ghost2.GetComponent<Ghost>().ReduceLife();
+                            Attack(ghost2);
+                            yield return new WaitForSeconds(1.5f);
+                            ghost1.GetComponent<Ghost>().ReduceLife();
+                            Attack(ghost1);
+                            yield return new WaitForSeconds(0.5f);
+                        }
+                    }
+                    else if (ghost1 == null && ghost2 != null)
+                    {
                         ghost2.GetComponent<Ghost>().ReduceLife();
                         Attack(ghost2);
-                        yield return new WaitForSeconds(1.5f);
+                        yield return new WaitForSeconds(0.5f);
+                    }
+                    else if (ghost1 != null && ghost2 == null)
+                    {
                         ghost1.GetComponent<Ghost>().ReduceLife();
                         Attack(ghost1);
                         yield return new WaitForSeconds(0.5f);
                     }
                 }
-                else if (ghost1 == null && ghost2 != null)
-                {
-                    ghost2.GetComponent<Ghost>().ReduceLife();
-                    Attack(ghost2);
-                    yield return new WaitForSeconds(0.5f);
-                }
-                else if (ghost1 != null && ghost2 == null)
-                {
-                    ghost1.GetComponent<Ghost>().ReduceLife();
-                    Attack(ghost1);
-                    yield return new WaitForSeconds(0.5f);
-                }
+                yield return new WaitForSeconds(0.5f);
+                nbRedFace = 0;
+                nbBlackFace = 0;
+                nbBlueFace = 0;
+                nbYellowFace = 0;
+                nbGreenFace = 0;
+                canLaunchDice = true;
+                canLaunchBlackDice = true;
+                gameObject.GetComponent<Deplacement>().enabled = true;
+                alreadyRelaunch = false;
+                updateUI();
+                nbActionEffect -= 1;
+                nbActionBattle -= 1;
             }
-            yield return new WaitForSeconds(0.5f);
-            nbRedFace = 0;
-            nbBlackFace = 0;
-            nbBlueFace = 0;
-            nbYellowFace = 0;
-            nbGreenFace = 0;
-            canLaunchDice = true;
-            canLaunchBlackDice = true;
-            gameObject.GetComponent<Deplacement>().enabled = true;
-            updateUI();
-            nbActionEffect -= 1;
-            nbActionBattle -= 1;
         }
     }
 
@@ -1683,11 +1714,9 @@ public class GreenPlayer : MonoBehaviour
                 if (chooseRelance)
                 {
                     panelRelance.SetActive(false);
-                    if(relance == "Oui")
+                    if (relance == "Oui")
                     {
-                        //alreadyRelaunch = true;
                         StopCoroutine(LaunchBlackDice());
-                        yield return new WaitForSeconds(1.0f);
                         StartCoroutine(LaunchBlackDice());
                     }
                     else
@@ -1696,112 +1725,115 @@ public class GreenPlayer : MonoBehaviour
                     }
                 }
             }
-            switch (resultFace)
+            else
             {
-                case "HauntedFace":
-                    Debug.Log("COucou");
-                    switch (tileName)
-                    {
-                        case "MaisonThe":
-                            houseOfTea.GetComponent<HouseOfTea>().hauntedTile = true;
-                            houseOfTea.GetComponent<HouseOfTea>().haunted();
-                            break;
-                        case "HutteSorciere":
-                            witchHut.GetComponent<HutOfWitch>().hauntedTile = true;
-                            witchHut.GetComponent<HutOfWitch>().haunted();
-                            break;
-                        case "EchoppeHerboriste":
-                            herbalistStall.GetComponent<StallOfHerbalist>().hauntedTile = true;
-                            herbalistStall.GetComponent<StallOfHerbalist>().haunted();
-                            break;
-                        case "AutelTaoiste":
-                            taoisteAutel.GetComponent<TaoisteAutel>().hauntedTile = true;
-                            taoisteAutel.GetComponent<TaoisteAutel>().haunted();
-                            break;
-                        case "Cimetiere":
-                            graveyard.GetComponent<Graveyard>().hauntedTile = true;
-                            graveyard.GetComponent<Graveyard>().haunted();
-                            break;
-                        case "PavillonVentCeleste":
-                            windCelestialFlag.GetComponent<WindCelestialFlag>().hauntedTile = true;
-                            windCelestialFlag.GetComponent<WindCelestialFlag>().haunted();
-                            break;
-                        case "TourVeilleurNuit":
-                            nightTower.GetComponent<NightTower>().hauntedTile = true;
-                            nightTower.GetComponent<NightTower>().haunted();
-                            break;
-                        case "CerclePierre":
-                            priestCircle.GetComponent<PriestCircle>().hauntedTile = true;
-                            priestCircle.GetComponent<PriestCircle>().haunted();
-                            break;
-                        case "TempleBouddhiste":
-                            bouddhisteTemple.GetComponent<BouddhisteTemple>().hauntedTile = true;
-                            bouddhisteTemple.GetComponent<BouddhisteTemple>().haunted();
-                            break;
-                        default:
-                            break;
-                    }
-                    //To verify if we need that
-                    canLaunchBlackDice = true;
-                    useTilePower = false;
-                    canLaunchDice = true;
-                    gameObject.GetComponent<Deplacement>().enabled = true;
-                    alreadyRelaunch = false;
-                    break;
-                case "DrawGhostFace":
-                    Debug.Log("COucou");
-                    //player.GetComponent<BluePlayer>().state = BluePlayer.STATE_GAME.STATE_DRAW;
-                    DrawAGhost();
-                    //To verify if we need that
-                    canLaunchBlackDice = true;
-                    useTilePower = false;
-                    canLaunchDice = true;
-                    gameObject.GetComponent<Deplacement>().enabled = true;
-                    alreadyRelaunch = false;
-                    break;
-                case "LoseJetonFace":
-                    Debug.Log("COucou");
-                    gm.tokenStock.nbBlackToken += NbBlackToken;
-                    NbBlackToken = 0;
-                    gm.tokenStock.nbRedToken += NbRedToken;
-                    NbRedToken = 0;
-                    gm.tokenStock.nbBlueToken += NbBlueToken;
-                    NbBlueToken = 0;
-                    gm.tokenStock.nbGreenToken += NbGreenToken;
-                    NbGreenToken = 0;
-                    gm.tokenStock.nbYellowToken += NbYellowToken;
-                    NbYellowToken = 0;
-                    //To verify if we need that
-                    update = true;
-                    canLaunchBlackDice = true;
-                    canLaunchDice = true;
-                    useTilePower = false;
-                    gameObject.GetComponent<Deplacement>().enabled = true;
-                    alreadyRelaunch = false;
-                    break;
-                case "LoseQIFace":
-                    Debug.Log("COucou");
-                    Qi -= 1;
-                    //To verify if we need that
-                    update = true;
-                    canLaunchBlackDice = true;
-                    useTilePower = false;
-                    canLaunchDice = true;
-                    gameObject.GetComponent<Deplacement>().enabled = true;
-                    alreadyRelaunch = false;
-                    break;
-                case "EmptyFace":
-                case "EmptyFaceTwo":
-                    Debug.Log("COucou");
-                    //To verify if we need that
-                    canLaunchBlackDice = true;
-                    useTilePower = false;
-                    canLaunchDice = true;
-                    gameObject.GetComponent<Deplacement>().enabled = true;
-                    alreadyRelaunch = false;
-                    break;
-                default:
-                    break;
+                switch (resultFace)
+                {
+                    case "HauntedFace":
+                        Debug.Log("COucou");
+                        switch (tileName)
+                        {
+                            case "MaisonThe":
+                                houseOfTea.GetComponent<HouseOfTea>().hauntedTile = true;
+                                houseOfTea.GetComponent<HouseOfTea>().haunted();
+                                break;
+                            case "HutteSorciere":
+                                witchHut.GetComponent<HutOfWitch>().hauntedTile = true;
+                                witchHut.GetComponent<HutOfWitch>().haunted();
+                                break;
+                            case "EchoppeHerboriste":
+                                herbalistStall.GetComponent<StallOfHerbalist>().hauntedTile = true;
+                                herbalistStall.GetComponent<StallOfHerbalist>().haunted();
+                                break;
+                            case "AutelTaoiste":
+                                taoisteAutel.GetComponent<TaoisteAutel>().hauntedTile = true;
+                                taoisteAutel.GetComponent<TaoisteAutel>().haunted();
+                                break;
+                            case "Cimetiere":
+                                graveyard.GetComponent<Graveyard>().hauntedTile = true;
+                                graveyard.GetComponent<Graveyard>().haunted();
+                                break;
+                            case "PavillonVentCeleste":
+                                windCelestialFlag.GetComponent<WindCelestialFlag>().hauntedTile = true;
+                                windCelestialFlag.GetComponent<WindCelestialFlag>().haunted();
+                                break;
+                            case "TourVeilleurNuit":
+                                nightTower.GetComponent<NightTower>().hauntedTile = true;
+                                nightTower.GetComponent<NightTower>().haunted();
+                                break;
+                            case "CerclePierre":
+                                priestCircle.GetComponent<PriestCircle>().hauntedTile = true;
+                                priestCircle.GetComponent<PriestCircle>().haunted();
+                                break;
+                            case "TempleBouddhiste":
+                                bouddhisteTemple.GetComponent<BouddhisteTemple>().hauntedTile = true;
+                                bouddhisteTemple.GetComponent<BouddhisteTemple>().haunted();
+                                break;
+                            default:
+                                break;
+                        }
+                        //To verify if we need that
+                        canLaunchBlackDice = true;
+                        useTilePower = false;
+                        canLaunchDice = true;
+                        gameObject.GetComponent<Deplacement>().enabled = true;
+                        alreadyRelaunch = false;
+                        break;
+                    case "DrawGhostFace":
+                        Debug.Log("COucou");
+                        //player.GetComponent<BluePlayer>().state = BluePlayer.STATE_GAME.STATE_DRAW;
+                        DrawAGhost();
+                        //To verify if we need that
+                        canLaunchBlackDice = true;
+                        useTilePower = false;
+                        canLaunchDice = true;
+                        gameObject.GetComponent<Deplacement>().enabled = true;
+                        alreadyRelaunch = false;
+                        break;
+                    case "LoseJetonFace":
+                        Debug.Log("COucou");
+                        gm.tokenStock.nbBlackToken += NbBlackToken;
+                        NbBlackToken = 0;
+                        gm.tokenStock.nbRedToken += NbRedToken;
+                        NbRedToken = 0;
+                        gm.tokenStock.nbBlueToken += NbBlueToken;
+                        NbBlueToken = 0;
+                        gm.tokenStock.nbGreenToken += NbGreenToken;
+                        NbGreenToken = 0;
+                        gm.tokenStock.nbYellowToken += NbYellowToken;
+                        NbYellowToken = 0;
+                        //To verify if we need that
+                        update = true;
+                        canLaunchBlackDice = true;
+                        canLaunchDice = true;
+                        useTilePower = false;
+                        gameObject.GetComponent<Deplacement>().enabled = true;
+                        alreadyRelaunch = false;
+                        break;
+                    case "LoseQIFace":
+                        Debug.Log("COucou");
+                        Qi -= 1;
+                        //To verify if we need that
+                        update = true;
+                        canLaunchBlackDice = true;
+                        useTilePower = false;
+                        canLaunchDice = true;
+                        gameObject.GetComponent<Deplacement>().enabled = true;
+                        alreadyRelaunch = false;
+                        break;
+                    case "EmptyFace":
+                    case "EmptyFaceTwo":
+                        Debug.Log("COucou");
+                        //To verify if we need that
+                        canLaunchBlackDice = true;
+                        useTilePower = false;
+                        canLaunchDice = true;
+                        gameObject.GetComponent<Deplacement>().enabled = true;
+                        alreadyRelaunch = false;
+                        break;
+                    default:
+                        break;
+                }
             }
             yield return new WaitForSeconds(0.5f);
 
