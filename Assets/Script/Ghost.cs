@@ -29,6 +29,7 @@ public class Ghost : MonoBehaviour {
     public bool hasLaunchBlackDiceDeathPower;
     public bool hasCaptureDicePower;
     public bool hasCantUseTokenPower;
+    public bool hasBlockAllPowerPower;
     public bool hasDrawAGhostPower;
     public bool hasCantUsePowerPower;
     public bool hasHauntedTilePower;
@@ -36,6 +37,7 @@ public class Ghost : MonoBehaviour {
     public bool hasLoseOneTokenPower;
     public bool hasUnactivePriestCirclePower;
     public bool hasHauntedGhostAdvancedPower;
+    public bool hasMustBeLonelyOnLinePower;
     public bool hasInsensiblePower;
     public bool hasHauntedGhostPower;
     public bool hasUnactiveWhiteFacePower;
@@ -106,6 +108,10 @@ public class Ghost : MonoBehaviour {
         {
             power.UnactiveWhiteFace();
         }
+        if(hasBlockAllPowerPower)
+        {
+            power.BlockAllPower();
+        }
 
         if(player.name == "BluePlayer")
         {
@@ -149,6 +155,10 @@ public class Ghost : MonoBehaviour {
         if(hasLaunchBlackDiceInGamePower)
         {
             power.LaunchBlackDice(player);
+        }
+        if(hasMustBeLonelyOnLinePower)
+        {
+            power.CheckIfLonely();
         }
 
         if (player.name == "BluePlayer")

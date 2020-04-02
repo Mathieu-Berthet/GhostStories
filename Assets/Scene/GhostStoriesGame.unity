@@ -199,7 +199,7 @@ GameObject:
   - component: {fileID: 9783642}
   - component: {fileID: 9783641}
   - component: {fileID: 9783644}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: CaseFantomeRouge1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -591,7 +591,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 24036793}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: posGreenPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -622,7 +622,7 @@ GameObject:
   - component: {fileID: 40890785}
   - component: {fileID: 40890784}
   - component: {fileID: 40890783}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ArriveFantomeHanteurBleu2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -826,7 +826,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 45103787}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: posBluePlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -854,7 +854,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 49092396}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: posYellowPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2024,7 +2024,7 @@ GameObject:
   - component: {fileID: 119718288}
   - component: {fileID: 119718287}
   - component: {fileID: 119718286}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: CaseFantomeHanteurRouge3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2106,7 +2106,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 134101981}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: posBluePlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2292,7 +2292,7 @@ GameObject:
   - component: {fileID: 136147059}
   - component: {fileID: 136147058}
   - component: {fileID: 136147057}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: DepartFantomeHanteurJaune2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2573,7 +2573,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 139849283}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: posGreenPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2861,7 +2861,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 156626421}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: posGreenPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2966,7 +2966,7 @@ GameObject:
   - component: {fileID: 167153809}
   - component: {fileID: 167153808}
   - component: {fileID: 167153807}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ArriveFantomeHanteurRouge2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3467,7 +3467,7 @@ GameObject:
   - component: {fileID: 199369945}
   - component: {fileID: 199369944}
   - component: {fileID: 199369943}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: CaseFantomeHanteurRouge1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3743,7 +3743,7 @@ GameObject:
   - component: {fileID: 233401641}
   - component: {fileID: 233401640}
   - component: {fileID: 233401639}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: HutteSorciere
   m_TagString: Sol
   m_Icon: {fileID: 0}
@@ -4699,7 +4699,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 300142765}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: posRedPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4730,7 +4730,7 @@ GameObject:
   - component: {fileID: 303165595}
   - component: {fileID: 303165594}
   - component: {fileID: 303165593}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: CaseFantomeHanteurBleu3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4889,7 +4889,7 @@ GameObject:
   - component: {fileID: 319919885}
   - component: {fileID: 319919884}
   - component: {fileID: 319919883}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: DepartFantomeHanteurVert2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4975,7 +4975,7 @@ GameObject:
   - component: {fileID: 326308555}
   - component: {fileID: 326308554}
   - component: {fileID: 326308557}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: CaseFantomeJaune1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5374,7 +5374,7 @@ GameObject:
   - component: {fileID: 348291306}
   - component: {fileID: 348291305}
   - component: {fileID: 348291304}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ArriveFantomeHanteurVert1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5530,7 +5530,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 359944897}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: posYellowPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5867,7 +5867,7 @@ GameObject:
   - component: {fileID: 407445154}
   - component: {fileID: 407445153}
   - component: {fileID: 407445152}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: CaseFantomeHanteurRouge2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6101,7 +6101,7 @@ GameObject:
   - component: {fileID: 416534316}
   - component: {fileID: 416534315}
   - component: {fileID: 416534314}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: MaisonThe
   m_TagString: Sol
   m_Icon: {fileID: 0}
@@ -6804,7 +6804,7 @@ GameObject:
   - component: {fileID: 450758187}
   - component: {fileID: 450758186}
   - component: {fileID: 450758185}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: DepartFantomeHanteurRouge2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6886,7 +6886,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 452540468}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: posYellowPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7590,7 +7590,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 515602403}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: posGreenPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7621,7 +7621,7 @@ GameObject:
   - component: {fileID: 526855187}
   - component: {fileID: 526855186}
   - component: {fileID: 526855185}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: CaseFantomeHanteurBleu2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8058,7 +8058,7 @@ GameObject:
   - component: {fileID: 570049729}
   - component: {fileID: 570049728}
   - component: {fileID: 570049731}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: CaseFantomeVert3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8234,7 +8234,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 582666822}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: posRedPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8690,7 +8690,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 602625180}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: posGreenPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8797,7 +8797,7 @@ GameObject:
   - component: {fileID: 612446702}
   - component: {fileID: 612446701}
   - component: {fileID: 612446700}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: CaseFantomeHanteurJaune1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8941,7 +8941,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 615769476}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: posYellowPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8972,7 +8972,7 @@ GameObject:
   - component: {fileID: 623403722}
   - component: {fileID: 623403721}
   - component: {fileID: 623403720}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: DepartFantomeHanteurJaune3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9054,7 +9054,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 624839357}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: posGreenPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9235,7 +9235,7 @@ GameObject:
   - component: {fileID: 635760178}
   - component: {fileID: 635760177}
   - component: {fileID: 635760176}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: DepartFantomeHanteurRouge3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9511,7 +9511,7 @@ GameObject:
   - component: {fileID: 646876192}
   - component: {fileID: 646876191}
   - component: {fileID: 646876194}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: CaseFantomeBleu3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10219,7 +10219,7 @@ GameObject:
   - component: {fileID: 713141083}
   - component: {fileID: 713141082}
   - component: {fileID: 713141081}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ArriveFantomeHanteurRouge3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10953,7 +10953,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 757898501}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: posBluePlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10981,7 +10981,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 764026558}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: posRedPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11087,7 +11087,7 @@ GameObject:
   - component: {fileID: 772431115}
   - component: {fileID: 772431114}
   - component: {fileID: 772431117}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: CaseFantomeRouge3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11328,7 +11328,7 @@ GameObject:
   - component: {fileID: 843489412}
   - component: {fileID: 843489411}
   - component: {fileID: 843489410}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Bouddha2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11412,7 +11412,7 @@ GameObject:
   - component: {fileID: 845337841}
   - component: {fileID: 845337840}
   - component: {fileID: 845337839}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ArriveFantomeHanteurBleu3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12976,7 +12976,7 @@ GameObject:
   - component: {fileID: 937504357}
   - component: {fileID: 937504356}
   - component: {fileID: 937504359}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: CaseFantomeVert1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13223,7 +13223,7 @@ GameObject:
   - component: {fileID: 943518888}
   - component: {fileID: 943518887}
   - component: {fileID: 943518886}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ArriveFantomeHanteurJaune2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13383,7 +13383,7 @@ GameObject:
   - component: {fileID: 953267861}
   - component: {fileID: 953267860}
   - component: {fileID: 953267863}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: CaseFantomeJaune3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13482,7 +13482,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 953954895}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: posYellowPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13581,7 +13581,7 @@ GameObject:
   - component: {fileID: 984009391}
   - component: {fileID: 984009390}
   - component: {fileID: 984009389}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: DepartFantomeHanteurVert1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13667,7 +13667,7 @@ GameObject:
   - component: {fileID: 995317040}
   - component: {fileID: 995317039}
   - component: {fileID: 995317042}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: CaseFantomeBleu2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13766,7 +13766,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1011334532}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: posBluePlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13794,7 +13794,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1019340897}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: posRedPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13905,7 +13905,7 @@ GameObject:
   - component: {fileID: 1036858075}
   - component: {fileID: 1036858074}
   - component: {fileID: 1036858077}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: CaseFantomeJaune2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14395,7 +14395,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1059582009}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: posBluePlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14572,7 +14572,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1078937944}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: posBluePlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15821,7 +15821,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1145425398}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: posBluePlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15852,7 +15852,7 @@ GameObject:
   - component: {fileID: 1151752989}
   - component: {fileID: 1151752988}
   - component: {fileID: 1151752987}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: DepartFantomeHanteurBleu3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16288,7 +16288,7 @@ GameObject:
   - component: {fileID: 1187883207}
   - component: {fileID: 1187883206}
   - component: {fileID: 1187883205}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ArriveFantomeHanteurBleu1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16569,7 +16569,7 @@ GameObject:
   - component: {fileID: 1207743265}
   - component: {fileID: 1207743264}
   - component: {fileID: 1207743263}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: DepartFantomeHanteurJaune1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17084,7 +17084,7 @@ GameObject:
   - component: {fileID: 1241658707}
   - component: {fileID: 1241658706}
   - component: {fileID: 1241658705}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cimetiere
   m_TagString: Sol
   m_Icon: {fileID: 0}
@@ -17253,7 +17253,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1251037143}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: posRedPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18092,7 +18092,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1309538087}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: posBluePlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18534,7 +18534,7 @@ GameObject:
   - component: {fileID: 1335580318}
   - component: {fileID: 1335580317}
   - component: {fileID: 1335580316}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PavillonVentCeleste
   m_TagString: Sol
   m_Icon: {fileID: 0}
@@ -19151,7 +19151,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1369593021}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: posRedPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19413,7 +19413,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1393700420}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: posYellowPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20109,7 +20109,7 @@ GameObject:
   - component: {fileID: 1444573569}
   - component: {fileID: 1444573568}
   - component: {fileID: 1444573567}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: EchoppeHerboriste
   m_TagString: Sol
   m_Icon: {fileID: 0}
@@ -20225,7 +20225,7 @@ GameObject:
   - component: {fileID: 1448923218}
   - component: {fileID: 1448923217}
   - component: {fileID: 1448923220}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: CaseFantomeBleu1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20327,7 +20327,7 @@ GameObject:
   - component: {fileID: 1461114045}
   - component: {fileID: 1461114044}
   - component: {fileID: 1461114043}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: CaseFantomeHanteurVert2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20409,7 +20409,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1461423104}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: posGreenPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21381,7 +21381,7 @@ GameObject:
   - component: {fileID: 1536130264}
   - component: {fileID: 1536130263}
   - component: {fileID: 1536130262}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ArriveFantomeHanteurRouge1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22108,7 +22108,7 @@ GameObject:
   - component: {fileID: 1581580250}
   - component: {fileID: 1581580249}
   - component: {fileID: 1581580248}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: AutelTaoiste
   m_TagString: Sol
   m_Icon: {fileID: 0}
@@ -22284,7 +22284,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1583953712}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: posYellowPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22438,7 +22438,7 @@ GameObject:
   - component: {fileID: 1585650255}
   - component: {fileID: 1585650254}
   - component: {fileID: 1585650253}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TourVeilleurNuit
   m_TagString: Sol
   m_Icon: {fileID: 0}
@@ -22546,7 +22546,7 @@ GameObject:
   - component: {fileID: 1593914833}
   - component: {fileID: 1593914832}
   - component: {fileID: 1593914831}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: CaseFantomeHanteurJaune3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22628,7 +22628,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1597524202}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: posGreenPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22852,7 +22852,7 @@ GameObject:
   - component: {fileID: 1617752901}
   - component: {fileID: 1617752900}
   - component: {fileID: 1617752899}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: CaseFantomeHanteurBleu1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23012,7 +23012,7 @@ GameObject:
   - component: {fileID: 1623060068}
   - component: {fileID: 1623060067}
   - component: {fileID: 1623060070}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: CaseFantomeVert2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23114,7 +23114,7 @@ GameObject:
   - component: {fileID: 1624371100}
   - component: {fileID: 1624371099}
   - component: {fileID: 1624371098}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Bouddha1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23292,7 +23292,7 @@ GameObject:
   - component: {fileID: 1634198708}
   - component: {fileID: 1634198707}
   - component: {fileID: 1634198706}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: DepartFantomeHanteurRouge1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23377,7 +23377,7 @@ GameObject:
   - component: {fileID: 1644914709}
   - component: {fileID: 1644914708}
   - component: {fileID: 1644914707}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ArriveFantomeHanteurJaune1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24032,7 +24032,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1708176047}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: posRedPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24064,7 +24064,7 @@ GameObject:
   - component: {fileID: 1715530348}
   - component: {fileID: 1715530347}
   - component: {fileID: 1715530350}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: CaseFantomeRouge2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24666,7 +24666,7 @@ GameObject:
   - component: {fileID: 1747781640}
   - component: {fileID: 1747781639}
   - component: {fileID: 1747781638}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ArriveFantomeHanteurJaune3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24944,7 +24944,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1760589861}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: posRedPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25119,7 +25119,6 @@ MonoBehaviour:
   chooseRelance: 0
   alreadyRelaunch: 0
   relance: 
-  jumpDiceEffect: 0
   useTilePower: 0
   useGhostPower: 0
   canUsePower: 0
@@ -25254,7 +25253,7 @@ GameObject:
   - component: {fileID: 1777324653}
   - component: {fileID: 1777324652}
   - component: {fileID: 1777324651}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: DepartFantomeHanteurBleu2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25538,7 +25537,7 @@ GameObject:
   - component: {fileID: 1782010791}
   - component: {fileID: 1782010790}
   - component: {fileID: 1782010789}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ArriveFantomeHanteurVert3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25779,7 +25778,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1807198124}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: posBluePlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25884,7 +25883,7 @@ GameObject:
   - component: {fileID: 1848185663}
   - component: {fileID: 1848185662}
   - component: {fileID: 1848185661}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: CaseFantomeHanteurVert3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26043,7 +26042,7 @@ GameObject:
   - component: {fileID: 1850020151}
   - component: {fileID: 1850020150}
   - component: {fileID: 1850020149}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: CaseFantomeHanteurJaune2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26438,7 +26437,7 @@ GameObject:
   - component: {fileID: 1855277788}
   - component: {fileID: 1855277787}
   - component: {fileID: 1855277786}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: DepartFantomeHanteurVert3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26748,7 +26747,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1880841281}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: posYellowPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26779,7 +26778,7 @@ GameObject:
   - component: {fileID: 1895870829}
   - component: {fileID: 1895870828}
   - component: {fileID: 1895870827}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ArriveFantomeHanteurVert2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27020,7 +27019,7 @@ GameObject:
   - component: {fileID: 1907267169}
   - component: {fileID: 1907267168}
   - component: {fileID: 1907267167}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TempleBouddhiste
   m_TagString: Sol
   m_Icon: {fileID: 0}
@@ -27127,7 +27126,7 @@ GameObject:
   - component: {fileID: 1910284761}
   - component: {fileID: 1910284760}
   - component: {fileID: 1910284759}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CerclePriere
   m_TagString: Sol
   m_Icon: {fileID: 0}
@@ -27229,7 +27228,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1949437191}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: posRedPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27260,7 +27259,7 @@ GameObject:
   - component: {fileID: 1972383199}
   - component: {fileID: 1972383198}
   - component: {fileID: 1972383197}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: CaseFantomeHanteurVert2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27711,7 +27710,7 @@ GameObject:
   - component: {fileID: 1996949955}
   - component: {fileID: 1996949954}
   - component: {fileID: 1996949953}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: DepartFantomeHanteurBleu1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28188,7 +28187,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 2078000226}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: posGreenPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28361,7 +28360,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 2145494788}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: posYellowPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}

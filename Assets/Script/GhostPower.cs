@@ -9,11 +9,6 @@ public class GhostPower : MonoBehaviour {
 
     public GameManager gm;
 
-    public GameObject bluePlayer;
-    public GameObject redPlayer;
-    public GameObject greenPlayer;
-    public GameObject yellowPlayer;
-
     public PriestCircle circle;
 
     public string choseenToken;
@@ -23,6 +18,7 @@ public class GhostPower : MonoBehaviour {
     public bool chooseAward;
 
     public bool hasHauntedTile;
+    public bool lineIsEmpty;
 
     public GameObject hauntingGhost;
 
@@ -33,23 +29,16 @@ public class GhostPower : MonoBehaviour {
     public GameObject tileToCheck;
     public GameObject firstTileCheck;
     public GameObject secondTileCheck;
+    public GameObject thirdTileCheck;
+    public GameObject boardParent;
 
-    public string[] tabTiles = new string[9];
-    public bool isInArray;
+    public LayerMask layerNightMare;
+    public LayerMask layerTile;
+
     // Use this for initialization
     void Start ()
     {
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
-        isInArray = false;
-        tabTiles[0] = "MaisonThe";
-        tabTiles[1] = "HutteSorciere";
-        tabTiles[2] = "EchoppeHerboriste";
-        tabTiles[3] = "AutelTaoiste";
-        tabTiles[4] = "PavillonVentCeleste";
-        tabTiles[5] = "Cimetiere";
-        tabTiles[6] = "CerclePriere";
-        tabTiles[7] = "TempleBouddhiste";
-        tabTiles[8] = "TourVeilleurNuit";
     }
 	
 	// Update is called once per frame
@@ -136,98 +125,48 @@ public class GhostPower : MonoBehaviour {
 
     public void BlockAllPower()
     {
-        bluePlayer.GetComponent<BluePlayer>().canUsePower = false;
-        /*redPlayer.GetComponent<RedPlayer>().canUsePower = false;
-        greenPlayer.GetComponent<GreenPlayer>().canUsePower = false;
-        yellowPlayer.GetComponent<YellowPlayer>().canUsePower = false;*/
+        gm.bluePlayer.GetComponent<BluePlayer>().canUsePower = false;
+        gm.redPlayer.GetComponent<RedPlayer>().canUsePower = false;
+        gm.greenPlayer.GetComponent<GreenPlayer>().canUsePower = false;
+        gm.yellowPlayer.GetComponent<YellowPlayer>().canUsePower = false;
     }
 
     public void HauntedTile() //Okay
     {
         hasHauntedTile = false;
         RaycastHit hitTiledirection;
-        //gameObject.transform.parent.GetComponent<BoxCollider>().enabled = false;
-        gameObject.transform.parent.GetChild(1).GetComponent<CapsuleCollider>().enabled = false;
-        gameObject.transform.parent.GetChild(2).GetComponent<CapsuleCollider>().enabled = false;
-        gameObject.transform.parent.GetChild(3).GetComponent<CapsuleCollider>().enabled = false;
+        layerTile = LayerMask.GetMask("Tile");
+        boardParent = gameObject.transform.parent.parent.gameObject;
         for (int i = 0; i < 3; i++)
         {
             if (!hasHauntedTile)
             {
-                if (Physics.Raycast(transform.position, Vector3.back, out hitTiledirection, 100.0f) && !isInArray)
+                if (boardParent.transform.eulerAngles.y == 0.0f)
                 {
-                    tileToCheck = hitTiledirection.collider.gameObject;
-                    for(int j = 0; j < tabTiles.Length; j++)
+                    if (Physics.Raycast(transform.position, Vector3.back, out hitTiledirection, 100.0f, layerTile))
                     {
-                        if(tabTiles[j] == tileToCheck.name)
-                        {
-                            isInArray = true;
-                        }
-                        else
-                        {
-                            isInArray = false;
-                        }
-                        if(isInArray)
-                        {
-                            break;
-                        }
+                        tileToCheck = hitTiledirection.collider.gameObject;
                     }
                 }
-                if(Physics.Raycast(transform.position, Vector3.forward, out hitTiledirection, 100.0f) && !isInArray)
+                else if (boardParent.transform.eulerAngles.y == 180.0f)
                 {
-                    tileToCheck = hitTiledirection.collider.gameObject;
-                    for (int j = 0; j < tabTiles.Length; j++)
+                    if (Physics.Raycast(transform.position, Vector3.forward, out hitTiledirection, 100.0f, layerTile))
                     {
-                        if (tabTiles[j] == tileToCheck.name)
-                        {
-                            isInArray = true;
-                        }
-                        else
-                        {
-                            isInArray = false;
-                        }
-                        if (isInArray)
-                        {
-                            break;
-                        }
+                        tileToCheck = hitTiledirection.collider.gameObject;
                     }
                 }
-                if(Physics.Raycast(transform.position, Vector3.right, out hitTiledirection, 100.0f) && !isInArray)
+                else if (boardParent.transform.eulerAngles.y == -90.0f)
                 {
-                    tileToCheck = hitTiledirection.collider.gameObject;
-                    for (int j = 0; j < tabTiles.Length; j++)
+                    if (Physics.Raycast(transform.position, Vector3.right, out hitTiledirection, 100.0f, layerTile))
                     {
-                        if (tabTiles[j] == tileToCheck.name)
-                        {
-                            isInArray = true;
-                        }
-                        else
-                        {
-                            isInArray = false;
-                        }
-                        if (isInArray)
-                        {
-                            break;
-                        }
+                        tileToCheck = hitTiledirection.collider.gameObject;
                     }
                 }
-                if(Physics.Raycast(transform.position, Vector3.left, out hitTiledirection, 100.0f) && !isInArray)
+                else if (boardParent.transform.eulerAngles.y == 90.0f)
                 {
-                    tileToCheck = hitTiledirection.collider.gameObject;
-                    for (int j = 0; j < tabTiles.Length; j++)
+                    if (Physics.Raycast(transform.position, Vector3.left, out hitTiledirection, 100.0f, layerTile))
                     {
-                        if (tabTiles[j] == tileToCheck.name)
-                        {
-                            isInArray = true;
-                        }
-                        else
-                        {
-                            isInArray = false;
-                        }
-                        if (isInArray)
-                        {
-                            break;
-                        }
+                        tileToCheck = hitTiledirection.collider.gameObject;
                     }
                 }
                 Debug.Log(tileToCheck.name);
@@ -239,14 +178,10 @@ public class GhostPower : MonoBehaviour {
                             tileToCheck.GetComponent<HouseOfTea>().hauntedTile = true;
                             tileToCheck.GetComponent<HouseOfTea>().haunted();
                             hasHauntedTile = true;
-                            gameObject.transform.parent.GetComponent<BoxCollider>().enabled = true;
-                            gameObject.transform.parent.GetChild(1).GetComponent<CapsuleCollider>().enabled = true;
-                            gameObject.transform.parent.GetChild(2).GetComponent<CapsuleCollider>().enabled = true;
-                            gameObject.transform.parent.GetChild(3).GetComponent<CapsuleCollider>().enabled = true;
                         }
                         else
                         {
-                            tileToCheck.GetComponent<BoxCollider>().enabled = false;
+                            tileToCheck.layer = 0;
                         }
                         break;
                     case "HutteSorciere":
@@ -255,14 +190,10 @@ public class GhostPower : MonoBehaviour {
                             tileToCheck.GetComponent<HutOfWitch>().hauntedTile = true;
                             tileToCheck.GetComponent<HutOfWitch>().haunted();
                             hasHauntedTile = true;
-                            gameObject.transform.parent.GetComponent<BoxCollider>().enabled = true;
-                            gameObject.transform.parent.GetChild(1).GetComponent<CapsuleCollider>().enabled = true;
-                            gameObject.transform.parent.GetChild(2).GetComponent<CapsuleCollider>().enabled = true;
-                            gameObject.transform.parent.GetChild(3).GetComponent<CapsuleCollider>().enabled = true;
                         }
                         else
                         {
-                            tileToCheck.GetComponent<BoxCollider>().enabled = false;
+                            tileToCheck.layer = 0;
                         }
                         break;
                     case "EchoppeHerboriste":
@@ -271,14 +202,10 @@ public class GhostPower : MonoBehaviour {
                             tileToCheck.GetComponent<StallOfHerbalist>().hauntedTile = true;
                             tileToCheck.GetComponent<StallOfHerbalist>().haunted();
                             hasHauntedTile = true;
-                            gameObject.transform.parent.GetComponent<BoxCollider>().enabled = true;
-                            gameObject.transform.parent.GetChild(1).GetComponent<CapsuleCollider>().enabled = true;
-                            gameObject.transform.parent.GetChild(2).GetComponent<CapsuleCollider>().enabled = true;
-                            gameObject.transform.parent.GetChild(3).GetComponent<CapsuleCollider>().enabled = true;
                         }
                         else
                         {
-                            tileToCheck.GetComponent<BoxCollider>().enabled = false;
+                            tileToCheck.layer = 0;
                         }
                         break;
                     case "AutelTaoiste":
@@ -287,14 +214,10 @@ public class GhostPower : MonoBehaviour {
                             tileToCheck.GetComponent<TaoisteAutel>().hauntedTile = true;
                             tileToCheck.GetComponent<TaoisteAutel>().haunted();
                             hasHauntedTile = true;
-                            gameObject.transform.parent.GetComponent<BoxCollider>().enabled = true;
-                            gameObject.transform.parent.GetChild(1).GetComponent<CapsuleCollider>().enabled = true;
-                            gameObject.transform.parent.GetChild(2).GetComponent<CapsuleCollider>().enabled = true;
-                            gameObject.transform.parent.GetChild(3).GetComponent<CapsuleCollider>().enabled = true;
                         }
                         else
                         {
-                            tileToCheck.GetComponent<BoxCollider>().enabled = false;
+                            tileToCheck.layer = 0;
                         }
                         break;
                     case "Cimetiere":
@@ -303,14 +226,10 @@ public class GhostPower : MonoBehaviour {
                             tileToCheck.GetComponent<Graveyard>().hauntedTile = true;
                             tileToCheck.GetComponent<Graveyard>().haunted();
                             hasHauntedTile = true;
-                            gameObject.transform.parent.GetComponent<BoxCollider>().enabled = true;
-                            gameObject.transform.parent.GetChild(1).GetComponent<CapsuleCollider>().enabled = true;
-                            gameObject.transform.parent.GetChild(2).GetComponent<CapsuleCollider>().enabled = true;
-                            gameObject.transform.parent.GetChild(3).GetComponent<CapsuleCollider>().enabled = true;
                         }
                         else
                         {
-                            tileToCheck.GetComponent<BoxCollider>().enabled = false;
+                            tileToCheck.layer = 0;
                         }
                         break;
                     case "PavillonVentCeleste":
@@ -319,14 +238,10 @@ public class GhostPower : MonoBehaviour {
                             tileToCheck.GetComponent<WindCelestialFlag>().hauntedTile = true;
                             tileToCheck.GetComponent<WindCelestialFlag>().haunted();
                             hasHauntedTile = true;
-                            gameObject.transform.parent.GetComponent<BoxCollider>().enabled = true;
-                            gameObject.transform.parent.GetChild(1).GetComponent<CapsuleCollider>().enabled = true;
-                            gameObject.transform.parent.GetChild(2).GetComponent<CapsuleCollider>().enabled = true;
-                            gameObject.transform.parent.GetChild(3).GetComponent<CapsuleCollider>().enabled = true;
                         }
                         else
                         {
-                            tileToCheck.GetComponent<BoxCollider>().enabled = false;
+                            tileToCheck.layer = 0;
                         }
                         break;
                     case "TourVeilleurNuit":
@@ -335,14 +250,10 @@ public class GhostPower : MonoBehaviour {
                             tileToCheck.GetComponent<NightTower>().hauntedTile = true;
                             tileToCheck.GetComponent<NightTower>().haunted();
                             hasHauntedTile = true;
-                            gameObject.transform.parent.GetComponent<BoxCollider>().enabled = true;
-                            gameObject.transform.parent.GetChild(1).GetComponent<CapsuleCollider>().enabled = true;
-                            gameObject.transform.parent.GetChild(2).GetComponent<CapsuleCollider>().enabled = true;
-                            gameObject.transform.parent.GetChild(3).GetComponent<CapsuleCollider>().enabled = true;
                         }
                         else
                         {
-                            tileToCheck.GetComponent<BoxCollider>().enabled = false;
+                            tileToCheck.layer = 0;
                         }
                         break;
                     case "CerclePriere":
@@ -351,14 +262,10 @@ public class GhostPower : MonoBehaviour {
                             tileToCheck.GetComponent<PriestCircle>().hauntedTile = true;
                             tileToCheck.GetComponent<PriestCircle>().haunted();
                             hasHauntedTile = true;
-                            gameObject.transform.parent.GetComponent<BoxCollider>().enabled = true;
-                            gameObject.transform.parent.GetChild(1).GetComponent<CapsuleCollider>().enabled = true;
-                            gameObject.transform.parent.GetChild(2).GetComponent<CapsuleCollider>().enabled = true;
-                            gameObject.transform.parent.GetChild(3).GetComponent<CapsuleCollider>().enabled = true;
                         }
                         else
                         {
-                            tileToCheck.GetComponent<BoxCollider>().enabled = false;
+                            tileToCheck.layer = 0;
                         }
                         break;
                     case "TempleBouddhiste":
@@ -367,14 +274,10 @@ public class GhostPower : MonoBehaviour {
                             tileToCheck.GetComponent<BouddhisteTemple>().hauntedTile = true;
                             tileToCheck.GetComponent<BouddhisteTemple>().haunted();
                             hasHauntedTile = true;
-                            gameObject.transform.parent.GetComponent<BoxCollider>().enabled = true;
-                            gameObject.transform.parent.GetChild(1).GetComponent<CapsuleCollider>().enabled = true;
-                            gameObject.transform.parent.GetChild(2).GetComponent<CapsuleCollider>().enabled = true;
-                            gameObject.transform.parent.GetChild(3).GetComponent<CapsuleCollider>().enabled = true;
                         }
                         else
                         {
-                            tileToCheck.GetComponent<BoxCollider>().enabled = false;
+                            tileToCheck.layer = 0;
                         }
                         break;
                     default:
@@ -391,8 +294,8 @@ public class GhostPower : MonoBehaviour {
             }
             if (i == 2)
             {
-                firstTileCheck.GetComponent<BoxCollider>().enabled = true;
-                secondTileCheck.GetComponent<BoxCollider>().enabled = true;
+                firstTileCheck.layer = 10;
+                secondTileCheck.layer = 10;
             }
         }
     }
@@ -444,6 +347,84 @@ public class GhostPower : MonoBehaviour {
     public void Insensible() //Okay
     {
         gameObject.GetComponent<Ghost>().canBeDestroyByDice = false;
+    }
+
+
+    public void CheckIfLonely()
+    {
+        hasHauntedTile = false;
+        RaycastHit hitTiledirection;
+        layerNightMare = LayerMask.GetMask("HauntingGhostCase");
+        boardParent = gameObject.transform.parent.parent.gameObject;
+        gameObject.transform.parent.GetChild(1).GetComponent<CapsuleCollider>().enabled = false;
+        gameObject.transform.parent.GetChild(2).GetComponent<CapsuleCollider>().enabled = false;
+        gameObject.transform.parent.GetChild(3).GetComponent<CapsuleCollider>().enabled = false;
+        for (int i = 0; i < 2; i++)
+        {
+            if (boardParent.transform.eulerAngles.y == 0.0f)
+            {
+                if (Physics.Raycast(transform.position, Vector3.back, out hitTiledirection, 200.0f, layerNightMare))
+                {
+                    tileToCheck = hitTiledirection.collider.gameObject;
+                }
+            }
+            else if (boardParent.transform.eulerAngles.y == 90.0f)
+            {
+                if (Physics.Raycast(transform.position, Vector3.left, out hitTiledirection, 200.0f, layerNightMare))
+                {
+                    tileToCheck = hitTiledirection.collider.gameObject;
+                }
+            }
+            else if (boardParent.transform.eulerAngles.y == -90.0f)
+            {
+                if (Physics.Raycast(transform.position, Vector3.right, out hitTiledirection, 200.0f, layerNightMare))
+                {
+                    tileToCheck = hitTiledirection.collider.gameObject;
+                }
+            }
+            else if (boardParent.transform.eulerAngles.y == 180.0f)
+            {
+                if (Physics.Raycast(transform.position, Vector3.forward, out hitTiledirection, 200.0f, layerNightMare))
+                {
+                    tileToCheck = hitTiledirection.collider.gameObject;
+                }
+            }
+            Debug.Log(tileToCheck.name);
+            switch (tileToCheck.name)
+            {
+                case "ArriveFantomeHanteurRouge1":
+                case "ArriveFantomeHanteurRouge2":
+                case "ArriveFantomeHanteurRouge3":
+                case "ArriveFantomeHanteurBleu1":
+                case "ArriveFantomeHanteurBleu2":
+                case "ArriveFantomeHanteurBleu3":
+                case "ArriveFantomeHanteurJaune1":
+                case "ArriveFantomeHanteurJaune2":
+                case "ArriveFantomeHanteurJaune3":
+                case "ArriveFantomeHanteurVert1":
+                case "ArriveFantomeHanteurVert2":
+                case "ArriveFantomeHanteurVert3":
+                    Debug.Log("Test");
+                    if (tileToCheck.transform.parent.childCount >= 5)
+                    {
+                        if (tileToCheck.transform.parent.GetChild(4) != null && !tileToCheck.transform.parent.GetChild(4).name.Contains("Bouddha"))
+                        {
+                            lineIsEmpty = false;
+                        }
+                        else
+                        {
+                            lineIsEmpty = true;
+                        }
+                    }
+                    else
+                    {
+                        lineIsEmpty = true;
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 
     //Funcitons when the ghost is not dead yet 

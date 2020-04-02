@@ -498,7 +498,7 @@ public class BluePlayer : MonoBehaviour
             panelYellowPlace.SetActive(true);
             textInfo.gameObject.SetActive(true);
             drawedCard.gameObject.SetActive(true);
-            if (gm.nbCardOnDeck == 45 && gm.nbCardOnBossDeck == 10)
+            if (gm.nbCardOnDeck == 55 && gm.nbCardOnBossDeck == 10)
             {
                 card = deck.GetPoolByName(PoolNameDeck.boss).GetItem(transform, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity, true, false, 0);
                 card.transform.parent = null;
@@ -994,7 +994,6 @@ public class BluePlayer : MonoBehaviour
                     string nameTwo = ghost2.name;
                     nameTwo = nameTwo.Replace("(Clone)", "");
                     buttonGhost2.transform.GetChild(0).GetComponent<Text>().text = nameTwo;
-
                     while (!choosePriority)
                     {
                         yield return new WaitForSeconds(1.0f);
@@ -1002,34 +1001,124 @@ public class BluePlayer : MonoBehaviour
                     if (priority == ghost1.name)
                     {
                         panelPrio.SetActive(false);
-                        ghost1.GetComponent<Ghost>().ReduceLife();
-                        Attack(ghost1);
+                        if (ghost1.name == "HowlingNightmare(Clone)")
+                        {
+                            if (ghost1.GetComponent<Ghost>().hasMustBeLonelyOnLinePower)
+                            {
+                                ghost1.GetComponent<GhostPower>().CheckIfLonely();
+                            }
+                            if (ghost1.GetComponent<GhostPower>().lineIsEmpty)
+                            {
+                                ghost1.GetComponent<Ghost>().ReduceLife();
+                                Attack(ghost1);
+                            }
+                        }
+                        else
+                        {
+                            ghost1.GetComponent<Ghost>().ReduceLife();
+                            Attack(ghost1);
+                        }
                         yield return new WaitForSeconds(1.5f);
-                        ghost2.GetComponent<Ghost>().ReduceLife();
-                        Attack(ghost2);
+                        if (ghost2.name == "HowlingNightmare(Clone)")
+                        {
+                            if (ghost2.GetComponent<Ghost>().hasMustBeLonelyOnLinePower)
+                            {
+                                ghost2.GetComponent<GhostPower>().CheckIfLonely();
+                            }
+                            if (ghost2.GetComponent<GhostPower>().lineIsEmpty)
+                            {
+                                ghost2.GetComponent<Ghost>().ReduceLife();
+                                Attack(ghost2);
+                            }
+                        }
+                        else
+                        {
+                            ghost2.GetComponent<Ghost>().ReduceLife();
+                            Attack(ghost2);
+                        }
                         yield return new WaitForSeconds(0.5f);
                     }
                     else
                     {
                         panelPrio.SetActive(false);
-                        ghost2.GetComponent<Ghost>().ReduceLife();
-                        Attack(ghost2);
+                        if (ghost2.name == "HowlingNightmare(Clone)")
+                        {
+                            if (ghost2.GetComponent<Ghost>().hasMustBeLonelyOnLinePower)
+                            {
+                                ghost2.GetComponent<GhostPower>().CheckIfLonely();
+                            }
+                            if (ghost2.GetComponent<GhostPower>().lineIsEmpty)
+                            {
+                                ghost2.GetComponent<Ghost>().ReduceLife();
+                                Attack(ghost2);
+                            }
+                        }
+                        else
+                        {
+                            ghost2.GetComponent<Ghost>().ReduceLife();
+                            Attack(ghost2);
+                        }
                         yield return new WaitForSeconds(1.5f);
-                        ghost1.GetComponent<Ghost>().ReduceLife();
-                        Attack(ghost1);
+                        if (ghost1.name == "HowlingNightmare(Clone)")
+                        {
+                            if (ghost1.GetComponent<Ghost>().hasMustBeLonelyOnLinePower)
+                            {
+                                ghost1.GetComponent<GhostPower>().CheckIfLonely();
+                            }
+                            if (ghost1.GetComponent<GhostPower>().lineIsEmpty)
+                            {
+                                ghost1.GetComponent<Ghost>().ReduceLife();
+                                Attack(ghost1);
+                            }
+                        }
+                        else
+                        {
+                            ghost1.GetComponent<Ghost>().ReduceLife();
+                            Attack(ghost1);
+                        }
                         yield return new WaitForSeconds(0.5f);
                     }
                 }
                 else if (ghost1 == null && ghost2 != null)
                 {
-                    ghost2.GetComponent<Ghost>().ReduceLife();
-                    Attack(ghost2);
+                    if (ghost2.name == "HowlingNightmare(Clone)")
+                    {
+                        if (ghost2.GetComponent<Ghost>().hasMustBeLonelyOnLinePower)
+                        {
+                            ghost2.GetComponent<GhostPower>().CheckIfLonely();
+                        }
+                        if (ghost2.GetComponent<GhostPower>().lineIsEmpty)
+                        {
+                            ghost2.GetComponent<Ghost>().ReduceLife();
+                            Attack(ghost2);
+                        }
+                    }
+                    else
+                    {
+                        ghost2.GetComponent<Ghost>().ReduceLife();
+                        Attack(ghost2);
+                    }
                     yield return new WaitForSeconds(0.5f);
                 }
                 else if (ghost1 != null && ghost2 == null)
                 {
-                    ghost1.GetComponent<Ghost>().ReduceLife();
-                    Attack(ghost1);
+                    if (ghost1.name == "HowlingNightmare(Clone)")
+                    {
+                        if (ghost1.GetComponent<Ghost>().hasMustBeLonelyOnLinePower)
+                        {
+                            ghost1.GetComponent<GhostPower>().CheckIfLonely();
+                        }
+                        if (ghost1.GetComponent<GhostPower>().lineIsEmpty)
+                        {
+                            ghost1.GetComponent<Ghost>().ReduceLife();
+                            Attack(ghost1);
+                        }
+                    }
+                    else
+                    {
+                        ghost1.GetComponent<Ghost>().ReduceLife();
+                        Attack(ghost1);
+                    }
                     yield return new WaitForSeconds(0.5f);
                 }
             }

@@ -143,23 +143,55 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gm: {fileID: 0}
-  bluePlayer: {fileID: 0}
-  redPlayer: {fileID: 0}
-  greenPlayer: {fileID: 0}
-  yellowPlayer: {fileID: 0}
   circle: {fileID: 0}
   choseenToken: 
   choose: 0
   choseenAward: 
   chooseAward: 0
   hasHauntedTile: 0
-  hauntingGhost: {fileID: 0}
+  lineIsEmpty: 0
+  hauntingGhost: {fileID: 1682856368587106, guid: 368504fe807cdf3478db1e8a55b16ee9,
+    type: 2}
   startPosition: {fileID: 0}
   middlePosition: {fileID: 0}
   endPosition: {fileID: 0}
   tileToCheck: {fileID: 0}
   firstTileCheck: {fileID: 0}
   secondTileCheck: {fileID: 0}
+  thirdTileCheck: {fileID: 0}
+  tabTiles:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  isInArray: 0
+  tabPlacement:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
 --- !u!114 &114688670900753626
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -176,31 +208,33 @@ MonoBehaviour:
   power: {fileID: 0}
   circlePriest: {fileID: 0}
   positions: {fileID: 0}
-  cantBeKillByBouddha: 1
+  canBeKillByBouddha: 0
   killWithBouddha: 0
   canBeDestroyByDice: 0
-  entryPower: 0
-  inGamePower: 0
-  deathPower: 0
+  entryPower: 1
+  inGamePower: 1
+  deathPower: 1
   hasLaunchBlackDiceEntryPower: 0
   hasLaunchBlackDiceInGamePower: 0
   hasLaunchBlackDiceDeathPower: 0
   hasCaptureDicePower: 0
   hasCantUseTokenPower: 0
+  hasBlockAllPowerPower: 0
   hasDrawAGhostPower: 0
   hasCantUsePowerPower: 0
   hasHauntedTilePower: 0
   hasLoseLifePower: 0
   hasLoseOneTokenPower: 0
-  hasUnactivePriestCirclePower: 0
+  hasUnactivePriestCirclePower: 1
   hasHauntedGhostAdvancedPower: 0
+  hasMustBeLonelyOnLinePower: 0
   hasInsensiblePower: 0
   hasHauntedGhostPower: 0
-  hasUnactiveWhiteFacePower: 0
+  hasUnactiveWhiteFacePower: 1
   hasMustBeKillWithBouddhaPower: 0
   hasWinQiOrYinYangTokenPower: 0
   hasWinTAOTokenPower: 0
-  hasWinQiAndYinYangPower: 0
+  hasWinQiAndYinYangPower: 1
   hasWinTwoTAOTokenPower: 0
 --- !u!212 &212373697761621688
 SpriteRenderer:
