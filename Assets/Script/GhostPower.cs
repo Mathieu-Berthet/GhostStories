@@ -441,9 +441,9 @@ public class GhostPower : MonoBehaviour {
         Debug.Log(gm.cantTransformWhiteFace);
     }
 
-    public void MustBeKillWithBouddha()
+    public void UninsensibleWithBouddha()
     {
-        gameObject.GetComponent<Ghost>().killWithBouddha = true;
+        gameObject.GetComponent<Ghost>().canBeDestroyByDice = true;
     }
 
     //Functions for power activate when ghost dead (if dead naturally)

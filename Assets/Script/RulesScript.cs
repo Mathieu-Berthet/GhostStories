@@ -12,6 +12,7 @@ public class RulesScript : MonoBehaviour {
     public Text infoTurn;
     public Text infoDice;
     public Text infoPhase;
+    public Text infoPlayerPower;
     public Text infoMort;
     public Text infoTuile;
     public Text infoDefausse;
@@ -57,6 +58,7 @@ public class RulesScript : MonoBehaviour {
             panelToken.SetActive(true);
             //infoMort.gameObject.SetActive(true);
             infoPhase.gameObject.SetActive(true);
+            infoPlayerPower.gameObject.SetActive(true);
             infoTuile.gameObject.SetActive(true);
             infoDefausse.gameObject.SetActive(true);
             infoTurnPlayer.gameObject.SetActive(true);
@@ -92,6 +94,7 @@ public class RulesScript : MonoBehaviour {
         panelToken.SetActive(false);
         //infoMort.gameObject.SetActive(false);
         infoPhase.gameObject.SetActive(false);
+        infoPlayerPower.gameObject.SetActive(false);
         infoTuile.gameObject.SetActive(false);
         infoDefausse.gameObject.SetActive(false);
         infoTurnPlayer.gameObject.SetActive(false);
@@ -111,6 +114,7 @@ public class RulesScript : MonoBehaviour {
         panelToken.SetActive(false);
         //infoMort.gameObject.SetActive(false);
         infoPhase.gameObject.SetActive(false);
+        infoPlayerPower.gameObject.SetActive(false);
         infoTuile.gameObject.SetActive(false);
         infoDefausse.gameObject.SetActive(false);
         infoTurnPlayer.gameObject.SetActive(false);
@@ -131,6 +135,7 @@ public class RulesScript : MonoBehaviour {
         panelToken.SetActive(true);
         //infoMort.gameObject.SetActive(true);
         infoPhase.gameObject.SetActive(true);
+        infoPlayerPower.gameObject.SetActive(true);
         infoTuile.gameObject.SetActive(true);
         infoDefausse.gameObject.SetActive(true);
         infoTurnPlayer.gameObject.SetActive(true);

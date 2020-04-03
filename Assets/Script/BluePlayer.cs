@@ -162,10 +162,13 @@ public class BluePlayer : MonoBehaviour
     public Text textNbWhiteFace;
     public Text infosWhiteFace;
     public Text textInfoPhase;
+    public Text textInfoPower;
     public Text textMort;
     public Text textInfoTuile;
     public Text textNbDice;
     public Text textTurn;
+
+    public string descriptionPowerBlue;
 
     //Déplacement
     [Header("Le déplacement")]
@@ -362,10 +365,10 @@ public class BluePlayer : MonoBehaviour
         }
 
 
-        /*if(Input.GetKeyDown(KeyCode.B))
+        if(Input.GetKeyDown(KeyCode.B))
         {
             StartCoroutine(gameObject.GetComponent<Deplacement>().PlayerDeplacement());
-        }*/
+        }
         if(Input.GetKeyDown(KeyCode.C))
         {
             StartCoroutine(PlaceBouddha());
@@ -402,17 +405,42 @@ public class BluePlayer : MonoBehaviour
             panelJeton.SetActive(!panelJeton.activeSelf);
         }
 
-        if(gm.state == GameManager.STATE_GAME.STATE_DRAW)
+        if(gm.state == GameManager.STATE_GAME.STATE_DRAW && blueTurn)
         {
             textInfoPhase.text = " Phase de pioche : \n - Il vous faut piochez une carte fantôme (Clic droit souris)";
+            textInfoPower.text = descriptionPowerBlue;
         }
-        else if(gm.state == GameManager.STATE_GAME.STATE_MOVE)
+        else if(gm.state == GameManager.STATE_GAME.STATE_MOVE && blueTurn)
         {
             textInfoPhase.text = " Phase de déplacement : \n - Veuillez choisir où vous voulez vous déplacer";
+            textInfoPower.text = descriptionPowerBlue;
         }
-        else if (gm.state == GameManager.STATE_GAME.STATE_PLAYER)
+        else if (gm.state == GameManager.STATE_GAME.STATE_PLAYER && blueTurn)
         {
-            textInfoPhase.text = " Phase de jeu. Vous pouvez : \n - Attaquer un fantôme se trouvant devant vous (D), \n - Utilisez le pouvoir de la tuile sur laquelle vous vous trouvez (E)";
+            textInfoPhase.text = " Phase de jeu. Vous pouvez : \n - Attaquer un fantôme se trouvant devant vous (D), \n - Utilisez le pouvoir de la tuile sur laquelle vous vous trouvez (E), \n - Utilisez votre jeton Yin Yang";
+            textInfoPower.text = descriptionPowerBlue;
+        }
+
+        if(Input.GetKeyDown(KeyCode.P) && blueTurn)
+        {
+            powerSouffleCeleste = false;
+            powerSecondSouffle = true;
+            SecondSouffle();
+        }
+        else if(Input.GetKeyDown(KeyCode.M) && blueTurn)
+        {
+            powerSouffleCeleste = true;
+            powerSecondSouffle = false;
+            SouffleCeleste();
+        }
+
+        if(powerSecondSouffle)
+        {
+            descriptionPowerBlue = "VOTRE POUVOIR : \n - Vous pouvez utilisez 2 fois le pouvoir de la tuile sur laquelle vous vous trouvez OU combattre 2 fois un fantôme ";
+        }
+        else if(powerSouffleCeleste)
+        {
+            descriptionPowerBlue = "VOTRE POUVOIR : \n - Vous pouvez utilisez le pouvoir de la tuile sur laquelle vous vous trouvez ET combattre un fantôme ";
         }
 
         /*if(Input.GetKeyDown(KeyCode.A))
@@ -618,6 +646,18 @@ public class BluePlayer : MonoBehaviour
                         canLaunchBlackDice = true;
                         hasDraw = false;
                         useGhostPower = false;
+                        if (card != null && card.GetComponent<Ghost>().entryPower)
+                        {
+                            if (card.GetComponent<Ghost>().hasDrawAGhostPower)
+                            {
+                                useGhostPower = true;
+                            }
+                            card.GetComponent<Ghost>().UseEntryPower(gameObject);
+                        }
+                        if (card.name == "Uncatchable(Clone)")
+                        {
+                            card.GetComponent<GhostPower>().UninsensibleWithBouddha();
+                        }
                     }
                 }
                 else
@@ -661,15 +701,15 @@ public class BluePlayer : MonoBehaviour
                     canLaunchBlackDice = true;
                     hasDraw = false;
                     useGhostPower = false;
+                    if (card != null && card.GetComponent<Ghost>().entryPower)
+                    {
+                        if (card.GetComponent<Ghost>().hasDrawAGhostPower)
+                        {
+                            useGhostPower = true;
+                        }
+                        card.GetComponent<Ghost>().UseEntryPower(gameObject);
+                    }
                 }
-            }
-            if (card != null && card.GetComponent<Ghost>().entryPower)
-            {
-                if (card.GetComponent<Ghost>().hasDrawAGhostPower)
-                {
-                    useGhostPower = true;
-                }
-                card.GetComponent<Ghost>().UseEntryPower(gameObject);
             }
 
             if (gm.state == GameManager.STATE_GAME.STATE_DRAW && !useGhostPower)
@@ -1029,12 +1069,30 @@ public class BluePlayer : MonoBehaviour
                             {
                                 ghost2.GetComponent<Ghost>().ReduceLife();
                                 Attack(ghost2);
+                                if (powerSecondSouffle)
+                                {
+                                    nbActionEffect -= 2;
+                                }
+                                else if (!powerSouffleCeleste)
+                                {
+                                    nbActionEffect -= 1;
+                                }
+                                nbActionBattle -= 1;
                             }
                         }
                         else
                         {
                             ghost2.GetComponent<Ghost>().ReduceLife();
                             Attack(ghost2);
+                            if (powerSecondSouffle)
+                            {
+                                nbActionEffect -= 2;
+                            }
+                            else if (!powerSouffleCeleste)
+                            {
+                                nbActionEffect -= 1;
+                            }
+                            nbActionBattle -= 1;
                         }
                         yield return new WaitForSeconds(0.5f);
                     }
@@ -1069,12 +1127,30 @@ public class BluePlayer : MonoBehaviour
                             {
                                 ghost1.GetComponent<Ghost>().ReduceLife();
                                 Attack(ghost1);
+                                if (powerSecondSouffle)
+                                {
+                                    nbActionEffect -= 2;
+                                }
+                                else if (!powerSouffleCeleste)
+                                {
+                                    nbActionEffect -= 1;
+                                }
+                                nbActionBattle -= 1;
                             }
                         }
                         else
                         {
                             ghost1.GetComponent<Ghost>().ReduceLife();
                             Attack(ghost1);
+                            if (powerSecondSouffle)
+                            {
+                                nbActionEffect -= 2;
+                            }
+                            else if (!powerSouffleCeleste)
+                            {
+                                nbActionEffect -= 1;
+                            }
+                            nbActionBattle -= 1;
                         }
                         yield return new WaitForSeconds(0.5f);
                     }
@@ -1091,12 +1167,30 @@ public class BluePlayer : MonoBehaviour
                         {
                             ghost2.GetComponent<Ghost>().ReduceLife();
                             Attack(ghost2);
+                            if (powerSecondSouffle)
+                            {
+                                nbActionEffect -= 2;
+                            }
+                            else if (!powerSouffleCeleste)
+                            {
+                                nbActionEffect -= 1;
+                            }
+                            nbActionBattle -= 1;
                         }
                     }
                     else
                     {
                         ghost2.GetComponent<Ghost>().ReduceLife();
                         Attack(ghost2);
+                        if (powerSecondSouffle)
+                        {
+                            nbActionEffect -= 2;
+                        }
+                        else if (!powerSouffleCeleste)
+                        {
+                            nbActionEffect -= 1;
+                        }
+                        nbActionBattle -= 1;
                     }
                     yield return new WaitForSeconds(0.5f);
                 }
@@ -1112,12 +1206,30 @@ public class BluePlayer : MonoBehaviour
                         {
                             ghost1.GetComponent<Ghost>().ReduceLife();
                             Attack(ghost1);
+                            if (powerSecondSouffle)
+                            {
+                                nbActionEffect -= 2;
+                            }
+                            else if (!powerSouffleCeleste)
+                            {
+                                nbActionEffect -= 1;
+                            }
+                            nbActionBattle -= 1;
                         }
                     }
                     else
                     {
                         ghost1.GetComponent<Ghost>().ReduceLife();
                         Attack(ghost1);
+                        if (powerSecondSouffle)
+                        {
+                            nbActionEffect -= 2;
+                        }
+                        else if (!powerSouffleCeleste)
+                        {
+                            nbActionEffect -= 1;
+                        }
+                        nbActionBattle -= 1;
                     }
                     yield return new WaitForSeconds(0.5f);
                 }
@@ -1132,15 +1244,6 @@ public class BluePlayer : MonoBehaviour
             canLaunchBlackDice = true;
             gameObject.GetComponent<Deplacement>().enabled = true;
             updateUI();
-            if (powerSecondSouffle)
-            {
-                nbActionEffect -= 2;
-            }
-            else if (!powerSouffleCeleste)
-            {
-                nbActionEffect -= 1;
-            }
-            nbActionBattle -= 1;
         }
     }
 

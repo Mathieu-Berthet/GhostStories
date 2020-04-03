@@ -167,10 +167,10 @@ MonoBehaviour:
   hasUnactivePriestCirclePower: 0
   hasHauntedGhostAdvancedPower: 0
   hasMustBeLonelyOnLinePower: 0
-  hasInsensiblePower: 0
+  hasInsensiblePower: 1
   hasHauntedGhostPower: 0
   hasUnactiveWhiteFacePower: 0
-  hasMustBeKillWithBouddhaPower: 0
+  hasMustBeUninsensibleWithBouddhaPower: 1
   hasWinQiOrYinYangTokenPower: 0
   hasWinTAOTokenPower: 0
   hasWinQiAndYinYangPower: 1
@@ -203,39 +203,13 @@ MonoBehaviour:
   firstTileCheck: {fileID: 0}
   secondTileCheck: {fileID: 0}
   thirdTileCheck: {fileID: 0}
-  tabTiles:
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  isInArray: 0
-  tabPlacement:
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  boardParent: {fileID: 0}
+  layerNightMare:
+    serializedVersion: 2
+    m_Bits: 0
+  layerTile:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!212 &212352730812476892
 SpriteRenderer:
   m_ObjectHideFlags: 1

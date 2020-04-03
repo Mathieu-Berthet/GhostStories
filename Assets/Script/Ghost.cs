@@ -41,7 +41,7 @@ public class Ghost : MonoBehaviour {
     public bool hasInsensiblePower;
     public bool hasHauntedGhostPower;
     public bool hasUnactiveWhiteFacePower;
-    public bool hasMustBeKillWithBouddhaPower;
+    public bool hasMustBeUninsensibleWithBouddhaPower;
     public bool hasWinQiOrYinYangTokenPower;
     public bool hasWinTAOTokenPower;
     public bool hasWinQiAndYinYangPower;
@@ -159,6 +159,10 @@ public class Ghost : MonoBehaviour {
         if(hasMustBeLonelyOnLinePower)
         {
             power.CheckIfLonely();
+        }
+        if (hasMustBeUninsensibleWithBouddhaPower)
+        {
+            power.UninsensibleWithBouddha();
         }
 
         if (player.name == "BluePlayer")

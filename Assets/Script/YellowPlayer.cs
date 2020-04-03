@@ -169,11 +169,14 @@ public class YellowPlayer : MonoBehaviour
     public Text textNbWhiteFace;
     public Text infosWhiteFace;
     public Text textInfoPhase;
+    public Text textInfoPower;
     public Text textMort;
     public Text textInfoTuile;
     public Text textNbDice;
     public Text textTurn;
     public Text infoPower;
+
+    public string descriptionPowerYellow;
 
     //Déplacement
     [Header("Le déplacement")]
@@ -423,17 +426,40 @@ public class YellowPlayer : MonoBehaviour
             panelJeton.SetActive(!panelJeton.activeSelf);
         }
 
-        if (gm.state == GameManager.STATE_GAME.STATE_DRAW)
+        if (gm.state == GameManager.STATE_GAME.STATE_DRAW && yellowTurn)
         {
             textInfoPhase.text = " Phase de pioche : \n - Il vous faut piochez une carte fantôme (Clic droit souris)";
+            textInfoPower.text = descriptionPowerYellow;
         }
-        else if (gm.state == GameManager.STATE_GAME.STATE_MOVE)
+        else if (gm.state == GameManager.STATE_GAME.STATE_MOVE && yellowTurn)
         {
             textInfoPhase.text = " Phase de déplacement : \n - Veuillez choisir où vous voulez vous déplacer";
+            textInfoPower.text = descriptionPowerYellow;
         }
-        else if (gm.state == GameManager.STATE_GAME.STATE_PLAYER)
+        else if (gm.state == GameManager.STATE_GAME.STATE_PLAYER && yellowTurn)
         {
-            textInfoPhase.text = " Phase de jeu. Vous pouvez : \n - Attaquer un fantôme se trouvant devant vous (D), \n - Utilisez le pouvoir de la tuile sur laquelle vous vous trouvez (E)";
+            textInfoPhase.text = " Phase de jeu. Vous pouvez : \n - Attaquer un fantôme se trouvant devant vous (D), \n - Utilisez le pouvoir de la tuile sur laquelle vous vous trouvez (E), \n - Utilisez votre jeton Yin Yang";
+            textInfoPower.text = descriptionPowerYellow;
+        }
+
+        if (Input.GetKeyDown(KeyCode.P) && yellowTurn)
+        {
+            powerMantraAffaiblissement = false;
+            powerPocheSansFond = true;
+        }
+        else if (Input.GetKeyDown(KeyCode.M) && yellowTurn)
+        {
+            powerMantraAffaiblissement = true;
+            powerPocheSansFond = false;
+        }
+
+        if (powerMantraAffaiblissement)
+        {
+            descriptionPowerYellow = "VOTRE POUVOIR : \n - Vous pouvez posez votre jeton mantra sur l'un des fantômes. Il perd 1 point de vie";
+        }
+        else if (powerPocheSansFond)
+        {
+            descriptionPowerYellow = "VOTRE POUVOIR : \n - Vous pouvez récupérer un jeton de la couleur de votre choix";
         }
 
         /*if(Input.GetKeyDown(KeyCode.A))
@@ -652,6 +678,18 @@ public class YellowPlayer : MonoBehaviour
                         canLaunchBlackDice = true;
                         hasDraw = false;
                         useGhostPower = false;
+                        if (card != null && card.GetComponent<Ghost>().entryPower)
+                        {
+                            if (card.GetComponent<Ghost>().hasDrawAGhostPower)
+                            {
+                                useGhostPower = true;
+                            }
+                            card.GetComponent<Ghost>().UseEntryPower(gameObject);
+                        }
+                        if (card.name == "Uncatchable(Clone)")
+                        {
+                            card.GetComponent<GhostPower>().UninsensibleWithBouddha();
+                        }
                     }
                 }
                 else
@@ -695,15 +733,15 @@ public class YellowPlayer : MonoBehaviour
                     canLaunchBlackDice = true;
                     hasDraw = false;
                     useGhostPower = false;
+                    if (card != null && card.GetComponent<Ghost>().entryPower)
+                    {
+                        if (card.GetComponent<Ghost>().hasDrawAGhostPower)
+                        {
+                            useGhostPower = true;
+                        }
+                        card.GetComponent<Ghost>().UseEntryPower(gameObject);
+                    }
                 }
-            }
-            if (card != null && card.GetComponent<Ghost>().entryPower)
-            {
-                if (card.GetComponent<Ghost>().hasDrawAGhostPower)
-                {
-                    useGhostPower = true;
-                }
-                card.GetComponent<Ghost>().UseEntryPower(gameObject);
             }
 
             if (gm.state == GameManager.STATE_GAME.STATE_DRAW && !useGhostPower)
@@ -1146,34 +1184,140 @@ public class YellowPlayer : MonoBehaviour
                     if (priority == ghost1.name)
                     {
                         panelPrio.SetActive(false);
-                        ghost1.GetComponent<Ghost>().ReduceLife();
-                        Attack(ghost1);
+                        if (ghost1.name == "HowlingNightmare(Clone)")
+                        {
+                            if (ghost1.GetComponent<Ghost>().hasMustBeLonelyOnLinePower)
+                            {
+                                ghost1.GetComponent<GhostPower>().CheckIfLonely();
+                            }
+                            if (ghost1.GetComponent<GhostPower>().lineIsEmpty)
+                            {
+                                ghost1.GetComponent<Ghost>().ReduceLife();
+                                Attack(ghost1);
+                            }
+                        }
+                        else
+                        {
+                            ghost1.GetComponent<Ghost>().ReduceLife();
+                            Attack(ghost1);
+                        }
                         yield return new WaitForSeconds(1.5f);
-                        ghost2.GetComponent<Ghost>().ReduceLife();
-                        Attack(ghost2);
+                        if (ghost2.name == "HowlingNightmare(Clone)")
+                        {
+                            if (ghost2.GetComponent<Ghost>().hasMustBeLonelyOnLinePower)
+                            {
+                                ghost2.GetComponent<GhostPower>().CheckIfLonely();
+                            }
+                            if (ghost2.GetComponent<GhostPower>().lineIsEmpty)
+                            {
+                                ghost2.GetComponent<Ghost>().ReduceLife();
+                                Attack(ghost2);
+                                nbActionEffect -= 1;
+                                nbActionBattle -= 1;
+                            }
+                        }
+                        else
+                        {
+                            ghost2.GetComponent<Ghost>().ReduceLife();
+                            Attack(ghost2);
+                            nbActionEffect -= 1;
+                            nbActionBattle -= 1;
+                        }
                         yield return new WaitForSeconds(0.5f);
                     }
                     else
                     {
                         panelPrio.SetActive(false);
-                        ghost2.GetComponent<Ghost>().ReduceLife();
-                        Attack(ghost2);
+                        if (ghost2.name == "HowlingNightmare(Clone)")
+                        {
+                            if (ghost2.GetComponent<Ghost>().hasMustBeLonelyOnLinePower)
+                            {
+                                ghost2.GetComponent<GhostPower>().CheckIfLonely();
+                            }
+                            if (ghost2.GetComponent<GhostPower>().lineIsEmpty)
+                            {
+                                ghost2.GetComponent<Ghost>().ReduceLife();
+                                Attack(ghost2);
+                            }
+                        }
+                        else
+                        {
+                            ghost2.GetComponent<Ghost>().ReduceLife();
+                            Attack(ghost2);
+                        }
                         yield return new WaitForSeconds(1.5f);
-                        ghost1.GetComponent<Ghost>().ReduceLife();
-                        Attack(ghost1);
+                        if (ghost1.name == "HowlingNightmare(Clone)")
+                        {
+                            if (ghost1.GetComponent<Ghost>().hasMustBeLonelyOnLinePower)
+                            {
+                                ghost1.GetComponent<GhostPower>().CheckIfLonely();
+                            }
+                            if (ghost1.GetComponent<GhostPower>().lineIsEmpty)
+                            {
+                                ghost1.GetComponent<Ghost>().ReduceLife();
+                                Attack(ghost1);
+                                nbActionEffect -= 1;
+                                nbActionBattle -= 1;
+                            }
+                        }
+                        else
+                        {
+                            ghost1.GetComponent<Ghost>().ReduceLife();
+                            Attack(ghost1);
+                            nbActionEffect -= 1;
+                            nbActionBattle -= 1;
+                        }
                         yield return new WaitForSeconds(0.5f);
                     }
                 }
                 else if (ghost1 == null && ghost2 != null)
                 {
-                    ghost2.GetComponent<Ghost>().ReduceLife();
-                    Attack(ghost2);
+                    if (ghost2.name == "HowlingNightmare(Clone)")
+                    {
+                        if (ghost2.GetComponent<Ghost>().hasMustBeLonelyOnLinePower)
+                        {
+                            ghost2.GetComponent<GhostPower>().CheckIfLonely();
+                        }
+                        if (ghost2.GetComponent<GhostPower>().lineIsEmpty)
+                        {
+                            ghost2.GetComponent<Ghost>().ReduceLife();
+                            Attack(ghost2);
+                            nbActionEffect -= 1;
+                            nbActionBattle -= 1;
+                        }
+                    }
+                    else
+                    {
+                        ghost2.GetComponent<Ghost>().ReduceLife();
+                        Attack(ghost2);
+                        nbActionEffect -= 1;
+                        nbActionBattle -= 1;
+                    }
                     yield return new WaitForSeconds(0.5f);
                 }
                 else if (ghost1 != null && ghost2 == null)
                 {
-                    ghost1.GetComponent<Ghost>().ReduceLife();
-                    Attack(ghost1);
+                    if (ghost1.name == "HowlingNightmare(Clone)")
+                    {
+                        if (ghost1.GetComponent<Ghost>().hasMustBeLonelyOnLinePower)
+                        {
+                            ghost1.GetComponent<GhostPower>().CheckIfLonely();
+                        }
+                        if (ghost1.GetComponent<GhostPower>().lineIsEmpty)
+                        {
+                            ghost1.GetComponent<Ghost>().ReduceLife();
+                            Attack(ghost1);
+                            nbActionEffect -= 1;
+                            nbActionBattle -= 1;
+                        }
+                    }
+                    else
+                    {
+                        ghost1.GetComponent<Ghost>().ReduceLife();
+                        Attack(ghost1);
+                        nbActionEffect -= 1;
+                        nbActionBattle -= 1;
+                    }
                     yield return new WaitForSeconds(0.5f);
                 }
             }
@@ -1187,8 +1331,6 @@ public class YellowPlayer : MonoBehaviour
             canLaunchBlackDice = true;
             gameObject.GetComponent<Deplacement>().enabled = true;
             updateUI();
-            nbActionEffect -= 1;
-            nbActionBattle -= 1;
         }
     }
 
