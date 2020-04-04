@@ -137,6 +137,11 @@ public class YellowPlayer : MonoBehaviour
     public GameObject panelInfoGhostPower;
     public GameObject panelPrio;
     public GameObject panelBouddha;
+    public GameObject panelYinYang;
+    public GameObject panelTile;
+
+    public string effectYinYang;
+    public string tileYinYang;
 
     public string colorPlayer = "blue";
 
@@ -153,6 +158,8 @@ public class YellowPlayer : MonoBehaviour
     public bool yellowTurn;
     public bool useRedPower;
     public bool useWindCelestialPower;
+    public bool chooseEffectYinYang;
+    public bool chooseTile;
 
     //Les différents textes
     [Header("Les textes")]
@@ -175,6 +182,8 @@ public class YellowPlayer : MonoBehaviour
     public Text textNbDice;
     public Text textTurn;
     public Text infoPower;
+    public Text textYinYang;
+    public Text textUnhaunted;
 
     public string descriptionPowerYellow;
 
@@ -483,6 +492,11 @@ public class YellowPlayer : MonoBehaviour
                 state = STATE_GAME.STATE_DRAW;
             }
         }*/
+
+        if (Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            StartCoroutine(UseYinYangToken());
+        }
 
         if (gm.state == GameManager.STATE_GAME.STATE_GHOSTPOWER && yellowTurn)
         {
@@ -3511,6 +3525,140 @@ public class YellowPlayer : MonoBehaviour
                 break;
         }
         choose = true;
+    }
+
+    public void SetYinYang(Button buttonClick)
+    {
+        if (yellowTurn)
+        {
+            effectYinYang = buttonClick.transform.GetChild(0).GetComponent<Text>().text;
+            chooseEffectYinYang = true;
+        }
+    }
+
+    public void SetTileYinYang(Button buttonClick)
+    {
+        if (yellowTurn)
+        {
+            tileYinYang = buttonClick.transform.GetChild(0).GetComponent<Text>().text;
+            chooseTile = true;
+        }
+    }
+
+    public IEnumerator UseYinYangToken()
+    {
+        if (yellowTurn)
+        {
+            chooseEffectYinYang = false;
+            panelYinYang.SetActive(true);
+            //On choisit quel effet on veut faire
+            while (!chooseEffectYinYang)
+            {
+                yield return new WaitForSeconds(1.0f);
+            }
+            if (chooseEffectYinYang)
+            {
+                panelYinYang.SetActive(false);
+                chooseEffectYinYang = false;
+            }
+
+            //On choisit la tuile
+            textUnhaunted.text = "Veuillez choisir la tuile sur laquelle vous voulez agir : ";
+            panelTile.SetActive(true);
+            while (!chooseTile)
+            {
+                yield return new WaitForSeconds(1.0f);
+            }
+            if (chooseTile)
+            {
+                panelTile.SetActive(false);
+                chooseTile = false;
+            }
+            switch (effectYinYang)
+            {
+                case "Déshanter une tuile":
+                    switch (tileYinYang)
+                    {
+                        case "Maison du The":
+                            houseOfTea.GetComponent<HouseOfTea>().hauntedTile = false;
+                            houseOfTea.GetComponent<HouseOfTea>().Unhaunted();
+                            break;
+                        case "Hutte de la Sorciere":
+                            witchHut.GetComponent<HutOfWitch>().hauntedTile = false;
+                            witchHut.GetComponent<HutOfWitch>().Unhaunted();
+                            break;
+                        case "Echoppe de L'herboriste":
+                            herbalistStall.GetComponent<StallOfHerbalist>().hauntedTile = false;
+                            herbalistStall.GetComponent<StallOfHerbalist>().Unhaunted();
+                            break;
+                        case "Autel Taoiste":
+                            taoisteAutel.GetComponent<TaoisteAutel>().hauntedTile = false;
+                            taoisteAutel.GetComponent<TaoisteAutel>().Unhaunted();
+                            break;
+                        case "Cimetiere":
+                            graveyard.GetComponent<Graveyard>().hauntedTile = false;
+                            graveyard.GetComponent<Graveyard>().Unhaunted();
+                            break;
+                        case "Pavillon du Vent Celeste":
+                            windCelestialFlag.GetComponent<WindCelestialFlag>().hauntedTile = false;
+                            windCelestialFlag.GetComponent<WindCelestialFlag>().Unhaunted();
+                            break;
+                        case "Tour du Veilleur de Nuit":
+                            nightTower.GetComponent<NightTower>().hauntedTile = false;
+                            nightTower.GetComponent<NightTower>().Unhaunted();
+                            break;
+                        case "Cercle de priere":
+                            priestCircle.GetComponent<PriestCircle>().hauntedTile = false;
+                            priestCircle.GetComponent<PriestCircle>().Unhaunted();
+                            break;
+                        case "Temple Bouddhiste":
+                            bouddhisteTemple.GetComponent<BouddhisteTemple>().hauntedTile = false;
+                            bouddhisteTemple.GetComponent<BouddhisteTemple>().Unhaunted();
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+                case "Utiliser une tuile":
+                    switch (tileYinYang)
+                    {
+                        case "Maison du The":
+                            StartCoroutine(houseOfTea.GetComponent<HouseOfTea>().GainTokenAndQI(gameObject));
+                            break;
+                        case "Hutte de la Sorciere":
+                            StartCoroutine(witchHut.GetComponent<HutOfWitch>().KillGhost(gameObject));
+                            break;
+                        case "Echoppe de L'herboriste":
+                            StartCoroutine(herbalistStall.GetComponent<StallOfHerbalist>().getToken(gameObject));
+                            break;
+                        case "Autel Taoiste":
+                            StartCoroutine(taoisteAutel.GetComponent<TaoisteAutel>().UnhauntTile(gameObject));
+                            break;
+                        case "Cimetiere":
+                            graveyard.GetComponent<Graveyard>().Resurrect(gameObject);
+                            break;
+                        case "Pavillon du Vent Celeste":
+                            StartCoroutine(windCelestialFlag.GetComponent<WindCelestialFlag>().MovePlayerAndGhost(gameObject));
+                            break;
+                        case "Tour du Veilleur de Nuit":
+                            StartCoroutine(nightTower.GetComponent<NightTower>().RetreatGhost(gameObject));
+                            break;
+                        case "Cercle de priere":
+                            StartCoroutine(priestCircle.GetComponent<PriestCircle>().reduceGhostLife(gameObject));
+                            break;
+                        case "Temple Bouddhiste":
+                            bouddhisteTemple.GetComponent<BouddhisteTemple>().getBouddha(gameObject);
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+                default:
+                    break;
+            }
+            nbYinYangYellowToken = 0;
+            update = true;
+        }
     }
 
 }

@@ -64,8 +64,8 @@ public class TaoisteAutel : MonoBehaviour
                         Unhaunted();
                         break;
                     case "Cimetiere":
-                        player.GetComponent<BluePlayer>().taoisteAutel.GetComponent<TaoisteAutel>().hauntedTile = false;
-                        player.GetComponent<BluePlayer>().taoisteAutel.GetComponent<TaoisteAutel>().Unhaunted();
+                        player.GetComponent<BluePlayer>().graveyard.GetComponent<Graveyard>().hauntedTile = false;
+                        player.GetComponent<BluePlayer>().graveyard.GetComponent<Graveyard>().Unhaunted();
                         break;
                     case "Pavillon du Vent Celeste":
                         player.GetComponent<BluePlayer>().windCelestialFlag.GetComponent<WindCelestialFlag>().hauntedTile = false;
@@ -130,8 +130,8 @@ public class TaoisteAutel : MonoBehaviour
                         Unhaunted();
                         break;
                     case "Cimetiere":
-                        player.GetComponent<YellowPlayer>().taoisteAutel.GetComponent<TaoisteAutel>().hauntedTile = false;
-                        player.GetComponent<YellowPlayer>().taoisteAutel.GetComponent<TaoisteAutel>().Unhaunted();
+                        player.GetComponent<YellowPlayer>().graveyard.GetComponent<Graveyard>().hauntedTile = false;
+                        player.GetComponent<YellowPlayer>().graveyard.GetComponent<Graveyard>().Unhaunted();
                         break;
                     case "Pavillon du Vent Celeste":
                         player.GetComponent<YellowPlayer>().windCelestialFlag.GetComponent<WindCelestialFlag>().hauntedTile = false;
@@ -195,8 +195,8 @@ public class TaoisteAutel : MonoBehaviour
                         Unhaunted();
                         break;
                     case "Cimetiere":
-                        player.GetComponent<RedPlayer>().taoisteAutel.GetComponent<TaoisteAutel>().hauntedTile = false;
-                        player.GetComponent<RedPlayer>().taoisteAutel.GetComponent<TaoisteAutel>().Unhaunted();
+                        player.GetComponent<RedPlayer>().graveyard.GetComponent<Graveyard>().hauntedTile = false;
+                        player.GetComponent<RedPlayer>().graveyard.GetComponent<Graveyard>().Unhaunted();
                         break;
                     case "Pavillon du Vent Celeste":
                         player.GetComponent<RedPlayer>().windCelestialFlag.GetComponent<WindCelestialFlag>().hauntedTile = false;
@@ -260,8 +260,8 @@ public class TaoisteAutel : MonoBehaviour
                         Unhaunted();
                         break;
                     case "Cimetiere":
-                        player.GetComponent<GreenPlayer>().taoisteAutel.GetComponent<TaoisteAutel>().hauntedTile = false;
-                        player.GetComponent<GreenPlayer>().taoisteAutel.GetComponent<TaoisteAutel>().Unhaunted();
+                        player.GetComponent<GreenPlayer>().graveyard.GetComponent<Graveyard>().hauntedTile = false;
+                        player.GetComponent<GreenPlayer>().graveyard.GetComponent<Graveyard>().Unhaunted();
                         break;
                     case "Pavillon du Vent Celeste":
                         player.GetComponent<GreenPlayer>().windCelestialFlag.GetComponent<WindCelestialFlag>().hauntedTile = false;
