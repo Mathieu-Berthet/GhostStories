@@ -10,6 +10,7 @@ public class PriestCircle : MonoBehaviour
     [SerializeField]
     private GameObject token;
     public GameObject playerSave;
+    public GameObject fogHaunted;
 
     public bool hauntedTile = false;
 
@@ -339,6 +340,7 @@ public class PriestCircle : MonoBehaviour
     {
         if(hauntedTile)
         {
+            fogHaunted.transform.GetChild(6).GetComponent<ParticleSystem>().Play();
             gameObject.GetComponent<MeshRenderer>().material.color = new Color(0.25f, 0.25f, 0.25f, 1);
             RemovePawn();
         }

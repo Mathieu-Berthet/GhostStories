@@ -11,6 +11,7 @@ public class BouddhisteTemple : MonoBehaviour {
 
     public GameObject bouddhaFirst;
     public GameObject bouddhaSecond;
+    public GameObject fogHaunted;
 
     public Text infos;
 	// Use this for initialization
@@ -38,8 +39,8 @@ public class BouddhisteTemple : MonoBehaviour {
                 player.GetComponent<BluePlayer>().NbBouddha += 1;
                 player.GetComponent<BluePlayer>().bouddhaOne = bouddhaFirst;
                 bouddhaFirst.transform.parent = player.transform;
-                bouddhaFirst.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
-                bouddhaFirst.SetActive(false);
+                bouddhaFirst.transform.localPosition = new Vector3(0.0f, 3.0f, 0.0f);
+                bouddhaFirst.SetActive(true);
                 //Faire récupérer le 2e si pouvoir x2
                 player.GetComponent<BluePlayer>().update = true;
                 player.GetComponent<Deplacement>().enabled = true;
@@ -53,8 +54,8 @@ public class BouddhisteTemple : MonoBehaviour {
                 player.GetComponent<YellowPlayer>().NbBouddha += 1;
                 player.GetComponent<YellowPlayer>().bouddhaOne = bouddhaFirst;
                 bouddhaFirst.transform.parent = player.transform;
-                bouddhaFirst.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
-                bouddhaFirst.SetActive(false);
+                bouddhaFirst.transform.localPosition = new Vector3(0.0f, 3.0f, 0.0f);
+                bouddhaFirst.SetActive(true);
                 player.GetComponent<YellowPlayer>().update = true;
                 player.GetComponent<Deplacement>().enabled = true;
                 player.GetComponent<YellowPlayer>().canLaunchDice = true;
@@ -66,8 +67,8 @@ public class BouddhisteTemple : MonoBehaviour {
                 player.GetComponent<RedPlayer>().NbBouddha += 1;
                 player.GetComponent<RedPlayer>().bouddhaOne = bouddhaFirst;
                 bouddhaFirst.transform.parent = player.transform;
-                bouddhaFirst.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
-                bouddhaFirst.SetActive(false);
+                bouddhaFirst.transform.localPosition = new Vector3(0.0f, 3.0f, 0.0f);
+                bouddhaFirst.SetActive(true);
                 player.GetComponent<RedPlayer>().update = true;
                 player.GetComponent<Deplacement>().enabled = true;
                 player.GetComponent<RedPlayer>().canLaunchDice = true;
@@ -79,8 +80,8 @@ public class BouddhisteTemple : MonoBehaviour {
                 player.GetComponent<GreenPlayer>().NbBouddha += 1;
                 player.GetComponent<GreenPlayer>().bouddhaOne = bouddhaFirst;
                 bouddhaFirst.transform.parent = player.transform;
-                bouddhaFirst.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
-                bouddhaFirst.SetActive(false);
+                bouddhaFirst.transform.localPosition = new Vector3(0.0f, 3.0f, 0.0f);
+                bouddhaFirst.SetActive(true);
                 player.GetComponent<GreenPlayer>().update = true;
                 player.GetComponent<Deplacement>().enabled = true;
                 player.GetComponent<GreenPlayer>().canLaunchDice = true;
@@ -130,6 +131,7 @@ public class BouddhisteTemple : MonoBehaviour {
     {
         if (hauntedTile)
         {
+            fogHaunted.transform.GetChild(6).GetComponent<ParticleSystem>().Play();
             gameObject.GetComponent<MeshRenderer>().material.color = new Color(0.25f, 0.25f, 0.25f, 1);
         }
     }

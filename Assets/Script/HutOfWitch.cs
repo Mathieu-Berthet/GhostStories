@@ -14,6 +14,7 @@ public class HutOfWitch : MonoBehaviour
     public GameObject panelRedPlace;
     public GameObject panelGreenPlace;
     public GameObject panelYellowPlace;
+    public GameObject fogHaunted;
 
     public BoardPosition board;
     public Text infos;
@@ -32,10 +33,7 @@ public class HutOfWitch : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        if(hauntedTile)
-        {
-            haunted();
-        }
+
 	}
 
     public IEnumerator KillGhost(GameObject player)
@@ -265,7 +263,9 @@ public class HutOfWitch : MonoBehaviour
     {
         if (hauntedTile)
         {
+            fogHaunted.transform.GetChild(6).GetComponent<ParticleSystem>().Play();
             gameObject.GetComponent<MeshRenderer>().material.color = new Color(0.25f, 0.25f, 0.25f, 1);
+            
         }
     }
 

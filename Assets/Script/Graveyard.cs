@@ -12,6 +12,8 @@ public class Graveyard : MonoBehaviour
     private CubeScript cube;
     public Text infos;
 
+    public GameObject fogHaunted;
+
     public string resultFace;
 
     public bool hauntedTile = false;
@@ -117,6 +119,7 @@ public class Graveyard : MonoBehaviour
     {
         if (hauntedTile)
         {
+            fogHaunted.transform.GetChild(6).GetComponent<ParticleSystem>().Play();
             gameObject.GetComponent<MeshRenderer>().material.color = new Color(0.25f, 0.25f, 0.25f, 1);
         }
     }

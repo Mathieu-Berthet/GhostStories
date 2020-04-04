@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class StallOfHerbalist : MonoBehaviour
 {
     public GameManager gm;
+    public GameObject fogHaunted;
 
     [SerializeField]
     private GameObject dice;
@@ -414,6 +415,7 @@ public class StallOfHerbalist : MonoBehaviour
     {
         if (hauntedTile)
         {
+            fogHaunted.transform.GetChild(6).GetComponent<ParticleSystem>().Play();
             gameObject.GetComponent<MeshRenderer>().material.color = new Color(0.25f, 0.25f, 0.25f, 1);
         }
     }

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class WindCelestialFlag : MonoBehaviour {
 
     public GameManager gm;
+    public GameObject fogHaunted;
 
     [Header("Les panels")]
     public GameObject panelBoardPlayer;
@@ -248,6 +249,7 @@ public class WindCelestialFlag : MonoBehaviour {
     {
         if (hauntedTile)
         {
+            fogHaunted.transform.GetChild(6).GetComponent<ParticleSystem>().Play();
             gameObject.GetComponent<MeshRenderer>().material.color = new Color(0.25f, 0.25f, 0.25f, 1);
         }
     }

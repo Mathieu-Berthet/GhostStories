@@ -8,7 +8,8 @@ public class HouseOfTea : MonoBehaviour
     public GameManager gm;
 
     public GameObject playerSave;
-    
+    public GameObject fogHaunted;
+
     public Text infoHouse;
     public Text infos;
     
@@ -397,6 +398,7 @@ public class HouseOfTea : MonoBehaviour
     {
         if (hauntedTile)
         {
+            fogHaunted.transform.GetChild(6).GetComponent<ParticleSystem>().Play();
             gameObject.GetComponent<MeshRenderer>().material.color = new Color(0.25f, 0.25f, 0.25f, 1);
         }
     }

@@ -180,6 +180,7 @@ public class RedPlayer : MonoBehaviour
     public Text textTurn;
     public Text textYinYang;
     public Text textUnhaunted;
+    public Text textTilePowerDescription;
 
     public string descriptionPowerRouge;
 
@@ -495,6 +496,11 @@ public class RedPlayer : MonoBehaviour
             {
                 StartCoroutine(DanseDesVentJumeaux());
             }
+        }
+
+        if (redTurn)
+        {
+            checkTilePower(tileName);
         }
 
         checkGhost();
@@ -3481,6 +3487,42 @@ public class RedPlayer : MonoBehaviour
             }
             nbYinYangRedToken = 0;
             update = true;
+        }
+    }
+
+    public void checkTilePower(string tile)
+    {
+        switch (tile)
+        {
+            case "MaisonThe":
+                textTilePowerDescription.text = "Maison de Thé: \n\n- Gagnez 1 QI et 1 jeton de la couleur de votre choix, puis piochez une carte fantôme.";
+                break;
+            case "HutteSorciere":
+                textTilePowerDescription.text = "Hutte de la sorcière : \n\n- Perdez 1 QI pour éliminer n’importe quel fantôme du plateau.Les pouvoirs de ce dernier ne sont pas appliqués.Vous ne pouvez pas éliminer les boss de cette manière. Pas de récompense/malus en éliminant un fantôme de cette manière.";
+                break;
+            case "EchoppeHerboriste":
+                textTilePowerDescription.text = "Echoppe de l’Herboriste : \n\n- Lancez 2 dés et obtenez les jetons des couleurs correspondantes(blanc compte pour n’importe qu’elle couleur). Mais attention, s’il n’y a plus assez de type de jeton dans la réserve, vous ne gagnez rien.";
+                break;
+            case "AutelTaoiste":
+                textTilePowerDescription.text = "Autel Taoiste: \n\n- Déshantez une tuile puis piochez une carte fantôme.";
+                break;
+            case "Cimetiere":
+                textTilePowerDescription.text = "Cimetière : \n\n- Ressuscitez un joueur avec 2 QI.Puis lancez le dé noir.";
+                break;
+            case "PavillonVentCeleste":
+                textTilePowerDescription.text = "Pavillon du vent céleste : \n\n- Déplacez un autre joueur d’une case puis déplacez un fantôme sur un autre emplacement libre.";
+                break;
+            case "TourVeilleurNuit":
+                textTilePowerDescription.text = "Tour du veilleur de nuit : \n\n- Reculez tous les fantômes hanteurs d’un plateau sur leur case de départ.";
+                break;
+            case "CerclePriere":
+                textTilePowerDescription.text = "Cercle de Prière : \n\n- Permet de mettre un pion de la réserve sur la tuile et d'affaiblir tout les fantômes de la couleur concernée de 1 point. Cet effet reste jusqu’à qu’un autre joueur change la couleur du jeton.";
+                break;
+            case "TempleBouddhiste":
+                textTilePowerDescription.text = "Temple Bouddhiste : \n\n- Prenez un bouddha. A votre prochain tour, vous pouvez poser un Bouddha sur un emplacement de fantôme libre adjacent à votre position. Le pion Bouddha reste sur l’emplacement ciblé jusqu'à ce qu’il élimine un fantôme, puis revient dans le stock. Cela ne marche pas sur les boss. Vous ne recevez pas de récompense/malus en éliminant un fantôme de cette manière.";
+                break;
+            default:
+                break;
         }
     }
 }

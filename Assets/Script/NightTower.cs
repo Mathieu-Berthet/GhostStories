@@ -10,6 +10,7 @@ public class NightTower : MonoBehaviour
     public GameObject panelBoardChoice;
     public GameObject hauntingGhost;
     public GameObject ghostCard;
+    public GameObject fogHaunted;
 
     public Text infos;
     public Text infoTower;
@@ -302,6 +303,7 @@ public class NightTower : MonoBehaviour
     {
         if (hauntedTile)
         {
+            fogHaunted.transform.GetChild(6).GetComponent<ParticleSystem>().Play();
             gameObject.GetComponent<MeshRenderer>().material.color = new Color(0.25f, 0.25f, 0.25f, 1);
         }
     }
