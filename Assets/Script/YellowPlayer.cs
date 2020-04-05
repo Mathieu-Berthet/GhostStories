@@ -201,6 +201,8 @@ public class YellowPlayer : MonoBehaviour
     public Transform yellowPosTower;
     public Vector3 actualPosition;
 
+    public LayerMask layerYellow;
+
     /*public NavMeshModifier navMeshEchoppe;
     public NavMeshModifier navMeshHut;
     public NavMeshModifier navMeshHouse;
@@ -348,7 +350,7 @@ public class YellowPlayer : MonoBehaviour
     void Start ()
     {
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
-        Qi = 4; // Mode facile, seulement 3 pour les autres modes. Mais pour l'instant, test avec 4.
+        Qi = 30; // Mode facile, seulement 3 pour les autres modes. Mais pour l'instant, test avec 4.
         NbBlueToken = 0;
         NbRedToken = 0;
         NbYellowToken = 1;
@@ -372,7 +374,7 @@ public class YellowPlayer : MonoBehaviour
         gm.state = GameManager.STATE_GAME.STATE_DRAW;
         deck = GameObject.Find("Deck").GetComponent<PoolManagerDeck>();
         board = GameObject.Find("Canvas").GetComponent<BoardPosition>();
-
+        layerYellow = LayerMask.GetMask("GhostPlaces");
         canLaunchDice = true;
         canLaunchBlackDice = true;
         useTilePower = false;
@@ -396,10 +398,11 @@ public class YellowPlayer : MonoBehaviour
         }
 
 
-        /*if (Input.GetKeyDown(KeyCode.B))
+        if (Input.GetKeyDown(KeyCode.B) && yellowTurn)
         {
+            CheckDistance();
             StartCoroutine(gameObject.GetComponent<Deplacement>().PlayerDeplacement());
-        }*/
+        }
         if (Input.GetKeyDown(KeyCode.C))
         {
             StartCoroutine(PlaceBouddha());
@@ -416,7 +419,7 @@ public class YellowPlayer : MonoBehaviour
             gm.nextTurn();
         }*/
 
-        if (Input.GetKeyDown(KeyCode.D) && canLaunchDice)
+        if (Input.GetKeyDown(KeyCode.A) && canLaunchDice)
         {
             StartCoroutine(LaunchDice());
         }
@@ -424,6 +427,23 @@ public class YellowPlayer : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && canLaunchDice && canLaunchBlackDice)
         {
             UsePowerTile();
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            StartCoroutine(UseYinYangToken());
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftShift) && yellowTurn)
+        {
+            if (powerMantraAffaiblissement)
+            {
+                StartCoroutine(MantraAffaiblissement());
+            }
+            else if (powerPocheSansFond)
+            {
+                StartCoroutine(PocheSansFond());
+            }
         }
 
         if (update)
@@ -448,7 +468,7 @@ public class YellowPlayer : MonoBehaviour
         }
         else if (gm.state == GameManager.STATE_GAME.STATE_PLAYER && yellowTurn)
         {
-            textInfoPhase.text = " Phase de jeu. Vous pouvez : \n - Attaquer un fantôme se trouvant devant vous (D), \n - Utilisez le pouvoir de la tuile sur laquelle vous vous trouvez (E), \n - Utilisez votre jeton Yin Yang";
+            textInfoPhase.text = " Phase de jeu. Vous pouvez : \n - Attaquer un fantôme se trouvant devant vous (D), \n - Utilisez le pouvoir de la tuile sur laquelle vous vous trouvez (E), \n - Utilisez votre jeton Yin Yang (Ctrl Gauche), \n - Utilisez votre pouvoir (Shift Gauche)";
             textInfoPower.text = descriptionPowerYellow;
         }
 
@@ -494,11 +514,6 @@ public class YellowPlayer : MonoBehaviour
             }
         }*/
 
-        if (Input.GetKeyDown(KeyCode.LeftControl))
-        {
-            StartCoroutine(UseYinYangToken());
-        }
-
         if (gm.state == GameManager.STATE_GAME.STATE_GHOSTPOWER && yellowTurn)
         {
             gm.state = GameManager.STATE_GAME.STATE_DRAW;
@@ -518,19 +533,6 @@ public class YellowPlayer : MonoBehaviour
             updateUI();
         }
 
-
-        if(Input.GetKeyDown(KeyCode.LeftShift) && yellowTurn)
-        {
-            if(powerMantraAffaiblissement)
-            {
-                StartCoroutine(MantraAffaiblissement());
-            }
-            else if(powerPocheSansFond)
-            {
-                StartCoroutine(PocheSansFond());
-            }
-        }
-
         if (yellowTurn)
         {
             checkTilePower(tileName);
@@ -547,8 +549,11 @@ public class YellowPlayer : MonoBehaviour
         {
             hasDraw = true;
             gameObject.GetComponent<Deplacement>().enabled = false;
+            canLaunchBlackDice = false;
+            canLaunchDice = false;
             panelJeton.SetActive(false);
             textInfoPhase.gameObject.SetActive(false);
+            textInfoPower.gameObject.SetActive(false);
             textInfo.text = " ";
             if (gm.blueBoard.nbCardOnBoard == 3 && gm.redBoard.nbCardOnBoard == 3 && gm.greenBoard.nbCardOnBoard == 3 && gm.yellowBoard.nbCardOnBoard == 3)
             {
@@ -557,6 +562,9 @@ public class YellowPlayer : MonoBehaviour
                 hasDraw = false;
                 gameObject.GetComponent<Deplacement>().enabled = true;
                 textInfoPhase.gameObject.SetActive(true);
+                textInfoPower.gameObject.SetActive(true);
+                canLaunchBlackDice = true;
+                canLaunchDice = true;
                 gm.state = GameManager.STATE_GAME.STATE_MOVE;
                 return;
             }
@@ -569,6 +577,9 @@ public class YellowPlayer : MonoBehaviour
                 hasDraw = false;
                 gameObject.GetComponent<Deplacement>().enabled = true;
                 textInfoPhase.gameObject.SetActive(true);
+                textInfoPower.gameObject.SetActive(true);
+                canLaunchBlackDice = true;
+                canLaunchDice = true;
                 gm.state = GameManager.STATE_GAME.STATE_MOVE;
                 return;
             }
@@ -578,7 +589,7 @@ public class YellowPlayer : MonoBehaviour
             panelYellowPlace.SetActive(true);
             textInfo.gameObject.SetActive(true);
             drawedCard.gameObject.SetActive(true);
-            if (gm.nbCardOnDeck == 45 && gm.nbCardOnBossDeck == 10)
+            if (gm.nbCardOnDeck == 40 && gm.nbCardOnBossDeck == 10)
             {
                 card = deck.GetPoolByName(PoolNameDeck.boss).GetItem(transform, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity, true, false, 0);
                 card.transform.parent = null;
@@ -646,9 +657,11 @@ public class YellowPlayer : MonoBehaviour
                         drawedCard.gameObject.SetActive(false);
                         gameObject.GetComponent<Deplacement>().enabled = true;
                         textInfoPhase.gameObject.SetActive(true);
+                        textInfoPower.gameObject.SetActive(true);
                         panelJeton.SetActive(true);
                         useTilePower = false;
                         canLaunchBlackDice = true;
+                        canLaunchDice = true;
                         hasDraw = false;
                         useGhostPower = false;
                     }
@@ -693,9 +706,11 @@ public class YellowPlayer : MonoBehaviour
                         drawedCard.gameObject.SetActive(false);
                         gameObject.GetComponent<Deplacement>().enabled = true;
                         textInfoPhase.gameObject.SetActive(true);
+                        textInfoPower.gameObject.SetActive(true);
                         panelJeton.SetActive(true);
                         useTilePower = false;
                         canLaunchBlackDice = true;
+                        canLaunchDice = true;
                         hasDraw = false;
                         useGhostPower = false;
                         if (card != null && card.GetComponent<Ghost>().entryPower)
@@ -748,9 +763,11 @@ public class YellowPlayer : MonoBehaviour
                     drawedCard.gameObject.SetActive(false);
                     gameObject.GetComponent<Deplacement>().enabled = true;
                     textInfoPhase.gameObject.SetActive(true);
+                    textInfoPower.gameObject.SetActive(true);
                     panelJeton.SetActive(true);
                     useTilePower = false;
                     canLaunchBlackDice = true;
+                    canLaunchDice = true;
                     hasDraw = false;
                     useGhostPower = false;
                     if (card != null && card.GetComponent<Ghost>().entryPower)
@@ -965,6 +982,7 @@ public class YellowPlayer : MonoBehaviour
         {
             //Recupérer le fantôme ciblé // Seulement si le joueur a encore son jeton mantra // Doit le jouer AVANT le combat
             choose = false;
+            textInfoPhase.gameObject.SetActive(false);
             board.usingTile = true;
             yield return new WaitForSeconds(0.5f);
 
@@ -982,12 +1000,12 @@ public class YellowPlayer : MonoBehaviour
                 panelRedPlace.SetActive(false);
                 panelGreenPlace.SetActive(false);
                 panelYellowPlace.SetActive(false);
+                textInfoPhase.gameObject.SetActive(true);
                 choose = false;
             }
             GameObject newMantraToken = Instantiate(mantraToken);
             newMantraToken.transform.SetParent(ghostToWeakned.transform);
             newMantraToken.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
-            //ghostToWeakned.GetComponent<Ghost>().ReduceLife();
         }
         //Si fantome mort
         //nbMantraToken += 1;
@@ -1183,7 +1201,7 @@ public class YellowPlayer : MonoBehaviour
             textNbWhiteFace.gameObject.SetActive(false);
             yield return new WaitForSeconds(2.0f);
             gm.panelButtonChoice.SetActive(false);
-
+            Debug.Log("POUET");
             //Partie combat
             if (ghost1 != null || ghost2 != null)
             {
@@ -1204,6 +1222,7 @@ public class YellowPlayer : MonoBehaviour
                     if (priority == ghost1.name)
                     {
                         panelPrio.SetActive(false);
+                        Debug.Log("POUET1");
                         if (ghost1.name == "HowlingNightmare(Clone)")
                         {
                             if (ghost1.GetComponent<Ghost>().hasMustBeLonelyOnLinePower)
@@ -1243,11 +1262,11 @@ public class YellowPlayer : MonoBehaviour
                             nbActionEffect -= 1;
                             nbActionBattle -= 1;
                         }
-                        yield return new WaitForSeconds(0.5f);
                     }
                     else
                     {
                         panelPrio.SetActive(false);
+                        Debug.Log("POUET2");
                         if (ghost2.name == "HowlingNightmare(Clone)")
                         {
                             if (ghost2.GetComponent<Ghost>().hasMustBeLonelyOnLinePower)
@@ -1292,6 +1311,7 @@ public class YellowPlayer : MonoBehaviour
                 }
                 else if (ghost1 == null && ghost2 != null)
                 {
+                    Debug.Log("POUET3");
                     if (ghost2.name == "HowlingNightmare(Clone)")
                     {
                         if (ghost2.GetComponent<Ghost>().hasMustBeLonelyOnLinePower)
@@ -1317,6 +1337,7 @@ public class YellowPlayer : MonoBehaviour
                 }
                 else if (ghost1 != null && ghost2 == null)
                 {
+                    Debug.Log("POUET4");
                     if (ghost1.name == "HowlingNightmare(Clone)")
                     {
                         if (ghost1.GetComponent<Ghost>().hasMustBeLonelyOnLinePower)
@@ -1358,7 +1379,7 @@ public class YellowPlayer : MonoBehaviour
     {
         RaycastHit hitXdirection;
         RaycastHit hitZdirection;
-        if (Physics.Raycast(transform.position, Vector3.right, out hitXdirection, 1.5f) && Physics.Raycast(transform.position, Vector3.back, out hitZdirection, 1.5f))
+        if (Physics.Raycast(transform.position, Vector3.right, out hitXdirection, 1.5f, layerYellow) && Physics.Raycast(transform.position, Vector3.back, out hitZdirection, 1.5f, layerYellow))
         {
             Debug.DrawRay(transform.position, Vector3.right, Color.blue);
             Debug.DrawRay(transform.position, Vector3.forward, Color.red);
@@ -1367,7 +1388,7 @@ public class YellowPlayer : MonoBehaviour
             positionOne = hitXdirection.collider.gameObject;
             positionTwo = hitZdirection.collider.gameObject;
         }
-        else if (Physics.Raycast(transform.position, Vector3.back, out hitZdirection, 1.5f) && Physics.Raycast(transform.position, Vector3.left, out hitXdirection, 1.5f))
+        else if (Physics.Raycast(transform.position, Vector3.back, out hitZdirection, 1.5f, layerYellow) && Physics.Raycast(transform.position, Vector3.left, out hitXdirection, 1.5f, layerYellow))
         {
             Debug.DrawRay(transform.position, Vector3.right, Color.blue);
             Debug.DrawRay(transform.position, Vector3.forward, Color.red);
@@ -1376,7 +1397,7 @@ public class YellowPlayer : MonoBehaviour
             positionOne = hitXdirection.collider.gameObject;
             positionTwo = hitZdirection.collider.gameObject;
         }
-        else if (Physics.Raycast(transform.position, Vector3.left, out hitXdirection, 1.5f) && Physics.Raycast(transform.position, Vector3.forward, out hitZdirection, 1.5f))
+        else if (Physics.Raycast(transform.position, Vector3.left, out hitXdirection, 1.5f, layerYellow) && Physics.Raycast(transform.position, Vector3.forward, out hitZdirection, 1.5f, layerYellow))
         {
             Debug.DrawRay(transform.position, Vector3.right, Color.blue);
             Debug.DrawRay(transform.position, Vector3.forward, Color.red);
@@ -1385,7 +1406,7 @@ public class YellowPlayer : MonoBehaviour
             positionOne = hitXdirection.collider.gameObject;
             positionTwo = hitZdirection.collider.gameObject;
         }
-        else if (Physics.Raycast(transform.position, Vector3.forward, out hitZdirection, 1.5f) && Physics.Raycast(transform.position, Vector3.right, out hitXdirection, 1.5f))
+        else if (Physics.Raycast(transform.position, Vector3.forward, out hitZdirection, 1.5f, layerYellow) && Physics.Raycast(transform.position, Vector3.right, out hitXdirection, 1.5f, layerYellow))
         {
             Debug.DrawRay(transform.position, Vector3.right, Color.blue);
             Debug.DrawRay(transform.position, Vector3.forward, Color.red);
@@ -1394,7 +1415,7 @@ public class YellowPlayer : MonoBehaviour
             positionOne = hitXdirection.collider.gameObject;
             positionTwo = hitZdirection.collider.gameObject;
         }
-        else if (Physics.Raycast(transform.position, Vector3.right, out hitXdirection, 1.5f))
+        else if (Physics.Raycast(transform.position, Vector3.right, out hitXdirection, 1.5f, layerYellow))
         {
             Debug.DrawRay(transform.position, Vector3.right, Color.blue);
             Debug.DrawRay(transform.position, Vector3.forward, Color.red);
@@ -1403,7 +1424,7 @@ public class YellowPlayer : MonoBehaviour
             positionOne = hitXdirection.collider.gameObject;
             positionTwo = null;
         }
-        else if (Physics.Raycast(transform.position, Vector3.back, out hitZdirection, 1.5f))
+        else if (Physics.Raycast(transform.position, Vector3.back, out hitZdirection, 1.5f, layerYellow))
         {
             Debug.DrawRay(transform.position, Vector3.right, Color.blue);
             Debug.DrawRay(transform.position, Vector3.forward, Color.red);
@@ -1412,7 +1433,7 @@ public class YellowPlayer : MonoBehaviour
             positionOne = hitZdirection.collider.gameObject;
             positionTwo = null;
         }
-        else if (Physics.Raycast(transform.position, Vector3.left, out hitXdirection, 1.5f))
+        else if (Physics.Raycast(transform.position, Vector3.left, out hitXdirection, 1.5f, layerYellow))
         {
             Debug.DrawRay(transform.position, Vector3.right, Color.blue);
             Debug.DrawRay(transform.position, Vector3.forward, Color.red);
@@ -1421,7 +1442,7 @@ public class YellowPlayer : MonoBehaviour
             positionOne = hitXdirection.collider.gameObject;
             positionTwo = null;
         }
-        else if (Physics.Raycast(transform.position, Vector3.forward, out hitZdirection, 1.5f))
+        else if (Physics.Raycast(transform.position, Vector3.forward, out hitZdirection, 1.5f, layerYellow))
         {
             Debug.DrawRay(transform.position, Vector3.right, Color.blue);
             Debug.DrawRay(transform.position, Vector3.forward, Color.red);
@@ -1441,7 +1462,7 @@ public class YellowPlayer : MonoBehaviour
     {
         RaycastHit hitXdirection;
         RaycastHit hitZdirection;
-        if (Physics.Raycast(transform.position, Vector3.right, out hitXdirection, 1.5f) && Physics.Raycast(transform.position, Vector3.back, out hitZdirection, 1.5f))
+        if (Physics.Raycast(transform.position, Vector3.right, out hitXdirection, 1.5f, layerYellow) && Physics.Raycast(transform.position, Vector3.back, out hitZdirection, 1.5f, layerYellow))
         {
             if (hitXdirection.collider.transform.childCount > 4)
             {
@@ -1465,7 +1486,7 @@ public class YellowPlayer : MonoBehaviour
                 ghost2 = null;
             }
         }
-        else if (Physics.Raycast(transform.position, Vector3.back, out hitZdirection, 1.5f) && Physics.Raycast(transform.position, Vector3.left, out hitXdirection, 1.5f))
+        else if (Physics.Raycast(transform.position, Vector3.back, out hitZdirection, 1.5f, layerYellow) && Physics.Raycast(transform.position, Vector3.left, out hitXdirection, 1.5f, layerYellow))
         {
             if (hitZdirection.collider.transform.childCount > 4)
             {
@@ -1489,7 +1510,7 @@ public class YellowPlayer : MonoBehaviour
                 ghost2 = null;
             }
         }
-        else if (Physics.Raycast(transform.position, Vector3.left, out hitXdirection, 1.5f) && Physics.Raycast(transform.position, Vector3.forward, out hitZdirection, 1.5f))
+        else if (Physics.Raycast(transform.position, Vector3.left, out hitXdirection, 1.5f, layerYellow) && Physics.Raycast(transform.position, Vector3.forward, out hitZdirection, 1.5f, layerYellow))
         {
             if (hitXdirection.collider.transform.childCount > 4)
             {
@@ -1513,7 +1534,7 @@ public class YellowPlayer : MonoBehaviour
                 ghost2 = null;
             }
         }
-        else if (Physics.Raycast(transform.position, Vector3.forward, out hitZdirection, 1.5f) && Physics.Raycast(transform.position, Vector3.right, out hitXdirection, 1.5f))
+        else if (Physics.Raycast(transform.position, Vector3.forward, out hitZdirection, 1.5f, layerYellow) && Physics.Raycast(transform.position, Vector3.right, out hitXdirection, 1.5f, layerYellow))
         {
             if (hitZdirection.collider.transform.childCount > 4)
             {
@@ -1537,10 +1558,11 @@ public class YellowPlayer : MonoBehaviour
                 ghost2 = null;
             }
         }
-        else if (Physics.Raycast(transform.position, Vector3.right, out hitXdirection, 1.5f))
+        else if (Physics.Raycast(transform.position, Vector3.right, out hitXdirection, 1.5f, layerYellow))
         {
             if (hitXdirection.collider.transform.childCount > 4)
             {
+                Debug.Log("CICIICICIC");
                 explosion = hitXdirection.collider.transform.GetChild(0).gameObject;
                 ghost1 = hitXdirection.collider.transform.GetChild(4).gameObject;
                 ghost2 = null;
@@ -1554,7 +1576,7 @@ public class YellowPlayer : MonoBehaviour
                 explosion2 = null;
             }
         }
-        else if (Physics.Raycast(transform.position, Vector3.back, out hitZdirection, 1.5f))
+        else if (Physics.Raycast(transform.position, Vector3.back, out hitZdirection, 1.5f, layerYellow))
         {
             if (hitZdirection.collider.transform.childCount > 4)
             {
@@ -1571,7 +1593,7 @@ public class YellowPlayer : MonoBehaviour
                 explosion2 = null;
             }
         }
-        else if (Physics.Raycast(transform.position, Vector3.left, out hitXdirection, 1.5f))
+        else if (Physics.Raycast(transform.position, Vector3.left, out hitXdirection, 1.5f, layerYellow))
         {
             if (hitXdirection.collider.transform.childCount > 4)
             {
@@ -1588,7 +1610,7 @@ public class YellowPlayer : MonoBehaviour
                 explosion2 = null;
             }
         }
-        else if (Physics.Raycast(transform.position, Vector3.forward, out hitZdirection, 1.5f))
+        else if (Physics.Raycast(transform.position, Vector3.forward, out hitZdirection, 1.5f, layerYellow))
         {
             if (hitZdirection.collider.transform.childCount > 4)
             {
@@ -1644,6 +1666,7 @@ public class YellowPlayer : MonoBehaviour
 
     public void Attack(GameObject ghost)
     {
+        Debug.Log("eztrey");
         if ((ghost.GetComponent<Ghost>().canBeDestroyByDice) && ((ghost.GetComponent<Ghost>().couleur == "red" && nbRedFace >= ghost.GetComponent<Ghost>().life) || (ghost.GetComponent<Ghost>().couleur == "blue" && nbBlueFace >= ghost.GetComponent<Ghost>().life)
                     || (ghost.GetComponent<Ghost>().couleur == "green" && nbGreenFace >= ghost.GetComponent<Ghost>().life) || (ghost.GetComponent<Ghost>().couleur == "yellow" && nbYellowFace >= ghost.GetComponent<Ghost>().life)
                     || (ghost.GetComponent<Ghost>().couleur == "black" && nbBlackFace >= ghost.GetComponent<Ghost>().life)))

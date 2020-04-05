@@ -84,6 +84,7 @@ public class Deplacement : MonoBehaviour {
                     player.transform.parent = null;
                     player.GetComponent<BluePlayer>().gm.state = GameManager.STATE_GAME.STATE_PLAYER;
                     player.GetComponent<BluePlayer>().alreadyMove = true;
+                    player.GetComponent<BluePlayer>().panelJeton.SetActive(true);
                     break;
                 case "Hutte de la Sorciere":
                     player.transform.parent = player.GetComponent<BluePlayer>().bluePosHut;
@@ -91,6 +92,7 @@ public class Deplacement : MonoBehaviour {
                     player.transform.parent = null;
                     player.GetComponent<BluePlayer>().gm.state = GameManager.STATE_GAME.STATE_PLAYER;
                     player.GetComponent<BluePlayer>().alreadyMove = true;
+                    player.GetComponent<BluePlayer>().panelJeton.SetActive(true);
                     break;
                 case "Echoppe de L'herboriste":
                     player.transform.parent = player.GetComponent<BluePlayer>().bluePosStall;
@@ -98,6 +100,7 @@ public class Deplacement : MonoBehaviour {
                     player.transform.parent = null;
                     player.GetComponent<BluePlayer>().gm.state = GameManager.STATE_GAME.STATE_PLAYER;
                     player.GetComponent<BluePlayer>().alreadyMove = true;
+                    player.GetComponent<BluePlayer>().panelJeton.SetActive(true);
                     break;
                 case "Autel Taoiste":
                     player.transform.parent = player.GetComponent<BluePlayer>().bluePosAutel;
@@ -105,6 +108,7 @@ public class Deplacement : MonoBehaviour {
                     player.transform.parent = null;
                     player.GetComponent<BluePlayer>().gm.state = GameManager.STATE_GAME.STATE_PLAYER;
                     player.GetComponent<BluePlayer>().alreadyMove = true;
+                    player.GetComponent<BluePlayer>().panelJeton.SetActive(true);
                     break;
                 case "Cimetiere":
                     player.transform.parent = player.GetComponent<BluePlayer>().bluePosGraveyard;
@@ -112,6 +116,7 @@ public class Deplacement : MonoBehaviour {
                     player.transform.parent = null;
                     player.GetComponent<BluePlayer>().gm.state = GameManager.STATE_GAME.STATE_PLAYER;
                     player.GetComponent<BluePlayer>().alreadyMove = true;
+                    player.GetComponent<BluePlayer>().panelJeton.SetActive(true);
                     break;
                 case "Pavillon du Vent Celeste":
                     player.transform.parent = player.GetComponent<BluePlayer>().bluePosPavillon;
@@ -119,6 +124,7 @@ public class Deplacement : MonoBehaviour {
                     player.transform.parent = null;
                     player.GetComponent<BluePlayer>().gm.state = GameManager.STATE_GAME.STATE_PLAYER;
                     player.GetComponent<BluePlayer>().alreadyMove = true;
+                    player.GetComponent<BluePlayer>().panelJeton.SetActive(true);
                     break;
                 case "Tour du Veilleur de Nuit":
                     player.transform.parent = player.GetComponent<BluePlayer>().bluePosTower;
@@ -126,6 +132,7 @@ public class Deplacement : MonoBehaviour {
                     player.transform.parent = null;
                     player.GetComponent<BluePlayer>().gm.state = GameManager.STATE_GAME.STATE_PLAYER;
                     player.GetComponent<BluePlayer>().alreadyMove = true;
+                    player.GetComponent<BluePlayer>().panelJeton.SetActive(true);
                     break;
                 case "Cercle de priere":
                     player.transform.parent = player.GetComponent<BluePlayer>().bluePosCircle;
@@ -133,6 +140,7 @@ public class Deplacement : MonoBehaviour {
                     player.transform.parent = null;
                     player.GetComponent<BluePlayer>().gm.state = GameManager.STATE_GAME.STATE_PLAYER;
                     player.GetComponent<BluePlayer>().alreadyMove = true;
+                    player.GetComponent<BluePlayer>().panelJeton.SetActive(true);
                     break;
                 case "Temple Bouddhiste":
                     player.transform.parent = player.GetComponent<BluePlayer>().bluePosTemple;
@@ -140,10 +148,12 @@ public class Deplacement : MonoBehaviour {
                     player.transform.parent = null;
                     player.GetComponent<BluePlayer>().gm.state = GameManager.STATE_GAME.STATE_PLAYER;
                     player.GetComponent<BluePlayer>().alreadyMove = true;
+                    player.GetComponent<BluePlayer>().panelJeton.SetActive(true);
                     break;
                 case "Rester sur la tuile":
                     player.GetComponent<BluePlayer>().gm.state = GameManager.STATE_GAME.STATE_PLAYER;
                     player.GetComponent<BluePlayer>().alreadyMove = true;
+                    player.GetComponent<BluePlayer>().panelJeton.SetActive(true);
                     break;
                 default:
                     break;
@@ -173,6 +183,7 @@ public class Deplacement : MonoBehaviour {
                     player.transform.parent = null;
                     player.GetComponent<YellowPlayer>().gm.state = GameManager.STATE_GAME.STATE_PLAYER;
                     player.GetComponent<YellowPlayer>().alreadyMove = true;
+                    player.GetComponent<YellowPlayer>().panelJeton.SetActive(true);
                     break;
                 case "Hutte de la Sorciere":
                     player.transform.parent = player.GetComponent<YellowPlayer>().yellowPosHut;
@@ -180,6 +191,7 @@ public class Deplacement : MonoBehaviour {
                     player.transform.parent = null;
                     player.GetComponent<YellowPlayer>().gm.state = GameManager.STATE_GAME.STATE_PLAYER;
                     player.GetComponent<YellowPlayer>().alreadyMove = true;
+                    player.GetComponent<YellowPlayer>().panelJeton.SetActive(true);
                     break;
                 case "Echoppe de L'herboriste":
                     player.transform.parent = player.GetComponent<YellowPlayer>().yellowPosStall;
@@ -187,6 +199,7 @@ public class Deplacement : MonoBehaviour {
                     player.transform.parent = null;
                     player.GetComponent<YellowPlayer>().gm.state = GameManager.STATE_GAME.STATE_PLAYER;
                     player.GetComponent<YellowPlayer>().alreadyMove = true;
+                    player.GetComponent<YellowPlayer>().panelJeton.SetActive(true);
                     break;
                 case "Autel Taoiste":
                     player.transform.parent = player.GetComponent<YellowPlayer>().yellowPosAutel;
@@ -194,6 +207,7 @@ public class Deplacement : MonoBehaviour {
                     player.transform.parent = null;
                     player.GetComponent<YellowPlayer>().gm.state = GameManager.STATE_GAME.STATE_PLAYER;
                     player.GetComponent<YellowPlayer>().alreadyMove = true;
+                    player.GetComponent<YellowPlayer>().panelJeton.SetActive(true);
                     break;
                 case "Cimetiere":
                     player.transform.parent = player.GetComponent<YellowPlayer>().yellowPosGraveyard;
@@ -201,6 +215,7 @@ public class Deplacement : MonoBehaviour {
                     player.transform.parent = null;
                     player.GetComponent<YellowPlayer>().gm.state = GameManager.STATE_GAME.STATE_PLAYER;
                     player.GetComponent<YellowPlayer>().alreadyMove = true;
+                    player.GetComponent<YellowPlayer>().panelJeton.SetActive(true);
                     break;
                 case "Pavillon du Vent Celeste":
                     player.transform.parent = player.GetComponent<YellowPlayer>().yellowPosPavillon;
@@ -208,6 +223,7 @@ public class Deplacement : MonoBehaviour {
                     player.transform.parent = null;
                     player.GetComponent<YellowPlayer>().gm.state = GameManager.STATE_GAME.STATE_PLAYER;
                     player.GetComponent<YellowPlayer>().alreadyMove = true;
+                    player.GetComponent<YellowPlayer>().panelJeton.SetActive(true);
                     break;
                 case "Tour du Veilleur de Nuit":
                     player.transform.parent = player.GetComponent<YellowPlayer>().yellowPosTower;
@@ -215,6 +231,7 @@ public class Deplacement : MonoBehaviour {
                     player.transform.parent = null;
                     player.GetComponent<YellowPlayer>().gm.state = GameManager.STATE_GAME.STATE_PLAYER;
                     player.GetComponent<YellowPlayer>().alreadyMove = true;
+                    player.GetComponent<YellowPlayer>().panelJeton.SetActive(true);
                     break;
                 case "Cercle de priere":
                     player.transform.parent = player.GetComponent<YellowPlayer>().yellowPosCircle;
@@ -222,6 +239,7 @@ public class Deplacement : MonoBehaviour {
                     player.transform.parent = null;
                     player.GetComponent<YellowPlayer>().gm.state = GameManager.STATE_GAME.STATE_PLAYER;
                     player.GetComponent<YellowPlayer>().alreadyMove = true;
+                    player.GetComponent<YellowPlayer>().panelJeton.SetActive(true);
                     break;
                 case "Temple Bouddhiste":
                     player.transform.parent = player.GetComponent<YellowPlayer>().yellowPosTemple;
@@ -229,10 +247,12 @@ public class Deplacement : MonoBehaviour {
                     player.transform.parent = null;
                     player.GetComponent<YellowPlayer>().gm.state = GameManager.STATE_GAME.STATE_PLAYER;
                     player.GetComponent<YellowPlayer>().alreadyMove = true;
+                    player.GetComponent<YellowPlayer>().panelJeton.SetActive(true);
                     break;
                 case "Rester sur la tuile":
                     player.GetComponent<YellowPlayer>().gm.state = GameManager.STATE_GAME.STATE_PLAYER;
                     player.GetComponent<YellowPlayer>().alreadyMove = true;
+                    player.GetComponent<YellowPlayer>().panelJeton.SetActive(true);
                     break;
                 default:
                     break;
@@ -262,6 +282,7 @@ public class Deplacement : MonoBehaviour {
                     player.transform.parent = null;
                     player.GetComponent<RedPlayer>().gm.state = GameManager.STATE_GAME.STATE_PLAYER;
                     player.GetComponent<RedPlayer>().alreadyMove = true;
+                    player.GetComponent<RedPlayer>().panelJeton.SetActive(true);
                     break;
                 case "Hutte de la Sorciere":
                     player.transform.parent = player.GetComponent<RedPlayer>().redPosHut;
@@ -269,6 +290,7 @@ public class Deplacement : MonoBehaviour {
                     player.transform.parent = null;
                     player.GetComponent<RedPlayer>().gm.state = GameManager.STATE_GAME.STATE_PLAYER;
                     player.GetComponent<RedPlayer>().alreadyMove = true;
+                    player.GetComponent<RedPlayer>().panelJeton.SetActive(true);
                     break;
                 case "Echoppe de L'herboriste":
                     player.transform.parent = player.GetComponent<RedPlayer>().redPosStall;
@@ -276,6 +298,7 @@ public class Deplacement : MonoBehaviour {
                     player.transform.parent = null;
                     player.GetComponent<RedPlayer>().gm.state = GameManager.STATE_GAME.STATE_PLAYER;
                     player.GetComponent<RedPlayer>().alreadyMove = true;
+                    player.GetComponent<RedPlayer>().panelJeton.SetActive(true);
                     break;
                 case "Autel Taoiste":
                     player.transform.parent = player.GetComponent<RedPlayer>().redPosAutel;
@@ -283,6 +306,7 @@ public class Deplacement : MonoBehaviour {
                     player.transform.parent = null;
                     player.GetComponent<RedPlayer>().gm.state = GameManager.STATE_GAME.STATE_PLAYER;
                     player.GetComponent<RedPlayer>().alreadyMove = true;
+                    player.GetComponent<RedPlayer>().panelJeton.SetActive(true);
                     break;
                 case "Cimetiere":
                     player.transform.parent = player.GetComponent<RedPlayer>().redPosGraveyard;
@@ -290,6 +314,7 @@ public class Deplacement : MonoBehaviour {
                     player.transform.parent = null;
                     player.GetComponent<RedPlayer>().gm.state = GameManager.STATE_GAME.STATE_PLAYER;
                     player.GetComponent<RedPlayer>().alreadyMove = true;
+                    player.GetComponent<RedPlayer>().panelJeton.SetActive(true);
                     break;
                 case "Pavillon du Vent Celeste":
                     player.transform.parent = player.GetComponent<RedPlayer>().redPosPavillon;
@@ -297,6 +322,7 @@ public class Deplacement : MonoBehaviour {
                     player.transform.parent = null;
                     player.GetComponent<RedPlayer>().gm.state = GameManager.STATE_GAME.STATE_PLAYER;
                     player.GetComponent<RedPlayer>().alreadyMove = true;
+                    player.GetComponent<RedPlayer>().panelJeton.SetActive(true);
                     break;
                 case "Tour du Veilleur de Nuit":
                     player.transform.parent = player.GetComponent<RedPlayer>().redPosTower;
@@ -304,6 +330,7 @@ public class Deplacement : MonoBehaviour {
                     player.transform.parent = null;
                     player.GetComponent<RedPlayer>().gm.state = GameManager.STATE_GAME.STATE_PLAYER;
                     player.GetComponent<RedPlayer>().alreadyMove = true;
+                    player.GetComponent<RedPlayer>().panelJeton.SetActive(true);
                     break;
                 case "Cercle de priere":
                     player.transform.parent = player.GetComponent<RedPlayer>().redPosCircle;
@@ -311,6 +338,7 @@ public class Deplacement : MonoBehaviour {
                     player.transform.parent = null;
                     player.GetComponent<RedPlayer>().gm.state = GameManager.STATE_GAME.STATE_PLAYER;
                     player.GetComponent<RedPlayer>().alreadyMove = true;
+                    player.GetComponent<RedPlayer>().panelJeton.SetActive(true);
                     break;
                 case "Temple Bouddhiste":
                     player.transform.parent = player.GetComponent<RedPlayer>().redPosTemple;
@@ -318,10 +346,12 @@ public class Deplacement : MonoBehaviour {
                     player.transform.parent = null;
                     player.GetComponent<RedPlayer>().gm.state = GameManager.STATE_GAME.STATE_PLAYER;
                     player.GetComponent<RedPlayer>().alreadyMove = true;
+                    player.GetComponent<RedPlayer>().panelJeton.SetActive(true);
                     break;
                 case "Rester sur la tuile":
                     player.GetComponent<RedPlayer>().gm.state = GameManager.STATE_GAME.STATE_PLAYER;
                     player.GetComponent<RedPlayer>().alreadyMove = true;
+                    player.GetComponent<RedPlayer>().panelJeton.SetActive(true);
                     break;
                 default:
                     break;
@@ -351,6 +381,7 @@ public class Deplacement : MonoBehaviour {
                     player.transform.parent = null;
                     player.GetComponent<GreenPlayer>().gm.state = GameManager.STATE_GAME.STATE_PLAYER;
                     player.GetComponent<GreenPlayer>().alreadyMove = true;
+                    player.GetComponent<GreenPlayer>().panelJeton.SetActive(true);
                     break;
                 case "Hutte de la Sorciere":
                     player.transform.parent = player.GetComponent<GreenPlayer>().greenPosHut;
@@ -358,6 +389,7 @@ public class Deplacement : MonoBehaviour {
                     player.transform.parent = null;
                     player.GetComponent<GreenPlayer>().gm.state = GameManager.STATE_GAME.STATE_PLAYER;
                     player.GetComponent<GreenPlayer>().alreadyMove = true;
+                    player.GetComponent<GreenPlayer>().panelJeton.SetActive(true);
                     break;
                 case "Echoppe de L'herboriste":
                     player.transform.parent = player.GetComponent<GreenPlayer>().greenPosStall;
@@ -365,6 +397,7 @@ public class Deplacement : MonoBehaviour {
                     player.transform.parent = null;
                     player.GetComponent<GreenPlayer>().gm.state = GameManager.STATE_GAME.STATE_PLAYER;
                     player.GetComponent<GreenPlayer>().alreadyMove = true;
+                    player.GetComponent<GreenPlayer>().panelJeton.SetActive(true);
                     break;
                 case "Autel Taoiste":
                     player.transform.parent = player.GetComponent<GreenPlayer>().greenPosAutel;
@@ -372,6 +405,7 @@ public class Deplacement : MonoBehaviour {
                     player.transform.parent = null;
                     player.GetComponent<GreenPlayer>().gm.state = GameManager.STATE_GAME.STATE_PLAYER;
                     player.GetComponent<GreenPlayer>().alreadyMove = true;
+                    player.GetComponent<GreenPlayer>().panelJeton.SetActive(true);
                     break;
                 case "Cimetiere":
                     player.transform.parent = player.GetComponent<GreenPlayer>().greenPosGraveyard;
@@ -379,6 +413,7 @@ public class Deplacement : MonoBehaviour {
                     player.transform.parent = null;
                     player.GetComponent<GreenPlayer>().gm.state = GameManager.STATE_GAME.STATE_PLAYER;
                     player.GetComponent<GreenPlayer>().alreadyMove = true;
+                    player.GetComponent<GreenPlayer>().panelJeton.SetActive(true);
                     break;
                 case "Pavillon du Vent Celeste":
                     player.transform.parent = player.GetComponent<GreenPlayer>().greenPosPavillon;
@@ -386,6 +421,7 @@ public class Deplacement : MonoBehaviour {
                     player.transform.parent = null;
                     player.GetComponent<GreenPlayer>().gm.state = GameManager.STATE_GAME.STATE_PLAYER;
                     player.GetComponent<GreenPlayer>().alreadyMove = true;
+                    player.GetComponent<GreenPlayer>().panelJeton.SetActive(true);
                     break;
                 case "Tour du Veilleur de Nuit":
                     player.transform.parent = player.GetComponent<GreenPlayer>().greenPosTower;
@@ -393,6 +429,7 @@ public class Deplacement : MonoBehaviour {
                     player.transform.parent = null;
                     player.GetComponent<GreenPlayer>().gm.state = GameManager.STATE_GAME.STATE_PLAYER;
                     player.GetComponent<GreenPlayer>().alreadyMove = true;
+                    player.GetComponent<GreenPlayer>().panelJeton.SetActive(true);
                     break;
                 case "Cercle de priere":
                     player.transform.parent = player.GetComponent<GreenPlayer>().greenPosCircle;
@@ -400,6 +437,7 @@ public class Deplacement : MonoBehaviour {
                     player.transform.parent = null;
                     player.GetComponent<GreenPlayer>().gm.state = GameManager.STATE_GAME.STATE_PLAYER;
                     player.GetComponent<GreenPlayer>().alreadyMove = true;
+                    player.GetComponent<GreenPlayer>().panelJeton.SetActive(true);
                     break;
                 case "Temple Bouddhiste":
                     player.transform.parent = player.GetComponent<GreenPlayer>().greenPosTemple;
@@ -407,10 +445,12 @@ public class Deplacement : MonoBehaviour {
                     player.transform.parent = null;
                     player.GetComponent<GreenPlayer>().gm.state = GameManager.STATE_GAME.STATE_PLAYER;
                     player.GetComponent<GreenPlayer>().alreadyMove = true;
+                    player.GetComponent<GreenPlayer>().panelJeton.SetActive(true);
                     break;
                 case "Rester sur la tuile":
                     player.GetComponent<GreenPlayer>().gm.state = GameManager.STATE_GAME.STATE_PLAYER;
                     player.GetComponent<GreenPlayer>().alreadyMove = true;
+                    player.GetComponent<GreenPlayer>().panelJeton.SetActive(true);
                     break;
                 default:
                     break;

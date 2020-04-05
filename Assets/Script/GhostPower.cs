@@ -155,7 +155,7 @@ public class GhostPower : MonoBehaviour {
                         tileToCheck = hitTiledirection.collider.gameObject;
                     }
                 }
-                else if (boardParent.transform.eulerAngles.y == -90.0f)
+                else if (boardParent.transform.eulerAngles.y == 270.0f)
                 {
                     if (Physics.Raycast(transform.position, Vector3.right, out hitTiledirection, 100.0f, layerTile))
                     {
@@ -169,7 +169,6 @@ public class GhostPower : MonoBehaviour {
                         tileToCheck = hitTiledirection.collider.gameObject;
                     }
                 }
-                Debug.Log(tileToCheck.name);
                 switch (tileToCheck.name)
                 {
                     case "MaisonThe":
@@ -375,7 +374,7 @@ public class GhostPower : MonoBehaviour {
                     tileToCheck = hitTiledirection.collider.gameObject;
                 }
             }
-            else if (boardParent.transform.eulerAngles.y == -90.0f)
+            else if (boardParent.transform.eulerAngles.y == 270.0f)
             {
                 if (Physics.Raycast(transform.position, Vector3.right, out hitTiledirection, 200.0f, layerNightMare))
                 {
@@ -404,7 +403,6 @@ public class GhostPower : MonoBehaviour {
                 case "ArriveFantomeHanteurVert1":
                 case "ArriveFantomeHanteurVert2":
                 case "ArriveFantomeHanteurVert3":
-                    Debug.Log("Test");
                     if (tileToCheck.transform.parent.childCount >= 5)
                     {
                         if (tileToCheck.transform.parent.GetChild(4) != null && !tileToCheck.transform.parent.GetChild(4).name.Contains("Bouddha"))

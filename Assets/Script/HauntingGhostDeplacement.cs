@@ -51,7 +51,7 @@ public class HauntingGhostDeplacement : MonoBehaviour
                         tileToCheck = hitTiledirection.collider.gameObject;
                     }
                 }
-                else if (boardParent.transform.eulerAngles.y == -90.0f)
+                else if (boardParent.transform.eulerAngles.y == 270.0f)
                 {
                     if (Physics.Raycast(transform.position, Vector3.right, out hitTiledirection, 100.0f, layerTile))
                     {

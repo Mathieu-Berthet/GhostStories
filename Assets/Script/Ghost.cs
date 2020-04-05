@@ -264,7 +264,7 @@ public class Ghost : MonoBehaviour {
 
         if(gameObject.transform.childCount >= 3)
         {
-            if(gameObject.transform.GetChild(2).name == "MantraToken")
+            if(gameObject.transform.GetChild(2).name == "MantraToken(Clone)")
             {
                 life--;
             }
