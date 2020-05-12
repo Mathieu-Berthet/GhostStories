@@ -650,10 +650,18 @@ public class RedPlayer : MonoBehaviour
                         card.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
                         card.transform.localEulerAngles = new Vector3(90.0f, 0.0f, 0.0f);
                         bouddhisteTemple.GetComponent<BouddhisteTemple>().numberOfBouddha += 1;
-                        bouddhaOne.transform.parent = bouddhisteTemple.transform;
-                        bouddhaOne.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
-                        bouddhaOne.SetActive(false);
-                        bouddhaOne = null;
+                        if (bouddhisteTemple.GetComponent<BouddhisteTemple>().bouddhaFirst == null)
+                        {
+                            bouddhisteTemple.GetComponent<BouddhisteTemple>().bouddhaFirst = position.transform.GetChild(4).gameObject;
+                            position.transform.GetChild(4).parent = bouddhisteTemple.transform;
+                            bouddhisteTemple.GetComponent<BouddhisteTemple>().bouddhaFirst.transform.localPosition = new Vector3(-0.145f, 3.0f, 0.325f);
+                        }
+                        else if (bouddhisteTemple.GetComponent<BouddhisteTemple>().bouddhaSecond == null)
+                        {
+                            bouddhisteTemple.GetComponent<BouddhisteTemple>().bouddhaSecond = position.transform.GetChild(4).gameObject;
+                            position.transform.GetChild(4).transform.parent = bouddhisteTemple.transform;
+                            bouddhisteTemple.GetComponent<BouddhisteTemple>().bouddhaFirst.transform.localPosition = new Vector3(-0.325f, 3.0f, 0.325f);
+                        }
 
                         panelBluePlace.SetActive(false);
                         panelRedPlace.SetActive(false);
@@ -676,9 +684,18 @@ public class RedPlayer : MonoBehaviour
                     {
                         bouddhisteTemple.GetComponent<BouddhisteTemple>().numberOfBouddha += 1;
                         bouddhaOne.transform.parent = bouddhisteTemple.transform;
-                        bouddhaOne.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
-                        bouddhaOne.SetActive(false);
-                        bouddhaOne = null;
+                        if (bouddhisteTemple.GetComponent<BouddhisteTemple>().bouddhaFirst == null)
+                        {
+                            bouddhisteTemple.GetComponent<BouddhisteTemple>().bouddhaFirst = position.transform.GetChild(4).gameObject;
+                            position.transform.GetChild(4).parent = bouddhisteTemple.transform;
+                            bouddhisteTemple.GetComponent<BouddhisteTemple>().bouddhaFirst.transform.localPosition = new Vector3(-0.145f, 3.0f, 0.325f);
+                        }
+                        else if (bouddhisteTemple.GetComponent<BouddhisteTemple>().bouddhaSecond == null)
+                        {
+                            bouddhisteTemple.GetComponent<BouddhisteTemple>().bouddhaSecond = position.transform.GetChild(4).gameObject;
+                            position.transform.GetChild(4).transform.parent = bouddhisteTemple.transform;
+                            bouddhisteTemple.GetComponent<BouddhisteTemple>().bouddhaFirst.transform.localPosition = new Vector3(-0.325f, 3.0f, 0.325f);
+                        }
                         card.transform.SetParent(position.transform);
                         card.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
                         card.transform.localEulerAngles = new Vector3(90.0f, 0.0f, 0.0f);
@@ -3269,9 +3286,20 @@ public class RedPlayer : MonoBehaviour
                             {
                                 panelBouddha.SetActive(false);
                                 NbBouddha -= 1;
-                                bouddhaOne.transform.parent = positionOne.transform;
-                                bouddhaOne.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
-                                bouddhaOne.SetActive(true);
+                                if (bouddhaOne != null)
+                                {
+                                    bouddhaOne.transform.parent = positionOne.transform;
+                                    bouddhaOne.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+                                    bouddhaOne.SetActive(true);
+                                    bouddhaOne = null;
+                                }
+                                else if (bouddhaTwo != null)
+                                {
+                                    bouddhaTwo.transform.parent = positionOne.transform;
+                                    bouddhaTwo.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+                                    bouddhaTwo.SetActive(true);
+                                    bouddhaTwo = null;
+                                }
                                 yield return new WaitForSeconds(0.5f);
                             }
                         }
@@ -3289,9 +3317,20 @@ public class RedPlayer : MonoBehaviour
                             {
                                 panelBouddha.SetActive(false);
                                 NbBouddha -= 1;
-                                bouddhaOne.transform.parent = positionTwo.transform;
-                                bouddhaOne.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
-                                bouddhaOne.SetActive(true);
+                                if (bouddhaOne != null)
+                                {
+                                    bouddhaOne.transform.parent = positionOne.transform;
+                                    bouddhaOne.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+                                    bouddhaOne.SetActive(true);
+                                    bouddhaOne = null;
+                                }
+                                else if (bouddhaTwo != null)
+                                {
+                                    bouddhaTwo.transform.parent = positionOne.transform;
+                                    bouddhaTwo.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+                                    bouddhaTwo.SetActive(true);
+                                    bouddhaTwo = null;
+                                }
                                 yield return new WaitForSeconds(0.5f);
                             }
                         }
@@ -3309,6 +3348,8 @@ public class RedPlayer : MonoBehaviour
                             bouddhaTwo.transform.parent = positionTwo.transform;
                             bouddhaTwo.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
                             bouddhaTwo.SetActive(true);
+                            bouddhaTwo = null;
+
                         }
 
                         if (positionOne.transform.childCount > 4)
@@ -3321,6 +3362,7 @@ public class RedPlayer : MonoBehaviour
                             bouddhaOne.transform.parent = positionOne.transform;
                             bouddhaOne.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
                             bouddhaOne.SetActive(true);
+                            bouddhaOne = null;
                         }
                     }
                 }
@@ -3335,9 +3377,20 @@ public class RedPlayer : MonoBehaviour
                     else
                     {
                         NbBouddha -= 1;
-                        bouddhaOne.transform.parent = positionTwo.transform;
-                        bouddhaOne.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
-                        bouddhaOne.SetActive(true);
+                        if (bouddhaOne != null)
+                        {
+                            bouddhaOne.transform.parent = positionOne.transform;
+                            bouddhaOne.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+                            bouddhaOne.SetActive(true);
+                            bouddhaOne = null;
+                        }
+                        else if (bouddhaTwo != null)
+                        {
+                            bouddhaTwo.transform.parent = positionOne.transform;
+                            bouddhaTwo.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+                            bouddhaTwo.SetActive(true);
+                            bouddhaTwo = null;
+                        }
                     }
                 }
                 else if (positionOne != null && positionTwo == null)
@@ -3350,9 +3403,20 @@ public class RedPlayer : MonoBehaviour
                     }
                     else
                     {
-                        bouddhaOne.transform.parent = positionOne.transform;
-                        bouddhaOne.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
-                        bouddhaOne.SetActive(true);
+                        if (bouddhaOne != null)
+                        {
+                            bouddhaOne.transform.parent = positionOne.transform;
+                            bouddhaOne.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+                            bouddhaOne.SetActive(true);
+                            bouddhaOne = null;
+                        }
+                        else if (bouddhaTwo != null)
+                        {
+                            bouddhaTwo.transform.parent = positionOne.transform;
+                            bouddhaTwo.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+                            bouddhaTwo.SetActive(true);
+                            bouddhaTwo = null;
+                        }
                     }
                 }
             }
@@ -3391,7 +3455,7 @@ public class RedPlayer : MonoBehaviour
 
     public IEnumerator UseYinYangToken()
     {
-        if (redTurn)
+        if (redTurn && nbYinYangRedToken > 0)
         {
             chooseEffectYinYang = false;
             panelYinYang.SetActive(true);
