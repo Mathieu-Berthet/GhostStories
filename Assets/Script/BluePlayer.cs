@@ -364,7 +364,7 @@ public class BluePlayer : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        if (Input.GetButtonDown("Fire2") && !hasDraw)
+        if (Input.GetButtonDown("Fire2") && !hasDraw && gm.state == GameManager.STATE_GAME.STATE_DRAW)
         {
             DrawAGhost();
         }
@@ -433,7 +433,7 @@ public class BluePlayer : MonoBehaviour
         }
         else if (gm.state == GameManager.STATE_GAME.STATE_PLAYER && blueTurn)
         {
-            textInfoPhase.text = " Phase de jeu. Vous pouvez : \n - Attaquer un fantôme se trouvant devant vous (D), \n - Utilisez le pouvoir de la tuile sur laquelle vous vous trouvez (E), \n - Utilisez votre jeton Yin Yang (Ctrl Gauche), \n - Utilisez votre pouvoir (Shift Gauche)";
+            textInfoPhase.text = " Phase de jeu. Vous pouvez : \n - Attaquer un fantôme se trouvant devant vous (A), \n - Utilisez le pouvoir de la tuile sur laquelle vous vous trouvez (E), \n - Utilisez votre jeton Yin Yang (Ctrl Gauche), \n - Utilisez votre pouvoir (Shift Gauche)";
             textInfoPower.text = descriptionPowerBlue;
         }
 
@@ -872,10 +872,6 @@ public class BluePlayer : MonoBehaviour
             {
                 nbActionBattle -= 2;
             }
-            else if (!powerSouffleCeleste)
-            {
-                nbActionBattle -= 1;
-            }
             nbActionEffect -= 1;
         }
     }
@@ -1122,10 +1118,6 @@ public class BluePlayer : MonoBehaviour
                                 {
                                     nbActionEffect -= 2;
                                 }
-                                else if (!powerSouffleCeleste)
-                                {
-                                    nbActionEffect -= 1;
-                                }
                                 nbActionBattle -= 1;
                             }
                         }
@@ -1136,10 +1128,6 @@ public class BluePlayer : MonoBehaviour
                             if (powerSecondSouffle)
                             {
                                 nbActionEffect -= 2;
-                            }
-                            else if (!powerSouffleCeleste)
-                            {
-                                nbActionEffect -= 1;
                             }
                             nbActionBattle -= 1;
                         }
@@ -1180,10 +1168,6 @@ public class BluePlayer : MonoBehaviour
                                 {
                                     nbActionEffect -= 2;
                                 }
-                                else if (!powerSouffleCeleste)
-                                {
-                                    nbActionEffect -= 1;
-                                }
                                 nbActionBattle -= 1;
                             }
                         }
@@ -1194,10 +1178,6 @@ public class BluePlayer : MonoBehaviour
                             if (powerSecondSouffle)
                             {
                                 nbActionEffect -= 2;
-                            }
-                            else if (!powerSouffleCeleste)
-                            {
-                                nbActionEffect -= 1;
                             }
                             nbActionBattle -= 1;
                         }
@@ -1220,10 +1200,6 @@ public class BluePlayer : MonoBehaviour
                             {
                                 nbActionEffect -= 2;
                             }
-                            else if (!powerSouffleCeleste)
-                            {
-                                nbActionEffect -= 1;
-                            }
                             nbActionBattle -= 1;
                         }
                     }
@@ -1234,10 +1210,6 @@ public class BluePlayer : MonoBehaviour
                         if (powerSecondSouffle)
                         {
                             nbActionEffect -= 2;
-                        }
-                        else if (!powerSouffleCeleste)
-                        {
-                            nbActionEffect -= 1;
                         }
                         nbActionBattle -= 1;
                     }
@@ -1259,10 +1231,6 @@ public class BluePlayer : MonoBehaviour
                             {
                                 nbActionEffect -= 2;
                             }
-                            else if (!powerSouffleCeleste)
-                            {
-                                nbActionEffect -= 1;
-                            }
                             nbActionBattle -= 1;
                         }
                     }
@@ -1274,14 +1242,18 @@ public class BluePlayer : MonoBehaviour
                         {
                             nbActionEffect -= 2;
                         }
-                        else if (!powerSouffleCeleste)
-                        {
-                            nbActionEffect -= 1;
-                        }
                         nbActionBattle -= 1;
                     }
                     yield return new WaitForSeconds(0.5f);
                 }
+            }
+            else if(ghost1 == null && ghost2 == null)
+            {
+                if (powerSecondSouffle)
+                {
+                    nbActionEffect -= 2;
+                }
+                nbActionBattle -= 1;
             }
             yield return new WaitForSeconds(0.5f);
             nbRedFace = 0;
@@ -1995,7 +1967,7 @@ public class BluePlayer : MonoBehaviour
 
     public void EndTurn()
     {
-        if (gm.state == GameManager.STATE_GAME.STATE_PLAYER && blueTurn)
+        if (gm.state == GameManager.STATE_GAME.STATE_PLAYER && blueTurn && nbActionBattle == 0 && nbActionEffect == 0)
         {
             gm.state = GameManager.STATE_GAME.STATE_GHOSTPOWER;
             gm.turn++;

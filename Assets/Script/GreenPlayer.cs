@@ -373,7 +373,7 @@ public class GreenPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire2") && !hasDraw)
+        if (Input.GetButtonDown("Fire2") && !hasDraw && gm.state == GameManager.STATE_GAME.STATE_DRAW)
         {
             DrawAGhost();
         }
@@ -443,7 +443,7 @@ public class GreenPlayer : MonoBehaviour
         }
         else if (gm.state == GameManager.STATE_GAME.STATE_PLAYER && greenTurn)
         {
-            textInfoPhase.text = " Phase de jeu. Vous pouvez : \n - Attaquer un fantôme se trouvant devant vous (D), \n - Utilisez le pouvoir de la tuile sur laquelle vous vous trouvez (E), \n - Utilisez votre jeton Yin Yang (Ctrl Gauche), \n - Utilisez votre pouvoir (Shift Gauche)";
+            textInfoPhase.text = " Phase de jeu. Vous pouvez : \n - Attaquer un fantôme se trouvant devant vous (A), \n - Utilisez le pouvoir de la tuile sur laquelle vous vous trouvez (E), \n - Utilisez votre jeton Yin Yang (Ctrl Gauche), \n - Utilisez votre pouvoir (Shift Gauche)";
             textInfoPower.text = descriptionPowerVert;
         }
 
@@ -2038,7 +2038,7 @@ public class GreenPlayer : MonoBehaviour
 
     public void EndTurn()
     {
-        if (gm.state == GameManager.STATE_GAME.STATE_PLAYER && greenTurn)
+        if (gm.state == GameManager.STATE_GAME.STATE_PLAYER && greenTurn && nbActionBattle == 0 && nbActionEffect == 0)
         {
             gm.state = GameManager.STATE_GAME.STATE_GHOSTPOWER;
             gm.turn++;

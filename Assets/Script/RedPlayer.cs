@@ -358,7 +358,7 @@ public class RedPlayer : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        if (Input.GetButtonDown("Fire2") && !hasDraw)
+        if (Input.GetButtonDown("Fire2") && !hasDraw && gm.state == GameManager.STATE_GAME.STATE_DRAW)
         {
             DrawAGhost();
         }
@@ -435,7 +435,7 @@ public class RedPlayer : MonoBehaviour
         }
         else if (gm.state == GameManager.STATE_GAME.STATE_PLAYER && redTurn)
         {
-            textInfoPhase.text = " Phase de jeu. Vous pouvez : \n - Attaquer un fantôme se trouvant devant vous (D), \n - Utilisez le pouvoir de la tuile sur laquelle vous vous trouvez (E), \n - Utilisez votre jeton Yin Yang (Ctrl Gauche), \n - Utilisez votre pouvoir (Shift Gauche)";
+            textInfoPhase.text = " Phase de jeu. Vous pouvez : \n - Attaquer un fantôme se trouvant devant vous (A), \n - Utilisez le pouvoir de la tuile sur laquelle vous vous trouvez (E), \n - Utilisez votre jeton Yin Yang (Ctrl Gauche), \n - Utilisez votre pouvoir (Shift Gauche)";
             textInfoPower.text = descriptionPowerRouge;
         }
 
@@ -537,17 +537,18 @@ public class RedPlayer : MonoBehaviour
             playerChoose.GetComponent<YellowPlayer>().CheckDistance();
             StartCoroutine(playerChoose.GetComponent<Deplacement>().PlayerDeplacement());
         }
-        else if (playerChoose.name == "RedPlayer")
+        /*else if (playerChoose.name == "RedPlayer")
         {
             textInfo.text = "Veuillez choisir la tuile d'arrivée";
             playerChoose.GetComponent<RedPlayer>().CheckDistance();
             StartCoroutine(playerChoose.GetComponent<Deplacement>().PlayerDeplacement());
-        }
+        }*/
         else if (playerChoose.name == "GreenPlayer")
         {
-            /*textInfo.text = "Veuillez choisir la tuile d'arrivée";
+            textInfo.text = "Veuillez choisir la tuile d'arrivée";
+            playerChoose.GetComponent<GreenPlayer>().useRedPower = true;
             playerChoose.GetComponent<GreenPlayer>().CheckDistance();
-            StartCoroutine(playerChoose.GetComponent<Deplacement>().PlayerDeplacement());*/
+            StartCoroutine(playerChoose.GetComponent<Deplacement>().PlayerDeplacement());
         }
     }
 
@@ -1965,7 +1966,7 @@ public class RedPlayer : MonoBehaviour
 
     public void EndTurn()
     {
-        if (gm.state == GameManager.STATE_GAME.STATE_PLAYER && redTurn)
+        if (gm.state == GameManager.STATE_GAME.STATE_PLAYER && redTurn && nbActionBattle == 0 && nbActionEffect == 0)
         {
             gm.state = GameManager.STATE_GAME.STATE_GHOSTPOWER;
             gm.turn++;
@@ -2607,7 +2608,7 @@ public class RedPlayer : MonoBehaviour
     {
         if (redTurn || useWindCelestialPower)
         {
-            if(powerDanseDesCimes && !useTilePower)
+            if(powerDanseDesCimes && !useWindCelestialPower)
             {
                 distanceToCheck = 3.0f;
             }
