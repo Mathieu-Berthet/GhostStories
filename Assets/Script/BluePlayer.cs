@@ -393,7 +393,8 @@ public class BluePlayer : MonoBehaviour
 
         /*if (Input.GetKeyDown(KeyCode.N))
         {
-            gm.nextTurn();
+            //gm.nextTurn();
+            Debug.Log(alreadyMove);
         }*/
 
         if (Input.GetKeyDown(KeyCode.A) && canLaunchDice)
@@ -1972,6 +1973,7 @@ public class BluePlayer : MonoBehaviour
             gm.state = GameManager.STATE_GAME.STATE_GHOSTPOWER;
             gm.turn++;
             gm.turnPlayer++;
+            gm.nextTurn();
             alreadyMove = false;
             stop = false;
             updateUI();

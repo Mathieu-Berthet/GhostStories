@@ -2043,6 +2043,7 @@ public class GreenPlayer : MonoBehaviour
             gm.state = GameManager.STATE_GAME.STATE_GHOSTPOWER;
             gm.turn++;
             gm.turnPlayer++;
+            gm.nextTurn();
             alreadyMove = false;
             stop = false;
             updateUI();

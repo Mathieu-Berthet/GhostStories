@@ -39,11 +39,11 @@ public class BoardPosition : MonoBehaviour {
     public GameObject yellowPositionTwo;
     public GameObject yellowPositionThree;
 
-    public bool usingTile;
+    public bool mustChooseGhost;
 	// Use this for initialization
 	void Start ()
     {
-        usingTile = false;
+        mustChooseGhost = false;
 	}
 	
 	// Update is called once per frame
@@ -68,21 +68,45 @@ public class BoardPosition : MonoBehaviour {
 
     public void checkPosition(GameObject pos, Button button)
     {
-        if (pos.transform.childCount < 5 || usingTile)
+        if (mustChooseGhost)
         {
-            button.interactable = true;
-        }
-        else if(pos.transform.childCount > 4)
-        {
-            if (pos.transform.GetChild(4) != null)
+            if (pos.transform.childCount > 4)
             {
-                if (pos.transform.childCount == 5 && pos.transform.GetChild(4).name.Contains("Bouddha"))
+                if (pos.transform.GetChild(4) != null)
                 {
-                    button.interactable = true;
+                    if (pos.transform.childCount == 5 && !pos.transform.GetChild(4).name.Contains("Bouddha"))
+                    {
+                        button.interactable = true;
+                    }
+                    else
+                    {
+                        button.interactable = false;
+                    }
                 }
-                else
+            }
+            else
+            {
+                button.interactable = false;
+            }
+        }
+        else
+        {
+            if (pos.transform.childCount < 5)
+            {
+                button.interactable = true;
+            }
+            else if (pos.transform.childCount > 4)
+            {
+                if (pos.transform.GetChild(4) != null)
                 {
-                    button.interactable = false;
+                    if (pos.transform.childCount == 5 && pos.transform.GetChild(4).name.Contains("Bouddha"))
+                    {
+                        button.interactable = true;
+                    }
+                    else
+                    {
+                        button.interactable = false;
+                    }
                 }
             }
         }

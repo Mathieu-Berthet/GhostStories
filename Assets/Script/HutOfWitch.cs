@@ -41,7 +41,7 @@ public class HutOfWitch : MonoBehaviour
         if (!hauntedTile)
         {
             choose = false;
-            board.usingTile = true;
+            board.mustChooseGhost = true;
             yield return new WaitForSeconds(0.5f);
 
             panelBluePlace.SetActive(true);
@@ -138,7 +138,7 @@ public class HutOfWitch : MonoBehaviour
             ghostToKill.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
             ghostToKill.transform.localEulerAngles = new Vector3(90.0f, 0.0f, 0.0f);
             ghostToKill = null;
-            board.usingTile = false;
+            board.mustChooseGhost = false;
         }
         else
         {

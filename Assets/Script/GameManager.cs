@@ -156,23 +156,21 @@ public class GameManager : MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
-        if(turnPlayer == STATE_PLAYER_TURN.BLUE_PLAYER_TURN)
+        if (turnPlayer == STATE_PLAYER_TURN.BLUE_PLAYER_TURN)
         {
             textPlayerTurn.text = "TOUR DU JOUEUR BLEU";
             bluePlayer.GetComponent<BluePlayer>().blueTurn = true;
             bluePlayer.GetComponent<BluePlayer>().update = true;
-            bluePlayer.GetComponent<BluePlayer>().alreadyMove = false;
             yellowPlayer.GetComponent<YellowPlayer>().yellowTurn = false;
             greenPlayer.GetComponent<GreenPlayer>().greenTurn = false;
             redPlayer.GetComponent<RedPlayer>().redTurn = false;
         }
-        else if(turnPlayer == STATE_PLAYER_TURN.YELLOW_PLAYER_TURN)
+        else if (turnPlayer == STATE_PLAYER_TURN.YELLOW_PLAYER_TURN)
         {
             textPlayerTurn.text = "TOUR DU JOUEUR JAUNE";
             bluePlayer.GetComponent<BluePlayer>().blueTurn = false;
             yellowPlayer.GetComponent<YellowPlayer>().yellowTurn = true;
             yellowPlayer.GetComponent<YellowPlayer>().update = true;
-            yellowPlayer.GetComponent<YellowPlayer>().alreadyMove = false;
             greenPlayer.GetComponent<GreenPlayer>().greenTurn = false;
             redPlayer.GetComponent<RedPlayer>().redTurn = false;
         }
@@ -184,7 +182,6 @@ public class GameManager : MonoBehaviour {
             greenPlayer.GetComponent<GreenPlayer>().greenTurn = false;
             redPlayer.GetComponent<RedPlayer>().redTurn = true;
             redPlayer.GetComponent<RedPlayer>().update = true;
-            redPlayer.GetComponent<RedPlayer>().alreadyMove = false;
         }
         else if (turnPlayer == STATE_PLAYER_TURN.GREEN_PLAYER_TURN)
         {
@@ -194,9 +191,8 @@ public class GameManager : MonoBehaviour {
             redPlayer.GetComponent<RedPlayer>().redTurn = false;
             greenPlayer.GetComponent<GreenPlayer>().greenTurn = true;
             greenPlayer.GetComponent<GreenPlayer>().update = true;
-            greenPlayer.GetComponent<GreenPlayer>().alreadyMove = false;
         }
-        if((int)turnPlayer > 3)
+        if ((int)turnPlayer > 3)
         {
             turnPlayer = 0;
         }
@@ -287,11 +283,27 @@ public class GameManager : MonoBehaviour {
 
     public void nextTurn()
     {
+        if (turnPlayer == STATE_PLAYER_TURN.BLUE_PLAYER_TURN)
+        {
+            bluePlayer.GetComponent<BluePlayer>().alreadyMove = false;
+        }
+        else if (turnPlayer == STATE_PLAYER_TURN.YELLOW_PLAYER_TURN)
+        {
+            yellowPlayer.GetComponent<YellowPlayer>().alreadyMove = false;
+        }
+        else if (turnPlayer == STATE_PLAYER_TURN.RED_PLAYER_TURN)
+        {
+            redPlayer.GetComponent<RedPlayer>().alreadyMove = false;
+        }
+        else if (turnPlayer == STATE_PLAYER_TURN.GREEN_PLAYER_TURN)
+        {
+            greenPlayer.GetComponent<GreenPlayer>().alreadyMove = false;
+        }
         nextPlayer = true;
-        canLerp = true;
+        //canLerp = true;
         if(nextPlayer)
         {
-            turn++;
+            //turn++;
             if(turn > 4)
             {
                 turn = 1;

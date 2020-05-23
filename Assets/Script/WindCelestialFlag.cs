@@ -67,7 +67,7 @@ public class WindCelestialFlag : MonoBehaviour {
             isActiveTilePower = true;
             chooseGhost = false;
             canPlace = false;
-            board.usingTile = true;
+            board.mustChooseGhost = true;
             ghostToMove = null;
             yield return new WaitForSeconds(0.5f);
             infos.gameObject.SetActive(true);
@@ -98,6 +98,7 @@ public class WindCelestialFlag : MonoBehaviour {
                 }
                 chooseGhost = false;
                 canPlace = true;
+                board.mustChooseGhost = false;
             }
             infos.text = "Veuillez choisir le nouvel emplacement du fantôme";
             while (!selectedPosition)

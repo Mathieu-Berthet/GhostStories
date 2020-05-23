@@ -18685,8 +18685,8 @@ MonoBehaviour:
   canUsePower: 0
   canLaunchDice: 0
   canLaunchBlackDice: 0
-  nbActionEffect: 10
-  nbActionBattle: 10
+  nbActionEffect: 1
+  nbActionBattle: 1
   dice: {fileID: 1483268768575792, guid: 6a3772ffda714d746bf307675dc5309c, type: 2}
   cube: {fileID: 0}
   resultDiceOne: 
@@ -20373,7 +20373,7 @@ MonoBehaviour:
   yellowPositionOne: {fileID: 326308552}
   yellowPositionTwo: {fileID: 1036858072}
   yellowPositionThree: {fileID: 953267858}
-  usingTile: 0
+  mustChooseGhost: 0
 --- !u!114 &1334380937
 MonoBehaviour:
   m_ObjectHideFlags: 0

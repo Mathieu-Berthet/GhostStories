@@ -999,7 +999,7 @@ public class YellowPlayer : MonoBehaviour
             //Recupérer le fantôme ciblé // Seulement si le joueur a encore son jeton mantra // Doit le jouer AVANT le combat
             choose = false;
             textInfoPhase.gameObject.SetActive(false);
-            board.usingTile = true;
+            board.mustChooseGhost = true;
             yield return new WaitForSeconds(0.5f);
 
             panelBluePlace.SetActive(true);
@@ -1022,7 +1022,9 @@ public class YellowPlayer : MonoBehaviour
             GameObject newMantraToken = Instantiate(mantraToken);
             newMantraToken.transform.SetParent(ghostToWeakned.transform);
             newMantraToken.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+            board.mustChooseGhost = false;
         }
+
         //Si fantome mort
         //nbMantraToken += 1;
     }
@@ -2095,6 +2097,7 @@ public class YellowPlayer : MonoBehaviour
             gm.state = GameManager.STATE_GAME.STATE_GHOSTPOWER;
             gm.turn++;
             gm.turnPlayer++;
+            gm.nextTurn();
             alreadyMove = false;
             stop = false;
             updateUI();
