@@ -21,6 +21,22 @@ public class GameManager : MonoBehaviour {
 
     public Vector3 scalePlateau;
 
+    public GameObject panelOne;
+    public GameObject panelTwo;
+    public GameObject panelThree;
+    public GameObject panelFour;
+
+    public Vector3 temporaryPosition;
+    public Vector3 temporaryScale;
+
+    public Vector3 temporaryPositionButtonOne;
+    public Vector3 temporaryScaleButtonOne;
+
+    public Vector3 temporaryPositionButtonTwo;
+    public Vector3 temporaryScaleButtonTwo;
+
+    public Vector3 temporaryPositionButtonThree;
+    public Vector3 temporaryScaleButtonThree;
 
     public GameObject test;
     public GameObject test2;
@@ -110,7 +126,6 @@ public class GameManager : MonoBehaviour {
         nbCardOnDeck = 55;
         nbCardOnBossDeck = 10;
         turn = 1;
-
         turnPlayer = STATE_PLAYER_TURN.BLUE_PLAYER_TURN;
 
         textEntry.text = "";
@@ -199,7 +214,7 @@ public class GameManager : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.Return))
         {
-            GameObject go = Instantiate(test);
+            /*GameObject go = Instantiate(test);
             go.transform.eulerAngles = rotationPlateau1;
             go.transform.position = positionPlateau1;
             go.transform.localScale = scalePlateau;
@@ -217,11 +232,13 @@ public class GameManager : MonoBehaviour {
             GameObject go4 = Instantiate(test4);
             go4.transform.eulerAngles = rotationPlateau4;
             go4.transform.position = positionPlateau4;
-            go4.transform.localScale = scalePlateau;
+            go4.transform.localScale = scalePlateau;*/
+            //nextTurn();
         }
 
         if (turn == 1 && canLerp)
         {
+            rotationCamera4 = new Vector3(55.0f, -90.0f, 0.0f);
             actualTime += Time.deltaTime;
             mainCamera.transform.position = Vector3.Lerp(positionCamera4, positionCamera1, actualTime);
             //mainCamera.transform.position = positionCamera2;
@@ -232,6 +249,7 @@ public class GameManager : MonoBehaviour {
             {
                 canLerp = false;
                 actualTime = 0.0f;
+                rotationCamera4 = new Vector3(55.0f, 270.0f, 0.0f);
             }
         }
 
@@ -299,8 +317,54 @@ public class GameManager : MonoBehaviour {
         {
             greenPlayer.GetComponent<GreenPlayer>().alreadyMove = false;
         }
+
+        temporaryPosition = panelOne.transform.position;
+        temporaryScale = panelOne.transform.localScale;
+        temporaryPositionButtonOne = panelOne.transform.GetChild(0).transform.position;
+        temporaryScaleButtonOne = panelOne.transform.GetChild(0).transform.localScale;
+        temporaryPositionButtonTwo = panelOne.transform.GetChild(1).transform.position;
+        temporaryScaleButtonTwo = panelOne.transform.GetChild(1).transform.localScale;
+        temporaryPositionButtonThree = panelOne.transform.GetChild(2).transform.position;
+        temporaryScaleButtonThree = panelOne.transform.GetChild(2).transform.localScale;
+
+        panelOne.transform.position = panelFour.transform.position;
+        panelOne.transform.localScale = panelFour.transform.localScale;
+        panelOne.transform.GetChild(0).transform.position = panelFour.transform.GetChild(0).transform.position;
+        panelOne.transform.GetChild(0).transform.localScale = panelFour.transform.GetChild(0).transform.localScale;
+        panelOne.transform.GetChild(1).transform.position = panelFour.transform.GetChild(1).transform.position;
+        panelOne.transform.GetChild(1).transform.localScale = panelFour.transform.GetChild(1).transform.localScale;
+        panelOne.transform.GetChild(2).transform.position = panelFour.transform.GetChild(2).transform.position;
+        panelOne.transform.GetChild(2).transform.localScale = panelFour.transform.GetChild(2).transform.localScale;
+
+        panelFour.transform.position = panelThree.transform.position;
+        panelFour.transform.localScale = panelThree.transform.localScale;
+        panelFour.transform.GetChild(0).transform.position = panelThree.transform.GetChild(0).transform.position;
+        panelFour.transform.GetChild(0).transform.localScale = panelThree.transform.GetChild(0).transform.localScale;
+        panelFour.transform.GetChild(1).transform.position = panelThree.transform.GetChild(1).transform.position;
+        panelFour.transform.GetChild(1).transform.localScale = panelThree.transform.GetChild(1).transform.localScale;
+        panelFour.transform.GetChild(2).transform.position = panelThree.transform.GetChild(2).transform.position;
+        panelFour.transform.GetChild(2).transform.localScale = panelThree.transform.GetChild(2).transform.localScale;
+
+        panelThree.transform.position = panelTwo.transform.position;
+        panelThree.transform.localScale = panelTwo.transform.localScale;
+        panelThree.transform.GetChild(0).transform.position = panelTwo.transform.GetChild(0).transform.position;
+        panelThree.transform.GetChild(0).transform.localScale = panelTwo.transform.GetChild(0).transform.localScale;
+        panelThree.transform.GetChild(1).transform.position = panelTwo.transform.GetChild(1).transform.position;
+        panelThree.transform.GetChild(1).transform.localScale = panelTwo.transform.GetChild(1).transform.localScale;
+        panelThree.transform.GetChild(2).transform.position = panelTwo.transform.GetChild(2).transform.position;
+        panelThree.transform.GetChild(2).transform.localScale = panelTwo.transform.GetChild(2).transform.localScale;
+
+        panelTwo.transform.position = temporaryPosition;
+        panelTwo.transform.localScale = temporaryScale;
+        panelTwo.transform.GetChild(0).transform.position = temporaryPositionButtonOne;
+        panelTwo.transform.GetChild(0).transform.localScale = temporaryScaleButtonOne;
+        panelTwo.transform.GetChild(1).transform.position = temporaryPositionButtonTwo;
+        panelTwo.transform.GetChild(1).transform.localScale = temporaryScaleButtonTwo;
+        panelTwo.transform.GetChild(2).transform.position = temporaryPositionButtonThree;
+        panelTwo.transform.GetChild(2).transform.localScale = temporaryScaleButtonThree;
+
         nextPlayer = true;
-        //canLerp = true;
+        canLerp = true;
         if(nextPlayer)
         {
             //turn++;

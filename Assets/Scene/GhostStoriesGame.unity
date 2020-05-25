@@ -23989,7 +23989,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1573462237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25321,6 +25321,18 @@ MonoBehaviour:
   positionPlateau4: {x: 0, y: 0, z: 0}
   rotationPlateau4: {x: 0, y: 0, z: 0}
   scalePlateau: {x: 0, y: 0, z: 0}
+  panelOne: {fileID: 2078919588}
+  panelTwo: {fileID: 111140190}
+  panelThree: {fileID: 243812752}
+  panelFour: {fileID: 18601231}
+  temporaryPosition: {x: 0, y: 0, z: 0}
+  temporaryScale: {x: 0, y: 0, z: 0}
+  temporaryPositionButtonOne: {x: 0, y: 0, z: 0}
+  temporaryScaleButtonOne: {x: 0, y: 0, z: 0}
+  temporaryPositionButtonTwo: {x: 0, y: 0, z: 0}
+  temporaryScaleButtonTwo: {x: 0, y: 0, z: 0}
+  temporaryPositionButtonThree: {x: 0, y: 0, z: 0}
+  temporaryScaleButtonThree: {x: 0, y: 0, z: 0}
   test: {fileID: 1859989971460674, guid: d3bfb457d4923794a977336c952a6840, type: 2}
   test2: {fileID: 1859989971460674, guid: d3bfb457d4923794a977336c952a6840, type: 2}
   test3: {fileID: 1859989971460674, guid: d3bfb457d4923794a977336c952a6840, type: 2}
