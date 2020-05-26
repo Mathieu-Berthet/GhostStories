@@ -37,7 +37,7 @@ public class NightTower : MonoBehaviour
         if (!hauntedTile)
         {
             //Choix du plateau
-            infoTower.text = "Veuillez choisir le plateau dont vous voulez faire reculez les fantômes : ";
+            infoTower.text = "Veuillez choisir le plateau dont vous voulez faire reculer les fantômes : ";
             panelBoardChoice.SetActive(true);
             while (!chooseBoard)
             {
@@ -262,7 +262,7 @@ public class NightTower : MonoBehaviour
         }
         else
         {
-            infos.text = "Cette tuile est hantée. Vous ne pouvez pas activez son pouvoir";
+            infos.text = "Cette tuile est hantée. Vous ne pouvez pas activer son pouvoir";
             infos.gameObject.SetActive(true);
             if (player.name == "BluePlayer")
             {

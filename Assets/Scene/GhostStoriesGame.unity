@@ -504,7 +504,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: "Echoppe de l\u2019Herboriste : \n- Lancez 2 d\xE9s et obtenez les jetons
     des couleurs correspondantes (blanc compte pour n\u2019importe qu\u2019elle couleur).
-    Mais attention, s\u2019il n\u2019y a plus assez de type de jeton dans la r\xE9serve,
+    Mais attention, s\u2019il n\u2019y a plus assez de ce type de jeton dans la r\xE9serve,
     vous ne gagnez rien."
 --- !u!222 &17258800
 CanvasRenderer:
@@ -9003,7 +9003,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "Nombre joueurs : De 1 \xE0 4\n\nBut du jeu : \n- Vaincre une arm\xE9e de
-    fant\xF4me ainsi que leur(s) chef(s)\n\nLes joueurs gagnent :\n- Si ils \xE9liminent
+    fant\xF4me ainsi que leur(s) chef(s)\n\nLes joueurs gagnent :\n- S'ils \xE9liminent
     le ou les boss pr\xE9sents\n\nLes joueurs perdent :\n- Si il n'y a plus aucun
     survivant\n- Si 3 tuiles se sont faites hanter \n- Si le paquet de carte est vide"
 --- !u!222 &575177578
@@ -13775,13 +13775,11 @@ MonoBehaviour:
   explosion2: {fileID: 0}
   deck: {fileID: 0}
   card: {fileID: 0}
-  drawedCard: {fileID: 236058383}
   board: {fileID: 0}
   panelBluePlace: {fileID: 2078919588}
   panelRedPlace: {fileID: 243812752}
   panelGreenPlace: {fileID: 18601231}
   panelYellowPlace: {fileID: 111140190}
-  panelInfoGhostPower: {fileID: 940957162}
   panelPrio: {fileID: 1613610552}
   panelBouddha: {fileID: 860647544}
   panelYinYang: {fileID: 606293401}
@@ -18731,13 +18729,11 @@ MonoBehaviour:
   explosion2: {fileID: 0}
   deck: {fileID: 0}
   card: {fileID: 0}
-  drawedCard: {fileID: 236058383}
   board: {fileID: 0}
   panelBluePlace: {fileID: 2078919588}
   panelRedPlace: {fileID: 243812752}
   panelGreenPlace: {fileID: 18601231}
   panelYellowPlace: {fileID: 111140190}
-  panelInfoGhostPower: {fileID: 940957162}
   panelPrio: {fileID: 1613610552}
   panelBouddha: {fileID: 860647544}
   panelYinYang: {fileID: 606293401}
@@ -25375,6 +25371,9 @@ MonoBehaviour:
   yellowPlayer: {fileID: 1742816404}
   greenPlayer: {fileID: 1775335297}
   redPlayer: {fileID: 1221269284}
+  cam: {fileID: 695582315}
+  drawedCard: {fileID: 236058383}
+  panelInfoGhostPower: {fileID: 940957162}
   state: 0
   turnPlayer: 0
 --- !u!4 &1626541477
@@ -26670,13 +26669,11 @@ MonoBehaviour:
   explosion2: {fileID: 0}
   deck: {fileID: 0}
   card: {fileID: 0}
-  drawedCard: {fileID: 236058383}
   board: {fileID: 0}
   panelBluePlace: {fileID: 2078919588}
   panelRedPlace: {fileID: 243812752}
   panelGreenPlace: {fileID: 18601231}
   panelYellowPlace: {fileID: 111140190}
-  panelInfoGhostPower: {fileID: 940957162}
   panelPrio: {fileID: 1613610552}
   panelBouddha: {fileID: 860647544}
   panelYinYang: {fileID: 606293401}
@@ -27484,13 +27481,11 @@ MonoBehaviour:
   explosion2: {fileID: 0}
   deck: {fileID: 0}
   card: {fileID: 0}
-  drawedCard: {fileID: 236058383}
   board: {fileID: 0}
   panelBluePlace: {fileID: 2078919588}
   panelRedPlace: {fileID: 243812752}
   panelGreenPlace: {fileID: 18601231}
   panelYellowPlace: {fileID: 111140190}
-  panelInfoGhostPower: {fileID: 940957162}
   panelPrio: {fileID: 1613610552}
   panelBouddha: {fileID: 860647544}
   panelYinYang: {fileID: 606293401}
@@ -28006,10 +28001,10 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "Tour du joueur :\n1 - Phase Fantome : \n- On applique les pouvoirs des
-    fantomes pr\xE9sents sur le plateau du joueur dont c'est le tour.\n\n- Le joueur
+    fant\xF4mes pr\xE9sents sur le plateau du joueur dont c'est le tour.\n\n- Le joueur
     pioche une carte fant\xF4me puis la place sur un emplacement libre du plateau
     : \n\t-  Si les 3 emplacements de son plateau sont pris, alors il ne pioche pas
-    de fantome mais perd une vie.\n\t- Si le fant\xF4me est de couleur noire, alors
+    de fant\xF4me mais perd une vie.\n\t- Si le fant\xF4me est de couleur noire, alors
     il doit le poser sur son plateau.\n\t- Si le fant\xF4me est d'une autre couleur,
     alors il doit le poser sur le plateau correspondant. Si ce dernier est plein,
     alors il le pose sur un emplacement libre sur un des autres plateaux.\n\n2 - Phase

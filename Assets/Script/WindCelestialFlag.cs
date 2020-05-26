@@ -200,7 +200,7 @@ public class WindCelestialFlag : MonoBehaviour {
         }
         else
         {
-            infos.text = "Cette tuile est hantée. Vous ne pouvez pas activez son pouvoir";
+            infos.text = "Cette tuile est hantée. Vous ne pouvez pas activer son pouvoir";
             infos.gameObject.SetActive(true);
             isActiveTilePower = false;
             if (player.name == "BluePlayer")

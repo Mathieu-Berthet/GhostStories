@@ -131,13 +131,11 @@ public class GreenPlayer : MonoBehaviour
     private PoolManagerDeck deck;
     [SerializeField]
     public GameObject card;
-    public Image drawedCard;
     public BoardPosition board;
     public GameObject panelBluePlace;
     public GameObject panelRedPlace;
     public GameObject panelGreenPlace;
     public GameObject panelYellowPlace;
-    public GameObject panelInfoGhostPower;
     public GameObject panelPrio;
     public GameObject panelBouddha;
     public GameObject panelYinYang;
@@ -433,7 +431,7 @@ public class GreenPlayer : MonoBehaviour
 
         if (gm.state == GameManager.STATE_GAME.STATE_DRAW && greenTurn)
         {
-            textInfoPhase.text = " Phase de pioche : \n - Il vous faut piochez une carte fantôme (Clic droit souris)";
+            textInfoPhase.text = " Phase de pioche : \n - Il vous faut piocher une carte fantôme (Clic droit souris)";
             textInfoPower.text = descriptionPowerVert;
         }
         else if (gm.state == GameManager.STATE_GAME.STATE_MOVE && greenTurn)
@@ -561,7 +559,7 @@ public class GreenPlayer : MonoBehaviour
             panelGreenPlace.SetActive(true);
             panelYellowPlace.SetActive(true);
             textInfo.gameObject.SetActive(true);
-            drawedCard.gameObject.SetActive(true);
+            gm.drawedCard.gameObject.SetActive(true);
             if (gm.nbCardOnDeck == 40 && gm.nbCardOnBossDeck == 10)
             {
                 card = deck.GetPoolByName(PoolNameDeck.boss).GetItem(transform, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity, true, false, 0);
@@ -569,7 +567,7 @@ public class GreenPlayer : MonoBehaviour
                 card.transform.position = new Vector3(100.0f, 100.0f, 100.0f);
                 card.SetActive(true);
                 gm.PowerGhostInformation(card);
-                panelInfoGhostPower.SetActive(true);
+                gm.panelInfoGhostPower.SetActive(true);
                 gm.nbCardOnBossDeck--;
             }
             else
@@ -579,10 +577,10 @@ public class GreenPlayer : MonoBehaviour
                 card.transform.position = new Vector3(100.0f, 100.0f, 100.0f);
                 card.SetActive(true);
                 gm.PowerGhostInformation(card);
-                panelInfoGhostPower.SetActive(true);
+                gm.panelInfoGhostPower.SetActive(true);
                 gm.nbCardOnDeck--;
             }
-            drawedCard.sprite = card.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
+            gm.drawedCard.sprite = card.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
         }
     }
 
@@ -633,9 +631,9 @@ public class GreenPlayer : MonoBehaviour
                         panelRedPlace.SetActive(false);
                         panelGreenPlace.SetActive(false);
                         panelYellowPlace.SetActive(false);
-                        panelInfoGhostPower.SetActive(false);
+                        gm.panelInfoGhostPower.SetActive(false);
                         textInfo.gameObject.SetActive(false);
-                        drawedCard.gameObject.SetActive(false);
+                        gm.drawedCard.gameObject.SetActive(false);
                         gameObject.GetComponent<Deplacement>().enabled = true;
                         textInfoPhase.gameObject.SetActive(true);
                         textInfoPower.gameObject.SetActive(true);
@@ -690,9 +688,9 @@ public class GreenPlayer : MonoBehaviour
                         panelRedPlace.SetActive(false);
                         panelGreenPlace.SetActive(false);
                         panelYellowPlace.SetActive(false);
-                        panelInfoGhostPower.SetActive(false);
+                        gm.panelInfoGhostPower.SetActive(false);
                         textInfo.gameObject.SetActive(false);
-                        drawedCard.gameObject.SetActive(false);
+                        gm.drawedCard.gameObject.SetActive(false);
                         gameObject.GetComponent<Deplacement>().enabled = true;
                         textInfoPhase.gameObject.SetActive(true);
                         textInfoPower.gameObject.SetActive(true);
@@ -747,9 +745,9 @@ public class GreenPlayer : MonoBehaviour
                     panelRedPlace.SetActive(false);
                     panelGreenPlace.SetActive(false);
                     panelYellowPlace.SetActive(false);
-                    panelInfoGhostPower.SetActive(false);
+                    gm.panelInfoGhostPower.SetActive(false);
                     textInfo.gameObject.SetActive(false);
-                    drawedCard.gameObject.SetActive(false);
+                    gm.drawedCard.gameObject.SetActive(false);
                     gameObject.GetComponent<Deplacement>().enabled = true;
                     textInfoPhase.gameObject.SetActive(true);
                     textInfoPower.gameObject.SetActive(true);
@@ -1896,6 +1894,8 @@ public class GreenPlayer : MonoBehaviour
             if (blackDiceOne != null)
             {
                 resultFace = blackDiceOne.GetComponent<CubeScript>().face;
+                /*textInfo.text = resultFace;
+                textInfo.gameObject.SetActive(true);*/
             }
             if (powerFavoriDesDieux && !alreadyRelaunch)
             {
@@ -1924,7 +1924,8 @@ public class GreenPlayer : MonoBehaviour
                 switch (resultFace)
                 {
                     case "HauntedFace":
-                        Debug.Log("COucou");
+                        textInfo.text = "Hante la tuile sur laquelle vous vous trouvez";
+                        textInfo.gameObject.SetActive(true);
                         switch (tileName)
                         {
                             case "MaisonThe":
@@ -1971,10 +1972,10 @@ public class GreenPlayer : MonoBehaviour
                         useTilePower = false;
                         canLaunchDice = true;
                         gameObject.GetComponent<Deplacement>().enabled = true;
-                        alreadyRelaunch = false;
                         break;
                     case "DrawGhostFace":
-                        Debug.Log("COucou");
+                        textInfo.text = "Piochez un nouveau fantôme";
+                        textInfo.gameObject.SetActive(true);
                         //player.GetComponent<BluePlayer>().state = BluePlayer.STATE_GAME.STATE_DRAW;
                         DrawAGhost();
                         //To verify if we need that
@@ -1982,10 +1983,10 @@ public class GreenPlayer : MonoBehaviour
                         useTilePower = false;
                         canLaunchDice = true;
                         gameObject.GetComponent<Deplacement>().enabled = true;
-                        alreadyRelaunch = false;
                         break;
                     case "LoseJetonFace":
-                        Debug.Log("COucou");
+                        textInfo.text = "Perdez tous vos jetons";
+                        textInfo.gameObject.SetActive(true);
                         gm.tokenStock.nbBlackToken += NbBlackToken;
                         NbBlackToken = 0;
                         gm.tokenStock.nbRedToken += NbRedToken;
@@ -2001,11 +2002,11 @@ public class GreenPlayer : MonoBehaviour
                         canLaunchBlackDice = true;
                         canLaunchDice = true;
                         useTilePower = false;
-                        gameObject.GetComponent<Deplacement>().enabled = true;
-                        alreadyRelaunch = false;
+                        gameObject.GetComponent<Deplacement>().enabled = true; ;
                         break;
                     case "LoseQIFace":
-                        Debug.Log("COucou");
+                        textInfo.text = "Perdez 1 QI";
+                        textInfo.gameObject.SetActive(true);
                         Qi -= 1;
                         //To verify if we need that
                         update = true;
@@ -2013,17 +2014,16 @@ public class GreenPlayer : MonoBehaviour
                         useTilePower = false;
                         canLaunchDice = true;
                         gameObject.GetComponent<Deplacement>().enabled = true;
-                        alreadyRelaunch = false;
                         break;
                     case "EmptyFace":
                     case "EmptyFaceTwo":
-                        Debug.Log("COucou");
+                        textInfo.text = "Pas d'effet";
+                        textInfo.gameObject.SetActive(true);
                         //To verify if we need that
                         canLaunchBlackDice = true;
                         useTilePower = false;
                         canLaunchDice = true;
                         gameObject.GetComponent<Deplacement>().enabled = true;
-                        alreadyRelaunch = false;
                         break;
                     default:
                         break;
@@ -2032,6 +2032,7 @@ public class GreenPlayer : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
 
             Destroy(blackDiceOne);
+            //textInfo.gameObject.SetActive(false);
         }
     }
 

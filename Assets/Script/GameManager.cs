@@ -93,6 +93,10 @@ public class GameManager : MonoBehaviour {
     public GameObject greenPlayer;
     public GameObject redPlayer;
 
+    public Camera cam;
+    public Image drawedCard;
+    public GameObject panelInfoGhostPower;
+
     //Enum game phase
 
     //Enum player turn
@@ -295,6 +299,39 @@ public class GameManager : MonoBehaviour {
             {
                 canLerp = false;
                 actualTime = 0.0f;
+            }
+        }
+
+        RaycastHit hitt;
+        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+        if (state == STATE_GAME.STATE_PLAYER)
+        {
+            if (Physics.Raycast(ray, out hitt))
+            {
+                //tileName = hitt.transform.gameObject.name;
+
+                if (hitt.collider.gameObject.name == "CaseFantomeBleu1" || hitt.collider.gameObject.name == "CaseFantomeBleu2" || hitt.collider.gameObject.name == "CaseFantomeBleu3"
+                    || hitt.collider.gameObject.name == "CaseFantomeRouge1" || hitt.collider.gameObject.name == "CaseFantomeRouge2" || hitt.collider.gameObject.name == "CaseFantomeRouge3"
+                    || hitt.collider.gameObject.name == "CaseFantomeVert1" || hitt.collider.gameObject.name == "CaseFantomeVert2" || hitt.collider.gameObject.name == "CaseFantomeVert3"
+                    || hitt.collider.gameObject.name == "CaseFantomeJaune1" || hitt.collider.gameObject.name == "CaseFantomeJaune2" || hitt.collider.gameObject.name == "CaseFantomeJaune3")
+                {
+                    if (hitt.collider.gameObject.transform.childCount == 5)
+                    {
+                        if (!hitt.collider.gameObject.transform.GetChild(4).name.Contains("Bouddha"))
+                        {
+                            GameObject cardGhost = hitt.collider.gameObject.transform.GetChild(4).gameObject;
+                            PowerGhostInformation(cardGhost);
+                            drawedCard.sprite = cardGhost.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
+                            drawedCard.gameObject.SetActive(true);
+                            panelInfoGhostPower.SetActive(true);
+                        }
+                    }
+                }
+                else
+                {
+                    drawedCard.gameObject.SetActive(false);
+                    panelInfoGhostPower.SetActive(false);
+                }
             }
         }
     }

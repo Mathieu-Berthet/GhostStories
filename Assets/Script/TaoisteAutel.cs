@@ -294,7 +294,7 @@ public class TaoisteAutel : MonoBehaviour
         }
         else
         {
-            infos.text = "Cette tuile est hantée. Vous ne pouvez pas activez son pouvoir";
+            infos.text = "Cette tuile est hantée. Vous ne pouvez pas activer son pouvoir";
             infos.gameObject.SetActive(true);
             if (player.name == "BluePlayer")
             {
