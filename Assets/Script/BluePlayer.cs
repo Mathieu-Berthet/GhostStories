@@ -202,7 +202,6 @@ public class BluePlayer : MonoBehaviour
     public NavMeshModifier navMeshCircle;
     public NavMeshModifier navMeshTemple;*/
 
-
     #region accesseurs
     public int Qi
     {
@@ -788,7 +787,8 @@ public class BluePlayer : MonoBehaviour
 
     public void UsePowerTile()
     {
-        textInfo.gameObject.SetActive(false);
+        //textInfo.gameObject.SetActive(false);
+        Debug.Log("WWWWW : " + textInfo.gameObject.activeSelf);
         useGhostPower = false;
         if (gm.state == GameManager.STATE_GAME.STATE_PLAYER && nbActionEffect > 0 && blueTurn)
         {
@@ -1897,7 +1897,7 @@ public class BluePlayer : MonoBehaviour
                             nightTower.GetComponent<NightTower>().hauntedTile = true;
                             nightTower.GetComponent<NightTower>().haunted();
                             break;
-                        case "CerclePierre":
+                        case "CerclePriere":
                             priestCircle.GetComponent<PriestCircle>().hauntedTile = true;
                             priestCircle.GetComponent<PriestCircle>().haunted();
                             break;

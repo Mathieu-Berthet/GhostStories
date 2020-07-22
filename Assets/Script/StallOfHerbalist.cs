@@ -374,15 +374,23 @@ public class StallOfHerbalist : MonoBehaviour
         }
         else
         {
-            infos.text = "Cette tuile est hantée. Vous ne pouvez pas activer son pouvoir";
+            Debug.Log("Coucou ?");
+            Debug.Log(infos.gameObject);
+            Debug.Log(infos.gameObject.activeSelf);
             infos.gameObject.SetActive(true);
+            Debug.Log(infos.gameObject.activeSelf);
+            infos.text = "Cette tuile est hantée. Vous ne pouvez pas activer son pouvoir";
+            Debug.Log(infos.gameObject.activeSelf);
             if (player.name == "BluePlayer")
             {
+                Debug.Log("BLEU");
+                Debug.Log(infos.gameObject.activeSelf);
                 player.GetComponent<BluePlayer>().canLaunchDice = true;
                 player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
                 player.GetComponent<BluePlayer>().useTilePower = false;
                 player.GetComponent<Deplacement>().enabled = true;
                 player.GetComponent<BluePlayer>().update = true;
+                Debug.Log(infos.gameObject.activeSelf);
             }
             else if (player.name == "YellowPlayer")
             {
@@ -408,6 +416,7 @@ public class StallOfHerbalist : MonoBehaviour
                 player.GetComponent<Deplacement>().enabled = true;
                 player.GetComponent<GreenPlayer>().update = true;
             }
+            Debug.Log(infos.gameObject.activeSelf);
         }
     }
 

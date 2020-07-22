@@ -8,6 +8,10 @@ public class RulesScript : MonoBehaviour {
     public GameObject panelRules;
     public GameObject panelTiles;
     public GameObject panelToken;
+    public GameObject panelTokenRules;
+    public GameObject panelAttack;
+    public GameObject panelGhostPower;
+    public GameObject panelHantise;
     public Text infoTurnPlayer;
     public Text infoTurn;
     public Text infoDice;
@@ -50,9 +54,33 @@ public class RulesScript : MonoBehaviour {
             panelTiles.SetActive(true);
             buttonPrecedent.gameObject.SetActive(true);
         }
-        else if(panelTiles.activeSelf)
+        else if (panelTiles.activeSelf)
         {
             panelTiles.SetActive(false);
+            panelTokenRules.SetActive(true);
+            buttonPrecedent.gameObject.SetActive(true);
+        }
+        else if (panelTokenRules.activeSelf)
+        {
+            panelTokenRules.SetActive(false);
+            panelAttack.SetActive(true);
+            buttonPrecedent.gameObject.SetActive(true);
+        }
+        else if (panelAttack.activeSelf)
+        {
+            panelAttack.SetActive(false);
+            panelGhostPower.SetActive(true);
+            buttonPrecedent.gameObject.SetActive(true);
+        }
+        else if (panelGhostPower.activeSelf)
+        {
+            panelGhostPower.SetActive(false);
+            panelHantise.SetActive(true);
+            buttonPrecedent.gameObject.SetActive(true);
+        }
+        else if(panelHantise.activeSelf)
+        {
+            panelHantise.SetActive(false);
             buttonNext.gameObject.SetActive(false);
             buttonPrecedent.gameObject.SetActive(false);
             panelToken.SetActive(true);
@@ -73,10 +101,30 @@ public class RulesScript : MonoBehaviour {
 
     public void Precedent()
     {
-        if (panelTiles.activeSelf)
+        if (panelHantise.activeSelf)
         {
-            panelRules.SetActive(true);
+            panelGhostPower.SetActive(true);
+            panelHantise.SetActive(false);
+        }
+        else if(panelGhostPower.activeSelf)
+        {
+            panelAttack.SetActive(true);
+            panelGhostPower.SetActive(false);
+        }
+        else if (panelAttack.activeSelf)
+        {
+            panelAttack.SetActive(false);
+            panelTokenRules.SetActive(true);
+        }
+        else if (panelTokenRules.activeSelf)
+        {
+            panelTokenRules.SetActive(false);
+            panelTiles.SetActive(true);
+        }
+        else if (panelTiles.activeSelf)
+        {
             panelTiles.SetActive(false);
+            panelRules.SetActive(true);
             buttonPrecedent.gameObject.SetActive(false);
         }
     }

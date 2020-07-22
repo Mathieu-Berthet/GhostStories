@@ -22,8 +22,9 @@ public class TaoisteAutel : MonoBehaviour
     }
 	
 	// Update is called once per frame
-	void Update () {
-		
+	void Update ()
+    {
+
 	}
 
     public IEnumerator UnhauntTile(GameObject player)
@@ -294,8 +295,10 @@ public class TaoisteAutel : MonoBehaviour
         }
         else
         {
-            infos.text = "Cette tuile est hantée. Vous ne pouvez pas activer son pouvoir";
+            Debug.Log("Coucou ?");
             infos.gameObject.SetActive(true);
+            infos.text = "Cette tuile est hantée. Vous ne pouvez pas activer son pouvoir";
+            //infos.gameObject.SetActive(true);
             if (player.name == "BluePlayer")
             {
                 player.GetComponent<BluePlayer>().canLaunchDice = true;

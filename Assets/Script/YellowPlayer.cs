@@ -2021,7 +2021,7 @@ public class YellowPlayer : MonoBehaviour
                             nightTower.GetComponent<NightTower>().hauntedTile = true;
                             nightTower.GetComponent<NightTower>().haunted();
                             break;
-                        case "CerclePierre":
+                        case "CerclePriere":
                             priestCircle.GetComponent<PriestCircle>().hauntedTile = true;
                             priestCircle.GetComponent<PriestCircle>().haunted();
                             break;
