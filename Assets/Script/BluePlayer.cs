@@ -842,7 +842,7 @@ public class BluePlayer : MonoBehaviour
             }
             if (powerSecondSouffle)
             {
-                nbActionBattle -= 2;
+                nbActionBattle = 0;
             }
             nbActionEffect -= 1;
         }
@@ -1086,7 +1086,7 @@ public class BluePlayer : MonoBehaviour
                                 Attack(ghost2);
                                 if (powerSecondSouffle)
                                 {
-                                    nbActionEffect -= 2;
+                                    nbActionEffect = 0;
                                 }
                                 nbActionBattle -= 1;
                             }
@@ -1096,7 +1096,7 @@ public class BluePlayer : MonoBehaviour
                             Attack(ghost2);
                             if (powerSecondSouffle)
                             {
-                                nbActionEffect -= 2;
+                                nbActionEffect = 0;
                             }
                             nbActionBattle -= 1;
                         }
@@ -1132,7 +1132,7 @@ public class BluePlayer : MonoBehaviour
                                 Attack(ghost1);
                                 if (powerSecondSouffle)
                                 {
-                                    nbActionEffect -= 2;
+                                    nbActionEffect = 0;
                                 }
                                 nbActionBattle -= 1;
                             }
@@ -1142,7 +1142,7 @@ public class BluePlayer : MonoBehaviour
                             Attack(ghost1);
                             if (powerSecondSouffle)
                             {
-                                nbActionEffect -= 2;
+                                nbActionEffect = 0;
                             }
                             nbActionBattle -= 1;
                         }
@@ -1162,7 +1162,7 @@ public class BluePlayer : MonoBehaviour
                             Attack(ghost2);
                             if (powerSecondSouffle)
                             {
-                                nbActionEffect -= 2;
+                                nbActionEffect = 0;
                             }
                             nbActionBattle -= 1;
                         }
@@ -1172,7 +1172,7 @@ public class BluePlayer : MonoBehaviour
                         Attack(ghost2);
                         if (powerSecondSouffle)
                         {
-                            nbActionEffect -= 2;
+                            nbActionEffect = 0;
                         }
                         nbActionBattle -= 1;
                     }
@@ -1191,7 +1191,7 @@ public class BluePlayer : MonoBehaviour
                             Attack(ghost1);
                             if (powerSecondSouffle)
                             {
-                                nbActionEffect -= 2;
+                                nbActionEffect = 0;
                             }
                             nbActionBattle -= 1;
                         }
@@ -1201,7 +1201,7 @@ public class BluePlayer : MonoBehaviour
                         Attack(ghost1);
                         if (powerSecondSouffle)
                         {
-                            nbActionEffect -= 2;
+                            nbActionEffect = 0;
                         }
                         nbActionBattle -= 1;
                     }
@@ -1212,7 +1212,7 @@ public class BluePlayer : MonoBehaviour
             {
                 if (powerSecondSouffle)
                 {
-                    nbActionEffect -= 2;
+                    nbActionEffect = 0;
                 }
                 nbActionBattle -= 1;
             }
@@ -1563,7 +1563,7 @@ public class BluePlayer : MonoBehaviour
                     break;
             }
 
-            if (ghost.GetComponent<Ghost>().life == 0 && canKillGhost)
+            if (ghost.GetComponent<Ghost>().life <= 0 && canKillGhost)
             {
                 canKillGhost = false;
                 KillGhost(ghost);
@@ -1572,7 +1572,7 @@ public class BluePlayer : MonoBehaviour
             //Si on l'as pas tué avec les dés, on lui baisse sa vie avec le cercle de prière et/ou le jeton mantra
             ghost.GetComponent<Ghost>().ReduceLife();
 
-            if (ghost.GetComponent<Ghost>().life == 0 && canKillGhost)
+            if (ghost.GetComponent<Ghost>().life <= 0 && canKillGhost)
             {
                 canKillGhost = false;
                 KillGhost(ghost);
@@ -1633,7 +1633,7 @@ public class BluePlayer : MonoBehaviour
                     }
                 }
 
-                if (ghost.GetComponent<Ghost>().life == 0 && canKillGhost)
+                if (ghost.GetComponent<Ghost>().life <= 0 && canKillGhost)
                 {
                     canKillGhost = false;
                     KillGhost(ghost);
@@ -1641,6 +1641,7 @@ public class BluePlayer : MonoBehaviour
             }
 
             ghost.GetComponent<Ghost>().life = tempLife;
+            return;
 
         }
         else
@@ -1650,7 +1651,7 @@ public class BluePlayer : MonoBehaviour
             //Si on l'as pas tué avec les dés, on lui baisse sa vie avec le cercle de prière et/ou le jeton mantra
             ghost.GetComponent<Ghost>().ReduceLife();
 
-            if (ghost.GetComponent<Ghost>().life == 0 && canKillGhost)
+            if (ghost.GetComponent<Ghost>().life <= 0 && canKillGhost)
             {
                 canKillGhost = false;
                 KillGhost(ghost);
@@ -1711,13 +1712,14 @@ public class BluePlayer : MonoBehaviour
                     }
                 }
 
-                if (ghost.GetComponent<Ghost>().life == 0 && canKillGhost)
+                if (ghost.GetComponent<Ghost>().life <= 0 && canKillGhost)
                 {
                     canKillGhost = false;
                     KillGhost(ghost);
                 }
             }
             ghost.GetComponent<Ghost>().life = tempLife;
+            return;
         }
     }
 

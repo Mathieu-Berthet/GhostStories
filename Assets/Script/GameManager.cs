@@ -187,13 +187,17 @@ public class GameManager : MonoBehaviour {
             timerCri = 0.0f;
             audio.PlayCri();
         }
+        if ((int)turnPlayer > 3)
+        {
+            turnPlayer = 0;
+        }
         if (turnPlayer == STATE_PLAYER_TURN.BLUE_PLAYER_TURN)
         {
             textPlayerTurn.text = "TOUR DU JOUEUR BLEU";
+            greenPlayer.GetComponent<GreenPlayer>().greenTurn = false;
             bluePlayer.GetComponent<BluePlayer>().blueTurn = true;
             bluePlayer.GetComponent<BluePlayer>().update = true;
             yellowPlayer.GetComponent<YellowPlayer>().yellowTurn = false;
-            greenPlayer.GetComponent<GreenPlayer>().greenTurn = false;
             redPlayer.GetComponent<RedPlayer>().redTurn = false;
         }
         else if (turnPlayer == STATE_PLAYER_TURN.YELLOW_PLAYER_TURN)
@@ -222,10 +226,6 @@ public class GameManager : MonoBehaviour {
             redPlayer.GetComponent<RedPlayer>().redTurn = false;
             greenPlayer.GetComponent<GreenPlayer>().greenTurn = true;
             greenPlayer.GetComponent<GreenPlayer>().update = true;
-        }
-        if ((int)turnPlayer > 3)
-        {
-            turnPlayer = 0;
         }
 
         if (Input.GetKeyDown(KeyCode.Return))
@@ -345,6 +345,11 @@ public class GameManager : MonoBehaviour {
                     panelInfoGhostPower.SetActive(false);
                 }
             }
+        }
+
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
         }
     }
 

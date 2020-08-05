@@ -456,6 +456,7 @@ public class GreenPlayer : MonoBehaviour
 
         if (gm.state == GameManager.STATE_GAME.STATE_GHOSTPOWER && greenTurn)
         {
+            Debug.Log("AAAJJJ? ??");
             gm.state = GameManager.STATE_GAME.STATE_DRAW;
             ActivateInGameEffect();
         }
@@ -835,7 +836,7 @@ public class GreenPlayer : MonoBehaviour
                 default:
                     break;
             }
-            nbActionBattle -= 1;
+            nbActionBattle = 0;
             nbActionEffect -= 1;
         }
     }
@@ -845,7 +846,6 @@ public class GreenPlayer : MonoBehaviour
         gm.cantPause = true;
         if (gm.state == GameManager.STATE_GAME.STATE_PLAYER && nbActionBattle > 0 && greenTurn)
         {
-            Debug.Log("Coucou");
             useGhostPower = false; // A Voir si utile
             textInfo.gameObject.SetActive(false);
             gm.choose = false;
@@ -1242,6 +1242,7 @@ public class GreenPlayer : MonoBehaviour
                     nbActionBattle -= 1;
                 }
                 yield return new WaitForSeconds(0.5f);
+                nbActionEffect = 0;
                 gm.cantPause = false;
                 nbRedFace = 0;
                 nbBlackFace = 0;
@@ -1589,7 +1590,7 @@ public class GreenPlayer : MonoBehaviour
                     break;
             }
 
-            if (ghost.GetComponent<Ghost>().life == 0 && canKillGhost)
+            if (ghost.GetComponent<Ghost>().life <= 0 && canKillGhost)
             {
                 canKillGhost = false;
                 KillGhost(ghost);
@@ -1598,7 +1599,7 @@ public class GreenPlayer : MonoBehaviour
             //Si on l'as pas tué avec les dés, on lui baisse sa vie avec le cercle de prière et/ou le jeton mantra
             ghost.GetComponent<Ghost>().ReduceLife();
 
-            if (ghost.GetComponent<Ghost>().life == 0 && canKillGhost)
+            if (ghost.GetComponent<Ghost>().life <= 0 && canKillGhost)
             {
                 canKillGhost = false;
                 KillGhost(ghost);
@@ -1659,7 +1660,7 @@ public class GreenPlayer : MonoBehaviour
                     }
                 }
 
-                if (ghost.GetComponent<Ghost>().life == 0 && canKillGhost)
+                if (ghost.GetComponent<Ghost>().life <= 0 && canKillGhost)
                 {
                     canKillGhost = false;
                     KillGhost(ghost);
@@ -1667,6 +1668,7 @@ public class GreenPlayer : MonoBehaviour
             }
 
             ghost.GetComponent<Ghost>().life = tempLife;
+            return;
 
         }
         else
@@ -1676,7 +1678,7 @@ public class GreenPlayer : MonoBehaviour
             //Si on l'as pas tué avec les dés, on lui baisse sa vie avec le cercle de prière et/ou le jeton mantra
             ghost.GetComponent<Ghost>().ReduceLife();
 
-            if (ghost.GetComponent<Ghost>().life == 0 && canKillGhost)
+            if (ghost.GetComponent<Ghost>().life <= 0 && canKillGhost)
             {
                 canKillGhost = false;
                 KillGhost(ghost);
@@ -1737,13 +1739,14 @@ public class GreenPlayer : MonoBehaviour
                     }
                 }
 
-                if (ghost.GetComponent<Ghost>().life == 0 && canKillGhost)
+                if (ghost.GetComponent<Ghost>().life <= 0 && canKillGhost)
                 {
                     canKillGhost = false;
                     KillGhost(ghost);
                 }
             }
             ghost.GetComponent<Ghost>().life = tempLife;
+            return;
         }
     }
 
@@ -1980,6 +1983,7 @@ public class GreenPlayer : MonoBehaviour
     {
         if (greenTurn)
         {
+            Debug.Log("AAAJJtzerztzrtgfdJ? ??");
             int maxChild = gm.greenBoard.gameObject.transform.childCount;
             for (int i = 0; i < maxChild; i++)
             {

@@ -22,7 +22,7 @@ public class PauseMenu : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && !gm.cantPause)
+        if (Input.GetKeyDown(KeyCode.Space) && !gm.cantPause)
         {
             gm.cantPlay = true;
             Pause();

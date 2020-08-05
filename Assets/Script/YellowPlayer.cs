@@ -864,7 +864,7 @@ public class YellowPlayer : MonoBehaviour
                     break;
             }
             nbActionEffect -= 1;
-            nbActionBattle -= 1;
+            nbActionBattle = 0;
         }
     }
 
@@ -1337,6 +1337,7 @@ public class YellowPlayer : MonoBehaviour
                 nbActionBattle -= 1;
             }
             yield return new WaitForSeconds(0.5f);
+            nbActionEffect = 0;
             gm.cantPause = false;
             nbRedFace = 0;
             nbBlackFace = 0;
@@ -1682,7 +1683,7 @@ public class YellowPlayer : MonoBehaviour
                     break;
             }
 
-            if (ghost.GetComponent<Ghost>().life == 0 && canKillGhost)
+            if (ghost.GetComponent<Ghost>().life <= 0 && canKillGhost)
             {
                 canKillGhost = false;
                 KillGhost(ghost);
@@ -1691,7 +1692,7 @@ public class YellowPlayer : MonoBehaviour
             //Si on l'as pas tué avec les dés, on lui baisse sa vie avec le cercle de prière et/ou le jeton mantra
             ghost.GetComponent<Ghost>().ReduceLife();
 
-            if (ghost.GetComponent<Ghost>().life == 0 && canKillGhost)
+            if (ghost.GetComponent<Ghost>().life <= 0 && canKillGhost)
             {
                 canKillGhost = false;
                 KillGhost(ghost);
@@ -1752,7 +1753,7 @@ public class YellowPlayer : MonoBehaviour
                     }
                 }
 
-                if (ghost.GetComponent<Ghost>().life == 0 && canKillGhost)
+                if (ghost.GetComponent<Ghost>().life <= 0 && canKillGhost)
                 {
                     canKillGhost = false;
                     KillGhost(ghost);
@@ -1760,6 +1761,7 @@ public class YellowPlayer : MonoBehaviour
             }
 
             ghost.GetComponent<Ghost>().life = tempLife;
+            return;
 
         }
         else
@@ -1769,7 +1771,7 @@ public class YellowPlayer : MonoBehaviour
             //Si on l'as pas tué avec les dés, on lui baisse sa vie avec le cercle de prière et/ou le jeton mantra
             ghost.GetComponent<Ghost>().ReduceLife();
 
-            if (ghost.GetComponent<Ghost>().life == 0 && canKillGhost)
+            if (ghost.GetComponent<Ghost>().life <= 0 && canKillGhost)
             {
                 canKillGhost = false;
                 KillGhost(ghost);
@@ -1830,13 +1832,14 @@ public class YellowPlayer : MonoBehaviour
                     }
                 }
 
-                if (ghost.GetComponent<Ghost>().life == 0 && canKillGhost)
+                if (ghost.GetComponent<Ghost>().life <= 0 && canKillGhost)
                 {
                     canKillGhost = false;
                     KillGhost(ghost);
                 }
             }
             ghost.GetComponent<Ghost>().life = tempLife;
+            return;
         }
     }
 
