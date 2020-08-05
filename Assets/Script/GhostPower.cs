@@ -340,6 +340,7 @@ public class GhostPower : MonoBehaviour {
         GameObject go = Instantiate(hauntingGhost, middlePosition); //To verify if we need to ajust. I think we must warning with start function and this (Which function is before the other)
         go.transform.localPosition = new Vector3(0.0f, 200.0f, 0.0f);
         go.transform.localScale = new Vector3(1.0f, 200.0f, 1.0f);
+        StartCoroutine(gm.audio.PlayHauntingGhostFX(gm.audio.GetComponent<AudioManager>().hauntingGhostFX, 5.0f));
     }
 
     //Functions for power activate when ghost in on the field
@@ -431,6 +432,7 @@ public class GhostPower : MonoBehaviour {
         GameObject go = Instantiate(hauntingGhost, startPosition);
         go.transform.localPosition = new Vector3(0.0f, 200.0f, 0.0f);
         go.transform.localScale = new Vector3(1.0f, 200.0f, 1.0f);
+        StartCoroutine(gm.audio.PlayHauntingGhostFX(gm.audio.GetComponent<AudioManager>().hauntingGhostFX, 5.0f));
     }
 
     public void UnactiveWhiteFace() //To test 

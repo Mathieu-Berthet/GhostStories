@@ -92,8 +92,8 @@ public class RulesScript : MonoBehaviour {
             infoTurnPlayer.gameObject.SetActive(true);
             infoTurn.gameObject.SetActive(true);
             infoDice.gameObject.SetActive(true);
-            buttonRules.gameObject.SetActive(true);
-            buttonTile.gameObject.SetActive(true);
+            //buttonRules.gameObject.SetActive(true);
+            //buttonTile.gameObject.SetActive(true);
             buttonFermer.gameObject.SetActive(false);
             buttonEndTurn.gameObject.SetActive(true);
         }

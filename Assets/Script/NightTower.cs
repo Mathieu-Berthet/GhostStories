@@ -304,6 +304,7 @@ public class NightTower : MonoBehaviour
         if (hauntedTile)
         {
             fogHaunted.transform.GetChild(6).GetComponent<ParticleSystem>().Play();
+            StartCoroutine(gm.audio.PlayHauntingFX(gm.audio.GetComponent<AudioManager>().hauntingFX, gm.audio.GetComponent<AudioManager>().horrorScreamFX, 3.0f));
             gameObject.GetComponent<MeshRenderer>().material.color = new Color(0.25f, 0.25f, 0.25f, 1);
         }
     }

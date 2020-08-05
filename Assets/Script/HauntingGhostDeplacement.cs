@@ -14,10 +14,11 @@ public class HauntingGhostDeplacement : MonoBehaviour
 
     public GameObject boardParent;
     public LayerMask layerTile;
+    public GameManager gm;
     // Use this for initialization
     void Start ()
     {
-
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 	
 	// Update is called once per frame
@@ -198,7 +199,8 @@ public class HauntingGhostDeplacement : MonoBehaviour
 
     public void GhostMove(GameObject ghost)
     {
-        if(gameObject.transform.parent.name.Contains("Depart"))
+        StartCoroutine(gm.audio.PlayHauntingAdvanceFX(gm.audio.GetComponent<AudioManager>().hauntingAdvanceFX));
+        if (gameObject.transform.parent.name.Contains("Depart"))
         {
             //gameObject.transform.position = Vector3.Lerp(startPosition.position, middlePosition.position, actualTime); // To see later
             gameObject.transform.parent = ghost.GetComponent<Ghost>().power.middlePosition;

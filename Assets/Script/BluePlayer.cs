@@ -151,6 +151,7 @@ public class BluePlayer : MonoBehaviour
     public bool useWindCelestialPower;
     public bool chooseEffectYinYang;
     public bool chooseTile;
+    public bool canKillGhost;
 
     //Les différents textes
     [Header("Les textes")]
@@ -732,6 +733,7 @@ public class BluePlayer : MonoBehaviour
                     {
                         gm.yellowBoard.nbCardOnBoard++;
                     }
+                    StartCoroutine(gm.audio.PlayApparitionFX(gm.audio.GetComponent<AudioManager>().ghostAppearFX, 4.0f));
                     panelBluePlace.SetActive(false);
                     panelRedPlace.SetActive(false);
                     panelGreenPlace.SetActive(false);
@@ -1093,13 +1095,11 @@ public class BluePlayer : MonoBehaviour
                             }
                             if (ghost1.GetComponent<GhostPower>().lineIsEmpty)
                             {
-                                ghost1.GetComponent<Ghost>().ReduceLife();
                                 Attack(ghost1);
                             }
                         }
                         else
                         {
-                            ghost1.GetComponent<Ghost>().ReduceLife();
                             Attack(ghost1);
                         }
                         yield return new WaitForSeconds(1.5f);
@@ -1111,7 +1111,6 @@ public class BluePlayer : MonoBehaviour
                             }
                             if (ghost2.GetComponent<GhostPower>().lineIsEmpty)
                             {
-                                ghost2.GetComponent<Ghost>().ReduceLife();
                                 Attack(ghost2);
                                 if (powerSecondSouffle)
                                 {
@@ -1122,7 +1121,6 @@ public class BluePlayer : MonoBehaviour
                         }
                         else
                         {
-                            ghost2.GetComponent<Ghost>().ReduceLife();
                             Attack(ghost2);
                             if (powerSecondSouffle)
                             {
@@ -1143,13 +1141,11 @@ public class BluePlayer : MonoBehaviour
                             }
                             if (ghost2.GetComponent<GhostPower>().lineIsEmpty)
                             {
-                                ghost2.GetComponent<Ghost>().ReduceLife();
                                 Attack(ghost2);
                             }
                         }
                         else
                         {
-                            ghost2.GetComponent<Ghost>().ReduceLife();
                             Attack(ghost2);
                         }
                         yield return new WaitForSeconds(1.5f);
@@ -1161,7 +1157,6 @@ public class BluePlayer : MonoBehaviour
                             }
                             if (ghost1.GetComponent<GhostPower>().lineIsEmpty)
                             {
-                                ghost1.GetComponent<Ghost>().ReduceLife();
                                 Attack(ghost1);
                                 if (powerSecondSouffle)
                                 {
@@ -1172,7 +1167,6 @@ public class BluePlayer : MonoBehaviour
                         }
                         else
                         {
-                            ghost1.GetComponent<Ghost>().ReduceLife();
                             Attack(ghost1);
                             if (powerSecondSouffle)
                             {
@@ -1193,7 +1187,6 @@ public class BluePlayer : MonoBehaviour
                         }
                         if (ghost2.GetComponent<GhostPower>().lineIsEmpty)
                         {
-                            ghost2.GetComponent<Ghost>().ReduceLife();
                             Attack(ghost2);
                             if (powerSecondSouffle)
                             {
@@ -1204,7 +1197,6 @@ public class BluePlayer : MonoBehaviour
                     }
                     else
                     {
-                        ghost2.GetComponent<Ghost>().ReduceLife();
                         Attack(ghost2);
                         if (powerSecondSouffle)
                         {
@@ -1224,7 +1216,6 @@ public class BluePlayer : MonoBehaviour
                         }
                         if (ghost1.GetComponent<GhostPower>().lineIsEmpty)
                         {
-                            ghost1.GetComponent<Ghost>().ReduceLife();
                             Attack(ghost1);
                             if (powerSecondSouffle)
                             {
@@ -1235,7 +1226,6 @@ public class BluePlayer : MonoBehaviour
                     }
                     else
                     {
-                        ghost1.GetComponent<Ghost>().ReduceLife();
                         Attack(ghost1);
                         if (powerSecondSouffle)
                         {
@@ -1559,277 +1549,244 @@ public class BluePlayer : MonoBehaviour
 
     public void Attack(GameObject ghost)
     {
-        if ( (ghost.GetComponent<Ghost>().canBeDestroyByDice) && ((ghost.GetComponent<Ghost>().couleur == "red" && nbRedFace >= ghost.GetComponent<Ghost>().life) || (ghost.GetComponent<Ghost>().couleur == "blue" && nbBlueFace >= ghost.GetComponent<Ghost>().life)
-                    || (ghost.GetComponent<Ghost>().couleur == "green" && nbGreenFace >= ghost.GetComponent<Ghost>().life) || (ghost.GetComponent<Ghost>().couleur == "yellow" && nbYellowFace >= ghost.GetComponent<Ghost>().life)
-                    || (ghost.GetComponent<Ghost>().couleur == "black" && nbBlackFace >= ghost.GetComponent<Ghost>().life)) )
+        if (ghost.GetComponent<Ghost>().canBeDestroyByDice)
         {
             //On ajouteras des particules à la mort du fantome (style explosion)
+            canKillGhost = true;
+            int tempLife = ghost.GetComponent<Ghost>().life;
             switch (ghost.GetComponent<Ghost>().couleur)
             {
                 case "red":
+                    int tempRed = nbRedFace;
                     nbRedFace -= ghost.GetComponent<Ghost>().life;
+                    ghost.GetComponent<Ghost>().life -= tempRed;
+                    Debug.Log(ghost.GetComponent<Ghost>().life);
                     break;
                 case "yellow":
+                    int tempYellow = nbYellowFace;
                     nbYellowFace -= ghost.GetComponent<Ghost>().life;
+                    ghost.GetComponent<Ghost>().life -= tempYellow;
+                    Debug.Log(ghost.GetComponent<Ghost>().life);
                     break;
                 case "blue":
+                    int tempBlue = nbBlueFace;
                     nbBlueFace -= ghost.GetComponent<Ghost>().life;
+                    ghost.GetComponent<Ghost>().life -= tempBlue;
+                    Debug.Log(ghost.GetComponent<Ghost>().life);
                     break;
                 case "black":
+                    int tempBlack = nbBlackFace;
                     nbBlackFace -= ghost.GetComponent<Ghost>().life;
+                    ghost.GetComponent<Ghost>().life -= tempBlack;
+                    Debug.Log(ghost.GetComponent<Ghost>().life);
                     break;
                 case "green":
+                    int tempGreen = nbGreenFace;
                     nbGreenFace -= ghost.GetComponent<Ghost>().life;
+                    ghost.GetComponent<Ghost>().life -= tempGreen;
+                    Debug.Log(ghost.GetComponent<Ghost>().life);
                     break;
                 default:
                     break;
             }
 
-            //Décompte du nombre de fantômes sur le plateau
-            if(ghost.transform.parent.parent.GetComponent<boardColor>().color == "blue")
+            if (ghost.GetComponent<Ghost>().life == 0 && canKillGhost)
             {
-                gm.blueBoard.nbCardOnBoard--;
-            }
-            else if (ghost.transform.parent.parent.GetComponent<boardColor>().color == "red")
-            {
-                gm.redBoard.nbCardOnBoard--;
-            }
-            else if (ghost.transform.parent.parent.GetComponent<boardColor>().color == "green")
-            {
-                gm.greenBoard.nbCardOnBoard--;
-            }
-            else if (ghost.transform.parent.parent.GetComponent<boardColor>().color == "yellow")
-            {
-                gm.yellowBoard.nbCardOnBoard--;
+                canKillGhost = false;
+                KillGhost(ghost);
             }
 
-            explosion.transform.GetChild(2).GetComponent<ParticleSystem>().Play();
-            if (ghost.transform.parent.GetChild(1).childCount >= 1)
+            //Si on l'as pas tué avec les dés, on lui baisse sa vie avec le cercle de prière et/ou le jeton mantra
+            ghost.GetComponent<Ghost>().ReduceLife();
+
+            if (ghost.GetComponent<Ghost>().life == 0 && canKillGhost)
             {
-                Destroy(ghost.transform.parent.GetChild(1).GetChild(0).gameObject);
-            }
-            if (ghost.transform.parent.GetChild(2).childCount >= 1)
-            {
-                Destroy(ghost.transform.parent.GetChild(2).GetChild(0).gameObject);
+                canKillGhost = false;
+                KillGhost(ghost);
             }
 
-            ghost.transform.parent = defausse.transform;
-            ghost.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
-            ghost.transform.localEulerAngles = new Vector3(90.0f, 0.0f, 0.0f);
-            if (ghost.GetComponent<Ghost>().deathPower)
+            //Ensuite on décomptera les jetons
+            if (gm.canUseTaoToken)
             {
-                ghost.GetComponent<Ghost>().UseDeathPower(gameObject);
-            }
-            ghost = null;
-            gm.RegainMantraToken();
-        }
-        else if ((gm.canUseTaoToken) && ((ghost.GetComponent<Ghost>().couleur == "red" && nbRedFace < ghost.GetComponent<Ghost>().life) || (ghost.GetComponent<Ghost>().couleur == "blue" && nbBlueFace < ghost.GetComponent<Ghost>().life)
-            || (ghost.GetComponent<Ghost>().couleur == "green" && nbGreenFace < ghost.GetComponent<Ghost>().life) || (ghost.GetComponent<Ghost>().couleur == "yellow" && nbYellowFace < ghost.GetComponent<Ghost>().life)
-            || (ghost.GetComponent<Ghost>().couleur == "black" && nbBlackFace < ghost.GetComponent<Ghost>().life)))
-        {
-            //D'abord, check si on a un autre joueur (ou plusieurs) sur la meme case que nous.
-            // Check résultat Dés + jetons pour tuer le fantome
-            if (ghost.transform.parent.parent.GetComponent<boardColor>().color == "blue")
-            {
-                gm.blueBoard.nbCardOnBoard--;
-            }
-            else if (ghost.transform.parent.parent.GetComponent<boardColor>().color == "red")
-            {
-                gm.redBoard.nbCardOnBoard--;
-            }
-            else if (ghost.transform.parent.parent.GetComponent<boardColor>().color == "green")
-            {
-                gm.greenBoard.nbCardOnBoard--;
-            }
-            else if (ghost.transform.parent.parent.GetComponent<boardColor>().color == "yellow")
-            {
-                gm.yellowBoard.nbCardOnBoard--;
+                if (ghost.GetComponent<Ghost>().couleur == "red")
+                {
+                    if (nbRedToken >= ghost.GetComponent<Ghost>().life)
+                    {
+                        int tempRedToken = nbRedToken;
+                        nbRedToken -= ghost.GetComponent<Ghost>().life;
+                        ghost.GetComponent<Ghost>().life -= tempRedToken;
+                        Debug.Log(ghost.GetComponent<Ghost>().life);
+                    }
+                }
+                else if (ghost.GetComponent<Ghost>().couleur == "blue")
+                {
+                    if (nbBlueToken >= ghost.GetComponent<Ghost>().life)
+                    {
+                        int tempBlueToken = nbBlueToken;
+                        nbBlueToken -= ghost.GetComponent<Ghost>().life;
+                        ghost.GetComponent<Ghost>().life -= tempBlueToken;
+                        Debug.Log(ghost.GetComponent<Ghost>().life);
+                    }
+                }
+                else if (ghost.GetComponent<Ghost>().couleur == "green")
+                {
+
+                    if (nbGreenToken >= ghost.GetComponent<Ghost>().life)
+                    {
+                        int tempGreenToken = nbGreenToken;
+                        nbGreenToken -= ghost.GetComponent<Ghost>().life;
+                        ghost.GetComponent<Ghost>().life -= tempGreenToken;
+                        Debug.Log(ghost.GetComponent<Ghost>().life);
+                    }
+                }
+                else if (ghost.GetComponent<Ghost>().couleur == "yellow")
+                {
+                    if (nbYellowToken >= ghost.GetComponent<Ghost>().life)
+                    {
+                        int tempYellowToken = nbYellowToken;
+                        nbYellowToken -= ghost.GetComponent<Ghost>().life;
+                        ghost.GetComponent<Ghost>().life -= tempYellowToken;
+                        Debug.Log(ghost.GetComponent<Ghost>().life);
+                    }
+                }
+                else if (ghost.GetComponent<Ghost>().couleur == "black")
+                {
+                    if (nbBlackToken >= ghost.GetComponent<Ghost>().life)
+                    {
+                        int tempBlackToken = nbBlackToken;
+                        nbBlackToken -= ghost.GetComponent<Ghost>().life;
+                        ghost.GetComponent<Ghost>().life -= tempBlackToken;
+                        Debug.Log(ghost.GetComponent<Ghost>().life);
+                    }
+                }
+
+                if (ghost.GetComponent<Ghost>().life == 0 && canKillGhost)
+                {
+                    canKillGhost = false;
+                    KillGhost(ghost);
+                }
             }
 
-            if (ghost.GetComponent<Ghost>().couleur == "red")
-            {
-                int resultRed = ghost.GetComponent<Ghost>().life - nbRedFace;
-                if (nbRedToken >= resultRed)
-                {
-                    nbRedToken -= resultRed;
-                    nbRedFace = 0;
-                    explosion.transform.GetChild(2).GetComponent<ParticleSystem>().Play();
-                    if (ghost.transform.parent.GetChild(1).childCount >= 1)
-                    {
-                        Destroy(ghost.transform.parent.GetChild(1).GetChild(0).gameObject);
-                    }
-                    if (ghost.transform.parent.GetChild(2).childCount >= 1)
-                    {
-                        Destroy(ghost.transform.parent.GetChild(2).GetChild(0).gameObject);
-                    }
-                    ghost.transform.parent = defausse.transform;
-                    ghost.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
-                    ghost.transform.localEulerAngles = new Vector3(90.0f, 0.0f, 0.0f);
-                    if (ghost.GetComponent<Ghost>().deathPower)
-                    {
-                        ghost.GetComponent<Ghost>().UseDeathPower(gameObject);
-                    }
-                    ghost = null;
-                    gm.RegainMantraToken();
-                    update = true;
-                }
-            }
-            else if (ghost.GetComponent<Ghost>().couleur == "blue")
-            {
-                int resultBlue = ghost.GetComponent<Ghost>().life - nbBlueFace;
-                if (nbBlueToken >= resultBlue)
-                {
-                    nbBlueToken -= resultBlue;
-                    nbBlueFace = 0;
-                    explosion.transform.GetChild(2).GetComponent<ParticleSystem>().Play();
-                    if (ghost.transform.parent.GetChild(1).childCount >= 1)
-                    {
-                        Destroy(ghost.transform.parent.GetChild(1).GetChild(0).gameObject);
-                    }
-                    if (ghost.transform.parent.GetChild(2).childCount >= 1)
-                    {
-                        Destroy(ghost.transform.parent.GetChild(2).GetChild(0).gameObject);
-                    }
-                    ghost.transform.parent = defausse.transform;
-                    ghost.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
-                    ghost.transform.localEulerAngles = new Vector3(90.0f, 0.0f, 0.0f);
-                    if (ghost.GetComponent<Ghost>().deathPower)
-                    {
-                        ghost.GetComponent<Ghost>().UseDeathPower(gameObject);
-                    }
-                    ghost = null;
-                    gm.RegainMantraToken();
-                    update = true;
-                }
-            }
-            else if (ghost.GetComponent<Ghost>().couleur == "green")
-            {
-                int resultGreen = ghost.GetComponent<Ghost>().life - nbGreenFace;
-                if (nbGreenToken >= resultGreen)
-                {
-                    nbGreenToken -= resultGreen;
-                    nbGreenFace = 0;
-                    explosion.transform.GetChild(2).GetComponent<ParticleSystem>().Play();
-                    if (ghost.transform.parent.GetChild(1).childCount >= 1)
-                    {
-                        Destroy(ghost.transform.parent.GetChild(1).GetChild(0).gameObject);
-                    }
-                    if (ghost.transform.parent.GetChild(2).childCount >= 1)
-                    {
-                        Destroy(ghost.transform.parent.GetChild(2).GetChild(0).gameObject);
-                    }
-                    ghost.transform.parent = defausse.transform;
-                    ghost.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
-                    ghost.transform.localEulerAngles = new Vector3(90.0f, 0.0f, 0.0f);
-                    if (ghost.GetComponent<Ghost>().deathPower)
-                    {
-                        ghost.GetComponent<Ghost>().UseDeathPower(gameObject);
-                    }
-                    ghost = null;
-                    gm.RegainMantraToken();
-                    update = true;
-                }
-            }
-            else if (ghost.GetComponent<Ghost>().couleur == "yellow")
-            {
-                int resultYellow = ghost.GetComponent<Ghost>().life - nbYellowFace;
-                if (nbYellowToken >= resultYellow)
-                {
-                    nbYellowToken -= resultYellow;
-                    nbYellowFace = 0;
-                    explosion.transform.GetChild(2).GetComponent<ParticleSystem>().Play();
-                    if (ghost.transform.parent.GetChild(1).childCount >= 1)
-                    {
-                        Destroy(ghost.transform.parent.GetChild(1).GetChild(0).gameObject);
-                    }
-                    if (ghost.transform.parent.GetChild(2).childCount >= 1)
-                    {
-                        Destroy(ghost.transform.parent.GetChild(2).GetChild(0).gameObject);
-                    }
-                    ghost.transform.parent = defausse.transform;
-                    ghost.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
-                    ghost.transform.localEulerAngles = new Vector3(90.0f, 0.0f, 0.0f);
-                    if (ghost.GetComponent<Ghost>().deathPower)
-                    {
-                        ghost.GetComponent<Ghost>().UseDeathPower(gameObject);
-                    }
-                    ghost = null;
-                    gm.RegainMantraToken();
-                    update = true;
-                }
-            }
-            else if (ghost.GetComponent<Ghost>().couleur == "black")
-            {
-                int resultBlack = ghost.GetComponent<Ghost>().life - nbBlackFace;
-                if (nbBlackToken >= resultBlack)
-                {
-                    nbBlackToken -= resultBlack;
-                    nbBlackFace = 0;
-                    explosion.transform.GetChild(2).GetComponent<ParticleSystem>().Play();
-                    if (ghost.transform.parent.GetChild(1).childCount >= 1)
-                    {
-                        Destroy(ghost.transform.parent.GetChild(1).GetChild(0).gameObject);
-                    }
-                    if (ghost.transform.parent.GetChild(2).childCount >= 1)
-                    {
-                        Destroy(ghost.transform.parent.GetChild(2).GetChild(0).gameObject);
-                    }
-                    ghost.transform.parent = defausse.transform;
-                    ghost.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
-                    ghost.transform.localEulerAngles = new Vector3(90.0f, 0.0f, 0.0f);
-                    if (ghost.GetComponent<Ghost>().deathPower)
-                    {
-                        ghost.GetComponent<Ghost>().UseDeathPower(gameObject);
-                    }
-                    ghost = null;
-                    gm.RegainMantraToken();
-                    update = true;
-                }
-            }
-        }
-        else if(!ghost.GetComponent<Ghost>().canBeDestroyByDice && ghost.GetComponent<Ghost>().life == 0)
-        {
-            if (ghost.transform.parent.parent.GetComponent<boardColor>().color == "blue")
-            {
-                gm.blueBoard.nbCardOnBoard--;
-            }
-            else if (ghost.transform.parent.parent.GetComponent<boardColor>().color == "red")
-            {
-                gm.redBoard.nbCardOnBoard--;
-            }
-            else if (ghost.transform.parent.parent.GetComponent<boardColor>().color == "green")
-            {
-                gm.greenBoard.nbCardOnBoard--;
-            }
-            else if (ghost.transform.parent.parent.GetComponent<boardColor>().color == "yellow")
-            {
-                gm.yellowBoard.nbCardOnBoard--;
-            }
+            ghost.GetComponent<Ghost>().life = tempLife;
 
-            explosion.transform.GetChild(2).GetComponent<ParticleSystem>().Play();
-            if (ghost.transform.parent.GetChild(1).childCount >= 1)
-            {
-                Destroy(ghost.transform.parent.GetChild(1).GetChild(0).gameObject);
-            }
-            if (ghost.transform.parent.GetChild(2).childCount >= 1)
-            {
-                Destroy(ghost.transform.parent.GetChild(2).GetChild(0).gameObject);
-            }
-
-            ghost.transform.parent = defausse.transform;
-            ghost.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
-            ghost.transform.localEulerAngles = new Vector3(90.0f, 0.0f, 0.0f);
-            if (ghost.GetComponent<Ghost>().deathPower)
-            {
-                ghost.GetComponent<Ghost>().UseDeathPower(gameObject);
-            }
-            ghost = null;
-            gm.RegainMantraToken();
         }
         else
         {
-            //On a pas assez pour le tuer, alors il ne se passe rien
+            canKillGhost = true;
+            int tempLife = ghost.GetComponent<Ghost>().life;
+            //Si on l'as pas tué avec les dés, on lui baisse sa vie avec le cercle de prière et/ou le jeton mantra
+            ghost.GetComponent<Ghost>().ReduceLife();
+
+            if (ghost.GetComponent<Ghost>().life == 0 && canKillGhost)
+            {
+                canKillGhost = false;
+                KillGhost(ghost);
+            }
+
+            //Ensuite on décomptera les jetons
+            if (gm.canUseTaoToken)
+            {
+                if (ghost.GetComponent<Ghost>().couleur == "red")
+                {
+                    if (nbRedToken >= ghost.GetComponent<Ghost>().life)
+                    {
+                        int tempRedToken = nbRedToken;
+                        nbRedToken -= ghost.GetComponent<Ghost>().life;
+                        ghost.GetComponent<Ghost>().life -= tempRedToken;
+                        Debug.Log(ghost.GetComponent<Ghost>().life);
+                    }
+                }
+                else if (ghost.GetComponent<Ghost>().couleur == "blue")
+                {
+                    if (nbBlueToken >= ghost.GetComponent<Ghost>().life)
+                    {
+                        int tempBlueToken = nbBlueToken;
+                        nbBlueToken -= ghost.GetComponent<Ghost>().life;
+                        ghost.GetComponent<Ghost>().life -= tempBlueToken;
+                        Debug.Log(ghost.GetComponent<Ghost>().life);
+                    }
+                }
+                else if (ghost.GetComponent<Ghost>().couleur == "green")
+                {
+
+                    if (nbGreenToken >= ghost.GetComponent<Ghost>().life)
+                    {
+                        int tempGreenToken = nbGreenToken;
+                        nbGreenToken -= ghost.GetComponent<Ghost>().life;
+                        ghost.GetComponent<Ghost>().life -= tempGreenToken;
+                        Debug.Log(ghost.GetComponent<Ghost>().life);
+                    }
+                }
+                else if (ghost.GetComponent<Ghost>().couleur == "yellow")
+                {
+                    if (nbYellowToken >= ghost.GetComponent<Ghost>().life)
+                    {
+                        int tempYellowToken = nbYellowToken;
+                        nbYellowToken -= ghost.GetComponent<Ghost>().life;
+                        ghost.GetComponent<Ghost>().life -= tempYellowToken;
+                        Debug.Log(ghost.GetComponent<Ghost>().life);
+                    }
+                }
+                else if (ghost.GetComponent<Ghost>().couleur == "black")
+                {
+                    if (nbBlackToken >= ghost.GetComponent<Ghost>().life)
+                    {
+                        int tempBlackToken = nbBlackToken;
+                        nbBlackToken -= ghost.GetComponent<Ghost>().life;
+                        ghost.GetComponent<Ghost>().life -= tempBlackToken;
+                        Debug.Log(ghost.GetComponent<Ghost>().life);
+                    }
+                }
+
+                if (ghost.GetComponent<Ghost>().life == 0 && canKillGhost)
+                {
+                    canKillGhost = false;
+                    KillGhost(ghost);
+                }
+            }
+            ghost.GetComponent<Ghost>().life = tempLife;
         }
+    }
+
+    public void KillGhost(GameObject ghost)
+    {
+        //Décompte du nombre de fantômes sur le plateau
+        if (ghost.transform.parent.parent.GetComponent<boardColor>().color == "blue")
+        {
+            gm.blueBoard.nbCardOnBoard--;
+        }
+        else if (ghost.transform.parent.parent.GetComponent<boardColor>().color == "red")
+        {
+            gm.redBoard.nbCardOnBoard--;
+        }
+        else if (ghost.transform.parent.parent.GetComponent<boardColor>().color == "green")
+        {
+            gm.greenBoard.nbCardOnBoard--;
+        }
+        else if (ghost.transform.parent.parent.GetComponent<boardColor>().color == "yellow")
+        {
+            gm.yellowBoard.nbCardOnBoard--;
+        }
+
+        explosion.transform.GetChild(2).GetComponent<ParticleSystem>().Play();
+        if (ghost.transform.parent.GetChild(1).childCount >= 1)
+        {
+            Destroy(ghost.transform.parent.GetChild(1).GetChild(0).gameObject);
+        }
+        if (ghost.transform.parent.GetChild(2).childCount >= 1)
+        {
+            Destroy(ghost.transform.parent.GetChild(2).GetChild(0).gameObject);
+        }
+
+        ghost.transform.parent = defausse.transform;
+        ghost.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+        ghost.transform.localEulerAngles = new Vector3(90.0f, 0.0f, 0.0f);
+        if (ghost.GetComponent<Ghost>().deathPower)
+        {
+            ghost.GetComponent<Ghost>().UseDeathPower(gameObject);
+        }
+        ghost = null;
+        gm.RegainMantraToken();
     }
 
 

@@ -97,6 +97,8 @@ public class GameManager : MonoBehaviour {
     public Image drawedCard;
     public GameObject panelInfoGhostPower;
 
+    public AudioManager audio;
+
     //Enum game phase
 
     //Enum player turn
@@ -169,6 +171,8 @@ public class GameManager : MonoBehaviour {
         greenBoard = GameObject.Find("PlateauJoueurVert").GetComponent<boardColor>();
         yellowBoard = GameObject.Find("PlateauJoueurJaune").GetComponent<boardColor>();
         tokenStock = GameObject.Find("TokenStock").GetComponent<StockOfToken>();
+
+        audio = GameObject.Find("AudioManager").GetComponent<AudioManager>();
 
     }
 

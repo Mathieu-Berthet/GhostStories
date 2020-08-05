@@ -14,10 +14,13 @@ public class BouddhisteTemple : MonoBehaviour {
     public GameObject fogHaunted;
 
     public Text infos;
+
+    public GameManager gm;
 	// Use this for initialization
-	void Start () {
-		
-	}
+	void Start ()
+    {
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -392,6 +395,7 @@ public class BouddhisteTemple : MonoBehaviour {
         if (hauntedTile)
         {
             fogHaunted.transform.GetChild(6).GetComponent<ParticleSystem>().Play();
+            StartCoroutine(gm.audio.PlayHauntingFX(gm.audio.GetComponent<AudioManager>().hauntingFX, gm.audio.GetComponent<AudioManager>().horrorScreamFX, 3.0f));
             gameObject.GetComponent<MeshRenderer>().material.color = new Color(0.25f, 0.25f, 0.25f, 1);
         }
     }
