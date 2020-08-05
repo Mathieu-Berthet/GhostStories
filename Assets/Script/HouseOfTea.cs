@@ -353,6 +353,7 @@ public class HouseOfTea : MonoBehaviour
                 default:
                     break;
             }
+            gm.cantPause = false;
         }
         else
         {
@@ -390,6 +391,7 @@ public class HouseOfTea : MonoBehaviour
                 player.GetComponent<Deplacement>().enabled = true;
                 player.GetComponent<GreenPlayer>().canLaunchBlackDice = true;
             }
+            gm.cantPause = false;
         }
     }
 

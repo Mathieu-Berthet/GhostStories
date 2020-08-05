@@ -72,6 +72,8 @@ public class GameManager : MonoBehaviour {
     public int nbCardOnBossDeck;
     public bool canUseTaoToken;
     public bool cantTransformWhiteFace;
+    public bool cantPause;
+    public bool cantPlay;
 
     public GameObject panelButtonChoice;
     public GameObject panelAwardChoice;
@@ -98,7 +100,7 @@ public class GameManager : MonoBehaviour {
     public GameObject panelInfoGhostPower;
 
     public AudioManager audio;
-
+    public float timerCri;
     //Enum game phase
 
     //Enum player turn
@@ -179,6 +181,12 @@ public class GameManager : MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
+        timerCri += Time.deltaTime;
+        if(timerCri >= 15.0f)
+        {
+            timerCri = 0.0f;
+            audio.PlayCri();
+        }
         if (turnPlayer == STATE_PLAYER_TURN.BLUE_PLAYER_TURN)
         {
             textPlayerTurn.text = "TOUR DU JOUEUR BLEU";

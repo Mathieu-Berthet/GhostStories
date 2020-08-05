@@ -37,6 +37,7 @@ public class Graveyard : MonoBehaviour
         {
             //PARTIE POUR RESU ^^'
             LaunchBlackDice(player);
+            gm.cantPause = false;
         }
         else
         {
@@ -74,6 +75,7 @@ public class Graveyard : MonoBehaviour
                 player.GetComponent<Deplacement>().enabled = true;
                 player.GetComponent<GreenPlayer>().update = true;
             }
+            gm.cantPause = false;
         }
     }
 

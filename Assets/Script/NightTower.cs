@@ -224,6 +224,7 @@ public class NightTower : MonoBehaviour
                 }
                 chooseBoard = false;
                 panelBoardChoice.SetActive(false);
+                gm.cantPause = false;
             }
 
             if (player.name == "BluePlayer")
@@ -296,6 +297,7 @@ public class NightTower : MonoBehaviour
                 player.GetComponent<Deplacement>().enabled = true;
                 player.GetComponent<GreenPlayer>().update = true;
             }
+            gm.cantPause = false;
         }
     }
 

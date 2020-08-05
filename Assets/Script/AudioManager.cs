@@ -29,6 +29,9 @@ public class AudioManager : MonoBehaviour
     public AudioClip hauntingFX;
     public AudioClip horrorScreamFX;
 
+
+    public AudioSource sourceCri;
+    public bool finish;
 	// Use this for initialization
 	void Start ()
     {
@@ -36,8 +39,13 @@ public class AudioManager : MonoBehaviour
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		
+	void Update ()
+    {
+		if(finish)
+        {
+            finish = false;
+            StartCoroutine(PlayMusic());
+        }
 	}
 
 
@@ -50,6 +58,49 @@ public class AudioManager : MonoBehaviour
 
         sourceMusic.clip = clipAmbianceTwo;
         sourceMusic.Play();
+        yield return new WaitForSeconds(clipAmbianceTwo.length);
+
+        sourceMusic.clip = clipAmbianceThree;
+        sourceMusic.Play();
+        yield return new WaitForSeconds(clipAmbianceThree.length);
+
+        sourceMusic.clip = clipAmbianceFour;
+        sourceMusic.Play();
+        yield return new WaitForSeconds(clipAmbianceFour.length);
+
+        sourceMusic.clip = clipAmbianceFive;
+        sourceMusic.Play();
+        yield return new WaitForSeconds(clipAmbianceFive.length);
+
+        sourceMusic.clip = clipAmbianceSix;
+        sourceMusic.Play();
+        yield return new WaitForSeconds(clipAmbianceSix.length);
+
+        sourceMusic.clip = clipAmbianceSeven;
+        sourceMusic.Play();
+        yield return new WaitForSeconds(clipAmbianceSeven.length);
+
+        sourceMusic.clip = clipAmbianceEight;
+        sourceMusic.Play();
+        yield return new WaitForSeconds(clipAmbianceEight.length);
+
+        sourceMusic.clip = clipAmbianceNine;
+        sourceMusic.Play();
+        yield return new WaitForSeconds(clipAmbianceNine.length);
+
+        sourceMusic.clip = clipAmbianceTen;
+        sourceMusic.Play();
+        yield return new WaitForSeconds(clipAmbianceTen.length);
+
+        sourceMusic.clip = clipAmbianceEleven;
+        sourceMusic.Play();
+        yield return new WaitForSeconds(clipAmbianceEleven.length);
+
+        sourceMusic.clip = clipAmbianceTwelve;
+        sourceMusic.Play();
+        yield return new WaitForSeconds(clipAmbianceTwelve.length);
+        finish = true;
+        yield return null;
     }
 
     public IEnumerator PlayApparitionFX(AudioClip fxToPlay, float timer)
@@ -85,8 +136,15 @@ public class AudioManager : MonoBehaviour
         yield return new WaitForSeconds(timerHaunt);
 
         sourceFX.clip = fxHauntToPlayTwo;
+        sourceFX.pitch = 1;
         sourceFX.Play();
         //yield return new WaitForSeconds(sourceFX.clip.length);
     }
 
+
+    public void PlayCri()
+    {
+        sourceCri.pitch = 0.25f;
+        sourceCri.Play();
+    }
 }

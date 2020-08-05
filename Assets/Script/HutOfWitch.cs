@@ -139,11 +139,13 @@ public class HutOfWitch : MonoBehaviour
             ghostToKill.transform.localEulerAngles = new Vector3(90.0f, 0.0f, 0.0f);
             ghostToKill = null;
             board.mustChooseGhost = false;
+            gm.cantPause = false;
         }
         else
         {
             infos.text = "Cette tuile est hantée. Vous ne pouvez pas activer son pouvoir";
             infos.gameObject.SetActive(true);
+            gm.cantPause = false;
             if (player.name == "BluePlayer")
             {
                 player.GetComponent<BluePlayer>().canLaunchDice = true;

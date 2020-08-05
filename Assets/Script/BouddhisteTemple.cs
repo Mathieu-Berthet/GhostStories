@@ -32,10 +32,6 @@ public class BouddhisteTemple : MonoBehaviour {
     {
         if (!hauntedTile)
         {
-            //Si joueur bleu avec pouvoir "Second souffle" : numberOfBouddha -=2
-
-            //numberOfBouddha -= 1;
-            //Augementer la reserve de bouddha du joueur de 1 ou 2
             if (player.name == "BluePlayer")
             {
                 if (numberOfBouddha == 0)
@@ -350,6 +346,7 @@ public class BouddhisteTemple : MonoBehaviour {
                     player.GetComponent<GreenPlayer>().canLaunchBlackDice = true;
                 }
             }
+            gm.cantPause = false;
         }
         else
         {
@@ -387,6 +384,7 @@ public class BouddhisteTemple : MonoBehaviour {
                 player.GetComponent<Deplacement>().enabled = true;
                 player.GetComponent<GreenPlayer>().update = true;
             }
+            gm.cantPause = false;
         }
     }
 

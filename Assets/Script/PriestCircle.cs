@@ -295,6 +295,7 @@ public class PriestCircle : MonoBehaviour
                 player.GetComponent<Deplacement>().enabled = true;
                 player.GetComponent<RedPlayer>().update = true;
             }
+            gm.cantPause = false;
         }
         else
         {
@@ -332,6 +333,7 @@ public class PriestCircle : MonoBehaviour
                 player.GetComponent<Deplacement>().enabled = true;
                 player.GetComponent<GreenPlayer>().update = true;
             }
+            gm.cantPause = false;
         }
     }
 

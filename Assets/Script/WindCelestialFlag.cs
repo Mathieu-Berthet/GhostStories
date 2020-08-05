@@ -197,6 +197,7 @@ public class WindCelestialFlag : MonoBehaviour {
                 player.GetComponent<GreenPlayer>().panelJeton.SetActive(true);
                 isActiveTilePower = false;
             }
+            gm.cantPause = false;
         }
         else
         {
@@ -243,6 +244,7 @@ public class WindCelestialFlag : MonoBehaviour {
                 player.GetComponent<GreenPlayer>().textInfoPhase.gameObject.SetActive(true);
                 player.GetComponent<GreenPlayer>().panelJeton.SetActive(true);
             }
+            gm.cantPause = false;
         }
     }
 

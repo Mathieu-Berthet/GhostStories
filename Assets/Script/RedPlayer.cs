@@ -357,23 +357,17 @@ public class RedPlayer : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        if (Input.GetButtonDown("Fire2") && !hasDraw && gm.state == GameManager.STATE_GAME.STATE_DRAW)
+        if (Input.GetButtonDown("Fire2") && !hasDraw && gm.state == GameManager.STATE_GAME.STATE_DRAW && !gm.cantPlay)
         {
             DrawAGhost();
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Debug.Log("Sortie");
-            Application.Quit();
-        }
-
-        if (Input.GetKeyDown(KeyCode.B) && redTurn)
+        if (Input.GetKeyDown(KeyCode.B) && redTurn && !gm.cantPlay)
         {
             CheckDistance();
             StartCoroutine(gameObject.GetComponent<Deplacement>().PlayerDeplacement());
         }
-        if (Input.GetKeyDown(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.C) && !gm.cantPlay)
         {
             StartCoroutine(PlaceBouddha());
         }
@@ -384,22 +378,17 @@ public class RedPlayer : MonoBehaviour
             tileName = hitt.transform.gameObject.name;
         }
 
-        /*if (Input.GetKeyDown(KeyCode.N))
-        {
-            gm.nextTurn();
-        }*/
-
-        if (Input.GetKeyDown(KeyCode.A) && canLaunchDice)
+        if (Input.GetKeyDown(KeyCode.A) && canLaunchDice && !gm.cantPlay)
         {
             StartCoroutine(LaunchDice());
         }
 
-        if (Input.GetKeyDown(KeyCode.E) && canLaunchDice && canLaunchBlackDice)
+        if (Input.GetKeyDown(KeyCode.E) && canLaunchDice && canLaunchBlackDice && !gm.cantPlay)
         {
             UsePowerTile();
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftShift) && redTurn)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && redTurn && !gm.cantPlay)
         {
             if (powerDanseDesVentsJumaux)
             {
@@ -407,7 +396,7 @@ public class RedPlayer : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftControl))
+        if (Input.GetKeyDown(KeyCode.LeftControl) && !gm.cantPlay)
         {
             StartCoroutine(UseYinYangToken());
         }
@@ -457,28 +446,6 @@ public class RedPlayer : MonoBehaviour
         {
             descriptionPowerRouge = "VOTRE POUVOIR : \n - Vous pouvez déplacer un autre joueur d'une case pendant votre tour";
         }
-
-        /*if(Input.GetKeyDown(KeyCode.A))
-        {
-            canLaunchBlackDice = true;
-            canLaunchDice = true;
-            gameObject.GetComponent<Deplacement>().enabled = true;
-        }
-        if(Input.GetKeyDown(KeyCode.S))
-        {
-            if(state == STATE_GAME.STATE_DRAW)
-            {
-                state = STATE_GAME.STATE_MOVE;
-            }
-            else if (state == STATE_GAME.STATE_MOVE)
-            {
-                state = STATE_GAME.STATE_PLAYER;
-            }
-            else if (state == STATE_GAME.STATE_PLAYER)
-            {
-                state = STATE_GAME.STATE_DRAW;
-            }
-        }*/
 
         if (gm.state == GameManager.STATE_GAME.STATE_GHOSTPOWER && redTurn)
         {
@@ -553,6 +520,7 @@ public class RedPlayer : MonoBehaviour
 
     public void DrawAGhost()
     {
+        gm.cantPause = true;
         card = null;
         if ((gm.state == GameManager.STATE_GAME.STATE_DRAW || useTilePower || useGhostPower) && redTurn)
         {
@@ -679,6 +647,7 @@ public class RedPlayer : MonoBehaviour
                         canLaunchDice = true;
                         hasDraw = false;
                         useGhostPower = false;
+                        gm.cantPause = false;
                     }
                     else
                     {
@@ -737,6 +706,7 @@ public class RedPlayer : MonoBehaviour
                         canLaunchDice = true;
                         hasDraw = false;
                         useGhostPower = false;
+                        gm.cantPause = false;
                         if (card != null && card.GetComponent<Ghost>().entryPower)
                         {
                             if (card.GetComponent<Ghost>().hasDrawAGhostPower)
@@ -794,6 +764,7 @@ public class RedPlayer : MonoBehaviour
                     canLaunchDice = true;
                     hasDraw = false;
                     useGhostPower = false;
+                    gm.cantPause = false;
                     if (card != null && card.GetComponent<Ghost>().entryPower)
                     {
                         if (card.GetComponent<Ghost>().hasDrawAGhostPower)
@@ -821,6 +792,7 @@ public class RedPlayer : MonoBehaviour
 
     public void UsePowerTile()
     {
+        gm.cantPause = true;
         textInfo.gameObject.SetActive(false);
         useGhostPower = false;
         if (gm.state == GameManager.STATE_GAME.STATE_PLAYER && nbActionEffect > 0 && redTurn)
@@ -907,6 +879,7 @@ public class RedPlayer : MonoBehaviour
 
     public IEnumerator LaunchDice()
     {
+        gm.cantPause = true;
         if (gm.state == GameManager.STATE_GAME.STATE_PLAYER && nbActionBattle > 0 && redTurn)
         {
             useGhostPower = false; // A Voir si utile
@@ -1237,6 +1210,7 @@ public class RedPlayer : MonoBehaviour
                 nbActionBattle -= 1;
             }
             yield return new WaitForSeconds(0.5f);
+            gm.cantPause = false;
             nbRedFace = 0;
             nbBlackFace = 0;
             nbBlueFace = 0;
@@ -3209,6 +3183,7 @@ public class RedPlayer : MonoBehaviour
 
     public IEnumerator PlaceBouddha()
     {
+        gm.cantPause = true;
         if (redTurn)
         {
             chooseBouddha = false;
@@ -3218,6 +3193,7 @@ public class RedPlayer : MonoBehaviour
                 {
                     textInfo.text = "Vous êtes trop loin d'une case. Vous ne pouvez pas placer de bouddha";
                     textInfo.gameObject.SetActive(true);
+                    gm.cantPause = false;
                 }
                 else if (positionOne != null && positionTwo != null)
                 {
@@ -3225,9 +3201,7 @@ public class RedPlayer : MonoBehaviour
                     if (NbBouddha == 1)
                     {
                         panelBouddha.SetActive(true);
-                        //buttonGhost1.gameObject.SetActive(true);
                         buttonBouddha1.transform.GetChild(0).GetComponent<Text>().text = positionOne.name;
-                        //buttonGhost2.gameObject.SetActive(true);
                         buttonBouddha2.transform.GetChild(0).GetComponent<Text>().text = positionTwo.name;
                         //Définir priorité pour ghost puis ghost2 ou ghost2 puis ghost
                         while (!chooseBouddha)
@@ -3264,6 +3238,7 @@ public class RedPlayer : MonoBehaviour
                                     bouddhaTwo = null;
                                 }
                                 yield return new WaitForSeconds(0.5f);
+                                gm.cantPause = false;
                             }
                         }
                         else if (bouddhaChoice == positionTwo.name)
@@ -3295,6 +3270,7 @@ public class RedPlayer : MonoBehaviour
                                     bouddhaTwo = null;
                                 }
                                 yield return new WaitForSeconds(0.5f);
+                                gm.cantPause = false;
                             }
                         }
                     }
@@ -3327,6 +3303,7 @@ public class RedPlayer : MonoBehaviour
                             bouddhaOne.SetActive(true);
                             bouddhaOne = null;
                         }
+                        gm.cantPause = false;
                     }
                 }
                 else if (positionTwo != null && positionOne == null)
@@ -3354,6 +3331,7 @@ public class RedPlayer : MonoBehaviour
                             bouddhaTwo.SetActive(true);
                             bouddhaTwo = null;
                         }
+                        gm.cantPause = false;
                     }
                 }
                 else if (positionOne != null && positionTwo == null)
@@ -3380,6 +3358,7 @@ public class RedPlayer : MonoBehaviour
                             bouddhaTwo.SetActive(true);
                             bouddhaTwo = null;
                         }
+                        gm.cantPause = false;
                     }
                 }
             }
@@ -3387,6 +3366,7 @@ public class RedPlayer : MonoBehaviour
             {
                 textInfo.text = "Vous n'avez pas de bouddha, pourquoi voulez vous en placer ?";
                 textInfo.gameObject.SetActive(true);
+                gm.cantPause = false;
             }
         }
     }
@@ -3418,6 +3398,7 @@ public class RedPlayer : MonoBehaviour
 
     public IEnumerator UseYinYangToken()
     {
+        gm.cantPause = true;
         if (redTurn && nbYinYangRedToken > 0)
         {
             chooseEffectYinYang = false;
@@ -3528,6 +3509,7 @@ public class RedPlayer : MonoBehaviour
                     break;
             }
             nbYinYangRedToken = 0;
+            gm.cantPause = false;
             update = true;
         }
     }

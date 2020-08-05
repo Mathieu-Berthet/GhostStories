@@ -337,14 +337,14 @@ public class BluePlayer : MonoBehaviour
         nbActionEffect = 1;
         nbActionBattle = 1;
 
-        /*if(powerSecondSouffle)
+        if(powerSecondSouffle)
         {
             SecondSouffle();
         }
         else if(powerSouffleCeleste)
         {
             SouffleCeleste();
-        }*/
+        }
 
         hasDraw = false;
         gm.state = GameManager.STATE_GAME.STATE_DRAW;
@@ -362,15 +362,9 @@ public class BluePlayer : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        if (Input.GetButtonDown("Fire2") && !hasDraw && gm.state == GameManager.STATE_GAME.STATE_DRAW)
+        if (Input.GetButtonDown("Fire2") && !hasDraw && gm.state == GameManager.STATE_GAME.STATE_DRAW && !gm.cantPlay)
         {
             DrawAGhost();
-        }
-
-        if(Input.GetKeyDown(KeyCode.Escape))
-        {
-            Debug.Log("Sortie");
-            Application.Quit();
         }
 
         RaycastHit hitt;
@@ -379,33 +373,27 @@ public class BluePlayer : MonoBehaviour
             tileName = hitt.transform.gameObject.name;
         }
 
-        if(Input.GetKeyDown(KeyCode.B) && blueTurn)
+        if(Input.GetKeyDown(KeyCode.B) && blueTurn && !gm.cantPlay)
         {
             CheckDistance();
             StartCoroutine(gameObject.GetComponent<Deplacement>().PlayerDeplacement());
         }
-        if(Input.GetKeyDown(KeyCode.C))
+        if(Input.GetKeyDown(KeyCode.C) && !gm.cantPlay)
         {
             StartCoroutine(PlaceBouddha());
         }
 
-        /*if (Input.GetKeyDown(KeyCode.N))
-        {
-            //gm.nextTurn();
-            Debug.Log(alreadyMove);
-        }*/
-
-        if (Input.GetKeyDown(KeyCode.A) && canLaunchDice)
+        if (Input.GetKeyDown(KeyCode.A) && canLaunchDice && !gm.cantPlay)
         {
             StartCoroutine(LaunchDice());
         }
 
-        if(Input.GetKeyDown(KeyCode.E) && canLaunchDice && canLaunchBlackDice)
+        if(Input.GetKeyDown(KeyCode.E) && canLaunchDice && canLaunchBlackDice && !gm.cantPlay)
         {
             UsePowerTile();
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftControl))
+        if (Input.GetKeyDown(KeyCode.LeftControl) && !gm.cantPlay)
         {
             StartCoroutine(UseYinYangToken());
         }
@@ -458,28 +446,6 @@ public class BluePlayer : MonoBehaviour
             descriptionPowerBlue = "VOTRE POUVOIR : \n - Vous pouvez utilisez le pouvoir de la tuile sur laquelle vous vous trouvez ET combattre un fantôme ";
         }
 
-        /*if(Input.GetKeyDown(KeyCode.A))
-        {
-            canLaunchBlackDice = true;
-            canLaunchDice = true;
-            gameObject.GetComponent<Deplacement>().enabled = true;
-        }
-        if(Input.GetKeyDown(KeyCode.S))
-        {
-            if(state == STATE_GAME.STATE_DRAW)
-            {
-                state = STATE_GAME.STATE_MOVE;
-            }
-            else if (state == STATE_GAME.STATE_MOVE)
-            {
-                state = STATE_GAME.STATE_PLAYER;
-            }
-            else if (state == STATE_GAME.STATE_PLAYER)
-            {
-                state = STATE_GAME.STATE_DRAW;
-            }
-        }*/
-
         if(gm.state == GameManager.STATE_GAME.STATE_GHOSTPOWER && blueTurn)
         {
             gm.state = GameManager.STATE_GAME.STATE_DRAW;
@@ -510,6 +476,7 @@ public class BluePlayer : MonoBehaviour
     
     public void DrawAGhost()
     {
+        gm.cantPause = true;
         card = null;
         if ((gm.state == GameManager.STATE_GAME.STATE_DRAW || useTilePower || useGhostPower) && blueTurn)
         {
@@ -530,6 +497,7 @@ public class BluePlayer : MonoBehaviour
                 textInfoPhase.gameObject.SetActive(true);
                 textInfoPower.gameObject.SetActive(true);
                 gm.state = GameManager.STATE_GAME.STATE_MOVE;
+                gm.cantPause = false;
                 return;
             }
             if (gm.blueBoard.nbCardOnBoard == 3 && !useTilePower)
@@ -545,6 +513,7 @@ public class BluePlayer : MonoBehaviour
                 textInfoPhase.gameObject.SetActive(true);
                 textInfoPower.gameObject.SetActive(true);
                 gm.state = GameManager.STATE_GAME.STATE_MOVE;
+                gm.cantPause = false;
                 return;
             }
             panelBluePlace.SetActive(true);
@@ -635,6 +604,7 @@ public class BluePlayer : MonoBehaviour
                         canLaunchDice = true;
                         hasDraw = false;
                         useGhostPower = false;
+                        gm.cantPause = false;
                     }
                     else
                     {
@@ -692,6 +662,7 @@ public class BluePlayer : MonoBehaviour
                         canLaunchDice = true;
                         hasDraw = false;
                         useGhostPower = false;
+                        gm.cantPause = false;
                         if (card != null && card.GetComponent<Ghost>().entryPower)
                         {
                             if (card.GetComponent<Ghost>().hasDrawAGhostPower)
@@ -750,6 +721,7 @@ public class BluePlayer : MonoBehaviour
                     canLaunchDice = true;
                     hasDraw = false;
                     useGhostPower = false;
+                    gm.cantPause = false;
                     if (card != null && card.GetComponent<Ghost>().entryPower)
                     {
                         if (card.GetComponent<Ghost>().hasDrawAGhostPower)
@@ -789,8 +761,7 @@ public class BluePlayer : MonoBehaviour
 
     public void UsePowerTile()
     {
-        //textInfo.gameObject.SetActive(false);
-        Debug.Log("WWWWW : " + textInfo.gameObject.activeSelf);
+        gm.cantPause = true;
         useGhostPower = false;
         if (gm.state == GameManager.STATE_GAME.STATE_PLAYER && nbActionEffect > 0 && blueTurn)
         {
@@ -879,6 +850,7 @@ public class BluePlayer : MonoBehaviour
 
     public IEnumerator LaunchDice()
     {
+        gm.cantPause = true;
         if (gm.state == GameManager.STATE_GAME.STATE_PLAYER && nbActionBattle > 0 && blueTurn)
         {
             useGhostPower = false; // A Voir si utile
@@ -1245,6 +1217,7 @@ public class BluePlayer : MonoBehaviour
                 nbActionBattle -= 1;
             }
             yield return new WaitForSeconds(0.5f);
+            gm.cantPause = false;
             nbRedFace = 0;
             nbBlackFace = 0;
             nbBlueFace = 0;
@@ -3213,6 +3186,7 @@ public class BluePlayer : MonoBehaviour
     {
         if (blueTurn)
         {
+            gm.cantPause = true;
             chooseBouddha = false;
             if (NbBouddha > 0)
             {
@@ -3220,6 +3194,7 @@ public class BluePlayer : MonoBehaviour
                 {
                     textInfo.text = "Vous êtes trop loin d'une case. Vous ne pouvez pas placer de bouddha";
                     textInfo.gameObject.SetActive(true);
+                    gm.cantPause = false;
                 }
                 else if (positionOne != null && positionTwo != null)
                 {
@@ -3227,9 +3202,7 @@ public class BluePlayer : MonoBehaviour
                     if (NbBouddha == 1)
                     {
                         panelBouddha.SetActive(true);
-                        //buttonGhost1.gameObject.SetActive(true);
                         buttonBouddha1.transform.GetChild(0).GetComponent<Text>().text = positionOne.name;
-                        //buttonGhost2.gameObject.SetActive(true);
                         buttonBouddha2.transform.GetChild(0).GetComponent<Text>().text = positionTwo.name;
                         //Définir priorité pour ghost puis ghost2 ou ghost2 puis ghost
                         while (!chooseBouddha)
@@ -3266,6 +3239,7 @@ public class BluePlayer : MonoBehaviour
                                     bouddhaTwo = null;
                                 }
                                 yield return new WaitForSeconds(0.5f);
+                                gm.cantPause = false;
                             }
                         }
                         else if (bouddhaChoice == positionTwo.name)
@@ -3297,6 +3271,7 @@ public class BluePlayer : MonoBehaviour
                                     bouddhaTwo = null;
                                 }
                                 yield return new WaitForSeconds(0.5f);
+                                gm.cantPause = false;
                             }
                         }
                     }
@@ -3314,7 +3289,6 @@ public class BluePlayer : MonoBehaviour
                             bouddhaTwo.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
                             bouddhaTwo.SetActive(true);
                             bouddhaTwo = null;
-
                         }
 
                         if (positionOne.transform.childCount > 4)
@@ -3329,6 +3303,7 @@ public class BluePlayer : MonoBehaviour
                             bouddhaOne.SetActive(true);
                             bouddhaOne = null;
                         }
+                        gm.cantPause = false;
                     }
                 }
                 else if (positionTwo != null && positionOne == null)
@@ -3338,6 +3313,7 @@ public class BluePlayer : MonoBehaviour
                     {
                         textInfo.text = "Il y a un fantôme sur cette case, vous ne pouvez pas placer de bouddha";
                         textInfo.gameObject.SetActive(true);
+                        gm.cantPause = false;
                     }
                     else
                     {
@@ -3356,6 +3332,7 @@ public class BluePlayer : MonoBehaviour
                             bouddhaTwo.SetActive(true);
                             bouddhaTwo = null;
                         }
+                        gm.cantPause = false;
                     }
                 }
                 else if (positionOne != null && positionTwo == null)
@@ -3365,6 +3342,7 @@ public class BluePlayer : MonoBehaviour
                     {
                         textInfo.text = "Il y a un fantôme sur cette case, vous ne pouvez pas placer de bouddha";
                         textInfo.gameObject.SetActive(true);
+                        gm.cantPause = false;
                     }
                     else
                     {
@@ -3382,6 +3360,7 @@ public class BluePlayer : MonoBehaviour
                             bouddhaTwo.SetActive(true);
                             bouddhaTwo = null;
                         }
+                        gm.cantPause = false;
                     }
                 }
             }
@@ -3389,6 +3368,7 @@ public class BluePlayer : MonoBehaviour
             {
                 textInfo.text = "Vous n'avez pas de bouddha, pourquoi voulez vous en placer ?";
                 textInfo.gameObject.SetActive(true);
+                gm.cantPause = false;
             }
         }
     }
@@ -3413,6 +3393,7 @@ public class BluePlayer : MonoBehaviour
 
     public IEnumerator UseYinYangToken()
     {
+        gm.cantPause = true;
         if (blueTurn && nbYinYangBlueToken > 0)
         {
             chooseEffectYinYang = false;
@@ -3523,6 +3504,7 @@ public class BluePlayer : MonoBehaviour
                     break;
             }
             nbYinYangBlueToken = 0;
+            gm.cantPause = false;
             update = true;
         }
     }

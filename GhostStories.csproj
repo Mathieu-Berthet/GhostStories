@@ -260,6 +260,7 @@
     <Compile Include="Assets\Script\NavMesh\Scripts\NavMeshModifierVolume.cs" />
     <Compile Include="Assets\Script\NavMesh\Scripts\NavMeshSurface.cs" />
     <Compile Include="Assets\Script\NightTower.cs" />
+    <Compile Include="Assets\Script\PauseMenu.cs" />
     <Compile Include="Assets\Script\PoolChild.cs" />
     <Compile Include="Assets\Script\PoolManager.cs" />
     <Compile Include="Assets\Script\PoolManagerDeck.cs" />

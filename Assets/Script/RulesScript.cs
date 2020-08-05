@@ -22,9 +22,6 @@ public class RulesScript : MonoBehaviour {
     public Text infoDefausse;
     public Button buttonNext;
     public Button buttonPrecedent;
-    public Button buttonTile;
-    public Button buttonRules;
-    public Button buttonFermer;
     public Button buttonEndTurn;
 
 	// Use this for initialization
@@ -92,9 +89,6 @@ public class RulesScript : MonoBehaviour {
             infoTurnPlayer.gameObject.SetActive(true);
             infoTurn.gameObject.SetActive(true);
             infoDice.gameObject.SetActive(true);
-            //buttonRules.gameObject.SetActive(true);
-            //buttonTile.gameObject.SetActive(true);
-            buttonFermer.gameObject.SetActive(false);
             buttonEndTurn.gameObject.SetActive(true);
         }
     }
@@ -127,67 +121,5 @@ public class RulesScript : MonoBehaviour {
             panelRules.SetActive(true);
             buttonPrecedent.gameObject.SetActive(false);
         }
-    }
-
-
-    public void TileEffect()
-    {
-        buttonTile.gameObject.SetActive(false);
-        buttonRules.gameObject.SetActive(false);
-        buttonFermer.gameObject.SetActive(true);
-        buttonEndTurn.gameObject.SetActive(false);
-        panelTiles.SetActive(true);
-        buttonPrecedent.gameObject.SetActive(true);
-        buttonNext.gameObject.SetActive(true);
-        panelToken.SetActive(false);
-        //infoMort.gameObject.SetActive(false);
-        infoPhase.gameObject.SetActive(false);
-        infoPlayerPower.gameObject.SetActive(false);
-        infoTuile.gameObject.SetActive(false);
-        infoDefausse.gameObject.SetActive(false);
-        infoTurnPlayer.gameObject.SetActive(false);
-        infoTurn.gameObject.SetActive(false);
-        infoDice.gameObject.SetActive(false);
-    }
-
-    public void Rules()
-    {
-        buttonTile.gameObject.SetActive(false);
-        buttonRules.gameObject.SetActive(false);
-        buttonFermer.gameObject.SetActive(true);
-        buttonEndTurn.gameObject.SetActive(false);
-        panelRules.SetActive(true);
-        buttonPrecedent.gameObject.SetActive(false);
-        buttonNext.gameObject.SetActive(true);
-        panelToken.SetActive(false);
-        //infoMort.gameObject.SetActive(false);
-        infoPhase.gameObject.SetActive(false);
-        infoPlayerPower.gameObject.SetActive(false);
-        infoTuile.gameObject.SetActive(false);
-        infoDefausse.gameObject.SetActive(false);
-        infoTurnPlayer.gameObject.SetActive(false);
-        infoTurn.gameObject.SetActive(false);
-        infoDice.gameObject.SetActive(false);
-    }
-
-    public void Fermer()
-    {
-        panelTiles.SetActive(false);
-        panelRules.SetActive(false);
-        buttonPrecedent.gameObject.SetActive(false);
-        buttonNext.gameObject.SetActive(false);
-        buttonTile.gameObject.SetActive(true);
-        buttonRules.gameObject.SetActive(true);
-        buttonFermer.gameObject.SetActive(false);
-        buttonEndTurn.gameObject.SetActive(true);
-        panelToken.SetActive(true);
-        //infoMort.gameObject.SetActive(true);
-        infoPhase.gameObject.SetActive(true);
-        infoPlayerPower.gameObject.SetActive(true);
-        infoTuile.gameObject.SetActive(true);
-        infoDefausse.gameObject.SetActive(true);
-        infoTurnPlayer.gameObject.SetActive(true);
-        infoTurn.gameObject.SetActive(true);
-        infoDice.gameObject.SetActive(true);
     }
 }

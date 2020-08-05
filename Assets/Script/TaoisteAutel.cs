@@ -295,6 +295,7 @@ public class TaoisteAutel : MonoBehaviour
                 player.GetComponent<Deplacement>().enabled = true;
                 player.GetComponent<GreenPlayer>().update = true;
             }
+            gm.cantPause = false;
         }
         else
         {
@@ -334,6 +335,7 @@ public class TaoisteAutel : MonoBehaviour
                 player.GetComponent<Deplacement>().enabled = true;
                 player.GetComponent<GreenPlayer>().update = true;
             }
+            gm.cantPause = false;
         }
     }
 
