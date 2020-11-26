@@ -39,6 +39,8 @@ public class TaoisteAutel : MonoBehaviour
                 choose = false;
 
                 yield return new WaitForSeconds(0.5f);
+                player.GetComponent<BluePlayer>().wantUnhaunted = true;
+                player.GetComponent<BluePlayer>().CheckTileToUnhaunted();
                 infoTaoiste.text = "Veuillez choisir la tuile à déshanter : ";
                 panelTile.SetActive(true);
                 while (!choose)
@@ -96,6 +98,7 @@ public class TaoisteAutel : MonoBehaviour
                 player.GetComponent<BluePlayer>().canLaunchDice = true;
                 player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
                 player.GetComponent<BluePlayer>().useTilePower = false;
+                player.GetComponent<BluePlayer>().wantUnhaunted = false;
                 player.GetComponent<Deplacement>().enabled = true;
                 player.GetComponent<BluePlayer>().update = true;
             }

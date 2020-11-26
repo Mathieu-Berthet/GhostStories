@@ -101,6 +101,20 @@ public class GameManager : MonoBehaviour {
 
     public AudioManager audio;
     public float timerCri;
+
+
+
+    public Button houseOfTeaForHaunt;
+    public Button hutOfWitchForHaunt;
+    public Button herbalistStallForHaunt;
+
+    public Button taoisteAutelForHaunt;
+    public Button graveyardForHaunt;
+    public Button windCelestialFlagForHaunt;
+
+    public Button priestCircleForHaunt;
+    public Button bouddhisteTempleForHaunt;
+    public Button nightTowerForHaunt;
     //Enum game phase
 
     //Enum player turn
@@ -316,12 +330,11 @@ public class GameManager : MonoBehaviour {
 
         RaycastHit hitt;
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-        if (state == STATE_GAME.STATE_PLAYER)
+        if (state == STATE_GAME.STATE_PLAYER && Input.GetMouseButtonDown(0))
         {
             if (Physics.Raycast(ray, out hitt))
             {
                 //tileName = hitt.transform.gameObject.name;
-
                 if (hitt.collider.gameObject.name == "CaseFantomeBleu1" || hitt.collider.gameObject.name == "CaseFantomeBleu2" || hitt.collider.gameObject.name == "CaseFantomeBleu3"
                     || hitt.collider.gameObject.name == "CaseFantomeRouge1" || hitt.collider.gameObject.name == "CaseFantomeRouge2" || hitt.collider.gameObject.name == "CaseFantomeRouge3"
                     || hitt.collider.gameObject.name == "CaseFantomeVert1" || hitt.collider.gameObject.name == "CaseFantomeVert2" || hitt.collider.gameObject.name == "CaseFantomeVert3"
@@ -347,7 +360,7 @@ public class GameManager : MonoBehaviour {
             }
         }
 
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             Application.Quit();
         }

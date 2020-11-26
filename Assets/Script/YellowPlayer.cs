@@ -159,6 +159,7 @@ public class YellowPlayer : MonoBehaviour
     public bool chooseEffectYinYang;
     public bool chooseTile;
     public bool canKillGhost;
+    public bool wantUnhaunted;
 
     //Les différents textes
     [Header("Les textes")]
@@ -3587,10 +3588,12 @@ public class YellowPlayer : MonoBehaviour
     public IEnumerator UseYinYangToken()
     {
         gm.cantPause = true;
+        wantUnhaunted = true;
         if (yellowTurn && nbYinYangYellowToken > 0)
         {
             chooseEffectYinYang = false;
             panelYinYang.SetActive(true);
+            CheckTileToUnhaunted();
             //On choisit quel effet on veut faire
             while (!chooseEffectYinYang)
             {
@@ -3696,9 +3699,96 @@ public class YellowPlayer : MonoBehaviour
                 default:
                     break;
             }
+            wantUnhaunted = false;
             nbYinYangYellowToken = 0;
             gm.cantPause = false;
             update = true;
+        }
+    }
+
+    public void CheckTileToUnhaunted()
+    {
+        if (yellowTurn && wantUnhaunted)
+        {
+            if (houseOfTea.GetComponent<HouseOfTea>().hauntedTile)
+            {
+                gm.GetComponent<GameManager>().houseOfTeaForHaunt.interactable = true;
+            }
+            else
+            {
+                gm.GetComponent<GameManager>().houseOfTeaForHaunt.interactable = false;
+            }
+            if (witchHut.GetComponent<HutOfWitch>().hauntedTile)
+            {
+                gm.GetComponent<GameManager>().hutOfWitchForHaunt.interactable = true;
+            }
+            else
+            {
+                gm.GetComponent<GameManager>().hutOfWitchForHaunt.interactable = false;
+            }
+
+            if (priestCircle.GetComponent<PriestCircle>().hauntedTile)
+            {
+                gm.GetComponent<GameManager>().priestCircleForHaunt.interactable = true;
+            }
+            else
+            {
+                gm.GetComponent<GameManager>().priestCircleForHaunt.interactable = false;
+            }
+
+            if (taoisteAutel.GetComponent<TaoisteAutel>().hauntedTile)
+            {
+                gm.GetComponent<GameManager>().taoisteAutelForHaunt.interactable = true;
+            }
+            else
+            {
+                gm.GetComponent<GameManager>().taoisteAutelForHaunt.interactable = false;
+            }
+
+            if (nightTower.GetComponent<NightTower>().hauntedTile)
+            {
+                gm.GetComponent<GameManager>().nightTowerForHaunt.interactable = true;
+            }
+            else
+            {
+                gm.GetComponent<GameManager>().nightTowerForHaunt.interactable = false;
+            }
+
+            if (graveyard.GetComponent<Graveyard>().hauntedTile)
+            {
+                gm.GetComponent<GameManager>().graveyardForHaunt.interactable = true;
+            }
+            else
+            {
+                gm.GetComponent<GameManager>().graveyardForHaunt.interactable = false;
+            }
+
+            if (herbalistStall.GetComponent<StallOfHerbalist>().hauntedTile)
+            {
+                gm.GetComponent<GameManager>().herbalistStallForHaunt.interactable = true;
+            }
+            else
+            {
+                gm.GetComponent<GameManager>().herbalistStallForHaunt.interactable = false;
+            }
+
+            if (windCelestialFlag.GetComponent<WindCelestialFlag>().hauntedTile)
+            {
+                gm.GetComponent<GameManager>().windCelestialFlagForHaunt.interactable = true;
+            }
+            else
+            {
+                gm.GetComponent<GameManager>().windCelestialFlagForHaunt.interactable = false;
+            }
+
+            if (bouddhisteTemple.GetComponent<BouddhisteTemple>().hauntedTile)
+            {
+                gm.GetComponent<GameManager>().bouddhisteTempleForHaunt.interactable = true;
+            }
+            else
+            {
+                gm.GetComponent<GameManager>().bouddhisteTempleForHaunt.interactable = false;
+            }
         }
     }
 

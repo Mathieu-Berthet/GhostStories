@@ -152,6 +152,7 @@ public class BluePlayer : MonoBehaviour
     public bool chooseEffectYinYang;
     public bool chooseTile;
     public bool canKillGhost;
+    public bool wantUnhaunted;
 
     //Les différents textes
     [Header("Les textes")]
@@ -202,6 +203,7 @@ public class BluePlayer : MonoBehaviour
     public NavMeshModifier navMeshTower;
     public NavMeshModifier navMeshCircle;
     public NavMeshModifier navMeshTemple;*/
+    public GameObject objectTest;
 
     #region accesseurs
     public int Qi
@@ -356,6 +358,7 @@ public class BluePlayer : MonoBehaviour
         useTilePower = false;
         stop = false;
         alreadyMove = false;
+        wantUnhaunted = false;
         updateUI();
     }
 	
@@ -372,6 +375,14 @@ public class BluePlayer : MonoBehaviour
         {
             tileName = hitt.transform.gameObject.name;
         }
+
+        /*RaycastHit hittttt;
+        if(Physics.Raycast(objectTest.transform.position, Vector3.down + Vector3.forward, out hittttt, 100.0f))
+        {
+            Debug.DrawRay(objectTest.transform.position, Vector3.down + Vector3.forward);
+            Debug.Log(hittttt.collider.name);
+        }*/
+
 
         if(Input.GetKeyDown(KeyCode.B) && blueTurn && !gm.cantPlay)
         {
@@ -3396,10 +3407,12 @@ public class BluePlayer : MonoBehaviour
     public IEnumerator UseYinYangToken()
     {
         gm.cantPause = true;
+        wantUnhaunted = true;
         if (blueTurn && nbYinYangBlueToken > 0)
         {
             chooseEffectYinYang = false;
             panelYinYang.SetActive(true);
+            CheckTileToUnhaunted();
             //On choisit quel effet on veut faire
             while (!chooseEffectYinYang)
             {
@@ -3505,12 +3518,98 @@ public class BluePlayer : MonoBehaviour
                 default:
                     break;
             }
+            wantUnhaunted = false;
             nbYinYangBlueToken = 0;
             gm.cantPause = false;
             update = true;
         }
     }
 
+    public void CheckTileToUnhaunted()
+    {
+        if (blueTurn && wantUnhaunted)
+        {
+            if (houseOfTea.GetComponent<HouseOfTea>().hauntedTile)
+            {
+                gm.GetComponent<GameManager>().houseOfTeaForHaunt.interactable = true;
+            }
+            else
+            {
+                gm.GetComponent<GameManager>().houseOfTeaForHaunt.interactable = false;
+            }
+            if (witchHut.GetComponent<HutOfWitch>().hauntedTile)
+            {
+                gm.GetComponent<GameManager>().hutOfWitchForHaunt.interactable = true;
+            }
+            else
+            {
+                gm.GetComponent<GameManager>().hutOfWitchForHaunt.interactable = false;
+            }
+
+            if (priestCircle.GetComponent<PriestCircle>().hauntedTile)
+            {
+                gm.GetComponent<GameManager>().priestCircleForHaunt.interactable = true;
+            }
+            else
+            {
+                gm.GetComponent<GameManager>().priestCircleForHaunt.interactable = false;
+            }
+
+            if (taoisteAutel.GetComponent<TaoisteAutel>().hauntedTile)
+            {
+                gm.GetComponent<GameManager>().taoisteAutelForHaunt.interactable = true;
+            }
+            else
+            {
+                gm.GetComponent<GameManager>().taoisteAutelForHaunt.interactable = false;
+            }
+
+            if (nightTower.GetComponent<NightTower>().hauntedTile)
+            {
+                gm.GetComponent<GameManager>().nightTowerForHaunt.interactable = true;
+            }
+            else
+            {
+                gm.GetComponent<GameManager>().nightTowerForHaunt.interactable = false;
+            }
+
+            if (graveyard.GetComponent<Graveyard>().hauntedTile)
+            {
+                gm.GetComponent<GameManager>().graveyardForHaunt.interactable = true;
+            }
+            else
+            {
+                gm.GetComponent<GameManager>().graveyardForHaunt.interactable = false;
+            }
+
+            if (herbalistStall.GetComponent<StallOfHerbalist>().hauntedTile)
+            {
+                gm.GetComponent<GameManager>().herbalistStallForHaunt.interactable = true;
+            }
+            else
+            {
+                gm.GetComponent<GameManager>().herbalistStallForHaunt.interactable = false;
+            }
+
+            if (windCelestialFlag.GetComponent<WindCelestialFlag>().hauntedTile)
+            {
+                gm.GetComponent<GameManager>().windCelestialFlagForHaunt.interactable = true;
+            }
+            else
+            {
+                gm.GetComponent<GameManager>().windCelestialFlagForHaunt.interactable = false;
+            }
+
+            if (bouddhisteTemple.GetComponent<BouddhisteTemple>().hauntedTile)
+            {
+                gm.GetComponent<GameManager>().bouddhisteTempleForHaunt.interactable = true;
+            }
+            else
+            {
+                gm.GetComponent<GameManager>().bouddhisteTempleForHaunt.interactable = false;
+            }
+        }
+    }
 
     public void checkTilePower(string tile)
     {
