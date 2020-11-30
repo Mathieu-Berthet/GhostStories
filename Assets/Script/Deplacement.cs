@@ -17,18 +17,6 @@ public class Deplacement : MonoBehaviour {
     public string tileToMove;
     public bool chooseDepla;
 
-    public Button houseOfTea;
-    public Button hutOfWitch;
-    public Button herbalistStall;
-
-    public Button taoisteAutel;
-    public Button graveyard;
-    public Button windCelestialFlag;
-
-    public Button priestCircle;
-    public Button bouddhisteTemple;
-    public Button nightTower;
-
     // Use this for initialization
     void Start()
     {
@@ -463,5 +451,6 @@ public class Deplacement : MonoBehaviour {
     {
         tileToMove = buttonClick.transform.GetChild(0).GetComponent<Text>().text;
         chooseDepla = true;
+        Debug.Log(tileToMove);
     }
 }

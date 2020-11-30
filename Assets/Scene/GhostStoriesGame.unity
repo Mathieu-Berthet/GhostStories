@@ -1408,7 +1408,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Pavillon du Vent Celeste
+  m_Text: 
 --- !u!222 &59059363
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5325,7 +5325,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Echoppe de L'herboriste
+  m_Text: 
 --- !u!222 &261682067
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5671,7 +5671,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Cercle de priere
+  m_Text: 
 --- !u!222 &275499194
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8294,7 +8294,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Tour du Veilleur de Nuit
+  m_Text: 
 --- !u!222 &455439143
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9038,7 +9038,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Autel Taoiste
+  m_Text: 
 --- !u!222 &510005565
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9983,7 +9983,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Hutte de la Sorciere
+  m_Text: 
 --- !u!222 &587886793
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10014,7 +10014,7 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 598605817}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -10067,13 +10067,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 598605817}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 1.5, y: 1.2, z: 1.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 34
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &598802598
 GameObject:
   m_ObjectHideFlags: 0
@@ -11649,7 +11649,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Maison du The
+  m_Text: 
 --- !u!222 &660076026
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12340,7 +12340,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Hutte de la Sorciere
+  m_Text: 
 --- !u!222 &727597285
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -14879,7 +14879,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Cimetiere
+  m_Text: 
 --- !u!222 &905250728
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -15366,7 +15366,6 @@ MonoBehaviour:
   layerBlue:
     serializedVersion: 2
     m_Bits: 0
-  objectTest: {fileID: 598605817}
 --- !u!114 &921742461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15384,15 +15383,6 @@ MonoBehaviour:
   player: {fileID: 921742452}
   tileToMove: 
   chooseDepla: 0
-  houseOfTea: {fileID: 1465312975}
-  hutOfWitch: {fileID: 1406584098}
-  herbalistStall: {fileID: 933271350}
-  taoisteAutel: {fileID: 1899647170}
-  graveyard: {fileID: 1166281920}
-  windCelestialFlag: {fileID: 583434074}
-  priestCircle: {fileID: 1851458301}
-  bouddhisteTemple: {fileID: 334785777}
-  nightTower: {fileID: 730265533}
 --- !u!1 &926461337
 GameObject:
   m_ObjectHideFlags: 0
@@ -15460,7 +15450,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Tour du Veilleur de Nuit
+  m_Text: 
 --- !u!222 &926461340
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -15534,7 +15524,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Maison du The
+  m_Text: 
 --- !u!222 &927364746
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -20888,7 +20878,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Pavillon du Vent Celeste
+  m_Text: 
 --- !u!222 &1205620041
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -21414,15 +21404,6 @@ MonoBehaviour:
   player: {fileID: 1221269284}
   tileToMove: 
   chooseDepla: 0
-  houseOfTea: {fileID: 1465312975}
-  hutOfWitch: {fileID: 1406584098}
-  herbalistStall: {fileID: 933271350}
-  taoisteAutel: {fileID: 1899647170}
-  graveyard: {fileID: 1166281920}
-  windCelestialFlag: {fileID: 583434074}
-  priestCircle: {fileID: 1851458301}
-  bouddhisteTemple: {fileID: 334785777}
-  nightTower: {fileID: 730265533}
 --- !u!1 &1221725759
 GameObject:
   m_ObjectHideFlags: 0
@@ -22826,7 +22807,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Cercle de priere
+  m_Text: 
 --- !u!222 &1296365510
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -26164,7 +26145,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Echoppe de L'herboriste
+  m_Text: 
 --- !u!222 &1461744534
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -29472,7 +29453,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Autel Taoiste
+  m_Text: 
 --- !u!222 &1620561720
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -29764,15 +29745,34 @@ MonoBehaviour:
   panelInfoGhostPower: {fileID: 940957162}
   audio: {fileID: 0}
   timerCri: 0
-  houseOfTeaForHaunt: {fileID: 1270179925}
-  hutOfWitchForHaunt: {fileID: 1263096364}
-  herbalistStallForHaunt: {fileID: 868148017}
+  cubeGetTileName: {fileID: 598605817}
+  nightTowerTileName: 
+  priestCircleTileName: 
+  bouddhistTempleTileName: 
+  taoisteAutelTileName: 
+  graveyardTileName: 
+  windCelestialFlagTileName: 
+  herbalistStallTileName: 
+  hutOfWitchTileName: 
+  houseOfTeaTileName: 
+  nightTowerForDeplacement: {fileID: 730265533}
+  priestCircleForDeplacement: {fileID: 1851458301}
+  bouddhisteTempleForDeplacement: {fileID: 334785777}
+  taoisteAutelForDeplacement: {fileID: 1899647170}
+  graveyardForDeplacement: {fileID: 1166281920}
+  windCelestialFlagForDeplacement: {fileID: 583434074}
+  herbalistStallForDeplacement: {fileID: 933271350}
+  hutOfWitchForDeplacement: {fileID: 1406584098}
+  houseOfTeaForDeplacement: {fileID: 1465312975}
+  nightTowerForHaunt: {fileID: 1267605276}
+  priestCircleForHaunt: {fileID: 1758864219}
+  bouddhisteTempleForHaunt: {fileID: 222178972}
   taoisteAutelForHaunt: {fileID: 532666592}
   graveyardForHaunt: {fileID: 1114063969}
   windCelestialFlagForHaunt: {fileID: 1197867110}
-  priestCircleForHaunt: {fileID: 1758864219}
-  bouddhisteTempleForHaunt: {fileID: 222178972}
-  nightTowerForHaunt: {fileID: 1267605276}
+  herbalistStallForHaunt: {fileID: 868148017}
+  hutOfWitchForHaunt: {fileID: 1263096364}
+  houseOfTeaForHaunt: {fileID: 1270179925}
   state: 0
   turnPlayer: 0
 --- !u!4 &1626541477
@@ -31322,15 +31322,6 @@ MonoBehaviour:
   player: {fileID: 1742816404}
   tileToMove: 
   chooseDepla: 0
-  houseOfTea: {fileID: 1465312975}
-  hutOfWitch: {fileID: 1406584098}
-  herbalistStall: {fileID: 933271350}
-  taoisteAutel: {fileID: 1899647170}
-  graveyard: {fileID: 1166281920}
-  windCelestialFlag: {fileID: 583434074}
-  priestCircle: {fileID: 1851458301}
-  bouddhisteTemple: {fileID: 334785777}
-  nightTower: {fileID: 730265533}
 --- !u!1 &1744226467
 GameObject:
   m_ObjectHideFlags: 0
@@ -32135,15 +32126,6 @@ MonoBehaviour:
   player: {fileID: 1775335297}
   tileToMove: 
   chooseDepla: 0
-  houseOfTea: {fileID: 1465312975}
-  hutOfWitch: {fileID: 1406584098}
-  herbalistStall: {fileID: 933271350}
-  taoisteAutel: {fileID: 1899647170}
-  graveyard: {fileID: 1166281920}
-  windCelestialFlag: {fileID: 583434074}
-  priestCircle: {fileID: 1851458301}
-  bouddhisteTemple: {fileID: 334785777}
-  nightTower: {fileID: 730265533}
 --- !u!1 &1777324649
 GameObject:
   m_ObjectHideFlags: 0
@@ -32767,7 +32749,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Temple Bouddhiste
+  m_Text: 
 --- !u!222 &1814459115
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -35417,7 +35399,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Cimetiere
+  m_Text: 
 --- !u!222 &1982741627
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -35641,7 +35623,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Temple Bouddhiste
+  m_Text: 
 --- !u!222 &1987080038
 CanvasRenderer:
   m_ObjectHideFlags: 0

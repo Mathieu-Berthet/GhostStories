@@ -102,19 +102,43 @@ public class GameManager : MonoBehaviour {
     public AudioManager audio;
     public float timerCri;
 
+    public GameObject cubeGetTileName;
+    public string nightTowerTileName;
+    public string priestCircleTileName;
+    public string bouddhistTempleTileName;
+    public string taoisteAutelTileName;
+    public string graveyardTileName;
+    public string windCelestialFlagTileName;
+    public string herbalistStallTileName;
+    public string hutOfWitchTileName;
+    public string houseOfTeaTileName;
 
 
-    public Button houseOfTeaForHaunt;
-    public Button hutOfWitchForHaunt;
-    public Button herbalistStallForHaunt;
+    public Button nightTowerForDeplacement;
+    public Button priestCircleForDeplacement;
+    public Button bouddhisteTempleForDeplacement;
 
+    public Button taoisteAutelForDeplacement;
+    public Button graveyardForDeplacement;
+    public Button windCelestialFlagForDeplacement;
+
+    public Button herbalistStallForDeplacement;
+    public Button hutOfWitchForDeplacement;
+    public Button houseOfTeaForDeplacement;
+
+
+
+    public Button nightTowerForHaunt;
+    public Button priestCircleForHaunt;
+    public Button bouddhisteTempleForHaunt;
+    
     public Button taoisteAutelForHaunt;
     public Button graveyardForHaunt;
     public Button windCelestialFlagForHaunt;
 
-    public Button priestCircleForHaunt;
-    public Button bouddhisteTempleForHaunt;
-    public Button nightTowerForHaunt;
+    public Button herbalistStallForHaunt;
+    public Button hutOfWitchForHaunt;
+    public Button houseOfTeaForHaunt;
     //Enum game phase
 
     //Enum player turn
@@ -149,6 +173,7 @@ public class GameManager : MonoBehaviour {
         nbCardOnBossDeck = 10;
         turn = 1;
         turnPlayer = STATE_PLAYER_TURN.BLUE_PLAYER_TURN;
+        GetTile();
 
         textEntry.text = "";
         textInGame.text = "";
@@ -195,6 +220,7 @@ public class GameManager : MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
+        //GetTile();
         timerCri += Time.deltaTime;
         if(timerCri >= 15.0f)
         {
@@ -213,6 +239,8 @@ public class GameManager : MonoBehaviour {
             bluePlayer.GetComponent<BluePlayer>().update = true;
             yellowPlayer.GetComponent<YellowPlayer>().yellowTurn = false;
             redPlayer.GetComponent<RedPlayer>().redTurn = false;
+            NameDeplacementButton();
+            NameTileButton();
         }
         else if (turnPlayer == STATE_PLAYER_TURN.YELLOW_PLAYER_TURN)
         {
@@ -222,6 +250,8 @@ public class GameManager : MonoBehaviour {
             yellowPlayer.GetComponent<YellowPlayer>().update = true;
             greenPlayer.GetComponent<GreenPlayer>().greenTurn = false;
             redPlayer.GetComponent<RedPlayer>().redTurn = false;
+            NameDeplacementButton();
+            NameTileButton();
         }
         else if (turnPlayer == STATE_PLAYER_TURN.RED_PLAYER_TURN)
         {
@@ -231,6 +261,8 @@ public class GameManager : MonoBehaviour {
             greenPlayer.GetComponent<GreenPlayer>().greenTurn = false;
             redPlayer.GetComponent<RedPlayer>().redTurn = true;
             redPlayer.GetComponent<RedPlayer>().update = true;
+            NameDeplacementButton();
+            NameTileButton();
         }
         else if (turnPlayer == STATE_PLAYER_TURN.GREEN_PLAYER_TURN)
         {
@@ -240,6 +272,8 @@ public class GameManager : MonoBehaviour {
             redPlayer.GetComponent<RedPlayer>().redTurn = false;
             greenPlayer.GetComponent<GreenPlayer>().greenTurn = true;
             greenPlayer.GetComponent<GreenPlayer>().update = true;
+            NameDeplacementButton();
+            NameTileButton();
         }
 
         if (Input.GetKeyDown(KeyCode.Return))
@@ -568,6 +602,205 @@ public class GameManager : MonoBehaviour {
             {
                 textDeath.text += "- A la mort du fantôme, lancez le dé noir \n";
             }
+        }
+    }
+
+
+    public void GetTile()
+    {
+        RaycastHit hitTile;
+        if (Physics.Raycast(cubeGetTileName.transform.position, Vector3.down + Vector3.forward + Vector3.right, out hitTile, 100.0f))
+        {
+            Debug.DrawRay(cubeGetTileName.transform.position, Vector3.down + Vector3.forward + Vector3.right);
+            GetTileName(hitTile.collider.gameObject.name);
+        }
+
+        if (Physics.Raycast(cubeGetTileName.transform.position, Vector3.down + Vector3.forward + Vector3.left, out hitTile, 100.0f))
+        {
+            Debug.DrawRay(cubeGetTileName.transform.position, Vector3.down + Vector3.forward + Vector3.left);
+            GetTileName(hitTile.collider.gameObject.name);
+        }
+
+        if (Physics.Raycast(cubeGetTileName.transform.position, Vector3.down + Vector3.back + Vector3.right, out hitTile, 100.0f))
+        {
+            Debug.DrawRay(cubeGetTileName.transform.position, Vector3.down + Vector3.back + Vector3.right);
+            GetTileName(hitTile.collider.gameObject.name);
+        }
+
+        if (Physics.Raycast(cubeGetTileName.transform.position, Vector3.down + Vector3.back + Vector3.left, out hitTile, 100.0f))
+        {
+            Debug.DrawRay(cubeGetTileName.transform.position, Vector3.down + Vector3.back + Vector3.left);
+            GetTileName(hitTile.collider.gameObject.name);
+        }
+
+        if (Physics.Raycast(cubeGetTileName.transform.position, Vector3.down + Vector3.back, out hitTile, 100.0f))
+        {
+            Debug.DrawRay(cubeGetTileName.transform.position, Vector3.down + Vector3.back);
+            GetTileName(hitTile.collider.gameObject.name);
+        }
+
+        if (Physics.Raycast(cubeGetTileName.transform.position, Vector3.down + Vector3.left, out hitTile, 100.0f))
+        {
+            Debug.DrawRay(cubeGetTileName.transform.position, Vector3.down + Vector3.left);
+            GetTileName(hitTile.collider.gameObject.name);
+        }
+
+        if (Physics.Raycast(cubeGetTileName.transform.position, Vector3.down + Vector3.forward, out hitTile, 100.0f))
+        {
+            Debug.DrawRay(cubeGetTileName.transform.position, Vector3.down + Vector3.forward);
+            GetTileName(hitTile.collider.gameObject.name);
+        }
+
+        if (Physics.Raycast(cubeGetTileName.transform.position, Vector3.down + Vector3.right, out hitTile, 100.0f))
+        {
+            Debug.DrawRay(cubeGetTileName.transform.position, Vector3.down + Vector3.right);
+            GetTileName(hitTile.collider.gameObject.name);
+        }
+
+        if (Physics.Raycast(cubeGetTileName.transform.position, Vector3.down, out hitTile, 100.0f))
+        {
+            Debug.DrawRay(cubeGetTileName.transform.position, Vector3.down);
+            GetTileName(hitTile.collider.gameObject.name);
+        }
+    }
+
+    public void GetTileName(string tileNameCollide)
+    {
+        switch(tileNameCollide)
+        {
+            case "EchoppeHerboriste":
+                herbalistStallTileName = "Echoppe de L'herboriste";
+                break;
+            case "HutteSorciere":
+                hutOfWitchTileName = "Hutte de la Sorciere";
+                break;
+            case "MaisonThe":
+                houseOfTeaTileName = "Maison du The";
+                break;
+            case "AutelTaoiste":
+                taoisteAutelTileName = "Autel Taoiste";
+                break;
+            case "Cimetiere":
+                graveyardTileName = "Cimetiere";
+                break;
+            case "PavillonVentCeleste":
+                windCelestialFlagTileName = "Pavillon du Vent Celeste";
+                break;
+            case "TourVeilleurNuit":
+                nightTowerTileName = "Tour du Veilleur de Nuit";
+                break;
+            case "CerclePriere":
+                priestCircleTileName = "Cercle de priere";
+                break;
+            case "TempleBouddhiste":
+                bouddhistTempleTileName = "Temple Bouddhiste";
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void NameDeplacementButton()
+    {
+        if (turnPlayer == STATE_PLAYER_TURN.BLUE_PLAYER_TURN)
+        {
+            nightTowerForDeplacement.transform.GetChild(0).GetComponent<Text>().text = nightTowerTileName;
+            priestCircleForDeplacement.transform.GetChild(0).GetComponent<Text>().text = priestCircleTileName;
+            bouddhisteTempleForDeplacement.transform.GetChild(0).GetComponent<Text>().text = bouddhistTempleTileName;
+            taoisteAutelForDeplacement.transform.GetChild(0).GetComponent<Text>().text = taoisteAutelTileName;
+            graveyardForDeplacement.transform.GetChild(0).GetComponent<Text>().text = graveyardTileName;
+            windCelestialFlagForDeplacement.transform.GetChild(0).GetComponent<Text>().text = windCelestialFlagTileName;
+            herbalistStallForDeplacement.transform.GetChild(0).GetComponent<Text>().text = herbalistStallTileName;
+            hutOfWitchForDeplacement.transform.GetChild(0).GetComponent<Text>().text = hutOfWitchTileName;
+            houseOfTeaForDeplacement.transform.GetChild(0).GetComponent<Text>().text = houseOfTeaTileName;
+        }
+        else if (turnPlayer == STATE_PLAYER_TURN.YELLOW_PLAYER_TURN)
+        {
+            nightTowerForDeplacement.transform.GetChild(0).GetComponent<Text>().text = bouddhistTempleTileName;
+            priestCircleForDeplacement.transform.GetChild(0).GetComponent<Text>().text = windCelestialFlagTileName;
+            bouddhisteTempleForDeplacement.transform.GetChild(0).GetComponent<Text>().text = houseOfTeaTileName;
+            taoisteAutelForDeplacement.transform.GetChild(0).GetComponent<Text>().text = priestCircleTileName;
+            graveyardForDeplacement.transform.GetChild(0).GetComponent<Text>().text = graveyardTileName;
+            windCelestialFlagForDeplacement.transform.GetChild(0).GetComponent<Text>().text = hutOfWitchTileName;
+            herbalistStallForDeplacement.transform.GetChild(0).GetComponent<Text>().text = nightTowerTileName;
+            hutOfWitchForDeplacement.transform.GetChild(0).GetComponent<Text>().text = taoisteAutelTileName;
+            houseOfTeaForDeplacement.transform.GetChild(0).GetComponent<Text>().text = herbalistStallTileName;
+        }
+        else if (turnPlayer == STATE_PLAYER_TURN.RED_PLAYER_TURN)
+        {
+            nightTowerForDeplacement.transform.GetChild(0).GetComponent<Text>().text = houseOfTeaTileName;
+            priestCircleForDeplacement.transform.GetChild(0).GetComponent<Text>().text = hutOfWitchTileName;
+            bouddhisteTempleForDeplacement.transform.GetChild(0).GetComponent<Text>().text = herbalistStallTileName;
+            taoisteAutelForDeplacement.transform.GetChild(0).GetComponent<Text>().text = windCelestialFlagTileName;
+            graveyardForDeplacement.transform.GetChild(0).GetComponent<Text>().text = graveyardTileName;
+            windCelestialFlagForDeplacement.transform.GetChild(0).GetComponent<Text>().text = taoisteAutelTileName;
+            herbalistStallForDeplacement.transform.GetChild(0).GetComponent<Text>().text = bouddhistTempleTileName;
+            hutOfWitchForDeplacement.transform.GetChild(0).GetComponent<Text>().text = priestCircleTileName;
+            houseOfTeaForDeplacement.transform.GetChild(0).GetComponent<Text>().text = nightTowerTileName;
+        }
+        else if (turnPlayer == STATE_PLAYER_TURN.GREEN_PLAYER_TURN)
+        {
+            nightTowerForDeplacement.transform.GetChild(0).GetComponent<Text>().text = herbalistStallTileName;
+            priestCircleForDeplacement.transform.GetChild(0).GetComponent<Text>().text = taoisteAutelTileName;
+            bouddhisteTempleForDeplacement.transform.GetChild(0).GetComponent<Text>().text = nightTowerTileName;
+            taoisteAutelForDeplacement.transform.GetChild(0).GetComponent<Text>().text = hutOfWitchTileName;
+            graveyardForDeplacement.transform.GetChild(0).GetComponent<Text>().text = graveyardTileName;
+            windCelestialFlagForDeplacement.transform.GetChild(0).GetComponent<Text>().text = priestCircleTileName;
+            herbalistStallForDeplacement.transform.GetChild(0).GetComponent<Text>().text = houseOfTeaTileName;
+            hutOfWitchForDeplacement.transform.GetChild(0).GetComponent<Text>().text = windCelestialFlagTileName;
+            houseOfTeaForDeplacement.transform.GetChild(0).GetComponent<Text>().text = bouddhistTempleTileName;
+        }
+    }
+
+    public void NameTileButton()
+    {
+        if (turnPlayer == STATE_PLAYER_TURN.BLUE_PLAYER_TURN)
+        {
+            nightTowerForHaunt.transform.GetChild(0).GetComponent<Text>().text = nightTowerTileName;
+            priestCircleForHaunt.transform.GetChild(0).GetComponent<Text>().text = priestCircleTileName;
+            bouddhisteTempleForHaunt.transform.GetChild(0).GetComponent<Text>().text = bouddhistTempleTileName;
+            taoisteAutelForHaunt.transform.GetChild(0).GetComponent<Text>().text = taoisteAutelTileName;
+            graveyardForHaunt.transform.GetChild(0).GetComponent<Text>().text = graveyardTileName;
+            windCelestialFlagForHaunt.transform.GetChild(0).GetComponent<Text>().text = windCelestialFlagTileName;
+            herbalistStallForHaunt.transform.GetChild(0).GetComponent<Text>().text = herbalistStallTileName;
+            hutOfWitchForHaunt.transform.GetChild(0).GetComponent<Text>().text = hutOfWitchTileName;
+            houseOfTeaForHaunt.transform.GetChild(0).GetComponent<Text>().text = houseOfTeaTileName;
+        }
+        else if (turnPlayer == STATE_PLAYER_TURN.YELLOW_PLAYER_TURN)
+        {
+            nightTowerForHaunt.transform.GetChild(0).GetComponent<Text>().text = bouddhistTempleTileName;
+            priestCircleForHaunt.transform.GetChild(0).GetComponent<Text>().text = windCelestialFlagTileName;
+            bouddhisteTempleForHaunt.transform.GetChild(0).GetComponent<Text>().text = houseOfTeaTileName;
+            taoisteAutelForHaunt.transform.GetChild(0).GetComponent<Text>().text = priestCircleTileName;
+            graveyardForHaunt.transform.GetChild(0).GetComponent<Text>().text = graveyardTileName;
+            windCelestialFlagForHaunt.transform.GetChild(0).GetComponent<Text>().text = hutOfWitchTileName;
+            herbalistStallForHaunt.transform.GetChild(0).GetComponent<Text>().text = nightTowerTileName;
+            hutOfWitchForHaunt.transform.GetChild(0).GetComponent<Text>().text = taoisteAutelTileName;
+            houseOfTeaForHaunt.transform.GetChild(0).GetComponent<Text>().text = herbalistStallTileName;
+        }
+        else if (turnPlayer == STATE_PLAYER_TURN.RED_PLAYER_TURN)
+        {
+            nightTowerForHaunt.transform.GetChild(0).GetComponent<Text>().text = houseOfTeaTileName;
+            priestCircleForHaunt.transform.GetChild(0).GetComponent<Text>().text = hutOfWitchTileName;
+            bouddhisteTempleForHaunt.transform.GetChild(0).GetComponent<Text>().text = herbalistStallTileName;
+            taoisteAutelForHaunt.transform.GetChild(0).GetComponent<Text>().text = windCelestialFlagTileName;
+            graveyardForHaunt.transform.GetChild(0).GetComponent<Text>().text = graveyardTileName;
+            windCelestialFlagForHaunt.transform.GetChild(0).GetComponent<Text>().text = taoisteAutelTileName;
+            herbalistStallForHaunt.transform.GetChild(0).GetComponent<Text>().text = bouddhistTempleTileName;
+            hutOfWitchForHaunt.transform.GetChild(0).GetComponent<Text>().text = priestCircleTileName;
+            houseOfTeaForHaunt.transform.GetChild(0).GetComponent<Text>().text = nightTowerTileName;
+        }
+        else if (turnPlayer == STATE_PLAYER_TURN.GREEN_PLAYER_TURN)
+        {
+            nightTowerForHaunt.transform.GetChild(0).GetComponent<Text>().text = herbalistStallTileName;
+            priestCircleForHaunt.transform.GetChild(0).GetComponent<Text>().text = taoisteAutelTileName;
+            bouddhisteTempleForHaunt.transform.GetChild(0).GetComponent<Text>().text = nightTowerTileName;
+            taoisteAutelForHaunt.transform.GetChild(0).GetComponent<Text>().text = hutOfWitchTileName;
+            graveyardForHaunt.transform.GetChild(0).GetComponent<Text>().text = graveyardTileName;
+            windCelestialFlagForHaunt.transform.GetChild(0).GetComponent<Text>().text = priestCircleTileName;
+            herbalistStallForHaunt.transform.GetChild(0).GetComponent<Text>().text = houseOfTeaTileName;
+            hutOfWitchForHaunt.transform.GetChild(0).GetComponent<Text>().text = windCelestialFlagTileName;
+            houseOfTeaForHaunt.transform.GetChild(0).GetComponent<Text>().text = bouddhistTempleTileName;
         }
     }
 }
