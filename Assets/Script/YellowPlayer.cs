@@ -391,7 +391,7 @@ public class YellowPlayer : MonoBehaviour
             DrawAGhost();
         }
 
-        if (Input.GetKeyDown(KeyCode.B) && yellowTurn && !gm.cantPlay)
+        if (Input.GetKeyDown(KeyCode.B) && yellowTurn && !gm.cantPlay) // Debug pour moi
         {
             CheckDistance();
             StartCoroutine(gameObject.GetComponent<Deplacement>().PlayerDeplacement());
@@ -3821,7 +3821,7 @@ public class YellowPlayer : MonoBehaviour
                 textTilePowerDescription.text = "Cercle de Prière : \n\n- Permet de mettre un pion de la réserve sur la tuile et d'affaiblir tout les fantômes de la couleur concernée de 1 point. Cet effet reste jusqu’à qu’un autre joueur change la couleur du jeton.";
                 break;
             case "TempleBouddhiste":
-                textTilePowerDescription.text = "Temple Bouddhiste : \n\n- Prenez un bouddha. A votre prochain tour, vous pouvez poser un Bouddha sur un emplacement de fantôme libre adjacent à votre position. Le pion Bouddha reste sur l’emplacement ciblé jusqu'à ce qu’il élimine un fantôme, puis revient dans le stock. Cela ne marche pas sur les boss. Vous ne recevez pas de récompense/malus en éliminant un fantôme de cette manière.";
+                textTilePowerDescription.text = "Temple Bouddhiste : \n\n- Prenez un bouddha. A votre prochain tour, vous pouvez le poser sur un emplacement de fantôme libre adjacent à votre position. Le Bouddha reste jusqu'à ce qu’il élimine un fantôme, puis revient dans le stock. Ne marche pas sur les boss. Les récompense/malus ne sont pas appliqués.";
                 break;
             default:
                 break;
