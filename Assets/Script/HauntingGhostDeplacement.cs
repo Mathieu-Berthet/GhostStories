@@ -56,6 +56,7 @@ public class HauntingGhostDeplacement : MonoBehaviour
                 {
                     if (Physics.Raycast(transform.position, Vector3.right, out hitTiledirection, 100.0f, layerTile))
                     {
+                        Debug.Log("right");
                         tileToCheck = hitTiledirection.collider.gameObject;
                     }
                 }
@@ -204,22 +205,22 @@ public class HauntingGhostDeplacement : MonoBehaviour
         {
             //gameObject.transform.position = Vector3.Lerp(startPosition.position, middlePosition.position, actualTime); // To see later
             gameObject.transform.parent = ghost.GetComponent<Ghost>().power.middlePosition;
-            gameObject.transform.localPosition = new Vector3(0, 0, 0);
+            gameObject.transform.localPosition = new Vector3(0.0f, 200.0f, 0.0f);
         }
         else if (gameObject.transform.parent.name.Contains("Case"))
         {
             //gameObject.transform.position = Vector3.Lerp(startPosition.position, middlePosition.position, actualTime); // To see later
             gameObject.transform.parent = ghost.GetComponent<Ghost>().power.endPosition;
-            gameObject.transform.localPosition = new Vector3(0, 0, 0);
+            gameObject.transform.localPosition = new Vector3(0.0f, 200.0f, 0.0f);
         }
 
 
         if (gameObject.transform.parent.name.Contains("Arrive"))
         {
+            gameObject.transform.parent.parent.GetChild(4).GetComponent<GhostPower>().HauntedTile();
             //gameObject.transform.position = Vector3.Lerp(startPosition.position, middlePosition.position, actualTime); // To see later
-            HauntedTile();
             gameObject.transform.parent = ghost.GetComponent<Ghost>().power.startPosition;
-            gameObject.transform.localPosition = new Vector3(0, 0, 0);
+            gameObject.transform.localPosition = new Vector3(0.0f, 200.0f, 0.0f);
         }
     }
 }

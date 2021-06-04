@@ -19,7 +19,6 @@ public class StallOfHerbalist : MonoBehaviour
 
     public Text infoStall;
     public Text infos;
-    public Text textNbWhiteFace;
 
     public bool hauntedTile = false;    
 
@@ -88,6 +87,7 @@ public class StallOfHerbalist : MonoBehaviour
                     cube.rb.AddForce(hit.point * cube.force);
                 }
             }
+            gm.ActiveDiceFace();
             yield return new WaitForSeconds(5.0f);
 
             resultDiceOne = diceOne.GetComponent<CubeScript>().face;
@@ -95,26 +95,32 @@ public class StallOfHerbalist : MonoBehaviour
             {
                 case "RedFace":
                     nbRedFace++;
+                    gm.textNbRedFace.text = "Face Rouge : " + nbRedFace;
                     Destroy(diceOne);
                     break;
                 case "BlueFace":
                     nbBlueFace++;
+                    gm.textNbBlueFace.text = "Face Bleue : " + nbBlueFace;
                     Destroy(diceOne);
                     break;
                 case "YellowFace":
                     nbYellowFace++;
+                    gm.textNbYellowFace.text = "Face Jaune : " + nbYellowFace;
                     Destroy(diceOne);
                     break;
                 case "GreenFace":
                     nbGreenFace++;
+                    gm.textNbGreenFace.text = "Face Verte : " + nbGreenFace;
                     Destroy(diceOne);
                     break;
                 case "WhiteFace":
                     nbWhiteFace++;
+                    gm.textNbWhiteFace.text = "Face Blanche : " + nbWhiteFace;
                     Destroy(diceOne);
                     break;
                 case "BlackFace":
                     nbBlackFace++;
+                    gm.textNbBlackFace.text = "Face Noire : " + nbBlackFace;
                     Destroy(diceOne);
                     break;
                 default:
@@ -126,26 +132,32 @@ public class StallOfHerbalist : MonoBehaviour
             {
                 case "RedFace":
                     nbRedFace++;
+                    gm.textNbRedFace.text = "Face Rouge : " + nbRedFace;
                     Destroy(diceTwo);
                     break;
                 case "BlueFace":
                     nbBlueFace++;
+                    gm.textNbBlueFace.text = "Face Bleue : " + nbBlueFace;
                     Destroy(diceTwo);
                     break;
                 case "YellowFace":
                     nbYellowFace++;
+                    gm.textNbYellowFace.text = "Face Jaune : " + nbYellowFace;
                     Destroy(diceTwo);
                     break;
                 case "GreenFace":
                     nbGreenFace++;
+                    gm.textNbGreenFace.text = "Face Verte : " + nbGreenFace;
                     Destroy(diceTwo);
                     break;
                 case "WhiteFace":
                     nbWhiteFace++;
+                    gm.textNbWhiteFace.text = "Face Blanche : " + nbWhiteFace;
                     Destroy(diceTwo);
                     break;
                 case "BlackFace":
                     nbBlackFace++;
+                    gm.textNbBlackFace.text = "Face Noire : " + nbBlackFace;
                     Destroy(diceTwo);
                     break;
                 default:
@@ -156,8 +168,8 @@ public class StallOfHerbalist : MonoBehaviour
             infoStall.text = "Veuillez choisir la couleur de vos faces blanches : ";
             while (nbWhiteFace > 0)
             {
-                textNbWhiteFace.text = "Nombre de face blanches : " + nbWhiteFace.ToString();
-                textNbWhiteFace.gameObject.SetActive(true);
+                gm.textNbWhiteFace.text = "Face blanches : " + nbWhiteFace.ToString();
+                gm.textNbWhiteFace.gameObject.SetActive(true);
                 gm.panelButtonChoice.SetActive(true);
                 while (!gm.choose)
                 {
@@ -176,7 +188,9 @@ public class StallOfHerbalist : MonoBehaviour
                             else
                             {
                                 nbRedFace++;
+                                gm.textNbRedFace.text = "Face Rouge : " + nbRedFace;
                                 nbWhiteFace--;
+                                gm.textNbWhiteFace.text = "Face Blanche : " + nbWhiteFace;
                             }
                             break;
                         case "Blue":
@@ -188,7 +202,9 @@ public class StallOfHerbalist : MonoBehaviour
                             else
                             {
                                 nbBlueFace++;
+                                gm.textNbBlueFace.text = "Face Bleue : " + nbBlueFace;
                                 nbWhiteFace--;
+                                gm.textNbWhiteFace.text = "Face Blanche : " + nbWhiteFace;
                             }
                             break;
                         case "Yellow":
@@ -200,7 +216,9 @@ public class StallOfHerbalist : MonoBehaviour
                             else
                             {
                                 nbYellowFace++;
+                                gm.textNbYellowFace.text = "Face Jaune : " + nbYellowFace;
                                 nbWhiteFace--;
+                                gm.textNbWhiteFace.text = "Face Blanche : " + nbWhiteFace;
                             }
                             break;
                         case "Green":
@@ -212,7 +230,9 @@ public class StallOfHerbalist : MonoBehaviour
                             else
                             {
                                 nbGreenFace++;
+                                gm.textNbGreenFace.text = "Face Verte : " + nbGreenFace;
                                 nbWhiteFace--;
+                                gm.textNbWhiteFace.text = "Face Blanche : " + nbWhiteFace;
                             }
                             break;
                         case "Black":
@@ -224,7 +244,9 @@ public class StallOfHerbalist : MonoBehaviour
                             else
                             {
                                 nbBlackFace++;
+                                gm.textNbBlackFace.text = "Face Noire : " + nbBlackFace;
                                 nbWhiteFace--;
+                                gm.textNbWhiteFace.text = "Face Blanche : " + nbWhiteFace;
                             }
                             break;
                         default:
@@ -236,7 +258,6 @@ public class StallOfHerbalist : MonoBehaviour
                 yield return new WaitForSeconds(1.0f);
             }
 
-            textNbWhiteFace.gameObject.SetActive(false);
             gm.panelButtonChoice.SetActive(false);
             //Attribution des jetons
             int nbBlueTokenToGive= 0;
@@ -372,6 +393,18 @@ public class StallOfHerbalist : MonoBehaviour
                 player.GetComponent<Deplacement>().enabled = true;
             }
             gm.cantPause = false;
+            nbRedFace = 0;
+            nbBlackFace = 0;
+            nbBlueFace = 0;
+            nbYellowFace = 0;
+            nbGreenFace = 0;
+            gm.textNbRedFace.text = "Face Rouge : " + nbRedFace;
+            gm.textNbBlueFace.text = "Face Bleue : " + nbBlueFace;
+            gm.textNbGreenFace.text = "Face Verte : " + nbGreenFace;
+            gm.textNbYellowFace.text = "Face Jaune : " + nbYellowFace;
+            gm.textNbBlackFace.text = "Face Noire : " + nbBlackFace;
+            gm.textNbWhiteFace.text = "Face Blanche : " + nbWhiteFace;
+            gm.UnactiveDiceFace();
         }
         else
         {

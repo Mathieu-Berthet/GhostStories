@@ -61,13 +61,13 @@ public class NightTower : MonoBehaviour
                                     {
                                         //gameObject.transform.position = Vector3.Lerp(startPosition.position, middlePosition.position, actualTime); // To see later
                                         hauntingGhost.transform.parent = ghostCard.GetComponent<Ghost>().power.startPosition;
-                                        hauntingGhost.transform.localPosition = new Vector3(0, 0, 0);
+                                        hauntingGhost.transform.localPosition = new Vector3(0.0f, 200.0f, 0.0f);
                                     }
                                     else if (hauntingGhost.transform.parent.name.Contains("Depart"))
                                     {
                                         //gameObject.transform.position = Vector3.Lerp(startPosition.position, middlePosition.position, actualTime); // To see later
                                         hauntingGhost.transform.parent = ghostCard.GetComponent<Ghost>().power.startPosition;
-                                        hauntingGhost.transform.localPosition = new Vector3(0, 0, 0);
+                                        hauntingGhost.transform.localPosition = new Vector3(0.0f, 200.0f, 0.0f);
                                     }
                                 }
                                 else if (gm.redBoard.gameObject.transform.GetChild(i).GetChild(2).childCount >= 1)
@@ -78,13 +78,13 @@ public class NightTower : MonoBehaviour
                                     {
                                         //gameObject.transform.position = Vector3.Lerp(startPosition.position, middlePosition.position, actualTime); // To see later
                                         hauntingGhost.transform.parent = ghostCard.GetComponent<Ghost>().power.startPosition;
-                                        hauntingGhost.transform.localPosition = new Vector3(0, 0, 0);
+                                        hauntingGhost.transform.localPosition = new Vector3(0.0f, 200.0f, 0.0f);
                                     }
                                     else if (hauntingGhost.transform.parent.name.Contains("Depart"))
                                     {
                                         //gameObject.transform.position = Vector3.Lerp(startPosition.position, middlePosition.position, actualTime); // To see later
                                         hauntingGhost.transform.parent = ghostCard.GetComponent<Ghost>().power.startPosition;
-                                        hauntingGhost.transform.localPosition = new Vector3(0, 0, 0);
+                                        hauntingGhost.transform.localPosition = new Vector3(0.0f, 200.0f, 0.0f);
                                     }
                                 }
                             }
@@ -104,13 +104,13 @@ public class NightTower : MonoBehaviour
                                     {
                                         //gameObject.transform.position = Vector3.Lerp(startPosition.position, middlePosition.position, actualTime); // To see later
                                         hauntingGhost.transform.parent = ghostCard.GetComponent<Ghost>().power.startPosition;
-                                        hauntingGhost.transform.localPosition = new Vector3(0, 0, 0);
+                                        hauntingGhost.transform.localPosition = new Vector3(0.0f, 200.0f, 0.0f);
                                     }
                                     else if (hauntingGhost.transform.parent.name.Contains("Depart"))
                                     {
                                         //gameObject.transform.position = Vector3.Lerp(startPosition.position, middlePosition.position, actualTime); // To see later
                                         hauntingGhost.transform.parent = ghostCard.GetComponent<Ghost>().power.startPosition;
-                                        hauntingGhost.transform.localPosition = new Vector3(0, 0, 0);
+                                        hauntingGhost.transform.localPosition = new Vector3(0.0f, 200.0f, 0.0f);
                                     }
                                 }
                                 else if (gm.blueBoard.gameObject.transform.GetChild(i).GetChild(2).childCount >= 1)
@@ -121,13 +121,13 @@ public class NightTower : MonoBehaviour
                                     {
                                         //gameObject.transform.position = Vector3.Lerp(startPosition.position, middlePosition.position, actualTime); // To see later
                                         hauntingGhost.transform.parent = ghostCard.GetComponent<Ghost>().power.startPosition;
-                                        hauntingGhost.transform.localPosition = new Vector3(0, 0, 0);
+                                        hauntingGhost.transform.localPosition = new Vector3(0.0f, 200.0f, 0.0f);
                                     }
                                     else if (hauntingGhost.transform.parent.name.Contains("Depart"))
                                     {
                                         //gameObject.transform.position = Vector3.Lerp(startPosition.position, middlePosition.position, actualTime); // To see later
                                         hauntingGhost.transform.parent = ghostCard.GetComponent<Ghost>().power.startPosition;
-                                        hauntingGhost.transform.localPosition = new Vector3(0, 0, 0);
+                                        hauntingGhost.transform.localPosition = new Vector3(0.0f, 200.0f, 0.0f);
                                     }
                                 }
                             }
@@ -147,13 +147,13 @@ public class NightTower : MonoBehaviour
                                     {
                                         //gameObject.transform.position = Vector3.Lerp(startPosition.position, middlePosition.position, actualTime); // To see later
                                         hauntingGhost.transform.parent = ghostCard.GetComponent<Ghost>().power.startPosition;
-                                        hauntingGhost.transform.localPosition = new Vector3(0, 0, 0);
+                                        hauntingGhost.transform.localPosition = new Vector3(0.0f, 200.0f, 0.0f);
                                     }
                                     else if (hauntingGhost.transform.parent.name.Contains("Depart"))
                                     {
                                         //gameObject.transform.position = Vector3.Lerp(startPosition.position, middlePosition.position, actualTime); // To see later
                                         hauntingGhost.transform.parent = ghostCard.GetComponent<Ghost>().power.startPosition;
-                                        hauntingGhost.transform.localPosition = new Vector3(0, 0, 0);
+                                        hauntingGhost.transform.localPosition = new Vector3(0.0f, 200.0f, 0.0f);
                                     }
                                 }
                                 else if (gm.yellowBoard.gameObject.transform.GetChild(i).GetChild(2).childCount >= 1)
@@ -164,13 +164,13 @@ public class NightTower : MonoBehaviour
                                     {
                                         //gameObject.transform.position = Vector3.Lerp(startPosition.position, middlePosition.position, actualTime); // To see later
                                         hauntingGhost.transform.parent = ghostCard.GetComponent<Ghost>().power.startPosition;
-                                        hauntingGhost.transform.localPosition = new Vector3(0, 0, 0);
+                                        hauntingGhost.transform.localPosition = new Vector3(0.0f, 200.0f, 0.0f);
                                     }
                                     else if (hauntingGhost.transform.parent.name.Contains("Depart"))
                                     {
                                         //gameObject.transform.position = Vector3.Lerp(startPosition.position, middlePosition.position, actualTime); // To see later
                                         hauntingGhost.transform.parent = ghostCard.GetComponent<Ghost>().power.startPosition;
-                                        hauntingGhost.transform.localPosition = new Vector3(0, 0, 0);
+                                        hauntingGhost.transform.localPosition = new Vector3(0.0f, 200.0f, 0.0f);
                                     }
                                 }
                             }
@@ -190,13 +190,13 @@ public class NightTower : MonoBehaviour
                                     {
                                         //gameObject.transform.position = Vector3.Lerp(startPosition.position, middlePosition.position, actualTime); // To see later
                                         hauntingGhost.transform.parent = ghostCard.GetComponent<Ghost>().power.startPosition;
-                                        hauntingGhost.transform.localPosition = new Vector3(0, 0, 0);
+                                        hauntingGhost.transform.localPosition = new Vector3(0.0f, 200.0f, 0.0f);
                                     }
                                     else if (hauntingGhost.transform.parent.name.Contains("Depart"))
                                     {
                                         //gameObject.transform.position = Vector3.Lerp(startPosition.position, middlePosition.position, actualTime); // To see later
                                         hauntingGhost.transform.parent = ghostCard.GetComponent<Ghost>().power.startPosition;
-                                        hauntingGhost.transform.localPosition = new Vector3(0, 0, 0);
+                                        hauntingGhost.transform.localPosition = new Vector3(0.0f, 200.0f, 0.0f);
                                     }
                                 }
                                 else if (gm.greenBoard.gameObject.transform.GetChild(i).GetChild(2).childCount >= 1)
@@ -207,13 +207,13 @@ public class NightTower : MonoBehaviour
                                     {
                                         //gameObject.transform.position = Vector3.Lerp(startPosition.position, middlePosition.position, actualTime); // To see later
                                         hauntingGhost.transform.parent = ghostCard.GetComponent<Ghost>().power.startPosition;
-                                        hauntingGhost.transform.localPosition = new Vector3(0, 0, 0);
+                                        hauntingGhost.transform.localPosition = new Vector3(0.0f, 200.0f, 0.0f);
                                     }
                                     else if (hauntingGhost.transform.parent.name.Contains("Depart"))
                                     {
                                         //gameObject.transform.position = Vector3.Lerp(startPosition.position, middlePosition.position, actualTime); // To see later
                                         hauntingGhost.transform.parent = ghostCard.GetComponent<Ghost>().power.startPosition;
-                                        hauntingGhost.transform.localPosition = new Vector3(0, 0, 0);
+                                        hauntingGhost.transform.localPosition = new Vector3(0.0f, 200.0f, 0.0f);
                                     }
                                 }
                             }

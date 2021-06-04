@@ -451,6 +451,5 @@ public class Deplacement : MonoBehaviour {
     {
         tileToMove = buttonClick.transform.GetChild(0).GetComponent<Text>().text;
         chooseDepla = true;
-        Debug.Log(tileToMove);
     }
 }

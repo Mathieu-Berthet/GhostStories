@@ -166,7 +166,6 @@ public class BluePlayer : MonoBehaviour
     public Text textNbTokenYinYangBlue;
     public Text textNbQI;
     public Text textNbBouddha;
-    public Text textNbWhiteFace;
     public Text infosWhiteFace;
     public Text textInfoPhase;
     public Text textInfoPower;
@@ -895,6 +894,7 @@ public class BluePlayer : MonoBehaviour
                     cube.rb.AddForce(hit.point * cube.force);
                 }
             }
+            gm.ActiveDiceFace();
             yield return new WaitForSeconds(5.0f);
             if (diceOne != null)
             {
@@ -903,26 +903,32 @@ public class BluePlayer : MonoBehaviour
                 {
                     case "RedFace":
                         nbRedFace++;
+                        gm.textNbRedFace.text = "Face Rouge : " + nbRedFace;
                         Destroy(diceOne);
                         break;
                     case "BlueFace":
                         nbBlueFace++;
+                        gm.textNbBlueFace.text = "Face Bleue : " + nbBlueFace;
                         Destroy(diceOne);
                         break;
                     case "YellowFace":
                         nbYellowFace++;
+                        gm.textNbYellowFace.text = "Face Jaune : " + nbYellowFace;
                         Destroy(diceOne);
                         break;
                     case "GreenFace":
                         nbGreenFace++;
+                        gm.textNbGreenFace.text = "Face Verte : " + nbGreenFace;
                         Destroy(diceOne);
                         break;
                     case "WhiteFace":
                         nbWhiteFace++;
+                        gm.textNbWhiteFace.text = "Face Blanche : " + nbWhiteFace;
                         Destroy(diceOne);
                         break;
                     case "BlackFace":
                         nbBlackFace++;
+                        gm.textNbBlackFace.text = "Face Noire : " + nbBlackFace;
                         Destroy(diceOne);
                         break;
                     default:
@@ -936,26 +942,32 @@ public class BluePlayer : MonoBehaviour
                 {
                     case "RedFace":
                         nbRedFace++;
+                        gm.textNbRedFace.text = "Face Rouge : " + nbRedFace;
                         Destroy(diceTwo);
                         break;
                     case "BlueFace":
                         nbBlueFace++;
+                        gm.textNbBlueFace.text = "Face Bleue : " + nbBlueFace;
                         Destroy(diceTwo);
                         break;
                     case "YellowFace":
                         nbYellowFace++;
+                        gm.textNbYellowFace.text = "Face Jaune : " + nbYellowFace;
                         Destroy(diceTwo);
                         break;
                     case "GreenFace":
                         nbGreenFace++;
+                        gm.textNbGreenFace.text = "Face Verte : " + nbGreenFace;
                         Destroy(diceTwo);
                         break;
                     case "WhiteFace":
                         nbWhiteFace++;
+                        gm.textNbWhiteFace.text = "Face Blanche : " + nbWhiteFace;
                         Destroy(diceTwo);
                         break;
                     case "BlackFace":
                         nbBlackFace++;
+                        gm.textNbBlackFace.text = "Face Noire : " + nbBlackFace;
                         Destroy(diceTwo);
                         break;
                     default:
@@ -969,26 +981,32 @@ public class BluePlayer : MonoBehaviour
                 {
                     case "RedFace":
                         nbRedFace++;
+                        gm.textNbRedFace.text = "Face Rouge : " + nbRedFace;
                         Destroy(diceThree);
                         break;
                     case "BlueFace":
                         nbBlueFace++;
+                        gm.textNbBlueFace.text = "Face Bleue : " + nbBlueFace;
                         Destroy(diceThree);
                         break;
                     case "YellowFace":
                         nbYellowFace++;
+                        gm.textNbYellowFace.text = "Face Jaune : " + nbYellowFace;
                         Destroy(diceThree);
                         break;
                     case "GreenFace":
                         nbGreenFace++;
+                        gm.textNbGreenFace.text = "Face Verte : " + nbGreenFace;
                         Destroy(diceThree);
                         break;
                     case "WhiteFace":
                         nbWhiteFace++;
+                        gm.textNbWhiteFace.text = "Face Blanche : " + nbWhiteFace;
                         Destroy(diceThree);
                         break;
                     case "BlackFace":
                         nbBlackFace++;
+                        gm.textNbBlackFace.text = "Face Noire : " + nbBlackFace;
                         Destroy(diceThree);
                         break;
                     default:
@@ -1001,8 +1019,8 @@ public class BluePlayer : MonoBehaviour
             {
                 while (nbWhiteFace > 0)
                 {
-                    textNbWhiteFace.text = "Nombre de face blanches restantes : " + nbWhiteFace.ToString();
-                    textNbWhiteFace.gameObject.SetActive(true);
+                    gm.textNbWhiteFace.text = "Face Blanche : " + nbWhiteFace.ToString();
+                    gm.textNbWhiteFace.gameObject.SetActive(true);
                     infosWhiteFace = gm.panelButtonChoice.transform.GetChild(0).GetComponent<Text>();
                     infosWhiteFace.text = "Veuillez choisir la couleur de vos faces blanches : ";
                     gm.panelButtonChoice.SetActive(true);
@@ -1017,18 +1035,23 @@ public class BluePlayer : MonoBehaviour
                         {
                             case "Red":
                                 nbRedFace++;
+                                gm.textNbRedFace.text = "Face Rouge : " + nbRedFace;
                                 break;
                             case "Blue":
                                 nbBlueFace++;
+                                gm.textNbBlueFace.text = "Face Bleue : " + nbBlueFace;
                                 break;
                             case "Yellow":
                                 nbYellowFace++;
+                                gm.textNbYellowFace.text = "Face Jaune : " + nbYellowFace;
                                 break;
                             case "Green":
                                 nbGreenFace++;
+                                gm.textNbGreenFace.text = "Face Verte : " + nbGreenFace;
                                 break;
                             case "Black":
                                 nbBlackFace++;
+                                gm.textNbBlackFace.text = "Face Noire : " + nbBlackFace;
                                 break;
                             default:
                                 break;
@@ -1037,9 +1060,10 @@ public class BluePlayer : MonoBehaviour
                         gm.panelButtonChoice.SetActive(false);
                     }
                     nbWhiteFace--;
+                    gm.textNbWhiteFace.text = "Face Blanche : " + nbWhiteFace;
                 }
             }
-            textNbWhiteFace.gameObject.SetActive(false);
+            //textNbWhiteFace.gameObject.SetActive(false);
             yield return new WaitForSeconds(2.0f);
             gm.panelButtonChoice.SetActive(false);
 
@@ -1226,9 +1250,16 @@ public class BluePlayer : MonoBehaviour
             nbBlueFace = 0;
             nbYellowFace = 0;
             nbGreenFace = 0;
+            gm.textNbRedFace.text = "Face Rouge : " + nbRedFace;
+            gm.textNbBlueFace.text = "Face Bleue : " + nbBlueFace;
+            gm.textNbGreenFace.text = "Face Verte : " + nbGreenFace;
+            gm.textNbYellowFace.text = "Face Jaune : " + nbYellowFace;
+            gm.textNbBlackFace.text = "Face Noire : " + nbBlackFace;
+            gm.textNbWhiteFace.text = "Face Blanche : " + nbWhiteFace;
             canLaunchDice = true;
             canLaunchBlackDice = true;
             gameObject.GetComponent<Deplacement>().enabled = true;
+            gm.UnactiveDiceFace();
             updateUI();
         }
     }
@@ -1322,7 +1353,7 @@ public class BluePlayer : MonoBehaviour
         RaycastHit hitZdirection;
         if (Physics.Raycast(transform.position, Vector3.right, out hitXdirection, 1.5f, layerBlue) && Physics.Raycast(transform.position, Vector3.back, out hitZdirection, 1.5f, layerBlue))
         {
-            if (hitXdirection.collider.transform.childCount > 4)
+            if (hitXdirection.collider.transform.childCount > 4 && !hitXdirection.collider.transform.GetChild(4).name.Contains("Bouddha"))
             {
                 explosion = hitXdirection.collider.transform.GetChild(0).gameObject;
                 ghost1 = hitXdirection.collider.transform.GetChild(4).gameObject;
@@ -1333,7 +1364,7 @@ public class BluePlayer : MonoBehaviour
                 ghost1 = null;
             }
 
-            if (hitZdirection.collider.transform.childCount > 4)
+            if (hitZdirection.collider.transform.childCount > 4 && !hitZdirection.collider.transform.GetChild(4).name.Contains("Bouddha"))
             {
                 explosion2 = hitZdirection.collider.transform.GetChild(0).gameObject;
                 ghost2 = hitZdirection.collider.transform.GetChild(4).gameObject;
@@ -1346,7 +1377,7 @@ public class BluePlayer : MonoBehaviour
         }
         else if (Physics.Raycast(transform.position, Vector3.back, out hitZdirection, 1.5f, layerBlue) && Physics.Raycast(transform.position, Vector3.left, out hitXdirection, 1.5f, layerBlue))
         {
-            if (hitZdirection.collider.transform.childCount > 4)
+            if (hitZdirection.collider.transform.childCount > 4 && !hitZdirection.collider.transform.GetChild(4).name.Contains("Bouddha"))
             {
                 explosion = hitZdirection.collider.transform.GetChild(0).gameObject;
                 ghost1 = hitZdirection.collider.transform.GetChild(4).gameObject;
@@ -1357,7 +1388,7 @@ public class BluePlayer : MonoBehaviour
                 ghost1 = null;
             }
 
-            if (hitXdirection.collider.transform.childCount > 4)
+            if (hitXdirection.collider.transform.childCount > 4 && !hitXdirection.collider.transform.GetChild(4).name.Contains("Bouddha"))
             {
                 explosion2 = hitXdirection.collider.transform.GetChild(0).gameObject;
                 ghost2 = hitXdirection.collider.transform.GetChild(4).gameObject;
@@ -1370,7 +1401,7 @@ public class BluePlayer : MonoBehaviour
         }
         else if (Physics.Raycast(transform.position, Vector3.left, out hitXdirection, 1.5f, layerBlue) && Physics.Raycast(transform.position, Vector3.forward, out hitZdirection, 1.5f, layerBlue))
         {
-            if (hitXdirection.collider.transform.childCount > 4)
+            if (hitXdirection.collider.transform.childCount > 4 && !hitXdirection.collider.transform.GetChild(4).name.Contains("Bouddha"))
             {
                 explosion = hitXdirection.collider.transform.GetChild(0).gameObject;
                 ghost1 = hitXdirection.collider.transform.GetChild(4).gameObject;
@@ -1381,7 +1412,7 @@ public class BluePlayer : MonoBehaviour
                 ghost1 = null;
             }
 
-            if (hitZdirection.collider.transform.childCount > 4)
+            if (hitZdirection.collider.transform.childCount > 4 && !hitZdirection.collider.transform.GetChild(4).name.Contains("Bouddha"))
             {
                 explosion2 = hitZdirection.collider.transform.GetChild(0).gameObject;
                 ghost2 = hitZdirection.collider.transform.GetChild(4).gameObject;
@@ -1394,7 +1425,7 @@ public class BluePlayer : MonoBehaviour
         }
         else if (Physics.Raycast(transform.position, Vector3.forward, out hitZdirection, 1.5f, layerBlue) && Physics.Raycast(transform.position, Vector3.right, out hitXdirection, 1.5f, layerBlue))
         {
-            if (hitZdirection.collider.transform.childCount > 4)
+            if (hitZdirection.collider.transform.childCount > 4 && !hitZdirection.collider.transform.GetChild(4).name.Contains("Bouddha"))
             {
                 explosion = hitZdirection.collider.transform.GetChild(0).gameObject;
                 ghost1 = hitZdirection.collider.transform.GetChild(4).gameObject;
@@ -1405,7 +1436,7 @@ public class BluePlayer : MonoBehaviour
                 ghost1 = null;
             }
 
-            if (hitXdirection.collider.transform.childCount > 4)
+            if (hitXdirection.collider.transform.childCount > 4 && !hitXdirection.collider.transform.GetChild(4).name.Contains("Bouddha"))
             {
                 explosion2 = hitXdirection.collider.transform.GetChild(0).gameObject;
                 ghost2 = hitXdirection.collider.transform.GetChild(4).gameObject;
@@ -1418,7 +1449,7 @@ public class BluePlayer : MonoBehaviour
         }
         else if (Physics.Raycast(transform.position, Vector3.right, out hitXdirection, 1.5f, layerBlue))
         {
-            if (hitXdirection.collider.transform.childCount > 4)
+            if (hitXdirection.collider.transform.childCount > 4 && !hitXdirection.collider.transform.GetChild(4).name.Contains("Bouddha"))
             {
                 explosion = hitXdirection.collider.transform.GetChild(0).gameObject;
                 ghost1 = hitXdirection.collider.transform.GetChild(4).gameObject;
@@ -1435,7 +1466,7 @@ public class BluePlayer : MonoBehaviour
         }
         else if (Physics.Raycast(transform.position, Vector3.back, out hitZdirection, 1.5f, layerBlue))
         {
-            if (hitZdirection.collider.transform.childCount > 4)
+            if (hitZdirection.collider.transform.childCount > 4 && !hitZdirection.collider.transform.GetChild(4).name.Contains("Bouddha"))
             {
                 explosion = hitZdirection.collider.transform.GetChild(0).gameObject;
                 ghost1 = hitZdirection.collider.transform.GetChild(4).gameObject;
@@ -1452,7 +1483,7 @@ public class BluePlayer : MonoBehaviour
         }
         else if (Physics.Raycast(transform.position, Vector3.left, out hitXdirection, 1.5f, layerBlue))
         {
-            if (hitXdirection.collider.transform.childCount > 4)
+            if (hitXdirection.collider.transform.childCount > 4 && !hitXdirection.collider.transform.GetChild(4).name.Contains("Bouddha"))
             {
                 explosion = hitXdirection.collider.transform.GetChild(0).gameObject;
                 ghost1 = hitXdirection.collider.transform.GetChild(4).gameObject;
@@ -1469,7 +1500,7 @@ public class BluePlayer : MonoBehaviour
         }
         else if (Physics.Raycast(transform.position, Vector3.forward, out hitZdirection, 1.5f, layerBlue))
         {
-            if (hitZdirection.collider.transform.childCount > 4)
+            if (hitZdirection.collider.transform.childCount > 4 && !hitZdirection.collider.transform.GetChild(4).name.Contains("Bouddha"))
             {
                 explosion = hitZdirection.collider.transform.GetChild(0).gameObject;
                 ghost1 = hitZdirection.collider.transform.GetChild(4).gameObject;
@@ -1536,31 +1567,26 @@ public class BluePlayer : MonoBehaviour
                     int tempRed = nbRedFace;
                     nbRedFace -= ghost.GetComponent<Ghost>().life;
                     ghost.GetComponent<Ghost>().life -= tempRed;
-                    Debug.Log(ghost.GetComponent<Ghost>().life);
                     break;
                 case "yellow":
                     int tempYellow = nbYellowFace;
                     nbYellowFace -= ghost.GetComponent<Ghost>().life;
                     ghost.GetComponent<Ghost>().life -= tempYellow;
-                    Debug.Log(ghost.GetComponent<Ghost>().life);
                     break;
                 case "blue":
                     int tempBlue = nbBlueFace;
                     nbBlueFace -= ghost.GetComponent<Ghost>().life;
                     ghost.GetComponent<Ghost>().life -= tempBlue;
-                    Debug.Log(ghost.GetComponent<Ghost>().life);
                     break;
                 case "black":
                     int tempBlack = nbBlackFace;
                     nbBlackFace -= ghost.GetComponent<Ghost>().life;
                     ghost.GetComponent<Ghost>().life -= tempBlack;
-                    Debug.Log(ghost.GetComponent<Ghost>().life);
                     break;
                 case "green":
                     int tempGreen = nbGreenFace;
                     nbGreenFace -= ghost.GetComponent<Ghost>().life;
                     ghost.GetComponent<Ghost>().life -= tempGreen;
-                    Debug.Log(ghost.GetComponent<Ghost>().life);
                     break;
                 default:
                     break;
@@ -1775,9 +1801,8 @@ public class BluePlayer : MonoBehaviour
             canLaunchBlackDice = false;
             canLaunchDice = false;
             gameObject.GetComponent<Deplacement>().enabled = false;
-
             yield return new WaitForSeconds(0.2f);
-
+            gm.ActiveDiceFace();
             GameObject go = Instantiate(blackDice, new Vector3(0, 2, 0), Quaternion.identity);
             go.AddComponent<CubeScript>();
             cube = go.GetComponent<CubeScript>();
@@ -1794,6 +1819,7 @@ public class BluePlayer : MonoBehaviour
             if (blackDiceOne != null)
             {
                 resultFace = blackDiceOne.GetComponent<CubeScript>().face;
+                gm.textBlackDiceFace.text = resultFace;
                 /*textInfo.text = resultFace;
                 textInfo.gameObject.SetActive(true);*/
             }
@@ -1905,7 +1931,7 @@ public class BluePlayer : MonoBehaviour
                     break;
             }
             yield return new WaitForSeconds(0.5f);
-
+            gm.UnactiveDiceFace();
             Destroy(blackDiceOne);
             //textInfo.gameObject.SetActive(false);
         }
@@ -3638,4 +3664,5 @@ public class BluePlayer : MonoBehaviour
                 break;
         }
     }
+
 }

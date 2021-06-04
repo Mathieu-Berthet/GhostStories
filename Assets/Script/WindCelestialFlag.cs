@@ -424,12 +424,12 @@ public class WindCelestialFlag : MonoBehaviour {
                     if (namePositionGhost == "One")
                     {
                         hauntingGhostToMove.transform.parent = ghostToMove.GetComponent<GhostPower>().startPosition;
-                        hauntingGhostToMove.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+                        hauntingGhostToMove.transform.localPosition = new Vector3(0.0f, 200.0f, 0.0f);
                     }
                     else if (namePositionGhost == "Two")
                     {
                         hauntingGhostToMove.transform.parent = ghostToMove.GetComponent<GhostPower>().middlePosition;
-                        hauntingGhostToMove.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+                        hauntingGhostToMove.transform.localPosition = new Vector3(0.0f, 200.0f, 0.0f);
                     }
                     //Décompte du plateau précédent
                     if (previousPosition.transform.parent.GetComponent<boardColor>().color == "blue")
@@ -487,12 +487,12 @@ public class WindCelestialFlag : MonoBehaviour {
                 if (namePositionGhost == "One")
                 {
                     hauntingGhostToMove.transform.parent = ghostToMove.GetComponent<GhostPower>().startPosition;
-                    hauntingGhostToMove.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+                    hauntingGhostToMove.transform.localPosition = new Vector3(0.0f, 200.0f, 0.0f);
                 }
                 else if (namePositionGhost == "Two")
                 {
                     hauntingGhostToMove.transform.parent = ghostToMove.GetComponent<GhostPower>().middlePosition;
-                    hauntingGhostToMove.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+                    hauntingGhostToMove.transform.localPosition = new Vector3(0.0f, 200.0f, 0.0f);
                 }
                 //Décompte du plateau précédent
                 if (previousPosition.transform.parent.GetComponent<boardColor>().color == "blue")

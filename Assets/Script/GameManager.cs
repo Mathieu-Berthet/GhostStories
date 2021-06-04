@@ -139,6 +139,25 @@ public class GameManager : MonoBehaviour {
     public Button herbalistStallForHaunt;
     public Button hutOfWitchForHaunt;
     public Button houseOfTeaForHaunt;
+
+
+    [Header("Les faces")]
+    public Image FaceRouge;
+    public Image FaceBleue;
+    public Image FaceVerte;
+    public Image FaceJaune;
+    public Image FaceNoire;
+    public Image FaceBlanche;
+    public Image FaceDeNoir;
+
+    public Text textNbWhiteFace;
+    public Text textNbRedFace;
+    public Text textNbBlueFace;
+    public Text textNbGreenFace;
+    public Text textNbYellowFace;
+    public Text textNbBlackFace;
+    public Text textBlackDiceFace;
+
     //Enum game phase
 
     //Enum player turn
@@ -802,5 +821,43 @@ public class GameManager : MonoBehaviour {
             hutOfWitchForHaunt.transform.GetChild(0).GetComponent<Text>().text = windCelestialFlagTileName;
             houseOfTeaForHaunt.transform.GetChild(0).GetComponent<Text>().text = bouddhistTempleTileName;
         }
+    }
+
+    public void ActiveDiceFace()
+    {
+        FaceRouge.gameObject.SetActive(true);
+        FaceBleue.gameObject.SetActive(true);
+        FaceVerte.gameObject.SetActive(true);
+        FaceJaune.gameObject.SetActive(true);
+        FaceNoire.gameObject.SetActive(true);
+        FaceBlanche.gameObject.SetActive(true);
+        FaceDeNoir.gameObject.SetActive(true);
+
+        textNbRedFace.gameObject.SetActive(true);
+        textNbBlueFace.gameObject.SetActive(true);
+        textNbGreenFace.gameObject.SetActive(true);
+        textNbYellowFace.gameObject.SetActive(true);
+        textNbBlackFace.gameObject.SetActive(true);
+        textNbWhiteFace.gameObject.SetActive(true);
+        textBlackDiceFace.gameObject.SetActive(true);
+    }
+
+    public void UnactiveDiceFace()
+    {
+        FaceRouge.gameObject.SetActive(false);
+        FaceBleue.gameObject.SetActive(false);
+        FaceVerte.gameObject.SetActive(false);
+        FaceJaune.gameObject.SetActive(false);
+        FaceNoire.gameObject.SetActive(false);
+        FaceBlanche.gameObject.SetActive(false);
+        FaceDeNoir.gameObject.SetActive(false);
+
+        textNbRedFace.gameObject.SetActive(false);
+        textNbBlueFace.gameObject.SetActive(false);
+        textNbGreenFace.gameObject.SetActive(false);
+        textNbYellowFace.gameObject.SetActive(false);
+        textNbBlackFace.gameObject.SetActive(false);
+        textNbWhiteFace.gameObject.SetActive(false);
+        textBlackDiceFace.gameObject.SetActive(false);
     }
 }
