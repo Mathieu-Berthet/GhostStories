@@ -87,7 +87,7 @@ public class Graveyard : MonoBehaviour
             player.GetComponent<BluePlayer>().update = true;
             player.GetComponent<BluePlayer>().canLaunchDice = true;
             player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
-            player.GetComponent<BluePlayer>().useTilePower = false;
+            //player.GetComponent<BluePlayer>().useTilePower = false;
             player.GetComponent<Deplacement>().enabled = true;
         }
         else if (player.name == "RedPlayer")
@@ -96,7 +96,7 @@ public class Graveyard : MonoBehaviour
             player.GetComponent<RedPlayer>().update = true;
             player.GetComponent<RedPlayer>().canLaunchDice = true;
             player.GetComponent<RedPlayer>().canLaunchBlackDice = true;
-            player.GetComponent<RedPlayer>().useTilePower = false;
+            //player.GetComponent<RedPlayer>().useTilePower = false;
             player.GetComponent<Deplacement>().enabled = true;
         }
         else if (player.name == "GreenPlayer")
@@ -105,7 +105,7 @@ public class Graveyard : MonoBehaviour
             player.GetComponent<GreenPlayer>().update = true;
             player.GetComponent<GreenPlayer>().canLaunchDice = true;
             player.GetComponent<GreenPlayer>().canLaunchBlackDice = true;
-            player.GetComponent<GreenPlayer>().useTilePower = false;
+            //player.GetComponent<GreenPlayer>().useTilePower = false;
             player.GetComponent<Deplacement>().enabled = true;
         }
         else if (player.name == "YellowPlayer")
@@ -114,7 +114,7 @@ public class Graveyard : MonoBehaviour
             player.GetComponent<YellowPlayer>().update = true;
             player.GetComponent<YellowPlayer>().canLaunchDice = true;
             player.GetComponent<YellowPlayer>().canLaunchBlackDice = true;
-            player.GetComponent<YellowPlayer>().useTilePower = false;
+            //player.GetComponent<YellowPlayer>().useTilePower = false;
             player.GetComponent<Deplacement>().enabled = true;
         }
     }

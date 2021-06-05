@@ -135,6 +135,7 @@ public class RedPlayer : MonoBehaviour
     public GameObject panelBouddha;
     public GameObject panelYinYang;
     public GameObject panelTile;
+    public GameObject panelToken;
 
     public string effectYinYang;
     public string tileYinYang;
@@ -157,6 +158,8 @@ public class RedPlayer : MonoBehaviour
     public bool chooseTile;
     public bool canKillGhost;
     public bool wantUnhaunted;
+    public bool wantUseToken;
+    public bool chooseToken;
 
     //Les différents textes
     [Header("Les textes")]
@@ -886,6 +889,7 @@ public class RedPlayer : MonoBehaviour
             textInfo.gameObject.SetActive(false);
             gm.choose = false;
             choosePriority = false;
+            chooseToken = false;
             gameObject.GetComponent<Deplacement>().enabled = false;
             canLaunchDice = false;
             nbRedFace = 0;
@@ -1096,38 +1100,106 @@ public class RedPlayer : MonoBehaviour
             //Partie combat
             if (ghost1 != null || ghost2 != null)
             {
-                if (ghost1 != null && ghost2 != null)
+                panelToken.SetActive(true);
+                while (!chooseToken)
                 {
-                    panelPrio.SetActive(true);
-                    string nameOne = ghost1.name;
-                    nameOne = nameOne.Replace("(Clone)", "");
-                    buttonGhost1.transform.GetChild(0).GetComponent<Text>().text = nameOne;
-                    string nameTwo = ghost2.name;
-                    nameTwo = nameTwo.Replace("(Clone)", "");
-                    buttonGhost2.transform.GetChild(0).GetComponent<Text>().text = nameTwo;
-                    while (!choosePriority)
+                    yield return new WaitForSeconds(2.0f);
+                }
+                if (chooseToken)
+                {
+                    panelToken.SetActive(false);
+                    if (ghost1 != null && ghost2 != null)
                     {
-                        yield return new WaitForSeconds(1.0f);
-                    }
-                    if (priority == ghost1.name)
-                    {
-                        panelPrio.SetActive(false);
-                        if (ghost1.name == "HowlingNightmare(Clone)")
+                        panelPrio.SetActive(true);
+                        string nameOne = ghost1.name;
+                        nameOne = nameOne.Replace("(Clone)", "");
+                        buttonGhost1.transform.GetChild(0).GetComponent<Text>().text = nameOne;
+                        string nameTwo = ghost2.name;
+                        nameTwo = nameTwo.Replace("(Clone)", "");
+                        buttonGhost2.transform.GetChild(0).GetComponent<Text>().text = nameTwo;
+                        while (!choosePriority)
                         {
-                            if (ghost1.GetComponent<Ghost>().hasMustBeLonelyOnLinePower)
+                            yield return new WaitForSeconds(1.0f);
+                        }
+                        if (priority == ghost1.name)
+                        {
+                            panelPrio.SetActive(false);
+                            if (ghost1.name == "HowlingNightmare(Clone)")
                             {
-                                ghost1.GetComponent<GhostPower>().CheckIfLonely();
+                                if (ghost1.GetComponent<Ghost>().hasMustBeLonelyOnLinePower)
+                                {
+                                    ghost1.GetComponent<GhostPower>().CheckIfLonely();
+                                }
+                                if (ghost1.GetComponent<GhostPower>().lineIsEmpty)
+                                {
+                                    Attack(ghost1);
+                                }
                             }
-                            if (ghost1.GetComponent<GhostPower>().lineIsEmpty)
+                            else
                             {
                                 Attack(ghost1);
                             }
+                            yield return new WaitForSeconds(1.5f);
+                            if (ghost2.name == "HowlingNightmare(Clone)")
+                            {
+                                if (ghost2.GetComponent<Ghost>().hasMustBeLonelyOnLinePower)
+                                {
+                                    ghost2.GetComponent<GhostPower>().CheckIfLonely();
+                                }
+                                if (ghost2.GetComponent<GhostPower>().lineIsEmpty)
+                                {
+                                    Attack(ghost2);
+                                    nbActionBattle -= 1;
+                                }
+                            }
+                            else
+                            {
+                                Attack(ghost2);
+                                nbActionBattle -= 1;
+                            }
+                            yield return new WaitForSeconds(0.5f);
                         }
                         else
                         {
-                            Attack(ghost1);
+                            panelPrio.SetActive(false);
+                            if (ghost2.name == "HowlingNightmare(Clone)")
+                            {
+                                if (ghost2.GetComponent<Ghost>().hasMustBeLonelyOnLinePower)
+                                {
+                                    ghost2.GetComponent<GhostPower>().CheckIfLonely();
+                                }
+                                if (ghost2.GetComponent<GhostPower>().lineIsEmpty)
+                                {
+                                    Attack(ghost2);
+                                }
+                            }
+                            else
+                            {
+                                Attack(ghost2);
+                            }
+                            yield return new WaitForSeconds(1.5f);
+                            if (ghost1.name == "HowlingNightmare(Clone)")
+                            {
+                                if (ghost1.GetComponent<Ghost>().hasMustBeLonelyOnLinePower)
+                                {
+                                    ghost1.GetComponent<GhostPower>().CheckIfLonely();
+                                }
+                                if (ghost1.GetComponent<GhostPower>().lineIsEmpty)
+                                {
+                                    Attack(ghost1);
+                                    nbActionBattle -= 1;
+                                }
+                            }
+                            else
+                            {
+                                Attack(ghost1);
+                                nbActionBattle -= 1;
+                            }
+                            yield return new WaitForSeconds(0.5f);
                         }
-                        yield return new WaitForSeconds(1.5f);
+                    }
+                    else if (ghost1 == null && ghost2 != null)
+                    {
                         if (ghost2.name == "HowlingNightmare(Clone)")
                         {
                             if (ghost2.GetComponent<Ghost>().hasMustBeLonelyOnLinePower)
@@ -1147,25 +1219,8 @@ public class RedPlayer : MonoBehaviour
                         }
                         yield return new WaitForSeconds(0.5f);
                     }
-                    else
+                    else if (ghost1 != null && ghost2 == null)
                     {
-                        panelPrio.SetActive(false);
-                        if (ghost2.name == "HowlingNightmare(Clone)")
-                        {
-                            if (ghost2.GetComponent<Ghost>().hasMustBeLonelyOnLinePower)
-                            {
-                                ghost2.GetComponent<GhostPower>().CheckIfLonely();
-                            }
-                            if (ghost2.GetComponent<GhostPower>().lineIsEmpty)
-                            {
-                                Attack(ghost2);
-                            }
-                        }
-                        else
-                        {
-                            Attack(ghost2);
-                        }
-                        yield return new WaitForSeconds(1.5f);
                         if (ghost1.name == "HowlingNightmare(Clone)")
                         {
                             if (ghost1.GetComponent<Ghost>().hasMustBeLonelyOnLinePower)
@@ -1185,48 +1240,6 @@ public class RedPlayer : MonoBehaviour
                         }
                         yield return new WaitForSeconds(0.5f);
                     }
-                }
-                else if (ghost1 == null && ghost2 != null)
-                {
-                    if (ghost2.name == "HowlingNightmare(Clone)")
-                    {
-                        if (ghost2.GetComponent<Ghost>().hasMustBeLonelyOnLinePower)
-                        {
-                            ghost2.GetComponent<GhostPower>().CheckIfLonely();
-                        }
-                        if (ghost2.GetComponent<GhostPower>().lineIsEmpty)
-                        {
-                            Attack(ghost2);
-                            nbActionBattle -= 1;
-                        }
-                    }
-                    else
-                    {
-                        Attack(ghost2);
-                        nbActionBattle -= 1;
-                    }
-                    yield return new WaitForSeconds(0.5f);
-                }
-                else if (ghost1 != null && ghost2 == null)
-                {
-                    if (ghost1.name == "HowlingNightmare(Clone)")
-                    {
-                        if (ghost1.GetComponent<Ghost>().hasMustBeLonelyOnLinePower)
-                        {
-                            ghost1.GetComponent<GhostPower>().CheckIfLonely();
-                        }
-                        if (ghost1.GetComponent<GhostPower>().lineIsEmpty)
-                        {
-                            Attack(ghost1);
-                            nbActionBattle -= 1;
-                        }
-                    }
-                    else
-                    {
-                        Attack(ghost1);
-                        nbActionBattle -= 1;
-                    }
-                    yield return new WaitForSeconds(0.5f);
                 }
             }
             else if (ghost1 == null && ghost2 == null)
@@ -1604,7 +1617,7 @@ public class RedPlayer : MonoBehaviour
             }
 
             //Ensuite on décomptera les jetons
-            if (gm.canUseTaoToken)
+            if (gm.canUseTaoToken && wantUseToken)
             {
                 if (ghost.GetComponent<Ghost>().couleur == "red")
                 {
@@ -1875,6 +1888,7 @@ public class RedPlayer : MonoBehaviour
                     textInfo.gameObject.SetActive(true);
                     //player.GetComponent<BluePlayer>().state = BluePlayer.STATE_GAME.STATE_DRAW;
                     DrawAGhost();
+                    yield return new WaitForSeconds(10.0f); // A trouver peut être un autre moyen, 10 secondes c'est long
                     //To verify if we need that
                     canLaunchBlackDice = true;
                     useTilePower = false;
@@ -3670,6 +3684,23 @@ public class RedPlayer : MonoBehaviour
                 break;
             default:
                 break;
+        }
+    }
+
+    public void SetUseToken(Button buttonClick)
+    {
+        if (redTurn)
+        {
+            if (buttonClick.name == "Oui")
+            {
+                wantUseToken = true;
+            }
+            else if (buttonClick.name == "Non")
+            {
+                wantUseToken = false;
+            }
+
+            chooseToken = true;
         }
     }
 }

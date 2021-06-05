@@ -747,7 +747,7 @@ public class GhostPower : MonoBehaviour {
                     }
                 }
                 break;
-            case "black":
+            case "Black":
                 if (gm.tokenStock.nbBlackToken == 0)
                 {
                     //Indiquer qu'il y en a plus en reserve
@@ -1048,7 +1048,7 @@ public class GhostPower : MonoBehaviour {
                         }
                     }
                     break;
-                case "black":
+                case "Black":
                     if (gm.tokenStock.nbBlackToken == 0)
                     {
                         //Indiquer qu'il y en a plus en reserve
