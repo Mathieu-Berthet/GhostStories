@@ -115,7 +115,6 @@ public class TaoisteAutel : MonoBehaviour
                 }
                 if (choose)
                 {
-                    Debug.Log("Couocu145");
                     panelTile.SetActive(false);
                     choose = false;
                 }

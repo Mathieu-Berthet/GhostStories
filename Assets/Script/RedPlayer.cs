@@ -3214,10 +3214,10 @@ public class RedPlayer : MonoBehaviour
 
     public void CheckBoard()
     {
-        panelBoardPlayer.transform.GetChild(0).GetComponent<Button>().interactable = false;
-        panelBoardPlayer.transform.GetChild(1).GetComponent<Button>().interactable = true;
+        panelBoardPlayer.transform.GetChild(1).GetComponent<Button>().interactable = false;
         panelBoardPlayer.transform.GetChild(2).GetComponent<Button>().interactable = true;
         panelBoardPlayer.transform.GetChild(3).GetComponent<Button>().interactable = true;
+        panelBoardPlayer.transform.GetChild(4).GetComponent<Button>().interactable = true;
     }
 
     public void SetBouddha(Button buttonClick)
