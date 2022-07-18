@@ -17347,7 +17347,6 @@ GameObject:
   - component: {fileID: 921742454}
   - component: {fileID: 921742453}
   - component: {fileID: 921742457}
-  - component: {fileID: 921742459}
   - component: {fileID: 921742460}
   - component: {fileID: 921742461}
   m_Layer: 8
@@ -17451,28 +17450,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!195 &921742459
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 921742452}
-  m_Enabled: 0
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 1
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!114 &921742460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17486,25 +17463,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gm: {fileID: 0}
-  qi: 0
   nbBlueToken: 0
   nbRedToken: 0
   nbGreenToken: 0
   nbYellowToken: 0
   nbBlackToken: 0
-  nbPowerToken: 0
-  nbYinYangBlueToken: 0
   nbBouddha: 0
-  panelJeton: {fileID: 1134883028}
-  powerSecondSouffle: 1
-  powerSouffleCeleste: 0
   useTilePower: 0
   useGhostPower: 0
   canUsePower: 0
   canLaunchDice: 0
   canLaunchBlackDice: 0
-  nbActionEffect: 0
-  nbActionBattle: 0
   dice: {fileID: 1483268768575792, guid: 6a3772ffda714d746bf307675dc5309c, type: 3}
   cube: {fileID: 0}
   resultDiceOne: 
@@ -17529,7 +17498,6 @@ MonoBehaviour:
   windCelestialFlag: {fileID: 1335580315}
   nightTower: {fileID: 1585650252}
   tileName: 
-  choosePriority: 0
   chooseBouddha: 0
   positionOne: {fileID: 0}
   positionTwo: {fileID: 0}
@@ -17559,10 +17527,19 @@ MonoBehaviour:
   panelYinYang: {fileID: 606293401}
   panelTile: {fileID: 1540370682}
   panelToken: {fileID: 377347690}
+  defausse: {fileID: 54337049}
+  qi: 0
+  nbPowerToken: 0
+  nbYinYangBlueToken: 0
   effectYinYang: 
   tileYinYang: 
   colorPlayer: blue
-  defausse: {fileID: 54337049}
+  panelJeton: {fileID: 1134883028}
+  powerSecondSouffle: 1
+  powerSouffleCeleste: 0
+  nbActionEffect: 0
+  nbActionBattle: 0
+  choosePriority: 0
   hasDraw: 0
   update: 0
   alreadyMove: 0
@@ -24218,7 +24195,6 @@ GameObject:
   - component: {fileID: 1221269289}
   - component: {fileID: 1221269288}
   - component: {fileID: 1221269287}
-  - component: {fileID: 1221269285}
   - component: {fileID: 1221269292}
   - component: {fileID: 1221269293}
   m_Layer: 0
@@ -24228,28 +24204,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!195 &1221269285
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1221269284}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 1
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!54 &1221269287
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -24357,29 +24311,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gm: {fileID: 0}
-  qi: 0
   nbBlueToken: 0
   nbRedToken: 0
   nbGreenToken: 0
   nbYellowToken: 0
   nbBlackToken: 0
-  nbPowerToken: 0
-  nbYinYangRedToken: 0
   nbBouddha: 0
-  distanceToCheck: 0
-  panelJeton: {fileID: 1134883028}
-  powerDanseDesVentsJumaux: 0
-  playerChoose: {fileID: 0}
-  choosePlayer: 0
-  panelBoardPlayer: {fileID: 1871381456}
-  powerDanseDesCimes: 1
   useTilePower: 0
   useGhostPower: 0
   canUsePower: 0
   canLaunchDice: 0
   canLaunchBlackDice: 0
-  nbActionEffect: 1
-  nbActionBattle: 1
   dice: {fileID: 1483268768575792, guid: 6a3772ffda714d746bf307675dc5309c, type: 3}
   cube: {fileID: 0}
   resultDiceOne: 
@@ -24404,7 +24346,6 @@ MonoBehaviour:
   windCelestialFlag: {fileID: 1335580315}
   nightTower: {fileID: 1585650252}
   tileName: 
-  choosePriority: 0
   chooseBouddha: 0
   positionOne: {fileID: 0}
   positionTwo: {fileID: 0}
@@ -24434,10 +24375,23 @@ MonoBehaviour:
   panelYinYang: {fileID: 606293401}
   panelTile: {fileID: 1540370682}
   panelToken: {fileID: 377347690}
+  defausse: {fileID: 54337049}
+  qi: 0
+  nbPowerToken: 0
+  nbYinYangRedToken: 0
   effectYinYang: 
   tileYinYang: 
   colorPlayer: red
-  defausse: {fileID: 54337049}
+  panelJeton: {fileID: 1134883028}
+  distanceToCheck: 0
+  powerDanseDesVentsJumaux: 0
+  playerChoose: {fileID: 0}
+  choosePlayer: 0
+  panelBoardPlayer: {fileID: 1871381456}
+  powerDanseDesCimes: 1
+  nbActionEffect: 1
+  nbActionBattle: 1
+  choosePriority: 0
   hasDraw: 0
   update: 0
   alreadyMove: 0
@@ -35325,7 +35279,6 @@ GameObject:
   - component: {fileID: 1742816409}
   - component: {fileID: 1742816408}
   - component: {fileID: 1742816407}
-  - component: {fileID: 1742816405}
   - component: {fileID: 1742816412}
   - component: {fileID: 1742816413}
   m_Layer: 0
@@ -35335,28 +35288,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!195 &1742816405
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1742816404}
-  m_Enabled: 0
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 1
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!54 &1742816407
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -35464,31 +35395,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gm: {fileID: 0}
-  qi: 0
   nbBlueToken: 0
   nbRedToken: 0
   nbGreenToken: 0
   nbYellowToken: 0
   nbBlackToken: 0
-  nbPowerToken: 0
-  nbYinYangYellowToken: 0
   nbBouddha: 0
-  nbMantraToken: 0
-  mantraToken: {fileID: 1771454159998648, guid: 2b937cd01d452b341b06d688cae78207,
-    type: 3}
-  ghostToWeakned: {fileID: 0}
-  chooseenGhost: 
-  choose: 0
-  panelJeton: {fileID: 1134883028}
-  powerMantraAffaiblissement: 1
-  powerPocheSansFond: 0
   useTilePower: 0
   useGhostPower: 0
   canUsePower: 0
   canLaunchDice: 0
   canLaunchBlackDice: 0
-  nbActionEffect: 0
-  nbActionBattle: 0
   dice: {fileID: 1483268768575792, guid: 6a3772ffda714d746bf307675dc5309c, type: 3}
   cube: {fileID: 0}
   resultDiceOne: 
@@ -35513,7 +35430,6 @@ MonoBehaviour:
   windCelestialFlag: {fileID: 1335580315}
   nightTower: {fileID: 1585650252}
   tileName: 
-  choosePriority: 0
   chooseBouddha: 0
   positionOne: {fileID: 0}
   positionTwo: {fileID: 0}
@@ -35543,10 +35459,25 @@ MonoBehaviour:
   panelYinYang: {fileID: 606293401}
   panelTile: {fileID: 1540370682}
   panelToken: {fileID: 377347690}
+  defausse: {fileID: 54337049}
+  qi: 0
+  nbPowerToken: 0
+  nbYinYangYellowToken: 0
+  colorPlayer: yellow
   effectYinYang: 
   tileYinYang: 
-  colorPlayer: yellow
-  defausse: {fileID: 54337049}
+  panelJeton: {fileID: 1134883028}
+  nbMantraToken: 0
+  mantraToken: {fileID: 1771454159998648, guid: 2b937cd01d452b341b06d688cae78207,
+    type: 3}
+  ghostToWeakned: {fileID: 0}
+  chooseenGhost: 
+  choose: 0
+  powerMantraAffaiblissement: 1
+  powerPocheSansFond: 0
+  nbActionEffect: 0
+  nbActionBattle: 0
+  choosePriority: 0
   hasDraw: 0
   update: 0
   alreadyMove: 0
@@ -36266,7 +36197,6 @@ GameObject:
   - component: {fileID: 1775335302}
   - component: {fileID: 1775335301}
   - component: {fileID: 1775335300}
-  - component: {fileID: 1775335298}
   - component: {fileID: 1775335305}
   - component: {fileID: 1775335306}
   m_Layer: 0
@@ -36276,28 +36206,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!195 &1775335298
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1775335297}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 1
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!54 &1775335300
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -36405,37 +36313,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gm: {fileID: 0}
-  qi: 0
   nbBlueToken: 0
   nbRedToken: 0
   nbGreenToken: 0
   nbYellowToken: 0
   nbBlackToken: 0
-  nbPowerToken: 0
-  nbYinYangGreenToken: 0
   nbBouddha: 0
-  panelJeton: {fileID: 1134883028}
-  powerForceDeLaMontagne: 0
-  nbDiceBonus: 1
-  nbDiceTotal: 0
-  powerFavoriDesDieux: 1
-  panelRelance: {fileID: 13773119}
-  chooseRelance: 0
-  alreadyRelaunch: 0
-  relance: 
   useTilePower: 0
   useGhostPower: 0
   canUsePower: 0
   canLaunchDice: 0
   canLaunchBlackDice: 0
-  nbActionEffect: 0
-  nbActionBattle: 0
   dice: {fileID: 1483268768575792, guid: 6a3772ffda714d746bf307675dc5309c, type: 3}
   cube: {fileID: 0}
   resultDiceOne: 
   resultDiceTwo: 
   resultDiceThree: 
-  resultDiceFour: 
   nbRedFace: 0
   nbBlueFace: 0
   nbYellowFace: 0
@@ -36455,7 +36348,6 @@ MonoBehaviour:
   windCelestialFlag: {fileID: 1335580315}
   nightTower: {fileID: 1585650252}
   tileName: 
-  choosePriority: 0
   chooseBouddha: 0
   positionOne: {fileID: 0}
   positionTwo: {fileID: 0}
@@ -36485,10 +36377,26 @@ MonoBehaviour:
   panelYinYang: {fileID: 606293401}
   panelTile: {fileID: 1540370682}
   panelToken: {fileID: 377347690}
+  defausse: {fileID: 54337049}
+  qi: 0
+  nbPowerToken: 0
+  nbYinYangGreenToken: 0
   effectYinYang: 
   tileYinYang: 
   colorPlayer: green
-  defausse: {fileID: 54337049}
+  panelJeton: {fileID: 1134883028}
+  powerForceDeLaMontagne: 0
+  nbDiceBonus: 1
+  nbDiceTotal: 0
+  powerFavoriDesDieux: 1
+  panelRelance: {fileID: 13773119}
+  chooseRelance: 0
+  alreadyRelaunch: 0
+  relance: 
+  resultDiceFour: 
+  nbActionEffect: 0
+  nbActionBattle: 0
+  choosePriority: 0
   hasDraw: 0
   update: 0
   alreadyMove: 0

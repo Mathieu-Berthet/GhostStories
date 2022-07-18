@@ -93,6 +93,7 @@
     <Compile Include="Assets\Script\GhostPower.cs" />
     <Compile Include="Assets\Script\TaoisteAutel.cs" />
     <Compile Include="Assets\Script\NavMesh\Scripts\NavMeshLink.cs" />
+    <Compile Include="Assets\Script\Players.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
