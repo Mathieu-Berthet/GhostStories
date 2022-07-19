@@ -40,8 +40,6 @@ public class BouddhisteTemple : MonoBehaviour {
                     infos.gameObject.SetActive(true);
                     player.GetComponent<BluePlayer>().update = true;
                     player.GetComponent<Deplacement>().enabled = true;
-                    player.GetComponent<BluePlayer>().canLaunchDice = true;
-                    player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
                 }
                 else
                 {
@@ -107,8 +105,6 @@ public class BouddhisteTemple : MonoBehaviour {
                     //Faire récupérer le 2e si pouvoir x2
                     player.GetComponent<BluePlayer>().update = true;
                     player.GetComponent<Deplacement>().enabled = true;
-                    player.GetComponent<BluePlayer>().canLaunchDice = true;
-                    player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
                     //Test avec son pouvoir pour augmenter de 2 si il l'a
                 }
             }
@@ -120,8 +116,6 @@ public class BouddhisteTemple : MonoBehaviour {
                     infos.gameObject.SetActive(true);
                     player.GetComponent<YellowPlayer>().update = true;
                     player.GetComponent<Deplacement>().enabled = true;
-                    player.GetComponent<YellowPlayer>().canLaunchDice = true;
-                    player.GetComponent<YellowPlayer>().canLaunchBlackDice = true;
                 }
                 else
                 {
@@ -186,8 +180,6 @@ public class BouddhisteTemple : MonoBehaviour {
                     }
                     player.GetComponent<YellowPlayer>().update = true;
                     player.GetComponent<Deplacement>().enabled = true;
-                    player.GetComponent<YellowPlayer>().canLaunchDice = true;
-                    player.GetComponent<YellowPlayer>().canLaunchBlackDice = true;
                 }
             }
             else if (player.name == "RedPlayer")
@@ -198,8 +190,6 @@ public class BouddhisteTemple : MonoBehaviour {
                     infos.gameObject.SetActive(true);
                     player.GetComponent<RedPlayer>().update = true;
                     player.GetComponent<Deplacement>().enabled = true;
-                    player.GetComponent<RedPlayer>().canLaunchDice = true;
-                    player.GetComponent<RedPlayer>().canLaunchBlackDice = true;
                 }
                 else
                 {
@@ -264,8 +254,6 @@ public class BouddhisteTemple : MonoBehaviour {
                     }
                     player.GetComponent<RedPlayer>().update = true;
                     player.GetComponent<Deplacement>().enabled = true;
-                    player.GetComponent<RedPlayer>().canLaunchDice = true;
-                    player.GetComponent<RedPlayer>().canLaunchBlackDice = true;
                 }
             }
             else if (player.name == "GreenPlayer")
@@ -276,7 +264,6 @@ public class BouddhisteTemple : MonoBehaviour {
                     infos.gameObject.SetActive(true);
                     player.GetComponent<GreenPlayer>().update = true;
                     player.GetComponent<Deplacement>().enabled = true;
-                    player.GetComponent<GreenPlayer>().canLaunchDice = true;
                     player.GetComponent<GreenPlayer>().canLaunchBlackDice = true;
                 }
                 else
@@ -342,7 +329,6 @@ public class BouddhisteTemple : MonoBehaviour {
                     }
                     player.GetComponent<GreenPlayer>().update = true;
                     player.GetComponent<Deplacement>().enabled = true;
-                    player.GetComponent<GreenPlayer>().canLaunchDice = true;
                     player.GetComponent<GreenPlayer>().canLaunchBlackDice = true;
                 }
             }
@@ -354,31 +340,24 @@ public class BouddhisteTemple : MonoBehaviour {
             infos.gameObject.SetActive(true);
             if (player.name == "BluePlayer")
             {
-                player.GetComponent<BluePlayer>().canLaunchDice = true;
-                player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
                 player.GetComponent<BluePlayer>().useTilePower = false;
                 player.GetComponent<Deplacement>().enabled = true;
                 player.GetComponent<BluePlayer>().update = true;
             }
             else if (player.name == "YellowPlayer")
             {
-                player.GetComponent<YellowPlayer>().canLaunchDice = true;
-                player.GetComponent<YellowPlayer>().canLaunchBlackDice = true;
                 player.GetComponent<YellowPlayer>().useTilePower = false;
                 player.GetComponent<Deplacement>().enabled = true;
                 player.GetComponent<YellowPlayer>().update = true;
             }
             else if (player.name == "RedPlayer")
             {
-                player.GetComponent<RedPlayer>().canLaunchDice = true;
-                player.GetComponent<RedPlayer>().canLaunchBlackDice = true;
                 player.GetComponent<RedPlayer>().useTilePower = false;
                 player.GetComponent<Deplacement>().enabled = true;
                 player.GetComponent<RedPlayer>().update = true;
             }
             else if (player.name == "GreenPlayer")
             {
-                player.GetComponent<GreenPlayer>().canLaunchDice = true;
                 player.GetComponent<GreenPlayer>().canLaunchBlackDice = true;
                 player.GetComponent<GreenPlayer>().useTilePower = false;
                 player.GetComponent<Deplacement>().enabled = true;

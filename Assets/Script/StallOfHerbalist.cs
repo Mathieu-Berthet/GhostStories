@@ -348,8 +348,6 @@ public class StallOfHerbalist : MonoBehaviour
                 player.GetComponent<BluePlayer>().NbYellowToken += nbYellowTokenToGive;
                 player.GetComponent<BluePlayer>().NbBlackToken += nbBlackTokenToGive;
                 player.GetComponent<BluePlayer>().update = true;
-                player.GetComponent<BluePlayer>().canLaunchDice = true;
-                player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
                 player.GetComponent<BluePlayer>().useTilePower = false;
                 player.GetComponent<Deplacement>().enabled = true;
             }
@@ -361,8 +359,6 @@ public class StallOfHerbalist : MonoBehaviour
                 player.GetComponent<YellowPlayer>().NbYellowToken += nbYellowTokenToGive;
                 player.GetComponent<YellowPlayer>().NbBlackToken += nbBlackTokenToGive;
                 player.GetComponent<YellowPlayer>().update = true;
-                player.GetComponent<YellowPlayer>().canLaunchDice = true;
-                player.GetComponent<YellowPlayer>().canLaunchBlackDice = true;
                 player.GetComponent<YellowPlayer>().useTilePower = false;
                 player.GetComponent<Deplacement>().enabled = true;
             }
@@ -374,7 +370,6 @@ public class StallOfHerbalist : MonoBehaviour
                 player.GetComponent<GreenPlayer>().NbYellowToken += nbYellowTokenToGive;
                 player.GetComponent<GreenPlayer>().NbBlackToken += nbBlackTokenToGive;
                 player.GetComponent<GreenPlayer>().update = true;
-                player.GetComponent<GreenPlayer>().canLaunchDice = true;
                 player.GetComponent<GreenPlayer>().canLaunchBlackDice = true;
                 player.GetComponent<GreenPlayer>().useTilePower = false;
                 player.GetComponent<Deplacement>().enabled = true;
@@ -387,8 +382,6 @@ public class StallOfHerbalist : MonoBehaviour
                 player.GetComponent<RedPlayer>().NbYellowToken += nbYellowTokenToGive;
                 player.GetComponent<RedPlayer>().NbBlackToken += nbBlackTokenToGive;
                 player.GetComponent<RedPlayer>().update = true;
-                player.GetComponent<RedPlayer>().canLaunchDice = true;
-                player.GetComponent<RedPlayer>().canLaunchBlackDice = true;
                 player.GetComponent<RedPlayer>().useTilePower = false;
                 player.GetComponent<Deplacement>().enabled = true;
             }
@@ -413,8 +406,6 @@ public class StallOfHerbalist : MonoBehaviour
             {
                 Debug.Log("BLEU");
                 Debug.Log(infos.gameObject.activeSelf);
-                player.GetComponent<BluePlayer>().canLaunchDice = true;
-                player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
                 player.GetComponent<BluePlayer>().useTilePower = false;
                 player.GetComponent<Deplacement>().enabled = true;
                 player.GetComponent<BluePlayer>().update = true;
@@ -422,23 +413,18 @@ public class StallOfHerbalist : MonoBehaviour
             }
             else if (player.name == "YellowPlayer")
             {
-                player.GetComponent<YellowPlayer>().canLaunchDice = true;
-                player.GetComponent<YellowPlayer>().canLaunchBlackDice = true;
                 player.GetComponent<YellowPlayer>().useTilePower = false;
                 player.GetComponent<Deplacement>().enabled = true;
                 player.GetComponent<YellowPlayer>().update = true;
             }
             else if (player.name == "RedPlayer")
             {
-                player.GetComponent<RedPlayer>().canLaunchDice = true;
-                player.GetComponent<RedPlayer>().canLaunchBlackDice = true;
                 player.GetComponent<RedPlayer>().useTilePower = false;
                 player.GetComponent<Deplacement>().enabled = true;
                 player.GetComponent<RedPlayer>().update = true;
             }
             else if (player.name == "GreenPlayer")
             {
-                player.GetComponent<GreenPlayer>().canLaunchDice = true;
                 player.GetComponent<GreenPlayer>().canLaunchBlackDice = true;
                 player.GetComponent<GreenPlayer>().useTilePower = false;
                 player.GetComponent<Deplacement>().enabled = true;

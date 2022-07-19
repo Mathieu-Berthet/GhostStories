@@ -81,8 +81,6 @@ public class HutOfWitch : MonoBehaviour
             if (player.name == "BluePlayer")
             {
                 player.GetComponent<BluePlayer>().Qi -= 1;
-                player.GetComponent<BluePlayer>().canLaunchDice = true;
-                player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
                 player.GetComponent<BluePlayer>().useTilePower = false;
                 player.GetComponent<Deplacement>().enabled = true;
                 player.GetComponent<BluePlayer>().update = true;
@@ -92,7 +90,6 @@ public class HutOfWitch : MonoBehaviour
             else if (player.name == "GreenPlayer")
             {
                 player.GetComponent<GreenPlayer>().Qi -= 1;
-                player.GetComponent<GreenPlayer>().canLaunchDice = true;
                 player.GetComponent<GreenPlayer>().canLaunchBlackDice = true;
                 player.GetComponent<GreenPlayer>().useTilePower = false;
                 player.GetComponent<Deplacement>().enabled = true;
@@ -104,8 +101,6 @@ public class HutOfWitch : MonoBehaviour
             else if (player.name == "YellowPlayer")
             {
                 player.GetComponent<YellowPlayer>().Qi -= 1;
-                player.GetComponent<YellowPlayer>().canLaunchDice = true;
-                player.GetComponent<YellowPlayer>().canLaunchBlackDice = true;
                 player.GetComponent<YellowPlayer>().useTilePower = false;
                 player.GetComponent<Deplacement>().enabled = true;
                 player.GetComponent<YellowPlayer>().update = true;
@@ -116,8 +111,6 @@ public class HutOfWitch : MonoBehaviour
             else if (player.name == "RedPlayer")
             {
                 player.GetComponent<RedPlayer>().Qi -= 1;
-                player.GetComponent<RedPlayer>().canLaunchDice = true;
-                player.GetComponent<RedPlayer>().canLaunchBlackDice = true;
                 player.GetComponent<RedPlayer>().useTilePower = false;
                 player.GetComponent<Deplacement>().enabled = true;
                 player.GetComponent<RedPlayer>().update = true;
@@ -148,8 +141,6 @@ public class HutOfWitch : MonoBehaviour
             gm.cantPause = false;
             if (player.name == "BluePlayer")
             {
-                player.GetComponent<BluePlayer>().canLaunchDice = true;
-                player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
                 player.GetComponent<BluePlayer>().useTilePower = false;
                 player.GetComponent<Deplacement>().enabled = true;
                 player.GetComponent<BluePlayer>().update = true;
@@ -158,8 +149,6 @@ public class HutOfWitch : MonoBehaviour
             }
             else if (player.name == "YellowPlayer")
             {
-                player.GetComponent<YellowPlayer>().canLaunchDice = true;
-                player.GetComponent<YellowPlayer>().canLaunchBlackDice = true;
                 player.GetComponent<YellowPlayer>().useTilePower = false;
                 player.GetComponent<Deplacement>().enabled = true;
                 player.GetComponent<YellowPlayer>().update = true;
@@ -168,8 +157,6 @@ public class HutOfWitch : MonoBehaviour
             }
             else if (player.name == "RedPlayer")
             {
-                player.GetComponent<RedPlayer>().canLaunchDice = true;
-                player.GetComponent<RedPlayer>().canLaunchBlackDice = true;
                 player.GetComponent<RedPlayer>().useTilePower = false;
                 player.GetComponent<Deplacement>().enabled = true;
                 player.GetComponent<RedPlayer>().update = true;

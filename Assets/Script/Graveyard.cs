@@ -45,31 +45,23 @@ public class Graveyard : MonoBehaviour
             infos.gameObject.SetActive(true);
             if (player.name == "BluePlayer")
             {
-                player.GetComponent<BluePlayer>().canLaunchDice = true;
-                player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
-                player.GetComponent<BluePlayer>().useTilePower = false;
                 player.GetComponent<Deplacement>().enabled = true;
                 player.GetComponent<BluePlayer>().update = true;
             }
             else if (player.name == "YellowPlayer")
             {
-                player.GetComponent<YellowPlayer>().canLaunchDice = true;
-                player.GetComponent<YellowPlayer>().canLaunchBlackDice = true;
                 player.GetComponent<YellowPlayer>().useTilePower = false;
                 player.GetComponent<Deplacement>().enabled = true;
                 player.GetComponent<YellowPlayer>().update = true;
             }
             else if (player.name == "RedPlayer")
             {
-                player.GetComponent<RedPlayer>().canLaunchDice = true;
-                player.GetComponent<RedPlayer>().canLaunchBlackDice = true;
                 player.GetComponent<RedPlayer>().useTilePower = false;
                 player.GetComponent<Deplacement>().enabled = true;
                 player.GetComponent<RedPlayer>().update = true;
             }
             else if (player.name == "GreenPlayer")
             {
-                player.GetComponent<GreenPlayer>().canLaunchDice = true;
                 player.GetComponent<GreenPlayer>().canLaunchBlackDice = true;
                 player.GetComponent<GreenPlayer>().useTilePower = false;
                 player.GetComponent<Deplacement>().enabled = true;
@@ -85,8 +77,6 @@ public class Graveyard : MonoBehaviour
         {
             StartCoroutine(player.GetComponent<BluePlayer>().LaunchBlackDice());
             player.GetComponent<BluePlayer>().update = true;
-            player.GetComponent<BluePlayer>().canLaunchDice = true;
-            player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
             //player.GetComponent<BluePlayer>().useTilePower = false;
             player.GetComponent<Deplacement>().enabled = true;
         }
@@ -94,8 +84,6 @@ public class Graveyard : MonoBehaviour
         {
             StartCoroutine(player.GetComponent<RedPlayer>().LaunchBlackDice());
             player.GetComponent<RedPlayer>().update = true;
-            player.GetComponent<RedPlayer>().canLaunchDice = true;
-            player.GetComponent<RedPlayer>().canLaunchBlackDice = true;
             //player.GetComponent<RedPlayer>().useTilePower = false;
             player.GetComponent<Deplacement>().enabled = true;
         }
@@ -103,7 +91,6 @@ public class Graveyard : MonoBehaviour
         {
             StartCoroutine(player.GetComponent<GreenPlayer>().LaunchBlackDice());
             player.GetComponent<GreenPlayer>().update = true;
-            player.GetComponent<GreenPlayer>().canLaunchDice = true;
             player.GetComponent<GreenPlayer>().canLaunchBlackDice = true;
             //player.GetComponent<GreenPlayer>().useTilePower = false;
             player.GetComponent<Deplacement>().enabled = true;
@@ -112,8 +99,6 @@ public class Graveyard : MonoBehaviour
         {
             StartCoroutine(player.GetComponent<YellowPlayer>().LaunchBlackDice());
             player.GetComponent<YellowPlayer>().update = true;
-            player.GetComponent<YellowPlayer>().canLaunchDice = true;
-            player.GetComponent<YellowPlayer>().canLaunchBlackDice = true;
             //player.GetComponent<YellowPlayer>().useTilePower = false;
             player.GetComponent<Deplacement>().enabled = true;
         }

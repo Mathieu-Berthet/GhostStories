@@ -95,8 +95,6 @@ public class TaoisteAutel : MonoBehaviour
                 }
                 player.GetComponent<BluePlayer>().gm.state = GameManager.STATE_GAME.STATE_DRAW; //PEUT ETRE
                 player.GetComponent<BluePlayer>().DrawAGhost();
-                player.GetComponent<BluePlayer>().canLaunchDice = true;
-                player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
                 player.GetComponent<BluePlayer>().useTilePower = false;
                 player.GetComponent<BluePlayer>().wantUnhaunted = false;
                 player.GetComponent<Deplacement>().enabled = true;
@@ -161,8 +159,6 @@ public class TaoisteAutel : MonoBehaviour
                 }
                 player.GetComponent<YellowPlayer>().gm.state = GameManager.STATE_GAME.STATE_DRAW; //PEUT ETRE
                 player.GetComponent<YellowPlayer>().DrawAGhost();
-                player.GetComponent<YellowPlayer>().canLaunchDice = true;
-                player.GetComponent<YellowPlayer>().canLaunchBlackDice = true;
                 player.GetComponent<YellowPlayer>().useTilePower = false;
                 player.GetComponent<Deplacement>().enabled = true;
                 player.GetComponent<YellowPlayer>().update = true;
@@ -226,8 +222,6 @@ public class TaoisteAutel : MonoBehaviour
                 }
                 player.GetComponent<RedPlayer>().gm.state = GameManager.STATE_GAME.STATE_DRAW; //PEUT ETRE
                 player.GetComponent<RedPlayer>().DrawAGhost();
-                player.GetComponent<RedPlayer>().canLaunchDice = true;
-                player.GetComponent<RedPlayer>().canLaunchBlackDice = true;
                 player.GetComponent<RedPlayer>().useTilePower = false;
                 player.GetComponent<Deplacement>().enabled = true;
                 player.GetComponent<RedPlayer>().update = true;
@@ -291,7 +285,6 @@ public class TaoisteAutel : MonoBehaviour
                 }
                 player.GetComponent<GreenPlayer>().gm.state = GameManager.STATE_GAME.STATE_DRAW; //PEUT ETRE
                 player.GetComponent<GreenPlayer>().DrawAGhost();
-                player.GetComponent<GreenPlayer>().canLaunchDice = true;
                 player.GetComponent<GreenPlayer>().canLaunchBlackDice = true;
                 player.GetComponent<GreenPlayer>().useTilePower = false;
                 player.GetComponent<Deplacement>().enabled = true;
@@ -307,31 +300,24 @@ public class TaoisteAutel : MonoBehaviour
             //infos.gameObject.SetActive(true);
             if (player.name == "BluePlayer")
             {
-                player.GetComponent<BluePlayer>().canLaunchDice = true;
-                player.GetComponent<BluePlayer>().canLaunchBlackDice = true;
                 player.GetComponent<BluePlayer>().useTilePower = false;
                 player.GetComponent<Deplacement>().enabled = true;
                 player.GetComponent<BluePlayer>().update = true;
             }
             else if (player.name == "YellowPlayer")
             {
-                player.GetComponent<YellowPlayer>().canLaunchDice = true;
-                player.GetComponent<YellowPlayer>().canLaunchBlackDice = true;
                 player.GetComponent<YellowPlayer>().useTilePower = false;
                 player.GetComponent<Deplacement>().enabled = true;
                 player.GetComponent<YellowPlayer>().update = true;
             }
             else if (player.name == "RedPlayer")
             {
-                player.GetComponent<RedPlayer>().canLaunchDice = true;
-                player.GetComponent<RedPlayer>().canLaunchBlackDice = true;
                 player.GetComponent<RedPlayer>().useTilePower = false;
                 player.GetComponent<Deplacement>().enabled = true;
                 player.GetComponent<RedPlayer>().update = true;
             }
             else if (player.name == "GreenPlayer")
             {
-                player.GetComponent<GreenPlayer>().canLaunchDice = true;
                 player.GetComponent<GreenPlayer>().canLaunchBlackDice = true;
                 player.GetComponent<GreenPlayer>().useTilePower = false;
                 player.GetComponent<Deplacement>().enabled = true;

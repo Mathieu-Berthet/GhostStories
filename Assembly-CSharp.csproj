@@ -61,6 +61,7 @@
   <ItemGroup>
     <Compile Include="Assets\Script\PoolManagerDeck.cs" />
     <Compile Include="Assets\Script\PoolManager.cs" />
+    <Compile Include="Assets\Script\Players.cs" />
     <Compile Include="Assets\Script\NavMesh\Scripts\NavMeshModifierVolume.cs" />
     <Compile Include="Assets\Script\HouseOfTea.cs" />
     <Compile Include="Assets\Script\StockOfToken.cs" />
@@ -93,7 +94,6 @@
     <Compile Include="Assets\Script\GhostPower.cs" />
     <Compile Include="Assets\Script\TaoisteAutel.cs" />
     <Compile Include="Assets\Script\NavMesh\Scripts\NavMeshLink.cs" />
-    <Compile Include="Assets\Script\Players.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

@@ -229,8 +229,6 @@ public class RedPlayer : Players
         deck = GameObject.Find("Deck").GetComponent<PoolManagerDeck>();
         board = GameObject.Find("Canvas").GetComponent<BoardPosition>();
         layerRed = LayerMask.GetMask("GhostPlaces");
-        canLaunchDice = true;
-        canLaunchBlackDice = true;
         useTilePower = false;
         stop = false;
         alreadyMove = false;
@@ -261,12 +259,12 @@ public class RedPlayer : Players
             tileName = hitt.transform.gameObject.name;
         }
 
-        if (Input.GetKeyDown(KeyCode.A) && canLaunchDice && !gm.cantPlay)
+        if (Input.GetKeyDown(KeyCode.A) && gm.state == GameManager.STATE_GAME.STATE_PLAYER && nbActionBattle > 0)
         {
             StartCoroutine(LaunchDice());
         }
 
-        if (Input.GetKeyDown(KeyCode.E) && canLaunchDice && canLaunchBlackDice && !gm.cantPlay)
+        if (Input.GetKeyDown(KeyCode.E) && gm.state == GameManager.STATE_GAME.STATE_PLAYER && nbActionEffect > 0)
         {
             UsePowerTile();
         }
@@ -405,7 +403,7 @@ public class RedPlayer : Players
     {
         gm.cantPause = true;
         card = null;
-        if ((gm.state == GameManager.STATE_GAME.STATE_DRAW || useTilePower || useGhostPower) && redTurn)
+        if ((gm.state == GameManager.STATE_GAME.STATE_DRAW || useTilePower) && redTurn)
         {
             hasDraw = true;
             gameObject.GetComponent<Deplacement>().enabled = false;
@@ -419,8 +417,6 @@ public class RedPlayer : Players
                 textInfo.text = "Vous ne pouvez pas piocher un autre fantôme, il y en a trop sur le terrain";
                 hasDraw = false;
                 gameObject.GetComponent<Deplacement>().enabled = true;
-                canLaunchBlackDice = true;
-                canLaunchDice = true;
                 textInfoPhase.gameObject.SetActive(true);
                 textInfoPower.gameObject.SetActive(true);
                 gm.state = GameManager.STATE_GAME.STATE_MOVE;
@@ -434,8 +430,6 @@ public class RedPlayer : Players
                 update = true;
                 hasDraw = false;
                 gameObject.GetComponent<Deplacement>().enabled = true;
-                canLaunchBlackDice = true;
-                canLaunchDice = true;
                 textInfoPhase.gameObject.SetActive(true);
                 textInfoPower.gameObject.SetActive(true);
                 gm.state = GameManager.STATE_GAME.STATE_MOVE;
@@ -473,7 +467,7 @@ public class RedPlayer : Players
 
     public void SelectGhostPosition(GameObject position)
     {
-        if ((gm.state == GameManager.STATE_GAME.STATE_DRAW || useGhostPower || useTilePower) && redTurn)
+        if ((gm.state == GameManager.STATE_GAME.STATE_DRAW || useTilePower) && redTurn)
         {
             if (card != null)
             {
@@ -526,10 +520,7 @@ public class RedPlayer : Players
                         textInfoPower.gameObject.SetActive(true);
                         panelJeton.SetActive(true);
                         useTilePower = false;
-                        canLaunchBlackDice = true;
-                        canLaunchDice = true;
                         hasDraw = false;
-                        useGhostPower = false;
                         gm.cantPause = false;
                     }
                     else
@@ -585,18 +576,16 @@ public class RedPlayer : Players
                         textInfoPower.gameObject.SetActive(true);
                         panelJeton.SetActive(true);
                         useTilePower = false;
-                        canLaunchBlackDice = true;
-                        canLaunchDice = true;
                         hasDraw = false;
-                        useGhostPower = false;
+
                         gm.cantPause = false;
                         if (card != null && card.GetComponent<Ghost>().entryPower)
                         {
                             if (card.GetComponent<Ghost>().hasDrawAGhostPower)
                             {
-                                useGhostPower = true;
+                                card.GetComponent<Ghost>().UseEntryPower(gameObject);
                             }
-                            card.GetComponent<Ghost>().UseEntryPower(gameObject);
+                            
                         }
                         if (card.name == "Uncatchable(Clone)")
                         {
@@ -643,23 +632,20 @@ public class RedPlayer : Players
                     textInfoPower.gameObject.SetActive(true);
                     panelJeton.SetActive(true);
                     useTilePower = false;
-                    canLaunchBlackDice = true;
-                    canLaunchDice = true;
                     hasDraw = false;
-                    useGhostPower = false;
                     gm.cantPause = false;
                     if (card != null && card.GetComponent<Ghost>().entryPower)
                     {
                         if (card.GetComponent<Ghost>().hasDrawAGhostPower)
                         {
-                            useGhostPower = true;
+                            card.GetComponent<Ghost>().UseEntryPower(gameObject);
                         }
-                        card.GetComponent<Ghost>().UseEntryPower(gameObject);
+                        
                     }
                 }
             }
 
-            if (gm.state == GameManager.STATE_GAME.STATE_DRAW && !useGhostPower)
+            if (gm.state == GameManager.STATE_GAME.STATE_DRAW)
             {
                 if (!alreadyMove)
                 {
@@ -677,101 +663,72 @@ public class RedPlayer : Players
     {
         gm.cantPause = true;
         textInfo.gameObject.SetActive(false);
-        useGhostPower = false;
-        if (gm.state == GameManager.STATE_GAME.STATE_PLAYER && nbActionEffect > 0 && redTurn)
+        if (redTurn)
         {
+            nbActionBattle = 0;
+            nbActionEffect -= 1;
             useTilePower = true;
             switch (tileName)
             {
                 case "MaisonThe":
                     textInfoTuile.text = "Maison du Thé";
-                    canLaunchDice = false;
-                    canLaunchBlackDice = false;
-                    gameObject.GetComponent<Deplacement>().enabled = false;
                     StartCoroutine(houseOfTea.GetComponent<HouseOfTea>().GainTokenAndQI(gameObject));
                     break;
                 case "HutteSorciere":
                     textInfoTuile.text = "Hutte de la sorcière";
                     card = null;
-                    canLaunchDice = false;
-                    canLaunchBlackDice = false;
-                    gameObject.GetComponent<Deplacement>().enabled = false;
                     panelJeton.SetActive(false);
                     textInfoPhase.gameObject.SetActive(false);
                     StartCoroutine(witchHut.GetComponent<HutOfWitch>().KillGhost(gameObject));
                     break;
                 case "EchoppeHerboriste":
                     textInfoTuile.text = "Echoppe de l'herboriste";
-                    canLaunchDice = false;
-                    canLaunchBlackDice = false;
-                    gameObject.GetComponent<Deplacement>().enabled = false;
                     StartCoroutine(herbalistStall.GetComponent<StallOfHerbalist>().getToken(gameObject));
                     break;
                 case "AutelTaoiste":
                     textInfoTuile.text = "Autel Taoiste";
-                    canLaunchDice = false;
-                    canLaunchBlackDice = false;
-                    gameObject.GetComponent<Deplacement>().enabled = false;
                     StartCoroutine(taoisteAutel.GetComponent<TaoisteAutel>().UnhauntTile(gameObject));
                     break;
                 case "Cimetiere":
                     textInfoTuile.text = "Le cimetière";
-                    canLaunchDice = false;
-                    canLaunchBlackDice = false;
-                    gameObject.GetComponent<Deplacement>().enabled = false;
                     graveyard.GetComponent<Graveyard>().Resurrect(gameObject);
                     break;
                 case "PavillonVentCeleste":
                     textInfoTuile.text = "Le pavillon du vent celeste";
                     card = null;
-                    canLaunchDice = false;
-                    canLaunchBlackDice = false;
-                    gameObject.GetComponent<Deplacement>().enabled = false;
                     textInfoPhase.gameObject.SetActive(false);
                     panelJeton.SetActive(false);
                     StartCoroutine(windCelestialFlag.GetComponent<WindCelestialFlag>().MovePlayerAndGhost(gameObject));
                     break;
                 case "TourVeilleurNuit":
                     textInfoTuile.text = "Tour du veilleur de nuit";
-                    canLaunchDice = false;
-                    canLaunchBlackDice = false;
-                    gameObject.GetComponent<Deplacement>().enabled = false;
                     StartCoroutine(nightTower.GetComponent<NightTower>().RetreatGhost(gameObject));
                     break;
                 case "CerclePriere":
                     textInfoTuile.text = "Le cercle de prière";
-                    gameObject.GetComponent<Deplacement>().enabled = false;
-                    canLaunchDice = false;
-                    canLaunchBlackDice = false;
                     StartCoroutine(priestCircle.GetComponent<PriestCircle>().reduceGhostLife(gameObject));
                     break;
                 case "TempleBouddhiste":
                     textInfoTuile.text = "Temple Bouddhiste";
-                    gameObject.GetComponent<Deplacement>().enabled = false;
-                    canLaunchDice = false;
-                    canLaunchBlackDice = false;
                     bouddhisteTemple.GetComponent<BouddhisteTemple>().getBouddha(gameObject);
                     break;
                 default:
                     break;
             }
-            nbActionBattle = 0;
-            nbActionEffect -= 1;
         }
     }
 
     public IEnumerator LaunchDice()
     {
         gm.cantPause = true;
-        if (gm.state == GameManager.STATE_GAME.STATE_PLAYER && nbActionBattle > 0 && redTurn)
+        if (redTurn)
         {
-            useGhostPower = false; // A Voir si utile
+            nbActionBattle -= 1;
+            nbActionEffect = 0;
             textInfo.gameObject.SetActive(false);
             gm.choose = false;
             choosePriority = false;
             chooseToken = false;
-            gameObject.GetComponent<Deplacement>().enabled = false;
-            canLaunchDice = false;
             nbRedFace = 0;
             nbBlueFace = 0;
             nbBlackFace = 0;
@@ -1029,13 +986,11 @@ public class RedPlayer : Players
                                 if (ghost2.GetComponent<GhostPower>().lineIsEmpty)
                                 {
                                     Attack(ghost2);
-                                    nbActionBattle -= 1;
                                 }
                             }
                             else
                             {
                                 Attack(ghost2);
-                                nbActionBattle -= 1;
                             }
                             yield return new WaitForSeconds(0.5f);
                         }
@@ -1067,13 +1022,11 @@ public class RedPlayer : Players
                                 if (ghost1.GetComponent<GhostPower>().lineIsEmpty)
                                 {
                                     Attack(ghost1);
-                                    nbActionBattle -= 1;
                                 }
                             }
                             else
                             {
                                 Attack(ghost1);
-                                nbActionBattle -= 1;
                             }
                             yield return new WaitForSeconds(0.5f);
                         }
@@ -1089,13 +1042,11 @@ public class RedPlayer : Players
                             if (ghost2.GetComponent<GhostPower>().lineIsEmpty)
                             {
                                 Attack(ghost2);
-                                nbActionBattle -= 1;
                             }
                         }
                         else
                         {
                             Attack(ghost2);
-                            nbActionBattle -= 1;
                         }
                         yield return new WaitForSeconds(0.5f);
                     }
@@ -1110,21 +1061,15 @@ public class RedPlayer : Players
                             if (ghost1.GetComponent<GhostPower>().lineIsEmpty)
                             {
                                 Attack(ghost1);
-                                nbActionBattle -= 1;
                             }
                         }
                         else
                         {
                             Attack(ghost1);
-                            nbActionBattle -= 1;
                         }
                         yield return new WaitForSeconds(0.5f);
                     }
                 }
-            }
-            else if (ghost1 == null && ghost2 == null)
-            {
-                nbActionBattle -= 1;
             }
             yield return new WaitForSeconds(0.5f);
             nbActionEffect = 0;
@@ -1140,8 +1085,6 @@ public class RedPlayer : Players
             gm.textNbYellowFace.text = "Face Jaune : " + nbYellowFace;
             gm.textNbBlackFace.text = "Face Noire : " + nbBlackFace;
             gm.textNbWhiteFace.text = "Face Blanche : " + nbWhiteFace;
-            canLaunchDice = true;
-            canLaunchBlackDice = true;
             gameObject.GetComponent<Deplacement>().enabled = true;
             gm.UnactiveDiceFace();
             updateUI();
@@ -1686,8 +1629,6 @@ public class RedPlayer : Players
     {
         if (redTurn)
         {
-            canLaunchBlackDice = false;
-            canLaunchDice = false;
             gameObject.GetComponent<Deplacement>().enabled = false;
             gm.ActiveDiceFace();
             yield return new WaitForSeconds(0.2f);
@@ -1758,9 +1699,7 @@ public class RedPlayer : Players
                             break;
                     }
                     //To verify if we need that
-                    canLaunchBlackDice = true;
                     useTilePower = false;
-                    canLaunchDice = true;
                     gameObject.GetComponent<Deplacement>().enabled = true;
                     break;
                 case "DrawGhostFace":
@@ -1770,9 +1709,7 @@ public class RedPlayer : Players
                     DrawAGhost();
                     yield return new WaitForSeconds(10.0f); // A trouver peut être un autre moyen, 10 secondes c'est long
                     //To verify if we need that
-                    canLaunchBlackDice = true;
                     useTilePower = false;
-                    canLaunchDice = true;
                     gameObject.GetComponent<Deplacement>().enabled = true;
                     break;
                 case "LoseJetonFace":
@@ -1790,8 +1727,6 @@ public class RedPlayer : Players
                     NbYellowToken = 0;
                     //To verify if we need that
                     update = true;
-                    canLaunchBlackDice = true;
-                    canLaunchDice = true;
                     useTilePower = false;
                     gameObject.GetComponent<Deplacement>().enabled = true; ;
                     break;
@@ -1801,9 +1736,7 @@ public class RedPlayer : Players
                     Qi -= 1;
                     //To verify if we need that
                     update = true;
-                    canLaunchBlackDice = true;
                     useTilePower = false;
-                    canLaunchDice = true;
                     gameObject.GetComponent<Deplacement>().enabled = true;
                     break;
                 case "EmptyFace":
@@ -1811,9 +1744,7 @@ public class RedPlayer : Players
                     textInfo.text = "Pas d'effet";
                     textInfo.gameObject.SetActive(true);
                     //To verify if we need that
-                    canLaunchBlackDice = true;
                     useTilePower = false;
-                    canLaunchDice = true;
                     gameObject.GetComponent<Deplacement>().enabled = true;
                     break;
                 default:

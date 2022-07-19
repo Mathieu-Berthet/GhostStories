@@ -7,8 +7,6 @@ using UnityEngine.UI;
 
 public class Deplacement : MonoBehaviour {
 
-    public Rigidbody rb;
-    public NavMeshAgent navMeshPlayer;
     public RaycastHit hit;
     public GameObject panelTileDeplacement;
 
@@ -20,31 +18,13 @@ public class Deplacement : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        navMeshPlayer = GetComponent<NavMeshAgent>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        /*if (Input.GetMouseButtonDown(0))
-        {
-            hit = new RaycastHit();
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray.origin, ray.direction, out hit))
-            {
-                navMeshPlayer.destination = hit.point;
-                Debug.Log(hit.transform.name);
-            }
-        }*/
-        /*if (player.name == "BluePlayer")
-        {
-            player.GetComponent<BluePlayer>().CheckDistance();
-        }
-        else if (player.name == "YellowPlayer")
-        {
-            player.GetComponent<YellowPlayer>().CheckDistance();
-        }*/
+
     }
 
     public IEnumerator PlayerDeplacement()
