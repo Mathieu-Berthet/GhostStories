@@ -9,6 +9,9 @@ public class Players : MonoBehaviour
     public GameManager gm;
 
     [Header("Infos joueur")]
+
+    [SerializeField]
+    private int qi = 0; // PV du joueur
     [SerializeField]
     protected int nbBlueToken;
     [SerializeField]
@@ -22,6 +25,8 @@ public class Players : MonoBehaviour
 
     [SerializeField]
     protected int nbBouddha; // Pour les bouddha du temple bouddhiste
+
+    public string colorPlayer;
 
 
     [Header("Booleen bloc")]
@@ -121,6 +126,18 @@ public class Players : MonoBehaviour
 
     [SerializeField]
     protected GameObject defausse;
+
+
+    public GameObject panelJeton;
+    public Text textInfoPhase;
+    public Text textInfoPower;
+    public Text textInfo;
+
+    public bool update;
+
+    public bool mustLoseLife;
+
+    //public bool blueTurn;
     // Start is called before the first frame update
     void Start()
     {
@@ -132,4 +149,330 @@ public class Players : MonoBehaviour
     {
         
     }
+
+
+    public bool VerifyBoard(boardColor board)
+    {
+        if(board.nbCardOnBoard == 3 && !useTilePower)
+        {
+            mustLoseLife = true;
+        }
+        else
+        {
+            mustLoseLife = false;
+        }
+        return mustLoseLife;
+    }
+
+    public void DrawAGhost()
+    {
+        gm.cantPause = true;
+        card = null;
+        if (gm.state == GameManager.STATE_GAME.STATE_DRAW || useTilePower)
+        {
+            //hasDraw = true;
+            panelJeton.SetActive(false);
+            textInfoPhase.gameObject.SetActive(false);
+            textInfoPower.gameObject.SetActive(false);
+            textInfo.text = " ";
+            if (gm.blueBoard.nbCardOnBoard == 3 && gm.redBoard.nbCardOnBoard == 3 && gm.greenBoard.nbCardOnBoard == 3 && gm.yellowBoard.nbCardOnBoard == 3)
+            {
+                textInfo.gameObject.SetActive(true);
+                textInfo.text = "Vous ne pouvez pas piocher un autre fantôme, il y en a trop sur le terrain";
+                //hasDraw = false;
+                textInfoPhase.gameObject.SetActive(true);
+                textInfoPower.gameObject.SetActive(true);
+                gm.state = GameManager.STATE_GAME.STATE_MOVE;
+                gm.cantPause = false;
+                return;
+            }
+            if (gm.turnPlayer == GameManager.STATE_PLAYER_TURN.BLUE_PLAYER_TURN)
+            {
+                if (VerifyBoard(gm.blueBoard))
+                {
+                    textInfo.gameObject.SetActive(true);
+                    textInfo.text = "Votre plateau est plein de fantômes, vous perdez une vie";
+                    qi -= 1;
+                    update = true;
+                    //hasDraw = false;
+                    textInfoPhase.gameObject.SetActive(true);
+                    textInfoPower.gameObject.SetActive(true);
+                    gm.state = GameManager.STATE_GAME.STATE_MOVE;
+                    gm.cantPause = false;
+                    return;
+                }
+            }
+            else if (gm.turnPlayer == GameManager.STATE_PLAYER_TURN.RED_PLAYER_TURN)
+            {
+                if (VerifyBoard(gm.redBoard))
+                {
+                    textInfo.gameObject.SetActive(true);
+                    textInfo.text = "Votre plateau est plein de fantômes, vous perdez une vie";
+                    qi -= 1;
+                    update = true;
+                    //hasDraw = false;
+                    textInfoPhase.gameObject.SetActive(true);
+                    textInfoPower.gameObject.SetActive(true);
+                    gm.state = GameManager.STATE_GAME.STATE_MOVE;
+                    gm.cantPause = false;
+                    return;
+                }
+            }
+            else if (gm.turnPlayer == GameManager.STATE_PLAYER_TURN.GREEN_PLAYER_TURN)
+            {
+                if (VerifyBoard(gm.greenBoard))
+                {
+                    textInfo.gameObject.SetActive(true);
+                    textInfo.text = "Votre plateau est plein de fantômes, vous perdez une vie";
+                    qi -= 1;
+                    update = true;
+                    //hasDraw = false;
+                    textInfoPhase.gameObject.SetActive(true);
+                    textInfoPower.gameObject.SetActive(true);
+                    gm.state = GameManager.STATE_GAME.STATE_MOVE;
+                    gm.cantPause = false;
+                    return;
+                }
+            }
+            else if (gm.turnPlayer == GameManager.STATE_PLAYER_TURN.YELLOW_PLAYER_TURN)
+            {
+                if (VerifyBoard(gm.yellowBoard))
+                {
+                    textInfo.gameObject.SetActive(true);
+                    textInfo.text = "Votre plateau est plein de fantômes, vous perdez une vie";
+                    qi -= 1;
+                    update = true;
+                    //hasDraw = false;
+                    textInfoPhase.gameObject.SetActive(true);
+                    textInfoPower.gameObject.SetActive(true);
+                    gm.state = GameManager.STATE_GAME.STATE_MOVE;
+                    gm.cantPause = false;
+                    return;
+                }
+            }
+            panelBluePlace.SetActive(true);
+            panelRedPlace.SetActive(true);
+            panelGreenPlace.SetActive(true);
+            panelYellowPlace.SetActive(true);
+            textInfo.gameObject.SetActive(true);
+            gm.drawedCard.gameObject.SetActive(true);
+            if (gm.nbCardOnDeck == 40 && gm.nbCardOnBossDeck == 10)
+            {
+                card = deck.GetPoolByName(PoolNameDeck.boss).GetItem(transform, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity, true, false, 0);
+                card.transform.parent = null;
+                card.transform.position = new Vector3(100.0f, 100.0f, 100.0f);
+                card.SetActive(true);
+                gm.PowerGhostInformation(card);
+                gm.panelInfoGhostPower.SetActive(true);
+                gm.nbCardOnBossDeck--;
+            }
+            else
+            {
+                card = deck.GetPoolByName(PoolNameDeck.ghost).GetItem(transform, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity, true, false, 0);
+                card.transform.parent = null;
+                card.transform.position = new Vector3(100.0f, 100.0f, 100.0f);
+                card.SetActive(true);
+                gm.PowerGhostInformation(card);
+                gm.panelInfoGhostPower.SetActive(true);
+                gm.nbCardOnDeck--;
+            }
+            gm.drawedCard.sprite = card.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
+        }
+    }
+
+    public void SelectGhostPosition(GameObject position)
+    {
+        if ((gm.state == GameManager.STATE_GAME.STATE_DRAW || useTilePower))
+        {
+            if (card != null)
+            {
+                if (card.GetComponent<Ghost>().couleur == "black" && position.transform.parent.GetComponent<boardColor>().color != colorPlayer && gm.blueBoard.nbCardOnBoard < 3)
+                {
+                    textInfo.text = "Les fantômes noirs doivent être posés sur le plateau de votre couleur";
+                    return;
+                }
+                else if (card.GetComponent<Ghost>().couleur != "black" && card.GetComponent<Ghost>().couleur != position.transform.parent.GetComponent<boardColor>().color)
+                {
+                    if ((card.GetComponent<Ghost>().couleur == "red" && gm.redBoard.nbCardOnBoard < 3) ||
+                        (card.GetComponent<Ghost>().couleur == "blue" && gm.blueBoard.nbCardOnBoard < 3) ||
+                        (card.GetComponent<Ghost>().couleur == "yellow" && gm.yellowBoard.nbCardOnBoard < 3) ||
+                        (card.GetComponent<Ghost>().couleur == "green" && gm.greenBoard.nbCardOnBoard < 3))
+                    {
+                        textInfo.text = "Vous ne pouvez pas placer le fantôme ici. Il n'est pas de la bonne couleur";
+                        return;
+                    }
+                }
+                if (position.transform.childCount > 4 && position.transform.GetChild(4).name.Contains("Bouddha"))
+                {
+                    if (card.GetComponent<Ghost>().canBeKillByBouddha)
+                    {
+                        card.transform.SetParent(defausse.transform);
+                        card.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+                        card.transform.localEulerAngles = new Vector3(90.0f, 0.0f, 0.0f);
+                        bouddhisteTemple.GetComponent<BouddhisteTemple>().numberOfBouddha += 1;
+                        if (bouddhisteTemple.GetComponent<BouddhisteTemple>().bouddhaFirst == null)
+                        {
+                            bouddhisteTemple.GetComponent<BouddhisteTemple>().bouddhaFirst = position.transform.GetChild(4).gameObject;
+                            position.transform.GetChild(4).parent = bouddhisteTemple.transform;
+                            bouddhisteTemple.GetComponent<BouddhisteTemple>().bouddhaFirst.transform.localPosition = new Vector3(-0.145f, 3.0f, 0.325f);
+                        }
+                        else if (bouddhisteTemple.GetComponent<BouddhisteTemple>().bouddhaSecond == null)
+                        {
+                            bouddhisteTemple.GetComponent<BouddhisteTemple>().bouddhaSecond = position.transform.GetChild(4).gameObject;
+                            position.transform.GetChild(4).transform.parent = bouddhisteTemple.transform;
+                            bouddhisteTemple.GetComponent<BouddhisteTemple>().bouddhaFirst.transform.localPosition = new Vector3(-0.325f, 3.0f, 0.325f);
+                        }
+                        panelBluePlace.SetActive(false);
+                        panelRedPlace.SetActive(false);
+                        panelGreenPlace.SetActive(false);
+                        panelYellowPlace.SetActive(false);
+                        gm.panelInfoGhostPower.SetActive(false);
+                        textInfo.gameObject.SetActive(false);
+                        gm.drawedCard.gameObject.SetActive(false);
+                        gameObject.GetComponent<Deplacement>().enabled = true;
+                        textInfoPhase.gameObject.SetActive(true);
+                        textInfoPower.gameObject.SetActive(true);
+                        panelJeton.SetActive(true);
+                        useTilePower = false;
+                        //hasDraw = false;
+                        gm.cantPause = false;
+                    }
+                    else
+                    {
+                        bouddhisteTemple.GetComponent<BouddhisteTemple>().numberOfBouddha += 1;
+                        if (bouddhisteTemple.GetComponent<BouddhisteTemple>().bouddhaFirst == null)
+                        {
+                            bouddhisteTemple.GetComponent<BouddhisteTemple>().bouddhaFirst = position.transform.GetChild(4).gameObject;
+                            position.transform.GetChild(4).parent = bouddhisteTemple.transform;
+                            bouddhisteTemple.GetComponent<BouddhisteTemple>().bouddhaFirst.transform.localPosition = new Vector3(-0.145f, 3.0f, 0.325f);
+                        }
+                        else if (bouddhisteTemple.GetComponent<BouddhisteTemple>().bouddhaSecond == null)
+                        {
+                            bouddhisteTemple.GetComponent<BouddhisteTemple>().bouddhaSecond = position.transform.GetChild(4).gameObject;
+                            position.transform.GetChild(4).transform.parent = bouddhisteTemple.transform;
+                            bouddhisteTemple.GetComponent<BouddhisteTemple>().bouddhaFirst.transform.localPosition = new Vector3(-0.325f, 3.0f, 0.325f);
+                        }
+                        card.transform.SetParent(position.transform);
+                        card.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+                        card.transform.localEulerAngles = new Vector3(90.0f, 0.0f, 0.0f);
+                        card.transform.localScale = new Vector3(15.0f, 10.0f, 1);
+                        card.SetActive(true);
+                        card.transform.parent.GetComponent<BoxCollider>().enabled = true;
+                        card.GetComponent<GhostPower>().startPosition = card.transform.parent.GetChild(1);
+                        card.GetComponent<GhostPower>().middlePosition = card.transform.parent.GetChild(2);
+                        card.GetComponent<GhostPower>().endPosition = card.transform.parent.GetChild(3);
+                        if (position.transform.parent.GetComponent<boardColor>().color == "blue")
+                        {
+                            gm.blueBoard.nbCardOnBoard++;
+                        }
+                        else if (position.transform.parent.GetComponent<boardColor>().color == "green")
+                        {
+                            gm.greenBoard.nbCardOnBoard++;
+                        }
+                        else if (position.transform.parent.GetComponent<boardColor>().color == "red")
+                        {
+                            gm.redBoard.nbCardOnBoard++;
+                        }
+                        else if (position.transform.parent.GetComponent<boardColor>().color == "yellow")
+                        {
+                            gm.yellowBoard.nbCardOnBoard++;
+                        }
+                        panelBluePlace.SetActive(false);
+                        panelRedPlace.SetActive(false);
+                        panelGreenPlace.SetActive(false);
+                        panelYellowPlace.SetActive(false);
+                        gm.panelInfoGhostPower.SetActive(false);
+                        textInfo.gameObject.SetActive(false);
+                        gm.drawedCard.gameObject.SetActive(false);
+                        gameObject.GetComponent<Deplacement>().enabled = true;
+                        textInfoPhase.gameObject.SetActive(true);
+                        textInfoPower.gameObject.SetActive(true);
+                        panelJeton.SetActive(true);
+                        useTilePower = false;
+                        //hasDraw = false;
+                        gm.cantPause = false;
+                        useGhostPower = false;
+                        if (card != null && card.GetComponent<Ghost>().entryPower)
+                        {
+                            if (card.GetComponent<Ghost>().hasDrawAGhostPower)
+                            {
+                                useGhostPower = true;
+                            }
+                            card.GetComponent<Ghost>().UseEntryPower(gameObject);
+                        }
+                        if (card.name == "Uncatchable(Clone)")
+                        {
+                            card.GetComponent<GhostPower>().UninsensibleWithBouddha();
+                        }
+                    }
+                }
+                else
+                {
+                    card.transform.SetParent(position.transform);
+                    card.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+                    card.transform.localEulerAngles = new Vector3(90.0f, 0.0f, 180.0f);
+                    card.transform.localScale = new Vector3(15.0f, 10.0f, 1);
+                    card.SetActive(true);
+                    card.transform.parent.GetComponent<BoxCollider>().enabled = true;
+                    card.GetComponent<GhostPower>().startPosition = card.transform.parent.GetChild(1);
+                    card.GetComponent<GhostPower>().middlePosition = card.transform.parent.GetChild(2);
+                    card.GetComponent<GhostPower>().endPosition = card.transform.parent.GetChild(3);
+                    if (position.transform.parent.GetComponent<boardColor>().color == "blue")
+                    {
+                        gm.blueBoard.nbCardOnBoard++;
+                    }
+                    else if (position.transform.parent.GetComponent<boardColor>().color == "green")
+                    {
+                        gm.greenBoard.nbCardOnBoard++;
+                    }
+                    else if (position.transform.parent.GetComponent<boardColor>().color == "red")
+                    {
+                        gm.redBoard.nbCardOnBoard++;
+                    }
+                    else if (position.transform.parent.GetComponent<boardColor>().color == "yellow")
+                    {
+                        gm.yellowBoard.nbCardOnBoard++;
+                    }
+                    StartCoroutine(gm.audio.PlayApparitionFX(gm.audio.GetComponent<AudioManager>().ghostAppearFX, 4.0f));
+                    panelBluePlace.SetActive(false);
+                    panelRedPlace.SetActive(false);
+                    panelGreenPlace.SetActive(false);
+                    panelYellowPlace.SetActive(false);
+                    gm.panelInfoGhostPower.SetActive(false);
+                    textInfo.gameObject.SetActive(false);
+                    gm.drawedCard.gameObject.SetActive(false);
+                    gameObject.GetComponent<Deplacement>().enabled = true;
+                    textInfoPhase.gameObject.SetActive(true);
+                    textInfoPower.gameObject.SetActive(true);
+                    panelJeton.SetActive(true);
+                    useTilePower = false;
+                    //hasDraw = false;
+                    gm.cantPause = false;
+                    useGhostPower = false;
+                    if (card != null && card.GetComponent<Ghost>().entryPower)
+                    {
+                        if (card.GetComponent<Ghost>().hasDrawAGhostPower)
+                        {
+                            useGhostPower = true;
+                        }
+                        card.GetComponent<Ghost>().UseEntryPower(gameObject);
+                    }
+                }
+            }
+
+            if (gm.state == GameManager.STATE_GAME.STATE_DRAW && !useGhostPower)
+            {
+                if (!alreadyMove)
+                {
+                    gm.state = GameManager.STATE_GAME.STATE_MOVE;
+                }
+                else
+                {
+                    gm.state = GameManager.STATE_GAME.STATE_PLAYER;
+                }
+            }
+        }
+    }
+
+
 }

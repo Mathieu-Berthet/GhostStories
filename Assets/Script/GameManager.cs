@@ -256,6 +256,7 @@ public class GameManager : MonoBehaviour {
             greenPlayer.GetComponent<GreenPlayer>().greenTurn = false;
             bluePlayer.GetComponent<BluePlayer>().blueTurn = true;
             bluePlayer.GetComponent<BluePlayer>().update = true;
+            bluePlayer.GetComponent<Players>().colorPlayer = "blue";
             yellowPlayer.GetComponent<YellowPlayer>().yellowTurn = false;
             redPlayer.GetComponent<RedPlayer>().redTurn = false;
             NameDeplacementButton();
@@ -267,6 +268,7 @@ public class GameManager : MonoBehaviour {
             bluePlayer.GetComponent<BluePlayer>().blueTurn = false;
             yellowPlayer.GetComponent<YellowPlayer>().yellowTurn = true;
             yellowPlayer.GetComponent<YellowPlayer>().update = true;
+            yellowPlayer.GetComponent<Players>().colorPlayer = "yellow";
             greenPlayer.GetComponent<GreenPlayer>().greenTurn = false;
             redPlayer.GetComponent<RedPlayer>().redTurn = false;
             NameDeplacementButton();
@@ -280,6 +282,7 @@ public class GameManager : MonoBehaviour {
             greenPlayer.GetComponent<GreenPlayer>().greenTurn = false;
             redPlayer.GetComponent<RedPlayer>().redTurn = true;
             redPlayer.GetComponent<RedPlayer>().update = true;
+            redPlayer.GetComponent<Players>().colorPlayer = "red";
             NameDeplacementButton();
             NameTileButton();
         }
@@ -291,6 +294,7 @@ public class GameManager : MonoBehaviour {
             redPlayer.GetComponent<RedPlayer>().redTurn = false;
             greenPlayer.GetComponent<GreenPlayer>().greenTurn = true;
             greenPlayer.GetComponent<GreenPlayer>().update = true;
+            greenPlayer.GetComponent<Players>().colorPlayer = "green";
             NameDeplacementButton();
             NameTileButton();
         }

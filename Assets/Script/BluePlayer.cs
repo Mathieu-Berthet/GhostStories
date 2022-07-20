@@ -8,17 +8,11 @@ public class BluePlayer : Players
 {
     [Header("Info joueurs spécifique")]
     [SerializeField]
-    private int qi = 0; // PV du joueur
-    [SerializeField]
     private int nbPowerToken; // Pour une partie ou il n'y a pas 4 joueur
     [SerializeField]
     private int nbYinYangBlueToken; // Jeton yin yang. Max possible 1, et uniquement de sa couleur
     public string effectYinYang;
     public string tileYinYang;
-
-    public string colorPlayer = "blue";
-
-    public GameObject panelJeton;
 
     [Header("Pouvoir joueur")]
     public bool powerSecondSouffle;
@@ -36,11 +30,12 @@ public class BluePlayer : Players
     [Header("Booleens")]
     [SerializeField]
     private bool hasDraw;
-    public bool update;
+    
     public bool alreadyMove;
     public bool stop;
-    public bool blueTurn;
+    
     public bool useRedPower;
+    public bool blueTurn;
     public bool useWindCelestialPower;
     public bool chooseEffectYinYang;
     public bool chooseTile;
@@ -51,7 +46,7 @@ public class BluePlayer : Players
 
     //Les différents textes
     [Header("Les textes")]
-    public Text textInfo;
+    
     public Text textNbTokenBlue;
     public Text textNbTokenRed;
     public Text textNbTokenGreen;
@@ -62,8 +57,7 @@ public class BluePlayer : Players
     public Text textNbQI;
     public Text textNbBouddha;
     public Text infosWhiteFace;
-    public Text textInfoPhase;
-    public Text textInfoPower;
+    
     public Text textMort;
     public Text textInfoTuile;
     public Text textNbDice;
