@@ -190,15 +190,7 @@ public class Players : MonoBehaviour
             {
                 if (VerifyBoard(gm.blueBoard))
                 {
-                    textInfo.gameObject.SetActive(true);
-                    textInfo.text = "Votre plateau est plein de fantômes, vous perdez une vie";
-                    qi -= 1;
-                    update = true;
-                    //hasDraw = false;
-                    textInfoPhase.gameObject.SetActive(true);
-                    textInfoPower.gameObject.SetActive(true);
-                    gm.state = GameManager.STATE_GAME.STATE_MOVE;
-                    gm.cantPause = false;
+                    LoseLife();
                     return;
                 }
             }
@@ -206,15 +198,7 @@ public class Players : MonoBehaviour
             {
                 if (VerifyBoard(gm.redBoard))
                 {
-                    textInfo.gameObject.SetActive(true);
-                    textInfo.text = "Votre plateau est plein de fantômes, vous perdez une vie";
-                    qi -= 1;
-                    update = true;
-                    //hasDraw = false;
-                    textInfoPhase.gameObject.SetActive(true);
-                    textInfoPower.gameObject.SetActive(true);
-                    gm.state = GameManager.STATE_GAME.STATE_MOVE;
-                    gm.cantPause = false;
+                    LoseLife();
                     return;
                 }
             }
@@ -222,15 +206,7 @@ public class Players : MonoBehaviour
             {
                 if (VerifyBoard(gm.greenBoard))
                 {
-                    textInfo.gameObject.SetActive(true);
-                    textInfo.text = "Votre plateau est plein de fantômes, vous perdez une vie";
-                    qi -= 1;
-                    update = true;
-                    //hasDraw = false;
-                    textInfoPhase.gameObject.SetActive(true);
-                    textInfoPower.gameObject.SetActive(true);
-                    gm.state = GameManager.STATE_GAME.STATE_MOVE;
-                    gm.cantPause = false;
+                    LoseLife();
                     return;
                 }
             }
@@ -238,22 +214,12 @@ public class Players : MonoBehaviour
             {
                 if (VerifyBoard(gm.yellowBoard))
                 {
-                    textInfo.gameObject.SetActive(true);
-                    textInfo.text = "Votre plateau est plein de fantômes, vous perdez une vie";
-                    qi -= 1;
-                    update = true;
-                    //hasDraw = false;
-                    textInfoPhase.gameObject.SetActive(true);
-                    textInfoPower.gameObject.SetActive(true);
-                    gm.state = GameManager.STATE_GAME.STATE_MOVE;
-                    gm.cantPause = false;
+                    LoseLife();
                     return;
                 }
             }
-            panelBluePlace.SetActive(true);
-            panelRedPlace.SetActive(true);
-            panelGreenPlace.SetActive(true);
-            panelYellowPlace.SetActive(true);
+
+            SetOnPanel();
             textInfo.gameObject.SetActive(true);
             gm.drawedCard.gameObject.SetActive(true);
             if (gm.nbCardOnDeck == 40 && gm.nbCardOnBossDeck == 10)
@@ -278,6 +244,35 @@ public class Players : MonoBehaviour
             }
             gm.drawedCard.sprite = card.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
         }
+    }
+
+    private void SetOnPanel()
+    {
+        panelBluePlace.SetActive(true);
+        panelRedPlace.SetActive(true);
+        panelGreenPlace.SetActive(true);
+        panelYellowPlace.SetActive(true);
+    }
+
+    private void SetOffPanel()
+    {
+        panelBluePlace.SetActive(false);
+        panelRedPlace.SetActive(false);
+        panelGreenPlace.SetActive(false);
+        panelYellowPlace.SetActive(false);
+    }
+
+    private void LoseLife()
+    {
+        textInfo.gameObject.SetActive(true);
+        textInfo.text = "Votre plateau est plein de fantômes, vous perdez une vie";
+        qi -= 1;
+        update = true;
+        //hasDraw = false;
+        textInfoPhase.gameObject.SetActive(true);
+        textInfoPower.gameObject.SetActive(true);
+        gm.state = GameManager.STATE_GAME.STATE_MOVE;
+        gm.cantPause = false;
     }
 
     public void SelectGhostPosition(GameObject position)
@@ -309,23 +304,21 @@ public class Players : MonoBehaviour
                         card.transform.SetParent(defausse.transform);
                         card.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
                         card.transform.localEulerAngles = new Vector3(90.0f, 0.0f, 0.0f);
-                        bouddhisteTemple.GetComponent<BouddhisteTemple>().numberOfBouddha += 1;
-                        if (bouddhisteTemple.GetComponent<BouddhisteTemple>().bouddhaFirst == null)
+                        BouddhisteTemple bouddhisteTempo = bouddhisteTemple.GetComponent<BouddhisteTemple>();
+                        bouddhisteTempo.numberOfBouddha += 1;
+                        if (bouddhisteTempo.bouddhaFirst == null)
                         {
-                            bouddhisteTemple.GetComponent<BouddhisteTemple>().bouddhaFirst = position.transform.GetChild(4).gameObject;
+                            bouddhisteTempo.bouddhaFirst = position.transform.GetChild(4).gameObject;
                             position.transform.GetChild(4).parent = bouddhisteTemple.transform;
-                            bouddhisteTemple.GetComponent<BouddhisteTemple>().bouddhaFirst.transform.localPosition = new Vector3(-0.145f, 3.0f, 0.325f);
+                            bouddhisteTempo.bouddhaFirst.transform.localPosition = new Vector3(-0.145f, 3.0f, 0.325f);
                         }
-                        else if (bouddhisteTemple.GetComponent<BouddhisteTemple>().bouddhaSecond == null)
+                        else if (bouddhisteTempo.bouddhaSecond == null)
                         {
-                            bouddhisteTemple.GetComponent<BouddhisteTemple>().bouddhaSecond = position.transform.GetChild(4).gameObject;
+                            bouddhisteTempo.bouddhaSecond = position.transform.GetChild(4).gameObject;
                             position.transform.GetChild(4).transform.parent = bouddhisteTemple.transform;
-                            bouddhisteTemple.GetComponent<BouddhisteTemple>().bouddhaFirst.transform.localPosition = new Vector3(-0.325f, 3.0f, 0.325f);
+                            bouddhisteTempo.bouddhaFirst.transform.localPosition = new Vector3(-0.325f, 3.0f, 0.325f);
                         }
-                        panelBluePlace.SetActive(false);
-                        panelRedPlace.SetActive(false);
-                        panelGreenPlace.SetActive(false);
-                        panelYellowPlace.SetActive(false);
+                        SetOffPanel();
                         gm.panelInfoGhostPower.SetActive(false);
                         textInfo.gameObject.SetActive(false);
                         gm.drawedCard.gameObject.SetActive(false);
@@ -377,10 +370,7 @@ public class Players : MonoBehaviour
                         {
                             gm.yellowBoard.nbCardOnBoard++;
                         }
-                        panelBluePlace.SetActive(false);
-                        panelRedPlace.SetActive(false);
-                        panelGreenPlace.SetActive(false);
-                        panelYellowPlace.SetActive(false);
+                        SetOffPanel();
                         gm.panelInfoGhostPower.SetActive(false);
                         textInfo.gameObject.SetActive(false);
                         gm.drawedCard.gameObject.SetActive(false);
@@ -434,10 +424,7 @@ public class Players : MonoBehaviour
                         gm.yellowBoard.nbCardOnBoard++;
                     }
                     StartCoroutine(gm.audio.PlayApparitionFX(gm.audio.GetComponent<AudioManager>().ghostAppearFX, 4.0f));
-                    panelBluePlace.SetActive(false);
-                    panelRedPlace.SetActive(false);
-                    panelGreenPlace.SetActive(false);
-                    panelYellowPlace.SetActive(false);
+                    SetOffPanel();
                     gm.panelInfoGhostPower.SetActive(false);
                     textInfo.gameObject.SetActive(false);
                     gm.drawedCard.gameObject.SetActive(false);
