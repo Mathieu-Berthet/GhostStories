@@ -164,7 +164,7 @@ public class Players : MonoBehaviour
         return mustLoseLife;
     }
 
-    public void DrawAGhost()
+    /*public void DrawAGhost()
     {
         gm.cantPause = true;
         card = null;
@@ -244,7 +244,7 @@ public class Players : MonoBehaviour
             }
             gm.drawedCard.sprite = card.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
         }
-    }
+    }*/
 
     private void SetOnPanel()
     {
@@ -275,7 +275,7 @@ public class Players : MonoBehaviour
         gm.cantPause = false;
     }
 
-    public void SelectGhostPosition(GameObject position)
+    /*public void SelectGhostPosition(GameObject position)
     {
         if ((gm.state == GameManager.STATE_GAME.STATE_DRAW || useTilePower))
         {
@@ -316,7 +316,7 @@ public class Players : MonoBehaviour
                         {
                             bouddhisteTempo.bouddhaSecond = position.transform.GetChild(4).gameObject;
                             position.transform.GetChild(4).transform.parent = bouddhisteTemple.transform;
-                            bouddhisteTempo.bouddhaFirst.transform.localPosition = new Vector3(-0.325f, 3.0f, 0.325f);
+                            bouddhisteTempo.bouddhaSecond.transform.localPosition = new Vector3(-0.325f, 3.0f, 0.325f);
                         }
                         SetOffPanel();
                         gm.panelInfoGhostPower.SetActive(false);
@@ -354,6 +354,7 @@ public class Players : MonoBehaviour
                         card.GetComponent<GhostPower>().startPosition = card.transform.parent.GetChild(1);
                         card.GetComponent<GhostPower>().middlePosition = card.transform.parent.GetChild(2);
                         card.GetComponent<GhostPower>().endPosition = card.transform.parent.GetChild(3);
+                        //Mettre ça dans une fonction dans le gm
                         if (position.transform.parent.GetComponent<boardColor>().color == "blue")
                         {
                             gm.blueBoard.nbCardOnBoard++;
@@ -460,6 +461,6 @@ public class Players : MonoBehaviour
             }
         }
     }
-
+    */
 
 }

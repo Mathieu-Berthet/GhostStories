@@ -864,4 +864,16 @@ public class GameManager : MonoBehaviour {
         textNbWhiteFace.gameObject.SetActive(false);
         textBlackDiceFace.gameObject.SetActive(false);
     }
+
+
+    /*public void countNbGhost()
+    {
+
+    }*/
+
+    //Focntion qui test turnPlayer
+    /*public bool checkTurn(STATE_PLAYER_TURN playerTurn)
+    {
+        if 
+    }*/
 }
