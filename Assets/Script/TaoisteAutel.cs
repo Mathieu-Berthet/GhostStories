@@ -66,10 +66,6 @@ public class TaoisteAutel : MonoBehaviour
                         player.GetComponent<BluePlayer>().herbalistStall.GetComponent<StallOfHerbalist>().hauntedTile = false;
                         player.GetComponent<BluePlayer>().herbalistStall.GetComponent<StallOfHerbalist>().Unhaunted();
                         break;
-                    case "Autel Taoiste":
-                        hauntedTile = false;
-                        Unhaunted();
-                        break;
                     case "Cimetiere":
                         player.GetComponent<BluePlayer>().graveyard.GetComponent<Graveyard>().hauntedTile = false;
                         player.GetComponent<BluePlayer>().graveyard.GetComponent<Graveyard>().Unhaunted();

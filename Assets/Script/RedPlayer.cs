@@ -36,6 +36,8 @@ public class RedPlayer : Players
 
     public bool choosePriority;
 
+    public bool canUsePower;
+
     //Booleen utilitaire
     [Header("Booleens")]
     [SerializeField]
@@ -577,15 +579,15 @@ public class RedPlayer : Players
                         panelJeton.SetActive(true);
                         useTilePower = false;
                         hasDraw = false;
-
                         gm.cantPause = false;
+                        useGhostPower = false;
                         if (card != null && card.GetComponent<Ghost>().entryPower)
                         {
                             if (card.GetComponent<Ghost>().hasDrawAGhostPower)
                             {
-                                card.GetComponent<Ghost>().UseEntryPower(gameObject);
+                                useGhostPower = true;
                             }
-                            
+                            card.GetComponent<Ghost>().UseEntryPower(gameObject);
                         }
                         if (card.name == "Uncatchable(Clone)")
                         {
@@ -634,18 +636,19 @@ public class RedPlayer : Players
                     useTilePower = false;
                     hasDraw = false;
                     gm.cantPause = false;
+                    useGhostPower = false;
                     if (card != null && card.GetComponent<Ghost>().entryPower)
                     {
                         if (card.GetComponent<Ghost>().hasDrawAGhostPower)
                         {
-                            card.GetComponent<Ghost>().UseEntryPower(gameObject);
+                            useGhostPower = true;
                         }
-                        
+                        card.GetComponent<Ghost>().UseEntryPower(gameObject);
                     }
                 }
             }
 
-            if (gm.state == GameManager.STATE_GAME.STATE_DRAW)
+            if (gm.state == GameManager.STATE_GAME.STATE_DRAW && !useGhostPower)
             {
                 if (!alreadyMove)
                 {

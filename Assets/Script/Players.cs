@@ -25,9 +25,8 @@ public class Players : MonoBehaviour
 
 
     [Header("Booleen bloc")]
-    public bool canUsePower;
-
     public bool useTilePower;
+    public bool useGhostPower;
 
     //Les dés et leurs résultats
     [Header("Les dés")]

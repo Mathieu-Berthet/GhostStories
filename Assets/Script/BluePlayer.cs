@@ -30,6 +30,8 @@ public class BluePlayer : Players
 
     public bool choosePriority;
 
+    public bool canUsePower;
+
     //Booleen utilitaire
     [Header("Booleens")]
     [SerializeField]
@@ -536,12 +538,14 @@ public class BluePlayer : Players
                         useTilePower = false;
                         hasDraw = false;
                         gm.cantPause = false;
+                        useGhostPower = false;
                         if (card != null && card.GetComponent<Ghost>().entryPower)
                         {
                             if (card.GetComponent<Ghost>().hasDrawAGhostPower)
                             {
-                                card.GetComponent<Ghost>().UseEntryPower(gameObject);
+                                useGhostPower = true;
                             }
+                            card.GetComponent<Ghost>().UseEntryPower(gameObject);
                         }
                         if (card.name == "Uncatchable(Clone)")
                         {
@@ -591,17 +595,19 @@ public class BluePlayer : Players
                     useTilePower = false;
                     hasDraw = false;
                     gm.cantPause = false;
+                    useGhostPower = false;
                     if (card != null && card.GetComponent<Ghost>().entryPower)
                     {
                         if (card.GetComponent<Ghost>().hasDrawAGhostPower)
                         {
-                            card.GetComponent<Ghost>().UseEntryPower(gameObject);
+                            useGhostPower = true;
                         }
+                        card.GetComponent<Ghost>().UseEntryPower(gameObject);
                     }
                 }
             }
 
-            if (gm.state == GameManager.STATE_GAME.STATE_DRAW)
+            if (gm.state == GameManager.STATE_GAME.STATE_DRAW && !useGhostPower)
             {
                 if (!alreadyMove)
                 {
@@ -1599,7 +1605,6 @@ public class BluePlayer : Players
     {
         if (blueTurn)
         {
-            Debug.Log(useTilePower);
             gameObject.GetComponent<Deplacement>().enabled = false;
             yield return new WaitForSeconds(0.2f);
             gm.ActiveDiceFace();
@@ -1620,8 +1625,6 @@ public class BluePlayer : Players
             {
                 resultFace = blackDiceOne.GetComponent<CubeScript>().face;
                 gm.textBlackDiceFace.text = resultFace;
-                /*textInfo.text = resultFace;
-                textInfo.gameObject.SetActive(true);*/
             }
             switch (resultFace)
             {
@@ -1669,20 +1672,15 @@ public class BluePlayer : Players
                         default:
                             break;
                     }
-                    //To verify if we need that
-                    useTilePower = false;
                     gameObject.GetComponent<Deplacement>().enabled = true;
                     break;
                 case "DrawGhostFace":
-                    Debug.Log(useTilePower);
                     textInfo.text = "Piochez un nouveau fantôme";
                     textInfo.gameObject.SetActive(true);
-                    //player.GetComponent<BluePlayer>().state = BluePlayer.STATE_GAME.STATE_DRAW;
-                    Debug.Log(useTilePower);
+                    gm.state = GameManager.STATE_GAME.STATE_DRAW;
                     DrawAGhost();
                     yield return new WaitForSeconds(10.0f); // A trouver peut être un autre moyen, 10 secondes c'est long
                     //To verify if we need that
-                    useTilePower = false;
                     gameObject.GetComponent<Deplacement>().enabled = true;
                     break;
                 case "LoseJetonFace":
@@ -1700,7 +1698,6 @@ public class BluePlayer : Players
                     NbYellowToken = 0;
                     //To verify if we need that
                     update = true;
-                    useTilePower = false;
                     gameObject.GetComponent<Deplacement>().enabled = true; ;
                     break;
                 case "LoseQIFace":
@@ -1709,7 +1706,6 @@ public class BluePlayer : Players
                     Qi -= 1;
                     //To verify if we need that
                     update = true;
-                    useTilePower = false;
                     gameObject.GetComponent<Deplacement>().enabled = true;
                     break;
                 case "EmptyFace":
@@ -1717,7 +1713,6 @@ public class BluePlayer : Players
                     textInfo.text = "Pas d'effet";
                     textInfo.gameObject.SetActive(true);
                     //To verify if we need that
-                    useTilePower = false;
                     gameObject.GetComponent<Deplacement>().enabled = true;
                     break;
                 default:

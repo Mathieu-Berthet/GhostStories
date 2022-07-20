@@ -41,7 +41,7 @@ public class YellowPlayer : Players
 
     public bool choosePriority;
 
-    
+    public bool canUsePower;
 
     //Booleen utilitaire
     [Header("Booleens")]
@@ -572,8 +572,13 @@ public class YellowPlayer : Players
                         useTilePower = false;
                         hasDraw = false;
                         gm.cantPause = false;
+                        useGhostPower = false;
                         if (card != null && card.GetComponent<Ghost>().entryPower)
                         {
+                            if (card.GetComponent<Ghost>().hasDrawAGhostPower)
+                            {
+                                useGhostPower = true;
+                            }
                             card.GetComponent<Ghost>().UseEntryPower(gameObject);
                         }
                         if (card.name == "Uncatchable(Clone)")
@@ -623,14 +628,19 @@ public class YellowPlayer : Players
                     useTilePower = false;
                     hasDraw = false;
                     gm.cantPause = false;
+                    useGhostPower = false;
                     if (card != null && card.GetComponent<Ghost>().entryPower)
                     {
+                        if (card.GetComponent<Ghost>().hasDrawAGhostPower)
+                        {
+                            useGhostPower = true;
+                        }
                         card.GetComponent<Ghost>().UseEntryPower(gameObject);
                     }
                 }
             }
 
-            if (gm.state == GameManager.STATE_GAME.STATE_DRAW)
+            if (gm.state == GameManager.STATE_GAME.STATE_DRAW && !useGhostPower)
             {
                 if (!alreadyMove)
                 {
