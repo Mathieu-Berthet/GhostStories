@@ -11,7 +11,7 @@ public class Players : MonoBehaviour
     [Header("Infos joueur")]
 
     [SerializeField]
-    private int qi = 0; // PV du joueur
+    protected int qi = 0; // PV du joueur
     [SerializeField]
     protected int nbBlueToken;
     [SerializeField]
