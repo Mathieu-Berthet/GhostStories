@@ -30,6 +30,7 @@ public class TaoisteAutel : MonoBehaviour
 
 	}
 
+	//Déshante une tuile, mais fait piocher un fantôme en contrepartie
     public IEnumerator UnhauntTile(GameObject player)
     {
         if (!hauntedTile)

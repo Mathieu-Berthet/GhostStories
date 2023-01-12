@@ -59,6 +59,7 @@ public class WindCelestialFlag : MonoBehaviour {
 		
 	}
 
+	//Permet de déplacer un joueur, ainsi qu'un fantôme.
     public IEnumerator MovePlayerAndGhost(GameObject player)
     {
         if(!hauntedTile)

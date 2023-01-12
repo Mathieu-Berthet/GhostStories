@@ -31,6 +31,7 @@ public class Graveyard : MonoBehaviour
 
 	}
 
+	//Réssussite un joueur mort, mais fait lancer le dé des malédictions en contrepartie
     public void Resurrect(GameObject player)
     {
         if (!hauntedTile)

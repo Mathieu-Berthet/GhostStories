@@ -25,6 +25,7 @@ public class HouseOfTea : MonoBehaviour
 		
 	}
 
+	// Fait gagner de la vie et un jeton TAO mais fait piocher un fantôme en contrepartie
     public IEnumerator GainTokenAndQI(GameObject player)
     {
         if (!hauntedTile)

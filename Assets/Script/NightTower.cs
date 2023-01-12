@@ -32,6 +32,7 @@ public class NightTower : MonoBehaviour
 		
 	}
 
+	//Fait reculer les fantomes hanteur d'un plateau d'une case.
     public IEnumerator RetreatGhost(GameObject player)
     {
         if (!hauntedTile)

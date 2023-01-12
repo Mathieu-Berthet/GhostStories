@@ -353,6 +353,7 @@ public class BluePlayer : Players
         checkPosition();
     }
     
+	//Permet de piocher une carte du paquet
     public void DrawAGhost()
     {
         gm.cantPause = true;
@@ -421,6 +422,7 @@ public class BluePlayer : Players
         }
     }
 
+	//Permet de poser la carte piochée sur une case du plateau
     public void SelectGhostPosition(GameObject position)
     {
         if ((gm.state == GameManager.STATE_GAME.STATE_DRAW || useTilePower) && blueTurn)
@@ -627,6 +629,7 @@ public class BluePlayer : Players
         nbActionEffect = 1;
     }
 
+	//Active le pouvoir de la tuile sur laquelle le joueur se trouve
     public void UsePowerTile()
     {
         gm.cantPause = true;
@@ -688,6 +691,7 @@ public class BluePlayer : Players
         }
     }
 
+	//Permet au joueur de lancer les dés afin d'attaquer les ennemis
     public IEnumerator LaunchDice()
     {
         gm.cantPause = true;
@@ -1065,6 +1069,7 @@ public class BluePlayer : Players
         }
     }
 
+	
     public void checkPosition()
     {
         RaycastHit hitXdirection;
@@ -1148,6 +1153,7 @@ public class BluePlayer : Players
         }
     }
 
+	//Check si un ennemi se trouve bien en face du joueur
     public void checkGhost()
     {
         RaycastHit hitXdirection;
@@ -1354,7 +1360,7 @@ public class BluePlayer : Players
         }
     }
 
-
+	//Calcul de l'attaque après le lancer de dés
     public void Attack(GameObject ghost)
     {
         if (ghost.GetComponent<Ghost>().canBeDestroyByDice)
@@ -1552,7 +1558,8 @@ public class BluePlayer : Players
             return;
         }
     }
-
+	
+	//Vérifie si le fantôme est tué ou non
     public void KillGhost(GameObject ghost)
     {
         //Décompte du nombre de fantômes sur le plateau
@@ -1594,7 +1601,7 @@ public class BluePlayer : Players
         gm.RegainMantraToken();
     }
 
-
+	//Lance le dé maudit (pénalise le joueur)
     public IEnumerator LaunchBlackDice()
     {
         if (blueTurn)
@@ -1744,7 +1751,7 @@ public class BluePlayer : Players
         }
     }
 
-
+	//Active les effets des ennemis en début de tour
     public void ActivateInGameEffect()
     {
         if (blueTurn)
@@ -1763,6 +1770,7 @@ public class BluePlayer : Players
         }
     }
 
+	//Check la distance entre les cases pour pouvoir se déplacer
     public void CheckDistance()
     {
         if (blueTurn || useRedPower || useWindCelestialPower)
@@ -2598,6 +2606,7 @@ public class BluePlayer : Players
         }
     }
 
+	//Utilise le jeton yin yang (joker) du joueur
     public IEnumerator UseYinYangToken()
     {
         gm.cantPause = true;
@@ -2805,6 +2814,7 @@ public class BluePlayer : Players
         }
     }
 
+	//Affiche le pouvoir de la tuile sur laquelle se trouve le joueur
     public void checkTilePower(string tile)
     {
         switch(tile)

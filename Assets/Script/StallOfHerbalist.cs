@@ -52,6 +52,7 @@ public class StallOfHerbalist : MonoBehaviour
         
     }
 
+	//Fait lancer 2 dés au joueur pour lui permettre de récupérer des jetons, ceux correspondant à la couleur du dé
     public IEnumerator getToken(GameObject player)
     {
         if (!hauntedTile)

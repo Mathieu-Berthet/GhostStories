@@ -36,6 +36,7 @@ public class HutOfWitch : MonoBehaviour
 
 	}
 
+	//Tue un fantôme sans avoir besoin de l'attaquer en lançant les dés. Mais le joueur sacrifie un point de vie (QI)
     public IEnumerator KillGhost(GameObject player)
     {
         if (!hauntedTile)

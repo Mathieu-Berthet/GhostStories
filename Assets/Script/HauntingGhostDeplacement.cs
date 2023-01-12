@@ -27,7 +27,7 @@ public class HauntingGhostDeplacement : MonoBehaviour
 
     }
 
-
+	//Les fantômes hanteurs hante la première tuile devant eux
     public void HauntedTile() //Okay 
     {
         hasHauntedTile = false;
@@ -198,6 +198,7 @@ public class HauntingGhostDeplacement : MonoBehaviour
         }
     }
 
+	//Le déplacement des fantômes hanteurs
     public void GhostMove(GameObject ghost)
     {
         StartCoroutine(gm.audio.PlayHauntingAdvanceFX(gm.audio.GetComponent<AudioManager>().hauntingAdvanceFX));

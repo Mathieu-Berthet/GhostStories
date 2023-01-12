@@ -27,6 +27,7 @@ public class Deplacement : MonoBehaviour {
 
     }
 
+	//Permet le déplacement du joueur lors de la phase correspondante ou a l'activation d'un effet le permettant
     public IEnumerator PlayerDeplacement()
     {
         if (player.name == "BluePlayer")

@@ -62,6 +62,7 @@ public class Ghost : MonoBehaviour {
     }
     //Pouvoir activé avant de faire la pioche.
 
+	//Pouvoir activé quand le fantôme apparait sur le terrain
     public void UseEntryPower(GameObject player)
     {
         if (hasLaunchBlackDiceEntryPower)
@@ -131,6 +132,7 @@ public class Ghost : MonoBehaviour {
         }
     }
 
+	//Pouvoir lancer à chaque tour tant que le fantôme est en jeu
     public void UseInGamePower(GameObject player)
     {
         if (positions == null)
@@ -183,6 +185,7 @@ public class Ghost : MonoBehaviour {
         }
     }
 
+	//Pouvoir lancer quand le fantôme meurt
     public void UseDeathPower(GameObject player)
     {
         if (hasWinQiOrYinYangTokenPower)

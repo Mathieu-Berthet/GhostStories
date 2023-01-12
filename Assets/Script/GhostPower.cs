@@ -131,6 +131,7 @@ public class GhostPower : MonoBehaviour {
         gm.yellowPlayer.GetComponent<YellowPlayer>().canUsePower = false;
     }
 
+	//Hante une tuile
     public void HauntedTile() //Okay
     {
         hasHauntedTile = false;
@@ -299,6 +300,7 @@ public class GhostPower : MonoBehaviour {
         }
     }
 
+	//Fait perdre une vie au joueur
     public void LoseLife(GameObject player) //Okay
     {
         //Player actif perd 1 qi
@@ -335,6 +337,7 @@ public class GhostPower : MonoBehaviour {
         //circle.GetComponent<PriestCircle>().
     }
 
+	//Pose un fantôme hanteur qui avance automatiquement d'une case.
     public void HauntedGhostAdvanced() //Okay
     {
         GameObject go = Instantiate(hauntingGhost, middlePosition); //To verify if we need to ajust. I think we must warning with start function and this (Which function is before the other)
@@ -349,7 +352,7 @@ public class GhostPower : MonoBehaviour {
         gameObject.GetComponent<Ghost>().canBeDestroyByDice = false;
     }
 
-
+	//Fonction pour un des boss du jeu. Regarde s'il n'y a aucun fantôme en face de lui
     public void CheckIfLonely()
     {
         hasHauntedTile = false;
@@ -427,6 +430,7 @@ public class GhostPower : MonoBehaviour {
     }
 
     //Funcitons when the ghost is not dead yet 
+	//Fait apparaître un fantôme hanteur sur la carte
     public void HauntedGhost() //Okay
     {
         GameObject go = Instantiate(hauntingGhost, startPosition);
@@ -447,6 +451,7 @@ public class GhostPower : MonoBehaviour {
     }
 
     //Functions for power activate when ghost dead (if dead naturally)
+	//Elles permettent de faire gagné des jetons ou de récupérer le jeton yin yang selon le fantôme
 
     public IEnumerator WinQiORYinYangToken(GameObject player) //Warning : We must active Yin Yang token. Or may be in first, indicate them on UI
     {
@@ -997,6 +1002,8 @@ public class GhostPower : MonoBehaviour {
         }
     }
 
+
+	//Débloque les dés, l'utilisation des jetons ou du pouvoir selon le fantôme
     public void UncaptureDice()
     {
         gm.nbDice += 1;

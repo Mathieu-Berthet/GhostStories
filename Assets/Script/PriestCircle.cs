@@ -29,6 +29,7 @@ public class PriestCircle : MonoBehaviour
 
     }
 
+	//Affaibli les fantômes d'une couleur en mettant un jeton sur la tuile
     public IEnumerator reduceGhostLife(GameObject player)
     {
         if (!hauntedTile)

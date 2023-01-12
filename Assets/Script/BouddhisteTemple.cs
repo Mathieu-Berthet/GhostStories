@@ -27,7 +27,7 @@ public class BouddhisteTemple : MonoBehaviour {
 		
 	}
 
-
+	//Permet au joueur de récupérer un ou deux bouddhas. 
     public void getBouddha(GameObject player)
     {
         if (!hauntedTile)
