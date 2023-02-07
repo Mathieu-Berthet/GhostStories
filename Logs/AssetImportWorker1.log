@@ -15,7 +15,7 @@ C:/Users/berth/Desktop/GhostStories
 -logFile
 Logs/AssetImportWorker1.log
 -srvPort
-51177
+57060
 Successfully changed project path to: C:/Users/berth/Desktop/GhostStories
 C:/Users/berth/Desktop/GhostStories
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
@@ -48,7 +48,7 @@ C:/Users/berth/Desktop/GhostStories
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
 Setting a NavMeshArea cost less than one can give unexpected results.
-Refreshing native plugins compatible for Editor in 55.09 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 76.20 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2021.3.10f1 (1c7d0df0160b)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2021.3.10f1/Editor/Data/Resources/UnitySubsystems
@@ -64,92 +64,92 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2021.3.10f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2021.3.10f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2021.3.10f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56324
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56964
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.10f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.10f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.004241 seconds.
+Registered in 0.004557 seconds.
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 44.19 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 46.17 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.602 seconds
+- Completed reload, in  0.742 seconds
 Domain Reload Profiling:
-	ReloadAssembly (602ms)
-		BeginReloadAssembly (67ms)
+	ReloadAssembly (743ms)
+		BeginReloadAssembly (99ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (1ms)
-		EndReloadAssembly (427ms)
-			LoadAssemblies (65ms)
+		EndReloadAssembly (512ms)
+			LoadAssemblies (96ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (111ms)
+			SetupTypeCache (152ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (29ms)
-			SetupLoadedEditorAssemblies (231ms)
+			RebuildScriptCaches (35ms)
+			SetupLoadedEditorAssemblies (262ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (8ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (44ms)
+				RefreshPlugins (46ms)
 				BeforeProcessingInitializeOnLoad (1ms)
-				ProcessInitializeOnLoadAttributes (132ms)
-				ProcessInitializeOnLoadMethodAttributes (45ms)
+				ProcessInitializeOnLoadAttributes (148ms)
+				ProcessInitializeOnLoadMethodAttributes (58ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.003049 seconds.
+Registered in 0.003404 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 1.24 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 0.80 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Package Manager log level set to [2]
 Mono: successfully reloaded assembly
-- Completed reload, in  1.008 seconds
+- Completed reload, in  1.136 seconds
 Domain Reload Profiling:
-	ReloadAssembly (1010ms)
-		BeginReloadAssembly (120ms)
+	ReloadAssembly (1138ms)
+		BeginReloadAssembly (125ms)
 			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (6ms)
+			DisableScriptedObjects (5ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (30ms)
-		EndReloadAssembly (782ms)
-			LoadAssemblies (71ms)
+			CreateAndSetChildDomain (25ms)
+		EndReloadAssembly (902ms)
+			LoadAssemblies (88ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (202ms)
+			SetupTypeCache (201ms)
 			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (50ms)
-			SetupLoadedEditorAssemblies (418ms)
+			RebuildScriptCaches (48ms)
+			SetupLoadedEditorAssemblies (525ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (6ms)
-				SetLoadedEditorAssemblies (1ms)
+				SetLoadedEditorAssemblies (0ms)
 				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (66ms)
-				ProcessInitializeOnLoadAttributes (212ms)
-				ProcessInitializeOnLoadMethodAttributes (126ms)
+				BeforeProcessingInitializeOnLoad (78ms)
+				ProcessInitializeOnLoadAttributes (242ms)
+				ProcessInitializeOnLoadMethodAttributes (192ms)
 				AfterProcessingInitializeOnLoad (6ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (6ms)
+			AwakeInstancesAfterBackupRestoration (12ms)
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
 Setting a NavMeshArea cost less than one can give unexpected results.
 Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
-Refreshing native plugins compatible for Editor in 0.94 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 0.74 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 2512 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 60 unused Assets / (57.5 KB). Loaded Objects now: 2950.
-Memory consumption went from 96.1 MB to 96.0 MB.
-Total: 10.944400 ms (FindLiveObjects: 0.418900 ms CreateObjectMapping: 0.251900 ms MarkObjects: 9.645200 ms  DeleteObjects: 0.625200 ms)
+Unloading 60 unused Assets / (57.5 KB). Loaded Objects now: 2952.
+Memory consumption went from 96.4 MB to 96.3 MB.
+Total: 6.465400 ms (FindLiveObjects: 0.279700 ms CreateObjectMapping: 0.110100 ms MarkObjects: 5.820300 ms  DeleteObjects: 0.253600 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
@@ -162,222 +162,302 @@ AssetImportParameters requested are different than current active one (requested
   custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
-Received Prepare
-Setting a NavMeshArea cost less than one can give unexpected results.
-Registering precompiled user dll's ...
-Registered in 0.004607 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 0.92 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  2.885 seconds
-Domain Reload Profiling:
-	ReloadAssembly (2889ms)
-		BeginReloadAssembly (141ms)
-			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (8ms)
-			BackupInstance (0ms)
-			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (39ms)
-		EndReloadAssembly (2644ms)
-			LoadAssemblies (90ms)
-			RebuildTransferFunctionScriptingTraits (1ms)
-			SetupTypeCache (242ms)
-			ReleaseScriptCaches (3ms)
-			RebuildScriptCaches (70ms)
-			SetupLoadedEditorAssemblies (2110ms)
-				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (14ms)
-				SetLoadedEditorAssemblies (1ms)
-				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (102ms)
-				ProcessInitializeOnLoadAttributes (1405ms)
-				ProcessInitializeOnLoadMethodAttributes (578ms)
-				AfterProcessingInitializeOnLoad (9ms)
-				EditorAssembliesLoaded (0ms)
-			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (29ms)
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 21.23 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2503 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 49 unused Assets / (25.6 KB). Loaded Objects now: 2953.
-Memory consumption went from 95.6 MB to 95.5 MB.
-Total: 26.146400 ms (FindLiveObjects: 1.139000 ms CreateObjectMapping: 1.446100 ms MarkObjects: 23.300400 ms  DeleteObjects: 0.249800 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+Received Import Request.
+  Time since last request: 181902.605809 seconds.
+  path: Assets/Resources/Material/GhostMaterial/DarkMistress.mat
+  artifactKey: Guid(e9b274e05bea5364aa4c3812ca218b04) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Material/GhostMaterial/DarkMistress.mat using Guid(e9b274e05bea5364aa4c3812ca218b04) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8e996b04306694d30346668176f807a7') in 0.278961 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000326 seconds.
+  path: Assets/Resources/Material/GhostMaterial/DarkWraithTwo.mat
+  artifactKey: Guid(b83e2ba1d9bd6504bafb79751ae3b23f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Material/GhostMaterial/DarkWraithTwo.mat using Guid(b83e2ba1d9bd6504bafb79751ae3b23f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '27fa9972fb8a5ed01cc0ee4cea9bab46') in 0.038126 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 8.509890 seconds.
+  path: Assets/Resources/Sprite/JetonMantraSprite.JPG
+  artifactKey: Guid(de80dcde47cfeb640af7644df6c15100) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Sprite/JetonMantraSprite.JPG using Guid(de80dcde47cfeb640af7644df6c15100) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '84d88f19ef4a48464c0005b5ba436720') in 0.113106 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.753474 seconds.
+  path: Assets/Resources/Sprite/GhostSprite/ghost_storie_fantomeFallenMonk2.jpg
+  artifactKey: Guid(5ce33e66ccfc83e488755555f037e447) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Sprite/GhostSprite/ghost_storie_fantomeFallenMonk2.jpg using Guid(5ce33e66ccfc83e488755555f037e447) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a919f6e569496ce7f426d73d5c792dce') in 0.100554 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 63.045424 seconds.
+  path: Assets/Resources/BlockJaune.JPG
+  artifactKey: Guid(8da55c641d0b6d54281e27d401163d25) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/BlockJaune.JPG using Guid(8da55c641d0b6d54281e27d401163d25) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cfafeb8535f548b263e72d1a4fb81955') in 0.045420 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 63.900754 seconds.
+  path: Assets/Resources/Sprite/GhostSprite/ghost_storie_fantomeCoffinBreakers 1.jpg
+  artifactKey: Guid(7ea34a86d198ff54ca818f4354f3bf61) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Sprite/GhostSprite/ghost_storie_fantomeCoffinBreakers 1.jpg using Guid(7ea34a86d198ff54ca818f4354f3bf61) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9c4ae08c0e869d3632322c00afb00bb9') in 0.025003 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2.302255 seconds.
+  path: Assets/Resources/Sprite/GhostSprite/ghost_storie_fantomeFungusThing.jpg
+  artifactKey: Guid(c3e71ea3310e42a41bd3127a6e02efb4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Sprite/GhostSprite/ghost_storie_fantomeFungusThing.jpg using Guid(c3e71ea3310e42a41bd3127a6e02efb4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'caa63c66e902b3a110a77a85d0994f4c') in 0.077305 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.141799 seconds.
+  path: Assets/Resources/Sprite/GhostSprite/ghost_storie_fantomeGraveWalker.jpg
+  artifactKey: Guid(aa0bab6f3d7fc674487dd313600b730e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Sprite/GhostSprite/ghost_storie_fantomeGraveWalker.jpg using Guid(aa0bab6f3d7fc674487dd313600b730e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3947cfc27f843c900e9474c87590067d') in 0.096355 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000112 seconds.
+  path: Assets/Resources/Sprite/GhostSprite/ghost_storie_fantomeHopeKiller.jpg
+  artifactKey: Guid(0be074f7175157041a7c8aa9f81f5c34) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Sprite/GhostSprite/ghost_storie_fantomeHopeKiller.jpg using Guid(0be074f7175157041a7c8aa9f81f5c34) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f399a05012a56f9276a4f18d433f103a') in 0.109849 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.043534 seconds.
+  path: Assets/Resources/Sprite/GhostSprite/ghost_storie_fantomeHoppingVampire.jpg
+  artifactKey: Guid(0ee8d377f9c7b4a47b82b03ee6ee4447) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Sprite/GhostSprite/ghost_storie_fantomeHoppingVampire.jpg using Guid(0ee8d377f9c7b4a47b82b03ee6ee4447) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8e6df90a9d5c27fecd10cab260f0780e') in 0.100511 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000125 seconds.
+  path: Assets/Resources/Sprite/GhostSprite/ghost_storie_fantomeHoppingVampire2 1.jpg
+  artifactKey: Guid(f7c20a44b851e404fb54d8d320287af0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Sprite/GhostSprite/ghost_storie_fantomeHoppingVampire2 1.jpg using Guid(f7c20a44b851e404fb54d8d320287af0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '938ed7ee8ff70d0c43e3de52d8a5cda5') in 0.036233 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.107047 seconds.
+  path: Assets/Resources/Sprite/GhostSprite/ghost_storie_fantomeLich 1.jpg
+  artifactKey: Guid(763081f63c0e9f84e8b28c1723f13ec6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Sprite/GhostSprite/ghost_storie_fantomeLich 1.jpg using Guid(763081f63c0e9f84e8b28c1723f13ec6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4a789b17429d0f0742260cf4cf16fe8d') in 0.040458 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000041 seconds.
+  path: Assets/Resources/Sprite/GhostSprite/ghost_storie_fantomeLich.jpg
+  artifactKey: Guid(45167841a8936df4188819a7d0d05678) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Sprite/GhostSprite/ghost_storie_fantomeLich.jpg using Guid(45167841a8936df4188819a7d0d05678) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '930661cfc59aa08cafd24ece3231baa5') in 0.062905 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000078 seconds.
+  path: Assets/Resources/Sprite/GhostSprite/ghost_storie_fantomeLiquidHorror.jpg
+  artifactKey: Guid(19a1ae905df0e3a44b53ce02d8cc0de1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Sprite/GhostSprite/ghost_storie_fantomeLiquidHorror.jpg using Guid(19a1ae905df0e3a44b53ce02d8cc0de1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a84665f35a08c8746f5b99730c9577c9') in 0.045773 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.032167 seconds.
+  path: Assets/Resources/Sprite/GhostSprite/ghost_storie_fantomeOozeDevil.jpg
+  artifactKey: Guid(723d8f4c93ac63d4f8722c58717e1064) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Sprite/GhostSprite/ghost_storie_fantomeOozeDevil.jpg using Guid(723d8f4c93ac63d4f8722c58717e1064) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2e0d96e72a99ee746248a6db6ed3ab82') in 0.041840 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Resources/Sprite/GhostSprite/ghost_storie_fantomeRagingOne.jpg
+  artifactKey: Guid(709efaae42c916d4a9037ed485b710e0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Sprite/GhostSprite/ghost_storie_fantomeRagingOne.jpg using Guid(709efaae42c916d4a9037ed485b710e0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '840aef95225af04c7c84758789715ea0') in 0.107568 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000062 seconds.
+  path: Assets/Resources/Sprite/GhostSprite/ghost_storie_fantomePerfidiousNymph2.jpg
+  artifactKey: Guid(b0fad5a4b09c93246a2363ba0943573b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Sprite/GhostSprite/ghost_storie_fantomePerfidiousNymph2.jpg using Guid(b0fad5a4b09c93246a2363ba0943573b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e62f2ee0a5d6479771a00ad6d22c7b82') in 0.096084 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000046 seconds.
+  path: Assets/Resources/Sprite/GhostSprite/ghost_storie_fantomeRestlessDead 1.jpg
+  artifactKey: Guid(6f1b038c69c08f44fa1543d3b1e4de4d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Sprite/GhostSprite/ghost_storie_fantomeRestlessDead 1.jpg using Guid(6f1b038c69c08f44fa1543d3b1e4de4d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5a035994897365a1f071c11233dfaca3') in 0.035729 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000038 seconds.
+  path: Assets/Resources/Sprite/GhostSprite/ghost_storie_fantomeRepellentBeauty.jpg
+  artifactKey: Guid(d7e80fad48ba0674b941769776b4eae7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Sprite/GhostSprite/ghost_storie_fantomeRepellentBeauty.jpg using Guid(d7e80fad48ba0674b941769776b4eae7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bedcc6b85e919c899f382fd1d8826952') in 0.110597 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000045 seconds.
+  path: Assets/Resources/Sprite/GhostSprite/ghost_storie_fantomeRestlessSpirit.jpg
+  artifactKey: Guid(ad584b6912d35f842a6cbd27f708bf96) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Sprite/GhostSprite/ghost_storie_fantomeRestlessSpirit.jpg using Guid(ad584b6912d35f842a6cbd27f708bf96) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '397d574ae5cd9967ae3b5fcf0b065843') in 0.052168 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.042995 seconds.
+  path: Assets/Resources/Sprite/GhostSprite/ghost_storie_fantomeRottenSoul2.jpg
+  artifactKey: Guid(d151c5d72bd4f4f41a048128a579eed6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Sprite/GhostSprite/ghost_storie_fantomeRottenSoul2.jpg using Guid(d151c5d72bd4f4f41a048128a579eed6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1bdc1b532185a4448b90f5dbf86aa290') in 0.086048 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000035 seconds.
+  path: Assets/Resources/Sprite/GhostSprite/ghost_storie_fantomeSeveredsHeads.jpg
+  artifactKey: Guid(02786aefcdd62c848b2d2220f301f433) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Sprite/GhostSprite/ghost_storie_fantomeSeveredsHeads.jpg using Guid(02786aefcdd62c848b2d2220f301f433) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8e98dd80ba3515b10aecbe0720e2b501') in 0.043030 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.059413 seconds.
+  path: Assets/Resources/Sprite/GhostSprite/ghost_storie_fantomeShapelessEvil.jpg
+  artifactKey: Guid(2db6cdc84ab59c04b890b18bfaf0f264) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Sprite/GhostSprite/ghost_storie_fantomeShapelessEvil.jpg using Guid(2db6cdc84ab59c04b890b18bfaf0f264) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '55975ee30942b4b202e2403a1eac8386') in 0.055175 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Resources/Sprite/GhostSprite/ghost_storie_fantomeSharpNailedMistress.jpg
+  artifactKey: Guid(e79f058d58d10ee4ebdaa81affc56103) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Sprite/GhostSprite/ghost_storie_fantomeSharpNailedMistress.jpg using Guid(e79f058d58d10ee4ebdaa81affc56103) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b0f3fd8c732f184c1a8f4566cc31bd67') in 0.041789 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000046 seconds.
+  path: Assets/Resources/Sprite/GhostSprite/ghost_storie_fantomeSharpNailedMistress2.jpg
+  artifactKey: Guid(36a2488d55eba9f498b1f72b30d03309) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Sprite/GhostSprite/ghost_storie_fantomeSharpNailedMistress2.jpg using Guid(36a2488d55eba9f498b1f72b30d03309) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '22caa948a9639971cb0e943131e51565') in 0.046413 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.120706 seconds.
+  path: Assets/Resources/Sprite/GhostSprite/ghost_storie_fantomeStickyFeet.jpg
+  artifactKey: Guid(280c861892031d744a7fd882691d7107) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Sprite/GhostSprite/ghost_storie_fantomeStickyFeet.jpg using Guid(280c861892031d744a7fd882691d7107) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '84f096ac4d1895638dcff1c63d08d8dd') in 0.038990 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Resources/Sprite/GhostSprite/ghost_storie_fantomeUncatchable.jpg
+  artifactKey: Guid(9dd9696db8262af4cb2f80dfb8f6c792) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Sprite/GhostSprite/ghost_storie_fantomeUncatchable.jpg using Guid(9dd9696db8262af4cb2f80dfb8f6c792) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cbe97886b4ec6e7136478b87bc86de25') in 0.098750 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000072 seconds.
+  path: Assets/Resources/Sprite/GhostSprite/ghost_storie_fantomeVampireLord 1.jpg
+  artifactKey: Guid(7e705690c81902c40b19a63d57eac9b2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Sprite/GhostSprite/ghost_storie_fantomeVampireLord 1.jpg using Guid(7e705690c81902c40b19a63d57eac9b2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '09eab74d16bff66fed7067cbb246315d') in 0.033226 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.062122 seconds.
+  path: Assets/Resources/Sprite/GhostSprite/ghost_storie_fantomeWalkingCorpse.jpg
+  artifactKey: Guid(6b8df5e19715042478a2ad573dcf1a95) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Sprite/GhostSprite/ghost_storie_fantomeWalkingCorpse.jpg using Guid(6b8df5e19715042478a2ad573dcf1a95) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0c930e306938cab29dba5d88c92decd1') in 0.058482 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000039 seconds.
+  path: Assets/Resources/Sprite/GhostSprite/ghost_storie_fantomeYellowPlague 1.jpg
+  artifactKey: Guid(c6b7ffc9832df1149a56d2183af9b5a5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Sprite/GhostSprite/ghost_storie_fantomeYellowPlague 1.jpg using Guid(c6b7ffc9832df1149a56d2183af9b5a5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '82f53e4ef0022f58544c7f17c04ecc36') in 0.023365 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.003987 seconds.
+  path: Assets/Resources/Sprite/GhostSprite/ghost_storie_fantomeYellowPlague.jpg
+  artifactKey: Guid(2993c046b8fa1744799e3ab5577982ae) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Sprite/GhostSprite/ghost_storie_fantomeYellowPlague.jpg using Guid(2993c046b8fa1744799e3ab5577982ae) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e5a65e6ed2a272b692f05ca6238d85e5') in 0.044256 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.120236 seconds.
+  path: Assets/Resources/Sprite/GhostSprite/ghost_storie_fantomeZombie.jpg
+  artifactKey: Guid(076dbc74381d99f49b96720a1187b7a3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Sprite/GhostSprite/ghost_storie_fantomeZombie.jpg using Guid(076dbc74381d99f49b96720a1187b7a3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '33e53449fd1665bf9d3572fdb06531f5') in 0.066206 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 150.733194 seconds.
+  path: Assets/Resources/Sprite/GhostSprite/ghost_storie_fantomeHoppingVampire.jpg
+  artifactKey: Guid(0ee8d377f9c7b4a47b82b03ee6ee4447) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Sprite/GhostSprite/ghost_storie_fantomeHoppingVampire.jpg using Guid(0ee8d377f9c7b4a47b82b03ee6ee4447) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '57dbfc1443488bdc5b06952b4352c350') in 0.020129 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.370958 seconds.
+  path: Assets/Resources/Sprite/GhostSprite/ghost_storie_fantomeCoffinBreakers.jpg
+  artifactKey: Guid(11ecd505f6f6d1e4b80be1a6d806cdee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Sprite/GhostSprite/ghost_storie_fantomeCoffinBreakers.jpg using Guid(11ecd505f6f6d1e4b80be1a6d806cdee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8816b27634ef7cb2b6be390501014f9b') in 0.022475 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 15.076607 seconds.
+  path: Assets/Resources/Sprite/GhostSprite/ghost_storie_fantomeZombie2.jpg
+  artifactKey: Guid(bd86a45065f362a43a814613de613331) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Sprite/GhostSprite/ghost_storie_fantomeZombie2.jpg using Guid(bd86a45065f362a43a814613de613331) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '20f917ea0c227c13d85e3af499c76ca5') in 0.027193 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 7.947437 seconds.
+  path: Assets/Resources/Sprite/GhostSprite/ghost_storie_fantomeWalkingCorpse.jpg
+  artifactKey: Guid(6b8df5e19715042478a2ad573dcf1a95) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Sprite/GhostSprite/ghost_storie_fantomeWalkingCorpse.jpg using Guid(6b8df5e19715042478a2ad573dcf1a95) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ba0b184bccb76921aedbd4f08355e95a') in 0.028497 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000051 seconds.
+  path: Assets/Resources/Sprite/GhostSprite/ghost_storie_fantomeYellowPlague.jpg
+  artifactKey: Guid(2993c046b8fa1744799e3ab5577982ae) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Sprite/GhostSprite/ghost_storie_fantomeYellowPlague.jpg using Guid(2993c046b8fa1744799e3ab5577982ae) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7d18dbb94c8432bc51312fc084ad8019') in 0.028025 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000041 seconds.
+  path: Assets/Resources/Sprite/GhostSprite/ghost_storie_fantomeHoppingVampire2.jpg
+  artifactKey: Guid(2e0b766a475db4a42ac0fab8a9105707) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Sprite/GhostSprite/ghost_storie_fantomeHoppingVampire2.jpg using Guid(2e0b766a475db4a42ac0fab8a9105707) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0ab9adc699d9cba40f111d4d39118015') in 0.026371 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 46.604032 seconds.
+  path: Assets/Resources/Sprite/GhostSprite/ghost_storie_fantomeCoffinBreakers.jpg
+  artifactKey: Guid(11ecd505f6f6d1e4b80be1a6d806cdee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Sprite/GhostSprite/ghost_storie_fantomeCoffinBreakers.jpg using Guid(11ecd505f6f6d1e4b80be1a6d806cdee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ff1223738a730619d5247593513c18f9') in 0.056907 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 9.027489 seconds.
+  path: Assets/Resources/Sprite/GhostSprite/ghost_storie_fantomeCoffinBreakers.jpg
+  artifactKey: Guid(11ecd505f6f6d1e4b80be1a6d806cdee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Sprite/GhostSprite/ghost_storie_fantomeCoffinBreakers.jpg using Guid(11ecd505f6f6d1e4b80be1a6d806cdee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '258d4e2a03dc27b2a32ed1f7a4ed544a') in 0.053765 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000037 seconds.
+  path: Assets/Resources/Sprite/GhostSprite/ghost_storie_fantomeCoffinBreakers2.jpg
+  artifactKey: Guid(444cab7c68d43614b84f1f0032d75386) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Sprite/GhostSprite/ghost_storie_fantomeCoffinBreakers2.jpg using Guid(444cab7c68d43614b84f1f0032d75386) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4ea2501c5f4f7ed9c0347b4f5db5c810') in 0.087881 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 7.125305 seconds.
+  path: Assets/Resources/Material/GhostMaterial/CoffinBreaker.mat
+  artifactKey: Guid(fe1ef8e439a5d2548b16fb13a197783a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Material/GhostMaterial/CoffinBreaker.mat using Guid(fe1ef8e439a5d2548b16fb13a197783a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '49514de4d20bcfb5735b40038b840357') in 0.054679 seconds 
 ========================================================================
 Received Prepare
 Setting a NavMeshArea cost less than one can give unexpected results.
 Registering precompiled user dll's ...
-Registered in 0.004794 seconds.
+Registered in 0.002976 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 3.70 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 0.82 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  3.467 seconds
+- Completed reload, in  1.500 seconds
 Domain Reload Profiling:
-	ReloadAssembly (3469ms)
-		BeginReloadAssembly (187ms)
+	ReloadAssembly (1502ms)
+		BeginReloadAssembly (150ms)
 			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (14ms)
+			DisableScriptedObjects (10ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (69ms)
-		EndReloadAssembly (3119ms)
-			LoadAssemblies (93ms)
+			CreateAndSetChildDomain (47ms)
+		EndReloadAssembly (1232ms)
+			LoadAssemblies (77ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (950ms)
-			ReleaseScriptCaches (7ms)
-			RebuildScriptCaches (206ms)
-			SetupLoadedEditorAssemblies (1543ms)
-				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (54ms)
-				SetLoadedEditorAssemblies (1ms)
-				RefreshPlugins (5ms)
-				BeforeProcessingInitializeOnLoad (153ms)
-				ProcessInitializeOnLoadAttributes (838ms)
-				ProcessInitializeOnLoadMethodAttributes (481ms)
-				AfterProcessingInitializeOnLoad (11ms)
-				EditorAssembliesLoaded (1ms)
-			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (31ms)
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 21.85 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2503 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 49 unused Assets / (25.7 KB). Loaded Objects now: 2956.
-Memory consumption went from 95.6 MB to 95.5 MB.
-Total: 22.164700 ms (FindLiveObjects: 1.928500 ms CreateObjectMapping: 0.614400 ms MarkObjects: 19.213400 ms  DeleteObjects: 0.392100 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Prepare
-Setting a NavMeshArea cost less than one can give unexpected results.
-Registering precompiled user dll's ...
-Registered in 0.004031 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 3.02 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  2.618 seconds
-Domain Reload Profiling:
-	ReloadAssembly (2620ms)
-		BeginReloadAssembly (137ms)
-			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (7ms)
-			BackupInstance (0ms)
-			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (42ms)
-		EndReloadAssembly (2384ms)
-			LoadAssemblies (87ms)
-			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (195ms)
+			SetupTypeCache (224ms)
 			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (68ms)
-			SetupLoadedEditorAssemblies (1758ms)
+			RebuildScriptCaches (40ms)
+			SetupLoadedEditorAssemblies (792ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (71ms)
-				SetLoadedEditorAssemblies (2ms)
-				RefreshPlugins (4ms)
-				BeforeProcessingInitializeOnLoad (209ms)
-				ProcessInitializeOnLoadAttributes (977ms)
-				ProcessInitializeOnLoadMethodAttributes (474ms)
-				AfterProcessingInitializeOnLoad (19ms)
+				InitializePlatformSupportModulesInManaged (13ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (70ms)
+				ProcessInitializeOnLoadAttributes (315ms)
+				ProcessInitializeOnLoadMethodAttributes (381ms)
+				AfterProcessingInitializeOnLoad (9ms)
 				EditorAssembliesLoaded (2ms)
 			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (28ms)
+			AwakeInstancesAfterBackupRestoration (19ms)
 Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 18.48 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 14.43 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 2503 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 49 unused Assets / (25.6 KB). Loaded Objects now: 2959.
-Memory consumption went from 95.6 MB to 95.5 MB.
-Total: 27.309000 ms (FindLiveObjects: 0.938200 ms CreateObjectMapping: 0.599500 ms MarkObjects: 25.437300 ms  DeleteObjects: 0.325100 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Prepare
-Setting a NavMeshArea cost less than one can give unexpected results.
-Refreshing native plugins compatible for Editor in 8.88 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 49 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 49 unused Assets / (22.9 KB). Loaded Objects now: 2959.
-Memory consumption went from 46.4 MB to 46.4 MB.
-Total: 7.728500 ms (FindLiveObjects: 0.236900 ms CreateObjectMapping: 0.071500 ms MarkObjects: 7.374600 ms  DeleteObjects: 0.043900 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Prepare
-Setting a NavMeshArea cost less than one can give unexpected results.
-Refreshing native plugins compatible for Editor in 7.70 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 49 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 49 unused Assets / (23.0 KB). Loaded Objects now: 2959.
-Memory consumption went from 46.4 MB to 46.4 MB.
-Total: 6.366000 ms (FindLiveObjects: 0.349400 ms CreateObjectMapping: 0.205900 ms MarkObjects: 5.763100 ms  DeleteObjects: 0.046000 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Prepare
-Setting a NavMeshArea cost less than one can give unexpected results.
-Refreshing native plugins compatible for Editor in 8.25 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 49 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 49 unused Assets / (23.0 KB). Loaded Objects now: 2959.
-Memory consumption went from 46.4 MB to 46.4 MB.
-Total: 8.608400 ms (FindLiveObjects: 0.294400 ms CreateObjectMapping: 0.087700 ms MarkObjects: 8.165000 ms  DeleteObjects: 0.060200 ms)
+Unloading 49 unused Assets / (25.7 KB). Loaded Objects now: 3037.
+Memory consumption went from 100.0 MB to 100.0 MB.
+Total: 17.670300 ms (FindLiveObjects: 0.713200 ms CreateObjectMapping: 0.754800 ms MarkObjects: 16.059700 ms  DeleteObjects: 0.136900 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
