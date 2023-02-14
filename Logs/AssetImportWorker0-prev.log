@@ -15,7 +15,7 @@ C:/Users/berth/Desktop/GhostStories
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-60430
+60787
 Successfully changed project path to: C:/Users/berth/Desktop/GhostStories
 C:/Users/berth/Desktop/GhostStories
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
@@ -48,7 +48,7 @@ C:/Users/berth/Desktop/GhostStories
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
 Setting a NavMeshArea cost less than one can give unexpected results.
-Refreshing native plugins compatible for Editor in 740.51 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 139.54 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2021.3.10f1 (1c7d0df0160b)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2021.3.10f1/Editor/Data/Resources/UnitySubsystems
@@ -64,44 +64,214 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2021.3.10f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2021.3.10f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2021.3.10f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56536
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56156
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.10f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.10f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.434254 seconds.
+Registered in 0.005117 seconds.
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 144.46 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 54.77 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in 14.248 seconds
+- Completed reload, in  0.781 seconds
 Domain Reload Profiling:
-	ReloadAssembly (14251ms)
-		BeginReloadAssembly (10235ms)
+	ReloadAssembly (782ms)
+		BeginReloadAssembly (93ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (1ms)
-		EndReloadAssembly (2850ms)
-			LoadAssemblies (10247ms)
-			RebuildTransferFunctionScriptingTraits (1ms)
-			SetupTypeCache (1652ms)
+		EndReloadAssembly (556ms)
+			LoadAssemblies (91ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (130ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (100ms)
-			SetupLoadedEditorAssemblies (900ms)
+			RebuildScriptCaches (44ms)
+			SetupLoadedEditorAssemblies (319ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (38ms)
-				SetLoadedEditorAssemblies (1ms)
-				RefreshPlugins (145ms)
-				BeforeProcessingInitializeOnLoad (4ms)
-				ProcessInitializeOnLoadAttributes (531ms)
-				ProcessInitializeOnLoadMethodAttributes (181ms)
+				InitializePlatformSupportModulesInManaged (10ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (55ms)
+				BeforeProcessingInitializeOnLoad (1ms)
+				ProcessInitializeOnLoadAttributes (194ms)
+				ProcessInitializeOnLoadMethodAttributes (58ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 1.984638 seconds.
+Registered in 0.005079 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 1.01 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Package Manager log level set to [2]
+Mono: successfully reloaded assembly
+- Completed reload, in  1.925 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1926ms)
+		BeginReloadAssembly (199ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (12ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (29ms)
+		EndReloadAssembly (1475ms)
+			LoadAssemblies (143ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (361ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (78ms)
+			SetupLoadedEditorAssemblies (821ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (9ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (88ms)
+				ProcessInitializeOnLoadAttributes (478ms)
+				ProcessInitializeOnLoadMethodAttributes (238ms)
+				AfterProcessingInitializeOnLoad (6ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (8ms)
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Setting a NavMeshArea cost less than one can give unexpected results.
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.06 seconds
+Refreshing native plugins compatible for Editor in 1.44 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2512 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 60 unused Assets / (57.5 KB). Loaded Objects now: 2952.
+Memory consumption went from 96.4 MB to 96.3 MB.
+Total: 16.466100 ms (FindLiveObjects: 0.434400 ms CreateObjectMapping: 0.164500 ms MarkObjects: 15.622100 ms  DeleteObjects: 0.242100 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 71409.081816 seconds.
+  path: Assets/Resources/Model/3DModel.obj
+  artifactKey: Guid(b1e0f0560d7ec7940a68276311765fd1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Model/3DModel.obj using Guid(b1e0f0560d7ec7940a68276311765fd1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '55aa58c1e6065ca065903ca19ea23548') in 0.434329 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 50.050046 seconds.
+  path: Assets/Resources/Model/3DModel 1.jpg
+  artifactKey: Guid(ba26e3e667e223d42ab2f7b1d3a7ae35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Model/3DModel 1.jpg using Guid(ba26e3e667e223d42ab2f7b1d3a7ae35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6983022e080e87574d5e7c7d178f356d') in 0.134327 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 949.495386 seconds.
+  path: Assets/Resources/Model/3DModel 1.mtl
+  artifactKey: Guid(30c5acf215a3c704ab09f2250d5fc0aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Model/3DModel 1.mtl using Guid(30c5acf215a3c704ab09f2250d5fc0aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '807316c7c04be2545efbfd15eccca44b') in 0.023517 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2033.474249 seconds.
+  path: Assets/Resources/Model/3DModel.fbx
+  artifactKey: Guid(4ed7751dc1890ec41a57e11e076711f5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Model/3DModel.fbx using Guid(4ed7751dc1890ec41a57e11e076711f5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '93f032b7b03ca0f7664ccd0830d03923') in 0.142431 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 203.926774 seconds.
+  path: Assets/Resources/Model/3DModel.fbx
+  artifactKey: Guid(4ed7751dc1890ec41a57e11e076711f5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Model/3DModel.fbx using Guid(4ed7751dc1890ec41a57e11e076711f5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd3bb632fbbd3fc090445058ba06e4c3f') in 0.068329 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 17.583433 seconds.
+  path: Assets/Resources/Model/3DModel.fbx
+  artifactKey: Guid(4ed7751dc1890ec41a57e11e076711f5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Model/3DModel.fbx using Guid(4ed7751dc1890ec41a57e11e076711f5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8f096743340ae52b50886a64a6c9b966') in 0.049208 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 78.995298 seconds.
+  path: Assets/Resources/Model/3DModel_LowPoly.fbx
+  artifactKey: Guid(ac7cf58ab49eb95459b75e6378eae19e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Model/3DModel_LowPoly.fbx using Guid(ac7cf58ab49eb95459b75e6378eae19e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9e5f1ccdcec52e9338d69361a461171b') in 0.079908 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 38.772002 seconds.
+  path: Assets/Resources/Model/3DModel_LowPoly.fbx
+  artifactKey: Guid(ac7cf58ab49eb95459b75e6378eae19e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Model/3DModel_LowPoly.fbx using Guid(ac7cf58ab49eb95459b75e6378eae19e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '51e61fa4c0039a86a848f7f9c9744de9') in 0.045822 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 11.757423 seconds.
+  path: Assets/Resources/Model/3DModel_LowPoly.fbx
+  artifactKey: Guid(ac7cf58ab49eb95459b75e6378eae19e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Model/3DModel_LowPoly.fbx using Guid(ac7cf58ab49eb95459b75e6378eae19e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '57f6da2a7ac35506caa09f184af91130') in 0.071253 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 12.463651 seconds.
+  path: Assets/Resources/Model/3DModel_LowPoly.fbx
+  artifactKey: Guid(ac7cf58ab49eb95459b75e6378eae19e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Model/3DModel_LowPoly.fbx using Guid(ac7cf58ab49eb95459b75e6378eae19e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6ddb2065d907a224da3ad163373c1d7b') in 0.078583 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 21.090853 seconds.
+  path: Assets/Resources/Model/3DModel_LowPoly.fbx
+  artifactKey: Guid(ac7cf58ab49eb95459b75e6378eae19e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Model/3DModel_LowPoly.fbx using Guid(ac7cf58ab49eb95459b75e6378eae19e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bc91cb718bd302b9b5ad39b73d28f4eb') in 0.060531 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 13.562458 seconds.
+  path: Assets/Resources/Model/3DModel_LowPoly.fbx
+  artifactKey: Guid(ac7cf58ab49eb95459b75e6378eae19e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Model/3DModel_LowPoly.fbx using Guid(ac7cf58ab49eb95459b75e6378eae19e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ca28abc739c9c87bf103ce5a8ca32c83') in 0.054270 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 6.278179 seconds.
+  path: Assets/Resources/Model/3DModel_LowPoly.fbx
+  artifactKey: Guid(ac7cf58ab49eb95459b75e6378eae19e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Model/3DModel_LowPoly.fbx using Guid(ac7cf58ab49eb95459b75e6378eae19e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bd65377600df912dc9ec2eca2ea0c7b7') in 0.053017 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 6.388637 seconds.
+  path: Assets/Resources/Model/3DModel_LowPoly.fbx
+  artifactKey: Guid(ac7cf58ab49eb95459b75e6378eae19e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Model/3DModel_LowPoly.fbx using Guid(ac7cf58ab49eb95459b75e6378eae19e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '06ee07c11195e34264dfae28d8e1bf5a') in 0.064837 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 21.025104 seconds.
+  path: Assets/Resources/Model/3DModel_LowPoly.fbx
+  artifactKey: Guid(ac7cf58ab49eb95459b75e6378eae19e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Model/3DModel_LowPoly.fbx using Guid(ac7cf58ab49eb95459b75e6378eae19e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '634d1c0111b6835695487fe134e756f0') in 0.054179 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 10.475995 seconds.
+  path: Assets/Resources/Model/3DModel_LowPoly.fbx
+  artifactKey: Guid(ac7cf58ab49eb95459b75e6378eae19e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Model/3DModel_LowPoly.fbx using Guid(ac7cf58ab49eb95459b75e6378eae19e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '07221b23d9014a7706535c5c0be5f190') in 0.056562 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 16.653304 seconds.
+  path: Assets/Resources/Model/3DModel_LowPoly.fbx
+  artifactKey: Guid(ac7cf58ab49eb95459b75e6378eae19e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Model/3DModel_LowPoly.fbx using Guid(ac7cf58ab49eb95459b75e6378eae19e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9a3512b353420e42a54cfc7538110a07') in 0.064892 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 16.544773 seconds.
+  path: Assets/Resources/Model/3DModel_LowPoly.fbx
+  artifactKey: Guid(ac7cf58ab49eb95459b75e6378eae19e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Model/3DModel_LowPoly.fbx using Guid(ac7cf58ab49eb95459b75e6378eae19e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1371c92c1b9d1ea16164289447456555') in 0.057934 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 96.319803 seconds.
+  path: Assets/Resources/Model/3DModel_LowPoly.fbx
+  artifactKey: Guid(ac7cf58ab49eb95459b75e6378eae19e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Model/3DModel_LowPoly.fbx using Guid(ac7cf58ab49eb95459b75e6378eae19e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3cf360dd73b7e677009788f67c4fa85f') in 0.064189 seconds 
